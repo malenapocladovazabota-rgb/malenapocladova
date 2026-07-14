@@ -294,7 +294,7 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
   <div class="brand">3×3 <b>рилс</b></div>
   <div class="right">
     <span class="date-chip">24–26 ИЮЛЯ</span>
-    <a href="#offer" class="btn btn-rose">Занять место $15</a>
+    <a href="https://link.fastpaydirect.com/payment-link/69e9529c7dd3512d920788c5" class="btn btn-rose js-pay">Занять место $15</a>
   </div>
 </nav>
 
@@ -308,7 +308,7 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
       <h1>3 дня.<br><em>3 рилс.</em></h1>
       <p class="sub">За три вечера вы с нуля снимаете <b>три готовых Reels</b> на телефон. Без долгого курса, сразу практика.</p>
       <div class="hero-cta">
-        <a href="#offer" class="btn btn-rose">Занять место за $15</a>
+        <a href="https://link.fastpaydirect.com/payment-link/69e9529c7dd3512d920788c5" class="btn btn-rose js-pay">Занять место за $15</a>
         <span class="hero-price"><s>$50</s></span>
       </div>
     </div>
@@ -526,7 +526,7 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
         <div class="now">$15</div>
         <div class="lab">старт-цена, дальше дороже</div>
         <div class="timer" id="timer"><span class="tlab">до конца дня осталось</span><span class="tval" id="timerVal">00:00:00</span></div>
-        <a href="#" class="btn btn-rose">Оплатить $15 и занять место</a>
+        <a href="https://link.fastpaydirect.com/payment-link/69e9529c7dd3512d920788c5" class="btn btn-rose js-pay">Оплатить $15 и занять место</a>
         <div class="fine">После оплаты сразу ссылка на Telegram-канал. Количество мест ограничено.</div>
         <div class="fine">Вопросы? <a href="https://telegram.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline;">Напишите в поддержку</a></div>
       </div>
@@ -584,7 +584,7 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
     <div class="final rev">
       <h2>Три вечера, которые<br>меняют ваш контент</h2>
       <p>Старт 24 июля. Цена растёт каждый день. Количество мест ограничено.</p>
-      <a href="#" class="btn btn-ink">Да, я участвую · $15</a>
+      <a href="https://link.fastpaydirect.com/payment-link/69e9529c7dd3512d920788c5" class="btn btn-ink js-pay">Да, я участвую · $15</a>
     </div>
   </div>
 </section>
@@ -596,7 +596,7 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
 
 <div id="lbox"><img src="" alt="Отзыв"></div>
 
-<div class="sticky-cta"><a href="#offer" class="btn btn-rose">Занять место за $15</a></div>
+<div class="sticky-cta"><a href="https://link.fastpaydirect.com/payment-link/69e9529c7dd3512d920788c5" class="btn btn-rose js-pay">Занять место за $15</a></div>
 
 <script>
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show'); io.unobserve(e.target);}});},{threshold:.15});
@@ -626,6 +626,21 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
     });
     lb.addEventListener('click', function(){ lb.classList.remove('on'); lbImg.src=''; });
     document.addEventListener('keydown', function(e){ if(e.key==='Escape') lb.classList.remove('on'); });
+  })();
+
+  // Сквозная аналитика: переносим UTM-метки (источник: профиль / реклама / блогеры)
+  // с лендинга на ссылку оплаты, чтобы в GHL было видно, откуда пришёл клиент.
+  (function(){
+    var keep=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','ref'];
+    var src=new URLSearchParams(location.search);
+    var pass=new URLSearchParams();
+    keep.forEach(function(k){ if(src.get(k)) pass.set(k, src.get(k)); });
+    var qs=pass.toString();
+    if(!qs) return;
+    document.querySelectorAll('a.js-pay').forEach(function(a){
+      var base=a.getAttribute('href');
+      a.setAttribute('href', base + (base.indexOf('?')>-1 ? '&' : '?') + qs);
+    });
   })();
 </script>
 </body>

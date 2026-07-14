@@ -321,7 +321,7 @@ src="https://www.facebook.com/tr?id=1521940319314090&ev=PageView&noscript=1"
     const PASSTHRU_KEYS = [
       'utm_source','utm_medium','utm_campaign','utm_content','utm_term',
       'gclid','fbclid','msclkid',
-      // pre-fill (если кто-то приходит с заполненным URL — например с meta lead ad → site)
+      // pre-fill (если кто-то приходит с заполненным URL - например с meta lead ad → site)
       'first_name','last_name','firstName','lastName','email','phone'
     ];
 
@@ -339,7 +339,7 @@ src="https://www.facebook.com/tr?id=1521940319314090&ev=PageView&noscript=1"
     // landing page (с какой страницы зашёл)
     targetParams.set('landing_page', window.location.pathname);
 
-    // referrer (откуда ссылка) — если есть
+    // referrer (откуда ссылка) - если есть
     if (document.referrer && !document.referrer.includes(window.location.host)) {
       targetParams.set('referrer', document.referrer);
     }
@@ -358,7 +358,7 @@ src="https://www.facebook.com/tr?id=1521940319314090&ev=PageView&noscript=1"
       } catch(e) {}
     }
 
-    // Если UTM нет в URL — попробуем восстановить из localStorage (если человек ходил по сайту)
+    // Если UTM нет в URL - попробуем восстановить из localStorage (если человек ходил по сайту)
     if (Object.keys(utmData).length === 0) {
       try {
         const stored = JSON.parse(localStorage.getItem('lead_attribution') || '{}');
@@ -374,7 +374,7 @@ src="https://www.facebook.com/tr?id=1521940319314090&ev=PageView&noscript=1"
     iframe.src = queryString ? BASE + '?' + queryString : BASE;
   })();
 
-  // Sticky fallback: если за 5 секунд iframe не загрузился — показать sticky CTA
+  // Sticky fallback: если за 5 секунд iframe не загрузился - показать sticky CTA
   (function(){
     const iframe = document.querySelector('.razbor-calendar iframe');
     if (!iframe) return;
@@ -396,7 +396,7 @@ src="https://www.facebook.com/tr?id=1521940319314090&ev=PageView&noscript=1"
     });
   })();
 
-  // postMessage listener — если GHL отправляет высоту, ресайзим iframe
+  // postMessage listener - если GHL отправляет высоту, ресайзим iframe
   window.addEventListener('message', function(event){
     if (!event.origin.includes('leadconnectorhq.com') &&
         !event.origin.includes('msgsndr.com')) return;

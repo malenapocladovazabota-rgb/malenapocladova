@@ -40,39 +40,53 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
   }
   html{scroll-behavior:smooth;}
   body{background:var(--cream); color:var(--brown); font-family:'Inter',sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:32px 20px;}
-  .card{max-width:640px; width:100%; background:var(--paper); border:1px solid var(--line); border-radius:26px; box-shadow:var(--shadow); padding:48px 44px; text-align:center; position:relative; overflow:hidden;}
+  .card{max-width:640px; width:100%; background:var(--paper); border:1px solid var(--line); border-radius:26px; box-shadow:var(--shadow); padding:44px 40px; text-align:center; position:relative; overflow:hidden;}
   .card::before{content:''; position:absolute; top:0; left:0; right:0; height:6px; background:linear-gradient(90deg,var(--rose-d),var(--gold));}
-  .check{width:76px; height:76px; border-radius:50%; background:var(--rose-d); display:flex; align-items:center; justify-content:center; margin:0 auto 24px; box-shadow:0 14px 30px rgba(110,30,43,.32);}
-  .check svg{width:38px; height:38px; stroke:#fff; stroke-width:3; fill:none;}
+  .check{width:70px; height:70px; border-radius:50%; background:var(--rose-d); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; box-shadow:0 14px 30px rgba(110,30,43,.32);}
+  .check svg{width:34px; height:34px; stroke:#fff; stroke-width:3; fill:none;}
   .eyebrow{font-family:'DM Mono',monospace; font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--rose-d);}
-  h1{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:clamp(38px,7vw,56px); line-height:1.02; margin:12px 0 14px;}
+  h1{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:clamp(34px,7vw,50px); line-height:1.02; margin:10px 0 12px;}
   h1 em{font-style:italic; color:var(--rose-d);}
-  .lead{font-size:18px; color:var(--brown2); max-width:44ch; margin:0 auto 28px;}
+  .lead{font-size:17px; color:var(--brown2); max-width:46ch; margin:0 auto 8px;}
   .lead b{color:var(--brown);}
 
+  /* ШАГ 1 - обязательный, максимально заметный */
+  .gate{margin:26px 0 6px; border:2px solid var(--rose-d); border-radius:20px; background:linear-gradient(180deg,#fff,#FDF3EC); padding:26px 22px 24px; text-align:left; position:relative; box-shadow:0 12px 34px rgba(110,30,43,.14);}
+  .gate .pill{position:absolute; top:-14px; left:50%; transform:translateX(-50%); white-space:nowrap; background:var(--rose-d); color:#fff; font-family:'DM Mono',monospace; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; padding:7px 16px; border-radius:100px; box-shadow:0 8px 18px rgba(110,30,43,.3);}
+  .gate h2{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:26px; text-align:center; margin:8px 0 6px;}
+  .gate .sub{font-size:15px; color:var(--brown2); text-align:center; max-width:44ch; margin:0 auto 18px;}
+  .gate .sub b{color:var(--rose-d);}
+  .field{margin-bottom:14px;}
+  .field label{display:block; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--brown3); margin-bottom:6px;}
+  .field input{width:100%; font-family:'Inter',sans-serif; font-size:16px; color:var(--brown); background:#fff; border:1.5px solid var(--line); border-radius:12px; padding:14px 16px; outline:none; transition:border-color .15s;}
+  .field input:focus{border-color:var(--rose-d);}
+  .field .hint{font-size:12.5px; color:var(--brown3); margin-top:5px;}
+  .err{color:var(--rose); font-size:13px; margin:2px 0 8px; display:none;}
+  .btn-go{display:flex; align-items:center; justify-content:center; gap:10px; width:100%; background:var(--rose-d); color:#fff; font-family:'DM Mono',monospace; font-weight:500; font-size:15px; letter-spacing:.03em; padding:18px 24px; border:none; border-radius:100px; cursor:pointer; box-shadow:0 14px 30px rgba(110,30,43,.3); transition:transform .15s, background .15s;}
+  .btn-go:hover{transform:translateY(-2px); background:#8A2A38;}
+  .btn-go:disabled{opacity:.6; cursor:default; transform:none;}
+
+  /* ШАГ 2 - доступ в канал, открывается после шага 1 */
+  .access{display:none; margin:22px 0 4px; padding:24px 22px; border-radius:20px; background:var(--brown); color:var(--cream); text-align:center;}
+  .access.on{display:block; animation:pop .35s ease;}
+  @keyframes pop{from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:none;}}
+  .access .ok{font-family:'DM Mono',monospace; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;}
+  .access h3{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:24px; margin-bottom:14px;}
   .btn-tg{display:inline-flex; align-items:center; justify-content:center; gap:11px; width:100%; background:var(--tg); color:#fff; font-family:'DM Mono',monospace; font-weight:500; font-size:15px; letter-spacing:.03em; padding:19px 28px; border-radius:100px; text-decoration:none; box-shadow:0 14px 30px rgba(42,171,238,.34); transition:transform .15s;}
   .btn-tg:hover{transform:translateY(-2px);}
   .btn-tg svg{width:22px; height:22px; fill:#fff;}
-  .btn-note{font-family:'DM Mono',monospace; font-size:12px; color:var(--brown3); margin-top:12px;}
 
-  .steps{text-align:left; margin:34px 0 8px; border-top:1px solid var(--line); padding-top:28px;}
-  .steps h2{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:26px; margin-bottom:18px; text-align:center;}
-  .step{display:grid; grid-template-columns:40px 1fr; gap:16px; align-items:start; padding:12px 0;}
-  .step .n{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:26px; color:var(--rose-d); line-height:1;}
-  .step h3{font-family:'Inter'; font-weight:600; font-size:16.5px; margin-bottom:2px;}
-  .step p{font-size:14.5px; color:var(--brown2);}
-
-  .dates{background:var(--brown); color:var(--cream); border-radius:18px; padding:22px 24px; margin:24px 0 4px; text-align:left;}
-  .dates .dl{font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;}
-  .dates .d{display:flex; justify-content:space-between; gap:12px; padding:7px 0; font-size:15px; border-top:1px solid rgba(251,241,232,.12);}
+  .dates{background:#fff; border:1px solid var(--line); border-radius:18px; padding:20px 22px; margin:22px 0 4px; text-align:left;}
+  .dates .dl{font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--rose-d); margin-bottom:10px;}
+  .dates .d{display:flex; justify-content:space-between; gap:12px; padding:7px 0; font-size:15px; border-top:1px solid var(--line);}
   .dates .d:first-of-type{border-top:none;}
   .dates .d b{font-family:'Cormorant Garamond',serif; font-weight:700;}
-  .dates .d span{font-family:'DM Mono',monospace; font-size:12.5px; color:rgba(251,241,232,.75); white-space:nowrap;}
+  .dates .d span{font-family:'DM Mono',monospace; font-size:12.5px; color:var(--brown3); white-space:nowrap;}
 
-  .support{margin-top:26px; font-size:14px; color:var(--brown2);}
+  .support{margin-top:22px; font-size:14px; color:var(--brown2);}
   .support a{color:var(--rose-d); font-weight:600;}
 
-  @media(max-width:560px){ .card{padding:36px 24px;} }
+  @media(max-width:560px){ .card{padding:34px 20px;} }
 </style>
 </head>
 <body>
@@ -80,13 +94,32 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
     <div class="check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg></div>
     <div class="eyebrow">Оплата получена</div>
     <h1>Вы <em>в деле!</em></h1>
-    <p class="lead">Добро пожаловать на интенсив <b>«3 дня 3 рилс»</b>. Остался один шаг: войдите в закрытый Telegram-канал, там все материалы, ссылки на эфиры и напоминания.</p>
+    <p class="lead">Добро пожаловать на интенсив <b>«3 дня 3 рилс»</b>. Остался один короткий шаг - без него мы не сможем впустить вас в закрытый канал.</p>
 
-    <a class="btn-tg" href="https://t.me/+NTM3od9ENAljNzcy" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M9.5 15.3l-.4 4c.5 0 .8-.2 1-.5l2.4-2.3 5 3.7c.9.5 1.6.2 1.8-.8l3.3-15.4c.3-1.3-.5-1.8-1.3-1.5L1.2 9.5C-.1 10 .1 10.7 1.1 11l5.1 1.6L18.9 5c.5-.3 1-.2.6.2L9.5 15.3z"/></svg>
-      Войти в Telegram-канал интенсива
-    </a>
-    <div class="btn-note">Обязательно вступите, иначе не получите ссылки на эфиры</div>
+    <!-- ОБЯЗАТЕЛЬНЫЙ ШАГ: ник в Telegram. Форма GHL сохраняет ник в контакт,
+         после отправки сразу редиректит в закрытый канал. -->
+    <div class="gate">
+      <div class="pill">⚠️ Обязательный шаг</div>
+      <h2>Оставьте свой ник в Telegram</h2>
+      <p class="sub">Мы принимаем в закрытый канал <b>вручную</b> по нику. Укажите email (тот, что при оплате) и ваш @username, нажмите «Submit» и сразу попадёте в канал.</p>
+      <iframe
+        src="https://api.leadconnectorhq.com/widget/form/sVBEvrc1ZH9I5NwgKGLI"
+        style="width:100%;border:none;border-radius:12px;min-height:430px;background:#fff"
+        id="inline-sVBEvrc1ZH9I5NwgKGLI"
+        data-layout='{"id":"INLINE"}'
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="Intensiv Telegram"
+        data-height="auto"
+        data-layout-iframe-id="inline-sVBEvrc1ZH9I5NwgKGLI"
+        data-form-id="sVBEvrc1ZH9I5NwgKGLI"
+        title="Доступ в Telegram-канал">
+      </iframe>
+    </div>
 
     <div class="dates">
       <div class="dl">Расписание эфиров · Zoom</div>
@@ -95,14 +128,21 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
       <div class="d"><b>День 3 · 26 июля</b><span>19:00 Кишинёв / 9:00 LA</span></div>
     </div>
 
-    <div class="steps">
-      <h2>Что дальше</h2>
-      <div class="step"><div class="n">1</div><div><h3>Войдите в Telegram-канал</h3><p>По кнопке выше. Там будут материалы, ссылки на эфиры и напоминания.</p></div></div>
-      <div class="step"><div class="n">2</div><div><h3>Отметьте вечера в календаре</h3><p>24, 25 и 26 июля в 19:00 по Кишинёву. Ссылку на эфир пришлём в канал за 5 минут до старта.</p></div></div>
-      <div class="step"><div class="n">3</div><div><h3>Подготовьте телефон</h3><p>Работаем руками с первой минуты. Розыгрыш MacBook в прямом эфире среди тех, кто в лайве.</p></div></div>
-    </div>
-
     <div class="support">Не открылась ссылка или есть вопрос? <a href="https://telegram.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">Напишите в поддержку</a></div>
   </div>
+
+<script>
+  // Прокидываем email из URL (если GHL передал при редиректе) в форму - чтобы не спрашивать дважды.
+  (function(){
+    var p = new URLSearchParams(location.search);
+    var em = p.get('email') || p.get('contact_email');
+    if(em){
+      var f = document.getElementById('inline-sVBEvrc1ZH9I5NwgKGLI');
+      if(f){ f.src += (f.src.indexOf('?') > -1 ? '&' : '?') + 'email=' + encodeURIComponent(em); }
+    }
+  })();
+</script>
+<!-- Скрипт GHL: авто-высота формы + редирект в Telegram-канал после отправки -->
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
 </body>
 </html>

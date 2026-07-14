@@ -330,7 +330,7 @@ src="https://www.facebook.com/tr?id=1521940319314090&ev=PageView&noscript=1"
   (function(){
     const BASE_URL = 'https://api.leadconnectorhq.com/widget/booking/vG1zsgJdMciejwQSi9PJ';
 
-    // Алиасы — поддерживаем разные именования параметров (Meta, GHL, кастомные)
+    // Алиасы - поддерживаем разные именования параметров (Meta, GHL, кастомные)
     const FIELD_MAP = {
       first_name:  ['first_name', 'firstName', 'fname', 'name'],
       last_name:   ['last_name', 'lastName', 'lname', 'surname'],
@@ -339,7 +339,7 @@ src="https://www.facebook.com/tr?id=1521940319314090&ev=PageView&noscript=1"
       notes:       ['notes', 'message', 'niche', 'business']
     };
 
-    // UTM параметры — отдельно, для трекинга в GHL
+    // UTM параметры - отдельно, для трекинга в GHL
     const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid','msclkid'];
 
     function getParamValue(urlParams, aliases) {
@@ -433,7 +433,7 @@ src="https://www.facebook.com/tr?id=1521940319314090&ev=PageView&noscript=1"
     }
   })();
 
-  // postMessage listener — auto-resize iframe
+  // postMessage listener - auto-resize iframe
   window.addEventListener('message', function(event){
     if (!event.origin.includes('leadconnectorhq.com') &&
         !event.origin.includes('msgsndr.com')) return;
