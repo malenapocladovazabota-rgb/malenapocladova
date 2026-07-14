@@ -658,58 +658,29 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
   .mpw-dot{width:7px; height:7px; border-radius:50%; background:#3FA34D; box-shadow:0 0 0 0 rgba(63,163,77,.5); animation:mpwPulse 1.8s infinite;}
   @keyframes mpwPulse{0%{box-shadow:0 0 0 0 rgba(63,163,77,.5);}70%{box-shadow:0 0 0 7px rgba(63,163,77,0);}100%{box-shadow:0 0 0 0 rgba(63,163,77,0);}}
 
-  /* Плавающий чат */
-  #mpw-chat{position:fixed; right:20px; bottom:22px; z-index:90;}
-  .mpw-chat-btn{position:relative; width:60px; height:60px; border-radius:50%; border:none; cursor:pointer; background:linear-gradient(135deg,#B23A48,#6E1E2B); box-shadow:0 12px 30px rgba(110,30,43,.4); display:flex; align-items:center; justify-content:center; transition:transform .18s;}
-  .mpw-chat-btn:hover{transform:translateY(-2px) scale(1.04);}
-  .mpw-chat-btn svg{width:27px; height:27px; fill:#fff; position:absolute; transition:opacity .2s, transform .2s;}
-  .mpw-chat-btn .i-close{opacity:0; transform:rotate(-45deg);}
-  #mpw-chat.open .mpw-chat-btn .i-chat{opacity:0; transform:rotate(45deg);}
-  #mpw-chat.open .mpw-chat-btn .i-close{opacity:1; transform:rotate(0);}
-  .mpw-chat-panel{position:absolute; right:0; bottom:74px; width:min(374px,calc(100vw - 40px)); height:min(524px,calc(100vh - 130px)); background:#FFFCF7; border:1px solid rgba(61,44,38,.14); border-radius:20px; overflow:hidden; box-shadow:0 24px 60px rgba(61,44,38,.28); transform:translateY(14px) scale(.98); transform-origin:bottom right; opacity:0; pointer-events:none; transition:transform .26s cubic-bezier(.2,.8,.2,1), opacity .26s;}
-  #mpw-chat.open .mpw-chat-panel{transform:translateY(0) scale(1); opacity:1; pointer-events:auto;}
-  .mpw-chat-head{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:15px 16px; background:linear-gradient(135deg,#6E1E2B,#3D2C26); color:#FBF1E8;}
-  .mpw-chat-head-t{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:19px; line-height:1.1;}
-  .mpw-chat-head-s{font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:rgba(251,241,232,.7); margin-top:2px;}
-  .mpw-chat-x{background:none; border:none; color:rgba(251,241,232,.85); font-size:24px; line-height:1; cursor:pointer; padding:0 2px;}
-  .mpw-chat-x:hover{color:#fff;}
-  #mpwChatFrame{width:100%; height:calc(100% - 58px); border:none; background:#fff;}
+  /* Плавающая кнопка поддержки (Telegram) */
+  #mpw-chat{position:fixed; right:20px; bottom:22px; z-index:90; display:flex; align-items:center; gap:10px; text-decoration:none;}
+  .mpw-chat-lab{background:#FFFCF7; color:#3D2C26; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.02em; padding:9px 14px; border-radius:100px; box-shadow:0 8px 22px rgba(61,44,38,.15); border:1px solid rgba(61,44,38,.1); white-space:nowrap;}
+  .mpw-chat-btn{position:relative; width:60px; height:60px; flex:0 0 auto; border-radius:50%; border:none; cursor:pointer; background:linear-gradient(135deg,#B23A48,#6E1E2B); box-shadow:0 12px 30px rgba(110,30,43,.4); display:flex; align-items:center; justify-content:center; transition:transform .18s;}
+  #mpw-chat:hover .mpw-chat-btn{transform:translateY(-2px) scale(1.04);}
+  .mpw-chat-btn svg{width:28px; height:28px; fill:#fff;}
   @media(max-width:640px){
     #mpw-chat{right:14px; bottom:86px;}
     #mpw-sp{left:12px; bottom:86px;}
-    .mpw-chat-panel{bottom:72px; height:min(70vh,520px);}
+    .mpw-chat-lab{display:none;}
   }
 </style>
 
 <div id="mpw-sp"></div>
 
-<div id="mpw-chat">
-  <div class="mpw-chat-panel" id="mpwChatPanel">
-    <div class="mpw-chat-head">
-      <div><div class="mpw-chat-head-t">Напишите нам</div><div class="mpw-chat-head-s">Команда Малены · ответим лично</div></div>
-      <button class="mpw-chat-x" id="mpwChatX" aria-label="Закрыть чат">&times;</button>
-    </div>
-    <iframe id="mpwChatFrame" title="Чат поддержки" data-src="https://api.gohighlevel.com/message/get_chat_widget/55lHQOuDwUKKCwgmTmLW" scrolling="auto"></iframe>
-  </div>
-  <button class="mpw-chat-btn" id="mpwChatBtn" aria-label="Открыть чат">
-    <svg class="i-chat" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM7 9h10v2H7V9zm6 5H7v-2h6v2zm4-6H7V6h10v2z"/></svg>
-    <svg class="i-close" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-  </button>
-</div>
+<a id="mpw-chat" href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener" aria-label="Написать в поддержку в Telegram">
+  <span class="mpw-chat-lab">Есть вопрос? Напишите нам</span>
+  <span class="mpw-chat-btn">
+    <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71l-4.14-3.05-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+  </span>
+</a>
 
 <script>
-  // Плавающий чат: ленивая загрузка iframe при первом открытии
-  (function(){
-    var wrap=document.getElementById('mpw-chat'), btn=document.getElementById('mpwChatBtn'),
-        x=document.getElementById('mpwChatX'), fr=document.getElementById('mpwChatFrame'), loaded=false;
-    function toggle(){
-      var open=wrap.classList.toggle('open');
-      if(open && !loaded){ fr.src=fr.getAttribute('data-src'); loaded=true; }
-    }
-    btn.addEventListener('click', toggle);
-    x.addEventListener('click', function(){ wrap.classList.remove('open'); });
-  })();
-
   // Соцдоказательства: всплывашки недавних оплат.
   // ↓ Замените имена на реальных участниц — так честнее и конвертит лучше.
   (function(){
