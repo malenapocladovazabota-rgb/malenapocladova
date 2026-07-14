@@ -14,6 +14,8 @@
 /challenge5.html    /challenge5    301
 /intensiv.html      /intensiv      301
 /presale.html       /presale       301
+/terms-intensiv.html    /terms-intensiv    301
+/privacy-intensiv.html  /privacy-intensiv  301
 
 # Cloudflare Pages автоматически отдаёт razbor.html по запросу /razbor —
 # редиректы выше нужны только для каноничности (если кто-то ввёл вручную с .html)
