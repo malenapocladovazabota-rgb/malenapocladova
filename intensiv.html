@@ -707,9 +707,11 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
     var acts=['оплатила участие','заняла место на интенсиве','присоединилась к интенсиву','забронировала место'];
     var box=document.getElementById('mpw-sp');
     if(!box) return;
+    var heroEl=document.querySelector('.hero');
+    function pastHero(){ return heroEl ? heroEl.getBoundingClientRect().bottom<=80 : true; }
     function rnd(a){return a[Math.floor(Math.random()*a.length)];}
     function show(){
-      if(document.hidden){ schedule(); return; }
+      if(document.hidden || !pastHero()){ schedule(); return; }
       var nm=rnd(names), t=document.createElement('div'); t.className='mpw-toast';
       t.innerHTML='<div class="mpw-av"><svg viewBox="0 0 24 24"><path d="M9 16.17l-3.88-3.88a1 1 0 00-1.41 1.41l4.59 4.59a1 1 0 001.41 0l9.59-9.59a1 1 0 00-1.41-1.41z"/></svg></div>'+
         '<div class="mpw-tx"><div class="l1"><b>'+nm+'</b> '+rnd(acts)+'</div>'+
