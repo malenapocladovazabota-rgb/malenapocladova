@@ -1,0 +1,19 @@
+# Cloudflare Pages редиректы
+# Каноничные URLs без .html (если кто-то перешёл по .html — 301 на чистый URL)
+
+/index.html         /              301
+/razbor.html        /razbor        301
+/razbor-quick.html  /razbor-quick  301
+/intro.html         /intro         301
+/thank-you.html     /thank-you     301
+/club.html          /club          301
+/privacy.html       /privacy       301
+/terms.html         /terms         301
+/refund.html        /refund        301
+/reels7.html        /reels7        301
+/challenge5.html    /challenge5    301
+/intensiv.html      /intensiv      301
+/presale.html       /presale       301
+
+# Cloudflare Pages автоматически отдаёт razbor.html по запросу /razbor —
+# редиректы выше нужны только для каноничности (если кто-то ввёл вручную с .html)

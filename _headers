@@ -1,0 +1,16 @@
+# Cloudflare Pages headers
+# Безопасность + кэширование статики
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=()
+
+# Картинки кэшируем агрессивно (год, immutable)
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Шрифты от Google CDN кэшируются на их стороне, но HTML — короткий кэш
+/*.html
+  Cache-Control: public, max-age=300, must-revalidate

@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FBF1E8">
+<title>5 Reels за 5 дней · челлендж Малены Покладовой</title>
+<meta name="description" content="За 5 дней публикуете 5 Reels с обратной связью куратора на каждый. Ежедневное задание в боте и финальный showcase лучших. $19 и месяц в Лаборатории Reels в подарок.">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- OG -->
+<meta property="og:title" content="5 Reels за 5 дней · челлендж Малены">
+<meta property="og:description" content="За 5 дней публикуете 5 Reels с обратной связью куратора. $19, плюс месяц в Лаборатории Reels в подарок.">
+<meta property="og:image" content="/images/og-club.jpg">
+<meta property="og:type" content="website">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://malenapocladova.com/challenge5">
+
+<!-- llms.txt — описание сайта для ИИ-систем -->
+<link rel="alternate" type="text/markdown" title="llms.txt" href="/llms.txt">
+
+<!-- JSON-LD · структурированные данные для поисковых и ИИ-систем -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "@id": "https://malenapocladova.com/#school",
+      "name": "Школа Малены Покладовой · SMM с нуля",
+      "url": "https://malenapocladova.com/",
+      "sameAs": ["https://instagram.com/socialmedia__school"]
+    },
+    {
+      "@type": "Course",
+      "name": "5 Reels за 5 дней — челлендж",
+      "description": "Пятидневный челлендж с ежедневным заданием в боте и обратной связью куратора на каждый Reel. За 5 дней участница публикует 5 Reels, лучшие попадают в финальный showcase.",
+      "url": "https://malenapocladova.com/challenge5",
+      "provider": { "@id": "https://malenapocladova.com/#school" },
+      "offers": {
+        "@type": "Offer",
+        "price": "19.00",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Участие в челлендже 19 USD. Включает месяц доступа в клуб «Лаборатория Reels Малены», далее подписка 19 USD в месяц с возможностью отменить в один клик."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root {
+    --cream:#FBF1E8; --cream2:#F5E6D6; --paper:#FFFCF7;
+    --rose:#D4858B; --rose-l:#E8B5B9; --rose-vl:#F5DBDD; --rose-d:#B85860;
+    --gold:#C9A876; --gold-d:#B89866;
+    --brown:#3D2C26; --brown2:#6B524A; --brown3:#8B6E63;
+    --shadow-soft:0 8px 24px rgba(61,44,38,.08);
+    --shadow-mid:0 12px 32px rgba(61,44,38,.12);
+    --shadow-deep:0 18px 50px rgba(61,44,38,.18);
+  }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--cream); color:var(--brown);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    -webkit-tap-highlight-color:rgba(212,133,139,.15);
+  }
+  a { color:var(--rose); text-decoration:none; }
+  img { max-width:100%; display:block; }
+
+  /* ════════ NAV ════════ */
+  .top-nav {
+    background:var(--paper);
+    border-bottom:1px solid rgba(61,44,38,.08);
+    padding:14px 22px;
+    display:flex; align-items:center; justify-content:space-between;
+    position:sticky; top:0; z-index:50;
+  }
+  .top-nav-brand {
+    font-family:'Cormorant Garamond', serif;
+    font-size:20px; font-weight:600; color:var(--brown);
+  }
+  .top-nav-brand em { color:var(--rose); font-style:italic; }
+  .top-nav-cta {
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--paper);
+    background:var(--rose);
+    padding:8px 14px;
+    border-radius:50px;
+    font-weight:600;
+    box-shadow:0 4px 12px rgba(212,133,139,.30);
+    transition:transform .15s;
+  }
+  .top-nav-cta:active { transform:scale(.96); }
+  .top-nav-cta:hover { color:var(--paper); transform:translateY(-1px); }
+
+  /* ════════ CONTAINERS ════════ */
+  .container { max-width:1080px; margin:0 auto; padding:0 22px; }
+  .container-narrow { max-width:760px; margin:0 auto; padding:0 22px; }
+
+  /* ════════ HERO ════════ */
+  .hero {
+    padding:60px 22px 50px;
+    text-align:center;
+    background:linear-gradient(180deg, var(--cream2) 0%, var(--cream) 60%, var(--paper) 100%);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before {
+    content:''; position:absolute;
+    top:-100px; left:50%; transform:translateX(-50%);
+    width:380px; height:380px;
+    background:radial-gradient(circle, rgba(212,133,139,.20) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .hero::after {
+    content:''; position:absolute;
+    bottom:-80px; right:-80px;
+    width:300px; height:300px;
+    background:radial-gradient(circle, rgba(201,168,118,.18) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .hero-eyebrow {
+    position:relative; z-index:2;
+    display:inline-block;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--rose);
+    background:var(--paper);
+    padding:7px 16px;
+    border-radius:50px;
+    box-shadow:var(--shadow-soft);
+    margin-bottom:20px;
+  }
+  .hero-eyebrow::before { content:'✦  '; color:var(--rose); }
+  .hero h1 {
+    position:relative; z-index:2;
+    font-family:'Cormorant Garamond', serif;
+    font-size:42px; font-weight:500;
+    color:var(--brown); line-height:1.02;
+    letter-spacing:-1px;
+    margin-bottom:18px;
+    max-width:780px; margin-left:auto; margin-right:auto;
+  }
+  .hero h1 em { color:var(--rose); font-style:italic; }
+  .hero .lede {
+    position:relative; z-index:2;
+    font-size:17px; line-height:1.6; color:var(--brown2);
+    max-width:600px; margin:0 auto 28px;
+  }
+  .hero .lede strong { color:var(--brown); font-weight:600; }
+  .hero-cta-row {
+    position:relative; z-index:2;
+    display:flex; flex-direction:column; gap:12px;
+    align-items:center; max-width:380px; margin:0 auto;
+  }
+  .btn-primary {
+    display:inline-flex; align-items:center; gap:10px;
+    width:100%; justify-content:center;
+    padding:18px 32px;
+    background:var(--rose);
+    color:var(--paper);
+    border-radius:50px;
+    font-family:'DM Mono', monospace;
+    font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    font-weight:600;
+    box-shadow:0 14px 32px rgba(212,133,139,.40);
+    transition:transform .15s, box-shadow .15s, color .15s;
+    cursor:pointer; border:none;
+  }
+  .btn-primary:hover { color:var(--paper); transform:translateY(-2px); box-shadow:0 20px 40px rgba(212,133,139,.50); }
+  .btn-primary:active { transform:scale(.97); }
+  .btn-secondary {
+    display:inline-flex; align-items:center; gap:10px;
+    width:100%; justify-content:center;
+    padding:15px 28px;
+    background:var(--paper);
+    color:var(--brown);
+    border-radius:50px;
+    font-family:'DM Mono', monospace;
+    font-size:11px; letter-spacing:2px; text-transform:uppercase;
+    font-weight:600;
+    border:1.5px solid rgba(61,44,38,.12);
+    transition:transform .15s, border-color .15s;
+  }
+  .btn-secondary:hover { color:var(--brown); border-color:var(--rose); transform:translateY(-1px); }
+  .hero-fine {
+    position:relative; z-index:2;
+    margin-top:18px;
+    font-family:'DM Mono', monospace;
+    font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--brown3);
+  }
+
+  /* ════════ TRUST BAR ════════ */
+  .trust-bar {
+    padding:24px 22px;
+    background:var(--paper);
+    border-top:1px solid rgba(61,44,38,.06);
+    border-bottom:1px solid rgba(61,44,38,.06);
+  }
+  .trust-bar-inner {
+    max-width:1000px; margin:0 auto;
+    display:flex; flex-wrap:wrap; justify-content:center;
+    gap:18px 36px;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--brown3);
+    text-align:center;
+  }
+  .trust-bar-inner strong { color:var(--rose); font-weight:600; }
+
+  /* ════════ SECTION HEADERS ════════ */
+  .section { padding:60px 0; }
+  .section-eyebrow {
+    text-align:center;
+    font-family:'DM Mono', monospace;
+    font-size:11px; letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--rose);
+    margin-bottom:14px;
+  }
+  .section-eyebrow::before, .section-eyebrow::after { content:'  ·  '; color:var(--brown3); }
+  .section h2 {
+    text-align:center;
+    font-family:'Cormorant Garamond', serif;
+    font-size:36px; font-weight:500;
+    color:var(--brown); line-height:1.05;
+    letter-spacing:-.6px;
+    margin-bottom:14px;
+    max-width:680px; margin-left:auto; margin-right:auto;
+  }
+  .section h2 em { color:var(--rose); font-style:italic; }
+  .section-lede {
+    text-align:center;
+    font-size:16px; line-height:1.6; color:var(--brown2);
+    max-width:580px; margin:0 auto 40px;
+  }
+
+  /* ════════ WHY (зачем челлендж) ════════ */
+  .why { background:var(--paper); }
+  .why-grid { display:grid; grid-template-columns:1fr; gap:14px; }
+  .why-card {
+    background:var(--cream);
+    border-radius:18px;
+    padding:24px 24px;
+    border:1px solid rgba(61,44,38,.06);
+  }
+  .why-card h3 {
+    font-family:'Cormorant Garamond', serif;
+    font-size:21px; font-weight:600; color:var(--brown);
+    line-height:1.2; margin-bottom:6px;
+  }
+  .why-card h3 em { color:var(--rose); font-style:italic; }
+  .why-card p { font-size:14.5px; color:var(--brown2); line-height:1.55; }
+
+  /* ════════ DAYS (программа по дням) ════════ */
+  .days { background:linear-gradient(180deg, var(--cream) 0%, var(--cream2) 100%); }
+  .days-grid { display:grid; grid-template-columns:1fr; gap:14px; }
+  .day-card {
+    background:var(--paper);
+    border-radius:18px;
+    padding:22px 24px 22px 70px;
+    position:relative;
+    box-shadow:var(--shadow-soft);
+    border:1px solid rgba(61,44,38,.06);
+  }
+  .day-card .day-num {
+    position:absolute;
+    left:18px; top:22px;
+    width:38px; height:38px;
+    background:var(--rose);
+    color:var(--paper);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'DM Mono', monospace;
+    font-size:13px; font-weight:600;
+    box-shadow:0 4px 12px rgba(212,133,139,.30);
+  }
+  .day-card h3 {
+    font-family:'Cormorant Garamond', serif;
+    font-size:21px; font-weight:600; color:var(--brown);
+    line-height:1.2; margin-bottom:5px;
+  }
+  .day-card h3 em { color:var(--rose); font-style:italic; }
+  .day-card p { font-size:14px; color:var(--brown2); line-height:1.55; }
+  .day-card .day-task {
+    font-family:'DM Mono', monospace;
+    font-size:9.5px; letter-spacing:1.2px; text-transform:uppercase;
+    color:var(--gold-d);
+    margin-top:8px;
+  }
+
+  /* ════════ WHAT INCLUDED ════════ */
+  .included { background:var(--paper); }
+  .included-grid { display:grid; grid-template-columns:1fr; gap:14px; }
+  .inc-card {
+    background:var(--cream);
+    border-radius:18px;
+    padding:24px 24px;
+    border:1px solid rgba(61,44,38,.06);
+    display:flex; gap:16px; align-items:flex-start;
+  }
+  .inc-icon {
+    width:48px; height:48px;
+    background:var(--rose-vl);
+    border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:24px; flex-shrink:0;
+  }
+  .inc-card h3 {
+    font-family:'Cormorant Garamond', serif;
+    font-size:20px; font-weight:600; color:var(--brown);
+    line-height:1.2; margin-bottom:4px;
+  }
+  .inc-card h3 em { color:var(--rose); font-style:italic; }
+  .inc-card p { font-size:14px; color:var(--brown2); line-height:1.55; }
+
+  /* ════════ CASES ════════ */
+  .cases { background:linear-gradient(180deg, var(--cream2) 0%, var(--cream) 100%); }
+  .cases-grid { display:grid; grid-template-columns:1fr; gap:14px; }
+  .case-card {
+    background:var(--paper);
+    border-radius:18px;
+    padding:24px 24px;
+    box-shadow:var(--shadow-soft);
+    border:1px solid rgba(61,44,38,.06);
+  }
+  .case-card .case-meta { margin-bottom:14px; }
+  .case-card .name {
+    font-family:'Cormorant Garamond', serif;
+    font-size:22px; font-weight:600; color:var(--brown);
+  }
+  .case-card .name em { color:var(--rose); font-style:italic; }
+  .case-card .niche {
+    font-family:'DM Mono', monospace;
+    font-size:9.5px; letter-spacing:1.2px; text-transform:uppercase;
+    color:var(--brown3); margin-top:3px;
+  }
+  .case-stats { display:flex; flex-wrap:wrap; gap:14px 22px; margin-bottom:14px; }
+  .case-stats .stat .num {
+    font-family:'Cormorant Garamond', serif;
+    font-size:22px; font-weight:600; color:var(--rose); line-height:1;
+  }
+  .case-stats .stat .lbl {
+    font-family:'DM Mono', monospace;
+    font-size:8.5px; letter-spacing:1px; text-transform:uppercase;
+    color:var(--brown3); margin-top:3px;
+  }
+  .case-card .quote {
+    font-size:14px; color:var(--brown2); line-height:1.6;
+    font-style:italic;
+    border-left:2px solid var(--rose-l);
+    padding-left:14px;
+  }
+
+  /* ════════ PRICING ════════ */
+  .pricing { background:linear-gradient(180deg, var(--cream2) 0%, var(--paper) 60%, var(--cream) 100%); }
+  .pricing-card {
+    max-width:520px; margin:0 auto;
+    background:var(--paper);
+    border-radius:24px;
+    padding:36px 30px;
+    box-shadow:var(--shadow-deep);
+    border:1px solid rgba(212,133,139,.20);
+    text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .pricing-card::before {
+    content:''; position:absolute;
+    top:-80px; right:-80px;
+    width:200px; height:200px;
+    background:radial-gradient(circle, rgba(212,133,139,.20) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .pricing-promo {
+    position:relative; display:inline-block;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--paper); background:var(--rose);
+    padding:7px 16px; border-radius:50px; margin-bottom:18px;
+    box-shadow:0 4px 12px rgba(212,133,139,.40);
+  }
+  .pricing-name {
+    position:relative;
+    font-family:'Cormorant Garamond', serif;
+    font-size:28px; font-weight:600; color:var(--brown);
+    line-height:1.15; margin-bottom:6px;
+  }
+  .pricing-name em { color:var(--rose); font-style:italic; }
+  .pricing-sub {
+    position:relative;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--brown3); margin-bottom:22px;
+  }
+  .pricing-amount { position:relative; margin-bottom:22px; }
+  .pricing-new {
+    font-family:'Cormorant Garamond', serif;
+    font-size:54px; font-weight:600; color:var(--rose); line-height:1;
+    letter-spacing:-1px;
+  }
+  .pricing-period {
+    font-family:'DM Mono', monospace;
+    font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--brown2); margin-top:6px;
+  }
+  .pricing-features {
+    position:relative; list-style:none;
+    text-align:left; max-width:380px; margin:0 auto 26px;
+  }
+  .pricing-features li {
+    padding:10px 0 10px 28px; position:relative;
+    font-size:14.5px; color:var(--brown);
+    border-bottom:1px solid rgba(61,44,38,.06);
+  }
+  .pricing-features li:last-child { border-bottom:none; }
+  .pricing-features li::before {
+    content:'✓'; position:absolute; left:6px; top:10px;
+    color:var(--rose); font-weight:700;
+  }
+  .pricing-features strong { color:var(--brown); font-weight:600; }
+  .pricing-cta {
+    position:relative; width:100%;
+    padding:18px 28px;
+    background:var(--rose); color:var(--paper);
+    border-radius:50px;
+    font-family:'DM Mono', monospace;
+    font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    font-weight:600;
+    box-shadow:0 14px 32px rgba(212,133,139,.40);
+    transition:transform .15s, box-shadow .15s;
+    border:none; cursor:pointer;
+    display:inline-block; text-align:center; text-decoration:none;
+  }
+  .pricing-cta:hover { color:var(--paper); transform:translateY(-2px); box-shadow:0 20px 40px rgba(212,133,139,.50); }
+  .pricing-cta:active { transform:scale(.97); }
+  .pricing-fine {
+    position:relative; margin-top:14px;
+    font-family:'DM Mono', monospace;
+    font-size:9.5px; letter-spacing:1.2px; text-transform:uppercase;
+    color:var(--brown3); line-height:1.6;
+  }
+  .pricing-guarantee {
+    position:relative; margin-top:18px;
+    padding:14px 16px;
+    background:var(--cream);
+    border-radius:14px;
+    border:1px dashed rgba(212,133,139,.40);
+    font-size:13.5px; color:var(--brown2); line-height:1.5;
+  }
+  .pricing-guarantee strong { color:var(--rose); }
+
+  /* ════════ HOW IT WORKS ════════ */
+  .how-works { background:var(--paper); }
+  .how-steps { display:grid; grid-template-columns:1fr; gap:20px; counter-reset: step; }
+  .step-card {
+    background:var(--cream);
+    border-radius:18px;
+    padding:24px 26px 24px 60px;
+    position:relative;
+    border:1px solid rgba(61,44,38,.06);
+  }
+  .step-card::before {
+    counter-increment: step; content: counter(step);
+    position:absolute; left:18px; top:24px;
+    width:32px; height:32px;
+    background:var(--rose); color:var(--paper);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cormorant Garamond', serif;
+    font-size:18px; font-weight:600;
+    box-shadow:0 4px 12px rgba(212,133,139,.30);
+  }
+  .step-card h3 {
+    font-family:'Cormorant Garamond', serif;
+    font-size:20px; font-weight:600; color:var(--brown);
+    line-height:1.2; margin-bottom:6px;
+  }
+  .step-card h3 em { color:var(--rose); font-style:italic; }
+  .step-card p { font-size:14.5px; color:var(--brown2); line-height:1.55; }
+
+  /* ════════ FAQ ════════ */
+  .faq-section { background:linear-gradient(180deg, var(--paper) 0%, var(--cream) 100%); }
+  .faq-list { max-width:760px; margin:0 auto; }
+  .faq-item {
+    background:var(--paper);
+    border-radius:14px; margin-bottom:10px;
+    border:1px solid rgba(61,44,38,.06);
+    overflow:hidden;
+  }
+  .faq-item summary {
+    padding:18px 22px; cursor:pointer;
+    font-family:'Cormorant Garamond', serif;
+    font-size:18px; font-weight:600; color:var(--brown);
+    list-style:none; position:relative; padding-right:48px;
+  }
+  .faq-item summary::-webkit-details-marker { display:none; }
+  .faq-item summary::after {
+    content:'+'; position:absolute;
+    right:22px; top:50%; transform:translateY(-50%);
+    font-size:24px; color:var(--rose); transition:transform .25s;
+  }
+  .faq-item[open] summary::after { transform:translateY(-50%) rotate(45deg); }
+  .faq-item .answer {
+    padding:0 22px 18px;
+    font-size:14.5px; color:var(--brown2); line-height:1.6;
+  }
+  .faq-item .answer strong { color:var(--brown); }
+
+  /* ════════ FINAL CTA ════════ */
+  .final-cta {
+    background:linear-gradient(135deg, var(--brown) 0%, var(--brown2) 100%);
+    color:var(--cream);
+    padding:60px 22px; text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .final-cta::before {
+    content:''; position:absolute;
+    top:-100px; right:-100px;
+    width:300px; height:300px;
+    background:radial-gradient(circle, rgba(212,133,139,.30) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .final-cta::after {
+    content:''; position:absolute;
+    bottom:-100px; left:-100px;
+    width:300px; height:300px;
+    background:radial-gradient(circle, rgba(201,168,118,.25) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .final-cta-eyebrow {
+    position:relative; display:inline-block;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--rose-l);
+    background:rgba(251,241,232,.08);
+    padding:7px 16px; border-radius:50px; margin-bottom:18px;
+  }
+  .final-cta h2 {
+    position:relative;
+    font-family:'Cormorant Garamond', serif;
+    font-size:38px; font-weight:500;
+    color:var(--cream); line-height:1.05;
+    letter-spacing:-.8px; margin-bottom:14px;
+    max-width:620px; margin-left:auto; margin-right:auto;
+  }
+  .final-cta h2 em { color:var(--rose-l); font-style:italic; }
+  .final-cta p {
+    position:relative;
+    font-size:16px; line-height:1.6;
+    color:rgba(251,241,232,.80);
+    max-width:540px; margin:0 auto 28px;
+  }
+  .final-cta .btn-primary {
+    background:var(--rose);
+    box-shadow:0 14px 36px rgba(0,0,0,.25);
+    max-width:360px; margin:0 auto;
+  }
+
+  /* ════════ FOOTER ════════ */
+  .legal-footer {
+    background:var(--brown); color:var(--cream);
+    padding:30px 22px; text-align:center;
+    border-top:1px solid rgba(251,241,232,.10);
+  }
+  .legal-footer .legal-links {
+    display:flex; gap:12px; flex-wrap:wrap; justify-content:center;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .legal-footer .legal-links a { color:rgba(251,241,232,.7); }
+  .legal-footer .sep { color:rgba(251,241,232,.3); }
+  .legal-footer .footer-contact {
+    font-size:13px; color:rgba(251,241,232,.78); line-height:1.55;
+  }
+  .legal-footer .footer-contact a {
+    color:var(--rose-l);
+    border-bottom:1px solid rgba(232,181,185,.4);
+  }
+  .legal-footer .copy {
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1px;
+    color:rgba(251,241,232,.5); margin-top:14px;
+  }
+
+  /* ════════ DESKTOP (≥880px) ════════ */
+  @media (min-width:880px) {
+    .top-nav { padding:16px 36px; }
+    .top-nav-brand { font-size:22px; }
+
+    .hero { padding:100px 32px 80px; }
+    .hero h1 { font-size:62px; letter-spacing:-1.5px; margin-bottom:22px; }
+    .hero .lede { font-size:19px; }
+    .hero-cta-row { flex-direction:row; max-width:none; justify-content:center; }
+    .btn-primary, .btn-secondary { width:auto; padding:18px 36px; }
+    .btn-primary { font-size:13px; }
+    .btn-secondary { font-size:12px; }
+
+    .container { padding:0 32px; }
+    .section { padding:90px 0; }
+    .section h2 { font-size:46px; letter-spacing:-1px; }
+    .section-lede { font-size:18px; margin-bottom:50px; }
+
+    .why-grid { grid-template-columns:1fr 1fr 1fr; gap:18px; }
+    .why-card { padding:28px 28px; }
+
+    .days-grid { grid-template-columns:1fr 1fr; gap:18px; }
+
+    .included-grid { grid-template-columns:1fr 1fr; gap:18px; }
+
+    .cases-grid { grid-template-columns:1fr 1fr 1fr; gap:18px; }
+
+    .pricing-card { padding:48px 40px; max-width:560px; }
+    .pricing-name { font-size:32px; }
+    .pricing-new { font-size:64px; }
+    .pricing-features { font-size:15px; }
+
+    .how-steps { grid-template-columns:1fr 1fr; gap:24px; }
+    .step-card { padding:28px 30px 28px 70px; }
+    .step-card::before { left:22px; top:28px; width:36px; height:36px; font-size:20px; }
+
+    .faq-item summary { font-size:20px; padding:22px 28px; padding-right:56px; }
+    .faq-item summary::after { right:28px; }
+    .faq-item .answer { padding:0 28px 22px; font-size:15px; }
+
+    .final-cta { padding:90px 32px; }
+    .final-cta h2 { font-size:52px; letter-spacing:-1.2px; margin-bottom:18px; }
+    .final-cta p { font-size:18px; margin-bottom:32px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior:auto; }
+  }
+</style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1521940319314090');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {content_name: '5 Reels за 5 дней', content_category: 'challenge'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1521940319314090&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+  ttq.load('D8CSRFRC77U3L7SRH730');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="/" class="top-nav-brand">SMM <em>с нуля</em></a>
+  <a href="#pricing" class="top-nav-cta">Участвовать $19</a>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<header class="hero">
+  <div class="hero-eyebrow">Челлендж · 5 дней</div>
+  <h1>За 5 дней публикуете <em>5 Reels</em></h1>
+  <p class="lede">Каждый день одно задание в боте, один Reel и <strong>обратная связь куратора на каждый</strong>. Пять дней в ритме — и привычка снимать остаётся с вами. Лучшие работы попадают в финальный showcase.</p>
+  <div class="hero-cta-row">
+    <a href="#pricing" class="btn-primary">
+      Участвовать за $19
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
+    <a href="#days" class="btn-secondary">Программа по дням</a>
+  </div>
+  <div class="hero-fine">5 заданий · обратная связь куратора · финальный showcase</div>
+</header>
+
+<!-- ═══════ TRUST BAR ═══════ -->
+<section class="trust-bar">
+  <div class="trust-bar-inner">
+    <span><strong>2500+</strong> учеников школы</span>
+    <span><strong>7+</strong> лет в Instagram-продвижении</span>
+    <span><strong>4+</strong> года обучает</span>
+    <span><strong>Сан-Диего</strong> · ведёт онлайн</span>
+  </div>
+</section>
+
+<!-- ═══════ ЗАЧЕМ ═══════ -->
+<section class="section why">
+  <div class="container">
+    <div class="section-eyebrow">Почему за 5 дней</div>
+    <h2>Главное в Reels — <em>ритм</em>, а не идеальность</h2>
+    <p class="section-lede">Один безупречный ролик ничего не меняет. Привычка снимать регулярно меняет всё. Челлендж выстраивает эту привычку за неделю.</p>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <h3>Снимаете <em>каждый день</em></h3>
+        <p>Пять дней подряд по одному Reel. Перфекционизм отступает, остаётся навык быстро придумать и снять.</p>
+      </div>
+      <div class="why-card">
+        <h3>Куратор <em>смотрит</em> каждый</h3>
+        <p>Вы не остаётесь наедине с лентой. Куратор даёт обратную связь на каждый Reel: что сильно, что усилить.</p>
+      </div>
+      <div class="why-card">
+        <h3>Поддержка <em>группы</em></h3>
+        <p>Снимаете вместе с другими участницами. Видно чужой прогресс, делиться своим не страшно.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ПРОГРАММА ПО ДНЯМ ═══════ -->
+<section class="section days" id="days">
+  <div class="container">
+    <div class="section-eyebrow">5 дней · 5 форматов</div>
+    <h2>Каждый день — <em>новый Reel</em></h2>
+    <p class="section-lede">Пять разных форматов, чтобы вы попробовали себя в каждом и нашли свой. Задание приходит утром в бот.</p>
+
+    <div class="days-grid">
+      <div class="day-card">
+        <div class="day-num">1</div>
+        <h3>Reel <em>о себе</em></h3>
+        <p>Знакомство: кто вы и про что ваш блог. Самый простой старт, чтобы разогнаться и снять страх камеры.</p>
+        <div class="day-task">Снять и опубликовать · фидбэк куратора</div>
+      </div>
+      <div class="day-card">
+        <div class="day-num">2</div>
+        <h3>Reel <em>с пользой</em></h3>
+        <p>Один полезный совет из вашей темы. Учитесь упаковывать знание в короткий ролик.</p>
+        <div class="day-task">Снять и опубликовать · фидбэк куратора</div>
+      </div>
+      <div class="day-card">
+        <div class="day-num">3</div>
+        <h3>Reel <em>на тренде</em></h3>
+        <p>Берёте актуальный звук или формат и адаптируете под себя. Разбираем, как заходить в тренд вовремя.</p>
+        <div class="day-task">Снять и опубликовать · фидбэк куратора</div>
+      </div>
+      <div class="day-card">
+        <div class="day-num">4</div>
+        <h3>Reel <em>с историей</em></h3>
+        <p>Маленькая личная история. Формат, который сильнее всего держит до конца и собирает отклик.</p>
+        <div class="day-task">Снять и опубликовать · фидбэк куратора</div>
+      </div>
+      <div class="day-card">
+        <div class="day-num">5</div>
+        <h3>Reel <em>с приглашением</em></h3>
+        <p>Ролик, который мягко зовёт к действию: подписаться, написать, прийти. Учитесь звать без давления.</p>
+        <div class="day-task">Снять и опубликовать · финальный showcase</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ЧТО ВХОДИТ ═══════ -->
+<section class="section included">
+  <div class="container">
+    <div class="section-eyebrow">Что вы получаете</div>
+    <h2>Всё, чтобы <em>дойти до финала</em></h2>
+    <p class="section-lede">Челлендж устроен так, чтобы вы не сошли с дистанции на третий день.</p>
+
+    <div class="included-grid">
+      <div class="inc-card">
+        <div class="inc-icon">📲</div>
+        <div>
+          <h3>Задание <em>каждое утро</em></h3>
+          <p>Бот присылает задание дня: формат, подсказки, дедлайн. Думать с нуля не нужно.</p>
+        </div>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">🌟</div>
+        <div>
+          <h3>Обратная связь <em>куратора</em></h3>
+          <p>Куратор смотрит каждый ваш Reel и пишет, что получилось и что усилить в следующем.</p>
+        </div>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">🏆</div>
+        <div>
+          <h3>Финальный <em>showcase</em></h3>
+          <p>Лучшие Reels участниц показываем всей группе. Признание и мотивация продолжать.</p>
+        </div>
+      </div>
+      <div class="inc-card">
+        <div class="inc-icon">🎁</div>
+        <div>
+          <h3>Месяц в <em>Лаборатории Reels</em></h3>
+          <p>В подарок: 30 дней в клубе Малены с еженедельными разборами, трендами и архивом её Reels.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ КЕЙСЫ ═══════ -->
+<section class="section cases">
+  <div class="container">
+    <div class="section-eyebrow">Истории учениц</div>
+    <h2>Регулярность <em>работает</em></h2>
+    <p class="section-lede">Реальные ученицы Малены. У всех результат вырос, когда они начали снимать системно.</p>
+
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-meta">
+          <div class="name"><em>Мария</em></div>
+          <div class="niche">ведёт челлендж 365 дней · 365 Reels</div>
+        </div>
+        <div class="case-stats">
+          <div class="stat"><div class="num">1591 → 10,5K</div><div class="lbl">подписчиков</div></div>
+          <div class="stat"><div class="num">+9000</div><div class="lbl">за период</div></div>
+        </div>
+        <p class="quote">«Научилась создавать вирусные видео. Веду челлендж 365 дней — 365 Reels. Помогаю аккаунтам расти и зарабатывать.»</p>
+      </div>
+
+      <div class="case-card">
+        <div class="case-meta">
+          <div class="name"><em>Юлиана</em></div>
+          <div class="niche">Content Creator · Кишинёв</div>
+        </div>
+        <div class="case-stats">
+          <div class="stat"><div class="num">21,8K</div><div class="lbl">Instagram</div></div>
+          <div class="stat"><div class="num">100K+</div><div class="lbl">Reels-просмотры</div></div>
+        </div>
+        <p class="quote">«Снимала только тренды. После курса — регулярный оригинальный контент и залетающие ролики на сотни тысяч просмотров.»</p>
+      </div>
+
+      <div class="case-card">
+        <div class="case-meta">
+          <div class="name"><em>Маргарита</em></div>
+          <div class="niche">хореограф · шоу-балет FLAMES</div>
+        </div>
+        <div class="case-stats">
+          <div class="stat"><div class="num">2,5K → 50,8K</div><div class="lbl">TikTok</div></div>
+          <div class="stat"><div class="num">4,4M</div><div class="lbl">просмотров</div></div>
+        </div>
+        <p class="quote">«Колоссальная разница: рост подписчиков, вовлечённости и продаж. Курс — фундамент, на котором я строю свой кейс.»</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PRICING ═══════ -->
+<section class="section pricing" id="pricing">
+  <div class="container-narrow">
+    <div class="section-eyebrow">Цена</div>
+    <h2>Один платёж · <em>5 дней в ритме</em></h2>
+    <p class="section-lede">$19 за участие в челлендже. Плюс месяц в Лаборатории Reels Малены в подарок.</p>
+
+    <div class="pricing-card">
+      <div class="pricing-promo">🏆 5 дней челленджа</div>
+      <div class="pricing-name">5 Reels за <em>5 дней</em></div>
+      <div class="pricing-sub">// челлендж + месяц в Лаборатории</div>
+
+      <div class="pricing-amount">
+        <span class="pricing-new">$19</span>
+        <div class="pricing-period">единоразово за участие</div>
+      </div>
+
+      <ul class="pricing-features">
+        <li><strong>5 заданий</strong> в боте, по одному в день</li>
+        <li><strong>Обратная связь куратора</strong> на каждый Reel</li>
+        <li>Финальный <strong>showcase</strong> лучших работ</li>
+        <li>К концу недели <strong>5 опубликованных Reels</strong></li>
+        <li><strong>Месяц в Лаборатории Reels</strong> Малены в подарок</li>
+      </ul>
+
+      <a href="#" class="pricing-cta" id="buyBtn">
+        Участвовать в челлендже
+      </a>
+      <div class="pricing-fine">$19 за челлендж сразу · месяц в Лаборатории бесплатно<br>далее $19 в месяц за клуб · отписаться в один клик</div>
+
+      <div class="pricing-guarantee">
+        <strong>Бонус продлевается, не вы привязаны.</strong> После бесплатного месяца клуб стоит $19 в месяц. Отменить можно в один клик внутри Telegram-бота, без звонков и форм. Решаете вы.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ HOW IT WORKS ═══════ -->
+<section class="section how-works">
+  <div class="container">
+    <div class="section-eyebrow">Как это устроено</div>
+    <h2>От оплаты <em>до showcase</em></h2>
+    <p class="section-lede">Всё проходит в Telegram. Оплатили — попадаете в группу челленджа и ждёте старта.</p>
+
+    <div class="how-steps">
+      <div class="step-card">
+        <h3>Оплачиваете <em>$19</em></h3>
+        <p>Один платёж за участие. Бот добавляет вас в закрытую группу челленджа в Telegram.</p>
+      </div>
+      <div class="step-card">
+        <h3>Каждое утро — <em>задание</em></h3>
+        <p>Бот присылает формат дня. Снимаете, публикуете, отправляете ссылку в группу.</p>
+      </div>
+      <div class="step-card">
+        <h3>Получаете <em>фидбэк</em></h3>
+        <p>Куратор разбирает каждый ваш Reel: что сработало, что усилить завтра.</p>
+      </div>
+      <div class="step-card">
+        <h3>Попадаете в <em>showcase</em></h3>
+        <p>В финале показываем лучшие работы. Месяц в Лаборатории — чтобы не сбавлять ритм.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FAQ ═══════ -->
+<section class="section faq-section">
+  <div class="container-narrow">
+    <div class="section-eyebrow">Частые вопросы</div>
+    <h2>Что важно <em>знать</em></h2>
+    <p class="section-lede">Если остался вопрос — напишите в <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">Telegram-поддержку</a>, ответим за пару часов.</p>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>А если я никогда не снимала Reels?</summary>
+        <div class="answer">Это нормально и даже хорошо: формат первого дня — самый простой, чтобы войти. К каждому заданию есть подсказки, а куратор поможет, если застрянете. К пятому дню у вас будет 5 опубликованных Reels.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Что входит в $19?</summary>
+        <div class="answer">5 ежедневных заданий в боте, обратная связь куратора на каждый Reel, финальный showcase лучших работ и месяц в клубе «Лаборатория Reels Малены» в подарок.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Что за «месяц в Лаборатории» и что потом?</summary>
+        <div class="answer">Лаборатория Reels — закрытый клуб Малены: каждую неделю разбор её Reels изнутри, тренды, идеи, архив и Live Q&A. Первый месяц идёт в подарок к челленджу. Дальше клуб стоит <strong>$19 в месяц</strong>. Если он не нужен, отписываетесь в один клик внутри бота, без оплат.</div>
+      </details>
+      <details class="faq-item">
+        <summary>А если я пропущу день?</summary>
+        <div class="answer">Ничего страшного. Задания остаются в боте, можно догнать. Ритм важнее идеальности: даже 3 из 5 Reels — это больше, чем многие снимают за месяц.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Сколько времени нужно в день?</summary>
+        <div class="answer">Около <strong>40-60 минут</strong> на придумать, снять и смонтировать один Reel. С каждым днём получается быстрее, в этом и смысл челленджа.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Чем это отличается от курса СММ 5.0?</summary>
+        <div class="answer">Челлендж — это первый шаг: войти в ритм и понять, нравится ли вам снимать. Курс СММ 5.0 — полное обучение от стратегии до продаж за несколько недель. Многие начинают с челленджа, чтобы попробовать.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Как отписаться от клуба?</summary>
+        <div class="answer">В один клик — кнопка <strong>«Отписаться»</strong> внутри Telegram-бота. Никаких звонков и форм. Доступ сохраняется до конца оплаченного периода.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FINAL CTA ═══════ -->
+<section class="final-cta">
+  <div class="final-cta-eyebrow">5 дней · 5 Reels</div>
+  <h2>Войдите <em>в ритм</em></h2>
+  <p>$19 за челлендж с обратной связью куратора. Месяц в Лаборатории Reels в подарок. Через 5 дней у вас 5 опубликованных Reels.</p>
+  <a href="#pricing" class="btn-primary">
+    Участвовать за $19
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>
+    </svg>
+  </a>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="legal-footer">
+  <div class="legal-links">
+    <a href="/">Главная</a><span class="sep">·</span>
+    <a href="/club">Лаборатория Reels</a><span class="sep">·</span>
+    <a href="/privacy">Конфиденциальность</a><span class="sep">·</span>
+    <a href="/terms">Договор-оферта</a><span class="sep">·</span>
+    <a href="/refund">Условия возврата</a>
+  </div>
+  <p class="footer-contact">Telegram-поддержка: <a href="https://t.me/Malena_Pocladova_Zabota">@Malena_Pocladova_Zabota</a></p>
+  <div class="copy">© 2026 Школа Малены Покладовой</div>
+</footer>
+
+<script>
+  // Кнопки участия — пока ведут на Telegram (потом подменим на Stripe Checkout link)
+  document.querySelectorAll('#buyBtn, .top-nav-cta').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      // TODO: подменить на Stripe Checkout URL когда будет создан
+      window.location.href = 'https://t.me/Malena_Pocladova_Zabota?text=%D0%A5%D0%BE%D1%87%D1%83%20%D0%BD%D0%B0%20%D1%87%D0%B5%D0%BB%D0%BB%D0%B5%D0%BD%D0%B4%D0%B6%205%20Reels%20%D0%B7%D0%B0%205%20%D0%B4%D0%BD%D0%B5%D0%B9';
+      fbq('track', 'InitiateCheckout', {content_name: '5 Reels за 5 дней', value: 19, currency: 'USD'});
+    });
+  });
+</script>
+
+</body>
+</html>

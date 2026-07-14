@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Интенсив · сайт и три презентации · обзор и комментарии</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF1E8; --cream2:#F4E7DA; --card:#FFFCF8;
+    --brown:#3D2C26; --brown2:#5A463E; --muted:#9A8578;
+    --rose:#B85860; --rose-l:#D4858B; --rose-soft:#F3DCDC;
+    --gold:#C9A876; --gold-d:#A9863F;
+    --line:rgba(61,44,38,.14); --shadow:0 16px 40px rgba(61,44,38,.13);
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream2); color:var(--brown); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; line-height:1.55;}
+  .serif{font-family:'Cormorant Garamond',serif;}
+  .mono{font-family:'DM Mono',monospace;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 22px;}
+
+  /* top bar */
+  .top{position:sticky; top:0; z-index:50; background:rgba(251,241,232,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
+  .top .row{display:flex; align-items:center; gap:14px; padding:12px 22px; max-width:1120px; margin:0 auto; flex-wrap:wrap;}
+  .top .brand{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:22px; margin-right:auto;}
+  .top .brand span{color:var(--rose);}
+  .who{font-family:'DM Mono',monospace; font-size:13px; padding:8px 12px; border:1px solid var(--line); border-radius:100px; background:var(--card); color:var(--brown); width:170px;}
+  .tbtn{font-family:'DM Mono',monospace; font-size:12.5px; padding:9px 14px; border-radius:100px; border:1px solid var(--line); background:var(--card); color:var(--brown); cursor:pointer;}
+  .tbtn.on{background:var(--rose); color:#fff; border-color:transparent;}
+  .tbtn.gold{background:var(--gold-d); color:#fff; border-color:transparent;}
+
+  header.hero{text-align:center; padding:46px 0 26px;}
+  .eyebrow{font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--rose); display:inline-flex; gap:10px; align-items:center;}
+  .eyebrow::before{content:''; width:24px; height:1px; background:var(--rose);}
+  header.hero h1{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:46px; line-height:1.05; margin:14px 0 10px;}
+  header.hero p{font-size:17px; color:var(--brown2); max-width:60ch; margin:0 auto;}
+
+  /* nav quick */
+  .qnav{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:20px;}
+  .qnav a{font-family:'DM Mono',monospace; font-size:12.5px; text-decoration:none; color:var(--brown2); border:1px solid var(--line); border-radius:100px; padding:8px 14px; background:var(--card);}
+  .qnav a:hover{border-color:var(--rose); color:var(--rose);}
+
+  section.block{padding:26px 0 8px;}
+  .bhead{display:flex; align-items:baseline; gap:14px; margin-bottom:14px; flex-wrap:wrap;}
+  .bnum{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:30px; color:var(--rose);}
+  .btitle{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:28px;}
+  .bnote{font-size:14.5px; color:var(--brown2); margin-left:auto; max-width:44ch;}
+  .bactions{display:flex; gap:8px; margin:2px 0 14px;}
+  .bactions a{font-family:'DM Mono',monospace; font-size:12.5px; text-decoration:none; padding:9px 16px; border-radius:100px; background:var(--rose); color:#fff;}
+  .bactions a.ghost{background:var(--card); color:var(--brown); border:1px solid var(--line);}
+
+  /* embed frame (scaled decks) */
+  .frame{position:relative; width:100%; overflow:hidden; border-radius:16px; border:1px solid var(--line); background:#DED5C6; box-shadow:var(--shadow);}
+  .frame iframe{border:0; display:block; transform-origin:top left;}
+  .frame.land iframe{width:100%; height:720px;}
+  .frame .hint{position:absolute; top:10px; right:12px; font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.05em; color:#fff; background:rgba(61,44,38,.6); padding:5px 10px; border-radius:100px; pointer-events:none;}
+
+  /* comments */
+  .cbox{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px 20px; margin:14px 0 6px;}
+  .cbox h4{font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-d); margin-bottom:12px; display:flex; align-items:center; gap:8px;}
+  .cbox h4 .cc{color:var(--muted);}
+  .clist{display:flex; flex-direction:column; gap:9px; margin-bottom:12px;}
+  .citem{background:var(--cream); border:1px solid var(--line); border-left:3px solid var(--rose); border-radius:10px; padding:10px 13px; font-size:14.5px;}
+  .citem .meta{font-family:'DM Mono',monospace; font-size:11px; color:var(--muted); margin-bottom:3px; display:flex; justify-content:space-between; gap:10px;}
+  .citem .del{cursor:pointer; color:var(--rose); text-decoration:none;}
+  .cform{display:flex; gap:8px; align-items:stretch;}
+  .cform textarea{flex:1; resize:vertical; min-height:44px; font-family:'Inter',sans-serif; font-size:14.5px; padding:11px 13px; border:1px solid var(--line); border-radius:10px; background:var(--cream); color:var(--brown);}
+  .cform button{font-family:'DM Mono',monospace; font-size:13px; padding:0 20px; border-radius:10px; border:none; background:var(--rose); color:#fff; cursor:pointer;}
+  .empty{font-family:'DM Mono',monospace; font-size:12.5px; color:var(--muted); padding:4px 0 10px;}
+
+  footer{text-align:center; padding:36px 0 60px; color:var(--muted); font-family:'DM Mono',monospace; font-size:12px;}
+  body.hide-comments .cbox{display:none;}
+
+  @media(max-width:640px){
+    header.hero h1{font-size:34px;} .btitle{font-size:23px;} .bnote{margin-left:0;}
+    .top .brand{font-size:18px; width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="row">
+    <div class="brand">3 дня 3 рилс · <span>обзор</span></div>
+    <input class="who" id="who" placeholder="Ваше имя для комментов">
+    <button class="tbtn on" id="toggleC">Комментарии: вкл</button>
+    <button class="tbtn gold" id="exportC">Скачать все комменты</button>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Интенсив 24-26 июля · для правок команды</div>
+    <h1 class="serif">Сайт интенсива и три презентации</h1>
+    <p>Всё в одном месте: сверху продающий сайт, ниже эфиры по дням. Впишите имя вверху, включите комментарии и оставляйте правки под каждым блоком. Потом нажмите «Скачать все комменты» и пришлите файл.</p>
+    <div class="qnav">
+      <a href="#sale">Продающий сайт</a>
+      <a href="#day1">День 1</a>
+      <a href="#day2">День 2</a>
+      <a href="#day3">День 3</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- SALE SITE -->
+  <section class="block" id="sale">
+    <div class="bhead"><span class="bnum">00</span><span class="btitle">Продающий сайт интенсива</span><span class="bnote">Лендинг, куда ведём трафик. Оплата $17, розыгрыш MacBook.</span></div>
+    <div class="bactions"><a href="intensiv3.html" target="_blank">Открыть в новой вкладке</a></div>
+    <div class="frame land"><div class="hint">прокрутите внутри · клик открывает вкладку</div><iframe src="intensiv3.html" loading="lazy" title="Сайт интенсива"></iframe></div>
+    <div class="cbox" data-c="sale"><h4>Комментарии к сайту <span class="cc" data-count="sale"></span></h4><div class="clist" data-list="sale"></div><div class="cform"><textarea placeholder="Что поправить на сайте..."></textarea><button data-add="sale">Добавить</button></div></div>
+  </section>
+
+  <!-- DAY 1 -->
+  <section class="block" id="day1">
+    <div class="bhead"><span class="bnum">01</span><span class="btitle">День 1 · Reels, который работает</span><span class="bnote">Алгоритм, хук, 5 формул, 3 формата, промпт для сценариев.</span></div>
+    <div class="bactions"><a href="../presentations/day-1-v3.html" target="_blank">Открыть презентацию</a></div>
+    <div class="frame deck"><div class="hint">прокрутите внутри · «Открыть» для полного экрана</div><iframe src="../presentations/day-1-v3.html" loading="lazy" title="День 1"></iframe></div>
+    <div class="cbox" data-c="day1"><h4>Комментарии к Дню 1 <span class="cc" data-count="day1"></span></h4><div class="clist" data-list="day1"></div><div class="cform"><textarea placeholder="Правки по Дню 1..."></textarea><button data-add="day1">Добавить</button></div></div>
+  </section>
+
+  <!-- DAY 2 -->
+  <section class="block" id="day2">
+    <div class="bhead"><span class="bnum">02</span><span class="btitle">День 2 · Снимаем и монтируем</span><span class="bnote">Настройки телефона, свет, CapCut за 15 минут, публикация.</span></div>
+    <div class="bactions"><a href="../presentations/day-2-v3.html" target="_blank">Открыть презентацию</a></div>
+    <div class="frame deck"><div class="hint">прокрутите внутри · «Открыть» для полного экрана</div><iframe src="../presentations/day-2-v3.html" loading="lazy" title="День 2"></iframe></div>
+    <div class="cbox" data-c="day2"><h4>Комментарии к Дню 2 <span class="cc" data-count="day2"></span></h4><div class="clist" data-list="day2"></div><div class="cform"><textarea placeholder="Правки по Дню 2..."></textarea><button data-add="day2">Добавить</button></div></div>
+  </section>
+
+  <!-- DAY 3 -->
+  <section class="block" id="day3">
+    <div class="bhead"><span class="bnum">03</span><span class="btitle">День 3 · Как на этом зарабатывать</span><span class="bnote">Монетизация, кейсы, розыгрыш, курс, депозит $50.</span></div>
+    <div class="bactions"><a href="../presentations/day-3-v3.html" target="_blank">Открыть презентацию</a></div>
+    <div class="frame deck"><div class="hint">прокрутите внутри · «Открыть» для полного экрана</div><iframe src="../presentations/day-3-v3.html" loading="lazy" title="День 3"></iframe></div>
+    <div class="cbox" data-c="day3"><h4>Комментарии к Дню 3 <span class="cc" data-count="day3"></span></h4><div class="clist" data-list="day3"></div><div class="cform"><textarea placeholder="Правки по Дню 3..."></textarea><button data-add="day3">Добавить</button></div></div>
+  </section>
+
+</div>
+
+<footer>Обзорная страница для правок · интенсив 3 дня 3 рилс · комментарии сохраняются в этом браузере</footer>
+
+<script>
+  var KEY='intensiv_review_v1', WHO='intensiv_review_who';
+  var store={};
+  try{ store=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){ store={}; }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(store)); }catch(e){} }
+
+  // author name
+  var who=document.getElementById('who');
+  try{ who.value=localStorage.getItem(WHO)||''; }catch(e){}
+  who.addEventListener('input', function(){ try{ localStorage.setItem(WHO, who.value); }catch(e){} });
+
+  function fmtTime(ts){ var d=new Date(ts); return d.toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}); }
+
+  function renderList(id){
+    var list=document.querySelector('[data-list="'+id+'"]');
+    var cnt=document.querySelector('[data-count="'+id+'"]');
+    var arr=store[id]||[];
+    cnt.textContent=arr.length?('· '+arr.length):'';
+    if(!arr.length){ list.innerHTML='<div class="empty">Пока нет комментариев</div>'; return; }
+    list.innerHTML='';
+    arr.forEach(function(c,idx){
+      var el=document.createElement('div'); el.className='citem';
+      el.innerHTML='<div class="meta"><span>'+(c.author?escapeHtml(c.author):'без имени')+' · '+fmtTime(c.ts)+'</span><a class="del" data-del="'+id+'|'+idx+'">удалить</a></div><div>'+escapeHtml(c.text)+'</div>';
+      list.appendChild(el);
+    });
+  }
+  function escapeHtml(s){ return String(s).replace(/[&<>"]/g,function(m){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m];}); }
+
+  document.querySelectorAll('[data-add]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var id=btn.getAttribute('data-add');
+      var ta=btn.parentNode.querySelector('textarea');
+      var txt=ta.value.trim(); if(!txt) return;
+      if(!store[id]) store[id]=[];
+      store[id].push({author:who.value.trim(), text:txt, ts:Date.now()});
+      save(); ta.value=''; renderList(id);
+    });
+  });
+
+  document.addEventListener('click', function(e){
+    var d=e.target.closest('[data-del]');
+    if(d){ var parts=d.getAttribute('data-del').split('|'); var id=parts[0], idx=+parts[1];
+      if(store[id]){ store[id].splice(idx,1); if(!store[id].length) delete store[id]; save(); renderList(id); } }
+  });
+
+  // ctrl+enter to add from any textarea
+  document.querySelectorAll('.cform textarea').forEach(function(ta){
+    ta.addEventListener('keydown', function(e){ if((e.metaKey||e.ctrlKey)&&e.key==='Enter'){ ta.parentNode.querySelector('button').click(); } });
+  });
+
+  ['sale','day1','day2','day3'].forEach(renderList);
+
+  // toggle comments
+  var tg=document.getElementById('toggleC');
+  tg.addEventListener('click', function(){
+    var hidden=document.body.classList.toggle('hide-comments');
+    tg.classList.toggle('on',!hidden); tg.textContent='Комментарии: '+(hidden?'выкл':'вкл');
+  });
+
+  // export
+  var LABELS={sale:'ПРОДАЮЩИЙ САЙТ',day1:'ДЕНЬ 1',day2:'ДЕНЬ 2',day3:'ДЕНЬ 3'};
+  document.getElementById('exportC').addEventListener('click', function(){
+    var out='КОММЕНТАРИИ К ИНТЕНСИВУ · '+new Date().toLocaleString('ru-RU')+'\n';
+    var any=false;
+    ['sale','day1','day2','day3'].forEach(function(id){
+      var arr=store[id]||[]; if(!arr.length) return; any=true;
+      out+='\n=== '+LABELS[id]+' ===\n';
+      arr.forEach(function(c,i){ out+=(i+1)+'. ['+(c.author||'без имени')+' · '+fmtTime(c.ts)+']\n   '+c.text+'\n'; });
+    });
+    if(!any){ alert('Пока нет комментариев для выгрузки.'); return; }
+    var blob=new Blob([out],{type:'text/plain;charset=utf-8'});
+    var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+    a.download='комментарии-интенсив.txt'; document.body.appendChild(a); a.click(); a.remove();
+  });
+
+  // scale deck iframes to fit width (decks are 1280px wide)
+  function scaleDecks(){
+    document.querySelectorAll('.frame.deck').forEach(function(fr){
+      var ifr=fr.querySelector('iframe');
+      var w=fr.clientWidth, s=w/1280;
+      ifr.style.width='1280px'; ifr.style.height='760px';
+      ifr.style.transform='scale('+s+')';
+      fr.style.height=(760*s)+'px';
+    });
+  }
+  addEventListener('resize', scaleDecks);
+  addEventListener('load', scaleDecks);
+  scaleDecks();
+</script>
+</body>
+</html>

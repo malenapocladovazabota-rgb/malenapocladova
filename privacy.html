@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FBF1E8">
+<title>Политика конфиденциальности · SMM с нуля</title>
+<meta name="description" content="Политика конфиденциальности курса SMM с нуля Малены Покладовой. Как мы обрабатываем ваши данные.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root {
+    --cream:#FBF1E8; --cream2:#F5E6D6; --paper:#FFFCF7;
+    --rose:#D4858B; --rose-l:#E8B5B9; --rose-vl:#F5DBDD;
+    --gold:#C9A876; --gold-d:#B89866;
+    --brown:#3D2C26; --brown2:#6B524A; --brown3:#8B6E63;
+  }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--cream); color:var(--brown);
+    font-family:'Inter', sans-serif;
+    line-height:1.7; font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a { color:var(--rose); text-decoration:none; border-bottom:1px solid rgba(212,133,139,.4); }
+  a:hover { color:var(--rose); border-bottom-color:var(--rose); }
+
+  .legal-nav {
+    background:var(--paper);
+    border-bottom:1px solid rgba(61,44,38,.08);
+    padding:18px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+    position:sticky; top:0; z-index:10;
+  }
+  .legal-nav-brand {
+    font-family:'Cormorant Garamond', serif;
+    font-size:22px; font-weight:600; color:var(--brown);
+    border:none;
+  }
+  .legal-nav-brand em { color:var(--rose); font-style:italic; }
+  .legal-nav-back {
+    font-family:'DM Mono', monospace;
+    font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--brown2); border:none;
+  }
+  .legal-nav-back:hover { color:var(--rose); }
+
+  .legal-hero {
+    padding:80px 32px 40px;
+    text-align:center;
+    background:linear-gradient(180deg, var(--cream) 0%, var(--cream2) 100%);
+  }
+  .legal-eyebrow {
+    font-family:'DM Mono', monospace;
+    font-size:11px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--rose); margin-bottom:16px;
+  }
+  .legal-eyebrow::before { content:'❀  '; color:var(--rose); }
+  .legal-hero h1 {
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(36px, 6vw, 56px); font-weight:500;
+    color:var(--brown); line-height:1.05;
+    letter-spacing:-1px; margin-bottom:14px;
+  }
+  .legal-hero h1 em { color:var(--rose); font-style:italic; }
+  .legal-meta {
+    font-family:'DM Mono', monospace;
+    font-size:11px; color:var(--brown3);
+    letter-spacing:1px;
+  }
+
+  .legal-content {
+    max-width:760px; margin:0 auto;
+    padding:60px 32px 100px;
+  }
+
+  .legal-section {
+    margin-bottom:48px;
+    padding-bottom:48px;
+    border-bottom:1px solid rgba(61,44,38,.08);
+  }
+  .legal-section:last-child { border-bottom:none; padding-bottom:0; margin-bottom:0; }
+
+  .section-num {
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--rose); margin-bottom:12px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .section-num::before { content:''; width:24px; height:1px; background:var(--rose); }
+
+  .legal-content h2 {
+    font-family:'Cormorant Garamond', serif;
+    font-size:32px; font-weight:600; color:var(--brown);
+    line-height:1.15; margin-bottom:18px; letter-spacing:-.4px;
+  }
+  .legal-content h2 em { color:var(--rose); font-style:italic; }
+  .legal-content p {
+    font-size:16px; line-height:1.75;
+    color:var(--brown); margin-bottom:14px;
+  }
+  .legal-content p:last-child { margin-bottom:0; }
+  .legal-content ul {
+    list-style:none; margin:14px 0;
+  }
+  .legal-content ul li {
+    font-size:16px; line-height:1.7;
+    color:var(--brown); padding:6px 0 6px 22px;
+    position:relative;
+  }
+  .legal-content ul li::before {
+    content:'✦'; position:absolute; left:0; top:6px;
+    color:var(--gold); font-size:14px;
+  }
+  .legal-content strong { color:var(--brown); font-weight:600; }
+  .highlight-box {
+    background:rgba(212,133,139,.06);
+    border-left:3px solid var(--rose);
+    border-radius:0 12px 12px 0;
+    padding:18px 22px; margin:20px 0;
+    font-size:15px; color:var(--brown2);
+    line-height:1.65;
+  }
+
+  .legal-footer {
+    background:var(--brown);
+    color:var(--cream);
+    padding:40px 32px;
+    text-align:center;
+  }
+  .legal-footer a {
+    color:var(--rose-l);
+    border-bottom-color:rgba(232,181,185,.4);
+  }
+  .legal-footer .copy {
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1px;
+    color:rgba(251,241,232,.5);
+    margin-top:14px;
+  }
+  .legal-footer .legal-links {
+    display:flex; gap:14px; flex-wrap:wrap; justify-content:center;
+    font-family:'DM Mono', monospace;
+    font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .legal-footer .legal-links a {
+    color:rgba(251,241,232,.7);
+    border-bottom:none;
+  }
+  .legal-footer .legal-links a:hover { color:var(--rose-l); }
+  .legal-footer .sep { color:rgba(251,241,232,.3); }
+
+  @media (max-width:768px) {
+    .legal-hero { padding:48px 22px 32px; }
+    .legal-content { padding:40px 22px 60px; }
+    .legal-content h2 { font-size:26px; }
+    .legal-content p, .legal-content ul li { font-size:15px; }
+    .legal-section { margin-bottom:36px; padding-bottom:36px; }
+  }
+</style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1521940319314090');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1521940319314090&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+  ttq.load('D8CSRFRC77U3L7SRH730');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+</head>
+<body>
+
+<nav class="legal-nav">
+  <a href="/" class="legal-nav-brand">SMM <em>с нуля</em></a>
+  <a href="/" class="legal-nav-back">← На главную</a>
+</nav>
+
+<header class="legal-hero">
+  <div class="legal-eyebrow">Политика конфиденциальности</div>
+  <h1>Как мы работаем <em>с вашими данными</em></h1>
+  <div class="legal-meta">Последнее обновление · 6 мая 2026</div>
+</header>
+
+<main class="legal-content">
+
+  <section class="legal-section">
+    <div class="section-num">01</div>
+    <h2>Кто мы</h2>
+    <p>Малена Покладова, автор и founder школы <strong>@socialmedia__school</strong>. Настоящая политика описывает, как мы собираем, используем и защищаем персональные данные в рамках работы курса «SMM с нуля» и связанных продуктов школы.</p>
+    <p>Контакт по вопросам обработки данных: Telegram <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">@Malena_Pocladova_Zabota</a>.</p>
+  </section>
+
+  <section class="legal-section">
+    <div class="section-num">02</div>
+    <h2>Какие данные мы <em>собираем</em></h2>
+    <ul>
+      <li><strong>Имя и фамилия</strong> при оформлении заказа курса.</li>
+      <li><strong>Email</strong> для отправки доступов, уведомлений и материалов.</li>
+      <li><strong>Телефон</strong> для отправки SMS-напоминаний о разборе и сервисных уведомлений (только при вашем явном согласии — см. раздел 5).</li>
+      <li><strong>Instagram-ник</strong> для связи и проверки домашних заданий.</li>
+      <li><strong>Платёжные данные</strong> обрабатываются только Stripe или GoHighLevel; мы не храним данные карт.</li>
+      <li><strong>Технические данные</strong> IP-адрес, тип браузера и устройства, страницы посещений.</li>
+    </ul>
+    <div class="highlight-box">Мы не собираем данные лиц младше 16 лет без согласия родителей или законных представителей.</div>
+  </section>
+
+  <section class="legal-section">
+    <div class="section-num">03</div>
+    <h2>Как мы <em>используем</em> данные</h2>
+    <ul>
+      <li>Предоставление оплаченных продуктов и услуг школы.</li>
+      <li>Отправка квитанций, ссылок на эфиры, учебных материалов.</li>
+      <li>SMS и email-напоминания о записанных разборах и эфирах.</li>
+      <li>Ответы на запросы поддержки в Telegram и по email.</li>
+      <li>Улучшение качества курса и его материалов.</li>
+      <li>Информирование о новых программах школы (с возможностью отписки в любой момент).</li>
+    </ul>
+    <p>Мы <strong>не продаём</strong> ваши персональные данные и <strong>не передаём</strong> номера телефонов третьим лицам или их аффилиатам в маркетинговых целях.</p>
+  </section>
+
+  <section class="legal-section">
+    <div class="section-num">04</div>
+    <h2>Третьи стороны</h2>
+    <p>Для работы школы мы используем сторонние сервисы. Передача данных им происходит только в объёме необходимом для выполнения услуги:</p>
+    <ul>
+      <li><strong>Stripe</strong> платежи. <a href="https://stripe.com/privacy" target="_blank" rel="noopener">Политика Stripe</a></li>
+      <li><strong>GoHighLevel (LeadConnector)</strong> CRM, запись на разбор, отправка SMS и email. <a href="https://www.gohighlevel.com/privacy-policy" target="_blank" rel="noopener">Политика GHL</a></li>
+      <li><strong>Zoom</strong> прямые эфиры с разборами. <a href="https://zoom.us/privacy" target="_blank" rel="noopener">Политика Zoom</a></li>
+      <li><strong>Telegram</strong> закрытый чат участников курса и поддержка. <a href="https://telegram.org/privacy" target="_blank" rel="noopener">Политика Telegram</a></li>
+      <li><strong>Google</strong> шрифты и аналитика. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Политика Google</a></li>
+    </ul>
+  </section>
+
+  <section class="legal-section">
+    <div class="section-num">05</div>
+    <h2>SMS-сообщения и <em>уведомления</em></h2>
+    <p>При указании номера телефона в форме записи на разбор и согласии с условиями вы даёте разрешение Школе Малены Покладовой (Personal Growth Lab) отправлять SMS и текстовые сообщения через сервис GoHighLevel/LeadConnector.</p>
+    <ul>
+      <li><strong>Тип сообщений</strong> сервисные напоминания о разборе, информация о курсах и полезные материалы.</li>
+      <li><strong>Частота</strong> варьируется в зависимости от ваших активностей (записи, оплаты, участие в потоке) и текущих программ Школы. В среднем 4–8 сообщений в месяц, но в активные периоды (запуск нового потока, ваш курс) может быть больше.</li>
+      <li><strong>Стоимость</strong> SMS и интернет-трафик согласно тарифу вашего мобильного оператора.</li>
+      <li><strong>Отписка</strong> в любой момент ответьте «STOP» на любое сообщение.</li>
+      <li><strong>Помощь</strong> ответьте «HELP» для связи с поддержкой.</li>
+    </ul>
+    <div class="highlight-box">Согласие на получение SMS-сообщений <strong>не является обязательным условием</strong> покупки курса или записи на разбор. Вы можете записаться на разбор и пройти курс без подписки на SMS.</div>
+    <p>Номера телефонов хранятся только в защищённой CRM-системе GoHighLevel и используются исключительно для прямой связи Школы с вами. Они <strong>не передаются</strong> сторонним маркетинговым сервисам, аффилиатам или партнёрам.</p>
+  </section>
+
+  <section class="legal-section">
+    <div class="section-num">06</div>
+    <h2>Хранение данных</h2>
+    <p>Данные хранятся в течение срока, необходимого для выполнения обязательств школы перед вами, и в соответствии с требованиями применимого законодательства (как правило 3-5 лет для платёжных транзакций). Вы можете отписаться от рассылок в любой момент по ссылке внизу любого нашего email.</p>
+  </section>
+
+  <section class="legal-section">
+    <div class="section-num">07</div>
+    <h2>Ваши <em>права</em></h2>
+    <ul>
+      <li>Запросить копию ваших данных, которые мы храним.</li>
+      <li>Потребовать исправления неточных данных или их удаления.</li>
+      <li>Отозвать согласие на маркетинговые рассылки.</li>
+      <li>Подать жалобу в надзорный орган по защите данных.</li>
+    </ul>
+    <p>Для реализации этих прав напишите в Telegram-поддержку: <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">@Malena_Pocladova_Zabota</a>. Мы ответим в течение 30 дней.</p>
+  </section>
+
+  <section class="legal-section">
+    <div class="section-num">08</div>
+    <h2>Cookies и аналитика</h2>
+    <p>Сайт использует технические и аналитические cookie (Google Analytics). Рекламные cookie не используются. Вы можете отключить cookie в настройках браузера, но некоторые функции сайта могут работать некорректно.</p>
+  </section>
+
+  <section class="legal-section">
+    <div class="section-num">09</div>
+    <h2>Изменения политики</h2>
+    <p>Политика может обновляться. При существенных изменениях мы уведомим вас по email. Дата последнего обновления указана в начале документа.</p>
+    <p>Контакт по вопросам политики — Telegram: <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">@Malena_Pocladova_Zabota</a></p>
+  </section>
+
+</main>
+
+<footer class="legal-footer">
+  <div class="legal-links">
+    <a href="/">Главная</a><span class="sep">·</span>
+    <a href="/privacy">Конфиденциальность</a><span class="sep">·</span>
+    <a href="/terms">Договор-оферта</a><span class="sep">·</span>
+    <a href="/refund">Условия возврата</a>
+  </div>
+  <p>По всем вопросам — Telegram-поддержка: <a href="https://t.me/Malena_Pocladova_Zabota">@Malena_Pocladova_Zabota</a></p>
+  <div class="copy">© 2026 Школа Малены Покладовой · Все права защищены</div>
+</footer>
+
+</body>
+</html>

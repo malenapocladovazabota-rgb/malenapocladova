@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FBF1E8">
+<title>Лаборатория Reels Малены · закрытый клуб подписчиков</title>
+<meta name="description" content="Каждую неделю Малена снимает Reel у себя — и показывает весь процесс изнутри. От идеи до метрик через 7 дней. $9/мес для первых 100 подписчиков.">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- OG -->
+<meta property="og:title" content="Лаборатория Reels Малены · закрытый клуб">
+<meta property="og:description" content="Каждую неделю Малена снимает Reel — и показывает весь процесс изнутри. Войди по промо-цене $9/мес.">
+<meta property="og:image" content="/images/og-club.jpg">
+<meta property="og:type" content="website">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://malenapocladova.com/club">
+
+<!-- llms.txt — описание сайта для ИИ-систем -->
+<link rel="alternate" type="text/markdown" title="llms.txt" href="/llms.txt">
+
+<!-- JSON-LD · структурированные данные для поисковых и ИИ-систем -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "@id": "https://malenapocladova.com/#school",
+      "name": "Школа Малены Покладовой · SMM с нуля",
+      "url": "https://malenapocladova.com/",
+      "sameAs": ["https://instagram.com/socialmedia__school"]
+    },
+    {
+      "@type": "Product",
+      "name": "Лаборатория Reels Малены — закрытый клуб",
+      "description": "Закрытый клуб по подписке. Каждую неделю Малена снимает один Reel у себя и показывает весь процесс изнутри: от идеи до метрик через 7 дней.",
+      "url": "https://malenapocladova.com/club",
+      "brand": { "@id": "https://malenapocladova.com/#school" },
+      "category": "Онлайн-образование, подписка",
+      "offers": {
+        "@type": "Offer",
+        "price": "9.00",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "description": "Промо-цена 9 USD в месяц для первых 100 подписчиков, далее 19 USD в месяц.",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "9.00",
+          "priceCurrency": "USD",
+          "billingDuration": 1,
+          "unitCode": "MON"
+        }
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root {
+    --cream:#FBF1E8; --cream2:#F5E6D6; --paper:#FFFCF7;
+    --rose:#D4858B; --rose-l:#E8B5B9; --rose-vl:#F5DBDD; --rose-d:#B85860;
+    --gold:#C9A876; --gold-d:#B89866;
+    --brown:#3D2C26; --brown2:#6B524A; --brown3:#8B6E63;
+    --shadow-soft:0 8px 24px rgba(61,44,38,.08);
+    --shadow-mid:0 12px 32px rgba(61,44,38,.12);
+    --shadow-deep:0 18px 50px rgba(61,44,38,.18);
+  }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--cream); color:var(--brown);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    -webkit-tap-highlight-color:rgba(212,133,139,.15);
+  }
+  a { color:var(--rose); text-decoration:none; }
+  img { max-width:100%; display:block; }
+
+  /* ════════ NAV ════════ */
+  .top-nav {
+    background:var(--paper);
+    border-bottom:1px solid rgba(61,44,38,.08);
+    padding:14px 22px;
+    display:flex; align-items:center; justify-content:space-between;
+    position:sticky; top:0; z-index:50;
+  }
+  .top-nav-brand {
+    font-family:'Cormorant Garamond', serif;
+    font-size:20px; font-weight:600; color:var(--brown);
+  }
+  .top-nav-brand em { color:var(--rose); font-style:italic; }
+  .top-nav-cta {
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--paper);
+    background:var(--rose);
+    padding:8px 14px;
+    border-radius:50px;
+    font-weight:600;
+    box-shadow:0 4px 12px rgba(212,133,139,.30);
+    transition:transform .15s;
+  }
+  .top-nav-cta:active { transform:scale(.96); }
+  .top-nav-cta:hover { color:var(--paper); transform:translateY(-1px); }
+
+  /* ════════ CONTAINERS ════════ */
+  .container {
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 22px;
+  }
+  .container-narrow {
+    max-width:760px;
+    margin:0 auto;
+    padding:0 22px;
+  }
+
+  /* ════════ HERO ════════ */
+  .hero {
+    padding:60px 22px 50px;
+    text-align:center;
+    background:linear-gradient(180deg, var(--cream2) 0%, var(--cream) 60%, var(--paper) 100%);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before {
+    content:'';
+    position:absolute;
+    top:-100px; left:50%; transform:translateX(-50%);
+    width:380px; height:380px;
+    background:radial-gradient(circle, rgba(212,133,139,.20) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .hero::after {
+    content:'';
+    position:absolute;
+    bottom:-80px; right:-80px;
+    width:300px; height:300px;
+    background:radial-gradient(circle, rgba(201,168,118,.18) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .hero-eyebrow {
+    position:relative; z-index:2;
+    display:inline-block;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--rose);
+    background:var(--paper);
+    padding:7px 16px;
+    border-radius:50px;
+    box-shadow:var(--shadow-soft);
+    margin-bottom:20px;
+  }
+  .hero-eyebrow::before { content:'✦  '; color:var(--rose); }
+  .hero h1 {
+    position:relative; z-index:2;
+    font-family:'Cormorant Garamond', serif;
+    font-size:42px; font-weight:500;
+    color:var(--brown); line-height:1.02;
+    letter-spacing:-1px;
+    margin-bottom:18px;
+    max-width:780px; margin-left:auto; margin-right:auto;
+  }
+  .hero h1 em { color:var(--rose); font-style:italic; }
+  .hero .lede {
+    position:relative; z-index:2;
+    font-size:17px; line-height:1.6; color:var(--brown2);
+    max-width:600px; margin:0 auto 28px;
+  }
+  .hero .lede strong { color:var(--brown); font-weight:600; }
+  .hero-cta-row {
+    position:relative; z-index:2;
+    display:flex; flex-direction:column; gap:12px;
+    align-items:center; max-width:380px; margin:0 auto;
+  }
+  .btn-primary {
+    display:inline-flex; align-items:center; gap:10px;
+    width:100%; justify-content:center;
+    padding:18px 32px;
+    background:var(--rose);
+    color:var(--paper);
+    border-radius:50px;
+    font-family:'DM Mono', monospace;
+    font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    font-weight:600;
+    box-shadow:0 14px 32px rgba(212,133,139,.40);
+    transition:transform .15s, box-shadow .15s, color .15s;
+    cursor:pointer; border:none;
+  }
+  .btn-primary:hover { color:var(--paper); transform:translateY(-2px); box-shadow:0 20px 40px rgba(212,133,139,.50); }
+  .btn-primary:active { transform:scale(.97); }
+  .btn-secondary {
+    display:inline-flex; align-items:center; gap:10px;
+    width:100%; justify-content:center;
+    padding:15px 28px;
+    background:var(--paper);
+    color:var(--brown);
+    border-radius:50px;
+    font-family:'DM Mono', monospace;
+    font-size:11px; letter-spacing:2px; text-transform:uppercase;
+    font-weight:600;
+    border:1.5px solid rgba(61,44,38,.12);
+    transition:transform .15s, border-color .15s;
+  }
+  .btn-secondary:hover { color:var(--brown); border-color:var(--rose); transform:translateY(-1px); }
+  .hero-fine {
+    position:relative; z-index:2;
+    margin-top:18px;
+    font-family:'DM Mono', monospace;
+    font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--brown3);
+  }
+
+  /* ════════ TRUST BAR ════════ */
+  .trust-bar {
+    padding:24px 22px;
+    background:var(--paper);
+    border-top:1px solid rgba(61,44,38,.06);
+    border-bottom:1px solid rgba(61,44,38,.06);
+  }
+  .trust-bar-inner {
+    max-width:1000px; margin:0 auto;
+    display:flex; flex-wrap:wrap; justify-content:center;
+    gap:18px 36px;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--brown3);
+    text-align:center;
+  }
+  .trust-bar-inner strong { color:var(--rose); font-weight:600; }
+
+  /* ════════ SECTION HEADERS ════════ */
+  .section { padding:60px 0; }
+  .section-eyebrow {
+    text-align:center;
+    font-family:'DM Mono', monospace;
+    font-size:11px; letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--rose);
+    margin-bottom:14px;
+  }
+  .section-eyebrow::before, .section-eyebrow::after {
+    content:'  ·  '; color:var(--brown3);
+  }
+  .section h2 {
+    text-align:center;
+    font-family:'Cormorant Garamond', serif;
+    font-size:36px; font-weight:500;
+    color:var(--brown); line-height:1.05;
+    letter-spacing:-.6px;
+    margin-bottom:14px;
+    max-width:680px; margin-left:auto; margin-right:auto;
+  }
+  .section h2 em { color:var(--rose); font-style:italic; }
+  .section-lede {
+    text-align:center;
+    font-size:16px; line-height:1.6; color:var(--brown2);
+    max-width:580px; margin:0 auto 40px;
+  }
+
+  /* ════════ "ЧТО ВНУТРИ" — рубрики ════════ */
+  .rubrics {
+    background:var(--paper);
+  }
+  .rubrics-grid {
+    display:grid; grid-template-columns:1fr; gap:14px;
+  }
+  .rubric-card {
+    background:var(--cream);
+    border-radius:18px;
+    padding:24px 24px 22px;
+    border:1px solid rgba(61,44,38,.06);
+    transition:transform .2s, box-shadow .2s;
+  }
+  .rubric-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-soft); }
+  .rubric-head {
+    display:flex; align-items:center; gap:14px; margin-bottom:10px;
+  }
+  .rubric-icon {
+    width:46px; height:46px;
+    background:var(--rose-vl);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px;
+    flex-shrink:0;
+  }
+  .rubric-tag {
+    font-family:'DM Mono', monospace;
+    font-size:9px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--rose);
+    background:var(--paper);
+    padding:4px 10px;
+    border-radius:50px;
+    margin-left:auto;
+  }
+  .rubric-card h3 {
+    font-family:'Cormorant Garamond', serif;
+    font-size:22px; font-weight:600; color:var(--brown);
+    line-height:1.2;
+    margin-bottom:6px;
+  }
+  .rubric-card h3 em { color:var(--rose); font-style:italic; }
+  .rubric-card p {
+    font-size:14.5px; color:var(--brown2);
+    line-height:1.55;
+  }
+
+  /* ════════ BONUSES ════════ */
+  .bonuses {
+    background:linear-gradient(180deg, var(--cream) 0%, var(--cream2) 100%);
+  }
+  .bonuses-grid {
+    display:grid; grid-template-columns:1fr; gap:14px;
+    margin-bottom:30px;
+  }
+  .bonus-card {
+    background:var(--paper);
+    border-radius:18px;
+    padding:24px 24px;
+    box-shadow:var(--shadow-soft);
+    border:1px solid rgba(61,44,38,.06);
+    display:flex; gap:16px; align-items:flex-start;
+  }
+  .bonus-icon {
+    width:48px; height:48px;
+    background:linear-gradient(135deg, var(--rose-vl) 0%, var(--gold) 200%);
+    border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:24px;
+    flex-shrink:0;
+  }
+  .bonus-card h3 {
+    font-family:'Cormorant Garamond', serif;
+    font-size:20px; font-weight:600; color:var(--brown);
+    line-height:1.2;
+    margin-bottom:4px;
+  }
+  .bonus-card h3 em { color:var(--rose); font-style:italic; }
+  .bonus-card .bonus-value {
+    font-family:'DM Mono', monospace;
+    font-size:9px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--gold-d);
+    margin-bottom:8px;
+  }
+  .bonus-card p {
+    font-size:14px; color:var(--brown2);
+    line-height:1.55;
+  }
+  .bonuses-total {
+    text-align:center;
+    margin-top:24px;
+    padding:18px 22px;
+    background:var(--paper);
+    border-radius:50px;
+    box-shadow:var(--shadow-soft);
+    display:inline-block;
+    margin-left:50%;
+    transform:translateX(-50%);
+    position:relative;
+  }
+  .bonuses-total-label {
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--brown3);
+    margin-bottom:4px;
+  }
+  .bonuses-total-value {
+    font-family:'Cormorant Garamond', serif;
+    font-size:24px; font-weight:600; color:var(--rose);
+  }
+  .bonuses-total-strike {
+    text-decoration:line-through;
+    color:var(--brown3);
+    font-size:18px;
+    margin-right:8px;
+  }
+
+  /* ════════ FOR WHOM ════════ */
+  .for-whom {
+    background:var(--paper);
+  }
+  .for-whom-grid {
+    display:grid; grid-template-columns:1fr; gap:14px;
+  }
+  .whom-card {
+    background:var(--cream);
+    border-radius:18px;
+    padding:26px 26px;
+    border:1px solid rgba(61,44,38,.06);
+  }
+  .whom-tag {
+    display:inline-block;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1.8px; text-transform:uppercase;
+    color:var(--rose);
+    background:var(--rose-vl);
+    padding:5px 12px;
+    border-radius:50px;
+    margin-bottom:14px;
+  }
+  .whom-card h3 {
+    font-family:'Cormorant Garamond', serif;
+    font-size:22px; font-weight:600; color:var(--brown);
+    line-height:1.2;
+    margin-bottom:10px;
+  }
+  .whom-card h3 em { color:var(--rose); font-style:italic; }
+  .whom-card p {
+    font-size:14.5px; color:var(--brown2);
+    line-height:1.55;
+  }
+
+  /* ════════ PRICING ════════ */
+  .pricing {
+    background:linear-gradient(180deg, var(--cream2) 0%, var(--paper) 60%, var(--cream) 100%);
+  }
+  .pricing-card {
+    max-width:520px;
+    margin:0 auto;
+    background:var(--paper);
+    border-radius:24px;
+    padding:36px 30px;
+    box-shadow:var(--shadow-deep);
+    border:1px solid rgba(212,133,139,.20);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .pricing-card::before {
+    content:'';
+    position:absolute;
+    top:-80px; right:-80px;
+    width:200px; height:200px;
+    background:radial-gradient(circle, rgba(212,133,139,.20) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .pricing-promo {
+    position:relative;
+    display:inline-block;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--paper);
+    background:var(--rose);
+    padding:7px 16px;
+    border-radius:50px;
+    margin-bottom:18px;
+    box-shadow:0 4px 12px rgba(212,133,139,.40);
+  }
+  .pricing-name {
+    position:relative;
+    font-family:'Cormorant Garamond', serif;
+    font-size:28px; font-weight:600; color:var(--brown);
+    line-height:1.15;
+    margin-bottom:6px;
+  }
+  .pricing-name em { color:var(--rose); font-style:italic; }
+  .pricing-sub {
+    position:relative;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--brown3);
+    margin-bottom:22px;
+  }
+  .pricing-amount {
+    position:relative;
+    margin-bottom:22px;
+  }
+  .pricing-old {
+    text-decoration:line-through;
+    color:var(--brown3);
+    font-size:20px;
+    margin-right:10px;
+    font-family:'Cormorant Garamond', serif;
+  }
+  .pricing-new {
+    font-family:'Cormorant Garamond', serif;
+    font-size:54px; font-weight:600;
+    color:var(--rose); line-height:1;
+    letter-spacing:-1px;
+  }
+  .pricing-period {
+    font-family:'DM Mono', monospace;
+    font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--brown2);
+    margin-top:2px;
+  }
+  .pricing-features {
+    position:relative;
+    list-style:none;
+    text-align:left;
+    max-width:380px;
+    margin:0 auto 26px;
+  }
+  .pricing-features li {
+    padding:10px 0 10px 28px;
+    position:relative;
+    font-size:14.5px;
+    color:var(--brown);
+    border-bottom:1px solid rgba(61,44,38,.06);
+  }
+  .pricing-features li:last-child { border-bottom:none; }
+  .pricing-features li::before {
+    content:'✓';
+    position:absolute;
+    left:6px; top:10px;
+    color:var(--rose);
+    font-weight:700;
+  }
+  .pricing-features strong { color:var(--brown); font-weight:600; }
+  .pricing-cta {
+    position:relative;
+    width:100%;
+    padding:18px 28px;
+    background:var(--rose);
+    color:var(--paper);
+    border-radius:50px;
+    font-family:'DM Mono', monospace;
+    font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    font-weight:600;
+    box-shadow:0 14px 32px rgba(212,133,139,.40);
+    transition:transform .15s, box-shadow .15s;
+    border:none; cursor:pointer;
+    display:inline-block; text-align:center; text-decoration:none;
+  }
+  .pricing-cta:hover { color:var(--paper); transform:translateY(-2px); box-shadow:0 20px 40px rgba(212,133,139,.50); }
+  .pricing-cta:active { transform:scale(.97); }
+  .pricing-fine {
+    position:relative;
+    margin-top:14px;
+    font-family:'DM Mono', monospace;
+    font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--brown3);
+  }
+  .pricing-guarantee {
+    position:relative;
+    margin-top:18px;
+    padding:14px 16px;
+    background:var(--cream);
+    border-radius:14px;
+    border:1px dashed rgba(212,133,139,.40);
+  }
+  .pricing-guarantee strong { color:var(--rose); }
+
+  /* ════════ HOW IT WORKS ════════ */
+  .how-works {
+    background:var(--paper);
+  }
+  .how-steps {
+    display:grid; grid-template-columns:1fr; gap:20px;
+    counter-reset: step;
+  }
+  .step-card {
+    background:var(--cream);
+    border-radius:18px;
+    padding:24px 26px 24px 60px;
+    position:relative;
+    border:1px solid rgba(61,44,38,.06);
+  }
+  .step-card::before {
+    counter-increment: step;
+    content: counter(step);
+    position:absolute;
+    left:18px; top:24px;
+    width:32px; height:32px;
+    background:var(--rose);
+    color:var(--paper);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Cormorant Garamond', serif;
+    font-size:18px; font-weight:600;
+    box-shadow:0 4px 12px rgba(212,133,139,.30);
+  }
+  .step-card h3 {
+    font-family:'Cormorant Garamond', serif;
+    font-size:20px; font-weight:600; color:var(--brown);
+    line-height:1.2;
+    margin-bottom:6px;
+  }
+  .step-card p {
+    font-size:14.5px; color:var(--brown2);
+    line-height:1.55;
+  }
+
+  /* ════════ FAQ ════════ */
+  .faq-section {
+    background:linear-gradient(180deg, var(--paper) 0%, var(--cream) 100%);
+  }
+  .faq-list {
+    max-width:760px;
+    margin:0 auto;
+  }
+  .faq-item {
+    background:var(--paper);
+    border-radius:14px;
+    margin-bottom:10px;
+    border:1px solid rgba(61,44,38,.06);
+    overflow:hidden;
+  }
+  .faq-item summary {
+    padding:18px 22px;
+    cursor:pointer;
+    font-family:'Cormorant Garamond', serif;
+    font-size:18px; font-weight:600; color:var(--brown);
+    list-style:none;
+    position:relative;
+    padding-right:48px;
+  }
+  .faq-item summary::-webkit-details-marker { display:none; }
+  .faq-item summary::after {
+    content:'+';
+    position:absolute;
+    right:22px; top:50%; transform:translateY(-50%);
+    font-size:24px; color:var(--rose);
+    transition:transform .25s;
+  }
+  .faq-item[open] summary::after { transform:translateY(-50%) rotate(45deg); }
+  .faq-item .answer {
+    padding:0 22px 18px;
+    font-size:14.5px; color:var(--brown2);
+    line-height:1.6;
+  }
+  .faq-item .answer strong { color:var(--brown); }
+
+  /* ════════ FINAL CTA ════════ */
+  .final-cta {
+    background:linear-gradient(135deg, var(--brown) 0%, var(--brown2) 100%);
+    color:var(--cream);
+    padding:60px 22px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .final-cta::before {
+    content:'';
+    position:absolute;
+    top:-100px; right:-100px;
+    width:300px; height:300px;
+    background:radial-gradient(circle, rgba(212,133,139,.30) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .final-cta::after {
+    content:'';
+    position:absolute;
+    bottom:-100px; left:-100px;
+    width:300px; height:300px;
+    background:radial-gradient(circle, rgba(201,168,118,.25) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .final-cta-eyebrow {
+    position:relative;
+    display:inline-block;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--rose-l);
+    background:rgba(251,241,232,.08);
+    padding:7px 16px;
+    border-radius:50px;
+    margin-bottom:18px;
+  }
+  .final-cta h2 {
+    position:relative;
+    font-family:'Cormorant Garamond', serif;
+    font-size:38px; font-weight:500;
+    color:var(--cream); line-height:1.05;
+    letter-spacing:-.8px;
+    margin-bottom:14px;
+    max-width:620px; margin-left:auto; margin-right:auto;
+  }
+  .final-cta h2 em { color:var(--rose-l); font-style:italic; }
+  .final-cta p {
+    position:relative;
+    font-size:16px; line-height:1.6;
+    color:rgba(251,241,232,.80);
+    max-width:540px; margin:0 auto 28px;
+  }
+  .final-cta .btn-primary {
+    background:var(--rose);
+    box-shadow:0 14px 36px rgba(0,0,0,.25);
+    max-width:360px;
+    margin:0 auto;
+  }
+
+  /* ════════ FOOTER ════════ */
+  .legal-footer {
+    background:var(--brown);
+    color:var(--cream);
+    padding:30px 22px;
+    text-align:center;
+    border-top:1px solid rgba(251,241,232,.10);
+  }
+  .legal-footer .legal-links {
+    display:flex; gap:12px; flex-wrap:wrap; justify-content:center;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .legal-footer .legal-links a {
+    color:rgba(251,241,232,.7);
+  }
+  .legal-footer .sep { color:rgba(251,241,232,.3); }
+  .legal-footer .footer-contact {
+    font-size:13px; color:rgba(251,241,232,.78);
+    line-height:1.55;
+  }
+  .legal-footer .footer-contact a {
+    color:var(--rose-l);
+    border-bottom:1px solid rgba(232,181,185,.4);
+  }
+  .legal-footer .copy {
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1px;
+    color:rgba(251,241,232,.5);
+    margin-top:14px;
+  }
+
+  /* ════════ DESKTOP (≥880px) ════════ */
+  @media (min-width:880px) {
+    .top-nav { padding:16px 36px; }
+    .top-nav-brand { font-size:22px; }
+
+    .hero { padding:100px 32px 80px; }
+    .hero h1 { font-size:64px; letter-spacing:-1.5px; margin-bottom:22px; }
+    .hero .lede { font-size:19px; }
+    .hero-cta-row { flex-direction:row; max-width:none; justify-content:center; }
+    .btn-primary, .btn-secondary { width:auto; padding:18px 36px; }
+    .btn-primary { font-size:13px; }
+    .btn-secondary { font-size:12px; }
+
+    .container { padding:0 32px; }
+    .section { padding:90px 0; }
+    .section h2 { font-size:48px; letter-spacing:-1px; }
+    .section-lede { font-size:18px; margin-bottom:50px; }
+
+    .rubrics-grid { grid-template-columns:1fr 1fr; gap:18px; }
+    .rubric-card { padding:30px 30px 26px; }
+    .rubric-card h3 { font-size:24px; }
+
+    .bonuses-grid { grid-template-columns:1fr 1fr; gap:18px; }
+    .bonus-card { padding:28px 28px; }
+    .bonus-card h3 { font-size:22px; }
+    .bonus-icon { width:54px; height:54px; font-size:26px; }
+
+    .for-whom-grid { grid-template-columns:1fr 1fr 1fr; gap:18px; }
+    .whom-card { padding:30px 28px; }
+
+    .pricing-card { padding:48px 40px; max-width:560px; }
+    .pricing-name { font-size:32px; }
+    .pricing-new { font-size:64px; }
+    .pricing-features { font-size:15px; }
+
+    .how-steps { grid-template-columns:1fr 1fr; gap:24px; }
+    .step-card { padding:28px 30px 28px 70px; }
+    .step-card::before { left:22px; top:28px; width:36px; height:36px; font-size:20px; }
+
+    .faq-item summary { font-size:20px; padding:22px 28px 22px 28px; padding-right:56px; }
+    .faq-item summary::after { right:28px; }
+    .faq-item .answer { padding:0 28px 22px; font-size:15px; }
+
+    .final-cta { padding:90px 32px; }
+    .final-cta h2 { font-size:54px; letter-spacing:-1.2px; margin-bottom:18px; }
+    .final-cta p { font-size:18px; margin-bottom:32px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior:auto; }
+  }
+</style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1521940319314090');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {content_name: 'Reels Lab subscription', content_category: 'subscription-page'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1521940319314090&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+  ttq.load('D8CSRFRC77U3L7SRH730');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="/" class="top-nav-brand">SMM <em>с нуля</em></a>
+  <a href="#pricing" class="top-nav-cta">Подписаться</a>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<header class="hero">
+  <div class="hero-eyebrow">Закрытый клуб подписчиков</div>
+  <h1>Лаборатория <em>Reels</em> Малены</h1>
+  <p class="lede">Каждую неделю Малена снимает Reel у себя — и показывает <strong>весь процесс изнутри</strong>. От идеи до метрик через 7 дней. Доступ к её мастерской, которой нет нигде.</p>
+  <div class="hero-cta-row">
+    <a href="#pricing" class="btn-primary">
+      Войти за $9 в месяц
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
+    <a href="#how" class="btn-secondary">Что внутри</a>
+  </div>
+  <div class="hero-fine">7 дней бесплатно · отписаться в один клик</div>
+</header>
+
+<!-- ═══════ TRUST BAR ═══════ -->
+<section class="trust-bar">
+  <div class="trust-bar-inner">
+    <span><strong>200+</strong> выпускниц курса</span>
+    <span><strong>10K+</strong> часов разборов</span>
+    <span><strong>4.9★</strong> средняя оценка</span>
+    <span><strong>50+</strong> Reels в архиве</span>
+  </div>
+</section>
+
+<!-- ═══════ ЧТО ВНУТРИ ═══════ -->
+<section class="section rubrics" id="how">
+  <div class="container">
+    <div class="section-eyebrow">Что приходит каждую неделю</div>
+    <h2>5 рубрик · одна <em>система</em></h2>
+    <p class="section-lede">Контент собран так, чтобы вы каждый день видели применимый материал. Без воды, без растягивания.</p>
+
+    <div class="rubrics-grid">
+
+      <div class="rubric-card">
+        <div class="rubric-head">
+          <div class="rubric-icon">🎬</div>
+          <span class="rubric-tag">каждый понедельник</span>
+        </div>
+        <h3>Reel <em>недели</em></h3>
+        <p>Малена снимает Reel у себя в блоге → разбирает изнутри: откуда взялась идея, как сняла, что монтировала, какие метрики получила через 7 дней. 15-20 минут с тайм-кодами.</p>
+      </div>
+
+      <div class="rubric-card">
+        <div class="rubric-head">
+          <div class="rubric-icon">🔥</div>
+          <span class="rubric-tag">каждую среду</span>
+        </div>
+        <h3>Тренд <em>недели</em></h3>
+        <p>Что сейчас хайпит в Instagram и TikTok — и как это адаптировать под вашу нишу до того, как тренд перегреется. 5-7 минут.</p>
+      </div>
+
+      <div class="rubric-card">
+        <div class="rubric-head">
+          <div class="rubric-icon">💡</div>
+          <span class="rubric-tag">каждую пятницу</span>
+        </div>
+        <h3>Идея <em>для тебя</em></h3>
+        <p>Конкретный сценарий Reel, который вы можете снять в выходные — с подсказками по визуалу, тексту, музыке. Без раздумий «о чём снять».</p>
+      </div>
+
+      <div class="rubric-card">
+        <div class="rubric-head">
+          <div class="rubric-icon">📋</div>
+          <span class="rubric-tag">раз в месяц</span>
+        </div>
+        <h3>Глубокий <em>гайд</em></h3>
+        <p>15-30 страниц PDF на одну тему: TikTok, AI для контента, монетизация блога, продажи через Reels. Чек-листы, шаблоны, скриншоты.</p>
+      </div>
+
+      <div class="rubric-card">
+        <div class="rubric-head">
+          <div class="rubric-icon">🎤</div>
+          <span class="rubric-tag">раз в месяц</span>
+        </div>
+        <h3>Live Q&A <em>с Маленой</em></h3>
+        <p>1 час в Zoom — Малена отвечает на ваши вопросы, разбирает 3-5 Reels подписчиков прямо в эфире. Запись остаётся в архиве.</p>
+      </div>
+
+      <div class="rubric-card">
+        <div class="rubric-head">
+          <div class="rubric-icon">💬</div>
+          <span class="rubric-tag">всегда</span>
+        </div>
+        <h3>Закрытый <em>чат</em></h3>
+        <p>Telegram-комьюнити подписчиков — обсуждаем выпуски, делимся результатами, задаём вопросы друг другу. Малена иногда заходит лично.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ БОНУСЫ ═══════ -->
+<section class="section bonuses">
+  <div class="container">
+    <div class="section-eyebrow">Что вы получаете сразу</div>
+    <h2>Бонусы при <em>подписке</em></h2>
+    <p class="section-lede">5 материалов, которые приходят в первые минуты после оплаты. Их одних достаточно, чтобы окупить первый месяц.</p>
+
+    <div class="bonuses-grid">
+
+      <div class="bonus-card">
+        <div class="bonus-icon">📕</div>
+        <div>
+          <h3>30 хуков для <em>Reels</em></h3>
+          <div class="bonus-value">PDF · 15 страниц</div>
+          <p>30 проверенных формул начала Reel, которые удерживают внимание в первые 2 секунды. С примерами для разных ниш.</p>
+        </div>
+      </div>
+
+      <div class="bonus-card">
+        <div class="bonus-icon">📅</div>
+        <div>
+          <h3>Шаблон <em>контент-плана</em></h3>
+          <div class="bonus-value">Notion + PDF · готовый</div>
+          <p>Контент-план на 30 дней с готовыми рубриками. Просто заполните под свою нишу — выходить в эфир каждый день перестанет быть болью.</p>
+        </div>
+      </div>
+
+      <div class="bonus-card">
+        <div class="bonus-icon">📂</div>
+        <div>
+          <h3>Архив <em>50+ Reels</em> Малены</h3>
+          <div class="bonus-value">Закрытая библиотека</div>
+          <p>Все её главные Reels с короткими разборами под каждым. За вечер вы увидите её эволюцию + поймёте, что реально работает.</p>
+        </div>
+      </div>
+
+      <div class="bonus-card">
+        <div class="bonus-icon">🎥</div>
+        <div>
+          <h3>Welcome-call <em>с Маленой</em></h3>
+          <div class="bonus-value">Zoom · 30 минут</div>
+          <p>В первую неделю — групповой созвон с Маленой и новыми участниками. Знакомство, вопросы, что ждать в первый месяц.</p>
+        </div>
+      </div>
+
+      <div class="bonus-card">
+        <div class="bonus-icon">🎁</div>
+        <div>
+          <h3>Промокод на <em>курс СММ 5.0</em></h3>
+          <div class="bonus-value">−30% · через 90 дней</div>
+          <p>После 3 месяцев в клубе вы получаете персональный промокод со скидкой 30% на любой тариф нашего полного курса.</p>
+        </div>
+      </div>
+
+      <div class="bonus-card">
+        <div class="bonus-icon">🎯</div>
+        <div>
+          <h3>Разбор <em>вашего Reel</em></h3>
+          <div class="bonus-value">в Live Q&A первого месяца</div>
+          <p>Опубликуйте свой Reel в чате с тегом #разбор → возможно Малена разберёт его лично в ближайшем эфире.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;">
+      <div class="bonuses-total">
+        <div class="bonuses-total-label">Суммарная ценность бонусов</div>
+        <div class="bonuses-total-value"><span class="bonuses-total-strike">$300+</span>включено</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ КОМУ ═══════ -->
+<section class="section for-whom">
+  <div class="container">
+    <div class="section-eyebrow">Для кого этот клуб</div>
+    <h2>3 типа <em>подписчиков</em></h2>
+    <p class="section-lede">Если вы видите себя в одном из этих описаний — клуб создан для вас.</p>
+
+    <div class="for-whom-grid">
+
+      <div class="whom-card">
+        <span class="whom-tag">🌱 Только начинаете</span>
+        <h3>Хотите снимать Reels, <em>но страшно</em></h3>
+        <p>Каждую неделю видите готовую идею + видите как её реально снять. Через месяц — первые Reels вышли, страх ушёл.</p>
+      </div>
+
+      <div class="whom-card">
+        <span class="whom-tag">📈 Уже снимаете</span>
+        <h3>Снимаете Reels, <em>но мало охватов</em></h3>
+        <p>Учитесь у того, чьи Reels залетают каждую неделю. Видите процесс изнутри, а не только результат.</p>
+      </div>
+
+      <div class="whom-card">
+        <span class="whom-tag">💎 Выпускницы курса</span>
+        <h3>Прошли курс, <em>хотите расти дальше</em></h3>
+        <p>Клуб — место чтобы держать planku и видеть, что работает прямо сейчас. Для вас доступ во время обучения и первые 3 месяца после — бесплатно.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PRICING ═══════ -->
+<section class="section pricing" id="pricing">
+  <div class="container-narrow">
+    <div class="section-eyebrow">Цена доступа</div>
+    <h2>Подписка на <em>клуб</em></h2>
+    <p class="section-lede">Запускаемся по специальной цене для первых 100 подписчиков. После — цена вырастет до $19/мес.</p>
+
+    <div class="pricing-card">
+      <div class="pricing-promo">🎁 Цена для первых 100</div>
+      <div class="pricing-name">Лаборатория <em>Reels</em></div>
+      <div class="pricing-sub">// доступ ко всем рубрикам и бонусам</div>
+
+      <div class="pricing-amount">
+        <span class="pricing-old">$19</span>
+        <span class="pricing-new">$9</span>
+        <div class="pricing-period">в месяц · отменить в один клик</div>
+      </div>
+
+      <ul class="pricing-features">
+        <li><strong>4 видео-выпуска</strong> в месяц + PDF-гайд</li>
+        <li><strong>1 Live Q&A с Маленой</strong> ежемесячно</li>
+        <li>Доступ к закрытому <strong>Telegram-чату</strong></li>
+        <li>Архив <strong>50+ Reels</strong> Малены с разборами</li>
+        <li>Все 5 бонусов <strong>сразу при подписке</strong></li>
+        <li>Промокод <strong>−30% на курс</strong> через 90 дней</li>
+      </ul>
+
+      <a href="#" class="pricing-cta" id="subscribeBtn">
+        Подписаться · 7 дней бесплатно
+      </a>
+      <div class="pricing-fine">первое списание $9 через 7 дней · потом каждый месяц</div>
+
+      <div class="pricing-guarantee">
+        <strong>Для выпускниц курса СММ 5.0:</strong> доступ к клубу <strong>бесплатно</strong> во время обучения и первые 3 месяца после. Подключаем автоматически после оплаты курса.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ HOW IT WORKS ═══════ -->
+<section class="section how-works">
+  <div class="container">
+    <div class="section-eyebrow">Как это устроено</div>
+    <h2>4 шага <em>от подписки до результата</em></h2>
+    <p class="section-lede">Без сложной регистрации, без долгого онбординга. Подписались — через 5 минут уже смотрите первый материал.</p>
+
+    <div class="how-steps">
+
+      <div class="step-card">
+        <h3>Подписываетесь — 7 дней <em>бесплатно</em></h3>
+        <p>Карта привязывается, но первое списание — только через 7 дней. Если за это время передумаете — отписываетесь без оплаты, в один клик.</p>
+      </div>
+
+      <div class="step-card">
+        <h3>Получаете доступ <em>в Telegram</em></h3>
+        <p>Бот добавляет вас в закрытый канал и чат подписчиков. Сразу приходят 5 бонусов: PDF, шаблоны, доступ к архиву.</p>
+      </div>
+
+      <div class="step-card">
+        <h3>Каждую неделю — <em>новый выпуск</em></h3>
+        <p>Понедельник, среда, пятница — push-уведомление в Telegram. Открыли в обед, посмотрели за 15 минут, применили за выходные.</p>
+      </div>
+
+      <div class="step-card">
+        <h3>Раз в месяц — <em>Live с Маленой</em></h3>
+        <p>1 час в Zoom: вопросы, разборы ваших Reels, инсайты последнего месяца. Если не успели — запись остаётся в архиве навсегда.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FAQ ═══════ -->
+<section class="section faq-section">
+  <div class="container-narrow">
+    <div class="section-eyebrow">Частые вопросы</div>
+    <h2>Что важно <em>знать</em></h2>
+    <p class="section-lede">Если остался вопрос — напишите в <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">Telegram-поддержку</a>, ответим за пару часов.</p>
+
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary>Что произойдёт через 7 дней trial?</summary>
+        <div class="answer">Если вы не отмените подписку, спишется <strong>$9</strong> за первый месяц. Дальше каждый месяц — те же $9, пока действует промо-цена. Цена $19 коснётся вас не раньше, чем через 6 месяцев — мы предупредим заранее.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Как отписаться?</summary>
+        <div class="answer">В один клик — внутри Telegram-бота кнопка <strong>«Отписаться»</strong>. Никаких звонков, никаких форм. Доступ остаётся до конца оплаченного периода. Никто не будет уговаривать остаться.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>А если я уже учусь у вас на курсе?</summary>
+        <div class="answer">Тогда клуб для вас <strong>бесплатно во время обучения и первые 3 месяца после</strong>. Подключаем автоматически после оплаты курса. По окончанию бесплатного периода спросим — хотите остаться или нет. Никаких автосписаний без вашего согласия.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Сколько времени нужно тратить?</summary>
+        <div class="answer">Если смотреть всё — около <strong>40-60 минут в неделю</strong>. Если только Reel недели + PDF-гайд — <strong>20 минут</strong>. Контент специально нарезан так, чтобы можно было смотреть в обед или по дороге.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Что если я ещё не снимаю Reels вообще?</summary>
+        <div class="answer">Клуб — отличное место чтобы начать. Каждую пятницу вы получаете <strong>конкретную идею Reel с подсказками</strong> — что снимать, как, какой текст. Через 2-3 недели у вас уже будут первые Reels.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Чем клуб отличается от курса СММ 5.0?</summary>
+        <div class="answer">Курс — это <strong>системное обучение от 0 до результата</strong> за 8 недель: стратегия, упаковка, продажи. Клуб — это <strong>постоянная подпитка</strong> свежим контентом и трендами после того, как основа уже понятна. Многие наши ученицы остаются в клубе после курса, чтобы держать planku.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Есть ли скидка за оплату на год вперёд?</summary>
+        <div class="answer">Пока нет — мы хотим, чтобы вы остались в клубе только если он реально полезен, а не из-за того что заплатили вперёд. Если через 3 месяца вам нравится — мы предложим годовую цену со скидкой.</div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Можно подарить подписку?</summary>
+        <div class="answer">Да, напишите в <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">Telegram-поддержку</a> — оформим подарочный сертификат на 1, 3 или 6 месяцев. Получатель активирует когда захочет.</div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FINAL CTA ═══════ -->
+<section class="final-cta">
+  <div class="final-cta-eyebrow">Только для первых 100</div>
+  <h2>Войдите в <em>Лабораторию</em> сегодня</h2>
+  <p>$9 в месяц вместо $19. 7 дней бесплатно. Отписаться в один клик. После — место в клубе откроется кому-то другому.</p>
+  <a href="#pricing" class="btn-primary">
+    Подписаться за $9
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline>
+    </svg>
+  </a>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="legal-footer">
+  <div class="legal-links">
+    <a href="/">Главная</a><span class="sep">·</span>
+    <a href="/razbor">Записаться на разбор</a><span class="sep">·</span>
+    <a href="/privacy">Конфиденциальность</a><span class="sep">·</span>
+    <a href="/terms">Договор-оферта</a><span class="sep">·</span>
+    <a href="/refund">Условия возврата</a>
+  </div>
+  <p class="footer-contact">Telegram-поддержка: <a href="https://t.me/Malena_Pocladova_Zabota">@Malena_Pocladova_Zabota</a></p>
+  <div class="copy">© 2026 Школа Малены Покладовой</div>
+</footer>
+
+<script>
+  // FAQ accordion (browser nativно через <details>, ничего не нужно)
+
+  // Subscribe CTA — пока ведёт на Telegram (потом подменим на Stripe Checkout link)
+  document.querySelectorAll('#subscribeBtn, .top-nav-cta').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      // TODO: подменить на Stripe Checkout URL когда будет создан
+      window.location.href = 'https://t.me/Malena_Pocladova_Zabota?text=%D0%A5%D0%BE%D1%87%D1%83%20%D0%B2%20%D0%9B%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%B8%D1%8E%20Reels';
+      fbq('track', 'InitiateCheckout', {content_name: 'Reels Lab subscription', value: 9, currency: 'USD'});
+    });
+  });
+</script>
+
+</body>
+</html>

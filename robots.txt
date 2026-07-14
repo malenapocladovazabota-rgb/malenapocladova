@@ -1,0 +1,58 @@
+# SMM с нуля · Школа Малены Покладовой
+#
+# Активна конфигурация PRODUCTION: сайт открыт для поисковиков и ИИ-систем.
+# (Блок TEST оставлен закомментированным на случай возврата на превью-домен.)
+
+# ═══════════════ TEST · закомментировано ═══════════════
+# User-agent: *
+# Disallow: /
+
+# ═══════════════ PRODUCTION · сейчас активно ═══════════════
+
+# --- Обычные поисковые системы ---
+User-agent: *
+Allow: /
+Disallow: /thank-you
+Disallow: /razbor
+Disallow: /razbor-quick
+
+# --- ИИ-системы: явно разрешаем читать сайт, чтобы он попадал в их ответы ---
+# ChatGPT / OpenAI
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+
+# Claude / Anthropic
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+
+# Google AI (Gemini, AI Overviews)
+User-agent: Google-Extended
+Allow: /
+
+# Microsoft Copilot / Bing
+User-agent: bingbot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl (источник данных для многих ИИ-моделей)
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://malenapocladova.com/sitemap.xml

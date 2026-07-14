@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FBF1E8">
+<title>Записаться на разбор · 30 секунд</title>
+<meta name="description" content="Бесплатный разбор с Маленой Покладовой. Просто выберите удобное время.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.leadconnectorhq.com">
+<link rel="preconnect" href="https://msgsndr.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root {
+    --cream:#FBF1E8; --cream2:#F5E6D6; --paper:#FFFCF7;
+    --rose:#D4858B; --rose-l:#E8B5B9; --rose-vl:#F5DBDD; --rose-d:#B85860;
+    --gold:#C9A876;
+    --brown:#3D2C26; --brown2:#6B524A; --brown3:#8B6E63;
+    --shadow-soft:0 8px 24px rgba(61,44,38,.08);
+    --shadow-mid:0 12px 32px rgba(61,44,38,.12);
+  }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--cream); color:var(--brown);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    -webkit-tap-highlight-color:rgba(212,133,139,.15);
+  }
+  a { color:var(--rose); text-decoration:none; }
+
+  /* ════════ NAV ════════ */
+  .legal-nav {
+    background:var(--paper);
+    border-bottom:1px solid rgba(61,44,38,.08);
+    padding:14px 22px;
+    display:flex; align-items:center; justify-content:space-between;
+    position:sticky; top:0; z-index:50;
+  }
+  .legal-nav-brand {
+    font-family:'Cormorant Garamond', serif;
+    font-size:20px; font-weight:600; color:var(--brown);
+  }
+  .legal-nav-brand em { color:var(--rose); font-style:italic; }
+  .legal-nav-back {
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--brown2);
+  }
+
+  /* ════════ COMPACT HERO (1 экран) ════════ */
+  .qr-hero {
+    padding:24px 22px 14px;
+    text-align:center;
+    background:linear-gradient(180deg, var(--cream) 0%, var(--cream2) 100%);
+  }
+  .qr-eyebrow {
+    display:inline-block;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--rose);
+    background:var(--paper);
+    padding:6px 14px;
+    border-radius:50px;
+    box-shadow:var(--shadow-soft);
+    margin-bottom:12px;
+  }
+  .qr-eyebrow::before { content:'✦  '; color:var(--rose); }
+  .qr-hero h1 {
+    font-family:'Cormorant Garamond', serif;
+    font-size:30px; font-weight:500;
+    color:var(--brown); line-height:1.05;
+    letter-spacing:-.6px;
+    margin-bottom:8px;
+  }
+  .qr-hero h1 em { color:var(--rose); font-style:italic; }
+  .qr-hero .lede {
+    font-size:14px; line-height:1.5; color:var(--brown2);
+    max-width:380px; margin:0 auto;
+  }
+
+  /* приветствие если pre-fill сработал */
+  .qr-prefill-greeting {
+    display:none;
+    margin-top:10px;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--brown3);
+  }
+  .qr-prefill-greeting.show { display:block; }
+  .qr-prefill-greeting strong { color:var(--rose); font-weight:600; }
+
+  /* ════════ MAIN ════════ */
+  .qr-main {
+    max-width:680px;
+    margin:0 auto;
+    padding:18px 14px 30px;
+  }
+
+  /* ════════ CALENDAR / IFRAME ════════ */
+  .qr-calendar {
+    background:var(--paper);
+    border-radius:18px;
+    box-shadow:var(--shadow-mid);
+    border:1px solid rgba(61,44,38,.06);
+    overflow:hidden;
+    position:relative;
+    margin-bottom:16px;
+  }
+  .qr-calendar iframe {
+    width:100% !important;
+    min-height:1600px;
+    border:none !important;
+    display:block !important;
+    background:var(--paper);
+  }
+
+  /* loading state */
+  .qr-loading {
+    padding:60px 24px;
+    text-align:center;
+  }
+  .qr-loading .spin {
+    width:44px; height:44px;
+    margin:0 auto 16px;
+    border:3px solid var(--rose-vl);
+    border-top-color:var(--rose);
+    border-radius:50%;
+    animation:spin 0.9s linear infinite;
+  }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .qr-loading-text {
+    font-family:'DM Mono', monospace;
+    font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--brown3);
+  }
+
+  /* ════════ TRUST FOOTER ════════ */
+  .qr-trust {
+    text-align:center;
+    padding:14px 16px;
+    background:var(--paper);
+    border-radius:14px;
+    box-shadow:var(--shadow-soft);
+    border:1px solid rgba(61,44,38,.06);
+    margin-bottom:14px;
+  }
+  .qr-trust-items {
+    display:flex; align-items:center; justify-content:center;
+    flex-wrap:wrap; gap:12px;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--brown3);
+  }
+  .qr-trust-items .sep { color:rgba(61,44,38,.3); }
+  .qr-trust-items strong { color:var(--rose); font-weight:600; }
+
+  /* ════════ STICKY FALLBACK ════════ */
+  .sticky-fallback {
+    position:fixed;
+    bottom:14px; left:14px; right:14px;
+    z-index:100;
+    background:var(--brown);
+    color:var(--cream);
+    padding:14px 18px;
+    border-radius:14px;
+    box-shadow:0 12px 32px rgba(61,44,38,.30);
+    display:none;
+    align-items:center; justify-content:space-between;
+    gap:12px;
+    font-size:13px;
+    line-height:1.4;
+  }
+  .sticky-fallback strong {
+    display:block; font-weight:600; margin-bottom:2px;
+  }
+  .sticky-fallback a {
+    flex-shrink:0;
+    background:var(--rose);
+    color:var(--paper);
+    padding:10px 16px;
+    border-radius:50px;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+    font-weight:600;
+  }
+
+  /* ════════ FOOTER (минималистичный) ════════ */
+  .legal-footer {
+    background:var(--brown);
+    color:var(--cream);
+    padding:24px 22px;
+    text-align:center;
+  }
+  .legal-footer .legal-links {
+    display:flex; gap:12px; flex-wrap:wrap; justify-content:center;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .legal-footer .legal-links a {
+    color:rgba(251,241,232,.7);
+  }
+  .legal-footer .sep { color:rgba(251,241,232,.3); }
+  .legal-footer .copy {
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1px;
+    color:rgba(251,241,232,.5);
+  }
+
+  /* ════════ DESKTOP ════════ */
+  @media (min-width:880px) {
+    .qr-hero { padding:48px 32px 24px; }
+    .qr-hero h1 { font-size:46px; letter-spacing:-1px; margin-bottom:12px; }
+    .qr-hero .lede { font-size:16px; }
+    .qr-main { max-width:780px; padding:24px 32px 50px; }
+    .qr-calendar iframe { min-height:1600px; }
+    .sticky-fallback { display:none !important; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior:auto; }
+    .qr-loading .spin { animation:none; border-top-color:var(--rose-vl); }
+  }
+</style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1521940319314090');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {content_name: 'Razbor quick booking', content_category: 'lead-form-meta'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1521940319314090&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+  ttq.load('D8CSRFRC77U3L7SRH730');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+</head>
+<body>
+
+<nav class="legal-nav">
+  <a href="/" class="legal-nav-brand">SMM <em>с нуля</em></a>
+  <a href="/" class="legal-nav-back">← На главную</a>
+</nav>
+
+<header class="qr-hero">
+  <div class="qr-eyebrow">30-минутный разбор · бесплатно</div>
+  <h1>Выберите удобное <em>время</em></h1>
+  <p class="lede">Малена посмотрит вашу ситуацию и подберёт тариф под нишу. Без обязательств.</p>
+  <div class="qr-prefill-greeting" id="prefillGreeting">
+    Записываем как <strong id="prefillName">вас</strong> · форма уже заполнена
+  </div>
+</header>
+
+<main class="qr-main">
+
+  <!-- ═══ Calendar booking widget · с pre-population из URL ═══ -->
+  <div class="qr-calendar" id="calendarWrapper">
+    <div class="qr-loading" id="calendarLoading">
+      <div class="spin"></div>
+      <div class="qr-loading-text">Загружаем календарь...</div>
+    </div>
+    <iframe
+      id="bookingIframe"
+      src="about:blank"
+      style="width:100%;border:none;overflow:hidden;display:none;"
+      scrolling="no"
+      title="Записаться на разбор · 30 минут на Zoom"
+      loading="eager"></iframe>
+  </div>
+
+  <div class="qr-trust">
+    <div class="qr-trust-items">
+      <span><strong>30 мин</strong> · по Zoom</span>
+      <span class="sep">·</span>
+      <span><strong>0 ₽</strong> · бесплатно</span>
+      <span class="sep">·</span>
+      <span><strong>Без записи</strong> · если занято</span>
+    </div>
+  </div>
+
+</main>
+
+<!-- Sticky fallback CTA -->
+<div class="sticky-fallback" id="sticky-fallback">
+  <div>
+    <strong>Не загружается?</strong>
+    Запишитесь напрямую в Telegram
+  </div>
+  <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">Написать</a>
+</div>
+
+<footer class="legal-footer">
+  <div class="legal-links">
+    <a href="/">Главная</a><span class="sep">·</span>
+    <a href="/privacy">Конфиденциальность</a><span class="sep">·</span>
+    <a href="/terms">Договор-оферта</a>
+  </div>
+  <div class="copy">© 2026 Школа Малены Покладовой</div>
+</footer>
+
+<script>
+  // ════════════════════════════════════════════════════════════
+  // Pre-population logic · читаем URL params → передаём в iframe
+  // ════════════════════════════════════════════════════════════
+  (function(){
+    const BASE_URL = 'https://api.leadconnectorhq.com/widget/booking/vG1zsgJdMciejwQSi9PJ';
+
+    // Алиасы — поддерживаем разные именования параметров (Meta, GHL, кастомные)
+    const FIELD_MAP = {
+      first_name:  ['first_name', 'firstName', 'fname', 'name'],
+      last_name:   ['last_name', 'lastName', 'lname', 'surname'],
+      email:       ['email', 'e'],
+      phone:       ['phone', 'phone_number', 'tel', 'mobile'],
+      notes:       ['notes', 'message', 'niche', 'business']
+    };
+
+    // UTM параметры — отдельно, для трекинга в GHL
+    const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid','msclkid'];
+
+    function getParamValue(urlParams, aliases) {
+      for (let i = 0; i < aliases.length; i++) {
+        const v = urlParams.get(aliases[i]);
+        if (v) return v;
+      }
+      return null;
+    }
+
+    function buildIframeUrl(urlParams) {
+      const targetParams = new URLSearchParams();
+
+      // 1) Pre-fill основных полей
+      Object.keys(FIELD_MAP).forEach(function(targetKey){
+        const value = getParamValue(urlParams, FIELD_MAP[targetKey]);
+        if (value) targetParams.set(targetKey, value);
+      });
+
+      // 2) UTM трекинг (передаём как есть, GHL workflow прочитает)
+      UTM_KEYS.forEach(function(key){
+        const v = urlParams.get(key);
+        if (v) targetParams.set(key, v);
+      });
+
+      // 3) Сохраняем UTM в localStorage для атрибуции
+      const utmData = {};
+      UTM_KEYS.forEach(function(key){
+        const v = urlParams.get(key);
+        if (v) utmData[key] = v;
+      });
+      if (Object.keys(utmData).length > 0) {
+        try {
+          utmData._captured = new Date().toISOString();
+          localStorage.setItem('lead_attribution', JSON.stringify(utmData));
+        } catch(e) {}
+      }
+
+      const queryString = targetParams.toString();
+      return queryString ? BASE_URL + '?' + queryString : BASE_URL;
+    }
+
+    function showGreeting(urlParams) {
+      const firstName = getParamValue(urlParams, FIELD_MAP.first_name);
+      if (firstName) {
+        const el = document.getElementById('prefillName');
+        const wrap = document.getElementById('prefillGreeting');
+        if (el && wrap) {
+          el.textContent = firstName;
+          wrap.classList.add('show');
+        }
+      }
+    }
+
+    function init() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const iframeUrl = buildIframeUrl(urlParams);
+
+      const iframe = document.getElementById('bookingIframe');
+      const loading = document.getElementById('calendarLoading');
+
+      // Загружаем iframe
+      iframe.src = iframeUrl;
+
+      // Показываем приветствие если есть имя
+      showGreeting(urlParams);
+
+      // Скрываем loader когда iframe загрузился
+      iframe.addEventListener('load', function(){
+        loading.style.display = 'none';
+        iframe.style.display = 'block';
+      });
+
+      // Sticky fallback если iframe долго не грузится
+      setTimeout(function(){
+        if (loading.style.display !== 'none' && window.innerWidth < 880) {
+          document.getElementById('sticky-fallback').style.display = 'flex';
+        }
+      }, 5000);
+
+      // Скрыть sticky когда iframe всё-таки загрузился
+      iframe.addEventListener('load', function(){
+        document.getElementById('sticky-fallback').style.display = 'none';
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+
+  // postMessage listener — auto-resize iframe
+  window.addEventListener('message', function(event){
+    if (!event.origin.includes('leadconnectorhq.com') &&
+        !event.origin.includes('msgsndr.com')) return;
+    const data = event.data;
+    if (typeof data === 'object' && data.type === 'resize' && data.height) {
+      const iframe = document.getElementById('bookingIframe');
+      if (iframe) iframe.style.height = data.height + 'px';
+    }
+  });
+</script>
+
+<!-- GHL form embed auto-resize handler -->
+<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
+
+</body>
+</html>

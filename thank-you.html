@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FBF1E8">
+<title>Вы записаны на разбор · что дальше</title>
+<meta name="description" content="Спасибо за запись на персональный разбор. Подробности отправлены на почту. Что посмотреть до встречи.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://assets.cdn.filesafe.space">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root {
+    --cream:#FBF1E8; --cream2:#F5E6D6; --paper:#FFFCF7;
+    --rose:#D4858B; --rose-l:#E8B5B9; --rose-vl:#F5DBDD; --rose-d:#B85860;
+    --gold:#C9A876; --gold-d:#B89866;
+    --brown:#3D2C26; --brown2:#6B524A; --brown3:#8B6E63;
+    --shadow-soft:0 8px 24px rgba(61,44,38,.08);
+    --shadow-mid:0 12px 32px rgba(61,44,38,.12);
+    --shadow-deep:0 18px 50px rgba(61,44,38,.18);
+  }
+  html { scroll-behavior:smooth; }
+  body {
+    background:var(--cream); color:var(--brown);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    -webkit-tap-highlight-color:rgba(212,133,139,.15);
+  }
+  a { color:var(--rose); text-decoration:none; }
+
+  /* ════════ NAV ════════ */
+  .top-nav {
+    background:var(--paper);
+    border-bottom:1px solid rgba(61,44,38,.08);
+    padding:14px 22px;
+    display:flex; align-items:center; justify-content:space-between;
+    position:sticky; top:0; z-index:50;
+  }
+  .top-nav-brand {
+    font-family:'Cormorant Garamond', serif;
+    font-size:20px; font-weight:600; color:var(--brown);
+  }
+  .top-nav-brand em { color:var(--rose); font-style:italic; }
+
+  /* ════════ HERO confirmation ════════ */
+  .ty-hero {
+    padding:48px 22px 40px;
+    text-align:center;
+    background:linear-gradient(180deg, var(--cream2) 0%, var(--cream) 60%, var(--paper) 100%);
+    position:relative;
+    overflow:hidden;
+  }
+  /* декоративный кружок-сияние сверху */
+  .ty-hero::before {
+    content:'';
+    position:absolute;
+    top:-90px; left:50%; transform:translateX(-50%);
+    width:240px; height:240px;
+    background:radial-gradient(circle, rgba(212,133,139,.18) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .ty-checkmark {
+    position:relative; z-index:2;
+    width:84px; height:84px;
+    margin:0 auto 22px;
+    border-radius:50%;
+    background:var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 30px rgba(212,133,139,.25);
+    animation:ty-pop .6s cubic-bezier(.22,1,.36,1) both;
+  }
+  .ty-checkmark svg {
+    width:42px; height:42px;
+    color:var(--rose);
+  }
+  @keyframes ty-pop {
+    0%   { transform:scale(.4); opacity:0; }
+    60%  { transform:scale(1.08); opacity:1; }
+    100% { transform:scale(1); }
+  }
+  .ty-eyebrow {
+    position:relative; z-index:2;
+    display:inline-block;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--rose);
+    background:var(--paper);
+    padding:6px 14px;
+    border-radius:50px;
+    box-shadow:var(--shadow-soft);
+    margin-bottom:18px;
+  }
+  .ty-eyebrow::before { content:'✦  '; color:var(--rose); }
+  .ty-hero h1 {
+    position:relative; z-index:2;
+    font-family:'Cormorant Garamond', serif;
+    font-size:36px; font-weight:500;
+    color:var(--brown); line-height:1.05;
+    letter-spacing:-.8px;
+    margin-bottom:14px;
+    max-width:600px; margin-left:auto; margin-right:auto;
+  }
+  .ty-hero h1 em { color:var(--rose); font-style:italic; }
+  .ty-hero .lede {
+    position:relative; z-index:2;
+    font-size:16px; line-height:1.6; color:var(--brown2);
+    max-width:540px; margin:0 auto;
+  }
+
+  /* ════════ MAIN ════════ */
+  .ty-main {
+    max-width:760px;
+    margin:0 auto;
+    padding:0 14px 60px;
+  }
+
+  /* ════════ INFO CARD · что отправили ════════ */
+  .ty-info-card {
+    background:var(--paper);
+    border-radius:18px;
+    padding:24px 26px;
+    box-shadow:var(--shadow-soft);
+    border:1px solid rgba(61,44,38,.06);
+    margin:-10px 0 24px;
+    position:relative; z-index:3;
+  }
+  .ty-info-card h2 {
+    font-family:'Cormorant Garamond', serif;
+    font-size:22px; font-weight:600; color:var(--brown);
+    margin-bottom:14px;
+  }
+  .ty-info-card h2 em { color:var(--rose); font-style:italic; }
+  .ty-info-list {
+    list-style:none;
+  }
+  .ty-info-list li {
+    font-size:14.5px; color:var(--brown);
+    line-height:1.5;
+    padding:10px 0 10px 30px;
+    position:relative;
+    border-bottom:1px solid rgba(61,44,38,.06);
+  }
+  .ty-info-list li:last-child { border-bottom:none; padding-bottom:0; }
+  .ty-info-list li:first-child { padding-top:0; }
+  .ty-info-list li::before {
+    content:'';
+    position:absolute;
+    left:0; top:14px;
+    width:18px; height:18px;
+    border-radius:50%;
+    background:var(--rose-vl);
+    box-shadow:inset 0 0 0 4px var(--paper), inset 0 0 0 5px var(--rose);
+  }
+  .ty-info-list li strong { color:var(--brown); font-weight:600; }
+  .ty-info-list li em {
+    color:var(--brown3);
+    font-style:normal;
+    font-size:13px;
+    display:block;
+    margin-top:2px;
+  }
+
+  /* ════════ TELEGRAM CTA · prominent ════════ */
+  .ty-tg-card {
+    background:linear-gradient(135deg, var(--paper) 0%, var(--rose-vl) 100%);
+    border-radius:20px;
+    padding:28px 24px;
+    box-shadow:var(--shadow-mid);
+    border:1px solid rgba(212,133,139,.18);
+    margin-bottom:32px;
+    text-align:center;
+  }
+  .ty-tg-card h2 {
+    font-family:'Cormorant Garamond', serif;
+    font-size:26px; font-weight:600; color:var(--brown);
+    line-height:1.15;
+    margin-bottom:8px;
+  }
+  .ty-tg-card h2 em { color:var(--rose); font-style:italic; }
+  .ty-tg-card p {
+    font-size:14.5px; color:var(--brown2);
+    line-height:1.55;
+    max-width:480px; margin:0 auto 20px;
+  }
+  .ty-tg-cta {
+    display:inline-flex; align-items:center; gap:10px;
+    padding:16px 32px;
+    background:var(--brown);
+    color:var(--cream);
+    border-radius:50px;
+    font-family:'DM Mono', monospace;
+    font-size:12px; letter-spacing:2px; text-transform:uppercase;
+    font-weight:600;
+    box-shadow:0 12px 28px rgba(61,44,38,.30);
+    transition:transform .15s, box-shadow .15s;
+    position:relative;
+    overflow:hidden;
+  }
+  .ty-tg-cta:active { transform:scale(.97); }
+  .ty-tg-cta:hover { transform:translateY(-2px); box-shadow:0 18px 36px rgba(61,44,38,.36); color:var(--cream); }
+  .ty-tg-cta svg { width:18px; height:18px; }
+
+  /* ════════ VIDEOS section ════════ */
+  .ty-videos-eyebrow {
+    text-align:center;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--brown3);
+    margin-bottom:20px;
+  }
+  .ty-videos-eyebrow::before, .ty-videos-eyebrow::after {
+    content:'  ·  ';
+    color:var(--rose);
+  }
+
+  .ty-video-block {
+    background:var(--paper);
+    border-radius:20px;
+    padding:22px 22px 26px;
+    box-shadow:var(--shadow-mid);
+    border:1px solid rgba(61,44,38,.06);
+    margin-bottom:24px;
+  }
+  .ty-video-block h3 {
+    font-family:'Cormorant Garamond', serif;
+    font-size:24px; font-weight:600; color:var(--brown);
+    line-height:1.2;
+    margin-bottom:6px;
+    text-align:center;
+  }
+  .ty-video-block h3 em { color:var(--rose); font-style:italic; }
+  .ty-video-block .ty-video-sub {
+    font-family:'DM Mono', monospace;
+    font-size:9.5px; letter-spacing:1.8px; text-transform:uppercase;
+    color:var(--brown3);
+    margin-bottom:18px;
+    text-align:center;
+  }
+
+  .ty-video-frame {
+    position:relative;
+    width:100%;
+    aspect-ratio: 16/9;
+    background:linear-gradient(135deg, var(--cream2) 0%, var(--rose-vl) 50%, var(--gold) 200%);
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:var(--shadow-soft);
+  }
+  .ty-video-frame video {
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    background:var(--brown);
+  }
+  /* кастомный poster overlay (показывается до первого play) */
+  .ty-video-poster {
+    position:absolute;
+    inset:0;
+    background-color:var(--brown);
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    cursor:pointer;
+    z-index:2;
+    transition:opacity .35s ease;
+    padding:20px;
+    text-align:center;
+  }
+  .ty-video-poster::before {
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(61,44,38,.05) 0%, rgba(61,44,38,.15) 50%, rgba(61,44,38,.30) 100%);
+    pointer-events:none;
+  }
+  .ty-video-poster.hidden {
+    opacity:0;
+    pointer-events:none;
+  }
+  .ty-video-poster .ty-poster-play {
+    position:relative;
+    width:72px; height:72px;
+    border-radius:50%;
+    background:var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 14px 36px rgba(212,133,139,.40);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .ty-video-poster:hover .ty-poster-play {
+    transform:scale(1.06);
+    box-shadow:0 20px 44px rgba(212,133,139,.50);
+  }
+  .ty-video-poster .ty-poster-play::after {
+    content:'';
+    position:absolute;
+    inset:-6px;
+    border-radius:50%;
+    border:2px solid rgba(212,133,139,.35);
+    animation:ty-pulse 2s ease-in-out infinite;
+  }
+  @keyframes ty-pulse {
+    0%, 100% { transform:scale(1); opacity:.6; }
+    50% { transform:scale(1.18); opacity:0; }
+  }
+  .ty-video-poster .ty-poster-play svg {
+    width:28px; height:28px;
+    color:var(--rose);
+    margin-left:4px;
+  }
+  .ty-video-poster .ty-poster-label {
+    position:relative;
+    font-family:'DM Mono', monospace;
+    font-size:10px;
+    letter-spacing:2.5px;
+    text-transform:uppercase;
+    color:var(--brown);
+    background:var(--paper);
+    padding:7px 16px;
+    border-radius:50px;
+    box-shadow:var(--shadow-soft);
+  }
+  @media (min-width:880px) {
+    .ty-video-poster .ty-poster-play { width:88px; height:88px; }
+    .ty-video-poster .ty-poster-play svg { width:34px; height:34px; }
+    .ty-video-poster .ty-poster-label { font-size:11px; padding:8px 18px; }
+  }
+
+  /* ════════ HELP card (если что-то непонятно) ════════ */
+  .ty-help-card {
+    background:var(--paper);
+    border-radius:16px;
+    padding:22px 24px;
+    box-shadow:var(--shadow-soft);
+    border:1px solid rgba(61,44,38,.06);
+    text-align:center;
+  }
+  .ty-help-card h3 {
+    font-family:'Cormorant Garamond', serif;
+    font-size:20px; font-weight:600; color:var(--brown);
+    margin-bottom:8px;
+  }
+  .ty-help-card p {
+    font-size:13.5px; color:var(--brown2);
+    line-height:1.55;
+  }
+  .ty-help-card a {
+    color:var(--rose);
+    border-bottom:1px solid rgba(212,133,139,.4);
+  }
+
+  /* ════════ FOOTER ════════ */
+  .legal-footer {
+    background:var(--brown);
+    color:var(--cream);
+    padding:30px 22px;
+    text-align:center;
+  }
+  .legal-footer .legal-links {
+    display:flex; gap:12px; flex-wrap:wrap; justify-content:center;
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .legal-footer .legal-links a {
+    color:rgba(251,241,232,.7);
+  }
+  .legal-footer .sep { color:rgba(251,241,232,.3); }
+  .legal-footer .footer-contact {
+    font-size:13px; color:rgba(251,241,232,.78);
+    line-height:1.55;
+  }
+  .legal-footer .footer-contact a {
+    color:var(--rose-l);
+    border-bottom:1px solid rgba(232,181,185,.4);
+  }
+  .legal-footer .copy {
+    font-family:'DM Mono', monospace;
+    font-size:10px; letter-spacing:1px;
+    color:rgba(251,241,232,.5);
+    margin-top:14px;
+  }
+
+  /* ════════ DESKTOP (≥880px) ════════ */
+  @media (min-width:880px) {
+    .ty-hero { padding:80px 32px 56px; }
+    .ty-hero h1 { font-size:54px; letter-spacing:-1.2px; margin-bottom:18px; }
+    .ty-hero .lede { font-size:18px; }
+    .ty-checkmark { width:96px; height:96px; }
+    .ty-checkmark svg { width:50px; height:50px; }
+
+    .ty-main { max-width:860px; padding:0 32px 80px; }
+
+    .ty-info-card { padding:30px 36px; margin:-30px 0 30px; }
+    .ty-info-card h2 { font-size:26px; }
+    .ty-info-list li { font-size:15px; padding-left:34px; }
+    .ty-info-list li::before { width:20px; height:20px; }
+
+    .ty-tg-card { padding:36px 32px; margin-bottom:48px; }
+    .ty-tg-card h2 { font-size:32px; }
+    .ty-tg-card p { font-size:15.5px; margin-bottom:24px; }
+    .ty-tg-cta { padding:18px 36px; font-size:13px; }
+
+    .ty-videos-eyebrow { font-size:11px; margin-bottom:24px; }
+    .ty-video-block { padding:28px 28px 32px; margin-bottom:30px; }
+    .ty-video-block h3 { font-size:28px; margin-bottom:8px; }
+    .ty-video-block .ty-video-sub { font-size:10px; margin-bottom:20px; }
+
+    .ty-help-card { padding:26px 32px; }
+    .ty-help-card h3 { font-size:22px; }
+    .ty-help-card p { font-size:14.5px; }
+  }
+
+  /* prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration:0.01ms !important;
+      transition-duration:0.01ms !important;
+    }
+    html { scroll-behavior:auto; }
+    .ty-checkmark { animation:none; }
+  }
+</style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1521940319314090');
+fbq('track', 'PageView');
+fbq('track', 'Lead', {content_name: 'Razbor booking confirmed', content_category: 'discovery-call', value: 0, currency: 'USD'});
+fbq('track', 'CompleteRegistration', {content_name: 'Razbor booking confirmed'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1521940319314090&ev=Lead&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+  ttq.load('D8CSRFRC77U3L7SRH730');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="/" class="top-nav-brand">SMM <em>с нуля</em></a>
+</nav>
+
+<header class="ty-hero">
+  <div class="ty-checkmark" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+  </div>
+  <div class="ty-eyebrow">Запись подтверждена</div>
+  <h1>Вы записаны на <em>персональный разбор</em></h1>
+  <p class="lede">Менеджер увидится с вами в Google Meet в выбранное время. Если что-то изменится — отмените или перенесите через письмо в почте.</p>
+</header>
+
+<main class="ty-main">
+
+  <!-- ═══ Что отправлено на почту ═══ -->
+  <section class="ty-info-card">
+    <h2>Проверьте <em>почту</em></h2>
+    <ul class="ty-info-list">
+      <li>
+        <strong>Приглашение в Google Meet</strong> с датой и временем разбора
+        <em>Сохраните, чтобы не потерять. Календарь напомнит за 24 часа и за 30 минут.</em>
+      </li>
+      <li>
+        <strong>Кнопки переноса и отмены</strong> прямо в письме
+        <em>Если время не подходит — выберите другое в один клик.</em>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ═══ Telegram CTA ═══ -->
+  <section class="ty-tg-card">
+    <h2>Перейдите в наш <em>Telegram</em></h2>
+    <p>Мы отправим вам подробности о курсе и материалы, которые помогут заранее подготовиться к разбору.</p>
+    <a class="ty-tg-cta" href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M21.05 2.927a1.5 1.5 0 0 0-1.55-.252L2.5 9.473a1.5 1.5 0 0 0 .14 2.84l4.36 1.43 1.69 5.4a1 1 0 0 0 1.71.36l2.45-2.59 4.65 3.42a1.5 1.5 0 0 0 2.36-.92l3.06-14.06a1.5 1.5 0 0 0-.87-1.426ZM9.7 14.6l-.84 4.13L7.5 14.42l9.83-7.74L9.7 14.6Z"/>
+      </svg>
+      Написать в Telegram
+    </a>
+  </section>
+
+  <!-- ═══ Videos section ═══ -->
+  <div class="ty-videos-eyebrow">Обязательно посмотрите эти видео</div>
+
+  <section class="ty-video-block">
+    <h3>Видео полностью описывающее <em>обучение</em></h3>
+    <div class="ty-video-sub">// Урок от Малены Покладовой</div>
+    <div class="ty-video-frame">
+      <div class="ty-video-poster" style="background-image:url('images/video-poster-course.jpeg')">
+        <div class="ty-poster-play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        </div>
+        <div class="ty-poster-label">Урок · смотреть</div>
+      </div>
+      <video
+        controls
+        playsinline
+        preload="none"
+        poster="images/video-poster-course.jpeg"
+        src="https://assets.cdn.filesafe.space/55lHQOuDwUKKCwgmTmLW/media/69aeeb39bfc81f772c184091.mov">
+        Ваш браузер не поддерживает видео. <a href="https://assets.cdn.filesafe.space/55lHQOuDwUKKCwgmTmLW/media/69aeeb39bfc81f772c184091.mov" target="_blank" rel="noopener">Открыть видео в новой вкладке</a>.
+      </video>
+    </div>
+  </section>
+
+  <section class="ty-video-block">
+    <h3>Ответы на часто задаваемые <em>вопросы</em></h3>
+    <div class="ty-video-sub">// Самые популярные вопросы про курс</div>
+    <div class="ty-video-frame">
+      <div class="ty-video-poster" style="background-image:url('images/video-poster-faq.jpeg')">
+        <div class="ty-poster-play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        </div>
+        <div class="ty-poster-label">Ответы · смотреть</div>
+      </div>
+      <video
+        controls
+        playsinline
+        preload="none"
+        poster="images/video-poster-faq.jpeg"
+        src="https://assets.cdn.filesafe.space/55lHQOuDwUKKCwgmTmLW/media/69aeec9fc509a024e638fdfa.mov">
+        Ваш браузер не поддерживает видео. <a href="https://assets.cdn.filesafe.space/55lHQOuDwUKKCwgmTmLW/media/69aeec9fc509a024e638fdfa.mov" target="_blank" rel="noopener">Открыть видео в новой вкладке</a>.
+      </video>
+    </div>
+  </section>
+
+  <!-- ═══ Help card ═══ -->
+  <section class="ty-help-card">
+    <h3>Что-то пошло не так?</h3>
+    <p>Не пришло письмо или нужно изменить время — напишите в <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">Telegram-поддержку</a>, поможем вручную.</p>
+  </section>
+
+</main>
+
+<footer class="legal-footer">
+  <div class="legal-links">
+    <a href="/">Главная</a><span class="sep">·</span>
+    <a href="/privacy">Конфиденциальность</a><span class="sep">·</span>
+    <a href="/terms">Договор-оферта</a><span class="sep">·</span>
+    <a href="/refund">Условия возврата</a>
+  </div>
+  <p class="footer-contact">Telegram-поддержка: <a href="https://t.me/Malena_Pocladova_Zabota">@Malena_Pocladova_Zabota</a></p>
+  <div class="copy">© 2026 Школа Малены Покладовой</div>
+</footer>
+
+<script>
+  // Click-to-play: скрываем кастомный poster и стартуем видео
+  document.querySelectorAll('.ty-video-poster').forEach(function(poster){
+    poster.addEventListener('click', function(){
+      const video = poster.parentElement.querySelector('video');
+      if (!video) return;
+      poster.classList.add('hidden');
+      video.play().catch(function(){
+        // если автозапуск блокирован браузером — controls уже видны, пользователь нажмёт сам
+      });
+    });
+  });
+  // Если пользователь сам нажмёт play на video controls — тоже скроем poster
+  document.querySelectorAll('.ty-video-block video').forEach(function(video){
+    video.addEventListener('play', function(){
+      const poster = video.parentElement.querySelector('.ty-video-poster');
+      if (poster) poster.classList.add('hidden');
+    });
+  });
+</script>
+
+</body>
+</html>
