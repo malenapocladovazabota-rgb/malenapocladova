@@ -725,5 +725,106 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
     setTimeout(show, 6000);
   })();
 </script>
+<!-- ===== VIP order-bump попап (перехват кнопок «Занять место») ===== -->
+<style>
+  .vp-ov{position:fixed; inset:0; background:rgba(45,30,25,.55); backdrop-filter:blur(3px); display:flex; align-items:center; justify-content:center; padding:20px; opacity:0; pointer-events:none; transition:opacity .22s; z-index:120;}
+  .vp-ov.on{opacity:1; pointer-events:auto;}
+  .vp-modal{background:#FFFCF7; border-radius:22px; max-width:470px; width:100%; padding:26px 24px 24px; text-align:left; position:relative; box-shadow:0 30px 70px rgba(45,30,25,.4); transform:translateY(16px) scale(.97); transition:transform .26s cubic-bezier(.2,.8,.2,1); max-height:94vh; overflow:auto;}
+  .vp-ov.on .vp-modal{transform:none;}
+  .vp-modal::before{content:''; position:absolute; top:0; left:0; right:0; height:5px; border-radius:22px 22px 0 0; background:linear-gradient(90deg,#6E1E2B,#C9A876);}
+  .vp-x{position:absolute; top:12px; right:15px; background:none; border:none; font-size:24px; color:#8B6E63; cursor:pointer; line-height:1;}
+  .vp-x:hover{color:#3D2C26;}
+  .vp-lbl{font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#8B6E63; margin:4px 0 14px;}
+  .vp-item{display:flex; justify-content:space-between; align-items:flex-start; gap:14px; padding-bottom:16px; border-bottom:1px solid rgba(61,44,38,.13);}
+  .vp-item .vp-t{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:19px; color:#3D2C26;}
+  .vp-item .vp-d{font-size:12.5px; color:#6B524A; margin-top:2px;}
+  .vp-item .vp-p{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:19px; color:#3D2C26;}
+  .vp-bump{display:block; margin:16px 0; border:2px dashed #A9863F; background:linear-gradient(180deg,#fff,#FDF3EC); border-radius:16px; padding:15px 15px 4px; cursor:pointer; transition:border-color .2s, box-shadow .2s;}
+  .vp-bump.on{border-style:solid; border-color:#6E1E2B; box-shadow:0 10px 26px rgba(110,30,43,.14);}
+  .vp-bump-top{display:flex; align-items:flex-start; gap:12px;}
+  .vp-bump-top input{appearance:none; -webkit-appearance:none; flex:0 0 auto; width:24px; height:24px; margin-top:2px; border:2px solid #A9863F; border-radius:7px; background:#fff; position:relative; cursor:pointer; transition:.15s;}
+  .vp-bump-top input:checked{background:#6E1E2B; border-color:#6E1E2B;}
+  .vp-bump-top input:checked::after{content:'✓'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:15px; font-weight:700;}
+  .vp-bump-h{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:18px; color:#6E1E2B; line-height:1.15;}
+  .vp-plus{font-family:'DM Mono',monospace; font-size:12px; background:#6E1E2B; color:#fff; padding:2px 9px; border-radius:100px; margin-left:6px; vertical-align:middle;}
+  .vp-bump-sub{font-size:12.5px; color:#6B524A; margin-top:3px;}
+  .vp-bump ul{list-style:none; margin:11px 0 11px 36px;}
+  .vp-bump li{font-size:13.5px; color:#3D2C26; padding:4px 0 4px 22px; position:relative;}
+  .vp-bump li::before{content:'✓'; position:absolute; left:0; top:4px; color:#6E1E2B; font-weight:700;}
+  .vp-total{display:flex; justify-content:space-between; align-items:center; margin:6px 0 16px;}
+  .vp-total-l{font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#8B6E63;}
+  .vp-val{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:32px; color:#3D2C26;}
+  .vp-val .vp-old{font-size:18px; color:#8B6E63; text-decoration:line-through; margin-right:8px; font-weight:600;}
+  .vp-pay{display:flex; align-items:center; justify-content:center; gap:8px; width:100%; background:#6E1E2B; color:#fff; font-family:'DM Mono',monospace; font-weight:500; font-size:15px; letter-spacing:.03em; padding:18px; border-radius:100px; text-decoration:none; box-shadow:0 12px 26px rgba(110,30,43,.28); transition:transform .15s, background .15s;}
+  .vp-pay:hover{transform:translateY(-2px); background:#8A2A38;}
+  .vp-trust{text-align:center; font-size:12px; color:#8B6E63; margin-top:12px;}
+</style>
+
+<div class="vp-ov" id="vpOv" aria-hidden="true">
+  <div class="vp-modal" role="dialog" aria-modal="true" aria-label="Оформление участия">
+    <button class="vp-x" id="vpX" aria-label="Закрыть">&times;</button>
+    <div class="vp-lbl">Ваш заказ</div>
+    <div class="vp-item">
+      <div>
+        <div class="vp-t">Интенсив «3 дня 3 рилс»</div>
+        <div class="vp-d">3 живых эфира · Telegram · розыгрыш MacBook</div>
+      </div>
+      <div class="vp-p">$15</div>
+    </div>
+    <label class="vp-bump" id="vpBump">
+      <div class="vp-bump-top">
+        <input type="checkbox" id="vpVip">
+        <div>
+          <div class="vp-bump-h">Добавить VIP-пакет <span class="vp-plus">+$35</span></div>
+          <div class="vp-bump-sub">Максимум за три вечера — и $50 вернутся в счёт обучения.</div>
+        </div>
+      </div>
+      <ul>
+        <li>Личный разбор вашего Reels от Малены</li>
+        <li>Записи всех 3 эфиров навсегда</li>
+        <li>Шаблоны сценариев + чек-лист монтажа CapCut</li>
+        <li>Гайд по монетизации Reels</li>
+        <li>Именной сертификат</li>
+        <li>$50 в счёт курса СММ 5.0</li>
+      </ul>
+    </label>
+    <div class="vp-total"><span class="vp-total-l">Итого</span><span class="vp-val" id="vpTotal">$15</span></div>
+    <a class="vp-pay" id="vpPay" href="#">Перейти к оплате · <span id="vpAmt">$15</span></a>
+    <div class="vp-trust">Оплата картой через Stripe · доступ сразу после оплаты</div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    var STD='https://link.fastpaydirect.com/payment-link/69e9529c7dd3512d920788c5';
+    var VIP='https://link.fastpaydirect.com/payment-link/6a56cbdea655fa0b802a44cb';
+    var keep=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','ref'];
+    var src=new URLSearchParams(location.search), pass=new URLSearchParams();
+    keep.forEach(function(k){ if(src.get(k)) pass.set(k, src.get(k)); });
+    var qs=pass.toString();
+    function withUtm(u){ return qs ? u+(u.indexOf('?')>-1?'&':'?')+qs : u; }
+
+    var ov=document.getElementById('vpOv'), vip=document.getElementById('vpVip'), bump=document.getElementById('vpBump'),
+        total=document.getElementById('vpTotal'), pay=document.getElementById('vpPay'), amt=document.getElementById('vpAmt');
+    if(!ov) return;
+    function track(ev,val){ if(window.fbq){ val?fbq('track',ev,val):fbq('trackCustom',ev); } }
+    function upd(){
+      if(vip.checked){ bump.classList.add('on'); total.innerHTML='<span class="vp-old">$15</span>$50'; amt.textContent='$50'; pay.setAttribute('href', withUtm(VIP)); }
+      else { bump.classList.remove('on'); total.textContent='$15'; amt.textContent='$15'; pay.setAttribute('href', withUtm(STD)); }
+    }
+    function open(){ ov.classList.add('on'); ov.setAttribute('aria-hidden','false'); track('CheckoutModalOpen'); track('InitiateCheckout',{value:15,currency:'USD'}); }
+    function close(){ ov.classList.remove('on'); ov.setAttribute('aria-hidden','true'); }
+
+    document.querySelectorAll('a.js-pay').forEach(function(a){
+      a.addEventListener('click', function(e){ e.preventDefault(); open(); });
+    });
+    document.getElementById('vpX').addEventListener('click', close);
+    ov.addEventListener('click', function(e){ if(e.target===ov) close(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+    vip.addEventListener('change', function(){ upd(); track(vip.checked?'SelectVIP':'DeselectVIP'); });
+    pay.addEventListener('click', function(){ track('Checkout_'+(vip.checked?'VIP':'Standard'), {value:vip.checked?50:15, currency:'USD'}); });
+    upd();
+  })();
+</script>
 </body>
 </html>

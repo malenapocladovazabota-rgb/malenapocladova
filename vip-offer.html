@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FBF1E8">
+<title>Оформление участия · интенсив «3 дня 3 рилс»</title>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1350449057220500');fbq('track','PageView');
+</script>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --cream:#FBF1E8; --cream2:#F5E6D6; --paper:#FFFCF7;
+    --rose:#B23A48; --rose-d:#6E1E2B; --gold:#C9A876; --gold-d:#A9863F;
+    --brown:#3D2C26; --brown2:#6B524A; --brown3:#8B6E63;
+    --line:rgba(61,44,38,.13); --shadow:0 24px 60px rgba(61,44,38,.16);
+  }
+  body{background:radial-gradient(120% 90% at 50% 0%, var(--cream) 0%, var(--cream2) 100%); color:var(--brown); font-family:'Inter',sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:36px 18px;}
+  .wrap{width:100%; max-width:560px;}
+  .brand{font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; color:var(--brown); text-align:center; margin-bottom:22px;}
+  .brand em{color:var(--rose); font-style:italic;}
+  .eyebrow{font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--rose-d); text-align:center;}
+  h1{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:clamp(30px,6vw,42px); line-height:1.05; text-align:center; margin:8px 0 24px;}
+  h1 em{font-style:italic; color:var(--rose-d);}
+
+  .card{background:var(--paper); border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow); padding:28px 26px; position:relative; overflow:hidden;}
+  .card::before{content:''; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,var(--rose-d),var(--gold));}
+  .card-lbl{font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--brown3); margin-bottom:16px;}
+
+  .item{display:flex; justify-content:space-between; align-items:flex-start; gap:14px; padding-bottom:18px; border-bottom:1px solid var(--line);}
+  .item .t{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:20px; color:var(--brown);}
+  .item .d{font-size:13px; color:var(--brown2); margin-top:2px;}
+  .item .p{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:20px; white-space:nowrap;}
+
+  /* Order bump */
+  .bump{margin:18px 0; border:2px dashed var(--gold-d); background:linear-gradient(180deg,#fff,#FDF3EC); border-radius:16px; padding:16px 16px 4px; transition:border-color .2s, box-shadow .2s;}
+  .bump.on{border-style:solid; border-color:var(--rose-d); box-shadow:0 10px 26px rgba(110,30,43,.14);}
+  .bump-top{display:flex; align-items:flex-start; gap:12px; cursor:pointer;}
+  .bump-top input{appearance:none; -webkit-appearance:none; flex:0 0 auto; width:24px; height:24px; margin-top:2px; border:2px solid var(--gold-d); border-radius:7px; background:#fff; position:relative; cursor:pointer; transition:.15s;}
+  .bump-top input:checked{background:var(--rose-d); border-color:var(--rose-d);}
+  .bump-top input:checked::after{content:'✓'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:15px; font-weight:700;}
+  .bump-h{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:19px; color:var(--rose-d); line-height:1.15;}
+  .bump-h .plus{font-family:'DM Mono',monospace; font-size:12px; background:var(--rose-d); color:#fff; padding:2px 9px; border-radius:100px; margin-left:8px; vertical-align:middle; letter-spacing:.02em;}
+  .bump-sub{font-size:13px; color:var(--brown2); margin-top:3px;}
+  .bump ul{list-style:none; margin:12px 0 12px 36px;}
+  .bump li{font-size:14px; color:var(--brown); padding:5px 0 5px 24px; position:relative;}
+  .bump li::before{content:'✓'; position:absolute; left:0; top:5px; color:var(--rose-d); font-weight:700;}
+  .bump li b{color:var(--brown);}
+
+  .total{display:flex; justify-content:space-between; align-items:center; margin:8px 0 20px;}
+  .total .lbl{font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--brown3);}
+  .total .val{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:34px; color:var(--brown);}
+  .total .val .old{font-size:19px; color:var(--brown3); text-decoration:line-through; margin-right:8px; font-weight:600;}
+
+  .pay{display:flex; align-items:center; justify-content:center; gap:10px; width:100%; background:var(--rose-d); color:#fff; font-family:'DM Mono',monospace; font-weight:500; font-size:15px; letter-spacing:.03em; padding:19px 24px; border-radius:100px; text-decoration:none; box-shadow:0 14px 30px rgba(110,30,43,.3); transition:transform .15s, background .15s;}
+  .pay:hover{transform:translateY(-2px); background:#8A2A38;}
+  .trust{text-align:center; font-size:12.5px; color:var(--brown3); margin-top:14px;}
+  .foot{text-align:center; font-family:'DM Mono',monospace; font-size:10.5px; letter-spacing:.08em; color:var(--brown3); margin-top:22px;}
+  .foot a{color:var(--brown2);}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">3×3 <em>рилс</em></div>
+    <div class="eyebrow">Оформление участия</div>
+    <h1>Займите место <em>на интенсиве</em></h1>
+
+    <div class="card">
+      <div class="card-lbl">Ваш заказ</div>
+
+      <div class="item">
+        <div>
+          <div class="t">Интенсив «3 дня 3 рилс»</div>
+          <div class="d">3 живых эфира в Zoom · доступ в закрытый Telegram · розыгрыш MacBook</div>
+        </div>
+        <div class="p">$15</div>
+      </div>
+
+      <label class="bump" id="bump">
+        <div class="bump-top">
+          <input type="checkbox" id="vip">
+          <div>
+            <div class="bump-h">Добавить VIP-пакет <span class="plus">+$35</span></div>
+            <div class="bump-sub">Максимум пользы за три вечера — и деньги вернутся в курс.</div>
+          </div>
+        </div>
+        <ul>
+          <li><b>Личный разбор</b> одного вашего Reels от Малены</li>
+          <li><b>Записи всех 3 эфиров</b> — навсегда</li>
+          <li><b>Шаблоны сценариев</b> + пресеты монтажа CapCut + чек-листы</li>
+          <li><b>Именной сертификат</b></li>
+          <li><b>$50 засчитываются</b> в стоимость курса СММ 5.0</li>
+        </ul>
+      </label>
+
+      <div class="total">
+        <span class="lbl">Итого</span>
+        <span class="val" id="total">$15</span>
+      </div>
+
+      <a class="pay" id="payBtn" href="https://link.fastpaydirect.com/payment-link/69e9529c7dd3512d920788c5">
+        Перейти к оплате · <span id="payAmt">$15</span>
+      </a>
+      <div class="trust">Оплата картой через Stripe · доступ открывается сразу после оплаты</div>
+    </div>
+
+    <div class="foot">© 2026 Personal Growth Lab · Малена Покладова</div>
+  </div>
+
+<script>
+  // Ссылки оплаты. STD — рабочая. VIP — ПОСТАВЬ сюда новую ссылку на $50 из GHL.
+  var STD_LINK = 'https://link.fastpaydirect.com/payment-link/69e9529c7dd3512d920788c5';
+  var VIP_LINK = ''; // TODO: вставить payment link на $50, когда создашь в GHL
+
+  var vip=document.getElementById('vip'), bump=document.getElementById('bump'),
+      total=document.getElementById('total'), payBtn=document.getElementById('payBtn'), payAmt=document.getElementById('payAmt');
+
+  function upd(){
+    if(vip.checked){
+      bump.classList.add('on');
+      total.innerHTML='<span class="old">$15</span>$50';
+      payAmt.textContent='$50';
+      payBtn.setAttribute('href', VIP_LINK || '#');
+    } else {
+      bump.classList.remove('on');
+      total.textContent='$15';
+      payAmt.textContent='$15';
+      payBtn.setAttribute('href', STD_LINK);
+    }
+  }
+  vip.addEventListener('change', function(){
+    upd();
+    if(window.fbq) fbq('trackCustom', vip.checked ? 'SelectVIP' : 'DeselectVIP');
+  });
+  payBtn.addEventListener('click', function(){
+    if(window.fbq) fbq('track','InitiateCheckout', {value: vip.checked?50:15, currency:'USD'});
+  });
+  upd();
+</script>
+</body>
+</html>
