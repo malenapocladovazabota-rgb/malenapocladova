@@ -18,5 +18,9 @@
 /privacy-intensiv.html  /privacy-intensiv  301
 /thank-you-intensiv-vip.html  /thank-you-intensiv-vip  301
 
+# Короткие ссылки отдела продаж → лендинг с UTM (трекинг по utm_content)
+/sales      /intensiv?utm_source=manager&utm_medium=personal&utm_campaign=intensive_july&utm_content=sales     302
+/s/maria    /intensiv?utm_source=manager&utm_medium=personal&utm_campaign=intensive_july&utm_content=maria     302
+
 # Cloudflare Pages автоматически отдаёт razbor.html по запросу /razbor —
 # редиректы выше нужны только для каноничности (если кто-то ввёл вручную с .html)
