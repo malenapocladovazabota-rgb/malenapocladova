@@ -815,9 +815,17 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
     function open(){ ov.classList.add('on'); ov.setAttribute('aria-hidden','false'); track('CheckoutModalOpen'); track('InitiateCheckout',{value:15,currency:'USD'}); }
     function close(){ ov.classList.remove('on'); ov.setAttribute('aria-hidden','true'); }
 
-    document.querySelectorAll('a.js-pay').forEach(function(a){
-      a.addEventListener('click', function(e){ e.preventDefault(); open(); });
-    });
+    var VIP_POPUP_ENABLED = false; // false = попап выключен, кнопки ведут сразу на оплату $15 (замер базовой конверсии). Верни true, чтобы снова включить VIP-апселл.
+    if(VIP_POPUP_ENABLED){
+      document.querySelectorAll('a.js-pay').forEach(function(a){
+        a.addEventListener('click', function(e){ e.preventDefault(); open(); });
+      });
+    } else {
+      // Попап выключен: не перехватываем клик (идём сразу на $15), но считаем клик как InitiateCheckout.
+      document.querySelectorAll('a.js-pay').forEach(function(a){
+        a.addEventListener('click', function(){ if(window.fbq){ fbq('track','InitiateCheckout',{value:15,currency:'USD'}); fbq('trackCustom','CheckoutClick_Standard'); } });
+      });
+    }
     document.getElementById('vpX').addEventListener('click', close);
     ov.addEventListener('click', function(e){ if(e.target===ov) close(); });
     document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
