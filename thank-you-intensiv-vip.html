@@ -130,9 +130,17 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"/></
 
 <script>
   (function(){
+    var f=document.getElementById('inline-sVBEvrc1ZH9I5NwgKGLI');
+    if(!f) return;
     var p=new URLSearchParams(location.search);
+    var parts=[];
     var em=p.get('email')||p.get('contact_email');
-    if(em){ var f=document.getElementById('inline-sVBEvrc1ZH9I5NwgKGLI'); if(f){ f.src += (f.src.indexOf('?')>-1?'&':'?')+'email='+encodeURIComponent(em); } }
+    if(em) parts.push('email='+encodeURIComponent(em));
+    var cur=[];
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){ if(p.get(k)) cur.push(k+'='+encodeURIComponent(p.get(k))); });
+    var utmStr=cur.length ? cur.join('&') : (function(){ try{ return localStorage.getItem('mp_utm')||''; }catch(e){ return ''; } })();
+    if(utmStr) parts.push(utmStr);
+    if(parts.length){ f.src += (f.src.indexOf('?')>-1?'&':'?')+parts.join('&'); }
   })();
 </script>
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>

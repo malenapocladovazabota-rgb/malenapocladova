@@ -637,6 +637,8 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
     var pass=new URLSearchParams();
     keep.forEach(function(k){ if(src.get(k)) pass.set(k, src.get(k)); });
     var qs=pass.toString();
+    // Сохраняем UTM в localStorage, чтобы донести до thank-you (переживает переход на оплату).
+    if(qs){ try{ localStorage.setItem('mp_utm', qs); }catch(e){} }
     if(!qs) return;
     document.querySelectorAll('a.js-pay').forEach(function(a){
       var base=a.getAttribute('href');
