@@ -301,7 +301,7 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
 </nav>
 
 <script>
-  window.__mpHero='b'; // страница-превью: всегда новый герой
+  window.__mpHero='b';
 </script>
 
 <!-- HERO A (контроль) -->
@@ -327,30 +327,29 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
   </div>
 </header>
 
-<!-- HERO B (тест: постер, разные раскладки моб/десктоп) -->
+<!-- HERO Вариант 3: крупный заголовок + аватар -->
 <style>
-  #heroB{padding:16px 0 20px;}
-  #heroB .wrap{max-width:960px;}
-  #heroB .hb-grid{display:grid;grid-template-columns:1fr;gap:9px;grid-template-areas:"badge" "title" "sub" "photo" "benes" "cta";}
+  #heroB{padding:26px 0 28px;}
+  #heroB .wrap{max-width:720px;}
+  #heroB .hb-grid{display:grid;grid-template-columns:1fr;gap:14px;grid-template-areas:"badge" "title" "author" "benes" "cta";}
   #heroB .hb-badge{grid-area:badge;justify-self:start;display:inline-flex;align-items:center;gap:7px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#6E1E2B;background:#FFFCF7;border:1px solid rgba(61,44,38,.12);padding:7px 13px;border-radius:100px;}
   #heroB .hb-badge .dot{width:7px;height:7px;border-radius:50%;background:#B23A48;}
-  #heroB .hb-h1{grid-area:title;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(36px,10vw,52px);line-height:1.02;color:#3D2C26;letter-spacing:-.5px;margin:2px 0 0;}
+  #heroB .hb-h1{grid-area:title;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(40px,11vw,58px);line-height:1.02;color:#3D2C26;letter-spacing:-.5px;margin:4px 0 0;}
   #heroB .hb-h1 em{font-style:italic;color:#6E1E2B;}
-  #heroB .hb-sub{grid-area:sub;font-size:clamp(15px,4.2vw,18px);line-height:1.45;color:#6B524A;margin:2px 0 0;max-width:30ch;}
-  #heroB .hb-photo{grid-area:photo;position:relative;border-radius:18px;overflow:hidden;height:236px;box-shadow:0 18px 40px rgba(61,44,38,.2);margin:2px 0;}
-  #heroB .hb-photo img{width:100%;height:100%;object-fit:cover;object-position:center 12%;display:block;background:#d9cebd;}
+  #heroB .hb-author{grid-area:author;display:flex;align-items:center;gap:12px;margin:2px 0;}
+  #heroB .hb-author img{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:top;background:#d9cebd;border:2px solid #FFFCF7;box-shadow:0 6px 16px rgba(61,44,38,.18);}
+  #heroB .hb-author .n{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:18px;color:#3D2C26;line-height:1;}
+  #heroB .hb-author .r{font-size:13px;color:#6B524A;margin-top:3px;}
   #heroB .hb-benes{grid-area:benes;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:2px 0 0;}
-  #heroB .hb-benes li{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:5px;background:#FFFCF7;border:1px solid rgba(61,44,38,.1);border-radius:14px;padding:10px 6px;font-size:12px;line-height:1.2;color:#3D2C26;}
+  #heroB .hb-benes li{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;background:#FFFCF7;border:1px solid rgba(61,44,38,.1);border-radius:14px;padding:13px 6px;font-size:12px;line-height:1.2;color:#3D2C26;}
   #heroB .hb-benes .i{font-size:21px;line-height:1;}
   #heroB .hb-benes b{font-weight:600;}
-  #heroB .hb-cta-wrap{grid-area:cta;display:flex;align-items:center;gap:14px;margin-top:4px;}
+  #heroB .hb-cta-wrap{grid-area:cta;display:flex;align-items:center;gap:14px;margin-top:6px;}
   #heroB .hb-cta{flex:1 1 auto;}
   #heroB .hb-was{flex:0 0 auto;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:26px;color:#8B6E63;}
   @media(min-width:820px){
-    #heroB .hb-grid{grid-template-columns:1fr 380px;column-gap:48px;align-items:center;grid-template-areas:"badge photo" "title photo" "sub photo" "benes photo" "cta photo";}
-    #heroB .hb-photo{height:540px;margin:0;align-self:center;}
-    #heroB .hb-h1{font-size:56px;}
-    #heroB .hb-sub{font-size:18px;}
+    #heroB .hb-h1{font-size:62px;}
+    #heroB .hb-benes{max-width:520px;}
     #heroB .hb-cta{flex:0 0 auto;}
   }
 </style>
@@ -359,9 +358,9 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
     <div class="hb-grid">
       <div class="hb-badge"><span class="dot"></span>Live в Zoom · 24–26 июля</div>
       <h1 class="hb-h1">3 готовых Reels<br><em>за 3 вечера</em></h1>
-      <p class="hb-sub">С нуля, в прямом эфире с Маленой. Даже если боитесь камеры.</p>
-      <div class="hb-photo">
-        <img src="images/malena-hero.jpg" alt="Малена Покладова">
+      <div class="hb-author">
+        <img src="images/malena-portrait.jpg" alt="Малена Покладова">
+        <div><div class="n">Малена Покладова</div><div class="r">SMM-эксперт · ведёт интенсив лично</div></div>
       </div>
       <ul class="hb-benes">
         <li><span class="i">🎬</span><b>3 готовых Reels</b></li>

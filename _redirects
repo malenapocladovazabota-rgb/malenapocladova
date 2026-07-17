@@ -24,3 +24,6 @@
 
 # Cloudflare Pages автоматически отдаёт razbor.html по запросу /razbor —
 # редиректы выше нужны только для каноничности (если кто-то ввёл вручную с .html)
+/intensiv-b1.html  /intensiv-b1  301
+/intensiv-b2.html  /intensiv-b2  301
+/intensiv-b3.html  /intensiv-b3  301
