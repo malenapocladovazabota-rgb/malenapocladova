@@ -86,6 +86,19 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
   .support{margin-top:22px; font-size:14px; color:var(--brown2);}
   .support a{color:var(--rose-d); font-weight:600;}
 
+  /* VIP апселл - золотой, ниже Telegram-шага, не перебивает главное действие */
+  .vip{margin:22px 0 4px; border:2px solid var(--gold-d); border-radius:20px; background:linear-gradient(180deg,#FFFDF9,#FBF4E6); padding:24px 22px; text-align:left; position:relative; box-shadow:0 12px 30px rgba(169,134,63,.16);}
+  .vip .pill{position:absolute; top:-14px; left:50%; transform:translateX(-50%); white-space:nowrap; background:var(--gold-d); color:#fff; font-family:'DM Mono',monospace; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; padding:7px 16px; border-radius:100px; box-shadow:0 8px 18px rgba(169,134,63,.32);}
+  .vip h3{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:25px; text-align:center; margin:8px 0 6px;}
+  .vip .vsub{font-size:14.5px; color:var(--brown2); text-align:center; max-width:44ch; margin:0 auto 14px;}
+  .vip ul{list-style:none; margin:0 0 16px; padding:0;}
+  .vip li{display:flex; gap:9px; align-items:flex-start; font-size:14.5px; color:var(--brown); padding:5px 0;}
+  .vip li svg{flex:none; width:17px; height:17px; margin-top:3px; stroke:var(--gold-d); stroke-width:3; fill:none;}
+  .vip .price{text-align:center; font-family:'Cormorant Garamond',serif; font-size:19px; color:var(--brown); margin-bottom:14px; line-height:1.35;}
+  .vip .price b{color:var(--gold-d);}
+  .btn-vip{display:flex; align-items:center; justify-content:center; gap:10px; width:100%; background:var(--gold-d); color:#fff; font-family:'DM Mono',monospace; font-weight:500; font-size:15px; letter-spacing:.03em; padding:18px 24px; border:none; border-radius:100px; text-decoration:none; box-shadow:0 14px 30px rgba(169,134,63,.32); transition:transform .15s, background .15s;}
+  .btn-vip:hover{transform:translateY(-2px); background:#8f6f30;}
+
   @media(max-width:560px){ .card{padding:34px 20px;} }
 </style>
 </head>
@@ -126,6 +139,21 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
       <div class="d"><b>День 1 · 24 июля</b><span>19:00 Кишинёв / 9:00 LA</span></div>
       <div class="d"><b>День 2 · 25 июля</b><span>19:00 Кишинёв / 9:00 LA</span></div>
       <div class="d"><b>День 3 · 26 июля</b><span>19:00 Кишинёв / 9:00 LA</span></div>
+    </div>
+
+    <div class="vip">
+      <div class="pill">👑 Апгрейд до VIP</div>
+      <h3>Поднимите участие до VIP</h3>
+      <p class="vsub">Максимум пользы за три вечера:</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg>Разбор одного вашего Reels</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg>Записи всех трёх эфиров навсегда</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg>Шаблоны сценариев Reels и чек-лист монтажа в CapCut</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg>Гайд по монетизации, первые деньги с Reels</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg>Именной сертификат</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg>$50 идут в счёт обучения на курсе СММ</li>
+      </ul>
+      <a class="btn-vip" href="https://link.fastpaydirect.com/payment-link/6a56cbdea655fa0b802a44cb" target="_blank" rel="noopener" onclick="try{fbq('trackCustom','VIP_Upsell_Click')}catch(e){}">Поднять до VIP →</a>
     </div>
 
     <div style="background:rgba(178,58,72,.06);border:1px solid rgba(61,44,38,.1);border-radius:14px;padding:14px 16px;margin-top:18px;font-size:13.5px;color:#6B524A;line-height:1.55;text-align:left;">Мы добавляем участников в закрытый канал <b>вручную, ближе к старту интенсива</b> (24 июля). Если вас приняли не сразу, это нормально: всех добавим до первого эфира.</div>
