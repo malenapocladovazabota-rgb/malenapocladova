@@ -4,28 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#FBF1E8">
-<title>Вы в деле · интенсив «3 дня 3 рилс» · Малена Покладова</title>
+<title>Вы в деле · Драфт 2 · интенсив «3 дня 3 рилс»</title>
 <meta name="robots" content="noindex">
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1350449057220500');
-fbq('track', 'PageView');
-// Событие оплаты. Сумма берётся из ?amount= (если GHL передаёт), иначе 15.
-var _amt=new URLSearchParams(location.search).get('amount');
-fbq('track', 'Purchase', {value: _amt?parseFloat(_amt):15, currency:'USD'});
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -50,7 +30,11 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
   .lead{font-size:16px; color:var(--brown2); max-width:46ch; margin:0 auto 4px;}
   .lead b{color:var(--brown);}
 
-  .helper{font-size:13.5px; color:var(--brown3); margin:12px 0 4px;}
+  .reassure{display:flex; gap:11px; text-align:left; background:#FFF6E9; border:1px solid var(--gold-d); border-radius:16px; padding:14px 16px; margin:16px 0 6px; font-size:13.5px; color:var(--brown2); line-height:1.5;}
+  .reassure .ri{font-size:18px; line-height:1.2;}
+  .reassure b{color:var(--brown);}
+
+  .helper{font-size:13.5px; color:var(--brown3); margin:2px 0 4px;}
   .helper b{color:var(--brown2);}
 
   .steplabel{font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--brown3); text-align:left; margin:22px 2px 8px;}
@@ -122,15 +106,6 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
         style="width:100%;border:none;border-radius:12px;min-height:430px;background:#fff"
         id="inline-sVBEvrc1ZH9I5NwgKGLI"
         data-layout='{"id":"INLINE"}'
-        data-trigger-type="alwaysShow"
-        data-trigger-value=""
-        data-activation-type="alwaysActivated"
-        data-activation-value=""
-        data-deactivation-type="neverDeactivate"
-        data-deactivation-value=""
-        data-form-name="Intensiv Telegram"
-        data-height="auto"
-        data-layout-iframe-id="inline-sVBEvrc1ZH9I5NwgKGLI"
         data-form-id="sVBEvrc1ZH9I5NwgKGLI"
         title="Доступ в Telegram-канал">
       </iframe>
@@ -147,7 +122,7 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
 
 <script>
   // Прокидываем email/имя из URL в VIP-ссылку (чтобы на оплате VIP не вводить данные заново)
-  // и в форму ника (email + utm подставляются автоматически).
+  // и в форму ника (email подставляется автоматически).
   (function(){
     var p = new URLSearchParams(location.search);
     var em = p.get('email') || p.get('contact_email');
