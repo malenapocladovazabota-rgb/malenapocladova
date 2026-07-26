@@ -30,3 +30,10 @@
 /intensiv-video.html  /intensiv-video  301
 /deposit.html  /deposit  301
 /deposit-thanks.html  /deposit-thanks  301
+
+# VIP-материалы (закрыты паролем, noindex)
+/vip/capcut.html    /vip/capcut    301
+/vip/scenarii.html  /vip/scenarii  301
+/vip/monetizaciya.html  /vip/monetizaciya  301
+/vip/zapisi.html  /vip/zapisi  301
+/vip/sertifikat.html  /vip/sertifikat  301
