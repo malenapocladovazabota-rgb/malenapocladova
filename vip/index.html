@@ -22,7 +22,26 @@
   .mat .meta{font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
     color:var(--muted); margin-top:16px}
   .mat .go{margin-top:16px; font-family:var(--mono); font-size:13px; letter-spacing:.06em; color:var(--wine)}
-  @media(max-width:900px){ .mats{grid-template-columns:1fr} }
+  .bonus{display:grid; grid-template-columns:1fr 300px; gap:40px; align-items:center;
+    background:var(--ink); color:var(--beige); border-radius:24px; padding:44px 44px; margin-top:30px}
+  .bonus .lb{font-family:var(--mono); font-size:10.5px; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--gold)}
+  .bonus h3{font-family:var(--serif); font-weight:600; font-size:34px; line-height:1.1;
+    color:var(--beige); margin:12px 0 12px}
+  .bonus h3 em{font-style:italic; color:var(--gold)}
+  .bonus p{font-size:15.5px; color:rgba(234,224,203,.78); max-width:52ch}
+  .bonus .br{text-align:center; background:rgba(217,185,140,.1);
+    border:1px solid rgba(217,185,140,.28); border-radius:20px; padding:30px 24px}
+  .bonus .amt{font-family:var(--serif); font-weight:600; font-size:64px; line-height:1; color:var(--gold)}
+  .bonus .cur{font-family:var(--mono); font-size:10.5px; letter-spacing:.16em;
+    text-transform:uppercase; color:rgba(234,224,203,.6); margin:8px 0 22px}
+  .bonus .bn{font-family:var(--mono); font-size:10.5px; color:rgba(234,224,203,.45);
+    margin-top:14px; line-height:1.5}
+  @media(max-width:900px){
+    .mats{grid-template-columns:1fr}
+    .bonus{grid-template-columns:1fr; gap:26px; padding:32px 26px}
+    .bonus h3{font-size:28px}
+  }
 </style>
 </head>
 <body>
@@ -93,15 +112,29 @@
       </a>
     </div>
 
-    <div class="tip" style="margin-top:30px; border-radius:18px; padding:22px 26px">
-      Вопросы по материалам пишите в поддержку:
-      <a href="https://telegram.me/Malena_Pocladova_Zabota" style="color:var(--wine); font-weight:500">@Malena_Pocladova_Zabota</a>
+    <div class="bonus">
+      <div class="bl">
+        <div class="lb">Ваш бонус</div>
+        <h3>$50 уже лежат<br>в счёт <em>обучения</em></h3>
+        <p>Оплатив VIP-участие, вы автоматически получили $50 в счёт курса «SMM с нуля». Они не сгорают и вычитаются из стоимости любого тарифа, когда вы решите пойти на курс.</p>
+        <p style="margin-top:10px">Плюс за вами закреплена цена первой волны: она не вырастет, даже когда набор пойдёт по полной стоимости.</p>
+      </div>
+      <div class="br">
+        <div class="amt">$50</div>
+        <div class="cur">в счёт курса</div>
+        <a class="btn gold" href="https://telegram.me/Malena_Pocladova_Zabota">Узнать про курс</a>
+        <div class="bn">Напишем, что входит и как использовать бонус</div>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
+    <div class="fhelp">
+      <span>Есть вопрос по материалам, записям или сертификату?</span>
+      <a class="btn ghost" href="https://telegram.me/Malena_Pocladova_Zabota">Написать в поддержку</a>
+    </div>
     Интенсив «3 дня 3 рилс» · Малена Покладова · <a href="https://instagram.com/socialmedia__school">@socialmedia__school</a><br>
     Материалы для VIP-участников интенсива. Пожалуйста, не пересылайте ссылку.
   </div>

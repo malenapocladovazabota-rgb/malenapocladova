@@ -15,9 +15,7 @@
     padding:32px 32px; margin-top:24px; display:grid; grid-template-columns:1fr auto; gap:16px; align-items:end}
   .fl{font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
     color:var(--wine); display:block; margin-bottom:9px}
-  .form input{width:100%; padding:16px 20px; border-radius:14px; border:1px solid var(--line);
-    background:#fff; color:var(--ink); font-family:var(--sans); font-size:17px}
-  .form input:focus{outline:none; border-color:var(--wine)}
+  .whom{font-family:var(--serif); font-weight:600; font-size:30px; color:var(--wine); line-height:1.15}
 
   .cert-wrap{margin-top:30px; overflow-x:auto; -webkit-overflow-scrolling:touch}
   .cert{width:1000px; height:707px; position:relative; background:#F7F2E6;
@@ -83,10 +81,11 @@
   <div class="wrap">
     <div class="form">
       <div>
-        <label class="fl" for="nm">Имя на сертификате</label>
-        <input id="nm" type="text" value="" maxlength="42" autocomplete="off" spellcheck="false">
-        <div id="hint" style="font-size:13.5px; color:var(--muted); margin-top:9px">
-          Имя подставлено из вашей записи. Если хотите другое написание, поправьте здесь.
+        <div class="fl">Сертификат выписан на имя</div>
+        <div class="whom" id="whom">—</div>
+        <div style="font-size:13.5px; color:var(--muted); margin-top:10px">
+          Имя взято из вашей записи об оплате. Если в нём опечатка или нужно другое написание,
+          <a href="https://telegram.me/Malena_Pocladova_Zabota" style="color:var(--wine); font-weight:500">напишите в поддержку</a>, поправим и перевыпустим.
         </div>
       </div>
       <button class="btn" id="dl">Скачать PNG</button>
@@ -133,52 +132,42 @@
 
 <footer>
   <div class="wrap">
+    <div class="fhelp">
+      <span>Есть вопрос по материалам, записям или сертификату?</span>
+      <a class="btn ghost" href="https://telegram.me/Malena_Pocladova_Zabota">Написать в поддержку</a>
+    </div>
     Интенсив «3 дня 3 рилс» · Малена Покладова · <a href="https://instagram.com/socialmedia__school">@socialmedia__school</a><br>
-    Материал для VIP-участников интенсива. Пожалуйста, не пересылайте ссылку.
+    Материалы для VIP-участников интенсива. Пожалуйста, не пересылайте ссылку.
   </div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 (function(){
-  var inp=document.getElementById('nm'), out=document.getElementById('cname'),
+  var out=document.getElementById('cname'), whom=document.getElementById('whom'),
       cert=document.getElementById('cert'), btn=document.getElementById('dl');
-  var K='vip_cert_name';
-
-  function fit(v){
-    out.textContent = v || 'Ваше имя';
-    out.style.fontSize = v.length>26 ? '38px' : (v.length>18 ? '44px' : '50px');
-  }
 
   function fill(){
-    // 1) правка, которую участник сохранил сам
-    var mine = localStorage.getItem(K);
-    // 2) имя из личного кода
-    var auto = (window.VIP_MEMBER && window.VIP_MEMBER.name) || '';
-    var v = mine || auto || '';
-    inp.value = v;
-    fit(v);
-    var hint=document.getElementById('hint');
-    if(hint && !auto){
-      hint.textContent='Впишите имя так, как хотите видеть его на сертификате.';
-    }
+    var name=(window.VIP_MEMBER && window.VIP_MEMBER.name) || '';
+    whom.textContent = name || '—';
+    out.textContent  = name || 'Имя участника';
+    out.style.fontSize = name.length>26 ? '38px' : (name.length>18 ? '44px' : '50px');
+    btn.disabled = !name;
   }
   fill();
   document.addEventListener('vip-ready', fill);
 
-  inp.addEventListener('input',function(){
-    var v=inp.value.trim();
-    fit(v);
-    localStorage.setItem(K, v);
-  });
+  function safeName(){
+    return ((window.VIP_MEMBER && window.VIP_MEMBER.name) || 'sertifikat')
+      .replace(/[^\wа-яА-ЯёЁ\- ]/g,'').replace(/\s+/g,'-');
+  }
 
   btn.addEventListener('click',function(){
     if(typeof html2canvas!=='function'){ alert('Не удалось загрузить модуль. Сделайте скриншот сертификата.'); return; }
     var old=btn.textContent; btn.textContent='Готовим…'; btn.disabled=true;
     html2canvas(cert,{scale:2, backgroundColor:'#F7F2E6', useCORS:true}).then(function(canvas){
       var a=document.createElement('a');
-      var nm=(inp.value.trim()||'sertifikat').replace(/[^\wа-яА-ЯёЁ\- ]/g,'').replace(/\s+/g,'-');
-      a.download='Sertifikat-'+nm+'.png';
+      a.download='Sertifikat-'+safeName()+'.png';
       a.href=canvas.toDataURL('image/png');
       a.click();
       btn.textContent=old; btn.disabled=false;
