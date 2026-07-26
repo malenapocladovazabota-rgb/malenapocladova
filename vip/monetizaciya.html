@@ -45,6 +45,35 @@
   .chan .cw{margin-top:10px; font-family:var(--mono); font-size:11px; letter-spacing:.1em;
     text-transform:uppercase; color:var(--muted)}
   @media(max-width:900px){ .pack{grid-template-columns:1fr} }
+
+  /* структура продающего Reels */
+  .bar{display:flex; height:13px; border-radius:100px; overflow:hidden; margin:26px 0 7px}
+  .bar span{display:block}
+  .barlbl{display:flex; font-family:var(--mono); font-size:10.5px; letter-spacing:.05em;
+    color:var(--muted); margin-bottom:6px}
+  .barlbl span{text-align:center}
+  .el{border-top:1px solid var(--line-soft); padding:22px 0; display:grid;
+    grid-template-columns:34px 1fr; gap:20px; align-items:start}
+  .el:first-of-type{border-top:none}
+  .el .en{font-family:var(--serif); font-size:26px; font-weight:600; color:var(--wine); line-height:1.1}
+  .el .eh{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:5px}
+  .el .et{font-family:var(--serif); font-weight:600; font-size:23px}
+  .el .esec{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+  .el .ed{font-size:15.5px; color:var(--ink2)}
+  .el .eex{margin-top:9px; background:var(--beige2); border-radius:12px; padding:12px 16px;
+    font-size:15px; font-style:italic; color:var(--ink2)}
+  .fmt{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:22px}
+  .fm{background:var(--card); border:1px solid var(--line-soft); border-radius:18px; padding:26px 26px}
+  .fm .fl{width:38px; height:38px; border-radius:11px; background:var(--wine-soft); color:var(--wine);
+    display:flex; align-items:center; justify-content:center; font-family:var(--serif);
+    font-weight:600; font-size:19px; margin-bottom:13px}
+  .fm h3{font-family:var(--serif); font-weight:600; font-size:23px; margin-bottom:6px}
+  .fm p{font-size:15px}
+  .fm .fw{margin-top:11px; font-family:var(--mono); font-size:10.5px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--muted)}
+  .fm .fq{margin-top:11px; font-size:15px; font-style:italic; color:var(--ink2);
+    padding-left:14px; border-left:2px solid var(--gold)}
+  @media(max-width:900px){ .fmt{grid-template-columns:1fr} .barlbl{font-size:9px} }
 </style>
 </head>
 <body>
@@ -86,13 +115,132 @@
         </div>
         <div style="background:rgba(234,224,203,.07); border-radius:16px; padding:22px 22px">
           <div style="font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; color:var(--gold); text-transform:uppercase">Нужно</div>
-          <p style="margin-top:8px; font-size:15px">3-5 ваших роликов, понятное описание того, что вы делаете, и список из 20 человек, которым можно написать.</p>
+          <p style="margin-top:8px; font-size:15px">3-5 ваших роликов, понятное описание того, что вы делаете, и список людей, которым можно написать.</p>
         </div>
         <div style="background:rgba(234,224,203,.07); border-radius:16px; padding:22px 22px">
           <div style="font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; color:var(--gold); text-transform:uppercase">Занимает</div>
           <p style="margin-top:8px; font-size:15px">Вечер на подготовку и неделю на переписку. Дальше всё зависит только от количества отправленных сообщений.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ СТРУКТУРА ПРОДАЮЩЕГО REELS ═══ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">Основа всего</div>
+    <h2>Структура <em>продающего Reels</em></h2>
+    <p class="lede">Просмотры и заявки — две разные метрики. Ролик на миллион просмотров может не принести ни одного клиента, а ролик на три тысячи просмотров приводит пятерых. Разница в структуре, и вот она целиком.</p>
+
+    <div class="tool" style="padding-bottom:24px">
+      <div class="th"><div class="ic">◆</div><h3>Формула пяти элементов</h3></div>
+      <p>Сорок пять секунд, разложенные по секундам. Работает в любой нише: косметология, фитнес, питание, психология, услуги для дома, товары.</p>
+
+      <div class="bar">
+        <span style="flex:3; background:#6E1E2B"></span>
+        <span style="flex:7; background:#A0453F"></span>
+        <span style="flex:15; background:#C08A5E"></span>
+        <span style="flex:10; background:#D8B87E"></span>
+        <span style="flex:10; background:#6F8C50"></span>
+      </div>
+      <div class="barlbl">
+        <span style="flex:3">хук</span>
+        <span style="flex:7">боль</span>
+        <span style="flex:15">решение</span>
+        <span style="flex:10">доказательство</span>
+        <span style="flex:10">призыв</span>
+      </div>
+
+      <div style="margin-top:22px">
+        <div class="el">
+          <div class="en">1</div>
+          <div>
+            <div class="eh"><span class="et">Хук</span><span class="esec">0–3 сек</span></div>
+            <div class="ed">Заявление, которое останавливает палец. Здесь нет места приветствию и разгону: человек решает за секунду, смотреть дальше или листать.</div>
+            <div class="eex">«Вы делаете это неправильно»</div>
+          </div>
+        </div>
+        <div class="el">
+          <div class="en">2</div>
+          <div>
+            <div class="eh"><span class="et">Боль</span><span class="esec">3–10 сек</span></div>
+            <div class="ed">Конкретная проблема, в которой человек узнаёт себя. Общие формулировки здесь не работают: чем точнее вы попадаете в ситуацию, тем дольше вас смотрят.</div>
+          </div>
+        </div>
+        <div class="el">
+          <div class="en">3</div>
+          <div>
+            <div class="eh"><span class="et">Решение</span><span class="esec">10–25 сек</span></div>
+            <div class="ed">Что делать. Один шаг или короткая последовательность из двух-трёх действий. Это самая длинная часть ролика, и она должна быть применимой прямо сейчас.</div>
+          </div>
+        </div>
+        <div class="el">
+          <div class="en">4</div>
+          <div>
+            <div class="eh"><span class="et">Доказательство</span><span class="esec">25–35 сек</span></div>
+            <div class="ed">Цифра, кадр до и после, имя, дата, отзыв. То, что отличает вас от десяти других людей, которые говорят похожие правильные слова.</div>
+          </div>
+        </div>
+        <div class="el">
+          <div class="en">5</div>
+          <div>
+            <div class="eh"><span class="et">Призыв</span><span class="esec">35–45 сек</span></div>
+            <div class="ed">Конкретный следующий шаг, который можно сделать в одно движение. «Подпишитесь» слишком расплывчато, чтобы человек что-то сделал.</div>
+            <div class="eex">«Напишите слово РАЗБОР в директ»</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <b>Самая частая ошибка.</b> Ролик обрывается после третьего элемента: рассказали решение и закончили. Человек получил пользу, поставил лайк и ушёл. Доказательство и призыв — это те двадцать секунд, в которых просмотр превращается в заявку.
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 4 ФОРМАТА ═══ -->
+<section style="padding-top:14px">
+  <div class="wrap">
+    <div class="kicker">Четыре формата</div>
+    <h2>Какой подходит <em>вашей нише</em></h2>
+    <p class="lede">Формула одна, а обёртка разная. Выберите один формат под свою нишу и снимите по нему три ролика подряд, прежде чем пробовать следующий.</p>
+
+    <div class="fmt">
+      <div class="fm">
+        <div class="fl">A</div>
+        <h3>Демо</h3>
+        <p>Показываете процесс или результат руками. Камера смотрит на то, что вы делаете, а не на говорящую голову.</p>
+        <div class="fq">«За 30 секунд показываю, как…»</div>
+        <div class="fw">Косметология · маникюр · готовка · рукоделие</div>
+      </div>
+      <div class="fm">
+        <div class="fl">B</div>
+        <h3>До и после</h3>
+        <p>Трансформация в одном кадре или в склейке. Самый быстрый способ показать ценность без единого слова.</p>
+        <div class="fq">«Раньше я думала… теперь я знаю…»</div>
+        <div class="fw">Красота · фитнес · дизайн · порядок в доме</div>
+      </div>
+      <div class="fm">
+        <div class="fl">C</div>
+        <h3>Кейс-история</h3>
+        <p>У клиента была проблема, сделали вот это, получилось вот такое. С цифрой или конкретным результатом. Лучший формат для эксперта.</p>
+        <div class="fq">«Клиентка пришла с… мы сделали… через месяц…»</div>
+        <div class="fw">Услуги · консультации · дорогие продукты</div>
+      </div>
+      <div class="fm">
+        <div class="fl">D</div>
+        <h3>Объяснение</h3>
+        <p>Образовательный формат: три ошибки, почему что-то не работает, разбор частого заблуждения. Хорошо набирает охваты и строит доверие.</p>
+        <div class="fq">«3 причины, почему ваш…»</div>
+        <div class="fw">Экспертный блог · обучение · маркетинг · медицина</div>
+      </div>
+    </div>
+
+    <div class="dark" style="margin-top:26px">
+      <div class="kicker">Как это связано с деньгами</div>
+      <h2 style="font-size:32px; margin-top:10px">Три ролика <em>вместо портфолио</em></h2>
+      <p style="margin-top:10px">Когда вы будете писать первому клиенту, вам нужно будет что-то показать. Три ролика, снятых по этой структуре под его нишу, работают лучше, чем список ваших навыков. Человек видит не обещание, а готовый результат, и разговор сразу переходит к цене.</p>
     </div>
   </div>
 </section>
@@ -163,9 +311,6 @@
       </div>
     </div>
 
-    <div class="tip" style="margin-top:26px">
-      <b>Ориентир по объёму.</b> Из 20 отправленных сообщений отвечает примерно каждый третий, до разговора о деньгах доходят двое-трое, соглашается один. Поэтому 20 сообщений — это норма недели, а не подвиг. Если ответов ноль, проблема почти всегда в тексте сообщения, а не в рынке.
-    </div>
   </div>
 </section>
 
@@ -427,18 +572,18 @@
     <div class="steps" style="margin-top:22px">
       <div class="step"><div class="num">01</div><div>
         <div class="t">Соберите список <span class="time">вечер понедельника</span></div>
-        <div class="d">20 профилей по каналам из первого блока. Просто ссылки в заметках, без анализа и сомнений.</div>
+        <div class="d">Пройдитесь по каналам из блока выше и сложите профили в заметки. Просто ссылки, без анализа и сомнений.</div>
       </div></div>
       <div class="step"><div class="num">02</div><div>
         <div class="t">Приведите свой профиль в порядок <span class="time">вторник</span></div>
         <div class="d">Понятное описание в шапке: что вы делаете и для кого. Три ролика с интенсива закреплены сверху.</div>
       </div></div>
       <div class="step"><div class="num">03</div><div>
-        <div class="t">Отправьте первые 10 сообщений <span class="time">среда</span></div>
-        <div class="d">По структуре из второго блока, каждое с конкретикой про этот аккаунт. Час работы.</div>
+        <div class="t">Начните писать <span class="time">среда</span></div>
+        <div class="d">По структуре из блока про первое сообщение, каждое с конкретикой про этот аккаунт. Час работы за вечер.</div>
       </div></div>
       <div class="step"><div class="num">04</div><div>
-        <div class="t">Ещё 10 сообщений <span class="time">четверг</span></div>
+        <div class="t">Продолжите список <span class="time">четверг</span></div>
         <div class="d">К этому моменту появятся первые ответы. Отвечайте в тот же день, скорость решает больше, чем формулировки.</div>
       </div></div>
       <div class="step"><div class="num">05</div><div>
@@ -450,7 +595,7 @@
     <div style="background:var(--card); border:1px solid var(--line-soft); border-radius:24px; padding:48px 40px; text-align:center; margin-top:32px">
       <div class="kicker" style="justify-content:center">И самое главное</div>
       <h2 style="margin-top:14px">Первые деньги приходят <em>к тем, кто написал</em></h2>
-      <p class="lede" style="margin:12px auto 0">Не к тем, у кого лучше ролики, а к тем, кто отправил двадцать сообщений вместо двух. Всё остальное в этом материале работает только после этого шага.</p>
+      <p class="lede" style="margin:12px auto 0">Не к тем, у кого ролики красивее, а к тем, кто дошёл до переписки. Всё остальное в этом материале работает только после этого шага.</p>
     </div>
 
     <div class="next">

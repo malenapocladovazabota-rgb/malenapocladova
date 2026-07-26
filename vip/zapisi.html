@@ -19,9 +19,20 @@
   .rec p{font-size:15px}
   .rec .soon{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
     color:var(--muted); border:1px dashed var(--line); border-radius:100px; padding:13px 24px; white-space:nowrap}
+  .pw{font-family:var(--mono); font-size:11px; letter-spacing:.04em; color:var(--muted);
+    margin-top:10px; display:flex; align-items:center; gap:8px; justify-content:flex-end}
+  .pw code{background:var(--beige2); color:var(--ink); border-radius:6px; padding:3px 8px; font-size:12px;
+    user-select:all}
+  .cp{border:0; background:none; color:var(--wine); font-family:var(--mono); font-size:10.5px;
+    letter-spacing:.06em; cursor:pointer; padding:2px 4px; text-decoration:underline}
+  .cp.ok{color:#6F8C50; text-decoration:none}
   @media(max-width:820px){
     .rec{grid-template-columns:44px 1fr; gap:16px}
-    .rec .soon, .rec .btn{grid-column:1/-1; text-align:center; width:100%}
+    .rec .soon, .rec > div:last-child{grid-column:1/-1}
+    .rec .soon{text-align:center; width:100%}
+    .rec > div:last-child{text-align:center !important}
+    .rec .btn{width:100%; text-align:center}
+    .pw{justify-content:center}
   }
 </style>
 </head>
@@ -58,19 +69,25 @@
     <div class="rec">
       <div class="d">01</div>
       <div>
-        <h3>Думаем и пишем сценарии</h3>
+        <h3>Сценарии и алгоритмы</h3>
         <p>Как устроен работающий Reels, откуда берутся идеи и как написать сценарий, который досматривают.</p>
       </div>
-      <div class="soon">ссылка скоро</div>
+      <div style="text-align:right">
+        <a class="btn" href="https://us06web.zoom.us/rec/share/drhs-WhLVLCPD5zBT9y_1zeQqpQ7tjMsrpCMLMDejrQkiP1B1_Vo25fqqKmt7xU9.cYlyzo8RXa5sgQWN" target="_blank" rel="noopener">Смотреть →</a>
+        <div class="pw">пароль <code>CqvkB2Z*</code><button class="cp" data-pw="CqvkB2Z*">копировать</button></div>
+      </div>
     </div>
 
     <div class="rec">
       <div class="d">02</div>
       <div>
-        <h3>Снимаем и монтируем</h3>
+        <h3>Съёмка и монтаж</h3>
         <p>Свет, кадр, ракурсы, футажи и монтаж в CapCut. От исходников до готового ролика.</p>
       </div>
-      <div class="soon">ссылка скоро</div>
+      <div style="text-align:right">
+        <a class="btn" href="https://us06web.zoom.us/rec/share/VtEqkIKfD2fMYOHaeJ3xvixEdRvW5Jt88FxUOoeVebNyNB3IxPbN4BKmlNBA-nen.CBZ-0S930x41NrZp" target="_blank" rel="noopener">Смотреть →</a>
+        <div class="pw">пароль <code>+rxe$40B</code><button class="cp" data-pw="+rxe$40B">копировать</button></div>
+      </div>
     </div>
 
     <div class="rec">
@@ -79,11 +96,11 @@
         <h3>Рост и монетизация</h3>
         <p>Что мешает росту, какие бывают модели дохода и как выйти на первые деньги с контента.</p>
       </div>
-      <div class="soon">ссылка скоро</div>
+      <div class="soon">запись обрабатывается</div>
     </div>
 
     <div class="tip" style="margin-top:22px">
-      Записи выкладываем в течение нескольких дней после интенсива. Как только они появятся, ссылки откроются прямо здесь и придут в Telegram-канал участников.
+      Записи первого и второго дня уже открыты. Третий день пока обрабатывается на стороне Zoom, ссылка появится здесь и придёт в Telegram-канал участников. Пароль от записи вводится на странице Zoom после перехода.
     </div>
   </div>
 </section>
@@ -137,5 +154,15 @@
     Материал для VIP-участников интенсива. Пожалуйста, не пересылайте ссылку.
   </div>
 </footer>
+<script>
+document.querySelectorAll('.cp').forEach(function(b){
+  b.addEventListener('click',function(){
+    navigator.clipboard.writeText(b.dataset.pw).then(function(){
+      var t=b.textContent; b.textContent='скопирован'; b.classList.add('ok');
+      setTimeout(function(){ b.textContent=t; b.classList.remove('ok'); },1600);
+    });
+  });
+});
+</script>
 </body>
 </html>
