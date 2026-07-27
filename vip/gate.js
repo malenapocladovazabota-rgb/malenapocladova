@@ -12,7 +12,7 @@
 (function () {
   var MEMBERS = {
     'reels-dqzn': 'Maryam Abdullaeva',
-    'reels-xh8x': 'Mari Bahnit',
+    'reels-xh8x': 'Mariia Bahnit',
     'reels-z8fy': 'Alina Civan',
     'reels-jcsn': 'Ecaterina Totomir',
     'reels-ct89': 'Aurica Darii',

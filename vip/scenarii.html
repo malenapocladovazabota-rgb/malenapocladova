@@ -36,7 +36,21 @@
   .rules .r:first-child{border-top:none}
   .rules .rn{font-family:var(--serif); font-size:26px; font-weight:600; color:var(--gold); line-height:1}
   .rules .rt{font-size:16.5px}
-  @media(max-width:820px){ .toc{grid-template-columns:1fr} .tpl{padding:26px 22px} .tpl h3{font-size:27px} }
+  @media(max-width:1024px){ .toc{grid-template-columns:1fr 1fr} }
+  @media(max-width:820px){
+    .toc{grid-template-columns:1fr; gap:10px; margin-top:20px}
+    .toc a{padding:16px 18px}
+    .toc .t{font-size:17.5px}
+    .tpl{padding:22px 18px; border-radius:18px; margin-top:18px}
+    .tpl h3{font-size:24px}
+    .goal{font-size:15px; padding-left:13px}
+    .bar{height:9px; margin:18px 0 5px}
+    .barlbl{font-size:8.5px; letter-spacing:0}
+    .niche{font-size:14.5px; margin-top:18px; padding-top:16px}
+    .rules .r{grid-template-columns:34px 1fr; gap:12px; padding:13px 0}
+    .rules .rn{font-size:22px}
+    .rules .rt{font-size:15.5px}
+  }
 </style>
 </head>
 <body>

@@ -48,7 +48,10 @@ body.locked{overflow:hidden}
 .topbar .brand{font-family:var(--serif); font-weight:600; font-size:19px}
 .topbar .brand em{font-style:italic; color:var(--wine)}
 .topbar .nav{display:flex; gap:18px; font-family:var(--mono); font-size:12px; letter-spacing:.06em;
-  text-transform:uppercase; color:var(--muted)}
+  text-transform:uppercase; color:var(--muted); overflow-x:auto; -webkit-overflow-scrolling:touch;
+  scrollbar-width:none}
+.topbar .nav::-webkit-scrollbar{display:none}
+.topbar .nav a{white-space:nowrap}
 .topbar .nav a.on, .topbar .nav a:hover{color:var(--wine)}
 
 header.hero{padding:64px 0 30px}
@@ -193,13 +196,70 @@ p{font-size:16.5px; color:var(--ink2)}
 footer{padding:56px 0 70px; text-align:center; font-size:14px; color:var(--muted); border-top:1px solid var(--line-soft); margin-top:40px}
 footer a{color:var(--wine)}
 
+/* ══════════ ПЛАНШЕТ ══════════ */
+@media(max-width:1024px){
+  .wrap{padding:0 22px}
+  h1{font-size:48px}
+  .tool.shots{grid-template-columns:1fr 210px; gap:26px}
+}
+
+/* ══════════ ТЕЛЕФОН ══════════ */
 @media(max-width:820px){
-  h1{font-size:40px} h2{font-size:30px}
-  .grid2,.grid3{grid-template-columns:1fr}
-  .topbar .nav{gap:12px; font-size:10.5px}
-  .tool{padding:24px 22px}
-  .next{grid-template-columns:1fr; padding:30px 26px; text-align:left}
-  .next h3{font-size:26px}
+  .wrap{padding:0 18px}
+  header.hero{padding:38px 0 20px}
+  h1{font-size:34px; margin:14px 0 12px}
+  h2{font-size:27px}
+  h3{font-size:22px}
+  .sub{font-size:16.5px}
+  .lede{font-size:16.5px}
+  p{font-size:16px}
+  section{padding:30px 0}
+
+  .topbar{padding:14px 0}
+  .topbar .wrap{flex-direction:column; align-items:flex-start; gap:11px}
+  .topbar .brand{font-size:17px}
+  .topbar .nav{gap:16px; font-size:11px; width:100%; padding-bottom:2px}
+
+  .grid2,.grid3{grid-template-columns:1fr; gap:14px}
+  .tool{padding:22px 20px; border-radius:18px}
+  .tool .ic{width:42px; height:42px; font-size:19px; border-radius:12px}
+  .tip{padding:15px 17px; font-size:15px}
+
+  .step{grid-template-columns:44px 1fr; gap:14px; padding:18px 0}
+  .step .num{font-size:27px}
+  .step .t{font-size:20px}
+  .step .time{display:block; margin-left:0; margin-top:3px}
+
+  .dark{padding:28px 20px; border-radius:20px}
+  .next{grid-template-columns:1fr; padding:28px 22px; gap:20px}
+  .next h3{font-size:25px}
   .next .btn{width:100%; text-align:center}
-  .dark{padding:32px 24px}
+
+  .btn{padding:16px 28px; font-size:13.5px}
+  .btn.big{padding:17px 30px; font-size:14px}
+
+  .crow{padding:13px 0; gap:13px}
+  .ctext{font-size:15.5px}
+  .privnote{flex-direction:column; align-items:flex-start; gap:12px}
+  .privnote .btn{width:100%; text-align:center}
+
+  .track{height:44px}
+  .track .clip{font-size:10.5px}
+  .ovchip{font-size:9px}
+
+  #gate{padding:20px}
+  #gate h1{font-size:31px}
+  #lb img{max-width:94vw}
+}
+
+/* ══════════ УЗКИЙ ТЕЛЕФОН ══════════ */
+@media(max-width:400px){
+  .wrap{padding:0 15px}
+  h1{font-size:29px}
+  h2{font-size:24px}
+  .tool{padding:19px 16px}
+  .dark{padding:24px 17px}
+  .next{padding:24px 18px}
+  .step{grid-template-columns:36px 1fr; gap:12px}
+  .step .num{font-size:23px}
 }

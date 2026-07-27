@@ -27,12 +27,15 @@
     letter-spacing:.06em; cursor:pointer; padding:2px 4px; text-decoration:underline}
   .cp.ok{color:#6F8C50; text-decoration:none}
   @media(max-width:820px){
-    .rec{grid-template-columns:44px 1fr; gap:16px}
+    .rec{grid-template-columns:38px 1fr; gap:14px; padding:20px 18px; border-radius:18px}
+    .rec .d{font-size:26px}
+    .rec h3{font-size:21px}
+    .rec p{font-size:14.5px}
     .rec .soon, .rec > div:last-child{grid-column:1/-1}
-    .rec .soon{text-align:center; width:100%}
+    .rec .soon{text-align:center; width:100%; white-space:normal}
     .rec > div:last-child{text-align:center !important}
     .rec .btn{width:100%; text-align:center}
-    .pw{justify-content:center}
+    .pw{justify-content:center; margin-top:12px}
   }
 </style>
 </head>
@@ -57,7 +60,7 @@
   <div class="wrap">
     <div class="kicker">Материал для VIP-участников</div>
     <h1>Записи эфиров<br>и <em>разбор вашего Reels</em></h1>
-    <div class="sub">Все три дня интенсива в записи остаются у вас навсегда. Пересматривайте в своём ритме, ставьте на паузу и повторяйте по шагам.</div>
+    <div class="sub">Все три дня интенсива в записи остаются у вас. Пересматривайте в своём ритме, ставьте на паузу и повторяйте по шагам.</div>
   </div>
 </header>
 
@@ -139,11 +142,20 @@
 
     <div class="next">
       <div>
-        <div class="lb">Не забудьте</div>
-        <h3>Забрать <em>сертификат</em></h3>
-        <p>Именной сертификат участника VIP-программы, впишите имя и скачайте картинку.</p>
+        <div class="lb">Тоже входит в VIP</div>
+        <h3>Разбор <em>вашей ситуации</em></h3>
+        <p>Полчаса один на один с Александрой из нашей команды. Какая модель дохода подходит именно вам, какой чек реально назвать уже сейчас и что делать в первые 30 дней. План остаётся у вас в любом случае.</p>
       </div>
-      <a class="btn gold" href="sertifikat.html">Открыть →</a>
+      <a class="btn gold" href="https://api.leadconnectorhq.com/widget/booking/vG1zsgJdMciejwQSi9PJ" target="_blank" rel="noopener">Выбрать время →</a>
+    </div>
+
+    <div class="next" style="background:var(--card); color:var(--ink); border:1px solid var(--line-soft)">
+      <div>
+        <div class="lb" style="color:var(--wine)">Не забудьте</div>
+        <h3 style="color:var(--ink)">Забрать <em style="color:var(--wine)">сертификат</em></h3>
+        <p style="color:var(--ink2)">Именной сертификат участника VIP-программы, уже выписан на ваше имя.</p>
+      </div>
+      <a class="btn" href="sertifikat.html">Открыть →</a>
     </div>
   </div>
 </section>
