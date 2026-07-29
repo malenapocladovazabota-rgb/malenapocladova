@@ -37,3 +37,9 @@
 /vip/monetizaciya.html  /vip/monetizaciya  301
 /vip/zapisi.html  /vip/zapisi  301
 /vip/sertifikat.html  /vip/sertifikat  301
+
+# Бесплатный лид-магнит
+/free/scenarii.html  /scenarii  301
+
+# Внутренняя презентация для продаж (коды команды, noindex)
+/sales/index.html  /sales  301

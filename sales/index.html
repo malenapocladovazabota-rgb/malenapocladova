@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Разбор · продающая презентация · SMM с нуля</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#161110; --ink2:#453B36;
+  --beige:#EAE0CB; --beige2:#DFD1B6; --card:#F9F4E8;
+  --wine:#6E1E2B; --wine-d:#521621; --wine-soft:#E5CFC9;
+  --gold:#D9B98C; --gold-d:#A9863F;
+  --green:#5C7A46; --red:#9E3A38;
+  --line:rgba(22,17,16,.16); --line-soft:rgba(22,17,16,.08);
+  --muted:#8C8172;
+  --serif:'Playfair Display',serif; --sans:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#2A2220; font-family:var(--sans); -webkit-font-smoothing:antialiased}
+::selection{background:var(--wine); color:var(--beige)}
+
+
+/* ═══ вход для команды ═══ */
+#tg{position:fixed; inset:0; z-index:10000; background:var(--ink); display:flex;
+  align-items:center; justify-content:center; padding:24px}
+#tg .box{max-width:420px; width:100%; text-align:center}
+#tg .lk{font-size:32px; margin-bottom:16px; color:var(--gold)}
+#tg h2{font-family:var(--serif); font-weight:600; font-size:34px; color:var(--beige);
+  line-height:1.1; margin:0 0 10px}
+#tg p{color:rgba(234,224,203,.65); font-size:14.5px; margin-bottom:24px}
+#tg input{width:100%; padding:15px 20px; border-radius:100px; border:1px solid rgba(234,224,203,.25);
+  background:rgba(234,224,203,.06); color:var(--beige); font-family:var(--mono);
+  font-size:15px; text-align:center}
+#tg input:focus{outline:none; border-color:var(--gold)}
+#tg button{margin-top:13px; width:100%; padding:15px; border:0; border-radius:100px; cursor:pointer;
+  background:var(--gold); color:var(--ink); font-family:var(--mono); font-size:14px; letter-spacing:.05em}
+#tg .er{color:#E8998F; font-size:13px; margin-top:13px; min-height:18px; font-family:var(--mono)}
+body.lock{overflow:hidden}
+body.lock #bar,body.lock #stage,body.lock #prog{display:none !important}
+
+/* ═══ сцена ═══ */
+#stage{display:flex; flex-direction:column; align-items:center; padding:26px 20px 120px; gap:22px}
+.slide{width:1280px; height:720px; background:var(--beige); border-radius:14px; position:relative;
+  overflow:hidden; box-shadow:0 22px 60px rgba(0,0,0,.4); flex:none;
+  transform-origin:top center; display:none; color:var(--ink)}
+.slide.on{display:block}
+.slide::after{content:''; position:absolute; inset:0; pointer-events:none; opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+.pad{position:absolute; inset:0; padding:66px 78px; display:flex; flex-direction:column}
+.pad.mid{justify-content:center}
+.pad.tight{padding:48px 62px}
+
+.kick{font-family:var(--mono); font-size:12px; letter-spacing:.24em; text-transform:uppercase;
+  color:var(--wine); display:inline-flex; align-items:center; gap:13px}
+.kick::before{content:''; width:28px; height:1px; background:var(--wine)}
+h1{font-family:var(--serif); font-weight:600; font-size:74px; line-height:1.02; letter-spacing:-.015em; margin:20px 0 18px}
+h1 em{font-style:italic; color:var(--wine)}
+h2{font-family:var(--serif); font-weight:600; font-size:52px; line-height:1.05; margin:16px 0 14px}
+h2 em{font-style:italic; color:var(--wine)}
+h3{font-family:var(--serif); font-weight:600; font-size:26px; margin-bottom:7px}
+p{font-size:19px; color:var(--ink2); line-height:1.55}
+.big{font-size:23px}
+.sm{font-size:16.5px}
+.slide .no{position:absolute; right:30px; bottom:22px; font-family:var(--mono); font-size:11px; color:var(--muted)}
+.slide .tagline{position:absolute; left:30px; bottom:22px; font-family:var(--mono); font-size:10.5px;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+
+/* тёмный слайд */
+.slide.dk{background:var(--ink); color:var(--beige)}
+.dk h1,.dk h2,.dk h3{color:var(--beige)}
+.dk h1 em,.dk h2 em{color:var(--gold)}
+.dk p{color:rgba(234,224,203,.8)}
+.dk .kick{color:var(--gold)} .dk .kick::before{background:var(--gold)}
+.dk .no,.dk .tagline{color:rgba(234,224,203,.35)}
+
+/* сетки */
+.g2{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:22px}
+.g3{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:24px}
+.g4{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:22px}
+.card{background:var(--card); border:1px solid var(--line-soft); border-radius:18px; padding:26px 24px}
+.dk .card{background:rgba(234,224,203,.07); border-color:rgba(217,185,140,.2)}
+.card .tg{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--wine)}
+.dk .card .tg{color:var(--gold)}
+.card h3{font-size:23px; margin:8px 0 6px}
+.card p{font-size:15.5px}
+
+/* цифры */
+.stat{font-family:var(--serif); font-weight:600; font-size:46px; color:var(--wine); line-height:1}
+.dk .stat{color:var(--gold)}
+.statl{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-top:7px}
+
+/* этапы дохода */
+.lad{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:26px}
+.rung{background:var(--card); border:1px solid var(--line-soft); border-radius:18px; padding:26px 24px; position:relative}
+.rung.mid{background:var(--ink); color:var(--beige); border-color:transparent}
+.rung .st{font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--wine)}
+.rung.mid .st{color:var(--gold)}
+.rung h3{font-size:22px; margin:8px 0 12px}
+.rung.mid h3{color:var(--beige)}
+.rung .mo{font-family:var(--serif); font-weight:600; font-size:27px; color:var(--wine); line-height:1.25}
+.rung.mid .mo{color:var(--gold)}
+.rung .cur{font-family:var(--mono); font-size:11px; color:var(--muted); margin-top:6px}
+.rung.mid .cur{color:rgba(234,224,203,.55)}
+.rung p{font-size:14.5px; margin-top:12px}
+.rung.mid p{color:rgba(234,224,203,.75)}
+
+/* кейсы */
+.cs{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:24px}
+.cs .p{background:var(--card); border:1px solid var(--line-soft); border-radius:16px; overflow:hidden}
+.cs img{width:100%; aspect-ratio:1/1; object-fit:cover}
+.cs .b{padding:16px 15px 18px}
+.cs .nm{font-family:var(--serif); font-weight:600; font-size:19px}
+.cs .wa{font-family:var(--mono); font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); margin:4px 0 8px}
+.cs .tx{font-size:13.5px; color:var(--ink2); line-height:1.45}
+.cs .nu{font-family:var(--serif); font-weight:600; font-size:17px; color:var(--wine); margin-top:9px}
+
+/* тарифы */
+.tar{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:26px}
+.tf{background:var(--card); border:1px solid var(--line-soft); border-radius:20px; padding:28px 24px;
+  display:flex; flex-direction:column}
+.tf.best{background:var(--ink); color:var(--beige); border-color:transparent; position:relative}
+.tf.best::before{content:'чаще всего берут'; position:absolute; top:-11px; left:50%; transform:translateX(-50%);
+  background:var(--gold); color:var(--ink); font-family:var(--mono); font-size:9.5px; letter-spacing:.12em;
+  text-transform:uppercase; padding:5px 14px; border-radius:100px; white-space:nowrap}
+.tf h3{font-size:24px; margin-bottom:4px}
+.tf.best h3{color:var(--beige)}
+.tf .who{font-size:14px; color:var(--muted); min-height:40px}
+.tf.best .who{color:rgba(234,224,203,.55)}
+.tf .pr{margin:16px 0 4px}
+.tf .pr .was{font-family:var(--mono); font-size:13px; color:var(--muted); text-decoration:line-through}
+.tf .pr .now{font-family:var(--serif); font-weight:600; font-size:40px; color:var(--wine); line-height:1}
+.tf.best .pr .now{color:var(--gold)}
+.tf ul{list-style:none; margin-top:14px; flex:1}
+.tf li{font-size:14.5px; color:var(--ink2); padding-left:18px; position:relative; margin-top:7px; line-height:1.45}
+.tf.best li{color:rgba(234,224,203,.8)}
+.tf li::before{content:'—'; position:absolute; left:0; color:var(--wine)}
+.tf.best li::before{color:var(--gold)}
+
+/* список-чек */
+.chk{list-style:none; margin-top:20px}
+.chk li{font-size:19px; color:var(--ink2); padding-left:34px; position:relative; margin-top:13px; line-height:1.45}
+.chk li::before{content:'✓'; position:absolute; left:0; top:-1px; color:var(--wine); font-size:19px}
+.dk .chk li{color:rgba(234,224,203,.85)} .dk .chk li::before{color:var(--gold)}
+.chk b{color:var(--ink)} .dk .chk b{color:var(--beige)}
+
+/* возражение */
+.obj{background:var(--card); border-left:4px solid var(--wine); border-radius:0 16px 16px 0;
+  padding:26px 30px; margin-top:6px}
+.obj .say{font-family:var(--serif); font-style:italic; font-size:30px; color:var(--wine)}
+.ans{margin-top:24px}
+.ans p{font-size:20px}
+.ans .lbl{font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--muted); margin-bottom:8px}
+
+/* недели */
+.wk{display:grid; grid-template-columns:104px 1fr; gap:22px; padding:16px 0; border-top:1px solid var(--line-soft)}
+.wk:first-of-type{border-top:none}
+.wk .n{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--wine); padding-top:4px}
+.wk h3{font-size:21px; margin-bottom:3px}
+.wk p{font-size:15px}
+
+/* ═══ панель управления ═══ */
+#bar{position:fixed; left:0; right:0; bottom:0; z-index:200; background:rgba(22,17,16,.96);
+  backdrop-filter:blur(12px); border-top:1px solid rgba(234,224,203,.12);
+  display:flex; align-items:center; gap:10px; padding:11px 18px; flex-wrap:wrap}
+#bar button, #bar a{background:rgba(234,224,203,.09); color:var(--beige); border:0; border-radius:9px;
+  padding:9px 14px; font-family:var(--mono); font-size:11px; letter-spacing:.05em; cursor:pointer;
+  white-space:nowrap; transition:.15s; text-decoration:none}
+#bar button:hover{background:var(--gold); color:var(--ink)}
+#bar .pos{font-family:var(--mono); font-size:11.5px; color:rgba(234,224,203,.55); margin-left:auto}
+#bar .ttl{font-family:var(--serif); font-size:15px; color:var(--beige); margin-right:6px}
+#prog{position:fixed; left:0; bottom:0; height:2px; background:var(--gold); z-index:201; transition:width .2s}
+
+/* ═══ шпаргалка ═══ */
+#notes{position:fixed; right:0; top:0; bottom:52px; width:400px; z-index:190;
+  background:#1E1817; border-left:1px solid rgba(234,224,203,.14); color:var(--beige);
+  overflow-y:auto; padding:26px 24px 40px; display:none}
+#notes.on{display:block}
+#notes h4{font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--gold); margin:20px 0 9px}
+#notes h4:first-child{margin-top:0}
+#notes p{font-size:14.5px; color:rgba(234,224,203,.82); line-height:1.6; margin-bottom:9px}
+#notes .say{background:rgba(217,185,140,.1); border-left:2px solid var(--gold); border-radius:0 10px 10px 0;
+  padding:13px 16px; font-size:14.5px; color:var(--beige); font-style:italic; margin-bottom:10px; line-height:1.6}
+#notes .warn{background:rgba(158,58,56,.16); border-radius:10px; padding:13px 16px;
+  font-size:13.5px; color:#F0C4BE; margin-bottom:10px; line-height:1.55}
+#notes ul{list-style:none; margin-bottom:10px}
+#notes li{font-size:14px; color:rgba(234,224,203,.8); padding-left:17px; position:relative;
+  margin-top:6px; line-height:1.5}
+#notes li::before{content:'·'; position:absolute; left:4px; color:var(--gold); font-size:18px; line-height:1}
+
+/* ═══ меню ═══ */
+#menu{position:fixed; inset:0; z-index:210; background:rgba(15,11,10,.96); display:none;
+  overflow-y:auto; padding:44px 30px 60px}
+#menu.on{display:block}
+#menu .mw{max-width:1000px; margin:0 auto}
+#menu h3{font-family:var(--serif); font-size:30px; color:var(--beige); margin-bottom:6px}
+#menu .hint{font-family:var(--mono); font-size:11.5px; color:rgba(234,224,203,.45); margin-bottom:26px}
+.mgrp{margin-bottom:26px}
+.mgt{font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--gold); margin-bottom:11px}
+.mitems{display:grid; grid-template-columns:repeat(3,1fr); gap:9px}
+.mi{background:rgba(234,224,203,.07); border-radius:11px; padding:13px 15px; cursor:pointer;
+  color:var(--beige); font-size:14px; transition:.14s; display:flex; gap:11px; align-items:baseline}
+.mi:hover{background:var(--gold); color:var(--ink)}
+.mi span{font-family:var(--mono); font-size:10.5px; opacity:.55; flex:none}
+
+@media(max-width:860px){
+  #bar{gap:6px; padding:9px 10px}
+  #bar button{padding:8px 10px; font-size:10px}
+  #bar .ttl{display:none}
+  #notes{width:100%; top:auto; height:46vh; border-left:0; border-top:1px solid rgba(234,224,203,.14)}
+  .mitems{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+
+<div id="tg"><div class="box">
+  <div class="lk">✦</div>
+  <h2>Презентация<br>для продаж</h2>
+  <p>Внутренний материал команды. Введите свой код доступа.</p>
+  <input id="tgi" type="text" placeholder="код" autocomplete="off" spellcheck="false" autocapitalize="off">
+  <button id="tgb">Войти</button>
+  <div class="er" id="tge"></div>
+</div></div>
+<div id="prog"></div>
+<div id="stage"></div>
+<div id="notes"></div>
+
+<div id="menu"><div class="mw">
+  <h3>Быстрый переход</h3>
+  <div class="hint">Нажмите M, чтобы открыть или закрыть. Возражения — прыгайте туда прямо во время разговора.</div>
+  <div id="mlist"></div>
+</div></div>
+
+<div id="bar">
+  <div class="ttl">Разбор</div>
+  <button id="bPrev">← Назад</button>
+  <button id="bNext">Вперёд →</button>
+  <button id="bMenu">Меню · M</button>
+  <button id="bNotes">Шпаргалка · N</button>
+  <button id="bWin">Второе окно · P</button>
+  <button id="bCur">Валюта: $ · C</button>
+  <button id="bFull">Во весь экран · F</button>
+  <div class="pos" id="pos">1 / 1</div>
+</div>
+
+
+<script>
+/* ═══════════ доступ команды ═══════════
+   Коды меняются здесь. Удалить строку = отозвать доступ.
+   Это лёгкая защита: кто откроет исходник страницы, увидит коды.
+   Для внутренней презентации достаточно.
+══════════════════════════════════════════ */
+(function(){
+  var TEAM = {
+    'sasha': 'Александра',
+    'malena': 'Малена',
+    'lev': 'Лев'
+  };
+  var K = 'sales_team_v1';
+  var g = document.getElementById('tg');
+
+  function open_(){ g.remove(); document.body.classList.remove('lock'); }
+
+  try{
+    if (TEAM[localStorage.getItem(K)]) { open_(); return; }
+  }catch(e){}
+
+  var fromUrl = new URLSearchParams(location.search).get('k');
+  if (fromUrl && TEAM[fromUrl.trim().toLowerCase()]) {
+    try{ localStorage.setItem(K, fromUrl.trim().toLowerCase()); }catch(e){}
+    history.replaceState(null,'',location.pathname);
+    open_(); return;
+  }
+
+  document.body.classList.add('lock');
+  var inp = document.getElementById('tgi'), er = document.getElementById('tge');
+  function check(){
+    var v = inp.value.trim().toLowerCase();
+    if (TEAM[v]) { try{ localStorage.setItem(K,v); }catch(e){} open_(); }
+    else { er.textContent = 'Код не подошёл'; inp.value=''; inp.focus(); }
+  }
+  document.getElementById('tgb').addEventListener('click', check);
+  inp.addEventListener('keydown', function(e){ if(e.key==='Enter') check(); });
+  setTimeout(function(){ inp.focus(); }, 120);
+})();
+</script>
+
+<script>
+/* ══════════════════════════════════════════════════════════
+   КОНТЕНТ. Каждый слайд: {b: блок, t: заголовок для меню,
+   h: html слайда, n: шпаргалка для Александры}
+════════════════════════════════════════════════════════════ */
+const IMG = '../club-img/';
+
+const S = [
+/* ─────────── 0 · ОТКРЫТИЕ ─────────── */
+{b:'Открытие', t:'Титул', h:`
+<div class="pad mid">
+  <div class="kick">Школа SMM с нуля · 7 поток</div>
+  <h1>Разбор <em>вашей ситуации</em></h1>
+  <p class="big" style="max-width:60ch">Полчаса на то, чтобы понять, где вы сейчас, куда хотите прийти и что для этого делать в ближайшие месяцы.</p>
+</div>
+<div class="tagline">Малена Покладова</div>`,
+n:`<h4>Когда показывать</h4><p>Открыто с самого начала, пока здороваетесь. Дальше не задерживайтесь.</p>
+<h4>Говорить</h4>
+<div class="say">Здравствуйте, {Имя}! Давайте так: сначала я задам несколько вопросов про вашу ситуацию, потом расскажу, как устроено обучение, и отвечу на всё, что останется. Полчаса нам хватит. Хорошо?</div>
+<p>Дождитесь «хорошо». Это микро-согласие, после него разговор идёт по вашему сценарию.</p>
+<div class="warn">Не начинайте с рассказа о курсе. Первые десять минут говорит клиент.</div>`},
+
+{b:'Открытие', t:'О чём поговорим', h:`
+<div class="pad mid">
+  <div class="kick">План на полчаса</div>
+  <h2>Три части</h2>
+  <div class="g3">
+    <div class="card"><div class="tg">Первые 10 минут</div><h3>Ваша ситуация</h3><p>Чем занимаетесь, что уже пробовали, где застряли и куда хотите прийти.</p></div>
+    <div class="card"><div class="tg">Следующие 10</div><h3>Что мы делаем</h3><p>Как устроено обучение и какая его часть закрывает именно вашу задачу.</p></div>
+    <div class="card"><div class="tg">Последние 10</div><h3>Ваши вопросы</h3><p>Форматы, стоимость, рассрочка. Отвечу прямо, без общих слов.</p></div>
+  </div>
+  <p class="sm" style="margin-top:26px; color:var(--muted)">Если пойму, что вам сейчас не нужно обучение, я так и скажу.</p>
+</div>`,
+n:`<h4>Зачем этот слайд</h4><p>Человек понимает, что его не будут полчаса грузить продажей. Снимает напряжение и повышает откровенность на диагностике.</p>
+<h4>Говорить</h4>
+<div class="say">Вот так выглядят наши полчаса. Начнём с вас, чтобы я понимала, о чём вообще говорить.</div>
+<p>Последнюю строчку про «скажу, если не нужно» проговорите вслух. Она сильно повышает доверие и почти ничего не стоит.</p>`},
+
+/* ─────────── 1 · ДИАГНОСТИКА ─────────── */
+{b:'Диагностика', t:'Слушаем клиента', h:`
+<div class="pad mid" style="align-items:center; text-align:center">
+  <div class="kick" style="justify-content:center">Часть первая</div>
+  <h1 style="font-size:64px">Расскажите,<br>что у вас <em>сейчас</em></h1>
+  <p class="big" style="max-width:52ch; margin:0 auto">Чем занимаетесь, что уже пробовали в соцсетях и что привело к мысли пойти учиться.</p>
+</div>`,
+n:`<h4>Главное правило</h4><p>Десять минут вы почти молчите. Если через десять минут говорите больше клиента — вы уже проигрываете: продаёте, не зная кому.</p>
+<h4>Порядок вопросов</h4>
+<ul><li>Расскажите, что у вас сейчас происходит с соцсетями?</li><li>Что уже пробовали сами?</li><li>Что из этого не сработало и почему, как думаете?</li><li>Откуда сейчас приходят клиенты?</li></ul>
+<h4>Главный вопрос звонка</h4>
+<div class="say">А если оставить всё как есть, что будет через полгода?</div>
+<p>И сразу за ним — в цифрах:</p>
+<ul><li>Сколько зарабатываете сейчас и сколько хотели бы?</li><li>Сколько стоит один ваш клиент?</li><li>Какие постоянные расходы надо закрывать?</li></ul>
+<div class="warn">Записывайте названные цифры. Они понадобятся через десять минут, когда будете называть цену. Без них цена — просто большое число.</div>`},
+
+{b:'Диагностика', t:'Три вопроса квалификации', h:`
+<div class="pad mid" style="align-items:center; text-align:center">
+  <div class="kick" style="justify-content:center">Часть первая</div>
+  <h2>Чтобы предложить<br><em>подходящее</em></h2>
+  <p class="big" style="max-width:54ch; margin:0 auto">Задам три коротких вопроса, чтобы не предлагать вам того, что вам не нужно.</p>
+</div>`,
+n:`<h4>Три вопроса, без которых звонок не считается проведённым</h4>
+<div class="say">Решение по обучению вы принимаете сами или с кем-то советуетесь?</div>
+<p>Спросить на двенадцатой минуте, а не на двадцать девятой. Если решает муж или партнёр — весь дальнейший разговор строится иначе.</p>
+<div class="say">Вы уже примерно закладывали бюджет на обучение?</div>
+<p>Назвал сумму — вы знаете, какой тариф предлагать.</p>
+<div class="say">Сколько часов в неделю реально сможете выделять? Не в идеальном мире, а по-честному.</div>
+<p>Мало времени и нет привычки доводить — нужен куратор, не самостоятельный.</p>`},
+
+/* ─────────── 2 · РАМКА ─────────── */
+{b:'Рамка', t:'Просмотры и заявки', h:`
+<div class="slide-inner"></div>
+<div class="pad mid">
+  <div class="kick">Главное, что стоит понимать</div>
+  <h1>Просмотры и заявки —<br><em>разные метрики</em></h1>
+  <p class="big" style="max-width:62ch">Можно собрать миллион просмотров и не получить ни одного клиента. Можно собрать три тысячи и получить пятерых. Разница не в удаче и не в красоте картинки, а в структуре.</p>
+</div>`,
+n:`<h4>Когда показывать</h4><p>После диагностики, как мост от «я вас услышала» к «вот что мы с этим делаем».</p>
+<h4>Говорить</h4>
+<div class="say">{Имя}, вы сейчас описали ровно то, с чем к нам приходят чаще всего. Давайте покажу, как мы на это смотрим.</div>
+<p>Этот слайд снимает главное заблуждение: «мне нужны просмотры». Нужны заявки, а это другая работа.</p>`},
+
+{b:'Рамка', t:'Три пути', h:`
+<div class="pad">
+  <div class="kick">Куда можно прийти</div>
+  <h2>Три направления, <em>один навык</em></h2>
+  <div class="g3">
+    <div class="card"><div class="tg">Через услуги</div><h3>SMM-специалист</h3><p>Ведёте чужие аккаунты: стратегия, контент, реклама, аналитика. Самый быстрый путь к первым деньгам.</p></div>
+    <div class="card"><div class="tg">Через свой продукт</div><h3>Эксперт с блогом</h3><p>У вас своё дело или практика, и блог приводит вам клиентов напрямую.</p></div>
+    <div class="card"><div class="tg">Через аудиторию</div><h3>Блогер и UGC</h3><p>Своя аудитория, доход с рекламы, партнёрств и роликов для брендов.</p></div>
+  </div>
+  <p class="sm" style="margin-top:26px; color:var(--muted)">Начинать лучше с одного направления. Совмещать можно потом, когда первое стало стабильным.</p>
+</div>`,
+n:`<h4>Задача слайда</h4><p>Показать, что навык один, а применений три. Человек находит себя.</p>
+<h4>Говорить</h4>
+<div class="say">Из того, что вы рассказали, вам ближе всего вот это направление. Согласны?</div>
+<p>Назовите конкретное направление сами, исходя из диагностики. Не спрашивайте «а что вам ближе» — это перекладывает работу на клиента.</p>
+<div class="warn">Если человек эксперт со своим бизнесом (как владелица магазина дверей), ему не надо продавать путь SMM-специалиста. Ему нужен блог, который приводит клиентов.</div>`},
+
+{b:'Рамка', t:'Сколько платят · услуги', h:`
+<div class="pad">
+  <div class="kick">Если идти через услуги</div>
+  <h2>Три этапа <em>и три чека</em></h2>
+  <div class="lad">
+    <div class="rung">
+      <div class="st">Этап 1 · старт</div>
+      <h3>Снимаете и монтируете</h3>
+      <div class="mo">€500</div><div class="cur">Европа · с клиента в месяц</div>
+      <div class="mo" style="margin-top:10px">$1 000</div><div class="cur">США · с клиента в месяц</div>
+      <p>Берёте узкую задачу. Отвечаете за ролики, не за заявки.</p>
+    </div>
+    <div class="rung mid">
+      <div class="st">Этап 2 · система</div>
+      <h3>Ведёте аккаунт</h3>
+      <div class="mo">€1 000</div><div class="cur">Европа · с клиента в месяц</div>
+      <div class="mo" style="margin-top:10px">$2 500</div><div class="cur">США · с клиента в месяц</div>
+      <p>Есть процесс, часть задач делегируете. Отвечаете за движение аккаунта.</p>
+    </div>
+    <div class="rung">
+      <div class="st">Этап 3 · масштаб</div>
+      <h3>Отвечаете за результат</h3>
+      <div class="mo">€5–10 тыс</div><div class="cur">Европа · в месяц</div>
+      <div class="mo" style="margin-top:10px">$10–25 тыс</div><div class="cur">США · в месяц</div>
+      <p>Несколько клиентов, помощники, ваш процесс работает без вас.</p>
+    </div>
+  </div>
+</div>`,
+n:`<h4>Ключевая мысль, проговорить вслух</h4>
+<div class="say">Чек растёт не от опыта, а от объёма ответственности. Пока вы отвечаете за монтаж, вам платят за монтаж. Как только отвечаете за заявки — цена меняется в разы.</div>
+<h4>Здесь же связываем с его цифрами</h4>
+<p>Если на диагностике человек назвал свой доход или стоимость клиента — сравните прямо сейчас, не откладывая до слайда с ценой.</p>
+<div class="warn">Диапазоны рыночные и зависят от ниши. Не обещайте эти суммы конкретному человеку к конкретной дате.</div>`},
+
+{b:'Рамка', t:'Сколько платят · блогер и эксперт', h:`
+<div class="pad tight">
+  <div class="kick">Два других направления</div>
+  <h2>Тоже <em>по этапам</em></h2>
+  <div class="g2" style="margin-top:20px">
+    <div class="card">
+      <div class="tg">Блогер и UGC</div>
+      <h3 style="margin-bottom:14px">Доход с контента для брендов</h3>
+      <div style="display:flex; gap:22px; flex-wrap:wrap">
+        <div><div class="stat" style="font-size:27px">€50–150</div><div class="statl">старт · за ролик</div></div>
+        <div><div class="stat" style="font-size:27px">€500–2000</div><div class="statl">система · в месяц</div></div>
+        <div><div class="stat" style="font-size:27px">€5–12 тыс</div><div class="statl">масштаб · в месяц</div></div>
+      </div>
+      <p class="sm" style="margin-top:14px">В США выше: от $100–300 за ролик на старте. Платят за контент, а не за число подписчиков.</p>
+    </div>
+    <div class="card">
+      <div class="tg">Эксперт со своим продуктом</div>
+      <h3 style="margin-bottom:14px">Блог приводит клиентов вам</h3>
+      <div style="display:flex; gap:22px; flex-wrap:wrap">
+        <div><div class="stat" style="font-size:27px">€500–1000</div><div class="statl">старт · в месяц</div></div>
+        <div><div class="stat" style="font-size:27px">€2–5 тыс</div><div class="statl">система · за запуск</div></div>
+        <div><div class="stat" style="font-size:27px">€10–30 тыс</div><div class="statl">масштаб · за поток</div></div>
+      </div>
+      <p class="sm" style="margin-top:14px">Здесь блог не продукт, а канал: он приводит людей в вашу практику или бизнес.</p>
+    </div>
+  </div>
+</div>`,
+n:`<h4>Когда показывать</h4><p>Только если человек не про услуги. Если он классический новичок, идущий в SMM-специалисты, — пропустите, чтобы не размывать.</p>
+<h4>Для владельцев бизнеса</h4><p>Показывайте правую карточку. У них блог — не отдельный доход, а способ снизить стоимость клиента.</p>`},
+
+/* ─────────── 3 · РЕШЕНИЕ ─────────── */
+{b:'Решение', t:'Что мешает самому', h:`
+<div class="pad">
+  <div class="kick">Почему не получается самостоятельно</div>
+  <h2>Четыре места, <em>где люди застревают</em></h2>
+  <div class="g4">
+    <div class="card"><div class="tg">Первое</div><h3>Нет системы</h3><p>Знания собраны из десятка бесплатных видео и не складываются в порядок действий.</p></div>
+    <div class="card"><div class="tg">Второе</div><h3>Некому показать</h3><p>Сняли ролик и не понимаете, нормально это или стыдно. Спросить не у кого.</p></div>
+    <div class="card"><div class="tg">Третье</div><h3>Пропадает регулярность</h3><p>Две недели воодушевления, потом тишина. Никто не заметит, если вы перестанете.</p></div>
+    <div class="card"><div class="tg">Четвёртое</div><h3>Страшно назвать цену</h3><p>Клиенты вроде есть, а поднять чек не получается, потому что непонятно, на чём основание.</p></div>
+  </div>
+  <p class="sm" style="margin-top:24px; color:var(--muted)">Информация сейчас бесплатная. Платят за порядок, обратную связь и за то, что рядом есть человек.</p>
+</div>`,
+n:`<h4>Задача слайда</h4><p>Ответить на невысказанное «а зачем платить, если всё есть на ютубе».</p>
+<h4>Говорить</h4>
+<div class="say">Смотрите, информации сейчас море, и она бесплатная. Проблема не в ней. Проблема вот в этих четырёх местах.</div>
+<p>Спросите, что из четырёх ближе. Ответ даст вам главный аргумент на закрытии.</p>
+<div class="say">Что из этого вам знакомо больше всего?</div>`},
+
+{b:'Решение', t:'Что такое курс', h:`
+<div class="pad mid dk-inner">
+  <div class="kick">Наше решение</div>
+  <h1>SMM <em>с нуля</em></h1>
+  <p class="big" style="max-width:58ch">Программа, после которой у вас есть не набор знаний, а профессия: система, по которой вы сможете работать и через год, и через три.</p>
+  <div class="g4" style="margin-top:32px">
+    <div><div class="stat">22</div><div class="statl">блока обучения</div></div>
+    <div><div class="stat">5–6</div><div class="statl">недель программы</div></div>
+    <div><div class="stat">5</div><div class="statl">эфиров с разборами</div></div>
+    <div><div class="stat">1 год</div><div class="statl">доступ к записям</div></div>
+  </div>
+</div>`,
+n:`<h4>Говорить</h4>
+<div class="say">Курс идёт пять-шесть недель, но записи остаются на год. Люди возвращаются к урокам по второму и третьему разу, и каждый раз замечают новое.</div>
+<p>Не пересказывайте всю программу. Следующий слайд — по неделям, и его достаточно.</p>`},
+
+{b:'Решение', t:'Программа по неделям', h:`
+<div class="pad tight">
+  <div class="kick">Траектория</div>
+  <h2>От нуля <em>до системы</em></h2>
+  <div style="margin-top:18px">
+    <div class="wk"><div class="n">Неделя 1<br>9 уроков</div><div><h3>Стратегия и упаковка</h3><p>Где искать клиентов, позиционирование, стратегия контента на 90 дней, упаковка профиля, анализ аудитории и конкурентов.</p></div></div>
+    <div class="wk"><div class="n">Неделя 2<br>13 уроков</div><div><h3>Визуал, тексты, Stories</h3><p>Тренды и техника съёмки, композиция, свет, ракурсы и планы, базовый визуал профиля, сторителлинг и 15 приёмов для Stories.</p></div></div>
+    <div class="wk"><div class="n">Неделя 3<br>18 уроков</div><div><h3>Съёмка и монтаж</h3><p>Более десяти видеоприёмов под разные форматы, монтаж, звук, шрифты и футажи, цветокоррекция, авторская техника вирусных видео.</p></div></div>
+    <div class="wk"><div class="n">Недели 4–5<br>7 уроков</div><div><h3>Продажи и рост</h3><p>Продажи в блоге и в переписке, работа с клиентами и удержание, таргет, блогеры и UGC, TikTok и инструменты искусственного интеллекта.</p></div></div>
+  </div>
+  <p class="sm" style="margin-top:18px; color:var(--muted)">Плюс предобучение из пяти уроков до старта, чтобы войти в курс подготовленной.</p>
+</div>`,
+n:`<h4>Правило пяти минут</h4><p>Не пересказывайте все недели подряд. Покажите слайд и вслух проговорите только те блоки, которые закрывают названную клиентом боль.</p>
+<ul><li>«нет идей, что снимать» → неделя 1, стратегия контента</li><li>«ни разу не была в кадре» → неделя 3, съёмка</li><li>«продажи упали» → недели 4–5, продажи</li><li>«не знаю, где брать клиентов» → неделя 1, где искать клиентов</li></ul>
+<div class="warn">Если клиент сказал «я уже посмотрела программу, вопросов нет» — не пересказывайте её. Переходите дальше. Долгая презентация не добавляет желания, она снимает напряжение.</div>`},
+
+{b:'Решение', t:'Что входит', h:`
+<div class="pad">
+  <div class="kick">Наполнение</div>
+  <h2>Что вы <em>получаете</em></h2>
+  <ul class="chk">
+    <li><b>22 блока уроков</b> с тайм-кодами, PDF и практикой к каждому</li>
+    <li><b>Разборы с Маленой в эфире</b> — она смотрит ваш аккаунт лично, до пяти эфиров за поток</li>
+    <li><b>Куратор проверяет домашние задания</b> и даёт обратную связь в отдельном чате</li>
+    <li><b>Готовые инструменты:</b> контент-план, прайс, скрипт продаж и промпты — забираете в работу</li>
+    <li><b>Записи всех уроков и разборов</b> остаются с вами на год</li>
+    <li><b>Сертификат</b> после защиты — аргумент для будущих клиентов</li>
+  </ul>
+  <p class="sm" style="margin-top:22px; color:var(--muted)">Каждый пункт по отдельности стоит денег. В курсе это одна связанная система.</p>
+</div>`,
+n:`<h4>Зачем этот слайд</h4><p>Это разгон ценности перед ценой. Проговорите вслух, сколько стоило бы каждое отдельно: наставник, куратор, готовые шаблоны.</p>
+<h4>Говорить</h4>
+<div class="say">Обратите внимание на второй пункт: Малена смотрит именно ваш аккаунт, а не рассказывает в общем. Это то, чего нет ни в одном курсе за эти деньги.</div>
+<p>Сразу после этого слайда переходите к цене. Не делайте паузу и не спрашивайте «есть вопросы» — вопросы соберёте после цены.</p>`},
+
+{b:'Решение', t:'Кто ведёт', h:`
+<div class="pad">
+  <div class="kick">Кто с вами работает</div>
+  <h2>Не только <em>записи уроков</em></h2>
+  <div class="g2" style="margin-top:24px; align-items:center">
+    <div style="border-radius:20px; overflow:hidden; box-shadow:0 20px 44px rgba(22,17,16,.18)">
+      <img src="${IMG}malena-portrait.jpg" alt="Малена Покладова" style="width:100%; aspect-ratio:4/3; object-fit:cover; display:block">
+    </div>
+    <div>
+      <h3 style="font-size:32px">Малена Покладова</h3>
+      <p style="margin-top:10px">Семь лет снимает Reels и учит других. Более 1500 выпускниц. Ведёт разборы в эфире лично и сама отвечает в чате курса.</p>
+      <div style="margin-top:22px; padding-top:20px; border-top:1px solid var(--line-soft)">
+        <div class="tg" style="font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--wine)">Кураторы</div>
+        <h3 style="font-size:23px; margin-top:8px">Кристина и Анастасия</h3>
+        <p class="sm" style="margin-top:6px">Обе прошли этот курс сами и работают с клиентами. Проверяют домашние задания и не дают застрять.</p>
+      </div>
+    </div>
+  </div>
+</div>`,
+n:`<h4>Зачем</h4><p>Снимает страх «куплю записи и останусь один». Особенно важно для тех, кто уже обжигался на других курсах.</p>
+<h4>Говорить</h4>
+<div class="say">Кураторы у нас не наёмные методисты. Обе прошли этот курс сами и сейчас работают с клиентами, то есть отвечают вам из практики.</div>`},
+
+/* ─────────── 4 · ДОКАЗАТЕЛЬСТВА ─────────── */
+{b:'Доказательства', t:'Кейсы · доход', h:`
+<div class="pad tight">
+  <div class="kick">Наши ученицы</div>
+  <h2>Пришли учиться, <em>вышли с клиентами</em></h2>
+  <div class="cs">
+    <div class="p"><img src="${IMG}alina-new.jpg" alt="Алина"><div class="b"><div class="nm">Алина</div><div class="wa">была в декрете</div><div class="tx">Начинала с нуля дома с ребёнком. Сейчас своя SMM-студия и команда из трёх человек.</div><div class="nu">5 клиентов · €1500+</div></div></div>
+    <div class="p"><img src="${IMG}anna.jpg" alt="Анна"><div class="b"><div class="nm">Анна</div><div class="wa">чек не рос</div><div class="tx">Опыт был, но клиенты пропадали, а цену поднять не получалось.</div><div class="nu">доход вырос в 4 раза</div></div></div>
+    <div class="p"><img src="${IMG}anastasia-new.jpg" alt="Анастасия"><div class="b"><div class="nm">Анастасия</div><div class="wa">после провала на другом курсе</div><div class="tx">Пришла с мыслью, что у неё не получится. Теперь бренды пишут ей сами, а у нас она куратор.</div><div class="nu">5 проектов · доход втрое</div></div></div>
+    <div class="p"><img src="${IMG}mariia-b.jpg" alt="Мария"><div class="b"><div class="nm">Мария</div><div class="wa">переехала в Португалию</div><div class="tx">Взяла первых клиентов во время обучения и окупила курс до его окончания.</div><div class="nu">Reels на 944K</div></div></div>
+  </div>
+  <p class="sm" style="margin-top:20px; color:var(--muted)">У всех старт был с нуля или после неудачного опыта.</p>
+</div>`,
+n:`<h4>Как показывать</h4><p>Не зачитывайте все четыре. Выберите одну, максимально похожую на вашего клиента, и расскажите её подробно.</p>
+<ul><li>Мама в декрете, начинает с нуля → Алина</li><li>Уже работает, но дёшево → Анна</li><li>Обжёгся на другом обучении → Анастасия</li><li>Переехал, нужен доход из любой точки → Мария</li></ul>
+<h4>Говорить</h4>
+<div class="say">Вот Анастасия. Она пришла к нам после курса, где ничего не получилось, и была уверена, что дело в ней. Сейчас ведёт пять проектов и работает у нас куратором.</div>`},
+
+{b:'Доказательства', t:'Кейсы · аудитория', h:`
+<div class="pad tight">
+  <div class="kick">Другое направление</div>
+  <h2>Выросли <em>с нуля до своей аудитории</em></h2>
+  <div class="cs">
+    <div class="p"><img src="${IMG}elizaveta-new.jpg" alt="Елизавета"><div class="b"><div class="nm">Елизавета</div><div class="wa">начинала без аккаунта</div><div class="tx">Экология, Молдова. Создала крупнейшее эко-медиа страны, снимала для DW Romania.</div><div class="nu">74,2K · 4,6 млн лайков</div></div></div>
+    <div class="p"><img src="${IMG}aleksandra.jpg" alt="Александра"><div class="b"><div class="nm">Александра</div><div class="wa">блог с нуля</div><div class="tx">Пишет о женских правах. Восемь роликов перевалили за сто тысяч просмотров каждый.</div><div class="nu">173,5K в TikTok</div></div></div>
+    <div class="p"><img src="${IMG}iuliana.jpg" alt="Юлиана"><div class="b"><div class="nm">Юлиана</div><div class="wa">снимала только тренды</div><div class="tx">Нашла свой формат вместо повторения за другими. Теперь коллаборации с брендами.</div><div class="nu">21,8K · ролики 100K+</div></div></div>
+    <div class="p"><img src="${IMG}kristina.jpg" alt="Кристина"><div class="b"><div class="nm">Кристина</div><div class="wa">блог не приносил денег</div><div class="tx">Опыт был, но контент не превращался в доход. После обучения вышла на эксклюзивные контракты.</div><div class="nu">выросла как специалист</div></div></div>
+  </div>
+  <p class="sm" style="margin-top:20px; color:var(--muted)">Ниши разные, система одна.</p>
+</div>`,
+n:`<h4>Когда показывать</h4><p>Если человек хочет свой блог, а не работу на клиентов. Для классического SMM-специалиста можно пропустить.</p>
+<h4>Сильный аргумент для сомневающихся</h4>
+<div class="say">Елизавета начинала вообще без аккаунта. Не с тысячей подписчиков, а с нуля.</div>
+<p>Держите этот факт наготове — он закрывает возражение «у меня мало подписчиков, поздно начинать».</p>`},
+
+/* ─────────── 5 · ОФФЕР ─────────── */
+{b:'Оффер', t:'Три тарифа', h:`
+<div class="pad tight">
+  <div class="kick">Форматы участия</div>
+  <h2>Выбираете <em>глубину поддержки</em></h2>
+  <div class="tar">
+    <div class="tf">
+      <h3>Самостоятельный</h3>
+      <div class="who">Есть время и дисциплина, идёте в своём ритме</div>
+      <div class="pr"><div class="was" data-usd="$750" data-eur="€700">$750</div><div class="now" data-usd="$500" data-eur="€450">$500</div></div>
+      <ul>
+        <li>Все 22 блока и материалы</li>
+        <li>Записи на год</li>
+        <li>Сертификат</li>
+      </ul>
+    </div>
+    <div class="tf best">
+      <h3>С куратором</h3>
+      <div class="who">Нужен человек, который проверит и не даст бросить</div>
+      <div class="pr"><div class="was" data-usd="$1 200" data-eur="€1 100">$1 200</div><div class="now" data-usd="$800" data-eur="€750">$800</div></div>
+      <ul>
+        <li>Всё из самостоятельного</li>
+        <li>Куратор проверяет домашние задания</li>
+        <li>Отдельный чат с обратной связью</li>
+        <li>Разборы в эфире</li>
+      </ul>
+    </div>
+    <div class="tf">
+      <h3>VIP с Маленой</h3>
+      <div class="who">Своя ниша или аккаунт с аудиторией, нужна стратегия</div>
+      <div class="pr"><div class="was" data-usd="$2 000" data-eur="€1 850">$2 000</div><div class="now" data-usd="$1 500" data-eur="€1 400">$1 500</div></div>
+      <ul>
+        <li>Всё из тарифа с куратором</li>
+        <li>Личная работа с Маленой</li>
+        <li>Стратегия под вашу нишу</li>
+        <li>Практические встречи</li>
+      </ul>
+    </div>
+  </div>
+  <p class="sm" style="margin-top:20px; color:var(--muted)">Зачёркнутая цена — полная стоимость. Сейчас идёт первая волна набора, поэтому цена ниже.</p>
+</div>`,
+n:`<h4>Порядок называния цены. Строго такой</h4>
+<ul><li>Сначала полная цена как якорь</li><li>Потом цена первой волны</li><li>Потом окупаемость в его цифрах</li><li>Потом молчите</li></ul>
+<h4>Говорить</h4>
+<div class="say">Полная стоимость тарифа с куратором — $1200. Сейчас идёт первая волна набора, поэтому $800.</div>
+<h4>Валюта — клавиша C</h4>
+<p>Клиент в Европе — переключите на евро до звонка, кнопкой в панели или клавишей C. Выбор запоминается.</p>
+<table style="width:100%; font-size:13px; color:rgba(234,224,203,.8); border-collapse:collapse; margin-bottom:10px">
+<tr style="color:var(--gold); font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase"><td style="padding:5px 0">Тариф</td><td>Доллары</td><td>Евро</td></tr>
+<tr><td style="padding:5px 0">Самостоятельный</td><td>$750 → $500</td><td>€700 → €450</td></tr>
+<tr><td style="padding:5px 0">С куратором</td><td>$1200 → $800</td><td>€1100 → €750</td></tr>
+<tr><td style="padding:5px 0">VIP с Маленой</td><td>$2000 → $1500</td><td>€1850 → €1400</td></tr>
+</table>
+<div class="say">Вы говорили, что один клиент приносит вам около {его цифра}. То есть обучение окупается {N} клиентами, а навык остаётся с вами навсегда.</div>
+<h4>И замолчите</h4>
+<p>Пауза после цены принадлежит клиенту. Первый, кто заговорит, обычно уступает. Если пауза затянулась — не снижайте цифру, спросите: «Что скажете?»</p>
+<div class="warn">Не говорите «где-то около», «примерно», «но можно дешевле». Не предлагайте скидку до того, как прозвучало возражение.</div>
+<h4>Какой тариф рекомендовать</h4>
+<ul><li>Мало времени, нет привычки доводить → с куратором</li><li>Сложная или узкая ниша → VIP</li><li>Ограничен бюджет и есть дисциплина → самостоятельный</li></ul>`},
+
+{b:'Оффер', t:'Рассрочка', h:`
+<div class="pad mid">
+  <div class="kick">Как оплатить</div>
+  <h2>Можно <em>частями</em></h2>
+  <div class="g2" style="margin-top:26px">
+    <div class="card"><div class="tg">Вариант первый</div><h3>Рассрочка от школы</h3><p>Делим стоимость на несколько частей, без процентов и без переплат. Составляем график, и вы платите по нему.</p></div>
+    <div class="card"><div class="tg">Вариант второй</div><h3>Рассрочка через партнёра</h3><p>Оформляется отдельно, тоже без переплаты для вас. Подходит, если удобнее растянуть на больший срок.</p></div>
+  </div>
+  <p class="big" style="margin-top:28px">Первый платёж закрепляет за вами место и текущую цену.</p>
+</div>`,
+n:`<h4>Когда показывать</h4><p>Сразу после цены, если видите заминку. Не ждите возражения «дорого» — часто человек молчит именно потому, что не знает про рассрочку.</p>
+<h4>Говорить</h4>
+<div class="say">Оплатить можно полностью или частями. Как вам удобнее?</div>
+<p>Это вопрос с двумя вариантами, оба из которых означают покупку. Работает лучше, чем «ну что, берёте?»</p>
+<div class="warn">Конкретное число месяцев обсуждайте индивидуально. В презентации намеренно нет цифры, чтобы не связывать себе руки.</div>`},
+
+{b:'Оффер', t:'Почему сейчас', h:`
+<div class="pad mid">
+  <div class="kick">Про сроки</div>
+  <h2>Что меняется <em>после старта</em></h2>
+  <div class="g3" style="margin-top:26px">
+    <div class="card"><div class="tg">Цена</div><h3>Вырастет до полной</h3><p>Сейчас идёт первая волна набора. После старта потока действует полная стоимость.</p></div>
+    <div class="card"><div class="tg">Поток</div><h3>Следующий не скоро</h3><p>Мы не запускаем потоки каждый месяц. Ближайшая возможность после этого будет осенью.</p></div>
+    <div class="card"><div class="tg">Группа</div><h3>Набор закрывается</h3><p>Кураторы работают с ограниченным числом учеников, поэтому набор в поток конечен.</p></div>
+  </div>
+  <p class="sm" style="margin-top:26px; color:var(--muted)">Если решение нужно обдумать, место и цену можно закрепить бронью, она возвращается.</p>
+</div>`,
+n:`<h4>Правило честности</h4>
+<div class="warn">Всё на этом слайде должно быть правдой. Если после старта цена не вырастет — не показывайте слайд. Пойманное враньё стоит дороже одной продажи.</div>
+<h4>Говорить</h4>
+<div class="say">Я не буду вас торопить. Просто чтобы вы понимали картину: после старта цена станет полной, а следующий поток будет осенью.</div>
+<p>Скажите это спокойно, без нажима. Дедлайн работает, когда он звучит как информация, а не как угроза.</p>`},
+
+{b:'Оффер', t:'Бронь $50', h:`
+<div class="pad mid" style="align-items:center; text-align:center">
+  <div class="kick" style="justify-content:center">Если нужно подумать</div>
+  <h1>Бронь за <em>$50</em></h1>
+  <p class="big" style="max-width:56ch; margin:0 auto">Закрепляет за вами цену и место в потоке. Засчитывается в оплату курса. Если передумаете — возвращаем по первой просьбе.</p>
+  <div class="g3" style="max-width:800px; margin:34px auto 0">
+    <div><div class="stat">Держит цену</div><div class="statl">она не вырастет</div></div>
+    <div><div class="stat">Держит место</div><div class="statl">в этом потоке</div></div>
+    <div><div class="stat">Возвратная</div><div class="statl">без объяснений</div></div>
+  </div>
+</div>`,
+n:`<h4>Это ваш главный инструмент на «мне надо подумать»</h4>
+<div class="say">Давайте так. Вы фиксируете цену прямо сейчас за $50, они возвратные. Спокойно принимаете решение, а цена больше не растёт. Передумаете — верну без вопросов.</div>
+<div class="warn">В прошлый запуск бронь предложили один раз за всю кампанию, и предоплату внёс один человек. Предлагайте её на каждом звонке, который не закрылся оплатой.</div>
+<h4>Обещание возврата надо выполнять</h4>
+<p>Один возврат стоит дешевле, чем репутация человека, который держит чужие деньги.</p>`},
+
+/* ─────────── 6 · ВОЗРАЖЕНИЯ ─────────── */
+{b:'Возражения', t:'«Дорого»', h:`
+<div class="pad mid">
+  <div class="kick">Возражение</div>
+  <div class="obj"><div class="say">«Дорого»</div></div>
+  <div class="ans">
+    <div class="lbl">Что за этим стоит</div>
+    <p>Почти всегда это не «нет денег», а «я не понимаю, за что». Человек сравнивает цену не с результатом, а с чем-то знакомым: вебинаром, книгой, курсом за сто долларов.</p>
+    <div class="lbl" style="margin-top:20px">Что делать</div>
+    <p>Спросить, с чем сравнивают. Вернуться к его цифрам и посчитать окупаемость вслух. Если бюджета правда нет — предложить тариф ниже, а не скидку на текущий.</p>
+  </div>
+</div>`,
+n:`<h4>Говорить</h4>
+<div class="say">А с чем сравниваете, если не секрет?</div>
+<p>Дальше по ответу. Часто выясняется, что человек сравнивает с бесплатными уроками — и тогда возражение снимается объяснением, что именно он получает сверху.</p>
+<div class="say">Вы говорили, один клиент приносит вам {цифра}. Курс окупается {N} клиентами, а работать вы будете годами.</div>
+<div class="warn">Скидка обесценивает продукт навсегда: в следующий раз человек будет ждать её снова и расскажет знакомым. Уменьшенный объём — не обесценивает.</div>`},
+
+{b:'Возражения', t:'«Посоветуюсь»', h:`
+<div class="pad mid">
+  <div class="kick">Возражение</div>
+  <div class="obj"><div class="say">«Мне надо посоветоваться»</div></div>
+  <div class="ans">
+    <div class="lbl">Что за этим стоит</div>
+    <p>Это не возражение про цену, это про принятие решения. Либо человек правда решает не один, либо ему не хватило аргументов и он ищет вежливый выход.</p>
+    <div class="lbl" style="margin-top:20px">Что делать</div>
+    <p>Понять, кто участвует в решении, и вооружить клиента аргументами для этого человека. И обязательно закрепить дату следующего разговора.</p>
+  </div>
+</div>`,
+n:`<h4>Три хода подряд</h4>
+<div class="say">Конечно. А что для него будет важно услышать — что это окупится или что вы не потратите на это всё время?</div>
+<div class="say">Хотите, я подготовлю короткое сообщение с цифрами, которое вы просто перешлёте?</div>
+<div class="say">Или можем созвониться втроём на пятнадцать минут, я отвечу на его вопросы напрямую.</div>
+<h4>И самое важное — закрепить время</h4>
+<div class="say">Когда вы с ним говорите, сегодня вечером? Тогда давайте я напишу вам завтра в одиннадцать, чтобы вы это не держали в голове. Договорились?</div>
+<div class="warn">Именно здесь была потеряна Наталья. Разговор закончился на «поговорю с мужем и вернусь», без даты. Больше она не вернулась.</div>`},
+
+{b:'Возражения', t:'«Нет времени»', h:`
+<div class="pad mid">
+  <div class="kick">Возражение</div>
+  <div class="obj"><div class="say">«У меня нет времени»</div></div>
+  <div class="ans">
+    <div class="lbl">Что за этим стоит</div>
+    <p>Страх не справиться и бросить на середине, заплатив деньги. Часто человек уже покупал что-то и не досмотрел.</p>
+    <div class="lbl" style="margin-top:20px">Что отвечать</div>
+    <p>Уроки короткие, записи остаются на год, двух-трёх часов в неделю достаточно. Но главное не количество часов, а то, есть ли рядом человек, который проверит и не даст бросить.</p>
+  </div>
+</div>`,
+n:`<h4>Говорить</h4>
+<div class="say">Уроки короткие, записи остаются на год, два-три часа в неделю хватает. Но скажу честно: вопрос не в часах. Вопрос в том, есть ли рядом кто-то, кто проверит и не даст бросить.</div>
+<p>Это возражение — прямой повод рекомендовать тариф с куратором, а не самостоятельный.</p>
+<div class="say">Поэтому вам я бы советовала не самостоятельный тариф, а с куратором. Именно из-за времени.</div>`},
+
+{b:'Возражения', t:'«Не умею на камеру»', h:`
+<div class="pad mid">
+  <div class="kick">Возражение</div>
+  <div class="obj"><div class="say">«Я не умею говорить на камеру»</div></div>
+  <div class="ans">
+    <div class="lbl">Что за этим стоит</div>
+    <p>Не отсутствие навыка, а страх осуждения. Человек представляет, как его увидят знакомые.</p>
+    <div class="lbl" style="margin-top:20px">Что отвечать</div>
+    <p>Половина учениц начинала так же. В программе есть форматы вообще без лица в кадре, и мы их отдельно разбираем. Уверенность появляется после пятого ролика, а не до первого.</p>
+  </div>
+</div>`,
+n:`<h4>Говорить</h4>
+<div class="say">Половина наших учениц начинала ровно с этой фразы. Есть форматы вообще без лица в кадре, мы их отдельно разбираем. А уверенность появляется где-то после пятого ролика — до первого её не бывает ни у кого.</div>
+<p>Хорошо работает признание, что у Малены тоже был неловкий первый ролик.</p>`},
+
+{b:'Возражения', t:'«Мало подписчиков»', h:`
+<div class="pad mid">
+  <div class="kick">Возражение</div>
+  <div class="obj"><div class="say">«У меня мало подписчиков, поздно начинать»</div></div>
+  <div class="ans">
+    <div class="lbl">Что за этим стоит</div>
+    <p>Убеждение, что рынок занят и нужен стартовый капитал в виде аудитории.</p>
+    <div class="lbl" style="margin-top:20px">Что отвечать</div>
+    <p>Алгоритму важен досмотр, а не размер аудитории. Ролик человека с сотней подписчиков и ролик с десятью тысячами получают одинаковый первый показ. Елизавета начинала вообще без аккаунта.</p>
+  </div>
+</div>`,
+n:`<h4>Говорить</h4>
+<div class="say">Алгоритм показывает ролик не вашим подписчикам, а тем, кому он может быть интересен. Он смотрит на досмотр, а не на то, сколько у вас подписчиков.</div>
+<div class="say">Елизавета из наших учениц начинала вообще без аккаунта. Сейчас у неё 74 тысячи и съёмки для DW.</div>`},
+
+{b:'Возражения', t:'«Уже пробовала учиться»', h:`
+<div class="pad mid">
+  <div class="kick">Возражение</div>
+  <div class="obj"><div class="say">«Я уже проходила курс, не помогло»</div></div>
+  <div class="ans">
+    <div class="lbl">Почему это ценное возражение</div>
+    <p>Человек готов платить за обучение, он это уже доказал. Осталось понять, что именно не сработало, и показать, что у нас этого места нет.</p>
+    <div class="lbl" style="margin-top:20px">Что делать</div>
+    <p>Не защищаться и не сравнивать себя с конкурентом. Расспросить подробно: что было не так, на каком месте бросили, чего не хватило.</p>
+  </div>
+</div>`,
+n:`<h4>Главный вопрос</h4>
+<div class="say">А что именно не сработало в прошлый раз? На каком месте вы остановились?</div>
+<p>Ответ даст вам точную формулировку, что обещать. Чаще всего звучит одно из трёх: не было обратной связи, было слишком общо, никто не заметил, что человек пропал.</p>
+<h4>Готовый мост</h4>
+<div class="say">У нас есть Анастасия — она пришла ровно после такого опыта и была уверена, что дело в ней. Сейчас она у нас куратор.</div>
+<div class="warn">Не говорите плохо о других школах. Это выглядит слабо и человек считывает неуверенность.</div>`},
+
+/* ─────────── 7 · ЗАКРЫТИЕ ─────────── */
+{b:'Закрытие', t:'Следующий шаг', h:`
+<div class="pad mid" style="align-items:center; text-align:center">
+  <div class="kick" style="justify-content:center">Дальше</div>
+  <h1>Что происходит<br><em>после оплаты</em></h1>
+  <div class="g3" style="max-width:880px; margin:34px auto 0">
+    <div class="card"><div class="tg">Шаг первый</div><h3>Доступ сразу</h3><p>Открываем предобучение из пяти уроков, чтобы войти в курс подготовленной.</p></div>
+    <div class="card"><div class="tg">Шаг второй</div><h3>Чат потока</h3><p>Добавляем в закрытый чат с куратором и другими участницами.</p></div>
+    <div class="card"><div class="tg">Шаг третий</div><h3>Старт в начале августа</h3><p>Уроки выходят по будням, домашние задания проверяются, разборы в эфире.</p></div>
+  </div>
+</div>`,
+n:`<h4>Зачем слайд</h4><p>Убирает неопределённость. Человек видит, что после оплаты его не бросят с ссылкой на папку.</p>
+<h4>Закрывающий вопрос</h4>
+<div class="say">{Имя}, на какой тариф смотрите?</div>
+<p>Прямой вопрос, не «что скажете». Если назвал тариф — сразу к оплате: «Оплатить можно полностью или частями, как удобнее?»</p>
+<h4>Если «мне надо подумать»</h4>
+<div class="say">Понимаю. А что именно хотите обдумать — формат, время или деньги?</div>
+<p>Ответ покажет настоящее возражение. Дальше идите на нужный слайд возражений через меню, клавиша M.</p>`},
+
+{b:'Закрытие', t:'Финал', h:`
+<div class="pad mid" style="align-items:center; text-align:center">
+  <div class="kick" style="justify-content:center">Итог разговора</div>
+  <h1>Навык остаётся<br><em>с вами</em></h1>
+  <p class="big" style="max-width:60ch; margin:0 auto">Клиенты будут меняться, площадки будут меняться, алгоритмы точно будут меняться. Умение придумать, снять и продать своим контентом останется при вас в любой из этих ситуаций.</p>
+</div>
+<div class="tagline">SMM с нуля · 7 поток · старт в начале августа</div>`,
+n:`<h4>Когда показывать</h4><p>Финальный слайд, пока проговариваете договорённости.</p>
+<h4>Обязательно перед прощанием</h4>
+<div class="warn">Ни один звонок не заканчивается словами «я подумаю и вернусь к вам». Допустимых финалов три: оплата, бронь $50, или названная вслух дата следующего контакта.</div>
+<h4>Сразу после звонка, в тот же день</h4>
+<ul><li>Заметка в CRM: ниша, боль, названные цифры, кто решает, на какой тариф смотрит</li><li>Дата следующего касания в задачу</li><li>Сообщение вслед с ценой и ссылкой на бронь, которое можно переслать партнёру</li><li>Если VIP — короткий бриф для Малены</li></ul>`}
+];
+
+/* ══════════════════════════════════════════════════════════ */
+let i = 0;
+const stage = document.getElementById('stage');
+const notes = document.getElementById('notes');
+const pos = document.getElementById('pos');
+const prog = document.getElementById('prog');
+const isNotesWin = new URLSearchParams(location.search).get('notes') === '1';
+
+stage.innerHTML = S.map((s,k)=>
+  `<div class="slide${/dk-inner/.test(s.h)?' dk':''}" data-i="${k}">${s.h}<div class="no">${k+1} / ${S.length}</div></div>`
+).join('');
+const slides = [...document.querySelectorAll('.slide')];
+
+/* меню */
+const groups = [];
+S.forEach((s,k)=>{
+  let g = groups.find(x=>x.b===s.b);
+  if(!g){ g={b:s.b, it:[]}; groups.push(g); }
+  g.it.push({k, t:s.t});
+});
+document.getElementById('mlist').innerHTML = groups.map(g=>
+  `<div class="mgrp"><div class="mgt">${g.b}</div><div class="mitems">`
+  + g.it.map(x=>`<div class="mi" data-go="${x.k}"><span>${String(x.k+1).padStart(2,'0')}</span>${x.t}</div>`).join('')
+  + `</div></div>`).join('');
+document.querySelectorAll('.mi').forEach(el=>
+  el.addEventListener('click',()=>{ go(+el.dataset.go); toggleMenu(false); }));
+
+function fit(){
+  const s = slides[i]; if(!s) return;
+  const w = Math.min(window.innerWidth - 40, isNotesWin?1280:(notes.classList.contains('on')? window.innerWidth-440 : 1280));
+  const k = Math.min(1, w/1280, (window.innerHeight-190)/720);
+  slides.forEach(x=>{ x.style.transform = `scale(${k})`; x.style.marginBottom = (720*k-720)+'px'; });
+}
+
+function go(n){
+  i = Math.max(0, Math.min(S.length-1, n));
+  slides.forEach((s,k)=>s.classList.toggle('on', k===i));
+  notes.innerHTML = S[i].n || '<p>Заметок нет.</p>';
+  pos.textContent = (i+1)+' / '+S.length;
+  prog.style.width = ((i+1)/S.length*100)+'%';
+  if(typeof paintCur === 'function') paintCur();
+  try{ localStorage.setItem('sales_slide', String(i)); }catch(e){}
+  fit();
+}
+
+function toggleNotes(v){ notes.classList.toggle('on', v===undefined?!notes.classList.contains('on'):v); fit(); }
+function toggleMenu(v){ document.getElementById('menu').classList.toggle('on', v===undefined?!document.getElementById('menu').classList.contains('on'):v); }
+
+document.getElementById('bPrev').onclick = ()=>go(i-1);
+document.getElementById('bNext').onclick = ()=>go(i+1);
+document.getElementById('bNotes').onclick = ()=>toggleNotes();
+document.getElementById('bMenu').onclick = ()=>toggleMenu();
+/* ═══ валюта ═══ */
+let cur = 'usd';
+try{ cur = localStorage.getItem('sales_cur') || 'usd'; }catch(e){}
+function paintCur(){
+  document.querySelectorAll('[data-usd]').forEach(el=>{
+    el.textContent = cur === 'eur' ? el.dataset.eur : el.dataset.usd;
+  });
+  const b = document.getElementById('bCur');
+  if(b) b.textContent = 'Валюта: ' + (cur==='eur' ? '€' : '$') + ' · C';
+  try{ localStorage.setItem('sales_cur', cur); }catch(e){}
+}
+function toggleCur(){ cur = cur === 'usd' ? 'eur' : 'usd'; paintCur(); }
+document.getElementById('bCur').onclick = toggleCur;
+
+document.getElementById('bFull').onclick = ()=>{
+  document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+};
+document.getElementById('bWin').onclick = ()=>{
+  window.open(location.pathname+'?notes=1', 'shpargalka', 'width=460,height=900');
+  toggleNotes(false);
+};
+
+document.addEventListener('keydown', e=>{
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){ e.preventDefault(); go(i+1); }
+  if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); go(i-1); }
+  if(e.key==='n'||e.key==='N'||e.key==='т'||e.key==='Т') toggleNotes();
+  if(e.key==='m'||e.key==='M'||e.key==='ь'||e.key==='Ь') toggleMenu();
+  if(e.key==='f'||e.key==='F'||e.key==='а'||e.key==='А') document.getElementById('bFull').click();
+  if(e.key==='p'||e.key==='P'||e.key==='з'||e.key==='З') document.getElementById('bWin').click();
+  if(e.key==='c'||e.key==='C'||e.key==='с'||e.key==='С') toggleCur();
+  if(e.key==='Escape') toggleMenu(false);
+});
+
+/* свайпы */
+let tx=0;
+stage.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+stage.addEventListener('touchend',e=>{
+  const d = e.changedTouches[0].clientX - tx;
+  if(Math.abs(d)>60) go(i + (d<0?1:-1));
+},{passive:true});
+
+window.addEventListener('resize', fit);
+
+/* режим второго окна: только шпаргалка, синхрон по слайду */
+if(isNotesWin){
+  document.title = 'Шпаргалка';
+  stage.style.display='none';
+  document.getElementById('bar').style.display='none';
+  notes.classList.add('on');
+  notes.style.cssText = 'display:block; position:static; width:100%; height:auto; border:0; min-height:100vh';
+  const sync = ()=>{
+    const n = +(localStorage.getItem('sales_slide')||0);
+    if(n!==i){ i=n; notes.innerHTML = `<h4 style="color:var(--gold)">Слайд ${i+1} · ${S[i].t}</h4>` + (S[i].n||''); }
+  };
+  setInterval(sync, 400); sync();
+} else {
+  go(0);
+  paintCur();
+  toggleNotes(false);   // панель закрыта по умолчанию, открывается по N
+}
+</script>
+</body>
+</html>
