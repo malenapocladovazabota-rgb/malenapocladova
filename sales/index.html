@@ -216,6 +216,66 @@ p{font-size:19px; color:var(--ink2); line-height:1.55}
   #notes{width:100%; top:auto; height:46vh; border-left:0; border-top:1px solid rgba(234,224,203,.14)}
   .mitems{grid-template-columns:1fr}
 }
+
+/* ═════════ РЕЖИМЫ ДЛЯ ТЕЛЕФОНА ═════════ */
+body.view{background:#15100F; overflow:hidden}
+body.view #bar,body.view #notes,body.view #menu,body.view #prog{display:none!important}
+body.view #stage{padding:0; height:100vh; justify-content:center; gap:0}
+body.view .slide{box-shadow:none; border-radius:0}
+#wait{position:fixed; inset:0; z-index:400; display:flex; flex-direction:column; gap:14px;
+  align-items:center; justify-content:center; background:#15100F; text-align:center; padding:30px}
+#wait .wt{font-family:var(--serif); font-size:26px; color:var(--beige)}
+#wait .ws{font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(234,224,203,.4)}
+#wait.off{display:none}
+
+body.pilot{background:var(--ink); overflow:hidden}
+body.pilot #bar,body.pilot #prog{display:none!important}
+body.pilot #menu{z-index:400}
+body.pilot #stage{display:none}
+#pilot{display:none}
+body.pilot #pilot{position:fixed; inset:0; z-index:300; display:flex; flex-direction:column; background:var(--ink)}
+body.pilot #notes{position:static; display:block; width:auto; flex:1 1 auto; min-height:0;
+  border:0; border-radius:0; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:14px 16px 18px}
+body.pilot #notes h4{font-size:9.5px; margin-top:14px}
+body.pilot #notes p{font-size:15px}
+body.pilot #notes li{font-size:14.5px}
+body.pilot #notes .say{font-size:15.5px; padding:12px 14px}
+
+.ph{display:flex; align-items:center; gap:10px; padding:9px 12px; flex:none;
+  border-bottom:1px solid rgba(234,224,203,.12); background:rgba(234,224,203,.04)}
+.ph .pn{font-family:var(--mono); font-size:11px; color:var(--gold); flex:none}
+.ph .pn b{font-size:15px}
+.ph .pt{font-family:var(--serif); font-size:16px; color:var(--beige); flex:1;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.ph button{background:rgba(234,224,203,.1); color:var(--beige); border:0; border-radius:8px;
+  padding:7px 11px; font-size:11px; font-family:var(--sans); font-weight:500; flex:none}
+.ph button.on{background:var(--gold); color:var(--ink)}
+#pv{display:none; flex:none; height:34vh; background:#0C0908; overflow:hidden;
+  align-items:center; justify-content:center}
+body.pilot.peek #pv{display:flex}
+body.pilot.peek #stage{display:flex; padding:0; gap:0; justify-content:center; height:100%}
+#pv .slide{position:relative}
+
+.pf{display:flex; gap:8px; padding:10px 12px calc(10px + env(safe-area-inset-bottom)); flex:none;
+  border-top:1px solid rgba(234,224,203,.12); background:rgba(234,224,203,.05)}
+.pf button{flex:1; background:rgba(234,224,203,.1); color:var(--beige); border:0; border-radius:11px;
+  padding:14px 8px; font-size:13px; font-family:var(--sans); font-weight:600; letter-spacing:.02em}
+.pf button:active{background:var(--gold); color:var(--ink)}
+.pf button.nav{flex:1.4; font-size:20px; line-height:1}
+.pf button.nav.next{background:var(--wine); color:var(--beige)}
+
+#plink{position:fixed; inset:0; z-index:500; display:none; background:rgba(15,11,10,.97);
+  padding:24px; flex-direction:column; justify-content:center; gap:16px}
+#plink.on{display:flex}
+#plink h3{font-family:var(--serif); font-size:24px; color:var(--beige)}
+#plink p{font-size:14px; color:rgba(234,224,203,.65); line-height:1.5}
+#plink .url{font-family:var(--mono); font-size:12px; color:var(--gold); word-break:break-all;
+  background:rgba(234,224,203,.07); border-radius:10px; padding:13px 14px; line-height:1.5}
+#plink button{background:var(--gold); color:var(--ink); border:0; border-radius:11px; padding:15px;
+  font-size:14px; font-weight:600; font-family:var(--sans)}
+#plink button.ghost{background:rgba(234,224,203,.1); color:var(--beige)}
+
 </style>
 </head>
 <body>
@@ -238,6 +298,34 @@ p{font-size:19px; color:var(--ink2); line-height:1.55}
   <div class="hint">Нажмите M, чтобы открыть или закрыть. Возражения — прыгайте туда прямо во время разговора.</div>
   <div id="mlist"></div>
 </div></div>
+
+
+<div id="pilot">
+  <div class="ph">
+    <div class="pn"><b id="pnum">1</b><span id="ptot"></span></div>
+    <div class="pt" id="ptitle"></div>
+    <button id="pPeek">Слайд</button>
+    <button id="pLink">Ссылка</button>
+  </div>
+  <div id="pv"></div>
+  <div class="pf">
+    <button class="nav" id="pPrev">‹</button>
+    <button id="pMenu">Меню</button>
+    <button id="pCur">$</button>
+    <button class="nav next" id="pNext">›</button>
+  </div>
+</div>
+
+<div id="plink">
+  <h3>Ссылка для клиента</h3>
+  <p>Отправьте её в чат Zoom или в мессенджер. Клиент откроет у себя, и слайды будут листаться синхронно с вашим телефоном. Экран показывать не нужно.</p>
+  <div class="url" id="lurl"></div>
+  <button id="lcopy">Скопировать ссылку</button>
+  <button class="ghost" id="lshare">Отправить</button>
+  <p style="margin-top:6px">Если клиент не открывает ссылку — включите режим показа экрана, тогда подсказки скроются и телефон можно шерить.</p>
+  <button class="ghost" id="lsolo">Режим показа экрана</button>
+  <button class="ghost" id="lclose">Закрыть</button>
+</div>
 
 <div id="bar">
   <div class="ttl">Разбор</div>
@@ -342,6 +430,25 @@ n:`<h4>Зачем этот слайд</h4><p>Человек понимает, ч
 <div class="say">Вот так выглядят наши полчаса. Начнём с вас, чтобы я понимала, о чём вообще говорить.</div>
 <p>Последнюю строчку про «скажу, если не нужно» проговорите вслух. Она сильно повышает доверие и почти ничего не стоит.</p>`},
 
+{b:'Открытие', t:'Коротко о школе', h:`
+<div class="pad">
+  <div class="kick">Если человек нас плохо помнит</div>
+  <h2>Кто мы <em>и почему нам верить</em></h2>
+  <div class="g3">
+    <div class="card"><div class="tg">Опыт</div><h3>Седьмой поток</h3><p>Программа переписывалась после каждого потока: осталось то, что доводит до результата, остальное убрано.</p></div>
+    <div class="card"><div class="tg">География</div><h3>Молдова, Европа, США</h3><p>Ученицы работают с клиентами в разных странах, и чеки в программе разобраны отдельно по Европе и по США.</p></div>
+    <div class="card"><div class="tg">Объём</div><h3>22 блока</h3><p>От первого ролика до переговоров с клиентом и цены за свою работу. Живые разборы и обратная связь по домашним.</p></div>
+  </div>
+  <p class="sm" style="margin-top:26px; color:var(--muted)">Малена Покладова, автор программы и практикующий специалист.</p>
+</div>`,
+n:`<h4>Когда показывать</h4><p>Только если человек пришёл с рассылки и нас смутно помнит. Тем, кто был на интенсиве, слайд не нужен, пролистайте.</p>
+<h4>Как открыть разговор с холодным лидом</h4>
+<div class="say">{Имя}, здравствуйте! Вы оставляли заявку на обучение SMM, у нас тогда не дошли руки вам ответить. Сейчас исправляемся. Скажите, тема ещё актуальна?</div>
+<p>Признать, что мы пропали, — сильнее, чем делать вид, что так и было задумано. Человек чаще всего отвечает спокойно.</p>
+<h4>Дальше</h4>
+<div class="say">Тогда предлагаю так: я задам несколько вопросов про вашу ситуацию, потом расскажу, как устроено обучение. Полчаса. Хорошо?</div>
+<div class="warn">Не пересказывайте всю историю школы. Тридцать секунд, дальше вопросы. Доверие строится на диагностике, а не на регалиях.</div>`},
+
 /* ─────────── 1 · ДИАГНОСТИКА ─────────── */
 {b:'Диагностика', t:'Слушаем клиента', h:`
 <div class="pad mid" style="align-items:center; text-align:center">
@@ -371,6 +478,27 @@ n:`<h4>Три вопроса, без которых звонок не счита
 <p>Назвал сумму — вы знаете, какой тариф предлагать.</p>
 <div class="say">Сколько часов в неделю реально сможете выделять? Не в идеальном мире, а по-честному.</div>
 <p>Мало времени и нет привычки доводить — нужен куратор, не самостоятельный.</p>`},
+
+{b:'Диагностика', t:'Цена бездействия', h:`
+<div class="pad">
+  <div class="kick">Прежде чем говорить о цене</div>
+  <h2>Посчитаем, <em>во что обходится пауза</em></h2>
+  <div class="g3">
+    <div class="card"><div class="tg">Вопрос первый</div><h3>Сколько приносит один клиент</h3><p>Средний чек или средняя выручка с одного человека, который к вам пришёл.</p></div>
+    <div class="card"><div class="tg">Вопрос второй</div><h3>Скольких не хватает</h3><p>Сколько клиентов в месяц нужно добрать, чтобы стало спокойно.</p></div>
+    <div class="card"><div class="tg">Вопрос третий</div><h3>Что уходит каждый месяц</h3><p>Аренда, зарплаты, закупка. То, что платится независимо от продаж.</p></div>
+  </div>
+  <p class="big" style="margin-top:30px; max-width:60ch">Три числа, и дальше разговор о стоимости обучения идёт не в пустоте, а в масштабе вашего бизнеса.</p>
+</div>`,
+n:`<h4>Зачем этот слайд</h4><p>Самая дорогая ошибка прошлого запуска. Клиентка сама сказала, что при таком раскладе придётся закрывать склад на 500 метров, и никто не спросил, сколько этот склад стоит. Без её цифр восемьсот долларов — просто большое число.</p>
+<h4>Главный вопрос</h4>
+<div class="say">А если оставить всё как есть, что будет через полгода?</div>
+<p>Дождитесь ответа. Не подсказывайте. Дальше уточняйте цифрами.</p>
+<div class="say">Сколько вам приносит один клиент? А скольких в месяц не хватает, чтобы стало нормально?</div>
+<h4>Что с этим делать потом</h4>
+<p>Записать все названные числа. На слайде с тарифами вы возвращаетесь к ним вслух:</p>
+<div class="say">Вы говорили, один клиент приносит вам {цифра}. Обучение окупается {N} клиентами, а навык останется с вами.</div>
+<div class="warn">Не считайте за клиента и не называйте свои цифры. Считает он сам, вслух. То, что человек посчитал сам, он не оспаривает.</div>`},
 
 /* ─────────── 2 · РАМКА ─────────── */
 {b:'Рамка', t:'Просмотры и заявки', h:`
@@ -805,6 +933,66 @@ n:`<h4>Главный вопрос</h4>
 <div class="say">У нас есть Анастасия — она пришла ровно после такого опыта и была уверена, что дело в ней. Сейчас она у нас куратор.</div>
 <div class="warn">Не говорите плохо о других школах. Это выглядит слабо и человек считывает неуверенность.</div>`},
 
+{b:'Возражения', t:'«Я подумаю»', h:`
+<div class="pad mid">
+  <div class="kick">Возражение</div>
+  <div class="obj"><div class="say">«Мне надо подумать»</div></div>
+  <div class="ans">
+    <div class="lbl">Что за этим стоит</div>
+    <p>Почти никогда не буквальное «подумаю». Это вежливая форма другого возражения, которое человек не хочет произносить вслух: дорого, не верю в себя, решаю не один.</p>
+    <div class="lbl" style="margin-top:20px">Что делать</div>
+    <p>Не соглашаться сразу и не давить. Один уточняющий вопрос, который вытащит настоящую причину, и обязательно дата следующего разговора.</p>
+  </div>
+</div>`,
+n:`<h4>Первый ход</h4>
+<div class="say">Конечно. А что именно хотите обдумать — формат, время или деньги?</div>
+<p>Ответ почти всегда называет настоящее возражение. Дальше идите на нужный слайд через меню, клавиша M.</p>
+<h4>Если отвечает «просто всё взвесить»</h4>
+<div class="say">Понимаю. Скажите честно: если бы решение надо было принять сегодня, вы бы сказали скорее да или скорее нет?</div>
+<p>«Скорее да» — значит осталось одно небольшое препятствие, спросите какое. «Скорее нет» — вы не попали в задачу, возвращайтесь к диагностике.</p>
+<h4>Закрепить дату, без вариантов</h4>
+<div class="say">Давайте я наберу вас в четверг в шесть, чтобы вы это не держали в голове. Удобно?</div>
+<div class="warn">Ровно здесь потеряли Наталью: разговор закончился на «подумаю и вернусь» без даты, и она не вернулась. Звонок без названной вслух даты следующего контакта считается незакрытым.</div>`},
+
+{b:'Возражения', t:'«Не сейчас, позже»', h:`
+<div class="pad mid">
+  <div class="kick">Возражение</div>
+  <div class="obj"><div class="say">«Сейчас не время, вернусь попозже»</div></div>
+  <div class="ans">
+    <div class="lbl">Что за этим стоит</div>
+    <p>Либо действительно неподходящий момент, либо задача не выглядит срочной. Второе бывает чаще: человек согласен, что проблема есть, но не чувствует, что её надо решать именно сейчас.</p>
+    <div class="lbl" style="margin-top:20px">Что делать</div>
+    <p>Уважительно проверить, что стоит за «позже». Если срок называется конкретный — работать с ним. Если «когда-нибудь» — вернуть к цене бездействия.</p>
+  </div>
+</div>`,
+n:`<h4>Проверяющий вопрос</h4>
+<div class="say">А что должно поменяться, чтобы стало время?</div>
+<p>Назвал конкретное событие — сентябрь, конец сезона, выход из отпуска — это настоящее «позже», и с ним работают датой. Не смог назвать ничего — это мягкий отказ.</p>
+<h4>Если срок настоящий</h4>
+<div class="say">Хорошо. Тогда давайте я напишу вам {дата}, ближе к делу. И если хотите закрепить текущую цену, есть бронь за $50, она возвращается, если передумаете.</div>
+<h4>Если срока нет</h4>
+<div class="say">Смотрите, вы сами сказали, что уже полгода собираетесь. Что изменится за следующие полгода, если сейчас снова отложить?</div>
+<div class="warn">Не отпускайте в пустоту со словами «напишите, когда будете готовы». Так уходит большинство и не возвращается никто. Дату называете вы.</div>`},
+
+{b:'Возражения', t:'«А есть гарантии»', h:`
+<div class="pad mid">
+  <div class="kick">Возражение</div>
+  <div class="obj"><div class="say">«А вы гарантируете результат?»</div></div>
+  <div class="ans">
+    <div class="lbl">Что за этим стоит</div>
+    <p>Страх заплатить и не справиться. Человек ищет не юридическую гарантию, а подтверждение, что его не бросят одного.</p>
+    <div class="lbl" style="margin-top:20px">Что отвечать</div>
+    <p>Честно: результат зависит от двух сторон, и гарантировать доход было бы враньём. Гарантировать можно то, что от нас: обратную связь по каждой работе, разборы в эфире и то, что мы заметим, если человек пропал.</p>
+  </div>
+</div>`,
+n:`<h4>Говорить прямо</h4>
+<div class="say">Честно: гарантировать вам доход я не могу, и любой, кто это обещает, обманывает. Половина результата зависит от того, будете ли вы делать домашние задания.</div>
+<div class="say">А вот что я гарантирую со своей стороны: каждую вашу работу посмотрят и скажут, что не так. И если вы пропадёте на две недели, вам напишут.</div>
+<h4>Почему честный ответ продаёт лучше</h4>
+<p>Люди, которые уже покупали курсы, слышали обещания дохода и не получили его. Отказ обещать невозможное читается как признак того, что здесь говорят правду и в остальном.</p>
+<h4>Мост к тарифу</h4>
+<div class="say">Именно поэтому я бы вам советовала тариф с куратором. Разница как раз в том, что за вами следят.</div>`},
+
 /* ─────────── 7 · ЗАКРЫТИЕ ─────────── */
 {b:'Закрытие', t:'Следующий шаг', h:`
 <div class="pad mid" style="align-items:center; text-align:center">
@@ -867,8 +1055,19 @@ document.querySelectorAll('.mi').forEach(el=>
 
 function fit(){
   const s = slides[i]; if(!s) return;
-  const w = Math.min(window.innerWidth - 40, isNotesWin?1280:(notes.classList.contains('on')? window.innerWidth-440 : 1280));
-  const k = Math.min(1, w/1280, (window.innerHeight-190)/720);
+  let k;
+  const mv = document.body.classList.contains('view');
+  const mp = document.body.classList.contains('pilot');
+  if(mv){
+    k = Math.min(window.innerWidth/1280, window.innerHeight/720);
+  } else if(mp){
+    const pv = document.getElementById('pv');
+    if(!pv || !document.body.classList.contains('peek')) return;
+    k = Math.min(pv.clientWidth/1280, pv.clientHeight/720);
+  } else {
+    const w = Math.min(window.innerWidth - 40, isNotesWin?1280:(notes.classList.contains('on')? window.innerWidth-440 : 1280));
+    k = Math.min(1, w/1280, (window.innerHeight-190)/720);
+  }
   slides.forEach(x=>{ x.style.transform = `scale(${k})`; x.style.marginBottom = (720*k-720)+'px'; });
 }
 
@@ -880,6 +1079,8 @@ function go(n){
   prog.style.width = ((i+1)/S.length*100)+'%';
   if(typeof paintCur === 'function') paintCur();
   try{ localStorage.setItem('sales_slide', String(i)); }catch(e){}
+  if(typeof paintPilot === 'function') paintPilot();
+  if(typeof push === 'function') push();
   fit();
 }
 
@@ -927,6 +1128,7 @@ document.addEventListener('keydown', e=>{
 let tx=0;
 stage.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
 stage.addEventListener('touchend',e=>{
+  if(typeof MODE !== 'undefined' && MODE === 'view') return;   // клиент не листает сам
   const d = e.changedTouches[0].clientX - tx;
   if(Math.abs(d)>60) go(i + (d<0?1:-1));
 },{passive:true});
@@ -945,7 +1147,122 @@ if(isNotesWin){
     if(n!==i){ i=n; notes.innerHTML = `<h4 style="color:var(--gold)">Слайд ${i+1} · ${S[i].t}</h4>` + (S[i].n||''); }
   };
   setInterval(sync, 400); sync();
-} else {
+}
+
+/* ══════════ СИНХРОН: пульт на телефоне и экран клиента ══════════ */
+const SB_URL = 'https://kjyfbfqcgretrbupyhiq.supabase.co/rest/v1/deck_sync';
+const SB_KEY = 'sb_publishable_rTHXUoNy_Spawwx7Pf0LCQ_Kjo-4jwY';
+const SB_H = {apikey:SB_KEY, Authorization:'Bearer '+SB_KEY, 'Content-Type':'application/json'};
+const Q = new URLSearchParams(location.search);
+const ROOM = (Q.get('pilot') || Q.get('view') || '').trim();
+const MODE = isNotesWin ? 'notes' : (Q.get('view')!==null ? 'view' : (Q.get('pilot')!==null ? 'pilot' : 'deck'));
+
+function push(){
+  if(MODE!=='pilot' || !ROOM) return;
+  fetch(SB_URL+'?on_conflict=room', {method:'POST',
+    headers:Object.assign({}, SB_H, {Prefer:'resolution=merge-duplicates'}),
+    body:JSON.stringify({room:ROOM, slide:i, cur:cur, updated_at:new Date().toISOString()})
+  }).catch(function(){});
+}
+
+let pulled = false;
+function pull(){
+  if(MODE!=='view' || !ROOM) return;
+  fetch(SB_URL+'?room=eq.'+encodeURIComponent(ROOM)+'&select=slide,cur', {headers:SB_H})
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if(!d || !d.length) return;
+      if(!pulled){ pulled = true; var w=document.getElementById('wait'); if(w) w.classList.add('off'); }
+      if(d[0].cur && d[0].cur !== cur){ cur = d[0].cur; paintCur(); }
+      if(d[0].slide !== i) go(d[0].slide);
+    }).catch(function(){});
+}
+
+function paintPilot(){
+  if(MODE!=='pilot') return;
+  document.getElementById('pnum').textContent = i+1;
+  document.getElementById('ptot').textContent = ' / '+S.length;
+  document.getElementById('ptitle').textContent = S[i].t;
+  document.getElementById('pCur').textContent = cur==='eur' ? '€' : '$';
+}
+
+if(MODE==='view'){
+  document.body.classList.add('view');
+  document.title = 'SMM с нуля · разбор';
+  var w = document.createElement('div');
+  w.id = 'wait';
+  w.innerHTML = '<div class="wt">Сейчас начнём</div><div class="ws">презентация подключается</div>';
+  document.body.appendChild(w);
+  go(0); paintCur();
+  pull(); setInterval(pull, 800);
+}
+
+if(MODE==='pilot'){
+  document.body.classList.add('pilot');
+  document.title = 'Пульт';
+  var pilot = document.getElementById('pilot');
+  pilot.insertBefore(notes, document.querySelector('.pf'));
+  notes.classList.add('on');
+  document.getElementById('lurl').textContent =
+    location.origin + location.pathname + '?view=' + encodeURIComponent(ROOM);
+
+  document.getElementById('pPrev').onclick = function(){ go(i-1); };
+  document.getElementById('pNext').onclick = function(){ go(i+1); };
+  document.getElementById('pMenu').onclick = function(){ toggleMenu(); };
+  document.getElementById('pCur').onclick = function(){ toggleCur(); push(); paintPilot(); };
+  document.getElementById('pPeek').onclick = function(){
+    var on = document.body.classList.toggle('peek');
+    this.classList.toggle('on', on);
+    if(on) document.getElementById('pv').appendChild(stage);
+    fit();
+  };
+  document.getElementById('pLink').onclick = function(){ document.getElementById('plink').classList.add('on'); };
+  document.getElementById('lclose').onclick = function(){ document.getElementById('plink').classList.remove('on'); };
+  document.getElementById('lcopy').onclick = function(){
+    var u = document.getElementById('lurl').textContent;
+    var b = this;
+    (navigator.clipboard ? navigator.clipboard.writeText(u) : Promise.reject())
+      .then(function(){ b.textContent='Скопировано'; setTimeout(function(){ b.textContent='Скопировать ссылку'; },1600); })
+      .catch(function(){ b.textContent='Выделите ссылку вручную'; });
+  };
+  document.getElementById('lshare').onclick = function(){
+    var u = document.getElementById('lurl').textContent;
+    if(navigator.share) navigator.share({title:'Презентация', url:u}).catch(function(){});
+    else document.getElementById('lcopy').click();
+  };
+  document.getElementById('lsolo').onclick = function(){
+    location.href = location.pathname + '?view=' + encodeURIComponent(ROOM);
+  };
+
+  go(0); paintCur(); paintPilot(); push();
+}
+
+
+/* экран не гаснет во время звонка */
+if(MODE==='pilot' || MODE==='view'){
+  var wl = null;
+  var keepAwake = function(){
+    if(!navigator.wakeLock) return;
+    navigator.wakeLock.request('screen').then(function(x){ wl = x; }).catch(function(){});
+  };
+  keepAwake();
+  document.addEventListener('visibilitychange', function(){
+    if(document.visibilityState === 'visible') keepAwake();
+  });
+}
+
+if(MODE==='deck'){
+  var bp = document.createElement('button');
+  bp.textContent = 'Пульт с телефона';
+  bp.onclick = function(){
+    var r = prompt('Код комнаты (одно слово латиницей, например sasha):', 'sasha');
+    if(!r) return;
+    location.href = location.pathname + '?pilot=' + encodeURIComponent(r.trim());
+  };
+  document.getElementById('bar').insertBefore(bp, document.getElementById('pos'));
+}
+
+if(MODE==='deck'){
   go(0);
   paintCur();
   toggleNotes(false);   // панель закрыта по умолчанию, открывается по N
