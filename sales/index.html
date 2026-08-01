@@ -1157,12 +1157,20 @@ const Q = new URLSearchParams(location.search);
 const ROOM = (Q.get('pilot') || Q.get('view') || '').trim();
 const MODE = isNotesWin ? 'notes' : (Q.get('view')!==null ? 'view' : (Q.get('pilot')!==null ? 'pilot' : 'deck'));
 
-function push(){
+function sendState(){
   if(MODE!=='pilot' || !ROOM) return;
   fetch(SB_URL+'?on_conflict=room', {method:'POST',
     headers:Object.assign({}, SB_H, {Prefer:'resolution=merge-duplicates'}),
     body:JSON.stringify({room:ROOM, slide:i, cur:cur, updated_at:new Date().toISOString()})
   }).catch(function(){});
+}
+/* Склеиваем частые нажатия в одну запись: иначе запросы обгоняют
+   друг друга и в базе остаётся не последний слайд. */
+var pushT = null;
+function push(){
+  if(MODE!=='pilot' || !ROOM) return;
+  clearTimeout(pushT);
+  pushT = setTimeout(sendState, 140);
 }
 
 let pulled = false;
@@ -1235,6 +1243,9 @@ if(MODE==='pilot'){
   };
 
   go(0); paintCur(); paintPilot(); push();
+  /* подтверждаем состояние раз в 5 секунд: если запрос потерялся,
+     экран клиента сам догонит, без действий менеджера */
+  setInterval(sendState, 5000);
 }
 
 
