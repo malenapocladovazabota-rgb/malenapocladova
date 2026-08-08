@@ -66,7 +66,7 @@ h1 em{font-style:italic;color:var(--wine)}
 
 .pbody{padding:22px}
 .row{margin-bottom:11px}
-input[type=text],input[type=tel]{width:100%;background:var(--paper);color:var(--ink);
+input[type=text],input[type=tel],input[type=email]{width:100%;background:var(--paper);color:var(--ink);
   border:1px solid var(--line);border-radius:2px;padding:14px 15px;font-size:16px;
   font-family:var(--sans);outline:none;transition:border-color .2s}
 input::placeholder{color:var(--muted)}
@@ -118,12 +118,26 @@ input.bad{border-color:var(--wine);background:#FDF3F1}
 .err.on{display:block}
 .tiny{font-size:11.5px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.45}
 
-/* шаг 2 — календарь */
+/* шаг 2 — анкета */
+.qf{margin-bottom:16px}
+.qf > label{display:block;font-size:14px;font-weight:500;color:var(--ink);margin-bottom:8px;line-height:1.4}
+.qf .opt{display:flex;align-items:flex-start;gap:10px;padding:11px 13px;margin-bottom:6px;cursor:pointer;
+  background:var(--paper);border:1px solid var(--line);border-radius:2px;transition:border-color .15s}
+.qf .opt:hover{border-color:var(--muted)}
+.qf .opt input{margin-top:2px;width:16px;height:16px;flex:none;accent-color:var(--wine)}
+.qf .opt span{font-size:14px;color:var(--ink2);line-height:1.4}
+.qf .opt.sel{border-color:var(--wine);background:#FFF8F3}
+.qskip{font-size:12.5px;color:var(--muted);text-align:center;margin-top:12px}
+.qskip a{color:var(--wine);cursor:pointer;text-decoration:underline}
+#step2q{display:none}
+#step2q.on{display:block;animation:rise .35s cubic-bezier(.2,.8,.2,1) both}
+
+/* шаг 3 — календарь */
 #step2{display:none}
 #step2.on{display:block;animation:rise .35s cubic-bezier(.2,.8,.2,1) both}
 @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .calwrap{background:var(--paper);border-top:1px solid var(--line-soft)}
-.calwrap iframe{width:100%;min-height:720px;border:0;display:block}
+.calwrap iframe{width:100%;min-height:900px;border:0;display:block}
 .hello{padding:16px 22px 0;font-size:14.5px;color:var(--ink2)}
 .hello b{color:var(--ink)}
 
@@ -178,7 +192,7 @@ footer a:hover{color:var(--wine)}
   <div class="panel">
     <div class="phead">
       <h2 id="ptitle">Как с вами связаться</h2>
-      <div class="steps"><span id="s1">Шаг 1</span><i class="dot on" id="d1"></i><i class="dot" id="d2"></i></div>
+      <div class="steps"><span id="s1">Шаг 1 из 3</span><i class="dot on" id="d1"></i><i class="dot" id="d2"></i><i class="dot" id="d3"></i></div>
     </div>
 
     <div class="pbody" id="step1">
@@ -205,6 +219,38 @@ footer a:hover{color:var(--wine)}
       <div class="tiny">Не найдёте удобное время — напишем в WhatsApp и подберём</div>
     </div>
 
+    <div class="pbody" id="step2q">
+      <div class="qf">
+        <label for="qmail">Email — пришлём ссылку на встречу</label>
+        <input type="email" id="qmail" autocomplete="email" placeholder="you@example.com">
+      </div>
+
+      <div class="qf">
+        <label>Как у вас с SMM сейчас</label>
+        <label class="opt"><input type="radio" name="lvl" value="Не знаю что это значит"><span>Не знаю, что это значит</span></label>
+        <label class="opt"><input type="radio" name="lvl" value="Знаю, но нет клиентов"><span>Знаю, но нет клиентов</span></label>
+        <label class="opt"><input type="radio" name="lvl" value="Это мой основной доход"><span>Это мой основной доход</span></label>
+      </div>
+
+      <div class="qf">
+        <label>Чего хотите после обучения</label>
+        <label class="opt"><input type="radio" name="goal" value="Освоить новую профессию и зарабатывать"><span>Освоить профессию и зарабатывать</span></label>
+        <label class="opt"><input type="radio" name="goal" value="Развить свой бизнес и привлекать больше клиентов"><span>Развить свой бизнес, больше клиентов</span></label>
+        <label class="opt"><input type="radio" name="goal" value="Стать инфлюенсером или UGC креатором"><span>Вести блог, стать UGC-криэйтором</span></label>
+        <label class="opt"><input type="radio" name="goal" value="Работать удалённо и иметь больше свободы и возможностей"><span>Работать удалённо, больше свободы</span></label>
+        <label class="opt"><input type="radio" name="goal" value="Повышение квалификации"><span>Повысить квалификацию</span></label>
+      </div>
+
+      <div class="qf">
+        <label for="qocc">Чем занимаетесь сейчас</label>
+        <input type="text" id="qocc" placeholder="Например: в декрете, бухгалтер, свой салон">
+      </div>
+
+      <button class="btn" id="qgo">Перейти к выбору времени</button>
+      <div class="err" id="qerr"></div>
+      <div class="qskip"><a id="qskipLink">Пропустить и сразу выбрать время</a></div>
+    </div>
+
     <div id="step2">
       <div class="hello" id="hello"></div>
       <div class="calwrap">
@@ -229,7 +275,7 @@ footer a:hover{color:var(--wine)}
 <script>
 /* ══════════════════════════════════════════════════════════════ */
 var GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/55lHQOuDwUKKCwgmTmLW/webhook-trigger/1771c74b-c8ec-4b4f-9dc1-6fe978f7d622';
-var TO_GHL = { razbor_lead:1, razbor_calendar_open:1 };
+var TO_GHL = { razbor_lead:1, razbor_quiz:1, razbor_calendar_open:1 };
 var PIXEL_ID = '1521940319314090';
 var CAL_BASE = 'https://api.leadconnectorhq.com/widget/booking/vG1zsgJdMciejwQSi9PJ';
 /* ══════════════════════════════════════════════════════════════ */
@@ -352,20 +398,75 @@ function send(ev,extra){
 }
 
 /* ─── переход на шаг 2 ─── */
-function openCalendar(){
-  var url = CAL_BASE;
-  if (lead && lead.name) url += '?first_name=' + encodeURIComponent(lead.name) +
-                                '&phone=' + encodeURIComponent(lead.phone);
-  else url += '?';
-  if (location.search) url += '&' + location.search.slice(1);
+var answers = {};
 
-  document.getElementById('cal').src = url;
+/* шаг 2 — анкета */
+function openQuiz(){
   document.getElementById('step1').style.display = 'none';
-  document.getElementById('step2').classList.add('on');
-  document.getElementById('ptitle').textContent = 'Выберите удобное время';
-  document.getElementById('s1').textContent = 'Шаг 2';
+  document.getElementById('step2q').classList.add('on');
+  document.getElementById('ptitle').textContent = 'Ещё несколько вопросов';
+  document.getElementById('s1').textContent = 'Шаг 2 из 3';
   document.getElementById('d1').classList.remove('on');
   document.getElementById('d2').classList.add('on');
+  document.querySelector('.panel').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+document.addEventListener('change', function(e){
+  if (e.target && e.target.type === 'radio'){
+    var n = e.target.name;
+    [].forEach.call(document.querySelectorAll('input[name="'+n+'"]'), function(r){
+      r.closest('.opt').classList.toggle('sel', r.checked);
+    });
+  }
+});
+function pickRadio(n){
+  var el = document.querySelector('input[name="'+n+'"]:checked');
+  return el ? el.value : '';
+}
+
+document.getElementById('qgo').onclick = function(){
+  var mail = document.getElementById('qmail'), err = document.getElementById('qerr');
+  err.classList.remove('on'); mail.classList.remove('bad');
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim())){
+    mail.classList.add('bad');
+    err.textContent = 'Нужен email — на него придёт ссылка на встречу.';
+    err.classList.add('on');
+    return;
+  }
+  answers = {
+    email: mail.value.trim(),
+    level: pickRadio('lvl'),
+    goal:  pickRadio('goal'),
+    occupation: (document.getElementById('qocc').value || '').trim()
+  };
+  send('razbor_quiz', answers);
+  openCalendar();
+};
+document.getElementById('qskipLink').onclick = function(){
+  send('razbor_quiz', { skipped: true });
+  openCalendar();
+};
+
+/* шаг 3 — календарь */
+function openCalendar(){
+  var pr = [];
+  if (lead && lead.name)  pr.push('first_name=' + encodeURIComponent(lead.name));
+  if (lead && lead.phone) pr.push('phone=' + encodeURIComponent(lead.phone));
+  if (answers.email)      pr.push('email=' + encodeURIComponent(answers.email));
+  var url = CAL_BASE + (pr.length ? '?' + pr.join('&') : '?');
+  if (location.search) url += '&' + location.search.slice(1);
+
+  var f = document.getElementById('cal');
+  f.src = url;
+  f.id = 'vG1zsgJdMciejwQSi9PJ_' + Date.now();   /* чтобы GHL подогнал высоту */
+  document.getElementById('step1').style.display = 'none';
+  document.getElementById('step2q').classList.remove('on');
+  document.getElementById('step2').classList.add('on');
+  document.getElementById('ptitle').textContent = 'Выберите удобное время';
+  document.getElementById('s1').textContent = 'Шаг 3 из 3';
+  document.getElementById('d1').classList.remove('on');
+  document.getElementById('d2').classList.remove('on');
+  document.getElementById('d3').classList.add('on');
   document.getElementById('hello').innerHTML = lead && lead.name
     ? '<b>' + lead.name.replace(/[<>&]/g,'') + '</b>, ниже свободное время по вашему поясу.'
     : 'Ниже свободное время по вашему часовому поясу.';
@@ -376,10 +477,7 @@ function openCalendar(){
 
 /* пришёл по персональной ссылке из WhatsApp или уже оставлял контакт —
    форму не показываем, сразу видео и календарь */
-if (CID || (lead && lead.phone && lead.name)) {
-  document.getElementById('ptitle').textContent = 'Выберите удобное время';
-  openCalendar();
-}
+if (CID || (lead && lead.phone && lead.name)) openQuiz();
 
 
 function digits(s){return (s||'').replace(/\D/g,'')}
@@ -403,7 +501,7 @@ document.getElementById('go').onclick=function(){
   send('razbor_lead',{consent:true});
   try{fbq('track','Lead',{content_name:'razbor_form'})}catch(e){}
 
-  setTimeout(openCalendar, 250);
+  setTimeout(openQuiz, 250);
 };
 </script>
 </body>
