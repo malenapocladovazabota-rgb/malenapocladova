@@ -3,413 +3,397 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#EAE0CB">
-<title>Записаться на разбор · SMM с нуля</title>
-<meta name="description" content="Бесплатный 30-минутный разбор перед курсом SMM с нуля. Подбираем тариф, отвечаем на вопросы, обсуждаем рассрочку.">
-<meta name="robots" content="noindex, follow">
-<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<title>Разбор вашей ситуации · 30 минут · Школа Малены Покладовой</title>
+<meta name="description" content="Бесплатный 30-минутный разбор: посмотрим, что у вас сейчас с соцсетями, и скажем, что делать в ближайший месяц. План остаётся у вас.">
+<meta property="og:title" content="Разбор вашей ситуации · 30 минут">
+<meta property="og:description" content="Бесплатно и ни к чему не обязывает. План остаётся у вас.">
+<meta property="og:image" content="https://malenapocladova.com/images/og-image.png">
+<meta name="theme-color" content="#EDE4D3">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://api.leadconnectorhq.com">
-<link rel="preconnect" href="https://msgsndr.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-/* ═══ EDITORIAL PREMIUM · бежевый / бордовый / чёрный ═══ */
-*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
 :root{
-  --ink:#161110;
-  --ink2:#453B36;
-  --beige:#EAE0CB;
-  --beige2:#DFD1B6;
-  --card:#F9F4E8;
-  --wine:#6E1E2B;
-  --wine-d:#521621;
-  --wine-soft:#E5CFC9;
-  --line:rgba(22,17,16,.16);
-  --line-soft:rgba(22,17,16,.08);
+  --ink:#161110; --ink2:#453B36;
+  --beige:#EAE0CB; --card:#F9F4E8; --paper:#FFFDF8;
+  --wine:#6E1E2B; --wine-soft:#E5CFC9;
+  --line:rgba(22,17,16,.16); --line-soft:rgba(22,17,16,.08);
   --muted:#8C8172;
-  --serif:'Playfair Display',serif;
-  --sans:'Inter',sans-serif;
-  --mono:'JetBrains Mono',monospace;
+  --serif:'Playfair Display',serif; --sans:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
 }
-html { scroll-behavior:smooth; }
-body{
-  background:var(--beige); color:var(--ink);
-  font-family:var(--sans); line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-  -webkit-tap-highlight-color:rgba(110,30,43,.15);
-}
-a { color:inherit; text-decoration:none; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--beige);color:var(--ink);font-family:var(--sans);line-height:1.6;
+  -webkit-font-smoothing:antialiased}
 ::selection{background:var(--wine);color:var(--beige)}
+a{color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
 
-/* зерно плёнки · как на главной */
-body::after{
-  content:'';position:fixed;inset:0;z-index:2000;pointer-events:none;opacity:.05;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+.nav{border-bottom:1px solid var(--line-soft);padding:18px 0}
+.nav-in{display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:-.4px;text-decoration:none}
+.brand em{font-style:italic;color:var(--wine)}
+.nav-note{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--muted)}
 
-/* ═══ NAV ═══ */
-.nav{
-  position:sticky; top:0; z-index:100;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:15px 24px;
-  background:rgba(234,224,203,.88); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--line-soft);
-}
-.nav .brand{font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:-.4px}
-.nav .brand em{font-style:italic;color:var(--wine)}
-.nav-back{
-  font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;
-  color:var(--ink2);transition:color .2s;
-}
-.nav-back:hover{color:var(--wine)}
+.hero{padding:48px 0 30px;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--wine);margin-bottom:20px}
+.eyebrow::before,.eyebrow::after{content:'';width:30px;height:1px;background:var(--wine)}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(32px,5.2vw,54px);
+  line-height:1.03;letter-spacing:-1.5px;margin-bottom:16px}
+h1 em{font-style:italic;color:var(--wine)}
+.hero .sub{font-size:16.5px;line-height:1.6;color:var(--ink2);max-width:520px;margin:0 auto}
+.hero .sub b{color:var(--ink);font-weight:600}
 
-/* ═══ HERO ═══ */
-.razbor-hero{padding:44px 22px 26px;text-align:center}
-.razbor-eyebrow{
-  display:inline-flex;align-items:center;gap:12px;
-  font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:2.6px;text-transform:uppercase;
-  color:var(--wine);margin-bottom:20px;
-}
-.razbor-eyebrow::before,.razbor-eyebrow::after{content:'';width:26px;height:1px;background:var(--wine)}
-.razbor-hero h1{
-  font-family:var(--serif);font-weight:500;
-  font-size:clamp(34px,7vw,58px);line-height:1;letter-spacing:-1.4px;
-  margin-bottom:14px;
-}
-.razbor-hero h1 em{font-style:italic;color:var(--wine)}
-.razbor-hero .lede{
-  font-size:15.5px;line-height:1.6;color:var(--ink2);
-  max-width:520px;margin:0 auto;
-}
+/* агенда */
+.agenda{border-top:1px solid var(--line);margin:34px 0 30px}
+.arow{display:flex;gap:18px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line-soft)}
+.arow b{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--wine);width:62px;flex:none}
+.arow span{font-size:15px;color:var(--ink2);line-height:1.45}
 
-/* ═══ MAIN ═══ */
-.razbor-main{max-width:680px;margin:0 auto;padding:22px 14px 48px}
+/* карточка шага */
+.panel{background:var(--card);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.phead{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:16px 22px;border-bottom:1px solid var(--line-soft);background:rgba(22,17,16,.02)}
+.phead h2{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:-.4px}
+.steps{display:flex;gap:6px;align-items:center;font-family:var(--mono);font-size:9.5px;
+  font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);flex:none}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--line)}
+.dot.on{background:var(--wine)}
 
-/* календарь GHL */
-.razbor-calendar{
-  position:relative;overflow:hidden;
-  background:var(--card);
-  border:1px solid var(--line);border-radius:4px;
-  box-shadow:0 34px 64px -36px rgba(22,17,16,.45);
-  margin-bottom:22px;
-}
-.razbor-calendar::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--wine);z-index:2;
-}
-.razbor-calendar iframe{
-  width:100% !important;
-  min-height:1600px;
-  border:none !important;
-  display:block !important;
-  background:var(--card);
-}
+.pbody{padding:22px}
+.row{margin-bottom:11px}
+input[type=text],input[type=tel]{width:100%;background:var(--paper);color:var(--ink);
+  border:1px solid var(--line);border-radius:2px;padding:14px 15px;font-size:16px;
+  font-family:var(--sans);outline:none;transition:border-color .2s}
+input::placeholder{color:var(--muted)}
+input:focus{border-color:var(--ink)}
+input.bad{border-color:var(--wine);background:#FDF3F1}
+.phone{display:flex;gap:8px}
+.cc{position:relative;flex:none;width:132px}
+.ccbtn{width:100%;height:100%;display:flex;align-items:center;gap:7px;
+  background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:2px;
+  padding:0 24px 0 12px;font-size:16px;font-family:var(--sans);cursor:pointer;text-align:left;
+  min-height:48px;position:relative}
+.ccbtn:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.ccbtn.open{border-color:var(--ink)}
+.ccbtn .fl{font-size:17px;line-height:1}
+.ccbtn::after{content:'';position:absolute;right:10px;top:50%;width:6px;height:6px;
+  border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);
+  transform:translateY(-70%) rotate(45deg)}
+.ccpop{display:none;position:absolute;z-index:20;left:0;top:calc(100% + 5px);width:258px;
+  background:var(--paper);border:1px solid var(--line);border-radius:3px;
+  box-shadow:0 18px 40px -14px rgba(22,17,16,.45);overflow:hidden}
+.ccpop.on{display:block}
+.ccpop input{width:100%;border:0;border-bottom:1px solid var(--line-soft);border-radius:0;
+  padding:12px 13px;font-size:15px;background:transparent;outline:none}
+.cclist{max-height:236px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.ccitem{display:flex;align-items:center;gap:10px;padding:9px 13px;cursor:pointer;font-size:14.5px}
+.ccitem .fl{font-size:16px;line-height:1}
+.ccitem .nm{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ccitem .dl{color:var(--muted);font-family:var(--mono);font-size:12px;flex:none}
+.ccitem:hover,.ccitem.hl{background:rgba(110,30,43,.08)}
+.ccitem.sel .dl{color:var(--wine)}
+.ccnone{padding:14px 13px;font-size:13.5px;color:var(--muted)}
 
-/* инфо-карточки */
-.info-card{
-  background:var(--card);
-  border:1px solid var(--line-soft);border-radius:4px;
-  padding:24px 24px 26px;
-  margin-bottom:14px;
-}
-.info-card h3{
-  font-family:var(--serif);font-size:23px;font-weight:600;letter-spacing:-.4px;
-  line-height:1.15;margin-bottom:5px;
-}
-.info-card h3 em{font-style:italic;color:var(--wine)}
-.info-card .info-sub{
-  font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;
-  color:var(--muted);margin-bottom:16px;
-}
-.agenda-row{
-  display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:center;
-  padding:10px 0;border-bottom:1px solid var(--line-soft);
-}
-.agenda-row:last-child{border-bottom:none;padding-bottom:0}
-.agenda-row:first-of-type{padding-top:0}
-.agenda-time{
-  font-family:var(--serif);font-style:italic;font-size:16px;font-weight:600;
-  color:var(--wine);text-align:center;
-  border-right:2px solid var(--wine);padding-right:8px;
-}
-.agenda-text{font-size:13.5px;line-height:1.45;color:var(--ink)}
-.info-card.contact .contact-line{font-size:14px;line-height:1.6;color:var(--ink2)}
-.info-card.contact a{color:var(--wine);border-bottom:1px solid rgba(110,30,43,.4)}
+.phone input{flex:1;min-width:0}
 
-/* ═══ STICKY MOBILE FALLBACK CTA ═══ */
-.sticky-fallback{
-  position:fixed;bottom:14px;left:14px;right:14px;z-index:100;
-  background:var(--ink);color:var(--beige);
-  padding:14px 16px;border-radius:4px;
-  box-shadow:0 18px 40px -12px rgba(22,17,16,.6);
-  display:none;align-items:center;justify-content:space-between;gap:12px;
-  font-size:13px;line-height:1.4;
-}
-.sticky-fallback strong{display:block;font-weight:600;margin-bottom:2px;color:#F3EADF}
-.sticky-fallback a{
-  flex-shrink:0;background:var(--wine);color:#F3EADF;
-  padding:11px 16px;border-radius:2px;
-  font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
-}
+.check{display:flex;gap:10px;align-items:flex-start;margin:15px 0 16px;cursor:pointer}
+.check input{margin-top:2px;width:17px;height:17px;flex:none;accent-color:var(--wine)}
+.check span{font-size:12px;color:var(--ink2);line-height:1.45}
+.check a{color:var(--wine)}
 
-/* ═══ FOOTER ═══ */
-.legal-footer{
-  background:var(--ink);color:var(--beige);
-  padding:34px 22px;text-align:center;
-}
-.legal-footer .legal-links{
-  display:flex;gap:12px;flex-wrap:wrap;justify-content:center;
-  font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
-  margin-bottom:16px;
-}
-.legal-footer .legal-links a{color:rgba(237,228,210,.7);transition:color .2s}
-.legal-footer .legal-links a:hover{color:#F3EADF}
-.legal-footer .sep{color:rgba(237,228,210,.3)}
-.legal-footer .footer-contact{font-size:13px;color:rgba(237,228,210,.75);line-height:1.55}
-.legal-footer .footer-contact a{color:var(--wine-soft);border-bottom:1px solid rgba(229,207,201,.4)}
-.legal-footer .copy{
-  font-family:var(--mono);font-size:10px;letter-spacing:1px;
-  color:rgba(237,228,210,.4);margin-top:14px;
-}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;
+  font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;
+  padding:18px 26px;border-radius:2px;cursor:pointer;border:none;text-decoration:none;
+  background:var(--wine);color:#F3EADF;box-shadow:0 12px 26px -12px rgba(110,30,43,.6);
+  transition:background .22s,transform .15s}
+.btn:hover{background:var(--ink)}
+.btn:active{transform:scale(.99)}
+.btn:disabled{opacity:.5;cursor:default}
+.err{color:var(--wine);font-size:12.5px;font-weight:500;margin-top:11px;display:none}
+.err.on{display:block}
+.tiny{font-size:11.5px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.45}
 
-/* ═══ DESKTOP (≥880px) ═══ */
-@media (min-width:880px){
-  .razbor-hero{padding:64px 32px 34px}
-  .razbor-hero .lede{font-size:17px}
-  .razbor-main{
-    max-width:1180px;
-    padding:44px 32px 88px;
-    display:grid;grid-template-columns:1.4fr 1fr;gap:30px;
-    align-items:start;
-  }
-  .razbor-calendar{margin-bottom:0}
-  .razbor-side{display:flex;flex-direction:column;gap:16px}
-  .info-card{margin-bottom:0;padding:28px 30px}
-  .agenda-row,.info-card.contact .contact-line{font-size:14px}
-  .sticky-fallback{display:none !important}
-}
+/* шаг 2 — календарь */
+#step2{display:none}
+#step2.on{display:block;animation:rise .35s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.calwrap{background:var(--paper);border-top:1px solid var(--line-soft)}
+.calwrap iframe{width:100%;min-height:720px;border:0;display:block}
+.hello{padding:16px 22px 0;font-size:14.5px;color:var(--ink2)}
+.hello b{color:var(--ink)}
 
-@media (prefers-reduced-motion: reduce){
-  *, *::before, *::after{
-    animation-duration:0.01ms !important;
-    transition-duration:0.01ms !important;
-  }
-  html{scroll-behavior:auto}
+/* доверие */
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 0}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:16px 18px}
+.tcard b{display:block;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--wine);margin-bottom:7px}
+.tcard span{font-size:13.5px;color:var(--ink2);line-height:1.45}
+
+footer{text-align:center;margin-top:38px;padding-bottom:46px;
+  font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1.8px;
+  text-transform:uppercase;color:var(--muted)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--wine)}
+
+@media(max-width:620px){
+  .wrap{padding:0 16px}
+  .hero{padding:32px 0 22px}
+  .pbody{padding:18px}
+  .phead{padding:14px 18px}
+  .trust{grid-template-columns:1fr}
+  .nav-note{display:none}
+  .cc{width:106px}
+  .arow b{width:54px}
 }
+@media(prefers-reduced-motion:reduce){ #step2.on{animation:none} }
 </style>
-
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1521940319314090');
-fbq('track', 'PageView');
-fbq('track', 'ViewContent', {content_name: 'Razbor booking page', content_category: 'lead-form'});
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1521940319314090&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-<!-- TikTok Pixel Code Start -->
-<script>
-!function (w, d, t) {
-  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-  ttq.load('D8CSRFRC77U3L7SRH730');
-  ttq.page();
-}(window, document, 'ttq');
-</script>
-<!-- TikTok Pixel Code End -->
 </head>
 <body>
 
-<nav class="nav">
-  <a href="/" class="brand">SMM <em>с нуля</em></a>
-  <a href="/" class="nav-back">← На главную</a>
-</nav>
+<nav class="nav"><div class="wrap nav-in">
+  <a class="brand" href="/">SMM <em>с нуля</em></a>
+  <div class="nav-note">Школа Малены Покладовой</div>
+</div></nav>
 
-<header class="razbor-hero">
-  <div class="razbor-eyebrow">30 минут · бесплатно · Zoom</div>
-  <h1>Записаться на <em>разбор</em></h1>
-  <p class="lede">Выберите удобное время. На созвоне посмотрим вашу ситуацию, подберём тариф под нишу.</p>
-</header>
+<div class="wrap">
 
-<main class="razbor-main">
+  <section class="hero">
+    <div class="eyebrow">Бесплатно · 30 минут · один на один</div>
+    <h1>Разбор вашей <em>ситуации</em></h1>
+    <p class="sub">Полчаса один на один. Уйдёте с планом на месяц — <b>даже если учиться не пойдёте</b>.</p>
+  </section>
 
-  <!-- ═══ GoHighLevel calendar booking widget (с прикреплённой формой) ═══ -->
-  <div class="razbor-calendar" id="calendar-embed">
-    <iframe
-      src="about:blank"
-      data-base="https://api.leadconnectorhq.com/widget/booking/vG1zsgJdMciejwQSi9PJ"
-      style="width:100%;border:none;overflow:hidden;display:block;"
-      scrolling="no"
-      id="vG1zsgJdMciejwQSi9PJ_1778185827565"
-      title="Записаться на разбор · 30 минут на Zoom"
-      loading="eager"></iframe>
+  <div class="agenda">
+    <div class="arow"><b>5 мин</b><span>Кто вы и чего хотите</span></div>
+    <div class="arow"><b>10 мин</b><span>Что мешает расти сейчас</span></div>
+    <div class="arow"><b>10 мин</b><span>Какой формат обучения подойдёт, цены и рассрочка</span></div>
+    <div class="arow"><b>5 мин</b><span>План первых шагов</span></div>
   </div>
 
-  <aside class="razbor-side">
-
-    <div class="info-card">
-      <h3>Что будет на <em>разборе</em></h3>
-      <div class="info-sub">30 минут · по Zoom</div>
-      <div class="agenda-row">
-        <div class="agenda-time">5 мин</div>
-        <div class="agenda-text">Знакомимся: ваша ниша и цели</div>
-      </div>
-      <div class="agenda-row">
-        <div class="agenda-time">10 мин</div>
-        <div class="agenda-text">Разбираем вашу ситуацию и цели: где сейчас, куда хотите прийти</div>
-      </div>
-      <div class="agenda-row">
-        <div class="agenda-time">10 мин</div>
-        <div class="agenda-text">Подбираем тариф, обсуждаем цены и рассрочку</div>
-      </div>
-      <div class="agenda-row">
-        <div class="agenda-time">5 мин</div>
-        <div class="agenda-text">Намечаем план первых шагов</div>
-      </div>
+  <div class="panel">
+    <div class="phead">
+      <h2 id="ptitle">Как с вами связаться</h2>
+      <div class="steps"><span id="s1">Шаг 1</span><i class="dot on" id="d1"></i><i class="dot" id="d2"></i></div>
     </div>
 
-    <div class="info-card contact">
-      <h3>Не получается?</h3>
-      <p class="contact-line">Напишите в <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">Telegram-поддержку</a>: подберём время вручную.</p>
+    <div class="pbody" id="step1">
+      <div class="row"><input type="text" id="nm" autocomplete="given-name" placeholder="Ваше имя"></div>
+      <div class="row phone">
+        <div class="cc" id="ccWrap">
+          <button type="button" class="ccbtn" id="ccBtn" aria-haspopup="listbox" aria-expanded="false">
+            <span class="fl" id="ccFlag"></span><span id="ccCode"></span>
+          </button>
+          <div class="ccpop" id="ccPop">
+            <input type="text" id="ccSearch" placeholder="Страна или код" autocomplete="off"
+                   spellcheck="false" aria-label="Поиск страны">
+            <div class="cclist" id="ccList" role="listbox"></div>
+          </div>
+        </div>
+        <input type="tel" id="ph" autocomplete="tel" placeholder="60 000 000" inputmode="numeric">
+      </div>
+      <label class="check">
+        <input type="checkbox" id="ok">
+        <span>Даю согласие на обработку данных. <a href="/privacy" target="_blank">Политика конфиденциальности</a> · <a href="/terms" target="_blank">Оферта</a></span>
+      </label>
+      <button class="btn" id="go">Выбрать время</button>
+      <div class="err" id="err"></div>
+      <div class="tiny">Не найдёте удобное время — напишем в WhatsApp и подберём</div>
     </div>
 
-  </aside>
-
-</main>
-
-<!-- Sticky bottom fallback CTA (показывается на мобиле если iframe долго не грузится) -->
-<div class="sticky-fallback" id="sticky-fallback">
-  <div>
-    <strong>Не загружается?</strong>
-    Запишитесь напрямую в Telegram
+    <div id="step2">
+      <div class="hello" id="hello"></div>
+      <div class="calwrap">
+        <iframe id="cal" title="Выбор времени разбора" scrolling="no"></iframe>
+      </div>
+    </div>
   </div>
-  <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">Написать</a>
+
+  <div class="trust">
+    <div class="tcard"><b>Бесплатно</b><span>Ни к чему не обязывает</span></div>
+    <div class="tcard"><b>Честно</b><span>Скажем, если обучение вам не нужно</span></div>
+    <div class="tcard"><b>Онлайн</b><span>Ссылку пришлём заранее</span></div>
+  </div>
+
+  <footer>
+    <a href="/privacy">Конфиденциальность</a> · <a href="/terms">Оферта</a> · <a href="/refund">Возврат</a>
+  </footer>
+
 </div>
 
-<footer class="legal-footer">
-  <div class="legal-links">
-    <a href="/">Главная</a><span class="sep">·</span>
-    <a href="/privacy">Конфиденциальность</a><span class="sep">·</span>
-    <a href="/terms">Договор-оферта</a><span class="sep">·</span>
-    <a href="/refund">Условия возврата</a>
-  </div>
-  <p class="footer-contact">Telegram-поддержка: <a href="https://t.me/Malena_Pocladova_Zabota">@Malena_Pocladova_Zabota</a></p>
-  <div class="copy">© 2026 Школа Малены Покладовой</div>
-</footer>
-
-<script>
-  // ════════════════════════════════════════════════════════════
-  // UTM passthrough · читаем UTM из URL → передаём в iframe
-  // → GHL сохранит на Contact в полях UTM Source / Medium / etc
-  // ════════════════════════════════════════════════════════════
-  (function(){
-    const iframe = document.querySelector('.razbor-calendar iframe[data-base]');
-    if (!iframe) return;
-
-    const BASE = iframe.getAttribute('data-base');
-    const urlParams = new URLSearchParams(window.location.search);
-
-    // UTM keys + click IDs + page meta
-    const PASSTHRU_KEYS = [
-      'utm_source','utm_medium','utm_campaign','utm_content','utm_term',
-      'gclid','fbclid','msclkid',
-      // pre-fill (если кто-то приходит с заполненным URL - например с meta lead ad → site)
-      'first_name','last_name','firstName','lastName','email','phone'
-    ];
-
-    const targetParams = new URLSearchParams();
-    PASSTHRU_KEYS.forEach(function(k){
-      const v = urlParams.get(k);
-      if (v) {
-        // нормализация имён pre-fill (firstName → first_name)
-        if (k === 'firstName') targetParams.set('first_name', v);
-        else if (k === 'lastName') targetParams.set('last_name', v);
-        else targetParams.set(k, v);
-      }
-    });
-
-    // landing page (с какой страницы зашёл)
-    targetParams.set('landing_page', window.location.pathname);
-
-    // referrer (откуда ссылка) - если есть
-    if (document.referrer && !document.referrer.includes(window.location.host)) {
-      targetParams.set('referrer', document.referrer);
-    }
-
-    // Сохраняем UTM в localStorage для атрибуции (если человек уйдёт и вернётся)
-    const utmData = {};
-    PASSTHRU_KEYS.slice(0, 8).forEach(function(k){
-      const v = urlParams.get(k);
-      if (v) utmData[k] = v;
-    });
-    if (Object.keys(utmData).length > 0) {
-      try {
-        utmData._captured = new Date().toISOString();
-        utmData._page = window.location.pathname;
-        localStorage.setItem('lead_attribution', JSON.stringify(utmData));
-      } catch(e) {}
-    }
-
-    // Если UTM нет в URL - попробуем восстановить из localStorage (если человек ходил по сайту)
-    if (Object.keys(utmData).length === 0) {
-      try {
-        const stored = JSON.parse(localStorage.getItem('lead_attribution') || '{}');
-        Object.keys(stored).forEach(function(k){
-          if (!k.startsWith('_') && !targetParams.has(k)) {
-            targetParams.set(k, stored[k]);
-          }
-        });
-      } catch(e) {}
-    }
-
-    const queryString = targetParams.toString();
-    iframe.src = queryString ? BASE + '?' + queryString : BASE;
-  })();
-
-  // Sticky fallback: если за 5 секунд iframe не загрузился - показать sticky CTA
-  (function(){
-    const iframe = document.querySelector('.razbor-calendar iframe');
-    if (!iframe) return;
-
-    const fallback = document.getElementById('sticky-fallback');
-    let loaded = false;
-
-    iframe.addEventListener('load', function(){ loaded = true; });
-
-    setTimeout(function(){
-      if (!loaded && window.innerWidth < 880) {
-        fallback.style.display = 'flex';
-      }
-    }, 5000);
-
-    // Скрыть когда iframe всё-таки загрузился
-    iframe.addEventListener('load', function(){
-      fallback.style.display = 'none';
-    });
-  })();
-
-  // postMessage listener - если GHL отправляет высоту, ресайзим iframe
-  window.addEventListener('message', function(event){
-    if (!event.origin.includes('leadconnectorhq.com') &&
-        !event.origin.includes('msgsndr.com')) return;
-    const data = event.data;
-    if (typeof data === 'object' && data.type === 'resize' && data.height) {
-      const iframe = document.querySelector('.razbor-calendar iframe');
-      if (iframe) iframe.style.height = data.height + 'px';
-    }
-  });
-</script>
-
-<!-- GHL form embed auto-resize handler -->
 <script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
+<script>
+/* ══════════════════════════════════════════════════════════════ */
+var GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/55lHQOuDwUKKCwgmTmLW/webhook-trigger/1771c74b-c8ec-4b4f-9dc1-6fe978f7d622';
+var TO_GHL = { razbor_lead:1, razbor_calendar_open:1 };
+var PIXEL_ID = '1521940319314090';
+var CAL_BASE = 'https://api.leadconnectorhq.com/widget/booking/vG1zsgJdMciejwQSi9PJ';
+/* ══════════════════════════════════════════════════════════════ */
 
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', PIXEL_ID); fbq('track','PageView');
+
+var COUNTRIES=[
+['MD','🇲🇩','373','Молдова','Moldova'],['UA','🇺🇦','380','Украина','Ukraine'],
+['RO','🇷🇴','40','Румыния','Romania'],['US','🇺🇸','1','США','USA United States'],
+['CA','🇨🇦','1','Канада','Canada'],['DE','🇩🇪','49','Германия','Germany Deutschland'],
+['IT','🇮🇹','39','Италия','Italy Italia'],['PL','🇵🇱','48','Польша','Poland Polska'],
+['ES','🇪🇸','34','Испания','Spain'],['PT','🇵🇹','351','Португалия','Portugal'],
+['FR','🇫🇷','33','Франция','France'],['GB','🇬🇧','44','Великобритания','UK Britain England'],
+['IE','🇮🇪','353','Ирландия','Ireland'],['NL','🇳🇱','31','Нидерланды','Netherlands Holland'],
+['BE','🇧🇪','32','Бельгия','Belgium'],['AT','🇦🇹','43','Австрия','Austria'],
+['CH','🇨🇭','41','Швейцария','Switzerland'],['CZ','🇨🇿','420','Чехия','Czechia Czech'],
+['SE','🇸🇪','46','Швеция','Sweden'],['GR','🇬🇷','30','Греция','Greece'],
+['CY','🇨🇾','357','Кипр','Cyprus'],['BG','🇧🇬','359','Болгария','Bulgaria'],
+['LT','🇱🇹','370','Литва','Lithuania'],['LV','🇱🇻','371','Латвия','Latvia'],
+['EE','🇪🇪','372','Эстония','Estonia'],['IL','🇮🇱','972','Израиль','Israel'],
+['GE','🇬🇪','995','Грузия','Georgia'],['TR','🇹🇷','90','Турция','Turkey'],
+['AE','🇦🇪','971','ОАЭ','UAE Emirates Dubai'],['KZ','🇰🇿','7','Казахстан','Kazakhstan'],
+['RU','🇷🇺','7','Россия','Russia']];
+var TZ={'Europe/Chisinau':'MD','Europe/Tiraspol':'MD','Europe/Kyiv':'UA','Europe/Kiev':'UA',
+'Europe/Uzhgorod':'UA','Europe/Zaporozhye':'UA','Europe/Bucharest':'RO','Europe/Berlin':'DE',
+'Europe/Rome':'IT','Europe/Warsaw':'PL','Europe/Madrid':'ES','Europe/Lisbon':'PT','Europe/Paris':'FR',
+'Europe/London':'GB','Europe/Dublin':'IE','Europe/Amsterdam':'NL','Europe/Brussels':'BE',
+'Europe/Vienna':'AT','Europe/Zurich':'CH','Europe/Prague':'CZ','Europe/Stockholm':'SE',
+'Europe/Athens':'GR','Asia/Nicosia':'CY','Europe/Nicosia':'CY','Europe/Sofia':'BG','Europe/Vilnius':'LT',
+'Europe/Riga':'LV','Europe/Tallinn':'EE','Asia/Jerusalem':'IL','Asia/Tbilisi':'GE','Europe/Istanbul':'TR',
+'Asia/Dubai':'AE','Asia/Almaty':'KZ','Europe/Moscow':'RU','America/Toronto':'CA','America/Vancouver':'CA'};
+
+var ccBtn=document.getElementById('ccBtn'), ccPop=document.getElementById('ccPop'),
+    ccList=document.getElementById('ccList'), ccSearch=document.getElementById('ccSearch'),
+    ccFlag=document.getElementById('ccFlag'), ccCode=document.getElementById('ccCode');
+var CUR=null, hl=-1, shown=[];
+
+function pick(c){
+  CUR=c; ccFlag.textContent=c[1]; ccCode.textContent='+'+c[2]; closeCC();
+}
+function norm(s){ return (s||'').toLowerCase().replace('ё','е'); }
+
+function render(q){
+  q=norm(q).trim();
+  var digitsOnly=q.replace(/\D/g,'');
+  shown=COUNTRIES.filter(function(c){
+    if(!q) return true;
+    if(digitsOnly && c[2].indexOf(digitsOnly)===0) return true;
+    return norm(c[3]).indexOf(q)===0 || norm(c[4]).split(' ').some(function(w){return w.indexOf(q)===0})
+        || norm(c[0])===q;
+  });
+  hl = shown.length ? 0 : -1;
+  if(!shown.length){ ccList.innerHTML='<div class="ccnone">Ничего не нашлось</div>'; return; }
+  ccList.innerHTML = shown.map(function(c,i){
+    return '<div class="ccitem'+(CUR&&CUR[0]===c[0]?' sel':'')+(i===hl?' hl':'')+
+      '" role="option" data-i="'+i+'"><span class="fl">'+c[1]+'</span>'+
+      '<span class="nm">'+c[3]+'</span><span class="dl">+'+c[2]+'</span></div>';
+  }).join('');
+  [].forEach.call(ccList.querySelectorAll('.ccitem'), function(el){
+    el.addEventListener('mousedown', function(e){ e.preventDefault(); pick(shown[+el.dataset.i]); });
+  });
+}
+function openCC(){
+  ccPop.classList.add('on'); ccBtn.classList.add('open');
+  ccBtn.setAttribute('aria-expanded','true');
+  ccSearch.value=''; render(''); ccSearch.focus();
+}
+function closeCC(){
+  ccPop.classList.remove('on'); ccBtn.classList.remove('open');
+  ccBtn.setAttribute('aria-expanded','false');
+}
+ccBtn.addEventListener('click', function(){ ccPop.classList.contains('on') ? closeCC() : openCC(); });
+ccSearch.addEventListener('input', function(){ render(this.value); });
+ccSearch.addEventListener('keydown', function(e){
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+    e.preventDefault();
+    if(!shown.length) return;
+    hl=(hl+(e.key==='ArrowDown'?1:-1)+shown.length)%shown.length;
+    render.hlOnly=true;
+    var items=ccList.querySelectorAll('.ccitem');
+    [].forEach.call(items,function(el,i){ el.classList.toggle('hl', i===hl); });
+    if(items[hl]) items[hl].scrollIntoView({block:'nearest'});
+  } else if(e.key==='Enter'){
+    e.preventDefault(); if(shown[hl]) pick(shown[hl]);
+  } else if(e.key==='Escape'){ closeCC(); ccBtn.focus(); }
+});
+document.addEventListener('click', function(e){
+  if(!document.getElementById('ccWrap').contains(e.target)) closeCC();
+});
+
+(function(){var iso='US';try{var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';
+if(TZ[tz])iso=TZ[tz];else if(tz.indexOf('America/')===0)iso='US';}catch(e){}
+var f=COUNTRIES.filter(function(c){return c[0]===iso;})[0]||COUNTRIES[3]; pick(f);})();
+
+var Q=new URLSearchParams(location.search);
+function utm(k){return Q.get(k)||''}
+var lead=null; try{lead=JSON.parse(localStorage.getItem('mp_video_lead')||'null')}catch(e){}
+
+function send(ev,extra){
+  var b=Object.assign({event:ev,page:'razbor',name:lead?lead.name:'',phone:lead?lead.phone:'',
+    country:lead?lead.country:'',utm_source:utm('utm_source'),utm_medium:utm('utm_medium'),
+    utm_campaign:utm('utm_campaign'),utm_content:utm('utm_content'),utm_term:utm('utm_term'),
+    fbclid:utm('fbclid'),url:location.href,ts:new Date().toISOString()},extra||{});
+  if(GHL_WEBHOOK.indexOf('http')===0 && TO_GHL[ev]){
+    try{var blob=new Blob([JSON.stringify(b)],{type:'application/json'});
+      if(navigator.sendBeacon)navigator.sendBeacon(GHL_WEBHOOK,blob);
+      else fetch(GHL_WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(b),keepalive:true}).catch(function(){});}catch(e){}
+  }
+}
+
+/* ─── переход на шаг 2 ─── */
+function openCalendar(){
+  var url = CAL_BASE + '?first_name=' + encodeURIComponent(lead.name) +
+            '&phone=' + encodeURIComponent(lead.phone);
+  if (location.search) url += '&' + location.search.slice(1);
+
+  document.getElementById('cal').src = url;
+  document.getElementById('step1').style.display = 'none';
+  document.getElementById('step2').classList.add('on');
+  document.getElementById('ptitle').textContent = 'Выберите удобное время';
+  document.getElementById('s1').textContent = 'Шаг 2';
+  document.getElementById('d1').classList.remove('on');
+  document.getElementById('d2').classList.add('on');
+  document.getElementById('hello').innerHTML =
+    '<b>' + lead.name.replace(/[<>&]/g,'') + '</b>, ниже свободное время по вашему поясу.';
+
+  send('razbor_calendar_open');
+  document.querySelector('.panel').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+/* если человек уже оставлял контакт на /video — не спрашиваем второй раз */
+if (lead && lead.phone && lead.name) {
+  openCalendar();
+}
+
+function digits(s){return (s||'').replace(/\D/g,'')}
+document.getElementById('go').onclick=function(){
+  var nm=document.getElementById('nm'),ph=document.getElementById('ph'),
+      ok=document.getElementById('ok'),errEl=document.getElementById('err'),bad=false;
+  [nm,ph].forEach(function(e){e.classList.remove('bad')}); errEl.classList.remove('on');
+  var local=digits(ph.value),code=CUR[2],iso=CUR[0];
+  if(local.indexOf(code)===0&&local.length>code.length+5)local=local.slice(code.length);
+  if(nm.value.trim().length<2){nm.classList.add('bad');bad=true}
+  if(local.length<6){ph.classList.add('bad');bad=true}
+  if(bad){errEl.textContent='Проверьте имя и номер.';errEl.classList.add('on');return}
+  if(!ok.checked){errEl.textContent='Отметьте согласие, чтобы продолжить.';errEl.classList.add('on');return}
+
+  lead={name:nm.value.trim(),phone:'+'+code+local,country:iso};
+  try{localStorage.setItem('mp_video_lead',JSON.stringify(lead))}catch(e){}
+
+  this.disabled=true; this.textContent='Открываем…';
+
+  /* контакт фиксируем ДО календаря: если человек не выберет слот, он у нас уже есть */
+  send('razbor_lead',{consent:true});
+  try{fbq('track','Lead',{content_name:'razbor_form'})}catch(e){}
+
+  setTimeout(openCalendar, 250);
+};
+</script>
 </body>
 </html>

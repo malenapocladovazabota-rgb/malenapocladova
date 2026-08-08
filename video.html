@@ -16,7 +16,7 @@
 <style>
 :root{
   --ink:#161110; --ink2:#453B36;
-  --beige:#EAE0CB; --beige2:#DFD1B6; --card:#F9F4E8;
+  --beige:#EAE0CB; --beige2:#DFD1B6; --card:#F9F4E8; --paper:#FFFDF8;
   --wine:#6E1E2B; --wine-d:#521621; --wine-soft:#E5CFC9;
   --line:rgba(22,17,16,.16); --line-soft:rgba(22,17,16,.08);
   --muted:#8C8172;
@@ -138,14 +138,32 @@ input:focus{border-color:var(--ink)}
 input.bad{border-color:var(--wine);background:#FDF3F1}
 
 .phone{display:flex;gap:7px}
-.cc{position:relative;flex:none;width:118px}
-.cc select{width:100%;height:100%;appearance:none;-webkit-appearance:none;
-  background:#FFFDF8;color:var(--ink);border:1px solid var(--line);border-radius:2px;
-  padding:13px 26px 13px 12px;font-size:16px;font-family:var(--sans);outline:none;cursor:pointer}
-.cc select:focus{border-color:var(--ink)}
-.cc::after{content:'';position:absolute;right:11px;top:50%;width:6px;height:6px;
+.cc{position:relative;flex:none;width:132px}
+.ccbtn{width:100%;height:100%;display:flex;align-items:center;gap:7px;
+  background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:2px;
+  padding:0 24px 0 12px;font-size:16px;font-family:var(--sans);cursor:pointer;text-align:left;
+  min-height:48px;position:relative}
+.ccbtn:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.ccbtn.open{border-color:var(--ink)}
+.ccbtn .fl{font-size:17px;line-height:1}
+.ccbtn::after{content:'';position:absolute;right:10px;top:50%;width:6px;height:6px;
   border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);
-  transform:translateY(-70%) rotate(45deg);pointer-events:none}
+  transform:translateY(-70%) rotate(45deg)}
+.ccpop{display:none;position:absolute;z-index:20;left:0;top:calc(100% + 5px);width:258px;
+  background:var(--paper);border:1px solid var(--line);border-radius:3px;
+  box-shadow:0 18px 40px -14px rgba(22,17,16,.45);overflow:hidden}
+.ccpop.on{display:block}
+.ccpop input{width:100%;border:0;border-bottom:1px solid var(--line-soft);border-radius:0;
+  padding:12px 13px;font-size:15px;background:transparent;outline:none}
+.cclist{max-height:236px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.ccitem{display:flex;align-items:center;gap:10px;padding:9px 13px;cursor:pointer;font-size:14.5px}
+.ccitem .fl{font-size:16px;line-height:1}
+.ccitem .nm{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ccitem .dl{color:var(--muted);font-family:var(--mono);font-size:12px;flex:none}
+.ccitem:hover,.ccitem.hl{background:rgba(110,30,43,.08)}
+.ccitem.sel .dl{color:var(--wine)}
+.ccnone{padding:14px 13px;font-size:13.5px;color:var(--muted)}
+
 .phone input{flex:1;min-width:0}
 
 .check{display:flex;gap:9px;align-items:flex-start;margin:13px 0 15px;cursor:pointer}
@@ -239,7 +257,8 @@ footer a:hover{color:var(--wine)}
   </section>
 
   <div class="stage locked" id="stage">
-    <video id="vid" playsinline preload="auto" muted loop
+    <video id="vid" playsinline preload="metadata" muted loop
+      poster="images/malena-portrait.jpg"
       src="https://assets.cdn.filesafe.space/55lHQOuDwUKKCwgmTmLW/media/69af3ff68d3eae09b5b87eac.mp4"></video>
     <div class="veil"></div>
 
@@ -253,7 +272,16 @@ footer a:hover{color:var(--wine)}
       </div>
 
       <div class="row phone">
-        <div class="cc"><select id="cc" aria-label="Код страны"></select></div>
+        <div class="cc" id="ccWrap">
+          <button type="button" class="ccbtn" id="ccBtn" aria-haspopup="listbox" aria-expanded="false">
+            <span class="fl" id="ccFlag"></span><span id="ccCode"></span>
+          </button>
+          <div class="ccpop" id="ccPop">
+            <input type="text" id="ccSearch" placeholder="Страна или код" autocomplete="off"
+                   spellcheck="false" aria-label="Поиск страны">
+            <div class="cclist" id="ccList" role="listbox"></div>
+          </div>
+        </div>
         <input type="tel" id="ph" autocomplete="tel" placeholder="60 000 000" inputmode="numeric">
       </div>
 
@@ -338,52 +366,93 @@ fbq('init', PIXEL_ID);
 fbq('track', 'PageView');
 
 /* ─── страны и коды ─── */
-var COUNTRIES = [
-  ['MD','🇲🇩','373'],['UA','🇺🇦','380'],['RO','🇷🇴','40'],['US','🇺🇸','1'],['CA','🇨🇦','1'],
-  ['DE','🇩🇪','49'],['IT','🇮🇹','39'],['PL','🇵🇱','48'],['ES','🇪🇸','34'],['PT','🇵🇹','351'],
-  ['FR','🇫🇷','33'],['GB','🇬🇧','44'],['IE','🇮🇪','353'],['NL','🇳🇱','31'],['BE','🇧🇪','32'],
-  ['AT','🇦🇹','43'],['CH','🇨🇭','41'],['CZ','🇨🇿','420'],['SE','🇸🇪','46'],['GR','🇬🇷','30'],
-  ['CY','🇨🇾','357'],['BG','🇧🇬','359'],['LT','🇱🇹','370'],['LV','🇱🇻','371'],['EE','🇪🇪','372'],
-  ['IL','🇮🇱','972'],['GE','🇬🇪','995'],['TR','🇹🇷','90'],['AE','🇦🇪','971'],['KZ','🇰🇿','7'],
-  ['RU','🇷🇺','7']
-];
+var COUNTRIES=[
+['MD','🇲🇩','373','Молдова','Moldova'],['UA','🇺🇦','380','Украина','Ukraine'],
+['RO','🇷🇴','40','Румыния','Romania'],['US','🇺🇸','1','США','USA United States'],
+['CA','🇨🇦','1','Канада','Canada'],['DE','🇩🇪','49','Германия','Germany Deutschland'],
+['IT','🇮🇹','39','Италия','Italy Italia'],['PL','🇵🇱','48','Польша','Poland Polska'],
+['ES','🇪🇸','34','Испания','Spain'],['PT','🇵🇹','351','Португалия','Portugal'],
+['FR','🇫🇷','33','Франция','France'],['GB','🇬🇧','44','Великобритания','UK Britain England'],
+['IE','🇮🇪','353','Ирландия','Ireland'],['NL','🇳🇱','31','Нидерланды','Netherlands Holland'],
+['BE','🇧🇪','32','Бельгия','Belgium'],['AT','🇦🇹','43','Австрия','Austria'],
+['CH','🇨🇭','41','Швейцария','Switzerland'],['CZ','🇨🇿','420','Чехия','Czechia Czech'],
+['SE','🇸🇪','46','Швеция','Sweden'],['GR','🇬🇷','30','Греция','Greece'],
+['CY','🇨🇾','357','Кипр','Cyprus'],['BG','🇧🇬','359','Болгария','Bulgaria'],
+['LT','🇱🇹','370','Литва','Lithuania'],['LV','🇱🇻','371','Латвия','Latvia'],
+['EE','🇪🇪','372','Эстония','Estonia'],['IL','🇮🇱','972','Израиль','Israel'],
+['GE','🇬🇪','995','Грузия','Georgia'],['TR','🇹🇷','90','Турция','Turkey'],
+['AE','🇦🇪','971','ОАЭ','UAE Emirates Dubai'],['KZ','🇰🇿','7','Казахстан','Kazakhstan'],
+['RU','🇷🇺','7','Россия','Russia']];
+var TZ={'Europe/Chisinau':'MD','Europe/Tiraspol':'MD','Europe/Kyiv':'UA','Europe/Kiev':'UA',
+'Europe/Uzhgorod':'UA','Europe/Zaporozhye':'UA','Europe/Bucharest':'RO','Europe/Berlin':'DE',
+'Europe/Rome':'IT','Europe/Warsaw':'PL','Europe/Madrid':'ES','Europe/Lisbon':'PT','Europe/Paris':'FR',
+'Europe/London':'GB','Europe/Dublin':'IE','Europe/Amsterdam':'NL','Europe/Brussels':'BE',
+'Europe/Vienna':'AT','Europe/Zurich':'CH','Europe/Prague':'CZ','Europe/Stockholm':'SE',
+'Europe/Athens':'GR','Asia/Nicosia':'CY','Europe/Nicosia':'CY','Europe/Sofia':'BG','Europe/Vilnius':'LT',
+'Europe/Riga':'LV','Europe/Tallinn':'EE','Asia/Jerusalem':'IL','Asia/Tbilisi':'GE','Europe/Istanbul':'TR',
+'Asia/Dubai':'AE','Asia/Almaty':'KZ','Europe/Moscow':'RU','America/Toronto':'CA','America/Vancouver':'CA'};
 
-var TZ = {
-  'Europe/Chisinau':'MD','Europe/Tiraspol':'MD',
-  'Europe/Kyiv':'UA','Europe/Kiev':'UA','Europe/Uzhgorod':'UA','Europe/Zaporozhye':'UA',
-  'Europe/Bucharest':'RO','Europe/Berlin':'DE','Europe/Rome':'IT','Europe/Warsaw':'PL',
-  'Europe/Madrid':'ES','Europe/Lisbon':'PT','Europe/Paris':'FR','Europe/London':'GB',
-  'Europe/Dublin':'IE','Europe/Amsterdam':'NL','Europe/Brussels':'BE','Europe/Vienna':'AT',
-  'Europe/Zurich':'CH','Europe/Prague':'CZ','Europe/Stockholm':'SE','Europe/Athens':'GR',
-  'Asia/Nicosia':'CY','Europe/Nicosia':'CY','Europe/Sofia':'BG','Europe/Vilnius':'LT',
-  'Europe/Riga':'LV','Europe/Tallinn':'EE','Asia/Jerusalem':'IL','Asia/Tel_Aviv':'IL',
-  'Asia/Tbilisi':'GE','Europe/Istanbul':'TR','Asia/Dubai':'AE','Asia/Almaty':'KZ',
-  'Europe/Moscow':'RU','America/Toronto':'CA','America/Vancouver':'CA','America/Edmonton':'CA'
-};
+var ccBtn=document.getElementById('ccBtn'), ccPop=document.getElementById('ccPop'),
+    ccList=document.getElementById('ccList'), ccSearch=document.getElementById('ccSearch'),
+    ccFlag=document.getElementById('ccFlag'), ccCode=document.getElementById('ccCode');
+var CUR=null, hl=-1, shown=[];
 
-var ccSel = document.getElementById('cc');
-COUNTRIES.forEach(function(c){
-  var o = document.createElement('option');
-  o.value = c[2];
-  o.dataset.iso = c[0];
-  o.textContent = c[1] + ' +' + c[2];
-  ccSel.appendChild(o);
+function pick(c){
+  CUR=c; ccFlag.textContent=c[1]; ccCode.textContent='+'+c[2]; closeCC();
+}
+function norm(s){ return (s||'').toLowerCase().replace('ё','е'); }
+
+function render(q){
+  q=norm(q).trim();
+  var digitsOnly=q.replace(/\D/g,'');
+  shown=COUNTRIES.filter(function(c){
+    if(!q) return true;
+    if(digitsOnly && c[2].indexOf(digitsOnly)===0) return true;
+    return norm(c[3]).indexOf(q)===0 || norm(c[4]).split(' ').some(function(w){return w.indexOf(q)===0})
+        || norm(c[0])===q;
+  });
+  hl = shown.length ? 0 : -1;
+  if(!shown.length){ ccList.innerHTML='<div class="ccnone">Ничего не нашлось</div>'; return; }
+  ccList.innerHTML = shown.map(function(c,i){
+    return '<div class="ccitem'+(CUR&&CUR[0]===c[0]?' sel':'')+(i===hl?' hl':'')+
+      '" role="option" data-i="'+i+'"><span class="fl">'+c[1]+'</span>'+
+      '<span class="nm">'+c[3]+'</span><span class="dl">+'+c[2]+'</span></div>';
+  }).join('');
+  [].forEach.call(ccList.querySelectorAll('.ccitem'), function(el){
+    el.addEventListener('mousedown', function(e){ e.preventDefault(); pick(shown[+el.dataset.i]); });
+  });
+}
+function openCC(){
+  ccPop.classList.add('on'); ccBtn.classList.add('open');
+  ccBtn.setAttribute('aria-expanded','true');
+  ccSearch.value=''; render(''); ccSearch.focus();
+}
+function closeCC(){
+  ccPop.classList.remove('on'); ccBtn.classList.remove('open');
+  ccBtn.setAttribute('aria-expanded','false');
+}
+ccBtn.addEventListener('click', function(){ ccPop.classList.contains('on') ? closeCC() : openCC(); });
+ccSearch.addEventListener('input', function(){ render(this.value); });
+ccSearch.addEventListener('keydown', function(e){
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+    e.preventDefault();
+    if(!shown.length) return;
+    hl=(hl+(e.key==='ArrowDown'?1:-1)+shown.length)%shown.length;
+    render.hlOnly=true;
+    var items=ccList.querySelectorAll('.ccitem');
+    [].forEach.call(items,function(el,i){ el.classList.toggle('hl', i===hl); });
+    if(items[hl]) items[hl].scrollIntoView({block:'nearest'});
+  } else if(e.key==='Enter'){
+    e.preventDefault(); if(shown[hl]) pick(shown[hl]);
+  } else if(e.key==='Escape'){ closeCC(); ccBtn.focus(); }
+});
+document.addEventListener('click', function(e){
+  if(!document.getElementById('ccWrap').contains(e.target)) closeCC();
 });
 
-function guessCountry(){
-  try {
-    var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
-    if (TZ[tz]) return TZ[tz];
-    if (tz.indexOf('America/') === 0) return 'US';
-  } catch(e){}
-  return 'US';
-}
-(function(){
-  var iso = guessCountry();
-  for (var i = 0; i < ccSel.options.length; i++){
-    if (ccSel.options[i].dataset.iso === iso){ ccSel.selectedIndex = i; return; }
-  }
-})();
+(function(){var iso='US';try{var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';
+if(TZ[tz])iso=TZ[tz];else if(tz.indexOf('America/')===0)iso='US';}catch(e){}
+var f=COUNTRIES.filter(function(c){return c[0]===iso;})[0]||COUNTRIES[3]; pick(f);})();
 
 var Q = new URLSearchParams(location.search);
 function utm(k){ return Q.get(k) || ''; }
@@ -421,7 +490,16 @@ var after = document.getElementById('after');
 var errEl = document.getElementById('err');
 var unlocked = false;
 
+/* Исходник весит ~450 МБ, поэтому фоновое превью крутим только там,
+   где это не съест трафик человеку. Везде остальное — постер. */
+function previewAllowed(){
+  var c = navigator.connection;
+  if (!c) return window.innerWidth > 760;          /* нет данных — только десктоп */
+  if (c.saveData) return false;
+  return c.effectiveType === '4g';
+}
 function startPreview(){
+  if (!previewAllowed()) return;
   vid.muted = true; vid.loop = true;
   var p = vid.play();
   if (p && p.catch) p.catch(function(){});
@@ -457,8 +535,8 @@ document.getElementById('go').onclick = function(){
   errEl.classList.remove('on');
 
   var local = digits(ph.value);
-  var code  = ccSel.value;
-  var iso   = ccSel.options[ccSel.selectedIndex].dataset.iso;
+  var code  = CUR[2];
+  var iso   = CUR[0];
 
   if (local.indexOf(code) === 0 && local.length > code.length + 5) local = local.slice(code.length);
 
