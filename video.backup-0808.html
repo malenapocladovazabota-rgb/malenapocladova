@@ -237,110 +237,6 @@ footer a:hover{color:var(--wine)}
   .cc{width:96px}
   .gatecard h2{font-size:19px}
 }
-
-/* ─── плашка на видео, как на главной ─── */
-.video-topbar{
-  position:absolute;top:0;left:0;right:0;z-index:3;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:14px 18px;pointer-events:none;
-  font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  color:rgba(243,234,223,.85);
-  background:linear-gradient(180deg,rgba(22,17,16,.55),transparent)}
-.video-topbar .rec{display:flex;align-items:center;gap:8px}
-.video-topbar .rec::before{content:'';width:8px;height:8px;border-radius:50%;
-  background:#E0493F;animation:blink 1.6s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
-@media(prefers-reduced-motion:reduce){.video-topbar .rec::before{animation:none}}
-
-/* ─── цифры под видео ─── */
-.hstats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
-.hstat{background:var(--card);border:1px solid var(--line);border-radius:3px;
-  padding:16px 12px;text-align:center}
-.hstat .v{font-family:var(--serif);font-weight:500;font-size:27px;line-height:1;
-  letter-spacing:-1px;margin-bottom:6px}
-.hstat .v em{font-style:italic;color:var(--wine)}
-.hstat .k{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:1.6px;
-  text-transform:uppercase;color:var(--muted)}
-
-/* ─── секции ─── */
-.sec{padding:52px 0 0}
-.sec-eyebrow{display:flex;align-items:center;gap:11px;
-  font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:2.4px;
-  text-transform:uppercase;color:var(--muted);margin-bottom:14px}
-.sec-eyebrow .n{color:var(--wine)}
-.sec-eyebrow::after{content:'';flex:1;height:1px;background:var(--line)}
-h2.sh{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.8vw,38px);
-  line-height:1.08;letter-spacing:-1.1px;margin-bottom:10px}
-h2.sh em{font-style:italic;color:var(--wine)}
-.sec .lead{font-size:15.5px;color:var(--ink2);max-width:60ch;line-height:1.6;margin-bottom:26px}
-
-/* кому подходит */
-.who{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.wcard{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:20px 18px}
-.wcard .tagline{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:1.6px;
-  text-transform:uppercase;color:var(--wine);margin-bottom:9px}
-.wcard h3{font-family:var(--serif);font-weight:500;font-size:19px;letter-spacing:-.4px;margin-bottom:9px}
-.wcard p{font-size:13.5px;color:var(--ink2);line-height:1.5;margin-bottom:9px}
-.wcard .res{font-size:13px;color:var(--ink);font-weight:500;line-height:1.45;
-  padding-top:9px;border-top:1px solid var(--line-soft)}
-
-/* программа */
-.weeks{border-top:1px solid var(--line)}
-.wk{display:flex;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--line-soft)}
-.wk b{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:1.6px;
-  text-transform:uppercase;color:var(--wine);width:104px;flex:none}
-.wk span{font-size:15px;color:var(--ink2);line-height:1.45;flex:1}
-.wk i{font-family:var(--mono);font-size:11px;font-style:normal;color:var(--muted);flex:none}
-
-/* кейсы */
-.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.ccard{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:20px 18px;
-  display:flex;flex-direction:column}
-.ccard .tagline{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:1.6px;
-  text-transform:uppercase;color:var(--wine);margin-bottom:8px}
-.ccard h3{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:-.4px;margin-bottom:3px}
-.ccard .role{font-size:12.5px;color:var(--muted);margin-bottom:13px;line-height:1.4}
-.ccard .nums{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:13px}
-.ccard .nums span{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.6px;
-  background:var(--wine-soft);color:var(--wine);border-radius:2px;padding:5px 8px}
-.ccard q{font-size:13.5px;color:var(--ink2);line-height:1.5;font-style:normal;
-  quotes:'\00ab' '\00bb';margin-top:auto}
-
-/* автор */
-.author{display:grid;grid-template-columns:230px 1fr;gap:28px;align-items:start}
-.author img{width:100%;border-radius:3px;display:block;border:1px solid var(--line)}
-.author p{font-size:15px;color:var(--ink2);line-height:1.62;margin-bottom:13px}
-.author p strong{color:var(--ink);font-weight:600}
-.astats{display:flex;gap:26px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
-.astat .num{font-family:var(--serif);font-weight:500;font-size:29px;line-height:1;letter-spacing:-1px}
-.astat .num em{font-style:italic;color:var(--wine)}
-.astat .lbl{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:1.5px;
-  text-transform:uppercase;color:var(--muted);margin-top:6px}
-
-/* финальный призыв */
-.final{margin-top:52px;background:var(--ink);color:var(--beige);border-radius:4px;
-  padding:48px 34px;text-align:center}
-.final h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,4vw,40px);
-  line-height:1.05;letter-spacing:-1.1px;margin-bottom:13px}
-.final h2 em{font-style:italic;color:var(--wine-soft)}
-.final p{font-size:15.5px;color:rgba(234,224,203,.75);max-width:52ch;margin:0 auto 26px;line-height:1.6}
-.final .small{font-size:12.5px;color:rgba(234,224,203,.5);margin-top:15px}
-
-@media(max-width:900px){
-  .who,.cases{grid-template-columns:repeat(2,1fr)}
-  .author{grid-template-columns:1fr}
-  .author img{max-width:230px}
-}
-@media(max-width:640px){
-  .who,.cases{grid-template-columns:1fr}
-  .hstats{grid-template-columns:repeat(2,1fr)}
-  .sec{padding:40px 0 0}
-  .wk{flex-wrap:wrap;gap:4px 14px}
-  .wk b{width:auto}
-  .wk i{width:100%}
-  .final{padding:34px 20px}
-  .astats{gap:18px}
-}
 </style>
 </head>
 <body>
@@ -355,19 +251,15 @@ h2.sh em{font-style:italic;color:var(--wine)}
 <div class="container">
 
   <section class="head">
-    <div class="eyebrow">Онлайн-профессия · старт с нуля</div>
-    <h1>За <em>7 минут</em> я расскажу о востребованной онлайн-профессии, которую можно начать <em>с нуля</em></h1>
-    <p class="sub">Как стать <b>онлайн-экспертом</b> и зарабатывать, продвигая себя и других. Включите видео: Малена рассказывает лично.</p>
+    <div class="eyebrow">Малена · лично · 7 минут</div>
+    <h1>Профессия, которую можно начать <em>с нуля</em></h1>
+    <p class="sub">Как устроена работа в SMM, сколько реально зарабатывают и с чего начинают те, у кого пока <b>нет ни аккаунта, ни опыта</b>.</p>
   </section>
 
   <div class="stage locked" id="stage">
     <video id="vid" playsinline preload="metadata" muted loop
-      poster="images/video-poster.jpg"
+      poster="images/malena-portrait.jpg"
       src="https://assets.cdn.filesafe.space/55lHQOuDwUKKCwgmTmLW/media/69af3ff68d3eae09b5b87eac.mp4"></video>
-    <div class="video-topbar">
-      <span class="rec">Малена · лично</span>
-      <span>7 мин</span>
-    </div>
     <div class="veil"></div>
 
     <div class="gatecard" id="gate">
@@ -430,153 +322,15 @@ h2.sh em{font-style:italic;color:var(--wine)}
   <div class="after" id="after">
     <h3>Досмотрели. <em>Что дальше</em></h3>
     <p>Следующий шаг — 30-минутный разбор. Посмотрим, что у вас сейчас с соцсетями, и скажем прямо, что делать в ближайший месяц. Бесплатно и ни к чему не обязывает.</p>
-    <a class="btn btn-beige razborLink" href="/razbor" id="ctaBtn">Выбрать время для разбора</a>
+    <a class="btn btn-beige" href="/razbor" id="ctaBtn">Выбрать время для разбора</a>
     <p class="small">План останется у вас, даже если учиться не пойдёте.</p>
   </div>
 
-  <div class="hstats">
-    <div class="hstat"><div class="v">22</div><div class="k">блока</div></div>
-    <div class="hstat"><div class="v">2</div><div class="k">месяца</div></div>
-    <div class="hstat"><div class="v">до <em>5</em></div><div class="k">разборов</div></div>
-    <div class="hstat"><div class="v">1 <em>год</em></div><div class="k">доступ</div></div>
-  </div>
-
-  <!-- ─── кому подходит ─── -->
-  <section class="sec">
-    <div class="sec-eyebrow"><span class="n">01</span> Кому подходит</div>
-    <h2 class="sh">Кому подходит <em>SMM с нуля</em></h2>
-    <p class="lead">Если вы узнаёте себя, обучение для вас.</p>
-    <div class="who">
-      <div class="wcard">
-        <div class="tagline">эксперт</div>
-        <h3>Эксперт без блога</h3>
-        <p>«У меня есть знания, но обо мне и моих услугах мало кто знает»</p>
-        <div class="res">Постоянные клиенты через соцсети</div>
-      </div>
-      <div class="wcard">
-        <div class="tagline">мама</div>
-        <h3>Мама в декрете</h3>
-        <p>«Хочу свой доход, но нужен свободный график и профессия, которая будет вдохновлять»</p>
-        <div class="res">€1 500+/мес параллельно с детьми</div>
-      </div>
-      <div class="wcard">
-        <div class="tagline">блогер</div>
-        <h3>Растущий блогер</h3>
-        <p>«Аудитория есть, а денег нет: не знаю как монетизировать»</p>
-        <div class="res">Реклама, продукты, коллаборации</div>
-      </div>
-      <div class="wcard">
-        <div class="tagline">SMM</div>
-        <h3>SMM-специалист</h3>
-        <p>«Мало клиентов, низкий чек, контент ради контента, либо вообще нет опыта»</p>
-        <div class="res">Контент влияет на продажи · рост дохода 2-3×</div>
-      </div>
-      <div class="wcard">
-        <div class="tagline">опытный</div>
-        <h3>Эксперт с провалом</h3>
-        <p>«Курс был, а результата нет: снова непонятно с чего начать»</p>
-        <div class="res">Уверенность · больше клиентов · понимание как масштабировать</div>
-      </div>
-      <div class="wcard">
-        <div class="tagline">бизнес</div>
-        <h3>Бизнес или бренд</h3>
-        <p>«Веду Instagram сама, не работает. Либо делегировала специалистам, но они не приходят к результату»</p>
-        <div class="res">Соцсети как стабильный источник заявок</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── программа ─── -->
-  <section class="sec">
-    <div class="sec-eyebrow"><span class="n">02</span> Программа</div>
-    <h2 class="sh">Что внутри <em>курса</em></h2>
-    <p class="lead">6 недель уроков и 2 недели поддержки. Связная траектория от стратегии и упаковки до съёмки видео, продаж и продвижения.</p>
-    <div class="weeks">
-      <div class="wk"><b>00 предобучение</b><span>Настройка перед стартом</span><i>5 уроков</i></div>
-      <div class="wk"><b>01 неделя</b><span>Стратегия, позиционирование, целевая аудитория</span><i>9 уроков</i></div>
-      <div class="wk"><b>02 неделя</b><span>Маркетинг будущего, визуал, тексты, Stories</span><i>13 уроков</i></div>
-      <div class="wk"><b>03 неделя</b><span>Съёмка, видеоприёмы и монтаж</span><i>18 уроков</i></div>
-      <div class="wk"><b>04 неделя</b><span>Продажи и работа с клиентами</span><i>3 урока</i></div>
-      <div class="wk"><b>05 неделя</b><span>Продвижение и масштабирование</span><i>4 урока</i></div>
-    </div>
-  </section>
-
-  <!-- ─── кейсы ─── -->
-  <section class="sec">
-    <div class="sec-eyebrow"><span class="n">03</span> Истории учениц</div>
-    <h2 class="sh">Они <em>сделали</em>. Сделаете и вы.</h2>
-    <p class="lead">Реальные ученицы с реальными цифрами и нишами. У всех был старт с нуля или с провала.</p>
-    <div class="cases">
-      <div class="ccard">
-        <div class="tagline">мама в декрете</div>
-        <h3>Алина</h3>
-        <div class="role">из декрета → SMM-студия</div>
-        <div class="nums"><span>€1 500+ в месяц</span><span>5 клиентов</span><span>3 чел в команде</span></div>
-        <q>Стабильно веду 5 клиентов: косметология, стоматология, нутрициология. €1 500+ в месяц. Формирую команду, делегирую и выплачиваю зарплату.</q>
-      </div>
-      <div class="ccard">
-        <div class="tagline">SMM-специалист</div>
-        <h3>Анастасия</h3>
-        <div class="role">после провала другого курса → куратор</div>
-        <div class="nums"><span>5 проектов</span><span>×3 доход</span><span>куратор потока</span></div>
-        <q>Прошла другой курс 2 года назад, безрезультатно. После SMM с нуля 5 проектов, доход вырос в 3 раза. Бренды пишут сами. Стала куратором.</q>
-      </div>
-      <div class="ccard">
-        <div class="tagline">SMM-специалист</div>
-        <h3>Мария Бабурина</h3>
-        <div class="role">SMM в Португалии · команда Малены</div>
-        <div class="nums"><span>3 клиента на курсе</span><span>944K пик Reels</span><span>окупила курс</span></div>
-        <q>Набрала 1 000 подписчиков с нуля в TikTok за неделю. Взяла 3 клиента и окупила курс ещё во время обучения. Работаю в команде Малены.</q>
-      </div>
-      <div class="ccard">
-        <div class="tagline">блогер с миссией</div>
-        <h3>Елизавета</h3>
-        <div class="role">экология · крупнейшее СМИ Молдовы</div>
-        <div class="nums"><span>0 → 74,2K TikTok</span><span>4,6M лайков</span><span>DW Romania</span></div>
-        <q>С нуля вырастила самое большое СМИ об экологии в Молдове. Снимать пригласили для DW Romania. Эко-проекты зовут обучать их контенту.</q>
-      </div>
-      <div class="ccard">
-        <div class="tagline">эксперт-практик</div>
-        <h3>Маргарита</h3>
-        <div class="role">шоу-балет FLAMES · хореограф</div>
-        <div class="nums"><span>2,5K → 50,8K TikTok</span><span>10,4K Instagram</span><span>4,4M просмотров</span></div>
-        <q>Колоссальная разница: рост подписчиков, вовлечённости и продаж. Этот курс фундамент, на котором я строю свой личный кейс.</q>
-      </div>
-      <div class="ccard">
-        <div class="tagline">блогер-эксперт</div>
-        <h3>Юлиана</h3>
-        <div class="role">Content Creator · Кишинёв · куратор</div>
-        <div class="nums"><span>21,8K Instagram</span><span>100K+ просмотры</span><span>куратор потока</span></div>
-        <q>Снимала только тренды. После курса регулярный оригинальный контент, залетающие ролики на сотни тысяч просмотров, коллаборации с брендами.</q>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── автор ─── -->
-  <section class="sec">
-    <div class="sec-eyebrow"><span class="n">04</span> Об авторе</div>
-    <div class="author">
-      <img src="images/malena-portrait.jpg" alt="Малена Покладова" loading="lazy">
-      <div>
-        <h2 class="sh">Привет, я <em>Малена</em>.</h2>
-        <p>Я в SMM <strong>7+ лет</strong>, обучаю <strong>4+ года</strong>. Founder школы <strong>@socialmedia__school</strong>. Через мои программы прошло больше <strong>2 500 человек</strong>.</p>
-        <p>Начинала как все: с пустого аккаунта и страха «что я скажу миру». Сейчас у меня сформированный блог и <strong>сотни учениц</strong>, которые достигли результатов в соцсетях или сделали SMM своей профессией. Многие <strong>окупают обучение ещё во время курса</strong>: выходят с первыми клиентами уже на 4-5 неделе.</p>
-        <p>Это та самая система, по которой <strong>я работаю каждый день</strong>: с клиентами, в своём блоге и в запуске собственных продуктов. Живой опыт, проверенный годами и сотнями учениц.</p>
-        <div class="astats">
-          <div class="astat"><div class="num">7<em>+</em></div><div class="lbl">лет в SMM</div></div>
-          <div class="astat"><div class="num">4<em>+</em></div><div class="lbl">года обучаю</div></div>
-          <div class="astat"><div class="num">2 500<em>+</em></div><div class="lbl">учеников школы</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── финальный призыв ─── -->
-  <div class="final">
-    <h2>Следующий шаг — <em>разбор</em></h2>
-    <p>30 минут один на один. Посмотрим, что у вас сейчас с соцсетями, и скажем прямо, что делать в ближайший месяц. Бесплатно и ни к чему не обязывает.</p>
-    <a class="btn btn-beige razborLink" href="/razbor">Выбрать время для разбора</a>
-    <p class="small">План останется у вас, даже если учиться не пойдёте.</p>
+  <div class="facts">
+    <div class="fact"><b>7+</b><span>лет в SMM</span></div>
+    <div class="fact"><b>2 500+</b><span>учеников школы</span></div>
+    <div class="fact"><b>22</b><span>блока в курсе</span></div>
+    <div class="fact"><b>200+</b><span>выпускниц</span></div>
   </div>
 
   <footer>
@@ -723,13 +477,11 @@ function send(event, extra){
   }, extra || {});
 
   if (GHL_WEBHOOK.indexOf('http') === 0 && TO_GHL[event]) {
-    /* fetch с keepalive надёжнее beacon: beacon молча теряется под нагрузкой */
     try {
-      fetch(GHL_WEBHOOK, {method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify(body), keepalive:true}).catch(function(){
-          try { navigator.sendBeacon(GHL_WEBHOOK,
-            new Blob([JSON.stringify(body)], {type:'application/json'})); } catch(e){}
-        });
+      var blob = new Blob([JSON.stringify(body)], {type:'application/json'});
+      if (navigator.sendBeacon) navigator.sendBeacon(GHL_WEBHOOK, blob);
+      else fetch(GHL_WEBHOOK, {method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(body), keepalive:true}).catch(function(){});
     } catch(e){}
   }
 }
@@ -873,15 +625,13 @@ window.addEventListener('pagehide', function(){
   }
 });
 
+var cta = document.getElementById('ctaBtn');
 (function(){
   /* тащим за собой utm и идентификатор, чтобы /razbor открылся сразу на шаге 2 */
   var q = new URLSearchParams(location.search);
   if (CID) q.set('c', CID);
   var qs = q.toString();
-  if (!qs) return;
-  [].forEach.call(document.querySelectorAll('.razborLink'), function(a){
-    a.href = '/razbor?' + qs;
-  });
+  if (qs) cta.href = '/razbor?' + qs;
 })();
 </script>
 

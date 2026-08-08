@@ -390,10 +390,12 @@ function send(ev,extra){
     utm_campaign:utm('utm_campaign'),utm_content:utm('utm_content'),utm_term:utm('utm_term'),
     fbclid:utm('fbclid'),url:location.href,ts:new Date().toISOString()},extra||{});
   if(GHL_WEBHOOK.indexOf('http')===0 && TO_GHL[ev]){
-    try{var blob=new Blob([JSON.stringify(b)],{type:'application/json'});
-      if(navigator.sendBeacon)navigator.sendBeacon(GHL_WEBHOOK,blob);
-      else fetch(GHL_WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify(b),keepalive:true}).catch(function(){});}catch(e){}
+    /* fetch с keepalive надёжнее beacon: beacon молча теряется под нагрузкой */
+    try{ fetch(GHL_WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(b),keepalive:true}).catch(function(){
+        try{ navigator.sendBeacon(GHL_WEBHOOK,
+          new Blob([JSON.stringify(b)],{type:'application/json'})); }catch(e){}
+      }); }catch(e){}
   }
 }
 
