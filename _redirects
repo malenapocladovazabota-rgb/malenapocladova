@@ -43,3 +43,6 @@
 
 # Внутренняя презентация для продаж (коды команды, noindex)
 /sales/index.html  /sales  301
+/video.html  /video  301
+/video-a.html  /video-a  301
+/video-b.html  /video-b  301

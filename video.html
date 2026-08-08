@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Профессия SMM с нуля · видео от Малены Покладовой</title>
+<meta name="description" content="За 7 минут Малена Покладова рассказывает о профессии, которую можно начать с нуля: как устроена работа в SMM и с чего начинают те, у кого нет опыта.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Профессия SMM с нуля · видео от Малены Покладовой">
+<meta property="og:description" content="7 минут о профессии, которую можно начать с нуля.">
+<meta property="og:image" content="https://malenapocladova.com/images/og-image.png">
+<meta name="theme-color" content="#EDE4D3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#161110; --ink2:#453B36;
+  --beige:#EAE0CB; --beige2:#DFD1B6; --card:#F9F4E8;
+  --wine:#6E1E2B; --wine-d:#521621; --wine-soft:#E5CFC9;
+  --line:rgba(22,17,16,.16); --line-soft:rgba(22,17,16,.08);
+  --muted:#8C8172;
+  --serif:'Playfair Display',serif; --sans:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--beige);color:var(--ink);font-family:var(--sans);line-height:1.6;
+  -webkit-font-smoothing:antialiased}
+::selection{background:var(--wine);color:var(--beige)}
+a{color:inherit}
+.container{max-width:960px;margin:0 auto;padding:0 24px}
+
+/* ─── шапка ─── */
+.nav{border-bottom:1px solid var(--line-soft);padding:18px 0}
+.nav-in{display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:-.4px;text-decoration:none}
+.brand em{font-style:italic;color:var(--wine)}
+.nav-note{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--muted)}
+
+/* ─── заголовок ─── */
+.head{padding:44px 0 28px;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--wine);margin-bottom:20px}
+.eyebrow::before,.eyebrow::after{content:'';width:30px;height:1px;background:var(--wine)}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(30px,5vw,54px);
+  line-height:1.04;letter-spacing:-1.4px;max-width:780px;margin:0 auto 16px}
+h1 em{font-style:italic;color:var(--wine)}
+.head .sub{font-size:16.5px;line-height:1.6;color:var(--ink2);max-width:560px;margin:0 auto}
+.head .sub b{color:var(--ink);font-weight:600}
+
+/* ─── видео с формой поверх ─── */
+.stage{position:relative;border-radius:4px;overflow:hidden;
+  background:var(--ink);border:1px solid var(--ink);
+  box-shadow:0 40px 80px -34px rgba(22,17,16,.55);
+  aspect-ratio:16/9}
+.stage video{width:100%;height:100%;display:block;object-fit:cover;background:var(--ink)}
+.stage.locked video{filter:brightness(.82) saturate(1.05);pointer-events:none;transform:scale(1.02)}
+.stage.open video{filter:none;transform:none;transition:filter .5s}
+
+.veil{position:absolute;inset:0;
+  background:radial-gradient(130% 95% at 50% 40%, rgba(22,17,16,.06), rgba(22,17,16,.42))}
+.stage.open .veil{display:none}
+
+/* карточка формы прямо на видео */
+.gatecard{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(430px,calc(100% - 32px));
+  background:rgba(249,244,232,.94);
+  border:1px solid rgba(255,255,255,.55);
+  border-radius:6px;padding:24px 24px 22px;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.55);
+}
+/* матовое стекло: видео просвечивает сквозь карточку, но текст читается */
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))){
+  .gatecard{
+    background:rgba(249,244,232,.72);
+    -webkit-backdrop-filter:blur(20px) saturate(1.35);
+    backdrop-filter:blur(20px) saturate(1.35);
+  }
+}
+/* карточка улетает после отправки */
+.gatecard{transition:transform .5s cubic-bezier(.4,0,.2,1), opacity .45s ease}
+.gatecard.gone{transform:translate(-50%,-62%) scale(.94);opacity:0;pointer-events:none}
+/* повторный визит — карточки нет сразу, без анимации */
+.stage.open .gatecard:not(.gone){opacity:0;pointer-events:none;transition:none}
+
+/* состояние «готово» внутри карточки */
+.done{display:none;text-align:center;padding:6px 2px 2px}
+.gatecard.sent .gateform{display:none}
+.gatecard.sent .done{display:block;animation:rise .38s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+.done .tick{width:46px;height:46px;margin:2px auto 13px;border-radius:50%;
+  background:var(--wine);color:#F7EFE6;display:flex;align-items:center;justify-content:center}
+.done .tick svg{width:23px;height:23px;
+  stroke-dasharray:30;stroke-dashoffset:30;animation:draw .45s .12s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.done h2{margin-bottom:7px}
+.done .fs{margin-bottom:0}
+
+/* плашка подтверждения поверх видео */
+.toast{position:absolute;left:16px;bottom:16px;z-index:4;display:none;align-items:center;gap:9px;
+  background:rgba(22,17,16,.72);color:var(--beige);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  border:1px solid rgba(234,224,203,.22);border-radius:2px;padding:10px 14px;
+  font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase}
+.toast svg{width:14px;height:14px;flex:none;color:var(--wine-soft)}
+.toast.on{display:flex;animation:toastIn .4s cubic-bezier(.2,.8,.2,1) both}
+.toast.off{animation:toastOut .4s ease forwards}
+@keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes toastOut{to{opacity:0;transform:translateY(8px)}}
+
+@media(prefers-reduced-motion:reduce){
+  .gatecard,.done,.done .tick svg,.toast.on,.toast.off{transition:none!important;animation:none!important}
+  .done .tick svg{stroke-dashoffset:0}
+}
+
+.live{display:inline-flex;align-items:center;gap:7px;
+  font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--wine);margin-bottom:9px}
+.live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--wine);
+  animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+.gatecard h2{font-family:var(--serif);font-weight:500;font-size:23px;line-height:1.15;
+  letter-spacing:-.5px;margin-bottom:6px}
+.gatecard h2 em{font-style:italic;color:var(--wine)}
+.gatecard .fs{font-size:13px;color:var(--ink2);line-height:1.45;margin-bottom:16px}
+
+.row{margin-bottom:10px}
+input[type=text],input[type=tel]{
+  width:100%;background:#FFFDF8;color:var(--ink);
+  border:1px solid var(--line);border-radius:2px;padding:13px 14px;font-size:16px;
+  font-family:var(--sans);outline:none;transition:border-color .2s}
+input::placeholder{color:var(--muted)}
+input:focus{border-color:var(--ink)}
+input.bad{border-color:var(--wine);background:#FDF3F1}
+
+.phone{display:flex;gap:7px}
+.cc{position:relative;flex:none;width:118px}
+.cc select{width:100%;height:100%;appearance:none;-webkit-appearance:none;
+  background:#FFFDF8;color:var(--ink);border:1px solid var(--line);border-radius:2px;
+  padding:13px 26px 13px 12px;font-size:16px;font-family:var(--sans);outline:none;cursor:pointer}
+.cc select:focus{border-color:var(--ink)}
+.cc::after{content:'';position:absolute;right:11px;top:50%;width:6px;height:6px;
+  border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);
+  transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.phone input{flex:1;min-width:0}
+
+.check{display:flex;gap:9px;align-items:flex-start;margin:13px 0 15px;cursor:pointer}
+.check input{margin-top:2px;width:17px;height:17px;flex:none;accent-color:var(--wine)}
+.check span{font-size:11.5px;color:var(--ink2);line-height:1.45}
+.check a{color:var(--wine)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;
+  padding:17px 28px;border-radius:2px;cursor:pointer;border:none;text-decoration:none;
+  transition:background .22s,color .22s,transform .15s,box-shadow .22s}
+.btn-wine{background:var(--wine);color:#F3EADF;box-shadow:0 12px 26px -12px rgba(110,30,43,.6)}
+.btn-wine:hover{background:var(--ink)}
+.btn-wine:active{transform:scale(.98)}
+.btn-full{width:100%}
+.btn:disabled{opacity:.5;cursor:default}
+
+.err{color:var(--wine);font-size:12.5px;font-weight:500;margin-top:10px;display:none}
+.err.on{display:block}
+.tiny{font-size:11px;color:var(--muted);text-align:center;margin-top:11px;line-height:1.4}
+
+/* ─── полоска про WhatsApp ─── */
+.wa-strip{display:none;align-items:center;gap:11px;margin-top:16px;
+  background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 18px}
+.wa-strip.on{display:flex}
+.wa-strip svg{width:20px;height:20px;flex:none;color:var(--wine)}
+.wa-strip span{font-size:14px;color:var(--ink2);line-height:1.45}
+
+/* ─── после видео ─── */
+.after{display:none;margin-top:26px;background:var(--ink);color:var(--beige);
+  border-radius:4px;padding:42px 30px;text-align:center}
+.after.on{display:block}
+.after h3{font-family:var(--serif);font-weight:500;font-size:clamp(25px,4vw,38px);
+  line-height:1.05;letter-spacing:-1px;margin-bottom:13px}
+.after h3 em{font-style:italic;color:var(--wine-soft)}
+.after p{font-size:15.5px;color:rgba(234,224,203,.75);max-width:48ch;margin:0 auto 24px;line-height:1.6}
+.btn-beige{background:var(--beige);color:var(--ink)}
+.btn-beige:hover{background:var(--wine-soft);color:var(--ink)}
+.after .small{font-size:12.5px;color:rgba(234,224,203,.5);margin:15px auto 0}
+
+/* ─── цифры ─── */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  margin-top:42px;padding-top:32px;border-top:1px solid var(--line)}
+.fact{text-align:center}
+.fact b{display:block;font-family:var(--serif);font-weight:500;font-size:32px;
+  line-height:1;color:var(--wine);letter-spacing:-1px;margin-bottom:7px}
+.fact span{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--muted);line-height:1.35;display:block}
+
+footer{text-align:center;margin-top:40px;padding-bottom:46px;
+  font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1.8px;
+  text-transform:uppercase;color:var(--muted)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--wine)}
+
+@media(max-width:760px){
+  .container{padding:0 16px}
+  .head{padding:30px 0 22px}
+  /* пока заблокировано — кадр выше, чтобы форма помещалась целиком */
+  .stage.locked{aspect-ratio:4/5}
+  .stage.open{aspect-ratio:16/9}
+  .gatecard{padding:20px 18px 18px;width:calc(100% - 24px)}
+  .gatecard h2{font-size:21px}
+  .after{padding:32px 20px}
+  .facts{grid-template-columns:repeat(2,1fr);gap:24px 12px}
+  .nav-note{display:none}
+  .cc{width:106px}
+  .cc select{padding:13px 22px 13px 10px;font-size:15px}
+}
+@media(max-width:380px){
+  .cc{width:96px}
+  .gatecard h2{font-size:19px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-in">
+    <a class="brand" href="/">SMM <em>с нуля</em></a>
+    <div class="nav-note">Школа Малены Покладовой</div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <section class="head">
+    <div class="eyebrow">Малена · лично · 7 минут</div>
+    <h1>Профессия, которую можно начать <em>с нуля</em></h1>
+    <p class="sub">Как устроена работа в SMM, сколько реально зарабатывают и с чего начинают те, у кого пока <b>нет ни аккаунта, ни опыта</b>.</p>
+  </section>
+
+  <div class="stage locked" id="stage">
+    <video id="vid" playsinline preload="auto" muted loop
+      src="https://assets.cdn.filesafe.space/55lHQOuDwUKKCwgmTmLW/media/69af3ff68d3eae09b5b87eac.mp4"></video>
+    <div class="veil"></div>
+
+    <div class="gatecard" id="gate">
+      <div class="gateform" id="gateform">
+      <div class="live">Малена уже рассказывает</div>
+      <h2>Заполните форму, <em>чтобы посмотреть</em></h2>
+
+      <div class="row">
+        <input type="text" id="nm" autocomplete="given-name" placeholder="Ваше имя">
+      </div>
+
+      <div class="row phone">
+        <div class="cc"><select id="cc" aria-label="Код страны"></select></div>
+        <input type="tel" id="ph" autocomplete="tel" placeholder="60 000 000" inputmode="numeric">
+      </div>
+
+      <label class="check">
+        <input type="checkbox" id="ok">
+        <span>Даю согласие на обработку данных. <a href="/privacy" target="_blank">Политика конфиденциальности</a> · <a href="/terms" target="_blank">Оферта</a></span>
+      </label>
+
+      <button class="btn btn-wine btn-full" id="go">Смотреть видео</button>
+      <div class="err" id="err"></div>
+      <div class="tiny">Номер третьим лицам не передаём</div>
+      </div>
+
+      <div class="done" id="done">
+        <div class="tick">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+               stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5.2 5L20 7"/></svg>
+        </div>
+        <h2>Готово</h2>
+        <div class="fs">Включаем видео. Сообщение с подробностями и ссылкой на разбор уже отправили вам в WhatsApp.</div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+        <path d="M20 11.5a8 8 0 0 1-11.9 7L4 20l1.6-4A8 8 0 1 1 20 11.5z"/></svg>
+      <span>Сообщение отправлено в WhatsApp</span>
+    </div>
+  </div>
+
+  <div class="wa-strip" id="waStrip">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <path d="M20 11.5a8 8 0 0 1-11.9 7L4 20l1.6-4A8 8 0 1 1 20 11.5z"/>
+    </svg>
+    <span>Мы уже написали вам в WhatsApp. Ссылка на запись ждёт там — досмотрите видео спокойно.</span>
+  </div>
+
+  <div class="after" id="after">
+    <h3>Досмотрели. <em>Что дальше</em></h3>
+    <p>Следующий шаг — 30-минутный разбор. Посмотрим, что у вас сейчас с соцсетями, и скажем прямо, что делать в ближайший месяц. Бесплатно и ни к чему не обязывает.</p>
+    <a class="btn btn-beige" href="/razbor" id="ctaBtn">Записаться на разбор</a>
+    <p class="small">План останется у вас, даже если учиться не пойдёте.</p>
+  </div>
+
+  <div class="facts">
+    <div class="fact"><b>7+</b><span>лет в SMM</span></div>
+    <div class="fact"><b>2 500+</b><span>учеников школы</span></div>
+    <div class="fact"><b>22</b><span>блока в курсе</span></div>
+    <div class="fact"><b>200+</b><span>выпускниц</span></div>
+  </div>
+
+  <footer>
+    <a href="/privacy">Конфиденциальность</a> · <a href="/terms">Оферта</a> · <a href="/refund">Возврат</a>
+  </footer>
+
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════════════
+   НАСТРОЙКИ
+══════════════════════════════════════════════════════════════ */
+
+/* Inbound Webhook из воркфлоу GHL «Видео · события со страницы /video» */
+var GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/55lHQOuDwUKKCwgmTmLW/webhook-trigger/1771c74b-c8ec-4b4f-9dc1-6fe978f7d622';
+
+/* В GHL входящий вебхук — платный триггер, тарифицируется за каждое
+   срабатывание. Поэтому туда шлём только те события, на которых
+   строится автоматика. Пиксель Meta получает все, он бесплатный. */
+var TO_GHL = { video_lead:1, video_50:1, video_100:1, video_drop:1 };
+
+/* Пиксель Meta — тот же, что на календаре разборов */
+var PIXEL_ID = '1521940319314090';
+
+/* ══════════════════════════════════════════════════════════════ */
+
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', PIXEL_ID);
+fbq('track', 'PageView');
+
+/* ─── страны и коды ─── */
+var COUNTRIES = [
+  ['MD','🇲🇩','373'],['UA','🇺🇦','380'],['RO','🇷🇴','40'],['US','🇺🇸','1'],['CA','🇨🇦','1'],
+  ['DE','🇩🇪','49'],['IT','🇮🇹','39'],['PL','🇵🇱','48'],['ES','🇪🇸','34'],['PT','🇵🇹','351'],
+  ['FR','🇫🇷','33'],['GB','🇬🇧','44'],['IE','🇮🇪','353'],['NL','🇳🇱','31'],['BE','🇧🇪','32'],
+  ['AT','🇦🇹','43'],['CH','🇨🇭','41'],['CZ','🇨🇿','420'],['SE','🇸🇪','46'],['GR','🇬🇷','30'],
+  ['CY','🇨🇾','357'],['BG','🇧🇬','359'],['LT','🇱🇹','370'],['LV','🇱🇻','371'],['EE','🇪🇪','372'],
+  ['IL','🇮🇱','972'],['GE','🇬🇪','995'],['TR','🇹🇷','90'],['AE','🇦🇪','971'],['KZ','🇰🇿','7'],
+  ['RU','🇷🇺','7']
+];
+
+var TZ = {
+  'Europe/Chisinau':'MD','Europe/Tiraspol':'MD',
+  'Europe/Kyiv':'UA','Europe/Kiev':'UA','Europe/Uzhgorod':'UA','Europe/Zaporozhye':'UA',
+  'Europe/Bucharest':'RO','Europe/Berlin':'DE','Europe/Rome':'IT','Europe/Warsaw':'PL',
+  'Europe/Madrid':'ES','Europe/Lisbon':'PT','Europe/Paris':'FR','Europe/London':'GB',
+  'Europe/Dublin':'IE','Europe/Amsterdam':'NL','Europe/Brussels':'BE','Europe/Vienna':'AT',
+  'Europe/Zurich':'CH','Europe/Prague':'CZ','Europe/Stockholm':'SE','Europe/Athens':'GR',
+  'Asia/Nicosia':'CY','Europe/Nicosia':'CY','Europe/Sofia':'BG','Europe/Vilnius':'LT',
+  'Europe/Riga':'LV','Europe/Tallinn':'EE','Asia/Jerusalem':'IL','Asia/Tel_Aviv':'IL',
+  'Asia/Tbilisi':'GE','Europe/Istanbul':'TR','Asia/Dubai':'AE','Asia/Almaty':'KZ',
+  'Europe/Moscow':'RU','America/Toronto':'CA','America/Vancouver':'CA','America/Edmonton':'CA'
+};
+
+var ccSel = document.getElementById('cc');
+COUNTRIES.forEach(function(c){
+  var o = document.createElement('option');
+  o.value = c[2];
+  o.dataset.iso = c[0];
+  o.textContent = c[1] + ' +' + c[2];
+  ccSel.appendChild(o);
+});
+
+function guessCountry(){
+  try {
+    var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    if (TZ[tz]) return TZ[tz];
+    if (tz.indexOf('America/') === 0) return 'US';
+  } catch(e){}
+  return 'US';
+}
+(function(){
+  var iso = guessCountry();
+  for (var i = 0; i < ccSel.options.length; i++){
+    if (ccSel.options[i].dataset.iso === iso){ ccSel.selectedIndex = i; return; }
+  }
+})();
+
+var Q = new URLSearchParams(location.search);
+function utm(k){ return Q.get(k) || ''; }
+
+var lead = null;
+try { lead = JSON.parse(localStorage.getItem('mp_video_lead') || 'null'); } catch(e){}
+
+function send(event, extra){
+  var body = Object.assign({
+    event: event, page: 'video',
+    name: lead ? lead.name : '',
+    phone: lead ? lead.phone : '',
+    country: lead ? lead.country : '',
+    utm_source: utm('utm_source'), utm_medium: utm('utm_medium'),
+    utm_campaign: utm('utm_campaign'), utm_content: utm('utm_content'),
+    utm_term: utm('utm_term'), fbclid: utm('fbclid'),
+    url: location.href, ts: new Date().toISOString()
+  }, extra || {});
+
+  if (GHL_WEBHOOK.indexOf('http') === 0 && TO_GHL[event]) {
+    try {
+      var blob = new Blob([JSON.stringify(body)], {type:'application/json'});
+      if (navigator.sendBeacon) navigator.sendBeacon(GHL_WEBHOOK, blob);
+      else fetch(GHL_WEBHOOK, {method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(body), keepalive:true}).catch(function(){});
+    } catch(e){}
+  }
+}
+
+function pixel(name, params){ try { fbq('trackCustom', name, params || {}); } catch(e){} }
+
+var stage = document.getElementById('stage');
+var vid   = document.getElementById('vid');
+var after = document.getElementById('after');
+var errEl = document.getElementById('err');
+var unlocked = false;
+
+function startPreview(){
+  vid.muted = true; vid.loop = true;
+  var p = vid.play();
+  if (p && p.catch) p.catch(function(){});
+}
+
+function unlock(autoplay){
+  unlocked = true;
+  stage.classList.remove('locked');
+  stage.classList.add('open');
+  vid.loop = false;
+  vid.controls = true;
+  var ws = document.getElementById('waStrip');
+  if (ws) ws.classList.add('on');
+  if (autoplay) {
+    vid.muted = false;
+    try { vid.currentTime = 0; } catch(e){}
+    var p = vid.play();
+    if (p && p.catch) p.catch(function(){ vid.muted = true; vid.play().catch(function(){}); });
+  }
+}
+
+if (lead && lead.phone) unlock(false); else startPreview();
+
+function digits(s){ return (s || '').replace(/\D/g, ''); }
+
+document.getElementById('go').onclick = function(){
+  var nm = document.getElementById('nm');
+  var ph = document.getElementById('ph');
+  var ok = document.getElementById('ok');
+  var bad = false;
+
+  [nm, ph].forEach(function(el){ el.classList.remove('bad'); });
+  errEl.classList.remove('on');
+
+  var local = digits(ph.value);
+  var code  = ccSel.value;
+  var iso   = ccSel.options[ccSel.selectedIndex].dataset.iso;
+
+  if (local.indexOf(code) === 0 && local.length > code.length + 5) local = local.slice(code.length);
+
+  if (nm.value.trim().length < 2){ nm.classList.add('bad'); bad = true; }
+  if (local.length < 6){ ph.classList.add('bad'); bad = true; }
+
+  if (bad){
+    errEl.textContent = 'Проверьте имя и номер.';
+    errEl.classList.add('on');
+    return;
+  }
+  if (!ok.checked){
+    errEl.textContent = 'Отметьте согласие, чтобы мы прислали ссылку.';
+    errEl.classList.add('on');
+    return;
+  }
+
+  lead = { name: nm.value.trim(), phone: '+' + code + local, country: iso };
+  try { localStorage.setItem('mp_video_lead', JSON.stringify(lead)); } catch(e){}
+
+  this.disabled = true;
+  this.textContent = 'Отправляем…';
+
+  send('video_lead', { consent_whatsapp: true });
+  try { fbq('track', 'Lead', {content_name: 'video_gate'}); } catch(e){}
+
+  var gate  = document.getElementById('gate');
+  var toast = document.getElementById('toast');
+
+  /* 1 · карточка показывает «готово» */
+  setTimeout(function(){ gate.classList.add('sent'); }, 320);
+
+  /* 2 · карточка улетает, видео включается со звуком */
+  setTimeout(function(){
+    gate.classList.add('gone');
+    unlock(true);
+  }, 1550);
+
+  /* 3 · плашка про WhatsApp поверх видео, потом уходит */
+  setTimeout(function(){ toast.classList.add('on'); }, 1900);
+  setTimeout(function(){ toast.classList.add('off'); }, 7500);
+  setTimeout(function(){ toast.classList.remove('on','off'); }, 8000);
+};
+
+/* ─── трекинг досмотра · только после разблокировки ─── */
+var marks = [25, 50, 75];
+var fired = {};
+
+vid.addEventListener('play', function(){
+  if (!unlocked || fired.start) return;
+  fired.start = true;
+  pixel('VideoStart');
+});
+
+vid.addEventListener('timeupdate', function(){
+  if (!unlocked || !vid.duration || !isFinite(vid.duration)) return;
+  var pct = (vid.currentTime / vid.duration) * 100;
+  marks.forEach(function(m){
+    if (pct >= m && !fired[m]){
+      fired[m] = true;
+      send('video_' + m);
+      pixel('VideoProgress', { percent: m });
+    }
+  });
+});
+
+vid.addEventListener('ended', function(){
+  if (!unlocked || fired[100]) return;
+  fired[100] = true;
+  send('video_100');
+  pixel('VideoComplete');
+  after.classList.add('on');
+  after.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+
+window.addEventListener('pagehide', function(){
+  if (unlocked && fired.start && !fired[100] && vid.duration){
+    send('video_drop', { percent: Math.round((vid.currentTime / vid.duration) * 100) });
+  }
+});
+
+var cta = document.getElementById('ctaBtn');
+if (location.search) cta.href = '/razbor' + location.search;
+</script>
+
+</body>
+</html>

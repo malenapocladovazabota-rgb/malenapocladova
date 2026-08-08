@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Вариант A · Разворот</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#EDE4D3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#161110; --ink2:#453B36;
+  --beige:#EAE0CB; --card:#F9F4E8; --paper:#FFFDF8;
+  --wine:#6E1E2B; --wine-soft:#E5CFC9;
+  --line:rgba(22,17,16,.16); --line-soft:rgba(22,17,16,.08);
+  --muted:#8C8172;
+  --serif:'Playfair Display',serif; --sans:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--beige);color:var(--ink);font-family:var(--sans);line-height:1.6;
+  -webkit-font-smoothing:antialiased}
+::selection{background:var(--wine);color:var(--beige)}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 26px}
+
+.nav{border-bottom:1px solid var(--line-soft);padding:18px 0;margin-bottom:6px}
+.nav-in{display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:-.4px;text-decoration:none}
+.brand em{font-style:italic;color:var(--wine)}
+.nav-note{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--muted)}
+
+/* ─── разворот ─── */
+.spread{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;
+  padding:52px 0 60px}
+
+/* левая половина: видео как есть, резкое, без звука */
+.screen{position:relative}
+.frame{position:relative;border-radius:3px;overflow:hidden;background:var(--ink);
+  box-shadow:0 34px 64px -30px rgba(22,17,16,.6);aspect-ratio:16/9}
+.frame video{width:100%;height:100%;display:block;object-fit:cover;background:var(--ink)}
+.frame::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(22,17,16,0) 62%,rgba(22,17,16,.5))}
+.frame.open::after{display:none}
+
+.mutechip{
+  position:absolute;left:14px;bottom:13px;z-index:2;
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(22,17,16,.62);color:var(--beige);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  border:1px solid rgba(234,224,203,.2);border-radius:2px;padding:8px 12px;
+  font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;
+}
+.mutechip svg{width:13px;height:13px}
+.frame.open .mutechip{display:none}
+
+/* тонкая линия «идёт запись» */
+.hair{position:absolute;left:0;right:0;top:0;height:2px;background:rgba(234,224,203,.18);z-index:2;overflow:hidden}
+.hair i{position:absolute;inset:0;width:34%;background:var(--wine-soft);
+  animation:slide 4.5s cubic-bezier(.5,0,.5,1) infinite}
+@keyframes slide{0%{transform:translateX(-110%)}100%{transform:translateX(320%)}}
+.frame.open .hair{display:none}
+
+.caption{display:flex;gap:14px;align-items:baseline;margin-top:14px;
+  font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1.8px;
+  text-transform:uppercase;color:var(--muted)}
+.caption b{color:var(--wine)}
+
+/* правая половина: текст и форма */
+.pitch .kick{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;color:var(--wine);display:block;margin-bottom:16px}
+.pitch h1{font-family:var(--serif);font-weight:500;font-size:clamp(32px,3.6vw,50px);
+  line-height:1.02;letter-spacing:-1.6px;margin-bottom:18px}
+.pitch h1 em{font-style:italic;color:var(--wine)}
+
+.inside{list-style:none;margin:0 0 26px;border-top:1px solid var(--line)}
+.inside li{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line-soft);
+  font-size:14.5px;color:var(--ink2);line-height:1.45}
+.inside li span{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--wine);
+  padding-top:4px;flex:none;letter-spacing:1px}
+
+form{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:22px 22px 20px}
+.fields{display:flex;gap:9px;margin-bottom:9px}
+.fields>*{min-width:0}
+input[type=text],input[type=tel]{width:100%;background:var(--paper);color:var(--ink);
+  border:1px solid var(--line);border-radius:2px;padding:13px 14px;font-size:16px;
+  font-family:var(--sans);outline:none;transition:border-color .2s}
+input::placeholder{color:var(--muted)}
+input:focus{border-color:var(--ink)}
+input.bad{border-color:var(--wine);background:#FDF3F1}
+.cc{position:relative;flex:none;width:112px}
+.cc select{width:100%;height:100%;appearance:none;-webkit-appearance:none;background:var(--paper);
+  color:var(--ink);border:1px solid var(--line);border-radius:2px;padding:13px 24px 13px 12px;
+  font-size:16px;font-family:var(--sans);outline:none;cursor:pointer}
+.cc select:focus{border-color:var(--ink)}
+.cc::after{content:'';position:absolute;right:10px;top:50%;width:6px;height:6px;
+  border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);
+  transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.nmrow{margin-bottom:9px}
+
+.check{display:flex;gap:9px;align-items:flex-start;margin:13px 0 14px;cursor:pointer}
+.check input{margin-top:2px;width:17px;height:17px;flex:none;accent-color:var(--wine)}
+.check span{font-size:11.5px;color:var(--ink2);line-height:1.45}
+.check a{color:var(--wine)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;
+  font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;
+  padding:17px 26px;border-radius:2px;cursor:pointer;border:none;text-decoration:none;
+  background:var(--wine);color:#F3EADF;box-shadow:0 12px 26px -12px rgba(110,30,43,.6);
+  transition:background .22s,transform .15s}
+.btn:hover{background:var(--ink)}
+.btn:active{transform:scale(.99)}
+.btn:disabled{opacity:.5;cursor:default}
+.err{color:var(--wine);font-size:12.5px;font-weight:500;margin-top:10px;display:none}
+.err.on{display:block}
+.tiny{font-size:11px;color:var(--muted);text-align:center;margin-top:10px;line-height:1.4}
+
+/* после разблокировки */
+.wa{display:none;align-items:center;gap:11px;margin-top:14px;background:var(--card);
+  border:1px solid var(--line);border-radius:3px;padding:13px 16px}
+.wa.on{display:flex}
+.wa svg{width:19px;height:19px;flex:none;color:var(--wine)}
+.wa span{font-size:13.5px;color:var(--ink2);line-height:1.45}
+
+.after{display:none;margin-top:22px;background:var(--ink);color:var(--beige);
+  border-radius:3px;padding:32px 26px}
+.after.on{display:block}
+.after h3{font-family:var(--serif);font-weight:500;font-size:28px;line-height:1.06;
+  letter-spacing:-.8px;margin-bottom:11px}
+.after h3 em{font-style:italic;color:var(--wine-soft)}
+.after p{font-size:14.5px;color:rgba(234,224,203,.75);margin-bottom:20px;line-height:1.55}
+.after a{display:inline-flex;align-items:center;justify-content:center;background:var(--beige);
+  color:var(--ink);font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:1.8px;
+  text-transform:uppercase;padding:16px 26px;border-radius:2px;text-decoration:none}
+.after a:hover{background:var(--wine-soft)}
+
+.strip{border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);
+  gap:16px;padding:26px 0 40px}
+.st{display:flex;gap:11px;align-items:baseline}
+.st b{font-family:var(--serif);font-weight:500;font-size:27px;color:var(--wine);letter-spacing:-1px}
+.st span{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:1.4px;
+  text-transform:uppercase;color:var(--muted);line-height:1.35}
+
+@media(max-width:900px){
+  .spread{grid-template-columns:1fr;gap:26px;padding:30px 0 40px}
+  .pitch h1{font-size:clamp(30px,7vw,40px)}
+  .strip{grid-template-columns:repeat(2,1fr);gap:20px 14px}
+  .nav-note{display:none}
+}
+@media(max-width:420px){
+  .wrap{padding:0 16px}
+  .cc{width:100px}
+  .fields{flex-wrap:nowrap}
+}
+@media(prefers-reduced-motion:reduce){
+  .hair i{animation:none;width:100%;opacity:.4}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap nav-in">
+  <a class="brand" href="/">SMM <em>с нуля</em></a>
+  <div class="nav-note">Школа Малены Покладовой</div>
+</div></nav>
+
+<div class="wrap">
+
+  <div class="spread">
+
+    <div class="screen">
+      <div class="frame" id="frame">
+        <div class="hair"><i></i></div>
+        <video id="vid" playsinline preload="auto" muted loop
+          src="https://assets.cdn.filesafe.space/55lHQOuDwUKKCwgmTmLW/media/69af3ff68d3eae09b5b87eac.mp4"></video>
+        <div class="mutechip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M17 9l4 6M21 9l-4 6"/>
+          </svg>
+          Звук выключен
+        </div>
+      </div>
+      <div class="caption"><span>Малена Покладова</span> <b>7 минут</b> <span>снято одним дублем</span></div>
+    </div>
+
+    <div class="pitch">
+      <span class="kick">Видео об онлайн-профессии</span>
+      <h1>Посмотрите, прежде чем <em>решать</em></h1>
+
+      <ul class="inside">
+        <li><span>01</span>Что делает SMM-специалист и кому он нужен</li>
+        <li><span>02</span>Сколько платят в Европе и в США</li>
+        <li><span>03</span>С чего начать, если нет аккаунта и опыта</li>
+      </ul>
+
+      <form id="form" onsubmit="return false">
+        <div class="nmrow"><input type="text" id="nm" autocomplete="given-name" placeholder="Ваше имя"></div>
+        <div class="fields">
+          <div class="cc"><select id="cc" aria-label="Код страны"></select></div>
+          <input type="tel" id="ph" autocomplete="tel" placeholder="60 000 000" inputmode="numeric">
+        </div>
+        <label class="check">
+          <input type="checkbox" id="ok">
+          <span>Даю согласие получать сообщения в WhatsApp. Отписаться можно в любой момент. <a href="/privacy" target="_blank">Политика конфиденциальности</a></span>
+        </label>
+        <button class="btn" id="go">Включить звук и смотреть</button>
+        <div class="err" id="err"></div>
+        <div class="tiny">Ссылку продублируем в WhatsApp · номер не передаём третьим лицам</div>
+      </form>
+
+      <div class="wa" id="wa">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M20 11.5a8 8 0 0 1-11.9 7L4 20l1.6-4A8 8 0 1 1 20 11.5z"/></svg>
+        <span>Написали вам в WhatsApp. Ссылка на разбор ждёт там, досмотрите спокойно.</span>
+      </div>
+
+      <div class="after" id="after">
+        <h3>Досмотрели. <em>Что дальше</em></h3>
+        <p>30-минутный разбор: посмотрим, что у вас сейчас с соцсетями, и скажем, что делать в ближайший месяц.</p>
+        <a href="/razbor" id="cta">Записаться на разбор</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="strip">
+    <div class="st"><b>7+</b><span>лет<br>в SMM</span></div>
+    <div class="st"><b>2 500+</b><span>учеников<br>школы</span></div>
+    <div class="st"><b>22</b><span>блока<br>в курсе</span></div>
+    <div class="st"><b>200+</b><span>выпускниц<br>курса</span></div>
+  </div>
+
+</div>
+
+<script>
+var GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/55lHQOuDwUKKCwgmTmLW/webhook-trigger/1771c74b-c8ec-4b4f-9dc1-6fe978f7d622';
+var TO_GHL = { video_lead:1, video_50:1, video_100:1, video_drop:1 };
+var PIXEL_ID = '1521940319314090';
+
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', PIXEL_ID); fbq('track','PageView');
+
+var COUNTRIES=[['MD','🇲🇩','373'],['UA','🇺🇦','380'],['RO','🇷🇴','40'],['US','🇺🇸','1'],['CA','🇨🇦','1'],
+['DE','🇩🇪','49'],['IT','🇮🇹','39'],['PL','🇵🇱','48'],['ES','🇪🇸','34'],['PT','🇵🇹','351'],['FR','🇫🇷','33'],
+['GB','🇬🇧','44'],['IE','🇮🇪','353'],['NL','🇳🇱','31'],['BE','🇧🇪','32'],['AT','🇦🇹','43'],['CH','🇨🇭','41'],
+['CZ','🇨🇿','420'],['SE','🇸🇪','46'],['GR','🇬🇷','30'],['CY','🇨🇾','357'],['BG','🇧🇬','359'],['LT','🇱🇹','370'],
+['LV','🇱🇻','371'],['EE','🇪🇪','372'],['IL','🇮🇱','972'],['GE','🇬🇪','995'],['TR','🇹🇷','90'],['AE','🇦🇪','971'],
+['KZ','🇰🇿','7'],['RU','🇷🇺','7']];
+var TZ={'Europe/Chisinau':'MD','Europe/Tiraspol':'MD','Europe/Kyiv':'UA','Europe/Kiev':'UA',
+'Europe/Uzhgorod':'UA','Europe/Zaporozhye':'UA','Europe/Bucharest':'RO','Europe/Berlin':'DE',
+'Europe/Rome':'IT','Europe/Warsaw':'PL','Europe/Madrid':'ES','Europe/Lisbon':'PT','Europe/Paris':'FR',
+'Europe/London':'GB','Europe/Dublin':'IE','Europe/Amsterdam':'NL','Europe/Brussels':'BE',
+'Europe/Vienna':'AT','Europe/Zurich':'CH','Europe/Prague':'CZ','Europe/Stockholm':'SE',
+'Europe/Athens':'GR','Asia/Nicosia':'CY','Europe/Nicosia':'CY','Europe/Sofia':'BG','Europe/Vilnius':'LT',
+'Europe/Riga':'LV','Europe/Tallinn':'EE','Asia/Jerusalem':'IL','Asia/Tbilisi':'GE','Europe/Istanbul':'TR',
+'Asia/Dubai':'AE','Asia/Almaty':'KZ','Europe/Moscow':'RU','America/Toronto':'CA','America/Vancouver':'CA'};
+
+var ccSel=document.getElementById('cc');
+COUNTRIES.forEach(function(c){var o=document.createElement('option');o.value=c[2];o.dataset.iso=c[0];
+o.textContent=c[1]+' +'+c[2];ccSel.appendChild(o);});
+(function(){var iso='US';try{var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';
+if(TZ[tz])iso=TZ[tz];else if(tz.indexOf('America/')===0)iso='US';}catch(e){}
+for(var i=0;i<ccSel.options.length;i++){if(ccSel.options[i].dataset.iso===iso){ccSel.selectedIndex=i;return;}}})();
+
+var Q=new URLSearchParams(location.search);
+function utm(k){return Q.get(k)||''}
+var lead=null; try{lead=JSON.parse(localStorage.getItem('mp_video_lead')||'null')}catch(e){}
+
+function send(ev,extra){
+  var b=Object.assign({event:ev,page:'video',name:lead?lead.name:'',phone:lead?lead.phone:'',
+    country:lead?lead.country:'',utm_source:utm('utm_source'),utm_medium:utm('utm_medium'),
+    utm_campaign:utm('utm_campaign'),utm_content:utm('utm_content'),utm_term:utm('utm_term'),
+    fbclid:utm('fbclid'),url:location.href,ts:new Date().toISOString()},extra||{});
+  if(GHL_WEBHOOK.indexOf('http')===0 && TO_GHL[ev]){
+    try{var blob=new Blob([JSON.stringify(b)],{type:'application/json'});
+      if(navigator.sendBeacon)navigator.sendBeacon(GHL_WEBHOOK,blob);
+      else fetch(GHL_WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(b),keepalive:true}).catch(function(){});}catch(e){}
+  }
+}
+function pixel(n,p){try{fbq('trackCustom',n,p||{})}catch(e){}}
+
+var frame=document.getElementById('frame'),vid=document.getElementById('vid'),
+    form=document.getElementById('form'),after=document.getElementById('after'),
+    errEl=document.getElementById('err'),unlocked=false;
+
+function preview(){vid.muted=true;vid.loop=true;var p=vid.play();if(p&&p.catch)p.catch(function(){});}
+function unlock(auto){
+  unlocked=true;frame.classList.add('open');vid.loop=false;vid.controls=true;
+  form.style.display='none';document.getElementById('wa').classList.add('on');
+  if(auto){vid.muted=false;try{vid.currentTime=0}catch(e){}
+    var p=vid.play();if(p&&p.catch)p.catch(function(){vid.muted=true;vid.play().catch(function(){})});}
+}
+if(lead&&lead.phone)unlock(false);else preview();
+
+function digits(s){return (s||'').replace(/\D/g,'')}
+document.getElementById('go').onclick=function(){
+  var nm=document.getElementById('nm'),ph=document.getElementById('ph'),ok=document.getElementById('ok'),bad=false;
+  [nm,ph].forEach(function(e){e.classList.remove('bad')}); errEl.classList.remove('on');
+  var local=digits(ph.value),code=ccSel.value,iso=ccSel.options[ccSel.selectedIndex].dataset.iso;
+  if(local.indexOf(code)===0&&local.length>code.length+5)local=local.slice(code.length);
+  if(nm.value.trim().length<2){nm.classList.add('bad');bad=true}
+  if(local.length<6){ph.classList.add('bad');bad=true}
+  if(bad){errEl.textContent='Проверьте имя и номер.';errEl.classList.add('on');return}
+  if(!ok.checked){errEl.textContent='Отметьте согласие, чтобы мы прислали ссылку.';errEl.classList.add('on');return}
+  lead={name:nm.value.trim(),phone:'+'+code+local,country:iso};
+  try{localStorage.setItem('mp_video_lead',JSON.stringify(lead))}catch(e){}
+  this.disabled=true;this.textContent='Открываем…';
+  send('video_lead',{consent_whatsapp:true});
+  try{fbq('track','Lead',{content_name:'video_gate'})}catch(e){}
+  unlock(true);
+};
+
+var marks=[25,50,75],fired={};
+vid.addEventListener('play',function(){if(!unlocked||fired.start)return;fired.start=true;pixel('VideoStart')});
+vid.addEventListener('timeupdate',function(){
+  if(!unlocked||!vid.duration||!isFinite(vid.duration))return;
+  var pct=(vid.currentTime/vid.duration)*100;
+  marks.forEach(function(m){if(pct>=m&&!fired[m]){fired[m]=true;send('video_'+m);pixel('VideoProgress',{percent:m})}});
+});
+vid.addEventListener('ended',function(){
+  if(!unlocked||fired[100])return;fired[100]=true;send('video_100');pixel('VideoComplete');
+  after.classList.add('on');after.scrollIntoView({behavior:'smooth',block:'center'});
+});
+window.addEventListener('pagehide',function(){
+  if(unlocked&&fired.start&&!fired[100]&&vid.duration)
+    send('video_drop',{percent:Math.round((vid.currentTime/vid.duration)*100)});
+});
+var cta=document.getElementById('cta'); if(location.search)cta.href='/razbor'+location.search;
+</script>
+</body>
+</html>
