@@ -192,6 +192,17 @@ input.bad{border-color:var(--wine);background:#FDF3F1}
 .wa-strip svg{width:20px;height:20px;flex:none;color:var(--wine)}
 .wa-strip span{font-size:14px;color:var(--ink2);line-height:1.45}
 
+/* ─── выбор времени прямо под видео ─── */
+.book{display:none;margin-top:22px;background:var(--card);border:1px solid var(--line);
+  border-radius:4px;overflow:hidden}
+.book.on{display:block;animation:rise .35s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.bhead{padding:18px 22px 14px;border-bottom:1px solid var(--line-soft);background:rgba(22,17,16,.02)}
+.bhead h3{font-family:var(--serif);font-weight:500;font-size:22px;letter-spacing:-.5px;margin-bottom:5px}
+.bhead h3 em{font-style:italic;color:var(--wine)}
+.bhead p{font-size:14px;color:var(--ink2);line-height:1.45}
+.book iframe{width:100%;min-height:720px;border:0;display:block;background:var(--paper)}
+
 /* ─── после видео ─── */
 .after{display:none;margin-top:26px;background:var(--ink);color:var(--beige);
   border-radius:4px;padding:42px 30px;text-align:center}
@@ -319,10 +330,18 @@ footer a:hover{color:var(--wine)}
     <span>Мы уже написали вам в WhatsApp. Ссылка на запись ждёт там — досмотрите видео спокойно.</span>
   </div>
 
+  <div class="book" id="book">
+    <div class="bhead">
+      <h3>Выберите <em>удобное время</em></h3>
+      <p>Разбор 30 минут, один на один. Бесплатно и ни к чему не обязывает.</p>
+    </div>
+    <iframe id="cal" title="Выбор времени разбора" scrolling="no"></iframe>
+  </div>
+
   <div class="after" id="after">
     <h3>Досмотрели. <em>Что дальше</em></h3>
     <p>Следующий шаг — 30-минутный разбор. Посмотрим, что у вас сейчас с соцсетями, и скажем прямо, что делать в ближайший месяц. Бесплатно и ни к чему не обязывает.</p>
-    <a class="btn btn-beige" href="/razbor" id="ctaBtn">Записаться на разбор</a>
+    <a class="btn btn-beige" href="#book" id="ctaBtn">Выбрать время</a>
     <p class="small">План останется у вас, даже если учиться не пойдёте.</p>
   </div>
 
@@ -339,6 +358,7 @@ footer a:hover{color:var(--wine)}
 
 </div>
 
+<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
 <script>
 /* ══════════════════════════════════════════════════════════════
    НАСТРОЙКИ
@@ -350,10 +370,11 @@ var GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/55lHQOuDwUKKCwgmTm
 /* В GHL входящий вебхук — платный триггер, тарифицируется за каждое
    срабатывание. Поэтому туда шлём только те события, на которых
    строится автоматика. Пиксель Meta получает все, он бесплатный. */
-var TO_GHL = { video_lead:1, video_50:1, video_100:1, video_drop:1 };
+var TO_GHL = { video_lead:1, video_50:1, video_100:1, video_drop:1, video_calendar_open:1 };
 
 /* Пиксель Meta — тот же, что на календаре разборов */
 var PIXEL_ID = '1521940319314090';
+var CAL_BASE = 'https://api.leadconnectorhq.com/widget/booking/vG1zsgJdMciejwQSi9PJ';
 
 /* ══════════════════════════════════════════════════════════════ */
 
@@ -457,6 +478,10 @@ var f=COUNTRIES.filter(function(c){return c[0]===iso;})[0]||COUNTRIES[3]; pick(f
 var Q = new URLSearchParams(location.search);
 function utm(k){ return Q.get(k) || ''; }
 
+/* ?c= — идентификатор контакта из персональной ссылки в WhatsApp.
+   Если он есть, человек уже в базе: форму не показываем. */
+var CID = (Q.get('c') || '').trim();
+
 var lead = null;
 try { lead = JSON.parse(localStorage.getItem('mp_video_lead') || 'null'); } catch(e){}
 
@@ -465,7 +490,7 @@ function send(event, extra){
     event: event, page: 'video',
     name: lead ? lead.name : '',
     phone: lead ? lead.phone : '',
-    country: lead ? lead.country : '',
+    country: lead ? lead.country : '', contact_id: CID,
     utm_source: utm('utm_source'), utm_medium: utm('utm_medium'),
     utm_campaign: utm('utm_campaign'), utm_content: utm('utm_content'),
     utm_term: utm('utm_term'), fbclid: utm('fbclid'),
@@ -513,6 +538,7 @@ function unlock(autoplay){
   vid.controls = true;
   var ws = document.getElementById('waStrip');
   if (ws) ws.classList.add('on');
+  openBooking();
   if (autoplay) {
     vid.muted = false;
     try { vid.currentTime = 0; } catch(e){}
@@ -521,7 +547,19 @@ function unlock(autoplay){
   }
 }
 
-if (lead && lead.phone) unlock(false); else startPreview();
+function openBooking(){
+  var box = document.getElementById('book');
+  if (!box || box.classList.contains('on')) return;
+  var url = CAL_BASE;
+  if (lead && lead.name) url += '?first_name=' + encodeURIComponent(lead.name) +
+                                '&phone=' + encodeURIComponent(lead.phone);
+  document.getElementById('cal').src = url;
+  box.classList.add('on');
+  send('video_calendar_open');
+}
+
+/* по персональной ссылке из WhatsApp форму не показываем */
+if (CID || (lead && lead.phone)) unlock(false); else startPreview();
 
 function digits(s){ return (s || '').replace(/\D/g, ''); }
 
@@ -609,7 +647,9 @@ vid.addEventListener('ended', function(){
   send('video_100');
   pixel('VideoComplete');
   after.classList.add('on');
-  after.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  var box = document.getElementById('book');
+  (box && box.classList.contains('on') ? box : after)
+    .scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 window.addEventListener('pagehide', function(){
@@ -619,7 +659,10 @@ window.addEventListener('pagehide', function(){
 });
 
 var cta = document.getElementById('ctaBtn');
-if (location.search) cta.href = '/razbor' + location.search;
+cta.onclick = function(e){
+  e.preventDefault();
+  document.getElementById('book').scrollIntoView({behavior:'smooth', block:'start'});
+};
 </script>
 
 </body>

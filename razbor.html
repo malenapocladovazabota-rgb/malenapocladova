@@ -331,11 +331,16 @@ var f=COUNTRIES.filter(function(c){return c[0]===iso;})[0]||COUNTRIES[3]; pick(f
 
 var Q=new URLSearchParams(location.search);
 function utm(k){return Q.get(k)||''}
+
+/* ?c= — идентификатор контакта из персональной ссылки в WhatsApp.
+   Если он есть, человек у нас уже в базе: форму не показываем. */
+var CID = (Q.get('c') || '').trim();
+
 var lead=null; try{lead=JSON.parse(localStorage.getItem('mp_video_lead')||'null')}catch(e){}
 
 function send(ev,extra){
   var b=Object.assign({event:ev,page:'razbor',name:lead?lead.name:'',phone:lead?lead.phone:'',
-    country:lead?lead.country:'',utm_source:utm('utm_source'),utm_medium:utm('utm_medium'),
+    country:lead?lead.country:'',contact_id:CID,utm_source:utm('utm_source'),utm_medium:utm('utm_medium'),
     utm_campaign:utm('utm_campaign'),utm_content:utm('utm_content'),utm_term:utm('utm_term'),
     fbclid:utm('fbclid'),url:location.href,ts:new Date().toISOString()},extra||{});
   if(GHL_WEBHOOK.indexOf('http')===0 && TO_GHL[ev]){
@@ -348,8 +353,10 @@ function send(ev,extra){
 
 /* ─── переход на шаг 2 ─── */
 function openCalendar(){
-  var url = CAL_BASE + '?first_name=' + encodeURIComponent(lead.name) +
-            '&phone=' + encodeURIComponent(lead.phone);
+  var url = CAL_BASE;
+  if (lead && lead.name) url += '?first_name=' + encodeURIComponent(lead.name) +
+                                '&phone=' + encodeURIComponent(lead.phone);
+  else url += '?';
   if (location.search) url += '&' + location.search.slice(1);
 
   document.getElementById('cal').src = url;
@@ -359,17 +366,21 @@ function openCalendar(){
   document.getElementById('s1').textContent = 'Шаг 2';
   document.getElementById('d1').classList.remove('on');
   document.getElementById('d2').classList.add('on');
-  document.getElementById('hello').innerHTML =
-    '<b>' + lead.name.replace(/[<>&]/g,'') + '</b>, ниже свободное время по вашему поясу.';
+  document.getElementById('hello').innerHTML = lead && lead.name
+    ? '<b>' + lead.name.replace(/[<>&]/g,'') + '</b>, ниже свободное время по вашему поясу.'
+    : 'Ниже свободное время по вашему часовому поясу.';
 
   send('razbor_calendar_open');
   document.querySelector('.panel').scrollIntoView({behavior:'smooth', block:'start'});
 }
 
-/* если человек уже оставлял контакт на /video — не спрашиваем второй раз */
-if (lead && lead.phone && lead.name) {
+/* пришёл по персональной ссылке из WhatsApp или уже оставлял контакт —
+   форму не показываем, сразу видео и календарь */
+if (CID || (lead && lead.phone && lead.name)) {
+  document.getElementById('ptitle').textContent = 'Выберите удобное время';
   openCalendar();
 }
+
 
 function digits(s){return (s||'').replace(/\D/g,'')}
 document.getElementById('go').onclick=function(){
