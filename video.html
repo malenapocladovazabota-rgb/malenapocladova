@@ -707,6 +707,7 @@ document.addEventListener('click', function(e){
 if(TZ[tz])iso=TZ[tz];else if(tz.indexOf('America/')===0)iso='US';}catch(e){}
 var f=COUNTRIES.filter(function(c){return c[0]===iso;})[0]||COUNTRIES[3]; pick(f);})();
 
+  var TZNAME = (function(){try{return Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){return '';}})();
 var Q = new URLSearchParams(location.search);
 function utm(k){ return Q.get(k) || ''; }
 
@@ -722,7 +723,7 @@ function send(event, extra){
     event: event, page: 'video',
     name: lead ? lead.name : '',
     phone: lead ? lead.phone : '',
-    country: lead ? lead.country : '', contact_id: CID,
+    country: lead ? lead.country : '', timezone: TZNAME, contact_id: CID,
     utm_source: utm('utm_source'), utm_medium: utm('utm_medium'),
     utm_campaign: utm('utm_campaign'), utm_content: utm('utm_content'),
     utm_term: utm('utm_term'), fbclid: utm('fbclid'),

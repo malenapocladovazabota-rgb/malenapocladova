@@ -132,6 +132,11 @@ input.bad{border-color:var(--wine);background:#FDF3F1}
 .qf .opt input{margin-top:2px;width:16px;height:16px;flex:none;accent-color:var(--wine)}
 .qf .opt span{font-size:14px;color:var(--ink2);line-height:1.4}
 .qf .opt.sel{border-color:var(--wine);background:#FFF8F3}
+.wa-note{display:flex;align-items:flex-start;gap:10px;margin-bottom:18px;
+  background:var(--paper);border:1px solid var(--line-soft);border-left:2px solid var(--wine);
+  border-radius:2px;padding:12px 14px}
+.wa-note svg{width:17px;height:17px;flex:none;color:var(--wine);margin-top:1px}
+.wa-note span{font-size:13px;color:var(--ink2);line-height:1.45}
 .qskip{font-size:12.5px;color:var(--muted);text-align:center;margin-top:12px}
 .qskip a{color:var(--wine);cursor:pointer;text-decoration:underline}
 #step2q{display:none}
@@ -227,6 +232,13 @@ footer a:hover{color:var(--wine)}
     </div>
 
     <div class="pbody" id="step2q">
+      <div class="wa-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M20 11.5a8 8 0 0 1-11.9 7L4 20l1.6-4A8 8 0 1 1 20 11.5z"/>
+        </svg>
+        <span>Приняли ваш номер. Продублируем всё в WhatsApp, чтобы ссылка на встречу была под рукой.</span>
+      </div>
+
       <div class="qf">
         <label for="qmail">Email — пришлём ссылку на встречу</label>
         <input type="email" id="qmail" autocomplete="email" placeholder="you@example.com">
@@ -382,6 +394,7 @@ document.addEventListener('click', function(e){
 if(TZ[tz])iso=TZ[tz];else if(tz.indexOf('America/')===0)iso='US';}catch(e){}
 var f=COUNTRIES.filter(function(c){return c[0]===iso;})[0]||COUNTRIES[3]; pick(f);})();
 
+  var TZNAME = (function(){try{return Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){return '';}})();
 var Q=new URLSearchParams(location.search);
 function utm(k){return Q.get(k)||''}
 
@@ -393,7 +406,7 @@ var lead=null; try{lead=JSON.parse(localStorage.getItem('mp_video_lead')||'null'
 
 function send(ev,extra){
   var b=Object.assign({event:ev,page:'razbor',name:lead?lead.name:'',phone:lead?lead.phone:'',
-    country:lead?lead.country:'',contact_id:CID,utm_source:utm('utm_source'),utm_medium:utm('utm_medium'),
+    country:lead?lead.country:'',timezone:TZNAME,contact_id:CID,utm_source:utm('utm_source'),utm_medium:utm('utm_medium'),
     utm_campaign:utm('utm_campaign'),utm_content:utm('utm_content'),utm_term:utm('utm_term'),
     fbclid:utm('fbclid'),url:location.href,ts:new Date().toISOString()},extra||{});
   if(GHL_WEBHOOK.indexOf('http')===0 && TO_GHL[ev]){
