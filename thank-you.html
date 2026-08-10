@@ -120,6 +120,27 @@ footer a:hover{color:var(--wine)}
   .nav-note{display:none}
 }
 @media(prefers-reduced-motion:reduce){.tick svg{animation:none;stroke-dashoffset:0}}
+
+/* ─── анкета после брони ─── */
+.qlede{font-size:14px;color:var(--ink2);line-height:1.55;margin:-6px 0 18px}
+.qf{margin-bottom:18px}
+.qf > label{display:block;font-size:14px;font-weight:600;color:var(--ink);margin-bottom:9px}
+.qf .opt{display:flex;align-items:flex-start;gap:10px;padding:11px 13px;margin-bottom:6px;cursor:pointer;
+  background:var(--paper);border:1px solid var(--line);border-radius:2px;transition:border-color .15s}
+.qf .opt:hover{border-color:var(--muted)}
+.qf .opt input{margin-top:2px;width:16px;height:16px;flex:none;accent-color:var(--wine)}
+.qf .opt span{font-size:14px;color:var(--ink2);line-height:1.4}
+.qf .opt.sel{border-color:var(--wine);background:#FFF8F3}
+.qf input[type=text]{width:100%;background:var(--paper);color:var(--ink);
+  border:1px solid var(--line);border-radius:2px;padding:13px 14px;font-size:16px;
+  font-family:var(--sans);outline:none;transition:border-color .2s}
+.qf input[type=text]:focus{border-color:var(--ink)}
+.btn-wine{background:var(--wine);color:#F3EADF;width:100%;
+  box-shadow:0 12px 26px -12px rgba(110,30,43,.6)}
+.btn-wine:hover{background:var(--ink);color:#F3EADF}
+.qdone{display:none;font-size:14px;color:var(--ok,#4A6B3A);text-align:center;padding:14px 0 2px}
+#quizCard.sent .qf,#quizCard.sent #qsend,#quizCard.sent .qlede{display:none}
+#quizCard.sent .qdone{display:block}
 </style>
 
 <!-- Meta Pixel Code -->
@@ -188,6 +209,36 @@ src="https://www.facebook.com/tr?id=1521940319314090&ev=Lead&noscript=1"
         <span>Если время не подходит, выберите другое в один клик. Это нормально, мы поймём.</span>
       </li>
     </ul>
+  </section>
+
+  <!-- ─── анкета после брони ─── -->
+  <section class="card" id="quizCard">
+    <h2>Три вопроса, <em>пока помните</em></h2>
+    <p class="qlede">Ответы уйдут менеджеру до встречи, чтобы разбор начался с вашей ситуации, а не с расспросов. Минута времени.</p>
+
+    <div class="qf">
+      <label>Как у вас с SMM сейчас</label>
+      <label class="opt"><input type="radio" name="lvl" value="Не знаю что это значит"><span>Не знаю, что это значит</span></label>
+      <label class="opt"><input type="radio" name="lvl" value="Знаю, но нет клиентов"><span>Знаю, но нет клиентов</span></label>
+      <label class="opt"><input type="radio" name="lvl" value="Это мой основной доход"><span>Это мой основной доход</span></label>
+    </div>
+
+    <div class="qf">
+      <label>Чего хотите после обучения</label>
+      <label class="opt"><input type="radio" name="goal" value="Освоить новую профессию и зарабатывать"><span>Освоить профессию и зарабатывать</span></label>
+      <label class="opt"><input type="radio" name="goal" value="Развить свой бизнес и привлекать больше клиентов"><span>Развить свой бизнес, больше клиентов</span></label>
+      <label class="opt"><input type="radio" name="goal" value="Стать инфлюенсером или UGC креатором"><span>Вести блог, стать UGC-криэйтором</span></label>
+      <label class="opt"><input type="radio" name="goal" value="Работать удалённо и иметь больше свободы и возможностей"><span>Работать удалённо, больше свободы</span></label>
+      <label class="opt"><input type="radio" name="goal" value="Повышение квалификации"><span>Повысить квалификацию</span></label>
+    </div>
+
+    <div class="qf">
+      <label for="qocc">Чем занимаетесь сейчас</label>
+      <input type="text" id="qocc" placeholder="Например: в декрете, бухгалтер, свой салон">
+    </div>
+
+    <button class="btn btn-wine" id="qsend">Отправить менеджеру</button>
+    <div class="qdone" id="qdone">Спасибо, передали менеджеру. До встречи.</div>
   </section>
 
   <section class="card">
@@ -274,6 +325,51 @@ document.querySelectorAll('.vframe').forEach(function(frame){
     if (p && p.catch) p.catch(function(){});
   });
 });
+
+/* ─── анкета после брони ─── */
+(function(){
+  var card = document.getElementById('quizCard');
+  if (!card) return;
+  var WEBHOOK = 'https://services.leadconnectorhq.com/hooks/55lHQOuDwUKKCwgmTmLW/webhook-trigger/1771c74b-c8ec-4b4f-9dc1-6fe978f7d622';
+  var lead = null;
+  try { lead = JSON.parse(localStorage.getItem('mp_video_lead') || 'null'); } catch(e){}
+  var CID = (new URLSearchParams(location.search).get('c') || '').trim();
+
+  /* без телефона и без идентификатора привязать ответы не к кому — прячем блок */
+  if (!(lead && lead.phone) && !CID){ card.style.display = 'none'; return; }
+
+  document.addEventListener('change', function(e){
+    if (e.target && e.target.type === 'radio' && e.target.closest('.qf')){
+      var n = e.target.name;
+      [].forEach.call(document.querySelectorAll('input[name="'+n+'"]'), function(r){
+        r.closest('.opt').classList.toggle('sel', r.checked);
+      });
+    }
+  });
+  function pick(n){ var el = document.querySelector('input[name="'+n+'"]:checked'); return el ? el.value : ''; }
+
+  document.getElementById('qsend').onclick = function(){
+    this.disabled = true; this.textContent = 'Отправляем…';
+    var body = {
+      event:'razbor_quiz', page:'thank-you',
+      name: lead ? lead.name : '', phone: lead ? lead.phone : '',
+      email: lead ? (lead.email||'') : '', country: lead ? (lead.country||'') : '',
+      timezone: (function(){try{return Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){return '';}})(),
+      contact_id: CID,
+      level: pick('lvl'), goal: pick('goal'),
+      occupation: (document.getElementById('qocc').value || '').trim(),
+      ts: new Date().toISOString()
+    };
+    try{
+      fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(body),keepalive:true}).catch(function(){
+          try{ navigator.sendBeacon(WEBHOOK,
+            new Blob([JSON.stringify(body)],{type:'application/json'})); }catch(e){}
+        });
+    }catch(e){}
+    setTimeout(function(){ card.classList.add('sent'); }, 400);
+  };
+})();
 </script>
 
 </body>

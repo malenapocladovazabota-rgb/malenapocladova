@@ -123,7 +123,26 @@ input.bad{border-color:var(--wine);background:#FDF3F1}
 .err.on{display:block}
 .tiny{font-size:11.5px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.45}
 
-/* шаг 2 — календарь */
+/* шаг 2 — анкета */
+.qf{margin-bottom:16px}
+.qf > label{display:block;font-size:14px;font-weight:500;color:var(--ink);margin-bottom:8px;line-height:1.4}
+.qf .opt{display:flex;align-items:flex-start;gap:10px;padding:11px 13px;margin-bottom:6px;cursor:pointer;
+  background:var(--paper);border:1px solid var(--line);border-radius:2px;transition:border-color .15s}
+.qf .opt:hover{border-color:var(--muted)}
+.qf .opt input{margin-top:2px;width:16px;height:16px;flex:none;accent-color:var(--wine)}
+.qf .opt span{font-size:14px;color:var(--ink2);line-height:1.4}
+.qf .opt.sel{border-color:var(--wine);background:#FFF8F3}
+.wa-note{display:flex;align-items:flex-start;gap:10px;margin-bottom:18px;
+  background:var(--paper);border:1px solid var(--line-soft);border-left:2px solid var(--wine);
+  border-radius:2px;padding:12px 14px}
+.wa-note svg{width:17px;height:17px;flex:none;color:var(--wine);margin-top:1px}
+.wa-note span{font-size:13px;color:var(--ink2);line-height:1.45}
+.qskip{font-size:12.5px;color:var(--muted);text-align:center;margin-top:12px}
+.qskip a{color:var(--wine);cursor:pointer;text-decoration:underline}
+#step2q{display:none}
+#step2q.on{display:block;animation:rise .35s cubic-bezier(.2,.8,.2,1) both}
+
+/* шаг 3 — календарь */
 #step2{display:none}
 #step2.on{display:block;animation:rise .35s cubic-bezier(.2,.8,.2,1) both}
 @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -183,7 +202,7 @@ footer a:hover{color:var(--wine)}
   <div class="panel">
     <div class="phead">
       <h2 id="ptitle">Как с вами связаться</h2>
-      <div class="steps"><span id="s1">Шаг 1 из 2</span><i class="dot on" id="d1"></i><i class="dot" id="d2"></i></div>
+      <div class="steps"><span id="s1">Шаг 1 из 3</span><i class="dot on" id="d1"></i><i class="dot" id="d2"></i><i class="dot" id="d3"></i></div>
     </div>
 
     <div class="pbody" id="step1">
@@ -201,7 +220,6 @@ footer a:hover{color:var(--wine)}
         </div>
         <input type="tel" id="ph" autocomplete="tel" placeholder="60 000 000" inputmode="numeric">
       </div>
-      <div class="row"><input type="email" id="mail" autocomplete="email" placeholder="Email — пришлём ссылку на встречу"></div>
       <label class="check">
         <input type="checkbox" id="ok">
         <span>Даю согласие на обработку данных и на сообщения от Школы Малены Покладовой
@@ -211,6 +229,45 @@ footer a:hover{color:var(--wine)}
       <button class="btn" id="go">Выбрать время</button>
       <div class="err" id="err"></div>
       <div class="tiny">Не найдёте удобное время — напишем в WhatsApp и подберём</div>
+    </div>
+
+    <div class="pbody" id="step2q">
+      <div class="wa-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M20 11.5a8 8 0 0 1-11.9 7L4 20l1.6-4A8 8 0 1 1 20 11.5z"/>
+        </svg>
+        <span>Приняли ваш номер. Продублируем всё в WhatsApp, чтобы ссылка на встречу была под рукой.</span>
+      </div>
+
+      <div class="qf">
+        <label for="qmail">Email — пришлём ссылку на встречу</label>
+        <input type="email" id="qmail" autocomplete="email" placeholder="you@example.com">
+      </div>
+
+      <div class="qf">
+        <label>Как у вас с SMM сейчас</label>
+        <label class="opt"><input type="radio" name="lvl" value="Не знаю что это значит"><span>Не знаю, что это значит</span></label>
+        <label class="opt"><input type="radio" name="lvl" value="Знаю, но нет клиентов"><span>Знаю, но нет клиентов</span></label>
+        <label class="opt"><input type="radio" name="lvl" value="Это мой основной доход"><span>Это мой основной доход</span></label>
+      </div>
+
+      <div class="qf">
+        <label>Чего хотите после обучения</label>
+        <label class="opt"><input type="radio" name="goal" value="Освоить новую профессию и зарабатывать"><span>Освоить профессию и зарабатывать</span></label>
+        <label class="opt"><input type="radio" name="goal" value="Развить свой бизнес и привлекать больше клиентов"><span>Развить свой бизнес, больше клиентов</span></label>
+        <label class="opt"><input type="radio" name="goal" value="Стать инфлюенсером или UGC креатором"><span>Вести блог, стать UGC-криэйтором</span></label>
+        <label class="opt"><input type="radio" name="goal" value="Работать удалённо и иметь больше свободы и возможностей"><span>Работать удалённо, больше свободы</span></label>
+        <label class="opt"><input type="radio" name="goal" value="Повышение квалификации"><span>Повысить квалификацию</span></label>
+      </div>
+
+      <div class="qf">
+        <label for="qocc">Чем занимаетесь сейчас</label>
+        <input type="text" id="qocc" placeholder="Например: в декрете, бухгалтер, свой салон">
+      </div>
+
+      <button class="btn" id="qgo">Перейти к выбору времени</button>
+      <div class="err" id="qerr"></div>
+      <div class="qskip"><a id="qskipLink">Пропустить и сразу выбрать время</a></div>
     </div>
 
     <div id="step2">
@@ -362,12 +419,62 @@ function send(ev,extra){
   }
 }
 
-/* шаг 2 — календарь */
+/* ─── переход на шаг 2 ─── */
+var answers = {};
+
+/* шаг 2 — анкета */
+function openQuiz(){
+  document.getElementById('step1').style.display = 'none';
+  document.getElementById('step2q').classList.add('on');
+  document.getElementById('ptitle').textContent = 'Ещё несколько вопросов';
+  document.getElementById('s1').textContent = 'Шаг 2 из 3';
+  document.getElementById('d1').classList.remove('on');
+  document.getElementById('d2').classList.add('on');
+  document.querySelector('.panel').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+document.addEventListener('change', function(e){
+  if (e.target && e.target.type === 'radio'){
+    var n = e.target.name;
+    [].forEach.call(document.querySelectorAll('input[name="'+n+'"]'), function(r){
+      r.closest('.opt').classList.toggle('sel', r.checked);
+    });
+  }
+});
+function pickRadio(n){
+  var el = document.querySelector('input[name="'+n+'"]:checked');
+  return el ? el.value : '';
+}
+
+document.getElementById('qgo').onclick = function(){
+  var mail = document.getElementById('qmail'), err = document.getElementById('qerr');
+  err.classList.remove('on'); mail.classList.remove('bad');
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim())){
+    mail.classList.add('bad');
+    err.textContent = 'Нужен email — на него придёт ссылка на встречу.';
+    err.classList.add('on');
+    return;
+  }
+  answers = {
+    email: mail.value.trim(),
+    level: pickRadio('lvl'),
+    goal:  pickRadio('goal'),
+    occupation: (document.getElementById('qocc').value || '').trim()
+  };
+  send('razbor_quiz', answers);
+  openCalendar();
+};
+document.getElementById('qskipLink').onclick = function(){
+  send('razbor_quiz', { skipped: true });
+  openCalendar();
+};
+
+/* шаг 3 — календарь */
 function openCalendar(){
   var pr = [];
   if (lead && lead.name)  pr.push('first_name=' + encodeURIComponent(lead.name));
   if (lead && lead.phone) pr.push('phone=' + encodeURIComponent(lead.phone));
-  if (lead && lead.email) pr.push('email=' + encodeURIComponent(lead.email));
+  if (answers.email)      pr.push('email=' + encodeURIComponent(answers.email));
   var url = CAL_BASE + (pr.length ? '?' + pr.join('&') : '?');
   if (location.search) url += '&' + location.search.slice(1);
 
@@ -375,11 +482,13 @@ function openCalendar(){
   f.src = url;
   f.id = 'vG1zsgJdMciejwQSi9PJ_' + Date.now();   /* чтобы GHL подогнал высоту */
   document.getElementById('step1').style.display = 'none';
+  document.getElementById('step2q').classList.remove('on');
   document.getElementById('step2').classList.add('on');
   document.getElementById('ptitle').textContent = 'Выберите удобное время';
-  document.getElementById('s1').textContent = 'Шаг 2 из 2';
+  document.getElementById('s1').textContent = 'Шаг 3 из 3';
   document.getElementById('d1').classList.remove('on');
-  document.getElementById('d2').classList.add('on');
+  document.getElementById('d2').classList.remove('on');
+  document.getElementById('d3').classList.add('on');
   document.getElementById('hello').innerHTML = lead && lead.name
     ? '<b>' + lead.name.replace(/[<>&]/g,'') + '</b>, ниже свободное время по вашему поясу.'
     : 'Ниже свободное время по вашему часовому поясу.';
@@ -390,33 +499,31 @@ function openCalendar(){
 
 /* пришёл по персональной ссылке из WhatsApp или уже оставлял контакт —
    форму не показываем, сразу видео и календарь */
-if (CID || (lead && lead.phone && lead.name)) openCalendar();
+if (CID || (lead && lead.phone && lead.name)) openQuiz();
 
 
 function digits(s){return (s||'').replace(/\D/g,'')}
 document.getElementById('go').onclick=function(){
   var nm=document.getElementById('nm'),ph=document.getElementById('ph'),
-      ml=document.getElementById('mail'),
       ok=document.getElementById('ok'),errEl=document.getElementById('err'),bad=false;
-  [nm,ph,ml].forEach(function(e){e.classList.remove('bad')}); errEl.classList.remove('on');
+  [nm,ph].forEach(function(e){e.classList.remove('bad')}); errEl.classList.remove('on');
   var local=digits(ph.value),code=CUR[2],iso=CUR[0];
   if(local.indexOf(code)===0&&local.length>code.length+5)local=local.slice(code.length);
   if(nm.value.trim().length<2){nm.classList.add('bad');bad=true}
   if(local.length<6){ph.classList.add('bad');bad=true}
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(ml.value.trim())){ml.classList.add('bad');bad=true}
-  if(bad){errEl.textContent='Проверьте имя, номер и email.';errEl.classList.add('on');return}
+  if(bad){errEl.textContent='Проверьте имя и номер.';errEl.classList.add('on');return}
   if(!ok.checked){errEl.textContent='Отметьте согласие, чтобы продолжить.';errEl.classList.add('on');return}
 
-  lead={name:nm.value.trim(),phone:'+'+code+local,country:iso,email:ml.value.trim()};
+  lead={name:nm.value.trim(),phone:'+'+code+local,country:iso};
   try{localStorage.setItem('mp_video_lead',JSON.stringify(lead))}catch(e){}
 
   this.disabled=true; this.textContent='Открываем…';
 
   /* контакт фиксируем ДО календаря: если человек не выберет слот, он у нас уже есть */
-  send('razbor_lead',{consent:true,email:lead.email});
+  send('razbor_lead',{consent:true});
   try{fbq('track','Lead',{content_name:'razbor_form'})}catch(e){}
 
-  setTimeout(openCalendar, 250);
+  setTimeout(openQuiz, 250);
 };
 </script>
 </body>
