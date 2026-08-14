@@ -276,6 +276,134 @@ body.pilot.peek #stage{display:flex; padding:0; gap:0; justify-content:center; h
   font-size:14px; font-weight:600; font-family:var(--sans)}
 #plink button.ghost{background:rgba(234,224,203,.1); color:var(--beige)}
 
+/* ═════════ ВЕРТИКАЛЬНЫЙ ПОКАЗ С ТЕЛЕФОНА ═════════
+   Слайд превращается в портретный холст 760×1360, содержимое
+   перестраивается в одну колонку. Управление уезжает вправо,
+   чтобы не драться с панелью Zoom внизу экрана. */
+
+body.vert{background:#15100F; overflow:hidden}
+body.vert #bar{display:none!important}
+body.vert #notes{display:none!important}
+body.vert #prog{top:0; bottom:auto; height:3px}
+body.vert #stage{padding:0; height:100dvh; height:100vh; justify-content:center; gap:0}
+body.vert .slide{width:760px; height:1360px; border-radius:0; box-shadow:none}
+body.vert .slide .no{right:26px; bottom:20px; font-size:13px}
+body.vert .slide .tagline{left:26px; bottom:20px; font-size:12px; letter-spacing:.1em}
+
+/* поле слайда */
+body.vert .pad{padding:64px 48px 74px; overflow-y:auto; -webkit-overflow-scrolling:touch}
+body.vert .pad.tight{padding:52px 40px 74px}
+
+/* типографика: крупнее относительно узкой колонки */
+body.vert .kick{font-size:15px; letter-spacing:.2em}
+body.vert .kick::before{width:22px}
+body.vert h1{font-size:60px; margin:24px 0 20px}
+body.vert h2{font-size:46px; margin:18px 0 16px}
+body.vert h3{font-size:30px}
+body.vert p{font-size:23px; line-height:1.5}
+body.vert .big{font-size:27px}
+body.vert .sm{font-size:20px}
+
+/* все сетки в одну колонку */
+body.vert .g2,
+body.vert .g3,
+body.vert .g4,
+body.vert .lad,
+body.vert .cs,
+body.vert .tar{grid-template-columns:1fr; gap:18px; margin-top:22px}
+
+body.vert .card{padding:24px 22px; border-radius:16px}
+body.vert .card h3{font-size:27px}
+body.vert .card p{font-size:19px}
+body.vert .card .tg{font-size:13px}
+
+body.vert .stat{font-size:52px}
+body.vert .statl{font-size:14px}
+
+body.vert .rung{padding:24px 22px}
+body.vert .rung .st{font-size:13px}
+body.vert .rung h3{font-size:26px}
+body.vert .rung .mo{font-size:32px}
+body.vert .rung .cur{font-size:14px}
+body.vert .rung p{font-size:18px}
+
+/* кейсы: фото поменьше, чтобы карточка не занимала весь экран */
+body.vert .cs .p{display:grid; grid-template-columns:132px 1fr; align-items:stretch}
+body.vert .cs img{aspect-ratio:auto; height:100%}
+body.vert .cs .b{padding:16px 16px 18px}
+body.vert .cs .nm{font-size:23px}
+body.vert .cs .wa{font-size:12px}
+body.vert .cs .tx{font-size:17px}
+body.vert .cs .nu{font-size:21px}
+
+body.vert .tf{padding:26px 24px; border-radius:18px}
+body.vert .tf h3{font-size:29px}
+body.vert .tf .who{font-size:18px; min-height:0}
+body.vert .tf .pr .now{font-size:46px}
+body.vert .tf .pr .was{font-size:16px}
+body.vert .tf li{font-size:18px; padding-left:22px}
+body.vert .tf.best::before{font-size:12px; padding:6px 16px}
+
+body.vert .chk li{font-size:23px; padding-left:38px; margin-top:15px}
+body.vert .chk li::before{font-size:23px}
+
+body.vert .obj{padding:24px 26px}
+body.vert .obj .say{font-size:34px}
+body.vert .ans p{font-size:23px}
+body.vert .ans .lbl{font-size:13px}
+
+body.vert .wk{grid-template-columns:1fr; gap:6px; padding:14px 0}
+body.vert .wk .n{font-size:13px; padding-top:0}
+body.vert .wk h3{font-size:25px}
+body.vert .wk p{font-size:18px}
+
+/* ── управление справа ── */
+#vctl{position:fixed; right:calc(12px + env(safe-area-inset-right)); top:50%;
+  transform:translateY(-50%); z-index:260; display:none;
+  flex-direction:column; align-items:center; gap:14px}
+body.vert #vctl{display:flex}
+
+#vctl button{width:62px; height:62px; border:0; border-radius:50%; cursor:pointer;
+  background:rgba(22,17,16,.62); color:var(--beige); backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px); box-shadow:0 4px 18px rgba(0,0,0,.35);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--sans); line-height:1; transition:transform .12s, background .12s;
+  -webkit-tap-highlight-color:transparent; touch-action:manipulation}
+#vctl button:active{transform:scale(.9); background:var(--gold); color:var(--ink)}
+#vctl .arw{font-size:34px; padding-bottom:4px}
+#vctl #vNext{background:rgba(110,30,43,.86)}
+#vctl #vMenu{width:52px; height:52px; font-size:19px; background:rgba(22,17,16,.5)}
+
+/* счётчик слайдов, чтобы не терять место в потоке */
+#vpos{position:fixed; right:calc(14px + env(safe-area-inset-right));
+  top:calc(14px + env(safe-area-inset-top)); z-index:260; display:none;
+  font-family:var(--mono); font-size:12px; color:rgba(234,224,203,.6);
+  background:rgba(22,17,16,.5); backdrop-filter:blur(8px);
+  padding:6px 11px; border-radius:100px}
+body.vert #vpos{display:block}
+
+/* ── всё остальное под кнопкой меню ── */
+#vsheet{position:fixed; inset:0; z-index:270; display:none;
+  background:rgba(15,11,10,.93); backdrop-filter:blur(14px);
+  padding:calc(20px + env(safe-area-inset-top)) 20px calc(20px + env(safe-area-inset-bottom));
+  overflow-y:auto; -webkit-overflow-scrolling:touch}
+#vsheet.on{display:block}
+#vsheet .vw{max-width:520px; margin:0 auto; display:flex; flex-direction:column; gap:10px;
+  min-height:100%; justify-content:center}
+#vsheet .vh{font-family:var(--serif); font-size:26px; color:var(--beige); margin-bottom:4px}
+#vsheet button{width:100%; background:rgba(234,224,203,.1); color:var(--beige); border:0;
+  border-radius:14px; padding:17px 18px; font-family:var(--sans); font-size:16px;
+  font-weight:500; text-align:left; cursor:pointer; display:flex; align-items:center; gap:12px;
+  -webkit-tap-highlight-color:transparent}
+#vsheet button:active{background:var(--gold); color:var(--ink)}
+#vsheet button .ic{font-size:18px; width:24px; flex:none; text-align:center}
+#vsheet button .vs{margin-left:auto; font-family:var(--mono); font-size:12px; opacity:.6}
+#vsheet .close{background:transparent; border:1px solid rgba(234,224,203,.22); justify-content:center}
+
+/* клиент смотрит без управления, суфлёр живёт по своим правилам */
+body.view #vctl, body.view #vpos, body.view #vsheet,
+body.pilot #vctl, body.pilot #vpos, body.pilot #vsheet{display:none!important}
+
 </style>
 </head>
 <body>
@@ -338,6 +466,25 @@ body.pilot.peek #stage{display:flex; padding:0; gap:0; justify-content:center; h
   <button id="bFull">Во весь экран · F</button>
   <div class="pos" id="pos">1 / 1</div>
 </div>
+
+<div id="vpos">1 / 1</div>
+
+<div id="vctl">
+  <button id="vPrev" class="arw" aria-label="Назад">‹</button>
+  <button id="vMenu" aria-label="Меню">≡</button>
+  <button id="vNext" class="arw" aria-label="Вперёд">›</button>
+</div>
+
+<div id="vsheet"><div class="vw">
+  <div class="vh">Управление</div>
+  <button id="vGo"><span class="ic">☰</span>Быстрый переход по слайдам</button>
+  <button id="vNotes"><span class="ic">✎</span>Шпаргалка</button>
+  <button id="vCur"><span class="ic">¤</span>Валюта<span class="vs" id="vCurV">$</span></button>
+  <button id="vLink"><span class="ic">↗</span>Ссылка для клиента</button>
+  <button id="vFull"><span class="ic">⤢</span>Во весь экран</button>
+  <button id="vOff"><span class="ic">▭</span>Горизонтальный вид</button>
+  <button class="close" id="vClose">Закрыть</button>
+</div></div>
 
 
 <script>
@@ -1053,22 +1200,34 @@ document.getElementById('mlist').innerHTML = groups.map(g=>
 document.querySelectorAll('.mi').forEach(el=>
   el.addEventListener('click',()=>{ go(+el.dataset.go); toggleMenu(false); }));
 
+/* базовый холст слайда: горизонтальный 1280×720, вертикальный 760×1360 */
+const VERT_W = 760, VERT_H = 1360;
+function baseDims(){
+  return document.body.classList.contains('vert') ? [VERT_W, VERT_H] : [1280, 720];
+}
+
 function fit(){
   const s = slides[i]; if(!s) return;
+  const [BW, BH] = baseDims();
   let k;
   const mv = document.body.classList.contains('view');
   const mp = document.body.classList.contains('pilot');
-  if(mv){
-    k = Math.min(window.innerWidth/1280, window.innerHeight/720);
+  if(document.body.classList.contains('vert')){
+    /* вправо оставляем полосу под кнопки, снизу ничего не занимаем */
+    const w = window.innerWidth - 86;
+    const h = (window.visualViewport ? window.visualViewport.height : window.innerHeight);
+    k = Math.min(w/BW, h/BH);
+  } else if(mv){
+    k = Math.min(window.innerWidth/BW, window.innerHeight/BH);
   } else if(mp){
     const pv = document.getElementById('pv');
     if(!pv || !document.body.classList.contains('peek')) return;
-    k = Math.min(pv.clientWidth/1280, pv.clientHeight/720);
+    k = Math.min(pv.clientWidth/BW, pv.clientHeight/BH);
   } else {
     const w = Math.min(window.innerWidth - 40, isNotesWin?1280:(notes.classList.contains('on')? window.innerWidth-440 : 1280));
-    k = Math.min(1, w/1280, (window.innerHeight-190)/720);
+    k = Math.min(1, w/BW, (window.innerHeight-190)/BH);
   }
-  slides.forEach(x=>{ x.style.transform = `scale(${k})`; x.style.marginBottom = (720*k-720)+'px'; });
+  slides.forEach(x=>{ x.style.transform = `scale(${k})`; x.style.marginBottom = (BH*k-BH)+'px'; });
 }
 
 function go(n){
@@ -1076,6 +1235,8 @@ function go(n){
   slides.forEach((s,k)=>s.classList.toggle('on', k===i));
   notes.innerHTML = S[i].n || '<p>Заметок нет.</p>';
   pos.textContent = (i+1)+' / '+S.length;
+  const vp = document.getElementById('vpos');
+  if(vp) vp.textContent = (i+1)+' / '+S.length;
   prog.style.width = ((i+1)/S.length*100)+'%';
   if(typeof paintCur === 'function') paintCur();
   try{ localStorage.setItem('sales_slide', String(i)); }catch(e){}
@@ -1134,6 +1295,89 @@ stage.addEventListener('touchend',e=>{
 },{passive:true});
 
 window.addEventListener('resize', fit);
+
+/* ═══════════ вертикальный показ с телефона ═══════════
+   Включается сам на узком портретном экране. Можно принудительно
+   через ?vert=1 или ?vert=0, выбор запоминается. */
+(function(){
+  const q = new URLSearchParams(location.search).get('vert');
+  const sheet = document.getElementById('vsheet');
+  if(!sheet) return;
+
+  function isPhonePortrait(){
+    return window.innerWidth <= 820 && window.innerHeight > window.innerWidth;
+  }
+  function saved(){
+    try{ return localStorage.getItem('sales_vert'); }catch(e){ return null; }
+  }
+  function setVert(on, remember){
+    document.body.classList.toggle('vert', !!on);
+    if(remember){ try{ localStorage.setItem('sales_vert', on?'1':'0'); }catch(e){} }
+    if(!on) sheet.classList.remove('on');
+    fit();
+  }
+
+  let start;
+  if(q === '1') start = true;
+  else if(q === '0') start = false;
+  else if(saved() === '1') start = true;
+  else if(saved() === '0') start = false;
+  else start = isPhonePortrait();
+
+  /* режим клиента и режим суфлёра живут по своим правилам */
+  const otherMode = document.body.classList.contains('pilot') || isNotesWin;
+  if(start && !otherMode) setVert(true, false);
+
+  function toggleSheet(v){
+    sheet.classList.toggle('on', v===undefined ? !sheet.classList.contains('on') : v);
+  }
+
+  document.getElementById('vPrev').onclick = ()=>go(i-1);
+  document.getElementById('vNext').onclick = ()=>go(i+1);
+  document.getElementById('vMenu').onclick = ()=>toggleSheet();
+  document.getElementById('vClose').onclick = ()=>toggleSheet(false);
+  sheet.addEventListener('click', e=>{ if(e.target === sheet) toggleSheet(false); });
+
+  document.getElementById('vGo').onclick = ()=>{ toggleSheet(false); toggleMenu(true); };
+  document.getElementById('vNotes').onclick = ()=>{
+    toggleSheet(false);
+    notes.style.cssText = 'display:block; position:fixed; left:0; right:0; top:0; bottom:0; width:auto; z-index:280';
+    notes.classList.add('on');
+    if(!document.getElementById('vNotesX')){
+      const x = document.createElement('button');
+      x.id = 'vNotesX'; x.textContent = 'Закрыть шпаргалку';
+      x.style.cssText = 'position:fixed; left:50%; transform:translateX(-50%); z-index:290;'
+        + 'bottom:calc(18px + env(safe-area-inset-bottom)); background:var(--gold); color:var(--ink);'
+        + 'border:0; border-radius:100px; padding:13px 22px; font-family:var(--sans); font-size:14px;'
+        + 'font-weight:600; box-shadow:0 6px 20px rgba(0,0,0,.4); display:none';
+      x.onclick = ()=>{ notes.classList.remove('on'); notes.style.cssText=''; x.style.display='none'; };
+      document.body.appendChild(x);
+    }
+    document.getElementById('vNotesX').style.display = 'block';
+  };
+  document.getElementById('vCur').onclick = ()=>{
+    toggleCur();
+    document.getElementById('vCurV').textContent = (typeof cur !== 'undefined' && cur === 'eur') ? '€' : '$';
+  };
+  document.getElementById('vLink').onclick = ()=>{
+    toggleSheet(false);
+    const pl = document.getElementById('plink');
+    if(pl) pl.classList.add('on');
+  };
+  document.getElementById('vFull').onclick = ()=>{
+    toggleSheet(false);
+    document.fullscreenElement ? document.exitFullscreen()
+      : document.documentElement.requestFullscreen().catch(()=>{});
+  };
+  document.getElementById('vOff').onclick = ()=>{ setVert(false, true); };
+
+  /* поворот телефона и появление панели Zoom меняют высоту окна */
+  if(window.visualViewport) window.visualViewport.addEventListener('resize', fit);
+  window.addEventListener('orientationchange', ()=>setTimeout(fit, 250));
+
+  const cv = document.getElementById('vCurV');
+  if(cv) cv.textContent = (typeof cur !== 'undefined' && cur === 'eur') ? '€' : '$';
+})();
 
 /* режим второго окна: только шпаргалка, синхрон по слайду */
 if(isNotesWin){
