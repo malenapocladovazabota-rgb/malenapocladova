@@ -281,11 +281,12 @@ body.pilot.peek #stage{display:flex; padding:0; gap:0; justify-content:center; h
    перестраивается в одну колонку. Управление уезжает вправо,
    чтобы не драться с панелью Zoom внизу экрана. */
 
-body.vert{background:#15100F; overflow:hidden}
-body.vert #bar{display:none!important}
-body.vert #notes{display:none!important}
-body.vert #prog{top:0; bottom:auto; height:3px}
-body.vert #stage{padding:0; height:100dvh; height:100vh; justify-content:center; gap:0}
+body.vert,body.horz{background:#15100F; overflow:hidden}
+body.vert #bar,body.horz #bar{display:none!important}
+body.vert #notes,body.horz #notes{display:none!important}
+body.vert #prog,body.horz #prog{top:0; bottom:auto; height:3px}
+body.vert #stage,body.horz #stage{padding:0; height:100dvh; height:100vh; justify-content:center; gap:0}
+body.horz .slide{border-radius:0; box-shadow:none}
 body.vert .slide{width:760px; height:1360px; border-radius:0; box-shadow:none}
 body.vert .slide .no{right:26px; bottom:20px; font-size:13px}
 body.vert .slide .tagline{left:26px; bottom:20px; font-size:12px; letter-spacing:.1em}
@@ -361,7 +362,7 @@ body.vert .wk p{font-size:18px}
 #vctl{position:fixed; right:calc(12px + env(safe-area-inset-right)); top:50%;
   transform:translateY(-50%); z-index:260; display:none;
   flex-direction:column; align-items:center; gap:14px}
-body.vert #vctl{display:flex}
+body.vert #vctl,body.horz #vctl{display:flex}
 
 #vctl button{width:62px; height:62px; border:0; border-radius:50%; cursor:pointer;
   background:rgba(22,17,16,.62); color:var(--beige); backdrop-filter:blur(10px);
@@ -380,7 +381,14 @@ body.vert #vctl{display:flex}
   font-family:var(--mono); font-size:12px; color:rgba(234,224,203,.6);
   background:rgba(22,17,16,.5); backdrop-filter:blur(8px);
   padding:6px 11px; border-radius:100px}
-body.vert #vpos{display:block}
+body.vert #vpos,body.horz #vpos{display:block}
+
+/* телефон набок: кнопки компактнее, экран низкий */
+body.horz #vctl{gap:9px; right:calc(9px + env(safe-area-inset-right))}
+body.horz #vctl button{width:50px; height:50px}
+body.horz #vctl .arw{font-size:28px}
+body.horz #vctl #vMenu{width:42px; height:42px; font-size:16px}
+body.horz #vpos{top:calc(9px + env(safe-area-inset-top)); right:calc(70px + env(safe-area-inset-right))}
 
 /* ── всё остальное под кнопкой меню ── */
 #vsheet{position:fixed; inset:0; z-index:270; display:none;
@@ -403,6 +411,9 @@ body.vert #vpos{display:block}
 /* клиент смотрит без управления, суфлёр живёт по своим правилам */
 body.view #vctl, body.view #vpos, body.view #vsheet,
 body.pilot #vctl, body.pilot #vpos, body.pilot #vsheet{display:none!important}
+
+/* активный пункт в списке видов */
+#vsheet button.act{background:rgba(217,185,140,.22); color:var(--gold)}
 
 </style>
 </head>
@@ -482,7 +493,11 @@ body.pilot #vctl, body.pilot #vpos, body.pilot #vsheet{display:none!important}
   <button id="vCur"><span class="ic">¤</span>Валюта<span class="vs" id="vCurV">$</span></button>
   <button id="vLink"><span class="ic">↗</span>Ссылка для клиента</button>
   <button id="vFull"><span class="ic">⤢</span>Во весь экран</button>
-  <button id="vOff"><span class="ic">▭</span>Горизонтальный вид</button>
+  <div class="vh" style="font-size:19px; margin:14px 0 2px">Вид</div>
+  <button id="vModeA"><span class="ic">⌾</span>Как повёрнут телефон<span class="vs">авто</span></button>
+  <button id="vModeV"><span class="ic">▯</span>Всегда вертикально</button>
+  <button id="vModeH"><span class="ic">▭</span>Всегда горизонтально</button>
+  <button id="vModeD"><span class="ic">▤</span>Обычный вид с панелью</button>
   <button class="close" id="vClose">Закрыть</button>
 </div></div>
 
@@ -1212,9 +1227,10 @@ function fit(){
   let k;
   const mv = document.body.classList.contains('view');
   const mp = document.body.classList.contains('pilot');
-  if(document.body.classList.contains('vert')){
+  if(document.body.classList.contains('vert') || document.body.classList.contains('horz')){
     /* вправо оставляем полосу под кнопки, снизу ничего не занимаем */
-    const w = window.innerWidth - 86;
+    const pad = document.body.classList.contains('horz') ? 74 : 86;
+    const w = window.innerWidth - pad;
     const h = (window.visualViewport ? window.visualViewport.height : window.innerHeight);
     k = Math.min(w/BW, h/BH);
   } else if(mv){
@@ -1304,29 +1320,49 @@ window.addEventListener('resize', fit);
   const sheet = document.getElementById('vsheet');
   if(!sheet) return;
 
-  function isPhonePortrait(){
-    return window.innerWidth <= 820 && window.innerHeight > window.innerWidth;
+  /* режимы: auto — как повёрнут телефон, vert, horz, desk — обычный вид с панелью */
+  const otherMode = document.body.classList.contains('pilot') || isNotesWin;
+
+  function isPhone(){
+    const min = Math.min(window.innerWidth, window.innerHeight);
+    const max = Math.max(window.innerWidth, window.innerHeight);
+    const coarse = window.matchMedia && window.matchMedia('(pointer:coarse)').matches;
+    return min <= 500 || (coarse && max <= 1200);
   }
   function saved(){
-    try{ return localStorage.getItem('sales_vert'); }catch(e){ return null; }
+    try{ return localStorage.getItem('sales_view'); }catch(e){ return null; }
   }
-  function setVert(on, remember){
-    document.body.classList.toggle('vert', !!on);
-    if(remember){ try{ localStorage.setItem('sales_vert', on?'1':'0'); }catch(e){} }
-    if(!on) sheet.classList.remove('on');
+  let mode;
+  if(q === '1') mode = 'vert';
+  else if(q === '0') mode = 'desk';
+  else if(['auto','vert','horz','desk'].includes(q)) mode = q;
+  else mode = saved() || 'auto';
+
+  function resolve(){
+    if(otherMode) return 'desk';
+    if(mode === 'auto'){
+      if(!isPhone()) return 'desk';
+      return window.innerHeight > window.innerWidth ? 'vert' : 'horz';
+    }
+    return mode;
+  }
+  function apply(){
+    const r = resolve();
+    document.body.classList.toggle('vert', r === 'vert');
+    document.body.classList.toggle('horz', r === 'horz');
+    [['vModeA','auto'],['vModeV','vert'],['vModeH','horz'],['vModeD','desk']].forEach(([id,m])=>{
+      const b = document.getElementById(id);
+      if(b) b.classList.toggle('act', mode === m);
+    });
     fit();
   }
-
-  let start;
-  if(q === '1') start = true;
-  else if(q === '0') start = false;
-  else if(saved() === '1') start = true;
-  else if(saved() === '0') start = false;
-  else start = isPhonePortrait();
-
-  /* режим клиента и режим суфлёра живут по своим правилам */
-  const otherMode = document.body.classList.contains('pilot') || isNotesWin;
-  if(start && !otherMode) setVert(true, false);
+  function setMode(m){
+    mode = m;
+    try{ localStorage.setItem('sales_view', m); }catch(e){}
+    sheet.classList.remove('on');
+    apply();
+  }
+  apply();
 
   function toggleSheet(v){
     sheet.classList.toggle('on', v===undefined ? !sheet.classList.contains('on') : v);
@@ -1369,11 +1405,15 @@ window.addEventListener('resize', fit);
     document.fullscreenElement ? document.exitFullscreen()
       : document.documentElement.requestFullscreen().catch(()=>{});
   };
-  document.getElementById('vOff').onclick = ()=>{ setVert(false, true); };
+  document.getElementById('vModeA').onclick = ()=>setMode('auto');
+  document.getElementById('vModeV').onclick = ()=>setMode('vert');
+  document.getElementById('vModeH').onclick = ()=>setMode('horz');
+  document.getElementById('vModeD').onclick = ()=>setMode('desk');
 
-  /* поворот телефона и появление панели Zoom меняют высоту окна */
-  if(window.visualViewport) window.visualViewport.addEventListener('resize', fit);
-  window.addEventListener('orientationchange', ()=>setTimeout(fit, 250));
+  /* поворот телефона и появление панели Zoom меняют размеры окна */
+  if(window.visualViewport) window.visualViewport.addEventListener('resize', apply);
+  window.addEventListener('resize', apply);
+  window.addEventListener('orientationchange', ()=>setTimeout(apply, 250));
 
   const cv = document.getElementById('vCurV');
   if(cv) cv.textContent = (typeof cur !== 'undefined' && cur === 'eur') ? '€' : '$';
