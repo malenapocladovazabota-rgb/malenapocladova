@@ -14,3 +14,8 @@
 # Шрифты от Google CDN кэшируются на их стороне, но HTML — короткий кэш
 /*.html
   Cache-Control: public, max-age=300, must-revalidate
+
+# Черновик клуба: не индексировать, не кэшировать
+/prodvizhenie*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store

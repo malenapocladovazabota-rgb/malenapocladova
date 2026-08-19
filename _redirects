@@ -46,3 +46,7 @@
 /video.html  /video  301
 /video-a.html  /video-a  301
 /video-b.html  /video-b  301
+
+# Клуб «Продвижение» — черновик под паролем, noindex
+/prodvizhenie.html         /prodvizhenie         301
+/prodvizhenie-review.html  /prodvizhenie-review  301
