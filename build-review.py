@@ -10,6 +10,12 @@ h = src.read_text(encoding='utf-8')
 h = h.replace('<title>ПРОДВИЖЕНИЕ · клуб · учебный год 2026/27</title>',
               '<title>Правки · ПРОДВИЖЕНИЕ · клуб</title>')
 
+# Боевая страница открыта, а версия для правок остаётся под паролем и вне индексации.
+h = h.replace('<link rel="preconnect" href="https://fonts.googleapis.com">',
+              '<meta name="robots" content="noindex, nofollow">\n'
+              '<script src="gate-prodvizhenie.js"></script>\n'
+              '<link rel="preconnect" href="https://fonts.googleapis.com">', 1)
+
 banner = (
 '<div id="rv-top">Режим правок. Всё, что вы отметите, сохраняется только в этом браузере. '
 'Закончили — нажмите «Собрать всё» и пришлите файл.</div>\n'

@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Правки · ПРОДВИЖЕНИЕ · клуб</title>
 <meta name="description" content="Клуб для женщин, которые хотят реализовываться, проявляться и зарабатывать через продвижение. Учебный год начинается 1 сентября.">
+<meta property="og:title" content="Клуб «ПроДвижение» · старт 1 сентября">
+<meta property="og:description" content="Клуб для женщин, которые хотят проявляться, создавать своё и зарабатывать. $19 в месяц.">
+<meta property="og:image" content="https://malenapocladova.com/images/club/m-hero.jpg">
+<meta property="og:url" content="https://malenapocladova.com/prodvizhenie">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://malenapocladova.com/prodvizhenie">
+<link rel="icon" href="images/favicon.svg">
 <meta name="robots" content="noindex, nofollow">
 <script src="gate-prodvizhenie.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -158,7 +166,7 @@ nav .go:hover{color:var(--ink);background:var(--sun2)}
 .wl{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 44px;margin-top:38px}
 .wl li{padding:19px 0 19px 42px;position:relative;border-bottom:1px solid rgba(239,234,224,.16);
   font-size:17px;line-height:1.45}
-.wl li::before{content:'';position:absolute;left:0;top:26px;width:22px;height:2px;background:var(--sun)}
+.wl li::before{content:'';position:absolute;left:0;top:30px;width:22px;height:2px;background:var(--sun)}
 .wl li b{color:#fff;font-weight:600}
 .who .fin{margin-top:40px;padding:30px 34px;background:rgba(239,234,224,.07);border-left:3px solid var(--sun);
   font-size:18px;line-height:1.55;color:#fff;max-width:76ch}
@@ -387,9 +395,12 @@ footer a{color:rgba(242,234,217,.72)}
   section{padding:56px 0}
   .notes,.res,.grs,.mos{grid-template-columns:1fr}
   .mo{border-right:none!important}
-  .hero .frame{aspect-ratio:1/1.12}
-  .hero .frame img{object-position:56% 20%}
-  .hero .cap{flex-direction:column;align-items:stretch;padding:26px 20px 24px;gap:16px}
+  /* На телефоне подпись уходит ПОД снимок, а не поверх него.
+     Иначе текст садится на лицо: блок занимает больше половины кадра. */
+  .hero .frame{aspect-ratio:auto;display:block}
+  .hero .frame img{height:auto;aspect-ratio:1/1;object-position:56% 25%;display:block}
+  .hero .cap{position:static;background:var(--ink);
+    flex-direction:column;align-items:stretch;padding:24px 20px 26px;gap:16px}
   .hero .cap h1{font-size:29px;line-height:1.08;max-width:none}
   .hero .cap p{font-size:15px;margin-top:10px;max-width:none}
   .hero .cap .rt{text-align:center}
@@ -458,9 +469,9 @@ footer a{color:rgba(242,234,217,.72)}
   </div>
 
   <div class="below">
-    <div><span>Каждую неделю</span><p>Разбор работ, тренды, поддержка сообщества и ответы на ваши вопросы</p></div>
+    <div><span>Каждую неделю</span><p>Разбор ваших работ, тренды, поддержка сообщества и ответы на ваши вопросы</p></div>
     <div><span>Дважды в месяц</span><p>Эфиры на тему месяца и разборы важных тем</p></div>
-    <div><span>Девять месяцев</span><p>У каждого своя тема, от Reset в сентябре до Life в мае</p></div>
+    <div><span>Девять месяцев</span><p>У каждого своя тема, от перезагрузки в сентябре до жизни по своим правилам в мае</p></div>
     <div><span>Ваш дневник</span><p>Цели, анализ прогресса, расписание и ваше развитие</p></div>
   </div>
 </header>
@@ -497,7 +508,7 @@ footer a{color:rgba(242,234,217,.72)}
   <div class="in">
     <div class="kicker">Для кого этот клуб</div>
     <h2>Для женщин, которые хотят <em style="color:var(--sun);font-style:italic">большего</em></h2>
-    <p class="lead">Не потому, что мало. А потому, что внутри есть больше, чем получается прожить сейчас.</p>
+    <p class="lead">Больше своих денег, больше свободы, больше себя в том, что вы делаете.</p>
 
     <ul class="wl">
       <li class="rv d1"><b>Хотят своих денег.</b> На путешествия, на себя, на то, что давно откладывали</li>
@@ -580,7 +591,7 @@ footer a{color:rgba(242,234,217,.72)}
       <div class="ls"><div class="day">Понедельник</div><div><h3>Задания</h3><p>Обязательные задания, при выполнении которых вы двигаетесь вперёд.</p></div><div class="hw">сделать своё</div></div>
       <div class="ls"><div class="day">Вторник</div><div><h3>Trend Alert</h3><p>Тренды, звуки, форматы и визуальные фишки.</p></div><div class="hw">выбрать свой тренд</div></div>
       <div class="ls"><div class="day">Среда</div><div><h3>Рабочие часы</h3><p>Час, когда все заходят и просто делают. Что именно, вы узнаете внутри.</p></div><div class="hw">прийти и сделать</div></div>
-      <div class="ls"><div class="day">Четверг</div><div><h3>Разбор работ и видео</h3><p>Берём работы участниц и говорим, что именно поменять.</p></div><div class="hw">принести своё видео</div></div>
+      <div class="ls"><div class="day">Четверг</div><div><h3>Разбор ваших работ и видео</h3><p>Берём работы участниц и говорим, что именно поменять.</p></div><div class="hw">принести своё видео</div></div>
       <div class="ls"><div class="day">Дважды в месяц</div><div><h3>Прямые эфиры</h3><p>Эфиры по теме месяца. Разбираем самые актуальные вопросы в продвижении, контенте и заработке.</p></div><div class="hw">записать вопрос</div></div>
       <div class="ls"><div class="day">Всегда открыта</div><div><h3>Библиотека знаний</h3><p>Полезные материалы, которые мы постоянно добавляем. Всё лежит в одном месте.</p></div><div class="hw">заглядывать</div></div>
     </div>
@@ -607,15 +618,15 @@ footer a{color:rgba(242,234,217,.72)}
         <img class="patch" src="images/club/patch-2026.png" alt="2026">
       </div>
       <div class="mos">
-        <div class="mo now"><div class="k">Сентябрь</div><div class="t">Reset</div><p>Новый сезон, цели, система, дисциплина</p><span class="sl">старт</span></div>
-        <div class="mo"><div class="k">Октябрь</div><div class="t">Visibility</div><p>Страхи, проявленность, камера, личный бренд</p></div>
-        <div class="mo"><div class="k">Ноябрь</div><div class="t">Energy</div><p>Энергия, состояние, привычки, отношение к телу</p></div>
-        <div class="mo"><div class="k">Декабрь</div><div class="t">Reflection</div><p>Итоги, достижения, ошибки, видение года</p></div>
-        <div class="mo"><div class="k">Январь</div><div class="t">Identity</div><p>Новая версия себя, привычки, мышление</p></div>
-        <div class="mo"><div class="k">Февраль</div><div class="t">Connection</div><p>Отношения, окружение, партнёрства</p></div>
-        <div class="mo"><div class="k">Март</div><div class="t">Money</div><p>Женщины и деньги, продажи, офферы, самоценность</p></div>
-        <div class="mo"><div class="k">Апрель</div><div class="t">Growth</div><p>Рост, новые проекты, расширение</p></div>
-        <div class="mo"><div class="k">Май</div><div class="t">Life</div><p>Семья, lifestyle, баланс, свои правила</p></div>
+        <div class="mo now"><div class="k">Сентябрь</div><div class="t">Перезагрузка</div><p>Новый сезон, цели, система, дисциплина</p><span class="sl">старт</span></div>
+        <div class="mo"><div class="k">Октябрь</div><div class="t">Проявленность</div><p>Страхи, камера, личный бренд</p></div>
+        <div class="mo"><div class="k">Ноябрь</div><div class="t">Энергия</div><p>Состояние, привычки, отношение к телу</p></div>
+        <div class="mo"><div class="k">Декабрь</div><div class="t">Итоги</div><p>Достижения, ошибки, видение года</p></div>
+        <div class="mo"><div class="k">Январь</div><div class="t">Новая я</div><p>Новая версия себя, привычки, мышление</p></div>
+        <div class="mo"><div class="k">Февраль</div><div class="t">Окружение</div><p>Отношения, связи, партнёрства</p></div>
+        <div class="mo"><div class="k">Март</div><div class="t">Деньги</div><p>Женщины и деньги, продажи, офферы, самоценность</p></div>
+        <div class="mo"><div class="k">Апрель</div><div class="t">Рост</div><p>Новые проекты, расширение</p></div>
+        <div class="mo"><div class="k">Май</div><div class="t">Жизнь</div><p>Семья, баланс, свои правила</p></div>
       </div>
     </div>
   </div>
@@ -680,14 +691,14 @@ footer a{color:rgba(242,234,217,.72)}
   <div class="wrap">
     <div class="c">
       <div class="kicker">Стоимость</div>
-      <h2>Цена, чтобы не осталось <span class="yl">повода отложить</span></h2>
+      <h2>Цена, которая <span class="yl">вас не остановит</span></h2>
     </div>
     <div class="pr">
       <div class="l rv">
         <div class="hand" style="margin-bottom:4px">что входит</div>
         <ul class="pl2">
           <li>Два эфира в месяц с Маленой и приглашёнными экспертами</li>
-          <li>Разбор работ каждый четверг</li>
+          <li>Разбор <b>ваших</b> работ каждый четверг</li>
           <li>Тренды и фишки: всё, что помогает становиться лучше в контенте, продвижении и своей работе</li>
           <li>Подарки и сюрпризы от клуба</li>
           <li>Дневник: цели, недельные отметки, табель месяца</li>
@@ -695,6 +706,11 @@ footer a{color:rgba(242,234,217,.72)}
           <li>Обмен контактами: в клубе разные профессии, участницы помогают друг другу с работой и проектами</li>
           <li>Чат участниц, кураторы и поддерживающее коммьюнити, из которого не захочется выходить</li>
         </ul>
+        <p style="margin-top:20px;padding-top:18px;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink3);line-height:1.5">
+          Подписка продлевается автоматически. Отменить можно в любой момент: напишите в
+          <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener" style="color:var(--wine)">@Malena_Pocladova_Zabota</a>,
+          и мы отменим её в тот же день. Объяснять ничего не нужно.
+        </p>
       </div>
       <div class="r rv d2">
         <img class="seal" src="images/club/seal-2026.png" alt="">
@@ -710,7 +726,7 @@ footer a{color:rgba(242,234,217,.72)}
           <span class="sub">со всеми бонусами сразу</span>
         </div>
         <a class="btn sun big" href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">Вступить <span class="ar">→</span></a>
-        <div class="aft">Первый звонок 1 сентября<br>Отменить можно в один клик</div>
+        <div class="aft">Первый звонок 1 сентября<br>Отмена в любой момент через аккаунт заботы</div>
       </div>
     </div>
   </div>
@@ -741,7 +757,7 @@ footer a{color:rgba(242,234,217,.72)}
       <details class="fq rv d2"><summary>Чем это отличается от курса?</summary><p>Курс — это когда вы полностью включаетесь в профессию или в один большой прикладной навык. В клубе навык вы тоже получаете, но главный акцент на поддержке, коммьюнити и на том, чтобы двигаться регулярно, а не рывками.</p></details>
       <details class="fq rv d1"><summary>Можно ли купить сразу на весь год?</summary><p>Да, и это самый сильный вариант: вы проходите весь путь от Reset в сентябре до Life в мае и приходите к своим результатам, а не к половине пути.</p></details>
       <details class="fq rv d2"><summary>Что если я приду в середине года?</summary><p>Ничего страшного. Темы работают и в связке, когда вы с нами с самого начала, и по отдельности. Можно взять один месяц, прожить его тему и остаться дальше.</p></details>
-      <details class="fq rv d1"><summary>Как отменить подписку?</summary><p>В один клик, без объяснений и без разговора с менеджером. Можно поставить на паузу на месяц, тогда место и цена сохранятся.</p></details>
+      <details class="fq rv d1"><summary>Как отменить подписку?</summary><p>Напишите в аккаунт заботы <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener" style="color:var(--wine)">@Malena_Pocladova_Zabota</a>, и мы отменим её в тот же день. Объяснять ничего не нужно, отговаривать вас никто не будет. Доступ в клуб останется до конца оплаченного периода: оплаченное мы не забираем. Так же ставится и пауза на месяц, при ней место и цена сохраняются за вами.</p></details>
     </div>
   </div>
 </section>
@@ -752,7 +768,7 @@ footer a{color:rgba(242,234,217,.72)}
   <img class="ph" src="images/club/cut-bulb.png" alt="">
   <div class="in">
     <span class="hand">пора</span>
-    <h2>Вам не нужно сначала стать готовой</h2>
+    <h2>Вам не нужно быть готовой, чтобы начать</h2>
     <p>Движение начинается с того места, где вы находитесь сейчас. Не с понедельника и не с нового года.</p>
     <a class="btn sun" href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">Записаться за $19 <span class="ar">→</span></a>
   </div>

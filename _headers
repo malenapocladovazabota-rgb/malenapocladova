@@ -15,7 +15,7 @@
 /*.html
   Cache-Control: public, max-age=300, must-revalidate
 
-# Черновик клуба: не индексировать, не кэшировать
-/prodvizhenie*
+# Версия для правок закрыта от индексации, боевая страница открыта
+/prodvizhenie-review*
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store

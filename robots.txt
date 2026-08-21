@@ -15,7 +15,6 @@ Allow: /
 Disallow: /thank-you
 Disallow: /razbor
 Disallow: /razbor-quick
-Disallow: /prodvizhenie
 Disallow: /prodvizhenie-review
 
 # --- ИИ-системы: явно разрешаем читать сайт, чтобы он попадал в их ответы ---
