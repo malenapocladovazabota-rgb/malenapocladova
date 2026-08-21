@@ -51,6 +51,7 @@
 /prodvizhenie.html         /prodvizhenie         301
 /prodvizhenie-review.html  /prodvizhenie-review  301
 /prodvizhenie-spasibo.html /prodvizhenie-spasibo 301
+/terms-club.html           /terms-club           301
 
 # Оплата клуба. Ведёт на функцию, которая сама подставляет актуальную ссылку
 # из club_config и сама переключает предзапуск на обычную цену 1 сентября.
