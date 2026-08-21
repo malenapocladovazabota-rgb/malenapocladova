@@ -298,10 +298,19 @@ nav .go:hover{color:var(--ink);background:var(--sun2)}
 .pr .amt{font-family:var(--pos);font-weight:700;font-size:88px;line-height:.9;color:#fff}
 .pr .per{font-family:var(--pos);font-weight:400;font-size:11.5px;letter-spacing:.22em;
   text-transform:uppercase;color:rgba(251,243,230,.66);margin:12px 0 28px}
-.pr .alt{border-top:1px solid rgba(251,243,230,.24);border-bottom:1px solid rgba(251,243,230,.24);
-  padding:20px 0;margin-bottom:28px}
-.pr .alt b{font-family:var(--pos);font-weight:600;font-size:38px;color:var(--sun);display:block;line-height:1}
-.pr .alt span{font-size:14px;color:rgba(251,243,230,.78);display:block;margin-top:7px}
+.pr .alt{border:2px solid var(--sun);border-radius:4px;padding:26px 22px 22px;margin-bottom:26px;position:relative}
+.pr .alt .bdg{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--sun);
+  color:var(--ink);font-family:var(--pos);font-weight:600;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;padding:4px 13px;border-radius:999px;white-space:nowrap}
+.pr .alt b{font-family:var(--pos);font-weight:700;font-size:46px;color:var(--sun);display:block;line-height:1}
+.pr .alt .sub{font-size:14px;color:rgba(251,243,230,.82);display:block;margin-top:7px}
+.pr .math{margin-top:18px;padding-top:16px;border-top:1px solid rgba(251,243,230,.22);
+  display:grid;grid-template-columns:1fr auto;gap:7px 14px;font-size:14px;text-align:left}
+.pr .math span{color:rgba(251,243,230,.72)}
+.pr .math s{color:rgba(251,243,230,.6);font-family:var(--pos);font-weight:500;text-align:right}
+.pr .math em{color:var(--sun);font-style:normal;font-family:var(--pos);font-weight:700;text-align:right}
+.pr .save{margin-top:14px;font-size:13.5px;line-height:1.45;color:#fff;background:rgba(245,198,58,.16);
+  padding:11px 13px;border-radius:3px}
 .pr .btn{width:100%;justify-content:center}
 .pr .aft{font-size:13px;color:rgba(251,243,230,.64);margin-top:18px;line-height:1.5}
 .pr .seal{position:absolute;right:-30px;bottom:-26px;width:150px;opacity:.2;z-index:1}
@@ -373,8 +382,13 @@ footer a{color:rgba(242,234,217,.72)}
   section{padding:56px 0}
   .notes,.res,.grs,.mos{grid-template-columns:1fr}
   .mo{border-right:none!important}
-  .hero .cap{flex-direction:column;align-items:flex-start}
+  .hero .frame{aspect-ratio:1/1.08}
+  .hero .frame img{object-position:56% 22%}
+  .hero .cap{flex-direction:column;align-items:flex-start;padding:26px 20px 22px;gap:18px}
+  .hero .cap h1{font-size:19.5px;line-height:1.24;max-width:none}
+  .hero .cap p{font-size:14px;margin-top:9px;max-width:none}
   .hero .cap .rt{text-align:left}
+  .hero .cap .btn{padding:14px 24px;font-size:13.5px}
   .hero .below{grid-template-columns:1fr;padding-bottom:64px}
   .hero .pl{width:96px;height:96px;right:4%;top:auto;bottom:-30px}
   .hero .s1,.hero .s2{display:none}
@@ -426,7 +440,6 @@ footer a{color:rgba(242,234,217,.72)}
         </div>
         <div class="rt">
           <a class="btn sun" href="#price">Записаться <span class="ar">→</span></a>
-          <small>Отменить можно в один клик</small>
         </div>
       </div>
     </div>
@@ -478,14 +491,16 @@ footer a{color:rgba(242,234,217,.72)}
       <li class="rv d1"><b>Хотят своих денег.</b> На путешествия, на себя, на то, что давно откладывали</li>
       <li class="rv d1"><b>Хотят реализоваться.</b> Своё дело, своя профессия, свои проекты</li>
       <li class="rv d2"><b>Хотят проявляться.</b> Показывать себя и не сжиматься от чужого мнения</li>
-      <li class="rv d2"><b>Хотят развиваться.</b> Каждый месяц становиться немного другой</li>
-      <li class="rv d3"><b>Хотят вдохновляться.</b> Видеть, как двигаются другие, и загораться от этого</li>
-      <li class="rv d3"><b>Хотят быть среди своих.</b> Там, где вас поймут без объяснений</li>
+      <li class="rv d2"><b>Хотят развиваться.</b> Каждый месяц становиться лучше, чем были до этого</li>
+      <li class="rv d3"><b>Хотят вдохновляться.</b> Быть в окружении, которое всегда движется вперёд</li>
+      <li class="rv d3"><b>Хотят быть среди своих.</b> Вы становитесь тем окружением, в которое себя помещаете</li>
     </ul>
 
+    <p class="lead" style="margin-top:30px">Здесь разные профессии и разный опыт. Участницы знакомятся, обмениваются контактами и помогают друг другу с работой и проектами.</p>
+
     <div class="fin rv d2">
-      Если сейчас внутри не хватает мотивации и вдохновения, первое время вы будете брать их у нас и у девочек рядом.
-      А через несколько месяцев <em>станете источником вдохновения для себя сами</em>. Ради этого всё и затевалось.
+      Если сейчас вам не хватает мотивации и вдохновения, клуб — это место, где вы их получите.
+      И <em>из этого состояния будете создавать</em>.
     </div>
   </div>
 </section>
@@ -550,11 +565,12 @@ footer a{color:rgba(242,234,217,.72)}
         <div class="w">Каждую неделю · весь учебный год</div>
       </div>
       <div class="cols"><div>День</div><div>Предмет</div><div>Задание на дом</div></div>
-      <div class="ls"><div class="day">Понедельник</div><div><h3>Задание недели и месяца</h3><p>Одно действие на неделю и одна цель на месяц. Не пять и не десять.</p></div><div class="hw">записать своё</div></div>
-      <div class="ls"><div class="day">Вторник</div><div><h3>Trend Alert</h3><p>Звуки, форматы, инфоповоды. И главное: брать или не брать.</p></div><div class="hw">выбрать один тренд</div></div>
+      <div class="ls"><div class="day">Понедельник</div><div><h3>Задания</h3><p>Обязательные задания, при выполнении которых вы двигаетесь вперёд.</p></div><div class="hw">сделать своё</div></div>
+      <div class="ls"><div class="day">Вторник</div><div><h3>Trend Alert</h3><p>Тренды, звуки, форматы и визуальные фишки.</p></div><div class="hw">выбрать свой тренд</div></div>
       <div class="ls"><div class="day">Среда</div><div><h3>Рабочие часы</h3><p>Час, когда все заходят и просто делают. Что именно, вы узнаете внутри.</p></div><div class="hw">прийти и сделать</div></div>
       <div class="ls"><div class="day">Четверг</div><div><h3>Разбор работ и видео</h3><p>Берём работы участниц и говорим, что именно поменять.</p></div><div class="hw">принести своё видео</div></div>
-      <div class="ls"><div class="day">Дважды в месяц</div><div><h3>Эфиры с Маленой</h3><p>Эфиры по теме месяца. Разбираем самые актуальные вопросы в продвижении, контенте и заработке.</p></div><div class="hw">записать вопрос</div></div>
+      <div class="ls"><div class="day">Дважды в месяц</div><div><h3>Прямые эфиры</h3><p>Эфиры по теме месяца. Разбираем самые актуальные вопросы в продвижении, контенте и заработке.</p></div><div class="hw">записать вопрос</div></div>
+      <div class="ls"><div class="day">Всегда открыта</div><div><h3>Библиотека знаний</h3><p>Полезные материалы, которые мы постоянно добавляем. Всё лежит в одном месте.</p></div><div class="hw">заглядывать</div></div>
     </div>
   </div>
 </section>
@@ -652,7 +668,7 @@ footer a{color:rgba(242,234,217,.72)}
   <div class="wrap">
     <div class="c">
       <div class="kicker">Стоимость</div>
-      <h2>Цена, при которой <span class="yl">думать не о чем</span></h2>
+      <h2>Цена, чтобы не осталось <span class="yl">повода отложить</span></h2>
     </div>
     <div class="pr">
       <div class="l rv">
@@ -663,7 +679,8 @@ footer a{color:rgba(242,234,217,.72)}
           <li>Тренды и фишки: всё, что помогает становиться лучше в контенте, продвижении и своей работе</li>
           <li>Подарки и сюрпризы от клуба</li>
           <li>Дневник: цели, недельные отметки, табель месяца</li>
-          <li>Библиотека знаний</li>
+          <li>Библиотека знаний, которая постоянно пополняется</li>
+          <li>Обмен контактами: в клубе разные профессии, участницы помогают друг другу с работой и проектами</li>
           <li>Чат участниц, кураторы и поддерживающее коммьюнити, из которого не захочется выходить</li>
         </ul>
       </div>
@@ -671,7 +688,16 @@ footer a{color:rgba(242,234,217,.72)}
         <img class="seal" src="images/club/seal-2026.png" alt="">
         <div class="amt">$19</div>
         <div class="per">в месяц</div>
-        <div class="alt"><b>$99</b><span>за полгода, со всеми бонусами сразу</span></div>
+        <div class="alt">
+          <span class="bdg">Выгоднее</span>
+          <b>$99</b>
+          <span class="sub">за полгода, со всеми бонусами сразу</span>
+          <div class="math">
+            <span>Шесть месяцев по $19</span><s>$114</s>
+            <span>Сразу за полгода</span><em>$99</em>
+          </div>
+          <div class="save">Экономия $15 и ни одного повода передумать в середине пути.</div>
+        </div>
         <a class="btn sun" href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">Записаться <span class="ar">→</span></a>
         <div class="aft">Первый звонок 1 сентября<br>Отменить можно в один клик</div>
       </div>

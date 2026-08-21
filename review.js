@@ -309,7 +309,10 @@
       var badge = e.target.closest('.rv-badge');
       var b = e.target.closest('.rv-block');
       if (!b) return;
-      e.preventDefault();
+      /* Гасим только переходы по ссылкам. Кнопки, спойлеры FAQ
+         и остальное продолжают работать как на живой странице. */
+      var link = e.target.closest('a[href]');
+      if (link && !badge) e.preventDefault();
       openPanel(b, !!badge);
     }, true);
 
