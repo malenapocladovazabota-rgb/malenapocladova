@@ -47,6 +47,14 @@
 /video-a.html  /video-a  301
 /video-b.html  /video-b  301
 
-# Клуб «Продвижение» — черновик под паролем, noindex
+# Клуб «Продвижение»
 /prodvizhenie.html         /prodvizhenie         301
 /prodvizhenie-review.html  /prodvizhenie-review  301
+/prodvizhenie-spasibo.html /prodvizhenie-spasibo 301
+
+# Оплата клуба. Ведёт на функцию, которая сама подставляет актуальную ссылку
+# из club_config и сама переключает предзапуск на обычную цену 1 сентября.
+# Менять ссылки в GoHighLevel можно без правки сайта.
+/oplata          https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/club-pay       302
+/oplata-polgoda  https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/club-pay/half  302
+/bot             https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/club-pay/bot   302
