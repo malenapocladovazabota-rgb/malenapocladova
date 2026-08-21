@@ -12,6 +12,10 @@
 ──────────────────────────────────────────────────────────── */
 (function () {
   var HASH = '1e5fc4ee16c8ac8bd57f86f6cbe8ef1aaf9b89e3fd1c45b4cfadd2618d14c00f';
+  /* Запасной вариант на случай, когда браузер не даёт crypto.subtle:
+     встроенные окна Telegram и Instagram, http без сертификата, старые версии.
+     Без него человек с правильным паролем не смог бы войти вообще. */
+  var PASS = 'prodvijenie2026';
   var KEY  = 'pv_gate_v1';
   var d = document;
 
@@ -69,8 +73,15 @@
   }
 
   function tryPass(txt, onFail) {
-    sha256(String(txt).trim()).then(function (h) {
-      if (h === HASH) {
+    var v = String(txt).trim();
+    sha256(v).then(function (h) {
+      var ok = h ? (h === HASH) : (v === PASS);
+      if (ok) {
+        try { localStorage.setItem(KEY, HASH); } catch (e) {}
+        open();
+      } else if (onFail) onFail();
+    }).catch(function () {
+      if (v === PASS) {
         try { localStorage.setItem(KEY, HASH); } catch (e) {}
         open();
       } else if (onFail) onFail();
