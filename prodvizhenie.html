@@ -446,6 +446,10 @@ footer a{color:rgba(242,234,217,.72)}
   .hero .top{margin-bottom:12px}
   .hero .cl{font-size:21px}
   .hero .pill{display:none}
+  /* На телефоне заголовок стоит НАД снимком, а не заезжает под него:
+     на большом экране наезд смотрится как приём, на маленьком просто съедает буквы. */
+  .hero .bleed.big{line-height:.95}
+  .hero .stage{margin-top:12px}
   .hero .frame{aspect-ratio:auto;display:block}
   .hero .frame img{height:auto;aspect-ratio:1/.84;object-position:56% 22%;display:block}
   .hero .cap{position:static;background:var(--ink);
