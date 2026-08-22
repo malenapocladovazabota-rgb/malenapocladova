@@ -166,8 +166,82 @@ def build_html(cards, shots):
         parts += ['    </div>',
                   '    <div class="shots-n">Листайте вбок. Нажмите, чтобы открыть крупно</div>']
 
-    parts += ['  </div>', '</section>', '<!-- ОТЗЫВЫ:КОНЕЦ -->']
+    parts += ['  </div>', '</section>']
+
+    # Просмотрщик живёт внутри страницы: отдельная вкладка с голой картинкой
+    # выбрасывала человека с лендинга и обратно он не всегда возвращался.
+    if shots:
+        parts += [LIGHTBOX_HTML, LIGHTBOX_JS]
+
+    parts += ['<!-- ОТЗЫВЫ:КОНЕЦ -->']
     return "\n".join(parts)
+
+
+LIGHTBOX_HTML = """<div class="lb" id="lb" hidden>
+  <button class="lb-x" id="lb-x" type="button" aria-label="Закрыть">&times;</button>
+  <button class="lb-p" type="button" aria-label="Предыдущий отзыв">&lsaquo;</button>
+  <figure class="lb-f"><img id="lb-img" alt="Отзыв в Telegram"></figure>
+  <button class="lb-n" type="button" aria-label="Следующий отзыв">&rsaquo;</button>
+  <div class="lb-c"><span id="lb-i">1</span> из <span id="lb-t">1</span></div>
+</div>"""
+
+LIGHTBOX_JS = """<script>
+(function(){
+  var shots=[].slice.call(document.querySelectorAll('.shots .shot'));
+  var lb=document.getElementById('lb');
+  if(!shots.length||!lb)return;
+  var img=document.getElementById('lb-img'),
+      cur=document.getElementById('lb-i'),
+      tot=document.getElementById('lb-t'),
+      x=document.getElementById('lb-x'), i=0;
+  tot.textContent=shots.length;
+
+  function show(n){
+    i=(n+shots.length)%shots.length;
+    img.src=shots[i].getAttribute('href');
+    cur.textContent=i+1;
+  }
+  function open(n){
+    show(n);
+    lb.hidden=false;
+    requestAnimationFrame(function(){lb.classList.add('on')});
+    document.body.style.overflow='hidden';
+    x.focus();
+  }
+  function close(){
+    lb.classList.remove('on');
+    document.body.style.overflow='';
+    setTimeout(function(){lb.hidden=true;img.removeAttribute('src')},220);
+  }
+
+  shots.forEach(function(a,n){
+    a.addEventListener('click',function(e){e.preventDefault();open(n)});
+  });
+
+  lb.addEventListener('click',function(e){
+    var t=e.target;
+    if(t.classList.contains('lb-x'))return close();
+    if(t.classList.contains('lb-p'))return show(i-1);
+    if(t.classList.contains('lb-n'))return show(i+1);
+    if(t===lb)close();
+  });
+
+  document.addEventListener('keydown',function(e){
+    if(lb.hidden)return;
+    if(e.key==='Escape')close();
+    else if(e.key==='ArrowLeft')show(i-1);
+    else if(e.key==='ArrowRight')show(i+1);
+  });
+
+  var x0=null;
+  lb.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  lb.addEventListener('touchend',function(e){
+    if(x0===null)return;
+    var dx=e.changedTouches[0].clientX-x0; x0=null;
+    if(Math.abs(dx)>45)show(dx<0?i+1:i-1);
+  });
+})();
+</script>"""
 
 
 CSS = """
@@ -195,6 +269,41 @@ CSS = """
 }
 """
 
+LIGHTBOX_CSS = """
+/* ── отзывы: просмотрщик внутри страницы ──────────────────── */
+.lb{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+  background:rgba(23,19,19,.88);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  padding:60px 16px;opacity:0;transition:opacity .22s ease}
+.lb.on{opacity:1}
+.lb[hidden]{display:none}
+.lb-f{margin:0;padding:10px;background:var(--card);display:flex;max-height:100%;
+  box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.lb-f img{display:block;width:auto;height:auto;object-fit:contain;
+  max-width:min(520px,86vw);max-height:calc(100vh - 140px)}
+.lb button{position:absolute;border:none;cursor:pointer;background:var(--card);color:var(--ink);
+  font-family:var(--pos);line-height:1;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.34);transition:background .18s,transform .18s}
+.lb button:hover{background:var(--sun)}
+.lb button:active{transform:scale(.93)}
+.lb-x{top:16px;right:16px;width:42px;height:42px;font-size:25px;padding-bottom:3px}
+.lb-p,.lb-n{top:50%;margin-top:-23px;width:46px;height:46px;font-size:30px;padding-bottom:5px}
+.lb-p{left:16px}
+.lb-n{right:16px}
+.lb-c{position:absolute;left:0;right:0;bottom:18px;text-align:center;
+  font-family:var(--pos);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(242,234,217,.66)}
+@media(max-width:640px){
+  .lb{padding:56px 8px}
+  .lb-x{top:10px;right:10px;width:38px;height:38px;font-size:23px}
+  .lb-p,.lb-n{width:38px;height:38px;font-size:26px;margin-top:-19px}
+  .lb-p{left:6px}
+  .lb-n{right:6px}
+  .lb-f img{max-width:93vw;max-height:calc(100vh - 128px)}
+}
+@media(prefers-reduced-motion:reduce){.lb{transition:none}}
+"""
+
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
@@ -214,7 +323,11 @@ def main():
 
     if ".shots-h{" not in page:
         page = page.replace("</style>", CSS + "</style>", 1)
-        print("Стили добавлены")
+        print("Стили ленты добавлены")
+
+    if ".lb{position:fixed" not in page:
+        page = page.replace("</style>", LIGHTBOX_CSS + "</style>", 1)
+        print("Стили просмотрщика добавлены")
 
     block = build_html(cards, shots)
     new, n = re.subn(
