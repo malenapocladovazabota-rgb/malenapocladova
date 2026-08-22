@@ -19,6 +19,15 @@ fi
 git add -A
 
 if git diff --cached --quiet; then
+  # Правок нет. Но коммит мог быть сделан раньше и не уехать:
+  # например, его сделали там, где нет доступа к GitHub. Проверяем и досылаем.
+  if [ -n "$(git log origin/main..HEAD --oneline 2>/dev/null)" ]; then
+    echo "Новых правок нет, но есть неотправленные коммиты. Отправляю."
+    git push origin main
+    echo
+    echo "Отправлено. Cloudflare Pages соберёт сайт за 1-2 минуты."
+    exit 0
+  fi
   echo "Изменений нет, деплоить нечего."
   exit 0
 fi
