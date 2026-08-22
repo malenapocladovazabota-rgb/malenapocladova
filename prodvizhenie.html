@@ -453,6 +453,32 @@ footer a{color:rgba(242,234,217,.72)}
   .fin{padding-bottom:70px}
   .sticky{display:flex}
 }
+
+/* ── отзывы: лента скриншотов ─────────────────────────────── */
+.shots-h{font-family:var(--pos);font-weight:600;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--wine);text-align:center;margin:56px 0 18px}
+.shots{display:flex;gap:16px;overflow-x:auto;padding:6px 4px 18px;
+  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.shots::-webkit-scrollbar{height:6px}
+.shots::-webkit-scrollbar-thumb{background:rgba(23,19,19,.22);border-radius:3px}
+.shot{flex:0 0 auto;width:260px;scroll-snap-align:center;display:block;
+  background:var(--card);padding:8px;border:1px solid var(--line);
+  box-shadow:0 10px 26px rgba(23,19,19,.10);transition:transform .2s,box-shadow .2s}
+.shot:nth-child(odd){transform:rotate(-.7deg)}
+.shot:nth-child(even){transform:rotate(.6deg)}
+.shot:hover{transform:rotate(0) translateY(-4px);box-shadow:0 16px 34px rgba(23,19,19,.16)}
+.shot img{display:block;width:100%;height:auto}
+.shots-n{text-align:center;font-size:13.5px;color:var(--ink3);margin-top:2px}
+.res .ini{display:flex;align-items:center;justify-content:center;
+  background:var(--wine);color:var(--paper2);font-family:var(--disp);font-size:40px}
+/* Главный кейс: занимает две колонки и держит на себе взгляд. */
+.res .rc.big{grid-column:span 2;border:2px solid var(--sun)}
+.res .rc.big p{font-size:17px}
+@media(max-width:640px){
+  .shot{width:220px}
+  .shots{gap:12px}
+  .res .rc.big{grid-column:span 1}
+}
 </style>
 </head>
 <body>
@@ -680,21 +706,38 @@ footer a{color:rgba(242,234,217,.72)}
 </section>
 
 <!-- ═══════ КЕЙСЫ ═══════ -->
+<!-- ОТЗЫВЫ:НАЧАЛО · этот блок пересобирается скриптом build-otzyvy.py, руками не править -->
 <section style="background:var(--paper2)">
   <div class="wrap">
     <div class="c">
       <div class="kicker">Ученицы школы</div>
-      <h2>Так это выглядит <span class="yl">в цифрах</span></h2>
-      <p class="lede">Это результаты учениц курса Малены. Клуб стартует 1 сентября, и первые истории участниц появятся здесь.</p>
+      <h2>Так это <span class="yl">уже было</span></h2>
+      <p class="lede">Это ученицы курса Малены и их собственные слова. Клуб стартует 1 сентября, и первые истории участниц появятся здесь же.</p>
     </div>
     <div class="res">
-      <div class="rc rv d1"><img src="images/portrait-mariia-k.jpg" alt="Мария" loading="lazy" decoding="async"><div class="nm">Мария</div><div class="mt">reels</div><p>944 тысячи просмотров на одном ролике</p></div>
-      <div class="rc rv d2"><img src="images/portrait-elizaveta.jpg" alt="Елизавета" loading="lazy" decoding="async"><div class="nm">Елизавета</div><div class="mt">блог</div><p>74 тысячи подписчиков и 4,6 млн лайков</p></div>
-      <div class="rc rv d3"><img src="images/portrait-margarita.jpg" alt="Маргарита" loading="lazy" decoding="async"><div class="nm">Маргарита</div><div class="mt">рост</div><p>С 2,5 тысяч до 50,8 тысяч подписчиков</p></div>
-      <div class="rc rv d4"><img src="images/portrait-alina.jpg" alt="Алина" loading="lazy" decoding="async"><div class="nm">Алина</div><div class="mt">клиенты</div><p>Пять клиентов и первые 1500 евро на контенте</p></div>
+      <div class="rc rv d1 big"><img src="images/club/otzyvy/face-toma.jpg" alt="Тома" loading="lazy" decoding="async"><div class="nm">Тома</div><div class="mt">просмотры</div><p>Ролик клиентки набрал 1,4 млн просмотров. Работает стабильно: есть постоянный проект и разовые съёмки</p></div>
+      <div class="rc rv d2"><img src="images/club/otzyvy/face-anastasiya.jpg" alt="Анастасия" loading="lazy" decoding="async"><div class="nm">Анастасия</div><div class="mt">клиенты</div><p>Плюс 1200 подписчиков за неделю на аккаунте клиента</p></div>
+      <div class="rc rv d3"><img src="images/club/otzyvy/face-olga.jpg" alt="Ольга" loading="lazy" decoding="async"><div class="nm">Ольга</div><div class="mt">рост</div><p>С 6400 подписчиков до 12,4 тысяч</p></div>
+      <div class="rc rv d4"><div class="ini">К</div><div class="nm">Кристина</div><div class="mt">бренды</div><p>Стала бренд-амбассадором детских магазинов</p></div>
+      <div class="rc rv d4"><img src="images/club/otzyvy/face-loredana.jpg" alt="Лоредана" loading="lazy" decoding="async"><div class="nm">Лоредана</div><div class="mt">доход</div><p>Начала вести четырёх клиентов и крупный проект из Турции, собирает свою команду</p></div>
+      <div class="rc rv d4"><img src="images/club/otzyvy/face-yuliya.jpg" alt="Юлия" loading="lazy" decoding="async"><div class="nm">Юлия</div><div class="mt">смелость</div><p>Преодолела страх съёмки видео и за время обучения развила два аккаунта</p></div>
     </div>
+    <div class="shots-h">Что пишут в личку</div>
+    <div class="shots" role="list">
+      <a class="shot" role="listitem" href="images/club/otzyvy/shot-01.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-01.jpg" alt="Отзыв в Telegram" loading="lazy" decoding="async"></a>
+      <a class="shot" role="listitem" href="images/club/otzyvy/shot-02.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-02.jpg" alt="Отзыв в Telegram" loading="lazy" decoding="async"></a>
+      <a class="shot" role="listitem" href="images/club/otzyvy/shot-03.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-03.jpg" alt="Отзыв в Telegram" loading="lazy" decoding="async"></a>
+      <a class="shot" role="listitem" href="images/club/otzyvy/shot-04.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-04.jpg" alt="Отзыв в Telegram" loading="lazy" decoding="async"></a>
+      <a class="shot" role="listitem" href="images/club/otzyvy/shot-05.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-05.jpg" alt="Отзыв в Telegram" loading="lazy" decoding="async"></a>
+      <a class="shot" role="listitem" href="images/club/otzyvy/shot-06.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-06.jpg" alt="Отзыв в Telegram" loading="lazy" decoding="async"></a>
+      <a class="shot" role="listitem" href="images/club/otzyvy/shot-07.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-07.jpg" alt="Отзыв в Telegram" loading="lazy" decoding="async"></a>
+      <a class="shot" role="listitem" href="images/club/otzyvy/shot-08.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-08.jpg" alt="Отзыв в Telegram" loading="lazy" decoding="async"></a>
+      <a class="shot" role="listitem" href="images/club/otzyvy/shot-09.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-09.jpg" alt="Отзыв в Telegram" loading="lazy" decoding="async"></a>
+    </div>
+    <div class="shots-n">Листайте вбок. Нажмите, чтобы открыть крупно</div>
   </div>
 </section>
+<!-- ОТЗЫВЫ:КОНЕЦ -->
 
 <!-- ═══════ АВТОР ═══════ -->
 <section class="auth" style="padding:0">
