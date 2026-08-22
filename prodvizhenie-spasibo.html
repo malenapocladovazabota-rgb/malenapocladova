@@ -19,11 +19,19 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1350449057220500');
 fbq('track', 'PageView');
-/* Сумму берём из адреса. У полугодовой ссылки в GoHighLevel
-   redirect должен быть /prodvizhenie-spasibo?amount=99 */
+/* Сумму берём по трём источникам, в порядке надёжности:
+   1) параметр ?amount= в адресе, если он задан в редиректе GoHighLevel
+   2) то, что запомнил лендинг при клике на кнопку оплаты
+   3) 19 по умолчанию, это самый частый тариф */
 (function(){
-  var a = new URLSearchParams(location.search).get('amount');
-  var v = a && !isNaN(a) ? Number(a) : 19;
+  var v = 19;
+  try {
+    var q = new URLSearchParams(location.search).get('amount');
+    var s = sessionStorage.getItem('club_amount');
+    if (q && !isNaN(q)) v = Number(q);
+    else if (s && !isNaN(s)) v = Number(s);
+    sessionStorage.removeItem('club_amount');
+  } catch(e){}
   fbq('track','Purchase',{value:v, currency:'USD'});
   fbq('trackCustom','ClubPurchase',{value:v});
 })();
