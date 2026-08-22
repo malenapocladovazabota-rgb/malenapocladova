@@ -140,8 +140,9 @@ def build_html(cards, shots):
     if cards:
         parts.append('    <div class="res">')
         for i, c in enumerate(cards, 1):
-            # Первая строка таблицы это главный кейс: карточка шире остальных.
-            d = f" d{min(i, 4)}" + (" big" if i == 1 else "")
+            # Все карточки одного размера: шесть штук ровно ложатся в три колонки.
+            # Главный кейс просто стоит первым, выделять его шириной не нужно.
+            d = f" d{min(i, 4)}"
             img = (f'<img src="images/club/otzyvy/{c["file"]}" alt="{e(c["name"])}" '
                    f'loading="lazy" decoding="async">') if c.get("file") else \
                   f'<div class="ini">{e(c["name"][:1].upper())}</div>'
@@ -185,15 +186,12 @@ CSS = """
 .shot:hover{transform:rotate(0) translateY(-4px);box-shadow:0 16px 34px rgba(23,19,19,.16)}
 .shot img{display:block;width:100%;height:auto}
 .shots-n{text-align:center;font-size:13.5px;color:var(--ink3);margin-top:2px}
-.res .ini{display:flex;align-items:center;justify-content:center;
-  background:var(--wine);color:var(--paper2);font-family:var(--disp);font-size:40px}
-/* Главный кейс: занимает две колонки и держит на себе взгляд. */
-.res .rc.big{grid-column:span 2;border:2px solid var(--sun)}
-.res .rc.big p{font-size:17px}
+.res .ini{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;
+  background:var(--wine);color:var(--paper2);font-family:var(--disp);font-size:40px;margin-bottom:17px}
 @media(max-width:640px){
   .shot{width:220px}
   .shots{gap:12px}
-  .res .rc.big{grid-column:span 1}
+  .shots-h{margin:40px 0 14px}
 }
 """
 

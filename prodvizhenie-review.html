@@ -104,8 +104,15 @@ h3{font-family:var(--disp);font-size:23px;line-height:1.18;font-weight:400}
 .pill s{font-family:var(--disp);font-size:30px;letter-spacing:0;text-decoration:none;display:block}
 
 /* ═══════ ШАПКА ═══════ */
-nav{position:sticky;top:0;z-index:50;background:var(--navy);color:#EFEAE0;
-  display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 22px;height:56px}
+/* Шапка не занимает первый экран: она выезжает сверху только после героя. */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--navy);color:#EFEAE0;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 22px;height:56px;
+  transform:translateY(-100%);transition:transform .34s cubic-bezier(.22,.61,.36,1);
+  box-shadow:0 6px 20px rgba(23,19,19,.16)}
+nav.on{transform:none}
+/* Чтобы выехавшая шапка не накрывала заголовок раздела при переходе по якорю. */
+[id]{scroll-margin-top:70px}
+@media(prefers-reduced-motion:reduce){nav{transition:none}}
 nav .lg{font-family:var(--pos);font-weight:600;font-size:15px;letter-spacing:.22em;text-transform:uppercase}
 nav .lg i{font-style:normal;color:var(--sun)}
 nav .lk{display:flex;gap:26px}
@@ -115,6 +122,8 @@ nav a:hover{color:var(--sun)}
 nav .go{background:var(--sun);color:var(--ink);padding:8px 20px;border-radius:999px;font-weight:600}
 nav .go:hover{color:var(--ink);background:var(--sun2)}
 @media(max-width:900px){nav .lk{display:none}}
+/* На телефоне после героя работает нижняя панель, верхняя не нужна. */
+@media(max-width:640px){nav{display:none}}
 
 /* ═══════ ГЕРОЙ ═══════ */
 .hero{background:var(--paper2);padding:44px 0 0;position:relative;overflow:hidden}
@@ -288,10 +297,12 @@ nav .go:hover{color:var(--ink);background:var(--sun2)}
 .gr p{font-size:14.5px;color:var(--ink2);line-height:1.45}
 
 /* ═══════ КЕЙСЫ ═══════ */
-.res{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:46px}
-.rc{background:var(--card);padding:13px 13px 26px;box-shadow:0 3px 14px rgba(23,19,19,.08);
+/* Шесть карточек ложатся в три колонки без остатка.
+   align-items:start не даёт коротким карточкам растягиваться на всю строку. */
+.res{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:46px;align-items:start}
+.rc{background:var(--card);padding:13px 13px 24px;box-shadow:0 3px 14px rgba(23,19,19,.08);
   transition:transform .3s cubic-bezier(.22,.61,.36,1),box-shadow .3s}
-.rc:nth-child(2n){transform:rotate(.8deg)}.rc:nth-child(3n){transform:rotate(-.8deg)}
+.rc:nth-child(2n){transform:rotate(.5deg)}.rc:nth-child(3n){transform:rotate(-.5deg)}
 .rc:hover{transform:rotate(0) translateY(-8px);box-shadow:0 24px 44px rgba(23,19,19,.15)}
 .rc img{width:100%;aspect-ratio:1/1;object-fit:cover;margin-bottom:17px}
 .rc .nm{font-family:var(--pos);font-weight:600;font-size:17px;text-transform:uppercase;letter-spacing:.06em;padding:0 10px}
@@ -471,15 +482,12 @@ footer a{color:rgba(242,234,217,.72)}
 .shot:hover{transform:rotate(0) translateY(-4px);box-shadow:0 16px 34px rgba(23,19,19,.16)}
 .shot img{display:block;width:100%;height:auto}
 .shots-n{text-align:center;font-size:13.5px;color:var(--ink3);margin-top:2px}
-.res .ini{display:flex;align-items:center;justify-content:center;
-  background:var(--wine);color:var(--paper2);font-family:var(--disp);font-size:40px}
-/* Главный кейс: занимает две колонки и держит на себе взгляд. */
-.res .rc.big{grid-column:span 2;border:2px solid var(--sun)}
-.res .rc.big p{font-size:17px}
+.res .ini{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;
+  background:var(--wine);color:var(--paper2);font-family:var(--disp);font-size:40px;margin-bottom:17px}
 @media(max-width:640px){
   .shot{width:220px}
   .shots{gap:12px}
-  .res .rc.big{grid-column:span 1}
+  .shots-h{margin:40px 0 14px}
 }
 </style>
 </head>
@@ -719,10 +727,10 @@ footer a{color:rgba(242,234,217,.72)}
       <p class="lede">Это ученицы курса Малены и их собственные слова. Клуб стартует 1 сентября, и первые истории участниц появятся здесь же.</p>
     </div>
     <div class="res">
-      <div class="rc rv d1 big"><img src="images/club/otzyvy/face-toma.jpg" alt="Тома" loading="lazy" decoding="async"><div class="nm">Тома</div><div class="mt">просмотры</div><p>Ролик клиентки набрал 1,4 млн просмотров. Работает стабильно: есть постоянный проект и разовые съёмки</p></div>
+      <div class="rc rv d1"><img src="images/club/otzyvy/face-toma.jpg" alt="Тома" loading="lazy" decoding="async"><div class="nm">Тома</div><div class="mt">просмотры</div><p>Ролик клиентки набрал 1,4 млн просмотров. Работает стабильно: есть постоянный проект и разовые съёмки</p></div>
       <div class="rc rv d2"><img src="images/club/otzyvy/face-anastasiya.jpg" alt="Анастасия" loading="lazy" decoding="async"><div class="nm">Анастасия</div><div class="mt">клиенты</div><p>Плюс 1200 подписчиков за неделю на аккаунте клиента</p></div>
       <div class="rc rv d3"><img src="images/club/otzyvy/face-olga.jpg" alt="Ольга" loading="lazy" decoding="async"><div class="nm">Ольга</div><div class="mt">рост</div><p>С 6400 подписчиков до 12,4 тысяч</p></div>
-      <div class="rc rv d4"><div class="ini">К</div><div class="nm">Кристина</div><div class="mt">бренды</div><p>Стала бренд-амбассадором детских магазинов</p></div>
+      <div class="rc rv d4"><img src="images/club/otzyvy/face-kristina.jpg" alt="Кристина" loading="lazy" decoding="async"><div class="nm">Кристина</div><div class="mt">бренды</div><p>Стала бренд-амбассадором детских магазинов</p></div>
       <div class="rc rv d4"><img src="images/club/otzyvy/face-loredana.jpg" alt="Лоредана" loading="lazy" decoding="async"><div class="nm">Лоредана</div><div class="mt">доход</div><p>Начала вести четырёх клиентов и крупный проект из Турции, собирает свою команду</p></div>
       <div class="rc rv d4"><img src="images/club/otzyvy/face-yuliya.jpg" alt="Юлия" loading="lazy" decoding="async"><div class="nm">Юлия</div><div class="mt">смелость</div><p>Преодолела страх съёмки видео и за время обучения развила два аккаунта</p></div>
     </div>
@@ -737,6 +745,7 @@ footer a{color:rgba(242,234,217,.72)}
       <a class="shot" role="listitem" href="images/club/otzyvy/shot-07.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-07.jpg" alt="Отзыв в Telegram" loading="lazy" decoding="async"></a>
       <a class="shot" role="listitem" href="images/club/otzyvy/shot-08.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-08.jpg" alt="Отзыв в Telegram" loading="lazy" decoding="async"></a>
       <a class="shot" role="listitem" href="images/club/otzyvy/shot-09.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-09.jpg" alt="Отзыв в Telegram" loading="lazy" decoding="async"></a>
+      <a class="shot" role="listitem" href="images/club/otzyvy/shot-10.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-10.jpg" alt="Отзыв в Telegram" loading="lazy" decoding="async"></a>
     </div>
     <div class="shots-n">Листайте вбок. Нажмите, чтобы открыть крупно</div>
   </div>
@@ -866,8 +875,13 @@ footer a{color:rgba(242,234,217,.72)}
 (function(){
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -6% 0px'});
   document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
-  var st=document.getElementById('sticky'),h=document.querySelector('.hero');
-  new IntersectionObserver(function(es){st.classList.toggle('on',!es[0].isIntersecting)},{threshold:0}).observe(h);
+  // Пока герой на экране, обе панели спрятаны: первый экран остаётся чистым.
+  var st=document.getElementById('sticky'),nv=document.querySelector('nav'),h=document.querySelector('.hero');
+  new IntersectionObserver(function(es){
+    var past=!es[0].isIntersecting;
+    st.classList.toggle('on',past);
+    if(nv)nv.classList.toggle('on',past);
+  },{threshold:0}).observe(h);
 
   var bl=[].slice.call(document.querySelectorAll('.bleed:not(.big) b'));
   function px(){
