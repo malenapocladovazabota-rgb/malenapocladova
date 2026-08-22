@@ -3,13 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Правки · ПРОДВИЖЕНИЕ · клуб</title>
-<meta name="description" content="Клуб для женщин, которые хотят реализовываться, проявляться и зарабатывать через продвижение. Учебный год начинается 1 сентября.">
+<title>Клуб «ПроДвижение» · $19 в месяц · старт 1 сентября</title>
+<meta name="description" content="Клуб для женщин, которые хотят проявляться, создавать своё и зарабатывать. Задания, разборы работ, два эфира в месяц и поддерживающее коммьюнити. $19 в месяц, отмена в любой момент.">
 <meta property="og:title" content="Клуб «ПроДвижение» · старт 1 сентября">
 <meta property="og:description" content="Клуб для женщин, которые хотят проявляться, создавать своё и зарабатывать. $19 в месяц.">
-<meta property="og:image" content="https://malenapocladova.com/images/club/m-hero.jpg">
+<!-- Отдельная картинка 1200×630. Раньше здесь стоял вертикальный портрет 1600×2400,
+     его обрезало по центру и в превью попадал случайный кусок. -->
+<meta property="og:image" content="https://malenapocladova.com/images/club/og-club.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Клуб «ПроДвижение», $19 в месяц, старт 1 сентября">
 <meta property="og:url" content="https://malenapocladova.com/prodvizhenie">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Школа Малены Покладовой">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://malenapocladova.com/prodvizhenie">
 <link rel="icon" href="images/favicon.svg">
@@ -29,7 +36,7 @@ fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
-/></noscript>
+/ fetchpriority="high" decoding="async"></noscript>
 <!-- End Meta Pixel Code -->
 <meta name="robots" content="noindex, nofollow">
 <script src="gate-prodvizhenie.js"></script>
@@ -328,8 +335,12 @@ nav .go:hover{color:var(--ink);background:var(--sun2)}
   text-transform:uppercase;color:rgba(251,243,230,.66);margin:12px 0 28px}
 .pr .tl{font-family:var(--pos);font-weight:500;font-size:10.5px;letter-spacing:.2em;
   text-transform:uppercase;color:rgba(251,243,230,.6);margin-bottom:10px}
+/* Не зачёркнутая «старая цена», а честный якорь ценности: такой цены никогда
+   не было, а перечёркнутая цифра читается как бывшая и цепляет модерацию Меты. */
 .pr .was{font-family:var(--pos);font-weight:500;font-size:21px;color:rgba(251,243,230,.5);
-  text-decoration:line-through;text-decoration-thickness:2px;line-height:1;margin-bottom:6px}
+  line-height:1;margin-bottom:6px}
+.pr .was i{font-style:normal;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  opacity:.8;margin-right:7px}
 .pr .alt{border:2px solid var(--sun);border-radius:4px;padding:28px 22px 22px;margin:26px 0;position:relative}
 .pr .alt .bdg{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--sun);
   color:var(--ink);font-family:var(--pos);font-weight:600;font-size:10px;letter-spacing:.16em;
@@ -472,18 +483,18 @@ footer a{color:rgba(242,234,217,.72)}
   <div class="bleed big"><b>ПРО<span class="d">Д</span>ВИЖЕНИЕ</b></div>
 
   <div class="stage">
-    <img class="st s1" src="images/club/st-pencil.png" alt="">
-    <img class="st s2" src="images/club/st-scissors.png" alt="">
+    <img class="st s1" src="images/club/st-pencil.png" alt="" loading="lazy" decoding="async">
+    <img class="st s2" src="images/club/st-scissors.png" alt="" loading="lazy" decoding="async">
     <div class="pill"><s>$19</s>в месяц</div>
     <div class="frame">
-      <img src="images/club/m-hero.jpg" alt="Малена Покладова">
+      <img src="images/club/m-hero.jpg" alt="Малена Покладова" loading="lazy" decoding="async">
       <div class="cap">
         <div>
           <h1>Год, за который вы <em>наконец начнёте</em></h1>
           <p>Клуб для женщин, которые хотят проявляться, создавать своё и зарабатывать.</p>
         </div>
         <div class="rt">
-          <a class="btn sun big" href="#price">Вступить за $19 <span class="ar">→</span></a>
+          <a class="btn sun big" href="/oplata?s=hero">Вступить за $19 <span class="ar">→</span></a>
           <small>Старт 1 сентября</small>
         </div>
       </div>
@@ -525,8 +536,8 @@ footer a{color:rgba(242,234,217,.72)}
 <!-- ═══════ ДЛЯ КОГО ═══════ -->
 <section class="who" id="who">
   <div class="bleed bl"><b>ДЛЯ СВОИХ</b></div>
-  <img class="stk k1" src="images/club/cut-bulb.png" alt="">
-  <img class="stk k2" src="images/club/st-paints.png" alt="">
+  <img class="stk k1" src="images/club/cut-bulb.png" alt="" loading="lazy" decoding="async">
+  <img class="stk k2" src="images/club/st-paints.png" alt="" loading="lazy" decoding="async">
   <div class="in">
     <div class="kicker">Для кого этот клуб</div>
     <h2>Для женщин, которые хотят <em style="color:var(--sun);font-style:italic">большего</em></h2>
@@ -558,19 +569,19 @@ footer a{color:rgba(242,234,217,.72)}
     <p class="lede">Все пять тем идут через каждый месяц.</p>
 
     <div class="dirs">
-      <div class="dir rv"><div class="n">01</div><div class="ic"><img src="images/club/st-notebook.png" alt=""></div>
+      <div class="dir rv"><div class="n">01</div><div class="ic"><img src="images/club/st-notebook.png" alt="" loading="lazy" decoding="async"></div>
         <div class="tx"><div class="t">Контент</div><p>Reels, Stories, блог, личный бренд, съёмка, монтаж, тренды</p></div>
         <div class="say">я проявляюсь</div></div>
-      <div class="dir rv"><div class="n">02</div><div class="ic"><img src="images/club/st-books.png" alt=""></div>
+      <div class="dir rv"><div class="n">02</div><div class="ic"><img src="images/club/st-books.png" alt="" loading="lazy" decoding="async"></div>
         <div class="tx"><div class="t">Мышление</div><p>Смелость, синдром самозванца, страх мнения, дисциплина, границы</p></div>
         <div class="say">разрешаю себе больше</div></div>
-      <div class="dir rv"><div class="n">03</div><div class="ic"><img src="images/club/st-paints.png" alt=""></div>
+      <div class="dir rv"><div class="n">03</div><div class="ic"><img src="images/club/st-paints.png" alt="" loading="lazy" decoding="async"></div>
         <div class="tx"><div class="t">Реализация</div><p>Дело, профессия, ниша, клиенты, проекты, переход в своё</p></div>
         <div class="say">я создаю своё</div></div>
-      <div class="dir rv"><div class="n">04</div><div class="ic"><img src="images/club/st-case.png" alt=""></div>
+      <div class="dir rv"><div class="n">04</div><div class="ic"><img src="images/club/st-case.png" alt="" loading="lazy" decoding="async"></div>
         <div class="tx"><div class="t">Деньги</div><p>Доход, цены, продажи, финансовая грамотность, подушка, налоги</p></div>
         <div class="say">ценность в доход</div></div>
-      <div class="dir rv"><div class="n">05</div><div class="ic"><img src="images/club/st-backpack.png" alt=""></div>
+      <div class="dir rv"><div class="n">05</div><div class="ic"><img src="images/club/st-backpack.png" alt="" loading="lazy" decoding="async"></div>
         <div class="tx"><div class="t">Состояние</div><p>Энергия, тело, внешний вид, привычки, отношение к себе</p></div>
         <div class="say">я живу в энергии</div></div>
     </div>
@@ -580,18 +591,18 @@ footer a{color:rgba(242,234,217,.72)}
 <!-- ═══════ ПОЛКА СТИКЕРОВ ═══════ -->
 <div class="shelf">
   <div class="run">
-    <img src="images/club/st-notebook.png" alt=""><img src="images/club/st-pencil.png" alt="">
-    <img src="images/club/st-books.png" alt=""><img src="images/club/cut-camera.png" alt="">
-    <img src="images/club/st-paints.png" alt=""><img src="images/club/st-scissors.png" alt="">
-    <img src="images/club/cut-bulb.png" alt=""><img src="images/club/st-markers.png" alt="">
-    <img src="images/club/st-case.png" alt=""><img src="images/club/cut-megaphone.png" alt="">
-    <img src="images/club/st-backpack.png" alt=""><img src="images/club/st-ruler.png" alt="">
-    <img src="images/club/st-notebook.png" alt=""><img src="images/club/st-pencil.png" alt="">
-    <img src="images/club/st-books.png" alt=""><img src="images/club/cut-camera.png" alt="">
-    <img src="images/club/st-paints.png" alt=""><img src="images/club/st-scissors.png" alt="">
-    <img src="images/club/cut-bulb.png" alt=""><img src="images/club/st-markers.png" alt="">
-    <img src="images/club/st-case.png" alt=""><img src="images/club/cut-megaphone.png" alt="">
-    <img src="images/club/st-backpack.png" alt=""><img src="images/club/st-ruler.png" alt="">
+    <img src="images/club/st-notebook.png" alt="" loading="lazy" decoding="async"><img src="images/club/st-pencil.png" alt="" loading="lazy" decoding="async">
+    <img src="images/club/st-books.png" alt="" loading="lazy" decoding="async"><img src="images/club/cut-camera.png" alt="" loading="lazy" decoding="async">
+    <img src="images/club/st-paints.png" alt="" loading="lazy" decoding="async"><img src="images/club/st-scissors.png" alt="" loading="lazy" decoding="async">
+    <img src="images/club/cut-bulb.png" alt="" loading="lazy" decoding="async"><img src="images/club/st-markers.png" alt="" loading="lazy" decoding="async">
+    <img src="images/club/st-case.png" alt="" loading="lazy" decoding="async"><img src="images/club/cut-megaphone.png" alt="" loading="lazy" decoding="async">
+    <img src="images/club/st-backpack.png" alt="" loading="lazy" decoding="async"><img src="images/club/st-ruler.png" alt="" loading="lazy" decoding="async">
+    <img src="images/club/st-notebook.png" alt="" loading="lazy" decoding="async"><img src="images/club/st-pencil.png" alt="" loading="lazy" decoding="async">
+    <img src="images/club/st-books.png" alt="" loading="lazy" decoding="async"><img src="images/club/cut-camera.png" alt="" loading="lazy" decoding="async">
+    <img src="images/club/st-paints.png" alt="" loading="lazy" decoding="async"><img src="images/club/st-scissors.png" alt="" loading="lazy" decoding="async">
+    <img src="images/club/cut-bulb.png" alt="" loading="lazy" decoding="async"><img src="images/club/st-markers.png" alt="" loading="lazy" decoding="async">
+    <img src="images/club/st-case.png" alt="" loading="lazy" decoding="async"><img src="images/club/cut-megaphone.png" alt="" loading="lazy" decoding="async">
+    <img src="images/club/st-backpack.png" alt="" loading="lazy" decoding="async"><img src="images/club/st-ruler.png" alt="" loading="lazy" decoding="async">
   </div>
 </div>
 
@@ -637,7 +648,7 @@ footer a{color:rgba(242,234,217,.72)}
       <div class="rh">
         <div class="t">Табель учебного года</div>
         <div class="s">Клуб «ПроДвижение» · 2026 / 2027</div>
-        <img class="patch" src="images/club/patch-2026.png" alt="2026">
+        <img class="patch" src="images/club/patch-2026.png" alt="2026" loading="lazy" decoding="async">
       </div>
       <div class="mos">
         <div class="mo now"><div class="k">Сентябрь</div><div class="t">Перезагрузка</div><p>Новый сезон, цели, система, дисциплина</p><span class="sl">старт</span></div>
@@ -681,10 +692,10 @@ footer a{color:rgba(242,234,217,.72)}
       <p class="lede">Это результаты учениц курса Малены. Клуб стартует 1 сентября, и первые истории участниц появятся здесь.</p>
     </div>
     <div class="res">
-      <div class="rc rv d1"><img src="images/portrait-mariia-k.jpg" alt="Мария"><div class="nm">Мария</div><div class="mt">reels</div><p>944 тысячи просмотров на одном ролике</p></div>
-      <div class="rc rv d2"><img src="images/portrait-elizaveta.jpg" alt="Елизавета"><div class="nm">Елизавета</div><div class="mt">блог</div><p>74 тысячи подписчиков и 4,6 млн лайков</p></div>
-      <div class="rc rv d3"><img src="images/portrait-margarita.jpg" alt="Маргарита"><div class="nm">Маргарита</div><div class="mt">рост</div><p>С 2,5 тысяч до 50,8 тысяч подписчиков</p></div>
-      <div class="rc rv d4"><img src="images/portrait-alina.jpg" alt="Алина"><div class="nm">Алина</div><div class="mt">клиенты</div><p>Пять клиентов и первые 1500 евро на контенте</p></div>
+      <div class="rc rv d1"><img src="images/portrait-mariia-k.jpg" alt="Мария" loading="lazy" decoding="async"><div class="nm">Мария</div><div class="mt">reels</div><p>944 тысячи просмотров на одном ролике</p></div>
+      <div class="rc rv d2"><img src="images/portrait-elizaveta.jpg" alt="Елизавета" loading="lazy" decoding="async"><div class="nm">Елизавета</div><div class="mt">блог</div><p>74 тысячи подписчиков и 4,6 млн лайков</p></div>
+      <div class="rc rv d3"><img src="images/portrait-margarita.jpg" alt="Маргарита" loading="lazy" decoding="async"><div class="nm">Маргарита</div><div class="mt">рост</div><p>С 2,5 тысяч до 50,8 тысяч подписчиков</p></div>
+      <div class="rc rv d4"><img src="images/portrait-alina.jpg" alt="Алина" loading="lazy" decoding="async"><div class="nm">Алина</div><div class="mt">клиенты</div><p>Пять клиентов и первые 1500 евро на контенте</p></div>
     </div>
   </div>
 </section>
@@ -693,7 +704,7 @@ footer a{color:rgba(242,234,217,.72)}
 <section class="auth" style="padding:0">
   <div class="bleed bl"><b>МАЛЕНА ПОКЛАДОВА</b></div>
   <div class="in">
-    <div class="ph rv"><div class="tp"></div><img src="images/club/m-portrait.jpg" alt="Малена Покладова"><div class="sg">Малена</div></div>
+    <div class="ph rv"><div class="tp"></div><img src="images/club/m-portrait.jpg" alt="Малена Покладова" loading="lazy" decoding="async"><div class="sg">Малена</div></div>
     <div>
       <div class="kicker">Кто ведёт</div>
       <h2>Продвижение я знаю<br>со всех сторон</h2>
@@ -732,24 +743,25 @@ footer a{color:rgba(242,234,217,.72)}
           Подписка продлевается автоматически. Отменить можно в любой момент: напишите в
           <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener" style="color:var(--wine)">@Malena_Pocladova_Zabota</a>,
           и мы отменим её в тот же день. Объяснять ничего не нужно.
+          Полные <a href="/terms-club" target="_blank" rel="noopener" style="color:var(--wine)">условия участия</a>.
         </p>
       </div>
       <div class="r rv d2">
-        <img class="seal" src="images/club/seal-2026.png" alt="">
+        <img class="seal" src="images/club/seal-2026.png" alt="" loading="lazy" decoding="async">
         <div class="tl">Месяц в клубе</div>
-        <div class="was">$150</div>
+        <div class="was"><i>ценность</i>$150</div>
         <div class="amt">$19</div>
         <div class="per">в месяц</div>
         <div class="alt">
           <span class="bdg">Выгоднее</span>
           <div class="tl">Полгода в клубе</div>
-          <div class="was">$900</div>
+          <div class="was"><i>ценность</i>$900</div>
           <b>$99</b>
           <span class="sub">со всеми бонусами сразу</span>
         </div>
         <a class="btn sun big" href="/oplata?s=price">Вступить за $19 <span class="ar">→</span></a>
         <a class="btn ghost" href="/oplata-polgoda?s=price">Полгода за $99</a>
-        <div class="aft">Первый звонок 1 сентября<br>Сразу после оплаты бот выдаст доступ в группу и канал<br>Отмена в любой момент через аккаунт заботы</div>
+        <div class="aft">Сегодня списывается $19, это весь сентябрь. Следующее списание 1 октября, дальше первого числа каждого месяца<br>Сразу после оплаты бот выдаст доступ в группу и канал, первый звонок 1 сентября<br>Отмена в любой момент через аккаунт заботы · <a href="/terms-club" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">условия</a></div>
       </div>
     </div>
   </div>
@@ -778,7 +790,7 @@ footer a{color:rgba(242,234,217,.72)}
       <details class="fq rv d1"><summary>А если я пропущу неделю?</summary><p>Ничего страшного. Догнать можно всегда, для этого формат клуба и придуман. Никто не спросит, где вы были.</p></details>
       <details class="fq rv d2"><summary>Я боюсь показывать свои работы</summary><p>В клубе максимально поддерживающее коммьюнити, и мы следим за этим настойчиво: за качеством обратной связи, за тем, кто заходит в клуб, и за атмосферой внутри. Здесь точно не стоит бояться.</p></details>
       <details class="fq rv d2"><summary>Чем это отличается от курса?</summary><p>Курс — это когда вы полностью включаетесь в профессию или в один большой прикладной навык. В клубе навык вы тоже получаете, но главный акцент на поддержке, коммьюнити и на том, чтобы двигаться регулярно, а не рывками.</p></details>
-      <details class="fq rv d1"><summary>Можно ли купить сразу на весь год?</summary><p>Да, и это самый сильный вариант: вы проходите весь путь от Reset в сентябре до Life в мае и приходите к своим результатам, а не к половине пути.</p></details>
+      <details class="fq rv d1"><summary>Можно ли оплатить сразу надолго?</summary><p>Есть два варианта: месяц за $19 и полгода за $99. Полгода списывается один раз и выходит выгоднее. Подписка продлевается сама, поэтому оставаться можно столько, сколько захотите.</p></details>
       <details class="fq rv d2"><summary>Что если я приду в середине года?</summary><p>Ничего страшного. Темы работают и в связке, когда вы с нами с самого начала, и по отдельности. Можно взять один месяц, прожить его тему и остаться дальше.</p></details>
       <details class="fq rv d2"><summary>Как я попаду в клуб после оплаты?</summary><p>Сразу после оплаты откроется страница с ботом клуба. Откройте его, укажите ту же почту, с которой платили, и бот пришлёт две личные ссылки: в группу и в канал объявлений. Ссылки одноразовые и работают только для вас. Ждать никого не нужно, всё происходит автоматически. Чек и условия придут вам на почту.</p></details>
       <details class="fq rv d1"><summary>Как отменить подписку?</summary><p>Напишите в аккаунт заботы <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener" style="color:var(--wine)">@Malena_Pocladova_Zabota</a>, и мы отменим её в тот же день. Объяснять ничего не нужно, отговаривать вас никто не будет. Доступ в клуб останется до конца оплаченного периода: оплаченное мы не забираем. Так же ставится и пауза на месяц, при ней место и цена сохраняются за вами.</p></details>
@@ -789,7 +801,7 @@ footer a{color:rgba(242,234,217,.72)}
 <!-- ═══════ ФИНАЛ ═══════ -->
 <section class="fin" style="padding-top:0">
   <div class="bleed bl"><b>ПЕРВОЕ СЕНТЯБРЯ</b></div>
-  <img class="ph" src="images/club/cut-bulb.png" alt="">
+  <img class="ph" src="images/club/cut-bulb.png" alt="" loading="lazy" decoding="async">
   <div class="in">
     <span class="hand">пора</span>
     <h2>Вам не нужно быть готовой, чтобы начать</h2>
@@ -799,7 +811,7 @@ footer a{color:rgba(242,234,217,.72)}
 </section>
 
 <footer>
-  <div class="wrap">Клуб «ПроДвижение» · Школа Малены Покладовой · <a href="/privacy">Конфиденциальность</a> · <a href="/terms">Условия</a></div>
+  <div class="wrap">Клуб «ПроДвижение» · Personal Growth Lab LLC, San Diego · <a href="/terms-club">Условия клуба</a> · <a href="/privacy">Конфиденциальность</a> · <a href="/terms">Условия школы</a></div>
 </footer>
 
 <div class="sticky" id="sticky">
@@ -841,6 +853,23 @@ footer a{color:rgba(242,234,217,.72)}
       fbq('trackCustom', half ? 'ClubCheckout_Half' : 'ClubCheckout_Month');
     });
   });
+
+  /* ViewContent, когда человек долистал до блока цены. На старте кампании
+     покупок мало, и Мете не на чем учиться: этот сигнал даёт ей десятки
+     событий в день вместо единиц и вытаскивает кампанию из фазы обучения. */
+  var priceEl = document.getElementById('price');
+  if (priceEl && window.IntersectionObserver) {
+    var fired = false;
+    var io = new IntersectionObserver(function(entries){
+      if (fired || !entries[0].isIntersecting) return;
+      fired = true;
+      io.disconnect();
+      if (window.fbq) fbq('track','ViewContent',{
+        content_name: 'Клуб ПроДвижение · блок цены', value: 19, currency: 'USD'
+      });
+    }, { threshold: 0.35 });
+    io.observe(priceEl);
+  }
 })();
 </script>
 
