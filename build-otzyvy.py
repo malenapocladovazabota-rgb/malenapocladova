@@ -155,7 +155,7 @@ def build_html(cards, shots):
 
     if shots:
         parts += [
-            '    <div class="shots-h">Что пишут в личку</div>',
+            '    <div class="shots-h">Отзывы учениц обучения</div>',
             '    <div class="shots" role="list">']
         for s in shots:
             parts.append(

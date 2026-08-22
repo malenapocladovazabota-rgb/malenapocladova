@@ -441,15 +441,22 @@ footer a{color:rgba(242,234,217,.72)}
   .mo{border-right:none!important}
   /* На телефоне подпись уходит ПОД снимок, а не поверх него.
      Иначе текст садится на лицо: блок занимает больше половины кадра. */
+  /* Первый экран телефона должен вмещать кнопку «Вступить за $19»,
+     поэтому всё сверху поджато, а жёлтый кружок с ценой убран:
+     цена и так стоит на самой кнопке. */
+  .hero{padding-top:16px}
+  .hero .top{margin-bottom:12px}
+  .hero .cl{font-size:21px}
+  .hero .pill{display:none}
   .hero .frame{aspect-ratio:auto;display:block}
-  .hero .frame img{height:auto;aspect-ratio:1/1;object-position:56% 25%;display:block}
+  .hero .frame img{height:auto;aspect-ratio:1/.84;object-position:56% 22%;display:block}
   .hero .cap{position:static;background:var(--ink);
-    flex-direction:column;align-items:stretch;padding:24px 20px 26px;gap:16px}
-  .hero .cap h1{font-size:29px;line-height:1.08;max-width:none}
-  .hero .cap p{font-size:15px;margin-top:10px;max-width:none}
+    flex-direction:column;align-items:stretch;padding:20px 18px 22px;gap:12px}
+  .hero .cap h1{font-size:25px;line-height:1.1;max-width:none}
+  .hero .cap p{font-size:14.5px;margin-top:8px;max-width:none}
   .hero .cap .rt{text-align:center}
-  .hero .cap .btn.big{width:100%;justify-content:center;padding:17px 22px;font-size:15px}
-  .hero .cap .rt small{margin-top:10px}
+  .hero .cap .btn.big{width:100%;justify-content:center;padding:15px 20px;font-size:14.5px}
+  .hero .cap .rt small{margin-top:8px}
   .hero .below{grid-template-columns:1fr;padding-bottom:64px}
   .hero .pl{width:88px;height:88px;right:5%;top:auto;bottom:-26px}
   .hero .s1{width:70px;right:-1%;top:3%}
@@ -734,7 +741,7 @@ footer a{color:rgba(242,234,217,.72)}
       <div class="rc rv d4"><img src="images/club/otzyvy/face-loredana.jpg" alt="Лоредана" loading="lazy" decoding="async"><div class="nm">Лоредана</div><div class="mt">доход</div><p>Начала вести четырёх клиентов и крупный проект из Турции, собирает свою команду</p></div>
       <div class="rc rv d4"><img src="images/club/otzyvy/face-yuliya.jpg" alt="Юлия" loading="lazy" decoding="async"><div class="nm">Юлия</div><div class="mt">смелость</div><p>Преодолела страх съёмки видео и за время обучения развила два аккаунта</p></div>
     </div>
-    <div class="shots-h">Что пишут в личку</div>
+    <div class="shots-h">Отзывы учениц обучения</div>
     <div class="shots" role="list">
       <a class="shot" role="listitem" href="images/club/otzyvy/shot-01.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-01.jpg" alt="Отзыв в Telegram" loading="lazy" decoding="async"></a>
       <a class="shot" role="listitem" href="images/club/otzyvy/shot-02.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-02.jpg" alt="Отзыв в Telegram" loading="lazy" decoding="async"></a>
