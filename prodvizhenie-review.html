@@ -13,6 +13,24 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://malenapocladova.com/prodvizhenie">
 <link rel="icon" href="images/favicon.svg">
+
+<!-- Meta Pixel. Тот же, что на лендинге интенсива -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1350449057220500');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <meta name="robots" content="noindex, nofollow">
 <script src="gate-prodvizhenie.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -808,6 +826,17 @@ footer a{color:rgba(242,234,217,.72)}
   }
   px(); addEventListener('scroll',function(){requestAnimationFrame(px)},{passive:true});
   addEventListener('resize',px);
+
+  /* Событие для Меты в момент, когда человек уходит на оплату.
+     Без него реклама не понимает, какой клик привёл к покупке. */
+  document.querySelectorAll('a[href^="/oplata"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      if(!window.fbq) return;
+      var half = a.getAttribute('href').indexOf('polgoda') > -1;
+      fbq('track','InitiateCheckout',{value: half ? 99 : 19, currency:'USD'});
+      fbq('trackCustom', half ? 'ClubCheckout_Half' : 'ClubCheckout_Month');
+    });
+  });
 })();
 </script>
 
