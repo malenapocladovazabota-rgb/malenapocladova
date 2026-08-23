@@ -356,6 +356,28 @@ nav .go:hover{color:var(--ink);background:var(--sun2)}
 .pr .btn{width:100%;justify-content:center}
 .pr .aft{font-size:13px;color:rgba(251,243,230,.64);margin-top:18px;line-height:1.5}
 .pr .r .btn.big{width:100%;justify-content:center}
+/* ── выбор тарифа ──────────────────────────────────────────
+   Кнопки с первого экрана, из финала и из нижней панели не уводят сразу
+   на оплату, а спускают сюда. Полгода стоят первыми: так их берут чаще. */
+.plans{display:grid;gap:14px;margin:20px 0 4px;text-align:left}
+.pln{border:1.5px solid rgba(251,243,230,.26);border-radius:4px;padding:22px 20px 20px;position:relative}
+.pln.best{border:2px solid var(--sun);padding-top:28px}
+.pln .bdg{position:absolute;top:-11px;left:20px;background:var(--sun);color:var(--ink);
+  font-family:var(--pos);font-weight:600;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;padding:4px 13px;border-radius:999px;white-space:nowrap}
+.pln .nm{font-family:var(--pos);font-weight:500;font-size:10.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(251,243,230,.6);margin-bottom:8px}
+.pr .pln .amt{font-size:54px}
+.pln.best .amt{color:var(--sun)}
+.pr .pln .per{margin:8px 0 16px;text-align:left}
+.pln .was{margin-bottom:4px}
+.pln .btn,.pln .btn.ghost{width:100%;justify-content:center;margin-top:0}
+.pln .note{font-size:12.5px;color:rgba(251,243,230,.62);line-height:1.45;margin-top:11px}
+/* Подсветка на пару секунд, чтобы стало ясно, куда человека привезли. */
+@keyframes pickpulse{0%,100%{box-shadow:0 0 0 0 rgba(245,198,58,0)}
+  32%{box-shadow:0 0 0 5px rgba(245,198,58,.5)}}
+.plans.pick .pln.best{animation:pickpulse 1.4s ease-out 2}
+@media (prefers-reduced-motion:reduce){.plans.pick .pln.best{animation:none}}
 .btn.ghost{background:transparent;color:#FBF3E6;border:1.5px solid rgba(251,243,230,.4);
   font-size:14px;padding:15px 26px;width:100%;justify-content:center;margin-top:10px}
 .btn.ghost:hover{background:rgba(251,243,230,.1);border-color:var(--sun);color:#fff;box-shadow:none}
@@ -465,6 +487,9 @@ footer a{color:rgba(242,234,217,.72)}
   .shelf .run img{height:74px!important}
   .pr .l,.pr .r{padding:38px 24px}
   .pr .amt{font-size:70px}
+  .pr .pln .amt{font-size:46px}
+  .pln{padding:20px 17px 18px}
+  .pln.best{padding-top:26px}
   .fin{padding-bottom:70px}
   .sticky{display:flex}
 }
@@ -562,7 +587,7 @@ footer a{color:rgba(242,234,217,.72)}
           <p>Клуб для женщин, которые хотят проявляться, создавать своё и зарабатывать.</p>
         </div>
         <div class="rt">
-          <a class="btn sun big" href="/oplata?s=hero">Вступить за $19 <span class="ar">→</span></a>
+          <a class="btn sun big" href="#vybor" data-pick="hero">Вступить за $19 <span class="ar">→</span></a>
           <small>Старт 1 сентября</small>
         </div>
       </div>
@@ -898,20 +923,27 @@ footer a{color:rgba(242,234,217,.72)}
       </div>
       <div class="r rv d2">
         <img class="seal" src="images/club/seal-2026.png" alt="" loading="lazy" decoding="async">
-        <div class="tl">Месяц в клубе</div>
-        <div class="was"><i>ценность</i>$150</div>
-        <div class="amt">$19</div>
-        <div class="per">в месяц</div>
-        <div class="alt">
-          <span class="bdg">Выгоднее</span>
-          <div class="tl">Полгода в клубе</div>
-          <div class="was"><i>ценность</i>$900</div>
-          <b>$99</b>
-          <span class="sub">со всеми бонусами сразу</span>
+        <div class="tl">Выберите, как удобнее</div>
+        <div class="plans" id="vybor">
+          <div class="pln best">
+            <span class="bdg">Выгоднее</span>
+            <div class="nm">Полгода в клубе</div>
+            <div class="was"><i>ценность</i>$900</div>
+            <div class="amt">$99</div>
+            <div class="per">один раз, это $16.50 в месяц</div>
+            <a class="btn sun big" href="/oplata-polgoda?s=price">Взять полгода <span class="ar">→</span></a>
+            <div class="note">Шесть месячных списаний это $114. Полгода сразу стоят на $15 меньше и продлеваются раз в полгода</div>
+          </div>
+          <div class="pln">
+            <div class="nm">Месяц в клубе</div>
+            <div class="was"><i>ценность</i>$150</div>
+            <div class="amt">$19</div>
+            <div class="per">в месяц</div>
+            <a class="btn ghost" href="/oplata?s=price">Вступить за $19</a>
+            <div class="note">Сегодня $19, это весь сентябрь. Следующее списание 1 октября, дальше первого числа каждого месяца</div>
+          </div>
         </div>
-        <a class="btn sun big" href="/oplata?s=price">Вступить за $19 <span class="ar">→</span></a>
-        <a class="btn ghost" href="/oplata-polgoda?s=price">Полгода за $99</a>
-        <div class="aft">Сегодня списывается $19, это весь сентябрь. Следующее списание 1 октября, дальше первого числа каждого месяца<br>Место закрепляется сразу, бот подтвердит. Доступ в группу и канал придёт в этот же бот 31 августа, первый звонок 1 сентября<br>Отмена в любой момент прямо в боте, в разделе «Моя подписка» · <a href="/terms-club" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">условия</a></div>
+        <div class="aft">Место закрепляется сразу, бот подтвердит. Доступ в группу и канал придёт в этот же бот 31 августа, первый звонок 1 сентября<br>Отмена в любой момент прямо в боте, в разделе «Моя подписка» · <a href="/terms-club" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">условия</a></div>
       </div>
     </div>
   </div>
@@ -956,7 +988,7 @@ footer a{color:rgba(242,234,217,.72)}
     <span class="hand">пора</span>
     <h2>Вам не нужно быть готовой, чтобы начать</h2>
     <p>Движение начинается с того места, где вы находитесь сейчас. Не с понедельника и не с нового года.</p>
-    <a class="btn sun" href="/oplata?s=final">Вступить за $19 <span class="ar">→</span></a>
+    <a class="btn sun" href="#vybor" data-pick="final">Вступить за $19 <span class="ar">→</span></a>
   </div>
 </section>
 
@@ -966,7 +998,7 @@ footer a{color:rgba(242,234,217,.72)}
 
 <div class="sticky" id="sticky">
   <div class="p"><b>$19 В МЕСЯЦ</b>первый звонок 1 сентября</div>
-  <a class="btn sun" href="/oplata?s=sticky">Вступить</a>
+  <a class="btn sun" href="#vybor" data-pick="sticky">Вступить</a>
 </div>
 
 <script>
@@ -993,6 +1025,21 @@ footer a{color:rgba(242,234,217,.72)}
   }
   px(); addEventListener('scroll',function(){requestAnimationFrame(px)},{passive:true});
   addEventListener('resize',px);
+
+  /* Кнопки «Вступить» с первого экрана, из финала и из нижней панели не уводят
+     сразу на оплату. Они спускают к блоку выбора, где полгода стоят первыми:
+     на оплату человек уходит уже оттуда, осознанно выбрав срок. */
+  var plans=document.getElementById('vybor');
+  document.querySelectorAll('a[data-pick]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if(!plans) return;
+      e.preventDefault();
+      plans.scrollIntoView({behavior:'smooth',block:'start'});
+      /* перезапуск подсветки: без сброса класса вторая подряд анимация не идёт */
+      plans.classList.remove('pick'); void plans.offsetWidth; plans.classList.add('pick');
+      if(window.fbq) fbq('trackCustom','ClubPickPlan',{place:a.getAttribute('data-pick')||''});
+    });
+  });
 
   /* Событие для Меты в момент, когда человек уходит на оплату.
      Без него реклама не понимает, какой клик привёл к покупке. */
