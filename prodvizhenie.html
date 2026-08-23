@@ -1020,14 +1020,18 @@ footer a{color:rgba(242,234,217,.72)}
      сразу на оплату. Они спускают к блоку выбора, где полгода стоят первыми:
      на оплату человек уходит уже оттуда, осознанно выбрав срок. */
   var plans=document.getElementById('vybor');
+  /* Откуда человек пришёл к выбору. Раньше это было видно по метке в ссылке
+     оплаты, теперь все уходят из блока цены, поэтому запоминаем начало пути. */
+  var from='';
   document.querySelectorAll('a[data-pick]').forEach(function(a){
     a.addEventListener('click', function(e){
       if(!plans) return;
       e.preventDefault();
+      from=a.getAttribute('data-pick')||'';
       plans.scrollIntoView({behavior:'smooth',block:'start'});
       /* перезапуск подсветки: без сброса класса вторая подряд анимация не идёт */
       plans.classList.remove('pick'); void plans.offsetWidth; plans.classList.add('pick');
-      if(window.fbq) fbq('trackCustom','ClubPickPlan',{place:a.getAttribute('data-pick')||''});
+      if(window.fbq) fbq('trackCustom','ClubPickPlan',{place:from});
     });
   });
 
@@ -1036,6 +1040,11 @@ footer a{color:rgba(242,234,217,.72)}
   document.querySelectorAll('a[href^="/oplata"]').forEach(function(a){
     a.addEventListener('click', function(){
       var half = a.getAttribute('href').indexOf('polgoda') > -1;
+      /* дописываем начало пути к метке источника: price-hero, price-sticky.
+         Исходную ссылку держим отдельно, иначе при втором клике метка задвоится. */
+      var base=a.getAttribute('data-base')||a.getAttribute('href');
+      a.setAttribute('data-base', base);
+      a.setAttribute('href', from ? base.replace(/([?&]s=)([^&]*)/,'$1$2-'+from) : base);
       var val = half ? 99 : 19;
       /* Запоминаем сумму, чтобы страница «Оплата прошла» знала,
          сколько человек заплатил. Переживает уход на чекаут и возврат. */
