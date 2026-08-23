@@ -1,201 +1,160 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Собирает страницу подарка «100 заголовков» для сайта.
+Публикует подарок «100 заголовков» на сайте, сохраняя авторский дизайн.
 
-Зачем: исходник лежит презентацией 1280×720, её делали под PDF. На телефоне
-такое читать невозможно, а подарок открывают именно с телефона. Скрипт достаёт
-из презентации содержание и раскладывает его в обычную страницу в стиле клуба.
+Исходник это презентация: 26 слайдов по 1280×720, картинки вшиты в base64,
+файл весит 3,3 МБ. Своя вёрстка тут не нужна, дизайн уже сделан. Задача другая:
+довезти его до телефона так, чтобы он открывался быстро и читался.
 
-Что делает:
-  1. читает 100_заголовков_подарок.html (26 слайдов)
-  2. вытаскивает форматы, заголовки и подписи
-  3. кладёт PDF в course-site/files/
-  4. пишет course-site/podarok.html
+Что делает скрипт:
+  1. вынимает картинки из base64 в отдельные файлы, страница худеет до ~60 КБ
+  2. на широком экране оставляет слайды как есть, авторский макет не трогает
+  3. на телефоне отключает масштабирование слайда и распускает его по высоте:
+     те же цвета, шрифты, линованная бумага и красное поле, но текст читаемого
+     размера. Наклейки и печати стоят на пиксельных координатах и на узком
+     экране разъезжаются, поэтому там они прячутся
+  4. добавляет пиксель Meta, кнопку скачивания PDF и метатеги
+  5. кладёт PDF в course-site/files/
 
 Запуск из папки course-site:
     python3 build-podarok.py
 """
 
-import html
+import base64
+import hashlib
 import re
 import shutil
 import sys
 from pathlib import Path
-
-try:
-    from bs4 import BeautifulSoup
-except ImportError:
-    sys.exit("Нужна библиотека: pip install beautifulsoup4 --break-system-packages")
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 SRC = ROOT / "100_заголовков_подарок.html"
 PDF_SRC = ROOT / "100_заголовков_подарок.pdf"
 PDF_OUT = HERE / "files" / "100-zagolovkov.pdf"
+IMG_DIR = HERE / "images" / "club" / "podarok"
 OUT = HERE / "podarok.html"
 
 PIXEL = "1350449057220500"
+PDF_URL = "/files/100-zagolovkov.pdf"
+
+EXT = {"jpeg": "jpg", "jpg": "jpg", "png": "png", "webp": "webp", "gif": "gif", "svg+xml": "svg"}
 
 
-def parse():
-    soup = BeautifulSoup(SRC.read_text(encoding="utf-8"), "html.parser")
-    intro, formats = [], []
-    for sl in soup.select(".slide"):
-        pad = sl.select_one(".pad")
-        if not pad:
-            continue
-        lst = pad.select_one(".list")
-        kicker = pad.find("div", class_=None)
-        big = pad.select_one(".big")
-        note = pad.select_one("p")
+def extract_images(html: str) -> tuple[str, int, int]:
+    """base64 → файлы. Одинаковые картинки складываются в один файл."""
+    IMG_DIR.mkdir(parents=True, exist_ok=True)
+    seen: dict[str, str] = {}
+    saved_bytes = 0
 
-        if lst:
-            rows = [r.select_one(".t").get_text(" ", strip=True)
-                    for r in lst.select(".row") if r.select_one(".t")]
-            formats.append({
-                "kicker": kicker.get_text(" ", strip=True) if kicker else "",
-                "title": big.get_text(" ", strip=True) if big else "",
-                "rows": rows,
-                "note": note.get_text(" ", strip=True) if note else "",
-            })
-        elif big:
-            # вводные слайды: заголовок плюс абзацы
-            paras = [p.get_text(" ", strip=True) for p in pad.find_all("p")]
-            body = [x for x in paras if len(x) > 25]
-            intro.append({
-                "title": big.get_text(" ", strip=True),
-                "body": body,
-                "note": paras[-1] if paras and len(paras[-1]) <= 90 else "",
-            })
-    return intro, formats
+    def repl(m: re.Match) -> str:
+        nonlocal saved_bytes
+        kind, data = m.group(1), m.group(2)
+        key = hashlib.sha1(data.encode()).hexdigest()
+        if key in seen:
+            return seen[key]
+        try:
+            raw = base64.b64decode(data)
+        except Exception:
+            return m.group(0)
+        name = f"p-{key[:10]}.{EXT.get(kind, 'png')}"
+        (IMG_DIR / name).write_bytes(raw)
+        saved_bytes += len(raw)
+        url = f"/images/club/podarok/{name}"
+        seen[key] = url
+        return url
+
+    out = re.sub(r"data:image/([a-z+]+);base64,([A-Za-z0-9+/=]+)", repl, html)
+    return out, len(seen), saved_bytes
 
 
-CSS = """
-:root{--paper:#F2EAD9;--paper2:#FBF6EC;--card:#FFFDF8;--ink:#171313;--ink2:#4A4340;
-  --ink3:#7C736C;--line:#E2D7C2;--wine:#6B2138;--navy:#22314A;--sun:#F5C63A;
-  --disp:'Prata',Georgia,serif;--pos:'Oswald',Impact,sans-serif;
-  --body:'Onest',-apple-system,sans-serif;--hand:'Marck Script',cursive}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--paper);color:var(--ink);font-family:var(--body);
-  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
-.wrap{max-width:720px;margin:0 auto;padding:0 20px 80px}
-.top{text-align:center;padding:46px 0 34px}
-.top .kick{font-family:var(--pos);font-weight:600;font-size:11px;letter-spacing:.26em;
-  text-transform:uppercase;color:var(--wine);margin-bottom:16px}
-.top .n{font-family:var(--pos);font-weight:700;font-size:clamp(76px,22vw,150px);
-  line-height:.84;color:var(--wine);letter-spacing:-.02em}
-.top h1{font-family:var(--disp);font-weight:400;font-size:clamp(27px,7vw,44px);
-  line-height:1.1;margin:2px 0 14px}
-.top p{font-size:17px;color:var(--ink2);max-width:34ch;margin:0 auto}
-.top .from{font-family:var(--hand);font-size:25px;color:var(--navy);margin-top:16px}
-.btn{display:inline-flex;align-items:center;gap:9px;background:var(--sun);color:var(--ink);
-  text-decoration:none;font-family:var(--pos);font-weight:600;font-size:14px;letter-spacing:.1em;
-  text-transform:uppercase;padding:16px 28px;border-radius:999px;margin-top:22px;
-  box-shadow:0 8px 22px rgba(23,19,19,.16);transition:transform .18s,box-shadow .18s}
-.btn:active{transform:scale(.97)}
-.btn.wine{background:var(--wine);color:#F7EFE2}
-.intro{background:var(--card);border:1px solid var(--line);padding:24px 22px;margin:0 0 16px;
-  box-shadow:0 3px 14px rgba(23,19,19,.05)}
-.intro h2{font-family:var(--disp);font-weight:400;font-size:23px;line-height:1.2;margin-bottom:10px}
-.intro p{font-size:16px;color:var(--ink2);margin-bottom:9px}
-.intro .hand{font-family:var(--hand);font-size:21px;color:var(--wine);margin-top:4px}
-.sep{font-family:var(--pos);font-weight:600;font-size:11px;letter-spacing:.24em;
-  text-transform:uppercase;color:var(--wine);text-align:center;margin:44px 0 18px}
-.fmt{background:var(--card);border:1px solid var(--line);padding:22px 20px 20px;margin:0 0 14px;
-  box-shadow:0 3px 14px rgba(23,19,19,.05);position:relative}
-.fmt .k{font-family:var(--pos);font-weight:600;font-size:10.5px;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:5px}
-.fmt h3{font-family:var(--disp);font-weight:400;font-size:24px;line-height:1.15;
-  color:var(--wine);margin-bottom:14px}
-.fmt ol{list-style:none;counter-reset:h}
-.fmt li{counter-increment:h;display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--line);
-  font-size:16.5px;line-height:1.45}
-.fmt li::before{content:counter(h);font-family:var(--pos);font-weight:600;font-size:12px;
-  color:var(--sun);-webkit-text-stroke:.6px var(--wine);flex:none;width:16px;padding-top:3px}
-.fmt .note{font-family:var(--hand);font-size:20px;color:var(--navy);margin-top:14px;line-height:1.3}
-.fin{background:var(--navy);color:#EFE7DA;padding:34px 24px;margin:46px 0 0;text-align:center}
-.fin h2{font-family:var(--disp);font-weight:400;font-size:clamp(24px,6vw,32px);line-height:1.16;margin-bottom:12px}
-.fin h2 em{font-style:italic;color:var(--sun)}
-.fin p{font-size:16.5px;color:rgba(239,231,218,.86);max-width:38ch;margin:0 auto 4px}
-.foot{text-align:center;font-size:13.5px;color:var(--ink3);margin-top:26px}
-.foot a{color:var(--wine)}
-@media(max-width:520px){body{font-size:16px}.wrap{padding:0 15px 60px}
-  .fmt{padding:19px 16px 17px}.intro{padding:20px 17px}}
+# Слайды на телефоне не масштабируем, а распускаем: масштаб делает текст
+# нечитаемым, 32 пикселя при коэффициенте 0.3 превращаются в девять.
+MOBILE_CSS = """
+/* ── адаптив: авторский макет на широком экране, читаемый на телефоне ── */
+@media (max-width:899px){
+  body{padding:0!important;background:var(--paper2)}
+  .slide{width:100%!important;height:auto!important;min-height:0!important;
+    transform:none!important;margin:0 0 12px!important;overflow:visible!important}
+  .pad{padding:56px 20px 52px!important}
+  .ruled .pad{padding-left:34px!important}
+  .ruled::after{left:20px!important}
+  .run,.foot{left:20px!important;right:20px!important;font-size:9px!important;
+    letter-spacing:.14em!important}
+  .ruled .run,.ruled .foot{left:34px!important}
+  .run{top:20px!important}
+  .foot{bottom:18px!important}
+  .big{font-size:32px!important}
+  .big.sm{font-size:29px!important}
+  .big.xs{font-size:26px!important}
+  .lede{font-size:16px!important;max-width:none!important}
+  .hand{font-size:19px!important}
+  .list{gap:13px!important;margin-top:18px!important;justify-content:flex-start!important}
+  .row{gap:12px!important}
+  .row .n{min-width:22px!important;font-size:12px!important;padding-top:3px!important}
+  .row .t{font-size:18px!important;line-height:1.3!important}
+  .errs,.steps{grid-template-columns:1fr!important;gap:12px!important;margin-top:20px!important}
+  .err{padding:16px 18px!important}
+  .err p{font-size:16px!important}
+  .st{padding:18px 18px 20px!important}
+  .st p{font-size:15.5px!important}
+  .st .num{width:36px!important;height:36px!important;font-size:17px!important;margin-bottom:12px!important}
+  .cover .pad{padding-top:56px!important;padding-bottom:54px!important}
+  .cover .huge{font-size:70px!important}
+  .cover .sub{font-size:19px!important;margin-top:14px!important;max-width:none!important}
+  .cover .from{font-size:26px!important;margin-top:14px!important}
+  .cta{font-size:15px!important;padding:16px 22px!important;margin-top:22px!important;
+    align-self:stretch!important;justify-content:center!important}
+  .small{font-size:10px!important}
+  /* наклейки, скотч и печати стоят на пиксельных координатах: на узком экране
+     они легли бы поверх текста, поэтому здесь их не показываем */
+  .stk,.tape,.seal{display:none!important}
+  .ph{position:static!important;width:100%!important;height:auto!important;
+    transform:none!important;margin:18px 0 0!important;padding:9px!important}
+  .ph img{height:auto!important;aspect-ratio:3/4;flex:none!important}
+  .ph .cap{font-size:19px!important}
+}
+
+/* кнопка скачивания, висит поверх страницы */
+.dl{position:fixed;right:18px;bottom:18px;z-index:50;display:inline-flex;align-items:center;gap:9px;
+  background:var(--sun);color:var(--ink);text-decoration:none;font-family:var(--pos);font-weight:600;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:14px 22px;border-radius:999px;
+  box-shadow:0 10px 26px rgba(23,19,19,.28);transition:transform .18s}
+.dl:active{transform:scale(.96)}
+@media (max-width:899px){.dl{right:12px;bottom:12px;font-size:11px;padding:12px 18px}}
+@media print{.dl{display:none}}
 """
 
+# На узком экране масштабирование выключаем совсем, там работает адаптив.
+FIT_JS = """
+function fit(){
+  var w=document.documentElement.clientWidth;
+  var slides=document.querySelectorAll('.slide');
+  if(w>=900&&w<1340){
+    var s=(w-20)/1280;
+    slides.forEach(function(el){
+      el.style.transformOrigin='top left';
+      el.style.transform='scale('+s+')';
+      el.style.marginBottom=(720*s-720+14)+'px';
+    });
+  }else{
+    slides.forEach(function(el){el.style.transform='';el.style.marginBottom='';});
+  }
+}
+fit();addEventListener('resize',fit);
+"""
 
-def build(intro, formats):
-    e = html.escape
-    p = []
-    p.append(f"""<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>100 заголовков · подарок от Малены Покладовой</title>
+HEAD_ADD = f"""
 <meta name="description" content="Сто цепляющих первых строк для Reels, постов и сторис. Двадцать форматов, в каждом по пять готовых вариантов.">
-<meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="100 заголовков · подарок от Малены Покладовой">
 <meta property="og:image" content="https://malenapocladova.com/images/club/og-club.jpg">
 <link rel="icon" href="/images/club/favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Prata&family=Oswald:wght@400;600;700&family=Onest:wght@400;500;600&family=Marck+Script&display=swap" rel="stylesheet">
-<style>{CSS}</style>
-</head>
-<body>
-<div class="wrap">
+<style>{MOBILE_CSS}</style>
+"""
 
-  <div class="top">
-    <div class="kick">Подарок для тех, кто оставил заявку</div>
-    <div class="n">100</div>
-    <h1>заголовков</h1>
-    <p>Цепляющие первые строки для ваших Reels, постов и сторис. Двадцать форматов, в каждом по пять готовых вариантов.</p>
-    <div class="from">от Малены Покладовой</div>
-    <a class="btn" href="/files/100-zagolovkov.pdf" download>Скачать PDF <span>&darr;</span></a>
-  </div>
-""")
-
-    for b in intro:
-        p.append('  <div class="intro">')
-        p.append(f'    <h2>{e(b["title"])}</h2>')
-        for line in b["body"]:
-            p.append(f"    <p>{e(line)}</p>")
-        if b["note"] and b["note"] not in b["body"]:
-            p.append(f'    <div class="hand">{e(b["note"])}</div>')
-        p.append("  </div>")
-
-    if formats:
-        p.append('  <div class="sep">Двадцать форматов, сто строк</div>')
-    for f in formats:
-        p.append('  <div class="fmt">')
-        if f["kicker"]:
-            p.append(f'    <span class="k">{e(f["kicker"])}</span>')
-        p.append(f'    <h3>{e(f["title"])}</h3>')
-        p.append("    <ol>")
-        for row in f["rows"]:
-            p.append(f"      <li>{e(row)}</li>")
-        p.append("    </ol>")
-        if f["note"]:
-            p.append(f'    <div class="note">{e(f["note"])}</div>')
-        p.append("  </div>")
-
-    p.append("""
-  <div class="fin">
-    <h2>А дальше начинается <em>самое интересное</em></h2>
-    <p>Заголовок вытаскивает первые две секунды. Всё остальное решает система: что снимать, когда выкладывать и кто вас поддержит, когда снимать не хочется.</p>
-    <p>Ровно это и есть клуб «ПроДвижение». Старт 1 сентября, $19 в месяц.</p>
-    <a class="btn" href="/prodvizhenie?utm_source=podarok&utm_medium=pdf&utm_campaign=100-zagolovkov">Посмотреть клуб</a>
-  </div>
-
-  <div class="foot">
-    Малена Покладова · <a href="/prodvizhenie">клуб «ПроДвижение»</a><br>
-    Материал для личного использования. Пересылать можно, продавать нельзя.
-  </div>
-
-</div>
-""")
-
-    p.append(f"""
+BODY_ADD = f"""
+<a class="dl" href="{PDF_URL}" download>Скачать PDF &darr;</a>
 <script>
 !function(f,b,e,v,n,t,s){{if(f.fbq)return;n=f.fbq=function(){{n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)}};if(!f._fbq)f._fbq=n;
@@ -204,32 +163,47 @@ t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}}(window,
 document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','{PIXEL}');fbq('track','PageView');
 fbq('trackCustom','GiftOpened',{{content_name:'100 заголовков'}});
-document.querySelectorAll('a[href$=".pdf"]').forEach(function(a){{
-  a.addEventListener('click',function(){{fbq('trackCustom','GiftDownload')}});
+document.querySelector('.dl').addEventListener('click',function(){{fbq('trackCustom','GiftDownload')}});
+document.querySelectorAll('a[href*="prodvizhenie"]').forEach(function(a){{
+  if(!a.href.includes('utm_')) a.href += (a.href.includes('?')?'&':'?')+'utm_source=podarok&utm_medium=gift&utm_campaign=100-zagolovkov';
+  a.addEventListener('click',function(){{fbq('trackCustom','GiftToClub')}});
 }});
 </script>
-</body>
-</html>
-""")
-    return "\n".join(p)
+"""
 
 
 def main():
     if not SRC.exists():
         sys.exit(f"Не нашёл исходник: {SRC.name}")
-    intro, formats = parse()
-    print(f"Вводных блоков: {len(intro)} · форматов: {len(formats)} · "
-          f"заголовков: {sum(len(f['rows']) for f in formats)}")
+
+    html = SRC.read_text(encoding="utf-8")
+    before = len(html.encode())
+
+    html, n_img, img_bytes = extract_images(html)
+    print(f"Картинок вынуто: {n_img} · {img_bytes // 1024} КБ в отдельных файлах")
+
+    # ленивую загрузку картинкам, кроме тех, что на первом экране
+    html = html.replace('<img class="stk"', '<img loading="lazy" class="stk"')
+
+    # свой обработчик масштаба вместо авторского
+    html = re.sub(r"<script>.*?</script>", f"<script>{FIT_JS}</script>", html, count=1, flags=re.S)
+
+    html = html.replace("</head>", HEAD_ADD + "</head>", 1)
+    html = html.replace("</body>", BODY_ADD + "</body>", 1)
+
+    OUT.write_text(html, encoding="utf-8")
 
     PDF_OUT.parent.mkdir(parents=True, exist_ok=True)
     if PDF_SRC.exists():
         shutil.copy2(PDF_SRC, PDF_OUT)
-        print(f"PDF скопирован: files/{PDF_OUT.name} ({PDF_OUT.stat().st_size // 1024} КБ)")
-    else:
-        print("PDF не найден, страница соберётся без файла для скачивания")
+        print(f"PDF: files/{PDF_OUT.name} ({PDF_OUT.stat().st_size // 1024} КБ)")
 
-    OUT.write_text(build(intro, formats), encoding="utf-8")
-    print(f"Готово: {OUT.name} ({OUT.stat().st_size // 1024} КБ)")
+    after = OUT.stat().st_size
+    slides = html.count('class="slide')
+    rows = html.count('<div class="t">')
+    print(f"Слайдов: {slides} · строк-заголовков: {rows}")
+    print(f"Страница: {before // 1024} КБ → {after // 1024} КБ")
+    print(f"Готово: {OUT.name}")
 
 
 if __name__ == "__main__":

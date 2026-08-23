@@ -1,375 +1,620 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>100 заголовков · подарок от Малены Покладовой</title>
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>100 заголовков · подарок от Малены Покладовой</title><meta name="robots" content="noindex, nofollow"><style>@import url('https://fonts.googleapis.com/css2?family=Prata&family=Oswald:wght@300;400;500;600;700&family=Onest:wght@300;400;500;600;700&family=Marck+Script&display=swap');
+:root{
+  --paper:#F2EAD9; --paper2:#FBF6EC; --card:#FFFDF8;
+  --ink:#171313; --ink2:#4A4340; --ink3:#7C736C;
+  --wine:#6B2138; --wine2:#8C2C49; --wine3:#4A1526;
+  --navy:#22314A; --blue:#B7D9FE; --sun:#F5C63A; --sun2:#FFDD6B;
+  --line:rgba(23,19,19,.12);
+  --disp:'Prata',Georgia,serif; --pos:'Oswald',Impact,sans-serif;
+  --body:'Onest',-apple-system,sans-serif; --hand:'Marck Script',cursive;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:#DAD2C2;font-family:var(--body);-webkit-font-smoothing:antialiased}
+
+.slide{width:1280px;height:720px;position:relative;overflow:hidden;background:var(--paper);
+  margin:0 auto 26px;color:var(--ink);display:flex;flex-direction:column}
+.slide.navy{background:var(--navy);color:#EFEAE0}
+.slide.wine{background:var(--wine);color:#FBF3E6}
+
+/* поля страницы */
+.pad{flex:1;padding:88px 68px 74px;display:flex;flex-direction:column;position:relative;z-index:2}
+
+/* колонтитулы */
+.run{position:absolute;top:30px;left:68px;right:68px;display:flex;justify-content:space-between;
+  font-family:var(--pos);font-weight:500;font-size:11px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--wine);z-index:5}
+.slide.navy .run,.slide.wine .run{color:var(--sun)}
+.foot{position:absolute;bottom:26px;left:68px;right:68px;display:flex;justify-content:space-between;
+  font-family:var(--pos);font-weight:400;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink3);z-index:5}
+.slide.navy .foot,.slide.wine .foot{color:rgba(239,234,224,.55)}
+
+/* линованная бумага и красное поле */
+.ruled::before{content:'';position:absolute;inset:0;z-index:0;
+  background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 39px,rgba(23,19,19,.05) 39px,rgba(23,19,19,.05) 40px);
+  background-position:0 60px}
+.ruled::after{content:'';position:absolute;left:96px;top:0;bottom:0;width:2px;background:rgba(139,40,60,.26);z-index:1}
+.ruled .pad{padding-left:132px}
+.ruled .foot{left:132px}
+.ruled .run{left:132px}
+
+/* заголовки */
+.big{font-family:var(--pos);font-weight:700;text-transform:uppercase;color:var(--wine);
+  line-height:.94;letter-spacing:-.015em;font-size:74px}
+.big.sm{font-size:58px}
+.big.xs{font-size:46px}
+.slide.navy .big,.slide.wine .big{color:var(--sun)}
+.pr{font-family:var(--disp);font-weight:400;line-height:1.1}
+.lede{font-size:21px;line-height:1.5;color:var(--ink2);max-width:56ch}
+.slide.navy .lede,.slide.wine .lede{color:rgba(239,234,224,.86)}
+.hand{font-family:var(--hand);color:var(--wine);line-height:1.2;transform:rotate(-1.2deg);display:inline-block}
+.slide.navy .hand,.slide.wine .hand{color:var(--sun)}
+
+/* список заголовков */
+.list{margin-top:30px;display:flex;flex-direction:column;gap:24px;flex:1;justify-content:center}
+.row{display:flex;align-items:baseline;gap:20px}
+.row .n{font-family:var(--pos);font-weight:600;font-size:17px;letter-spacing:.06em;color:var(--wine);
+  min-width:48px;flex:none;padding-top:6px}
+.row .t{font-family:var(--disp);font-size:32px;line-height:1.24;color:var(--ink)}
+
+/* обложка */
+.cover{justify-content:flex-end}
+.cover .pad{padding-bottom:96px;padding-top:52px}
+.cover .huge{font-family:var(--pos);font-weight:700;text-transform:uppercase;color:var(--wine);
+  font-size:188px;line-height:.8;letter-spacing:-.03em}
+.cover .sub{font-family:var(--disp);font-size:34px;line-height:1.2;margin-top:22px;max-width:24ch}
+.cover .from{font-family:var(--hand);font-size:40px;color:var(--navy);transform:rotate(-1.6deg);
+  display:inline-block;margin-top:22px;line-height:1.35}
+
+/* фото */
+.ph{position:absolute;z-index:4;background:#FFFDF8;padding:12px;border-radius:2px;
+  box-shadow:0 18px 46px rgba(23,19,19,.28);display:flex;flex-direction:column}
+.ph img{display:block;width:100%;flex:1;min-height:0;object-fit:cover;border-radius:1px}
+.ph .cap{font-family:var(--hand);font-size:24px;color:var(--wine);text-align:center;
+  padding-top:8px;line-height:1.1}
+.stk{position:absolute;z-index:5;pointer-events:none;width:auto;height:auto;
+  max-width:150px;max-height:192px;
+  filter:drop-shadow(0 8px 16px rgba(23,19,19,.2))}
+.stk.tall{max-width:120px;max-height:250px}
+
+/* печать и наклейки */
+.seal{position:absolute;width:150px;height:150px;border-radius:50%;background:var(--sun);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  font-family:var(--pos);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--wine3);line-height:1.5;box-shadow:0 10px 30px rgba(23,19,19,.22);z-index:6;
+  transform:rotate(-9deg)}
+.seal b{font-family:var(--disp);font-weight:400;font-size:40px;letter-spacing:0;display:block}
+.tape{position:absolute;width:150px;height:34px;background:rgba(183,217,254,.6);z-index:6;
+  box-shadow:0 2px 8px rgba(23,19,19,.12)}
+.clip{position:absolute;width:34px;height:74px;border:5px solid #9AA3AD;border-radius:17px;
+  border-bottom-color:transparent;z-index:6;box-shadow:0 3px 8px rgba(23,19,19,.2)}
+
+/* карточки ошибок */
+.errs{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:34px}
+.err{background:var(--card);padding:24px 26px;border-left:5px solid var(--wine);border-radius:2px;
+  box-shadow:0 3px 14px rgba(23,19,19,.07)}
+.err b{font-family:var(--pos);font-weight:600;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--wine);display:block;margin-bottom:9px}
+.err p{font-size:19px;line-height:1.36;color:var(--ink2)}
+
+/* как пользоваться */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px}
+.st{background:var(--card);padding:26px 24px 28px;border-radius:2px;box-shadow:0 3px 14px rgba(23,19,19,.07)}
+.st .num{width:44px;height:44px;border-radius:50%;background:var(--sun);color:var(--ink);
+  display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-size:20px;margin-bottom:16px}
+.st h4{font-family:var(--pos);font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--wine);margin-bottom:9px}
+.st p{font-size:17px;line-height:1.4;color:var(--ink2)}
+
+/* финал */
+.cta{display:inline-flex;align-items:center;gap:14px;background:var(--sun);color:var(--ink);
+  font-family:var(--pos);font-weight:600;font-size:21px;letter-spacing:.05em;text-transform:uppercase;
+  padding:26px 46px;border-radius:999px;text-decoration:none;box-shadow:0 14px 34px rgba(0,0,0,.3);
+  margin-top:34px;align-self:flex-start}
+.small{font-family:var(--pos);font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(251,243,230,.65);margin-top:22px}
+
+@media screen and (max-width:1340px){
+  body{padding:10px}
+  .slide{transform-origin:top left;margin-bottom:14px}
+}
+@page{size:1280px 720px;margin:0}
+@media print{body{background:#fff;padding:0}.slide{margin:0;page-break-after:always;break-after:page}}
+</style>
 <meta name="description" content="Сто цепляющих первых строк для Reels, постов и сторис. Двадцать форматов, в каждом по пять готовых вариантов.">
-<meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="100 заголовков · подарок от Малены Покладовой">
 <meta property="og:image" content="https://malenapocladova.com/images/club/og-club.jpg">
 <link rel="icon" href="/images/club/favicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Prata&family=Oswald:wght@400;600;700&family=Onest:wght@400;500;600&family=Marck+Script&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#F2EAD9;--paper2:#FBF6EC;--card:#FFFDF8;--ink:#171313;--ink2:#4A4340;
-  --ink3:#7C736C;--line:#E2D7C2;--wine:#6B2138;--navy:#22314A;--sun:#F5C63A;
-  --disp:'Prata',Georgia,serif;--pos:'Oswald',Impact,sans-serif;
-  --body:'Onest',-apple-system,sans-serif;--hand:'Marck Script',cursive}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--paper);color:var(--ink);font-family:var(--body);
-  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
-.wrap{max-width:720px;margin:0 auto;padding:0 20px 80px}
-.top{text-align:center;padding:46px 0 34px}
-.top .kick{font-family:var(--pos);font-weight:600;font-size:11px;letter-spacing:.26em;
-  text-transform:uppercase;color:var(--wine);margin-bottom:16px}
-.top .n{font-family:var(--pos);font-weight:700;font-size:clamp(76px,22vw,150px);
-  line-height:.84;color:var(--wine);letter-spacing:-.02em}
-.top h1{font-family:var(--disp);font-weight:400;font-size:clamp(27px,7vw,44px);
-  line-height:1.1;margin:2px 0 14px}
-.top p{font-size:17px;color:var(--ink2);max-width:34ch;margin:0 auto}
-.top .from{font-family:var(--hand);font-size:25px;color:var(--navy);margin-top:16px}
-.btn{display:inline-flex;align-items:center;gap:9px;background:var(--sun);color:var(--ink);
-  text-decoration:none;font-family:var(--pos);font-weight:600;font-size:14px;letter-spacing:.1em;
-  text-transform:uppercase;padding:16px 28px;border-radius:999px;margin-top:22px;
-  box-shadow:0 8px 22px rgba(23,19,19,.16);transition:transform .18s,box-shadow .18s}
-.btn:active{transform:scale(.97)}
-.btn.wine{background:var(--wine);color:#F7EFE2}
-.intro{background:var(--card);border:1px solid var(--line);padding:24px 22px;margin:0 0 16px;
-  box-shadow:0 3px 14px rgba(23,19,19,.05)}
-.intro h2{font-family:var(--disp);font-weight:400;font-size:23px;line-height:1.2;margin-bottom:10px}
-.intro p{font-size:16px;color:var(--ink2);margin-bottom:9px}
-.intro .hand{font-family:var(--hand);font-size:21px;color:var(--wine);margin-top:4px}
-.sep{font-family:var(--pos);font-weight:600;font-size:11px;letter-spacing:.24em;
-  text-transform:uppercase;color:var(--wine);text-align:center;margin:44px 0 18px}
-.fmt{background:var(--card);border:1px solid var(--line);padding:22px 20px 20px;margin:0 0 14px;
-  box-shadow:0 3px 14px rgba(23,19,19,.05);position:relative}
-.fmt .k{font-family:var(--pos);font-weight:600;font-size:10.5px;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--ink3);display:block;margin-bottom:5px}
-.fmt h3{font-family:var(--disp);font-weight:400;font-size:24px;line-height:1.15;
-  color:var(--wine);margin-bottom:14px}
-.fmt ol{list-style:none;counter-reset:h}
-.fmt li{counter-increment:h;display:flex;gap:12px;padding:9px 0;border-top:1px solid var(--line);
-  font-size:16.5px;line-height:1.45}
-.fmt li::before{content:counter(h);font-family:var(--pos);font-weight:600;font-size:12px;
-  color:var(--sun);-webkit-text-stroke:.6px var(--wine);flex:none;width:16px;padding-top:3px}
-.fmt .note{font-family:var(--hand);font-size:20px;color:var(--navy);margin-top:14px;line-height:1.3}
-.fin{background:var(--navy);color:#EFE7DA;padding:34px 24px;margin:46px 0 0;text-align:center}
-.fin h2{font-family:var(--disp);font-weight:400;font-size:clamp(24px,6vw,32px);line-height:1.16;margin-bottom:12px}
-.fin h2 em{font-style:italic;color:var(--sun)}
-.fin p{font-size:16.5px;color:rgba(239,231,218,.86);max-width:38ch;margin:0 auto 4px}
-.foot{text-align:center;font-size:13.5px;color:var(--ink3);margin-top:26px}
-.foot a{color:var(--wine)}
-@media(max-width:520px){body{font-size:16px}.wrap{padding:0 15px 60px}
-  .fmt{padding:19px 16px 17px}.intro{padding:20px 17px}}
+/* ── адаптив: авторский макет на широком экране, читаемый на телефоне ── */
+@media (max-width:899px){
+  body{padding:0!important;background:var(--paper2)}
+  .slide{width:100%!important;height:auto!important;min-height:0!important;
+    transform:none!important;margin:0 0 12px!important;overflow:visible!important}
+  .pad{padding:56px 20px 52px!important}
+  .ruled .pad{padding-left:34px!important}
+  .ruled::after{left:20px!important}
+  .run,.foot{left:20px!important;right:20px!important;font-size:9px!important;
+    letter-spacing:.14em!important}
+  .ruled .run,.ruled .foot{left:34px!important}
+  .run{top:20px!important}
+  .foot{bottom:18px!important}
+  .big{font-size:32px!important}
+  .big.sm{font-size:29px!important}
+  .big.xs{font-size:26px!important}
+  .lede{font-size:16px!important;max-width:none!important}
+  .hand{font-size:19px!important}
+  .list{gap:13px!important;margin-top:18px!important;justify-content:flex-start!important}
+  .row{gap:12px!important}
+  .row .n{min-width:22px!important;font-size:12px!important;padding-top:3px!important}
+  .row .t{font-size:18px!important;line-height:1.3!important}
+  .errs,.steps{grid-template-columns:1fr!important;gap:12px!important;margin-top:20px!important}
+  .err{padding:16px 18px!important}
+  .err p{font-size:16px!important}
+  .st{padding:18px 18px 20px!important}
+  .st p{font-size:15.5px!important}
+  .st .num{width:36px!important;height:36px!important;font-size:17px!important;margin-bottom:12px!important}
+  .cover .pad{padding-top:56px!important;padding-bottom:54px!important}
+  .cover .huge{font-size:70px!important}
+  .cover .sub{font-size:19px!important;margin-top:14px!important;max-width:none!important}
+  .cover .from{font-size:26px!important;margin-top:14px!important}
+  .cta{font-size:15px!important;padding:16px 22px!important;margin-top:22px!important;
+    align-self:stretch!important;justify-content:center!important}
+  .small{font-size:10px!important}
+  /* наклейки, скотч и печати стоят на пиксельных координатах: на узком экране
+     они легли бы поверх текста, поэтому здесь их не показываем */
+  .stk,.tape,.seal{display:none!important}
+  .ph{position:static!important;width:100%!important;height:auto!important;
+    transform:none!important;margin:18px 0 0!important;padding:9px!important}
+  .ph img{height:auto!important;aspect-ratio:3/4;flex:none!important}
+  .ph .cap{font-size:19px!important}
+}
+
+/* кнопка скачивания, висит поверх страницы */
+.dl{position:fixed;right:18px;bottom:18px;z-index:50;display:inline-flex;align-items:center;gap:9px;
+  background:var(--sun);color:var(--ink);text-decoration:none;font-family:var(--pos);font-weight:600;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:14px 22px;border-radius:999px;
+  box-shadow:0 10px 26px rgba(23,19,19,.28);transition:transform .18s}
+.dl:active{transform:scale(.96)}
+@media (max-width:899px){.dl{right:12px;bottom:12px;font-size:11px;padding:12px 18px}}
+@media print{.dl{display:none}}
 </style>
-</head>
-<body>
-<div class="wrap">
-
-  <div class="top">
-    <div class="kick">Подарок для тех, кто оставил заявку</div>
-    <div class="n">100</div>
-    <h1>заголовков</h1>
-    <p>Цепляющие первые строки для ваших Reels, постов и сторис. Двадцать форматов, в каждом по пять готовых вариантов.</p>
-    <div class="from">от Малены Покладовой</div>
-    <a class="btn" href="/files/100-zagolovkov.pdf" download>Скачать PDF <span>&darr;</span></a>
+</head><body>
+<section class="slide cover">
+  <div class="ph" style="width:352px;height:472px;top:92px;right:96px;transform:rotate(3deg)">
+    <img src="/images/club/podarok/p-5134196fdd.jpg" alt="">
+    <div class="cap">это я, Малена</div>
   </div>
-
-  <div class="intro">
-    <h2>Это вам от меня</h2>
-    <p>Я собрала сто заголовков,
+  <div class="tape" style="top:78px;right:196px;transform:rotate(-5deg);width:132px;height:32px"></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-6db7ff75e1.png" style="left:690px;bottom:126px;transform:rotate(-8deg)">
+  <div class="pad" style="padding-left:238px">
+    <div style="font-family:var(--pos);font-weight:500;font-size:13px;letter-spacing:.3em;
+      text-transform:uppercase;color:var(--wine);margin-left:-160px">Подарок для тех, кто оставил заявку</div>
+    <div style="flex:1"></div>
+    <div class="huge" style="margin-left:-160px">100</div>
+    <div class="huge" style="font-size:106px;margin-top:6px;margin-left:-160px">заголовков</div>
+    <div class="sub" style="font-size:30px;max-width:19ch;margin-left:-160px">Цепляющие первые строки для ваших Reels, постов и сторис</div>
+    <div class="from" style="margin-left:-160px">от Малены Покладовой</div>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(02)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-f1b1793629.png" style="right:96px;bottom:112px;transform:rotate(6deg)">
+  <div class="pad" style="padding-right:300px">
+    <div style="flex:1"></div>
+    <div class="big sm">Это вам от меня</div>
+    <p class="lede" style="margin-top:26px;font-size:22px;max-width:44ch">Я собрала сто заголовков,
     с которых можно начать любой ролик, пост или сторис. Это те самые первые строки, после которых
     человек остаётся смотреть дальше.</p>
-    <p>Двадцать форматов, в каждом
+    <p class="lede" style="margin-top:16px;font-size:22px;max-width:44ch">Двадцать форматов, в каждом
     по пять готовых вариантов. Берите целиком или подставляйте свою тему.</p>
-    <div class="hand">Пусть они вам пригодятся</div>
+    <p style="margin-top:30px"><span class="hand" style="font-size:34px">Пусть они вам пригодятся</span></p>
+    <div style="flex:1"></div>
   </div>
-  <div class="intro">
-    <h2>Цель всегда одна: зацепить</h2>
-    <p>Чтобы человек захотел дослушать
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide navy">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(03)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-4671a7b633.png" style="right:104px;bottom:110px;transform:rotate(-7deg)">
+  <div class="pad" style="padding-right:320px">
+    <div style="flex:1"></div>
+    <div class="big sm">Цель всегда одна:<br>зацепить</div>
+    <p class="lede" style="margin-top:26px;font-size:22px;max-width:44ch">Чтобы человек захотел дослушать
     до конца. Заголовок определяет, будут ли смотреть дальше или пролистнут, и происходит это за первые
     две секунды.</p>
-    <p>Всё остальное начинается после него</p>
+    <p style="margin-top:26px"><span class="hand" style="font-size:34px">Всё остальное начинается после него</span></p>
+    <div style="flex:1"></div>
   </div>
-  <div class="intro">
-    <h2>Типичные ошибки в начале контента</h2>
-    <p>Долгие приветствия без конкретики</p>
-    <p>Сложные, заумные фразы там, где хватит простого обещания пользы</p>
-    <p>Название без интриги: человек не понял, о чём речь, и ушёл</p>
-    <p>Медленный старт без хука в первые две секунды</p>
-    <p>Проверьте по этому списку последние три своих ролика</p>
+  <div class="foot"><span>Клуб «ПроДвижение»</span><span>100 заголовков</span></div>
+</section>
+<section class="slide">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(04)</span></div>
+  <div class="pad">
+    <div class="big xs">Типичные ошибки<br>в начале контента</div>
+    <div class="errs"><div class="err"><b>Ошибка первая</b><p>Долгие приветствия без конкретики</p></div>
+<div class="err"><b>Ошибка вторая</b><p>Сложные, заумные фразы там, где хватит простого обещания пользы</p></div>
+<div class="err"><b>Ошибка третья</b><p>Название без интриги: человек не понял, о чём речь, и ушёл</p></div>
+<div class="err"><b>Ошибка четвёртая</b><p>Медленный старт без хука в первые две секунды</p></div></div>
+    <p style="margin-top:26px"><span class="hand" style="font-size:30px">Проверьте по этому списку последние три своих ролика</span></p>
   </div>
-  <div class="intro">
-    <h2>Как пользоваться гайдом</h2>
-    <p>Двадцать штук на следующих страницах. Каждый работает по своей механике.</p>
-    <p>Пять готовых вариантов в каждом формате. Берите как есть или подставляйте свою тему.</p>
-    <p>Заголовок звучит в первые две секунды и стоит текстом на обложке.</p>
-    <p>Отметьте те, что откликнулись. Пяти форматов, которыми вы пользуетесь регулярно, хватает на месяцы контента.</p>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(05)</span></div>
+  <div class="seal" style="bottom:56px;right:76px;width:126px;height:126px;font-size:11px"><b>20</b>форматов</div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-38c1165348.png" style="right:300px;bottom:70px;transform:rotate(-7deg)">
+  <div class="pad">
+    <div class="big xs">Как пользоваться гайдом</div>
+    <div class="steps">
+      <div class="st"><div class="num">1</div><h4>Выберите формат</h4>
+        <p>Двадцать штук на следующих страницах. Каждый работает по своей механике.</p></div>
+      <div class="st"><div class="num">2</div><h4>Возьмите строку</h4>
+        <p>Пять готовых вариантов в каждом формате. Берите как есть или подставляйте свою тему.</p></div>
+      <div class="st"><div class="num">3</div><h4>Скажите её первой</h4>
+        <p>Заголовок звучит в первые две секунды и стоит текстом на обложке.</p></div>
+    </div>
+    <p style="margin-top:30px;max-width:52ch;font-size:19px;line-height:1.45;color:var(--ink2)">
+    Отметьте те, что откликнулись. Пяти форматов, которыми вы пользуетесь регулярно, хватает на месяцы контента.</p>
   </div>
-  <div class="intro">
-    <h2>Сто заголовков у вас есть</h2>
-    <p>Дальше начинается то, ради чего они нужны:
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(06)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-00491d521e.png" style="right:78px;top:168px;transform:rotate(9deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 01 из 20</div>
+    <div class="big xs">Что будет, если…</div>
+    <div class="list"><div class="row"><div class="n">1</div><div class="t">Что случится, если перестать откладывать</div></div>
+<div class="row"><div class="n">2</div><div class="t">Что произойдёт, если сделать первый шаг</div></div>
+<div class="row"><div class="n">3</div><div class="t">Что изменится, если убрать одну привычку</div></div>
+<div class="row"><div class="n">4</div><div class="t">Что случится, если поверить в себя</div></div>
+<div class="row"><div class="n">5</div><div class="t">Что будет, если решиться рискнуть</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Обещайте будущее, которое человек уже примерял на себя</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(07)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-1fa0a57583.png" style="right:92px;bottom:136px;transform:rotate(-11deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 02 из 20</div>
+    <div class="big xs">Новый способ…</div>
+    <div class="list"><div class="row"><div class="n">6</div><div class="t">Новый способ выйти на клиентов</div></div>
+<div class="row"><div class="n">7</div><div class="t">Новый способ управлять временем</div></div>
+<div class="row"><div class="n">8</div><div class="t">Новый способ сохранить энергию</div></div>
+<div class="row"><div class="n">9</div><div class="t">Новый способ вырасти без рекламы</div></div>
+<div class="row"><div class="n">10</div><div class="t">Новый способ увеличить доход</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Слово «новый» работает, пока за ним правда стоит новое</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(08)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-39c9144566.png" style="right:68px;top:290px;transform:rotate(-6deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 03 из 20</div>
+    <div class="big xs">… за …</div>
+    <div class="list"><div class="row"><div class="n">11</div><div class="t">Уверенность за 7 дней</div></div>
+<div class="row"><div class="n">12</div><div class="t">Прорыв в блоге за месяц</div></div>
+<div class="row"><div class="n">13</div><div class="t">Новая версия себя за неделю</div></div>
+<div class="row"><div class="n">14</div><div class="t">Продуктивность за 10 минут</div></div>
+<div class="row"><div class="n">15</div><div class="t">Результат за 30 дней</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Срок делает обещание измеримым. Берите тот, что выдержите</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(09)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-778084c0f8.png" style="right:100px;top:210px;transform:rotate(13deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 04 из 20</div>
+    <div class="big xs">Гарантированный…</div>
+    <div class="list"><div class="row"><div class="n">16</div><div class="t">Гарантированный доход без лишних часов</div></div>
+<div class="row"><div class="n">17</div><div class="t">Гарантированное внимание аудитории</div></div>
+<div class="row"><div class="n">18</div><div class="t">Гарантированный шаг к цели</div></div>
+<div class="row"><div class="n">19</div><div class="t">Гарантированный рост без стресса</div></div>
+<div class="row"><div class="n">20</div><div class="t">Гарантированный результат, если начать сегодня</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Сильное слово. Ставьте его только туда, где действительно отвечаете</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(10)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-2767a750ee.png" style="right:78px;top:168px;transform:rotate(9deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 05 из 20</div>
+    <div class="big xs">Представьте…</div>
+    <div class="list"><div class="row"><div class="n">21</div><div class="t">Представьте, что у вас уже получилось</div></div>
+<div class="row"><div class="n">22</div><div class="t">Представьте, что ваша жизнь изменилась</div></div>
+<div class="row"><div class="n">23</div><div class="t">Представьте, что страх исчез</div></div>
+<div class="row"><div class="n">24</div><div class="t">Представьте, что на счету миллион</div></div>
+<div class="row"><div class="n">25</div><div class="t">Представьте, что мечты стали реальностью</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Человек досматривает то, что уже увидел внутри себя</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(11)</span></div>
+  <img class="stk tall" src="/images/club/podarok/p-7731b6740a.png" style="right:104px;top:150px;transform:rotate(5deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 06 из 20</div>
+    <div class="big xs">Мысль, которая…</div>
+    <div class="list"><div class="row"><div class="n">26</div><div class="t">Мысль, которая перевернёт день</div></div>
+<div class="row"><div class="n">27</div><div class="t">Мысль, которая сдвинет с места</div></div>
+<div class="row"><div class="n">28</div><div class="t">Мысль, которая изменила бизнес</div></div>
+<div class="row"><div class="n">29</div><div class="t">Мысль, которая не даёт сдаться</div></div>
+<div class="row"><div class="n">30</div><div class="t">Мысль, которая всё меняет</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Идеальный заход для короткого личного ролика</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(12)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-388fa8eeed.png" style="right:68px;top:290px;transform:rotate(-6deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 07 из 20</div>
+    <div class="big xs">Настоящее … не про …</div>
+    <div class="list"><div class="row"><div class="n">31</div><div class="t">Настоящее счастье не про деньги</div></div>
+<div class="row"><div class="n">32</div><div class="t">Настоящий успех не про идеальность</div></div>
+<div class="row"><div class="n">33</div><div class="t">Настоящая продуктивность не про 24/7</div></div>
+<div class="row"><div class="n">34</div><div class="t">Настоящая сила не про спортзал</div></div>
+<div class="row"><div class="n">35</div><div class="t">Настоящее развитие не про диплом</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Ломает ожидание с первой секунды. Досматривают, чтобы проверить</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(13)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-792480455a.png" style="right:100px;top:210px;transform:rotate(13deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 08 из 20</div>
+    <div class="big xs">Один… и вы…</div>
+    <div class="list"><div class="row"><div class="n">36</div><div class="t">Один шаг, и вы другая</div></div>
+<div class="row"><div class="n">37</div><div class="t">Один навык, и вы востребованы</div></div>
+<div class="row"><div class="n">38</div><div class="t">Один выбор, и жизнь меняется</div></div>
+<div class="row"><div class="n">39</div><div class="t">Одна мысль, и страх уходит</div></div>
+<div class="row"><div class="n">40</div><div class="t">Одно действие, и результат ваш</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Короткий ритм. Две части, между ними пауза</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(14)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-5565d8d4ba.png" style="right:78px;top:168px;transform:rotate(9deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 09 из 20</div>
+    <div class="big xs">Один секрет, один способ</div>
+    <div class="list"><div class="row"><div class="n">41</div><div class="t">Один секрет роста</div></div>
+<div class="row"><div class="n">42</div><div class="t">Один способ избавиться от страха</div></div>
+<div class="row"><div class="n">43</div><div class="t">Один секрет уверенности</div></div>
+<div class="row"><div class="n">44</div><div class="t">Один способ перестать прокрастинировать</div></div>
+<div class="row"><div class="n">45</div><div class="t">Один секрет, который все скрывают</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Слово «один» снимает страх, что будет долго и сложно</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(15)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-faeaad81b6.png" style="right:92px;bottom:136px;transform:rotate(-11deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 10 из 20</div>
+    <div class="big xs">Почему я не…</div>
+    <div class="list"><div class="row"><div class="n">46</div><div class="t">Почему я не жду удобного момента</div></div>
+<div class="row"><div class="n">47</div><div class="t">Почему я не копирую чужие шаги</div></div>
+<div class="row"><div class="n">48</div><div class="t">Почему я не выбираю лёгкий путь</div></div>
+<div class="row"><div class="n">49</div><div class="t">Почему я не соглашаюсь на меньшее</div></div>
+<div class="row"><div class="n">50</div><div class="t">Почему я не сдаюсь</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Личная позиция. Здесь вас узнают, а не просто слушают</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(16)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-5b42ae8fdb.png" style="right:68px;top:290px;transform:rotate(-6deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 11 из 20</div>
+    <div class="big xs">Честное мнение…</div>
+    <div class="list"><div class="row"><div class="n">51</div><div class="t">Честное мнение о бизнесе</div></div>
+<div class="row"><div class="n">52</div><div class="t">Честное мнение о рекламе</div></div>
+<div class="row"><div class="n">53</div><div class="t">Честное мнение о блогинге</div></div>
+<div class="row"><div class="n">54</div><div class="t">Честное мнение о саморазвитии</div></div>
+<div class="row"><div class="n">55</div><div class="t">Честное мнение о деньгах</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Обещание правды. Отработайте его в самом ролике</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(17)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-b7c6465b1d.png" style="right:100px;top:210px;transform:rotate(13deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 12 из 20</div>
+    <div class="big xs">Идеальное решение для…</div>
+    <div class="list"><div class="row"><div class="n">56</div><div class="t">Идеальное решение для ленивых</div></div>
+<div class="row"><div class="n">57</div><div class="t">Идеальное решение для новичков</div></div>
+<div class="row"><div class="n">58</div><div class="t">Идеальное решение для роста</div></div>
+<div class="row"><div class="n">59</div><div class="t">Идеальное решение для уставших</div></div>
+<div class="row"><div class="n">60</div><div class="t">Идеальное решение для смелых</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Назовите аудиторию вслух, и она себя услышит</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(18)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-d1e69a84ed.png" style="right:78px;top:168px;transform:rotate(9deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 13 из 20</div>
+    <div class="big xs">Это закон…</div>
+    <div class="list"><div class="row"><div class="n">61</div><div class="t">Закон успеха</div></div>
+<div class="row"><div class="n">62</div><div class="t">Закон дисциплины</div></div>
+<div class="row"><div class="n">63</div><div class="t">Закон уверенности</div></div>
+<div class="row"><div class="n">64</div><div class="t">Закон богатства</div></div>
+<div class="row"><div class="n">65</div><div class="t">Закон роста</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Два слова. Самый короткий заголовок в этом гайде</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(19)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-5f46574797.png" style="right:92px;bottom:136px;transform:rotate(-11deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 14 из 20</div>
+    <div class="big xs">Оказывается…</div>
+    <div class="list"><div class="row"><div class="n">66</div><div class="t">Оказывается, всё проще</div></div>
+<div class="row"><div class="n">67</div><div class="t">Оказывается, результат это не удача</div></div>
+<div class="row"><div class="n">68</div><div class="t">Оказывается, счастье рядом</div></div>
+<div class="row"><div class="n">69</div><div class="t">Оказывается, рост начинается с мелочей</div></div>
+<div class="row"><div class="n">70</div><div class="t">Оказывается, главное не деньги</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Заходит как открытие, которое вы сделали сами</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(20)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-8b80f8cd13.png" style="right:68px;top:290px;transform:rotate(-6deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 15 из 20</div>
+    <div class="big xs">Что лучше…</div>
+    <div class="list"><div class="row"><div class="n">71</div><div class="t">Что лучше: свобода или стабильность</div></div>
+<div class="row"><div class="n">72</div><div class="t">Что лучше: опыт или знания</div></div>
+<div class="row"><div class="n">73</div><div class="t">Что лучше: качество или количество</div></div>
+<div class="row"><div class="n">74</div><div class="t">Что лучше: действовать или ждать</div></div>
+<div class="row"><div class="n">75</div><div class="t">Что лучше: риск или комфорт</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Вопрос делит аудиторию на два лагеря. Комментарии приходят сами</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(21)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-0c8190a9a2.png" style="right:100px;top:210px;transform:rotate(13deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 16 из 20</div>
+    <div class="big xs">Этот Reels сохранит…</div>
+    <div class="list"><div class="row"><div class="n">76</div><div class="t">Этот Reels сохранит вам время</div></div>
+<div class="row"><div class="n">77</div><div class="t">Этот Reels сохранит деньги</div></div>
+<div class="row"><div class="n">78</div><div class="t">Этот Reels сохранит силы</div></div>
+<div class="row"><div class="n">79</div><div class="t">Этот Reels сохранит нервы</div></div>
+<div class="row"><div class="n">80</div><div class="t">Этот Reels сохранит годы ошибок</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Прямое обещание пользы. Работает на сохранения</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(22)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-e6b710aa00.png" style="right:78px;top:168px;transform:rotate(9deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 17 из 20</div>
+    <div class="big xs">Главный вопрос…</div>
+    <div class="list"><div class="row"><div class="n">81</div><div class="t">Главный вопрос бизнеса</div></div>
+<div class="row"><div class="n">82</div><div class="t">Главный вопрос отношений</div></div>
+<div class="row"><div class="n">83</div><div class="t">Главный вопрос блогера</div></div>
+<div class="row"><div class="n">84</div><div class="t">Главный вопрос карьеры</div></div>
+<div class="row"><div class="n">85</div><div class="t">Главный вопрос жизни</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Слово «главный» обещает, что дальше будет суть</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(23)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-5d292e71cb.png" style="right:92px;bottom:136px;transform:rotate(-11deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 18 из 20</div>
+    <div class="big xs">Самая большая ошибка…</div>
+    <div class="list"><div class="row"><div class="n">86</div><div class="t">Самая большая ошибка новичков</div></div>
+<div class="row"><div class="n">87</div><div class="t">Самая большая ошибка блогеров</div></div>
+<div class="row"><div class="n">88</div><div class="t">Самая большая ошибка бизнеса</div></div>
+<div class="row"><div class="n">89</div><div class="t">Самая большая ошибка студентов</div></div>
+<div class="row"><div class="n">90</div><div class="t">Самая большая ошибка лидеров</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Никто не хочет оказаться тем, кто её совершает</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(24)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-41b6140d25.png" style="right:68px;top:290px;transform:rotate(-6deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 19 из 20</div>
+    <div class="big xs">Главное, что мешало…</div>
+    <div class="list"><div class="row"><div class="n">91</div><div class="t">Главное, что мешало мне расти</div></div>
+<div class="row"><div class="n">92</div><div class="t">Главное, что мешало мне начать</div></div>
+<div class="row"><div class="n">93</div><div class="t">Главное, что мешало мне заработать</div></div>
+<div class="row"><div class="n">94</div><div class="t">Главное, что мешало мне поверить в себя</div></div>
+<div class="row"><div class="n">95</div><div class="t">Главное, что мешало мне быть счастливой</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">История про себя. Самый тёплый формат из всех</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide ruled">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(25)</span></div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-f853f96f52.png" style="right:100px;top:210px;transform:rotate(13deg)">
+  <div class="pad">
+    <div style="font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.26em;
+      text-transform:uppercase;color:var(--ink3);margin-bottom:12px">Формат 20 из 20</div>
+    <div class="big xs">Вы будете… пока не…</div>
+    <div class="list"><div class="row"><div class="n">96</div><div class="t">Вы будете стоять на месте, пока не рискнёте</div></div>
+<div class="row"><div class="n">97</div><div class="t">Вы будете сомневаться, пока не попробуете</div></div>
+<div class="row"><div class="n">98</div><div class="t">Вы будете терять время, пока не начнёте</div></div>
+<div class="row"><div class="n">99</div><div class="t">Вы будете жалеть, пока не решитесь</div></div>
+<div class="row"><div class="n">100</div><div class="t">Вы будете обычной, пока не выберете большее</div></div></div>
+    <p style="margin-top:6px;margin-bottom:6px"><span class="hand" style="font-size:30px">Подавайте мысль мягче, иначе прозвучит как упрёк</span></p>
+  </div>
+  <div class="foot"><span>Клуб «ПроДвижение» · malenapocladova.com</span><span>100 заголовков</span></div>
+</section>
+<section class="slide wine">
+  <div class="run"><span>100 заголовков · подарок от Малены Покладовой</span><span>(26)</span></div>
+  <div class="ph" style="width:306px;height:398px;top:168px;right:104px;transform:rotate(2deg)">
+    <img src="/images/club/podarok/p-1b8a36a3c1.jpg" alt="">
+  </div>
+  <div class="seal" style="top:66px;right:112px;width:122px;height:122px;font-size:11px"><b>1</b>сентября</div>
+  <img loading="lazy" class="stk" src="/images/club/podarok/p-5b42ae8fdb.png" style="right:432px;bottom:104px;transform:rotate(-10deg)">
+  <div class="pad" style="padding-right:470px">
+    <div style="flex:1"></div>
+    <div class="big" style="font-size:58px;color:var(--sun)">Сто заголовков<br>у вас есть</div>
+    <p class="lede" style="margin-top:22px;font-size:19px">Дальше начинается то, ради чего они нужны:
     регулярность, поддержка и люди рядом, которые двигаются в ту же сторону.</p>
-    <p>Первого сентября я открываю клуб «ПроДвижение».
+    <p class="lede" style="margin-top:12px;font-size:19px">Первого сентября я открываю клуб «ПроДвижение».
     Девять месяцев, пять направлений, задания каждую неделю и комьюнити, из которого не хочется выходить.</p>
+    <a class="cta" href="https://malenapocladova.com/prodvizhenie">Хочу стать частью сообщества →</a>
+    <div class="small">Клуб «ПроДвижение» · Малена Покладова · malenapocladova.com</div>
+    <div style="flex:1"></div>
   </div>
-  <div class="sep">Двадцать форматов, сто строк</div>
-  <div class="fmt">
-    <span class="k">Формат 01 из 20</span>
-    <h3>Что будет, если…</h3>
-    <ol>
-      <li>Что случится, если перестать откладывать</li>
-      <li>Что произойдёт, если сделать первый шаг</li>
-      <li>Что изменится, если убрать одну привычку</li>
-      <li>Что случится, если поверить в себя</li>
-      <li>Что будет, если решиться рискнуть</li>
-    </ol>
-    <div class="note">Обещайте будущее, которое человек уже примерял на себя</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 02 из 20</span>
-    <h3>Новый способ…</h3>
-    <ol>
-      <li>Новый способ выйти на клиентов</li>
-      <li>Новый способ управлять временем</li>
-      <li>Новый способ сохранить энергию</li>
-      <li>Новый способ вырасти без рекламы</li>
-      <li>Новый способ увеличить доход</li>
-    </ol>
-    <div class="note">Слово «новый» работает, пока за ним правда стоит новое</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 03 из 20</span>
-    <h3>… за …</h3>
-    <ol>
-      <li>Уверенность за 7 дней</li>
-      <li>Прорыв в блоге за месяц</li>
-      <li>Новая версия себя за неделю</li>
-      <li>Продуктивность за 10 минут</li>
-      <li>Результат за 30 дней</li>
-    </ol>
-    <div class="note">Срок делает обещание измеримым. Берите тот, что выдержите</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 04 из 20</span>
-    <h3>Гарантированный…</h3>
-    <ol>
-      <li>Гарантированный доход без лишних часов</li>
-      <li>Гарантированное внимание аудитории</li>
-      <li>Гарантированный шаг к цели</li>
-      <li>Гарантированный рост без стресса</li>
-      <li>Гарантированный результат, если начать сегодня</li>
-    </ol>
-    <div class="note">Сильное слово. Ставьте его только туда, где действительно отвечаете</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 05 из 20</span>
-    <h3>Представьте…</h3>
-    <ol>
-      <li>Представьте, что у вас уже получилось</li>
-      <li>Представьте, что ваша жизнь изменилась</li>
-      <li>Представьте, что страх исчез</li>
-      <li>Представьте, что на счету миллион</li>
-      <li>Представьте, что мечты стали реальностью</li>
-    </ol>
-    <div class="note">Человек досматривает то, что уже увидел внутри себя</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 06 из 20</span>
-    <h3>Мысль, которая…</h3>
-    <ol>
-      <li>Мысль, которая перевернёт день</li>
-      <li>Мысль, которая сдвинет с места</li>
-      <li>Мысль, которая изменила бизнес</li>
-      <li>Мысль, которая не даёт сдаться</li>
-      <li>Мысль, которая всё меняет</li>
-    </ol>
-    <div class="note">Идеальный заход для короткого личного ролика</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 07 из 20</span>
-    <h3>Настоящее … не про …</h3>
-    <ol>
-      <li>Настоящее счастье не про деньги</li>
-      <li>Настоящий успех не про идеальность</li>
-      <li>Настоящая продуктивность не про 24/7</li>
-      <li>Настоящая сила не про спортзал</li>
-      <li>Настоящее развитие не про диплом</li>
-    </ol>
-    <div class="note">Ломает ожидание с первой секунды. Досматривают, чтобы проверить</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 08 из 20</span>
-    <h3>Один… и вы…</h3>
-    <ol>
-      <li>Один шаг, и вы другая</li>
-      <li>Один навык, и вы востребованы</li>
-      <li>Один выбор, и жизнь меняется</li>
-      <li>Одна мысль, и страх уходит</li>
-      <li>Одно действие, и результат ваш</li>
-    </ol>
-    <div class="note">Короткий ритм. Две части, между ними пауза</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 09 из 20</span>
-    <h3>Один секрет, один способ</h3>
-    <ol>
-      <li>Один секрет роста</li>
-      <li>Один способ избавиться от страха</li>
-      <li>Один секрет уверенности</li>
-      <li>Один способ перестать прокрастинировать</li>
-      <li>Один секрет, который все скрывают</li>
-    </ol>
-    <div class="note">Слово «один» снимает страх, что будет долго и сложно</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 10 из 20</span>
-    <h3>Почему я не…</h3>
-    <ol>
-      <li>Почему я не жду удобного момента</li>
-      <li>Почему я не копирую чужие шаги</li>
-      <li>Почему я не выбираю лёгкий путь</li>
-      <li>Почему я не соглашаюсь на меньшее</li>
-      <li>Почему я не сдаюсь</li>
-    </ol>
-    <div class="note">Личная позиция. Здесь вас узнают, а не просто слушают</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 11 из 20</span>
-    <h3>Честное мнение…</h3>
-    <ol>
-      <li>Честное мнение о бизнесе</li>
-      <li>Честное мнение о рекламе</li>
-      <li>Честное мнение о блогинге</li>
-      <li>Честное мнение о саморазвитии</li>
-      <li>Честное мнение о деньгах</li>
-    </ol>
-    <div class="note">Обещание правды. Отработайте его в самом ролике</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 12 из 20</span>
-    <h3>Идеальное решение для…</h3>
-    <ol>
-      <li>Идеальное решение для ленивых</li>
-      <li>Идеальное решение для новичков</li>
-      <li>Идеальное решение для роста</li>
-      <li>Идеальное решение для уставших</li>
-      <li>Идеальное решение для смелых</li>
-    </ol>
-    <div class="note">Назовите аудиторию вслух, и она себя услышит</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 13 из 20</span>
-    <h3>Это закон…</h3>
-    <ol>
-      <li>Закон успеха</li>
-      <li>Закон дисциплины</li>
-      <li>Закон уверенности</li>
-      <li>Закон богатства</li>
-      <li>Закон роста</li>
-    </ol>
-    <div class="note">Два слова. Самый короткий заголовок в этом гайде</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 14 из 20</span>
-    <h3>Оказывается…</h3>
-    <ol>
-      <li>Оказывается, всё проще</li>
-      <li>Оказывается, результат это не удача</li>
-      <li>Оказывается, счастье рядом</li>
-      <li>Оказывается, рост начинается с мелочей</li>
-      <li>Оказывается, главное не деньги</li>
-    </ol>
-    <div class="note">Заходит как открытие, которое вы сделали сами</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 15 из 20</span>
-    <h3>Что лучше…</h3>
-    <ol>
-      <li>Что лучше: свобода или стабильность</li>
-      <li>Что лучше: опыт или знания</li>
-      <li>Что лучше: качество или количество</li>
-      <li>Что лучше: действовать или ждать</li>
-      <li>Что лучше: риск или комфорт</li>
-    </ol>
-    <div class="note">Вопрос делит аудиторию на два лагеря. Комментарии приходят сами</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 16 из 20</span>
-    <h3>Этот Reels сохранит…</h3>
-    <ol>
-      <li>Этот Reels сохранит вам время</li>
-      <li>Этот Reels сохранит деньги</li>
-      <li>Этот Reels сохранит силы</li>
-      <li>Этот Reels сохранит нервы</li>
-      <li>Этот Reels сохранит годы ошибок</li>
-    </ol>
-    <div class="note">Прямое обещание пользы. Работает на сохранения</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 17 из 20</span>
-    <h3>Главный вопрос…</h3>
-    <ol>
-      <li>Главный вопрос бизнеса</li>
-      <li>Главный вопрос отношений</li>
-      <li>Главный вопрос блогера</li>
-      <li>Главный вопрос карьеры</li>
-      <li>Главный вопрос жизни</li>
-    </ol>
-    <div class="note">Слово «главный» обещает, что дальше будет суть</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 18 из 20</span>
-    <h3>Самая большая ошибка…</h3>
-    <ol>
-      <li>Самая большая ошибка новичков</li>
-      <li>Самая большая ошибка блогеров</li>
-      <li>Самая большая ошибка бизнеса</li>
-      <li>Самая большая ошибка студентов</li>
-      <li>Самая большая ошибка лидеров</li>
-    </ol>
-    <div class="note">Никто не хочет оказаться тем, кто её совершает</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 19 из 20</span>
-    <h3>Главное, что мешало…</h3>
-    <ol>
-      <li>Главное, что мешало мне расти</li>
-      <li>Главное, что мешало мне начать</li>
-      <li>Главное, что мешало мне заработать</li>
-      <li>Главное, что мешало мне поверить в себя</li>
-      <li>Главное, что мешало мне быть счастливой</li>
-    </ol>
-    <div class="note">История про себя. Самый тёплый формат из всех</div>
-  </div>
-  <div class="fmt">
-    <span class="k">Формат 20 из 20</span>
-    <h3>Вы будете… пока не…</h3>
-    <ol>
-      <li>Вы будете стоять на месте, пока не рискнёте</li>
-      <li>Вы будете сомневаться, пока не попробуете</li>
-      <li>Вы будете терять время, пока не начнёте</li>
-      <li>Вы будете жалеть, пока не решитесь</li>
-      <li>Вы будете обычной, пока не выберете большее</li>
-    </ol>
-    <div class="note">Подавайте мысль мягче, иначе прозвучит как упрёк</div>
-  </div>
-
-  <div class="fin">
-    <h2>А дальше начинается <em>самое интересное</em></h2>
-    <p>Заголовок вытаскивает первые две секунды. Всё остальное решает система: что снимать, когда выкладывать и кто вас поддержит, когда снимать не хочется.</p>
-    <p>Ровно это и есть клуб «ПроДвижение». Старт 1 сентября, $19 в месяц.</p>
-    <a class="btn" href="/prodvizhenie?utm_source=podarok&utm_medium=pdf&utm_campaign=100-zagolovkov">Посмотреть клуб</a>
-  </div>
-
-  <div class="foot">
-    Малена Покладова · <a href="/prodvizhenie">клуб «ПроДвижение»</a><br>
-    Материал для личного использования. Пересылать можно, продавать нельзя.
-  </div>
-
-</div>
-
-
+</section><script>
+function fit(){
+  var w=document.documentElement.clientWidth;
+  var slides=document.querySelectorAll('.slide');
+  if(w>=900&&w<1340){
+    var s=(w-20)/1280;
+    slides.forEach(function(el){
+      el.style.transformOrigin='top left';
+      el.style.transform='scale('+s+')';
+      el.style.marginBottom=(720*s-720+14)+'px';
+    });
+  }else{
+    slides.forEach(function(el){el.style.transform='';el.style.marginBottom='';});
+  }
+}
+fit();addEventListener('resize',fit);
+</script>
+<a class="dl" href="/files/100-zagolovkov.pdf" download>Скачать PDF &darr;</a>
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -378,9 +623,10 @@ t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
 document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1350449057220500');fbq('track','PageView');
 fbq('trackCustom','GiftOpened',{content_name:'100 заголовков'});
-document.querySelectorAll('a[href$=".pdf"]').forEach(function(a){
-  a.addEventListener('click',function(){fbq('trackCustom','GiftDownload')});
+document.querySelector('.dl').addEventListener('click',function(){fbq('trackCustom','GiftDownload')});
+document.querySelectorAll('a[href*="prodvizhenie"]').forEach(function(a){
+  if(!a.href.includes('utm_')) a.href += (a.href.includes('?')?'&':'?')+'utm_source=podarok&utm_medium=gift&utm_campaign=100-zagolovkov';
+  a.addEventListener('click',function(){fbq('trackCustom','GiftToClub')});
 });
 </script>
-</body>
-</html>
+</body></html>
