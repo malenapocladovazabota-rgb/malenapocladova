@@ -443,7 +443,9 @@ footer a{color:rgba(242,234,217,.72)}
   .hero .cl{font-size:21px}
   .hero .frame{aspect-ratio:auto;display:block}
   .hero .frame img{height:auto;aspect-ratio:1/.84;object-position:56% 22%;display:block}
-  .hero .cap{position:static;background:var(--ink);
+  /* Подложка под снимком была почти чёрная и весила слишком много.
+     Теперь тёмно-синий из палитры сайта, тот же, что в шапке и в «Для кого». */
+  .hero .cap{position:static;background:linear-gradient(180deg,#2A3A56 0%,var(--navy) 100%);
     flex-direction:column;align-items:stretch;padding:20px 18px 22px;gap:12px}
   .hero .cap h1{font-size:25px;line-height:1.1;max-width:none}
   .hero .cap p{font-size:14.5px;margin-top:8px;max-width:none}
