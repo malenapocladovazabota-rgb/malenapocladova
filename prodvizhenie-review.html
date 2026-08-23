@@ -97,11 +97,6 @@ h3{font-family:var(--disp);font-size:23px;line-height:1.18;font-weight:400}
 .ar{transition:transform .2s}.btn:hover .ar{transform:translateX(5px)}
 
 .st{position:absolute;pointer-events:none;z-index:4;filter:drop-shadow(0 6px 14px rgba(23,19,19,.16))}
-.pill{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
-  background:var(--sun);color:var(--ink);border-radius:50%;text-align:center;
-  font-family:var(--pos);font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:11px;
-  line-height:1.5;box-shadow:0 8px 24px rgba(23,19,19,.2)}
-.pill s{font-family:var(--disp);font-size:30px;letter-spacing:0;text-decoration:none;display:block}
 
 /* ═══════ ШАПКА ═══════ */
 /* Шапка не занимает первый экран: она выезжает сверху только после героя. */
@@ -139,7 +134,10 @@ nav .go:hover{color:var(--ink);background:var(--sun2)}
   animation:pop 1s cubic-bezier(.34,1.56,.64,1) .35s both}
 @keyframes pop{from{transform:scale(.55) rotate(-8deg);opacity:0}to{transform:none;opacity:1}}
 .hero .big .thin{font-weight:300;color:var(--navy)}
-.hero .stage{position:relative;max-width:1220px;margin:-2.4vw auto 0;padding:0 22px}
+/* Заголовок стоит НАД снимком на любом экране, а не заезжает под него.
+   Раньше был отрицательный отступ, из-за которого фото съедало низ букв. */
+.hero .bleed.big{line-height:.95}
+.hero .stage{position:relative;max-width:1220px;margin:clamp(10px,1.4vw,26px) auto 0;padding:0 22px}
 .hero .frame{position:relative;aspect-ratio:16/8.4;overflow:hidden;background:var(--ink);
   border-radius:4px;box-shadow:0 24px 70px rgba(23,19,19,.24)}
 .hero .frame img{width:100%;height:100%;object-fit:cover;object-position:52% 30%;animation:kb 22s ease-out forwards}
@@ -162,9 +160,7 @@ nav .go:hover{color:var(--ink);background:var(--sun2)}
 .hero .below p{font-size:14.5px;color:var(--ink2);line-height:1.45}
 .hero .s1{width:118px;right:2%;top:8%;transform:rotate(9deg)}
 .hero .s2{width:96px;left:1%;bottom:20%;transform:rotate(-13deg)}
-.hero .pl{position:absolute;right:5%;top:12%;width:126px;height:126px;z-index:6;transform:rotate(-11deg);
-  animation:bob 4.5s ease-in-out infinite}
-@keyframes bob{0%,100%{transform:rotate(-11deg) translateY(0)}50%{transform:rotate(-9deg) translateY(-9px)}}
+50%{transform:rotate(-9deg) translateY(-9px)}}
 
 /* ═══════ БЕГУЩАЯ СТРОКА ═══════ */
 .tick{background:var(--wine);color:#FBF3E6;padding:16px 0;overflow:hidden;white-space:nowrap}
@@ -447,11 +443,6 @@ footer a{color:rgba(242,234,217,.72)}
   .hero{padding-top:16px}
   .hero .top{margin-bottom:12px}
   .hero .cl{font-size:21px}
-  .hero .pill{display:none}
-  /* На телефоне заголовок стоит НАД снимком, а не заезжает под него:
-     на большом экране наезд смотрится как приём, на маленьком просто съедает буквы. */
-  .hero .bleed.big{line-height:.95}
-  .hero .stage{margin-top:12px}
   .hero .frame{aspect-ratio:auto;display:block}
   .hero .frame img{height:auto;aspect-ratio:1/.84;object-position:56% 22%;display:block}
   .hero .cap{position:static;background:var(--ink);
@@ -462,7 +453,6 @@ footer a{color:rgba(242,234,217,.72)}
   .hero .cap .btn.big{width:100%;justify-content:center;padding:15px 20px;font-size:14.5px}
   .hero .cap .rt small{margin-top:8px}
   .hero .below{grid-template-columns:1fr;padding-bottom:64px}
-  .hero .pl{width:88px;height:88px;right:5%;top:auto;bottom:-26px}
   .hero .s1{width:70px;right:-1%;top:3%}
   .hero .s2{width:58px;left:-2%;bottom:14%}
   .dir .tx .t{font-size:21px}
@@ -563,7 +553,6 @@ footer a{color:rgba(242,234,217,.72)}
   <div class="stage">
     <img class="st s1" src="images/club/st-pencil.png" alt="" loading="lazy" decoding="async">
     <img class="st s2" src="images/club/st-scissors.png" alt="" loading="lazy" decoding="async">
-    <div class="pill"><s>$19</s>в месяц</div>
     <div class="frame">
       <img src="images/club/m-hero.jpg" alt="Малена Покладова" loading="lazy" decoding="async">
       <div class="cap">
