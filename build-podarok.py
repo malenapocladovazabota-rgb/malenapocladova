@@ -74,9 +74,13 @@ def extract_images(html: str) -> tuple[str, int, int]:
 MOBILE_CSS = """
 /* ── адаптив: авторский макет на широком экране, читаемый на телефоне ── */
 @media (max-width:899px){
+  /* Обложка сдвинута влево на 160 пикселей: на широком экране это часть композиции,
+     на телефоне заголовок уезжал за край. Сдвиг и два кегля вынесены в переменные,
+     чтобы обнулить их здесь и не трогать макет на компьютере. */
+  :root{--pull:0px;--h2:40px;--sub:16.5px}
   body{padding:0!important;background:var(--paper2)}
   .slide{width:100%!important;height:auto!important;min-height:0!important;
-    transform:none!important;margin:0 0 12px!important;overflow:visible!important}
+    transform:none!important;margin:0 0 12px!important;overflow:hidden!important}
   .pad{padding:56px 20px 52px!important}
   .ruled .pad{padding-left:34px!important}
   .ruled::after{left:20px!important}
@@ -101,9 +105,12 @@ MOBILE_CSS = """
   .st p{font-size:15.5px!important}
   .st .num{width:36px!important;height:36px!important;font-size:17px!important;margin-bottom:12px!important}
   .cover .pad{padding-top:56px!important;padding-bottom:54px!important}
-  .cover .huge{font-size:70px!important}
-  .cover .sub{font-size:19px!important;margin-top:14px!important;max-width:none!important}
-  .cover .from{font-size:26px!important;margin-top:14px!important}
+  /* без !important: второй заголовок держит свой кегль через переменную --h2 */
+  .cover .huge{font-size:56px}
+  .cover .sub{margin-top:14px!important;max-width:none!important}
+  .cover .from{font-size:24px!important;margin-top:14px!important}
+  /* полароид лежит в разметке первым, на телефоне он закрывал бы весь первый экран */
+  .ph{order:9!important;margin:16px 0 0!important}
   .cta{font-size:15px!important;padding:16px 22px!important;margin-top:22px!important;
     align-self:stretch!important;justify-content:center!important}
   .small{font-size:10px!important}
@@ -184,6 +191,14 @@ def main():
 
     # ленивую загрузку картинкам, кроме тех, что на первом экране
     html = html.replace('<img class="stk"', '<img loading="lazy" class="stk"')
+
+    # Жёсткие пиксели обложки переводим в переменные, чтобы адаптив мог их обнулить,
+    # а на компьютере всё осталось ровно как задумано.
+    pulls = html.count("margin-left:-160px")
+    html = html.replace("margin-left:-160px", "margin-left:var(--pull,-160px)")
+    html = html.replace("font-size:106px", "font-size:var(--h2,106px)")
+    html = html.replace("font-size:30px;max-width:19ch", "font-size:var(--sub,30px);max-width:19ch")
+    print(f"Сдвигов обложки переведено в переменные: {pulls}")
 
     # свой обработчик масштаба вместо авторского
     html = re.sub(r"<script>.*?</script>", f"<script>{FIT_JS}</script>", html, count=1, flags=re.S)
