@@ -160,7 +160,6 @@ nav .go:hover{color:var(--ink);background:var(--sun2)}
 .hero .below p{font-size:14.5px;color:var(--ink2);line-height:1.45}
 .hero .s1{width:118px;right:2%;top:8%;transform:rotate(9deg)}
 .hero .s2{width:96px;left:1%;bottom:20%;transform:rotate(-13deg)}
-50%{transform:rotate(-9deg) translateY(-9px)}}
 
 /* ═══════ БЕГУЩАЯ СТРОКА ═══════ */
 .tick{background:var(--wine);color:#FBF3E6;padding:16px 0;overflow:hidden;white-space:nowrap}
@@ -445,7 +444,9 @@ footer a{color:rgba(242,234,217,.72)}
   .hero .cl{font-size:21px}
   .hero .frame{aspect-ratio:auto;display:block}
   .hero .frame img{height:auto;aspect-ratio:1/.84;object-position:56% 22%;display:block}
-  .hero .cap{position:static;background:var(--ink);
+  /* Подложка под снимком была почти чёрная и весила слишком много.
+     Теперь тёмно-синий из палитры сайта, тот же, что в шапке и в «Для кого». */
+  .hero .cap{position:static;background:linear-gradient(180deg,#2A3A56 0%,var(--navy) 100%);
     flex-direction:column;align-items:stretch;padding:20px 18px 22px;gap:12px}
   .hero .cap h1{font-size:25px;line-height:1.1;max-width:none}
   .hero .cap p{font-size:14.5px;margin-top:8px;max-width:none}
