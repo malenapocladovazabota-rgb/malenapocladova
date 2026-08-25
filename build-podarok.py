@@ -155,7 +155,7 @@ fit();addEventListener('resize',fit);
 HEAD_ADD = f"""
 <meta name="description" content="Сто цепляющих первых строк для Reels, постов и сторис. Двадцать форматов, в каждом по пять готовых вариантов.">
 <meta property="og:title" content="100 заголовков · подарок от Малены Покладовой">
-<meta property="og:image" content="https://malenapocladova.com/images/club/og-club-v2.jpg">
+<meta property="og:image" content="https://malenapocladova.com/images/club/og-club-v3.jpg">
 <link rel="icon" href="/images/club/favicon.png">
 <style>{MOBILE_CSS}</style>
 """
