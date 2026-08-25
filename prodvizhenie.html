@@ -136,9 +136,9 @@ nav .go:hover{color:var(--ink);background:var(--sun2)}
    Раньше был отрицательный отступ, из-за которого фото съедало низ букв. */
 .hero .bleed.big{line-height:.95}
 .hero .stage{position:relative;max-width:1220px;margin:clamp(10px,1.4vw,26px) auto 0;padding:0 22px}
-.hero .frame{position:relative;aspect-ratio:16/8.4;overflow:hidden;background:var(--ink);
+.hero .frame{position:relative;aspect-ratio:16/10.5;overflow:hidden;background:var(--ink);
   border-radius:4px;box-shadow:0 24px 70px rgba(23,19,19,.24)}
-.hero .frame img{width:100%;height:100%;object-fit:cover;object-position:52% 30%;animation:kb 22s ease-out forwards}
+.hero .frame img{width:100%;height:100%;object-fit:cover;object-position:60% 26%;animation:kb 22s ease-out forwards}
 @keyframes kb{from{transform:scale(1.1)}to{transform:none}}
 .hero .cap{position:absolute;left:0;right:0;bottom:0;padding:44px 44px 36px;color:#FDF7EE;z-index:3;
   background:linear-gradient(to top,rgba(20,16,16,.9),rgba(20,16,16,.34) 52%,transparent);
@@ -418,7 +418,7 @@ footer a{color:rgba(242,234,217,.72)}
 @media(max-width:1000px){
   section{padding:70px 0}
   .hero .below{grid-template-columns:1fr 1fr}
-  .hero .frame{aspect-ratio:4/3.2}
+  .hero .frame{aspect-ratio:4/3.4}
   .hero .cap{padding:32px 26px 26px}
   .notes,.res,.grs{grid-template-columns:1fr 1fr}
   .wl{grid-template-columns:1fr;gap:0}
@@ -457,7 +457,7 @@ footer a{color:rgba(242,234,217,.72)}
   .hero .top{margin-bottom:12px}
   .hero .cl{font-size:21px}
   .hero .frame{aspect-ratio:auto;display:block}
-  .hero .frame img{height:auto;aspect-ratio:1/.84;object-position:56% 22%;display:block}
+  .hero .frame img{height:auto;aspect-ratio:1/.92;object-position:57% 24%;display:block}
   /* Подложка под снимком была почти чёрная и весила слишком много.
      Теперь тёмно-синий из палитры сайта, тот же, что в шапке и в «Для кого». */
   .hero .cap{position:static;background:linear-gradient(180deg,#2A3A56 0%,var(--navy) 100%);
