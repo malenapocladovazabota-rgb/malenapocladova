@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Оплата · Клуб «ПроДвижение»</title>
+<link rel="icon" href="/images/club/favicon.png">
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1350449057220500');fbq('track','PageView');
+</script>
+<!-- End Meta Pixel -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Oswald:wght@500;600&family=Onest:wght@400;500;600&family=Marck+Script&display=swap" rel="stylesheet">
+<script src="https://js.stripe.com/v3/"></script>
+<style>
+:root{
+  --paper:#F2EAD9; --paper2:#FBF6EC; --card:#FFFDF8; --ink:#171313; --ink2:#3B3333; --ink3:#6B605C;
+  --wine:#6B2138; --navy:#22314A; --blue:#B7D9FE; --sun:#F5C63A;
+  --line:rgba(23,19,19,.14);
+  --disp:'Prata',Georgia,serif; --pos:'Oswald',sans-serif; --txt:'Onest',sans-serif; --hand:'Marck Script',cursive;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--txt);
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.top{background:var(--wine);color:#F7F0E4;padding:14px 18px;display:flex;align-items:center;gap:12px}
+.top img{width:34px;height:34px;border-radius:3px;display:block}
+.top b{font-family:var(--pos);font-weight:600;font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+.top a{margin-left:auto;color:#F7F0E4;opacity:.75;text-decoration:none;font-size:14px}
+.wrap{max-width:1000px;margin:0 auto;padding:26px 18px 70px;
+  display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
+h1{font-family:var(--disp);font-weight:400;font-size:clamp(26px,4.6vw,34px);line-height:1.16;margin:0 0 6px}
+.hand{font-family:var(--hand);font-size:24px;color:var(--navy);transform:rotate(-1deg);display:inline-block;margin-bottom:14px}
+.box{background:var(--card);border:1px solid var(--line);padding:22px 24px;box-shadow:0 10px 34px rgba(23,19,19,.07)}
+.price{display:flex;align-items:baseline;gap:12px;margin:2px 0 4px}
+.price .n{font-family:var(--disp);font-size:44px;line-height:1}
+.price .p{font-family:var(--pos);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.was{color:var(--ink3);text-decoration:line-through;font-size:15px}
+.when{font-size:14.5px;color:var(--ink3);border-top:1px solid var(--line);margin-top:14px;padding-top:12px}
+ul{list-style:none;margin:16px 0 0;padding:0}
+li{position:relative;padding-left:24px;margin-bottom:9px;font-size:15.4px;color:var(--ink2)}
+li:before{content:"";position:absolute;left:2px;top:9px;width:8px;height:8px;background:var(--sun)}
+.swap{font-size:14.5px;margin-top:16px}
+.swap a{color:var(--wine)}
+#pay{min-height:420px}
+.wait{font-size:15px;color:var(--ink3);padding:28px 0}
+.err{background:#FBEEF0;border-left:4px solid var(--wine);padding:14px 16px;font-size:15px}
+.err a{color:var(--wine)}
+.note{font-size:13.4px;color:var(--ink3);margin-top:16px;line-height:1.55}
+.note a{color:var(--wine)}
+@media(max-width:820px){
+  .wrap{grid-template-columns:1fr;gap:22px;padding:20px 14px 60px}
+  .price .n{font-size:38px}
+  .box{padding:18px 16px}
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <img src="/images/club/logo-club.png" alt="">
+  <b>Клуб «ПроДвижение»</b>
+  <a href="/prodvizhenie">← вернуться</a>
+</div>
+
+<div class="wrap">
+
+  <div>
+    <span class="hand">остался один шаг</span>
+    <h1 id="zag">Месяц в клубе</h1>
+
+    <div class="box">
+      <div class="price">
+        <span class="n" id="cena">$19</span>
+        <span class="p" id="period">в месяц</span>
+        <span class="was" id="bylo">$150</span>
+      </div>
+      <div class="when" id="kogda">
+        $19 списываются сегодня, дальше раз в месяц в этот же день.
+        Отменить можно в любой момент прямо в боте, доступ останется до конца оплаченного месяца.
+      </div>
+      <ul>
+        <li>Задания по понедельникам</li>
+        <li>Разбор ваших работ по четвергам</li>
+        <li>Два эфира в месяц с Маленой</li>
+        <li>Чат участниц и поддержка кураторов</li>
+        <li>Библиотека знаний и дневник</li>
+      </ul>
+      <div class="swap" id="swap"></div>
+    </div>
+
+    <p class="note">
+      После оплаты откроется бот клуба в Telegram, он закрепит за вами место.
+      Доступ в группу и канал придёт туда же 31 августа, первый эфир 1 сентября.<br><br>
+      Оплата проходит через Stripe, данные карты к нам не попадают.
+      <a href="/terms-club">Условия участия</a>.
+    </p>
+  </div>
+
+  <div>
+    <div id="pay"><div class="wait">Готовим форму оплаты…</div></div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var PK = 'PK_LIVE_SYUDA';   /* публичный ключ Stripe, не секрет */
+  var FN = 'https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/club-stripe';
+
+  function q(n){ try{ return new URLSearchParams(location.search).get(n)||''; }catch(e){ return ''; } }
+
+  var plan = q('plan') === 'half' ? 'half' : 'month';
+  var email = q('email');
+
+  /* Метка канала едет с человека, который зашёл на лендинг раньше.
+     Без неё потом не видно, из какой сторис пришли деньги. */
+  var utm = '';
+  try {
+    var s = JSON.parse(localStorage.getItem('club_src')||'null');
+    if (s && s.s) utm = s.s;
+  } catch(e){}
+
+  /* Левая колонка меняется под тариф, чтобы человек видел ровно то, что покупает. */
+  if (plan === 'half') {
+    document.getElementById('zag').textContent = 'Полгода в клубе';
+    document.getElementById('cena').textContent = '$99';
+    document.getElementById('period').textContent = 'за полгода';
+    document.getElementById('bylo').textContent = '$900';
+    document.getElementById('kogda').innerHTML =
+      '$99 списываются сегодня, следующее списание через шесть месяцев. ' +
+      'Это $16.50 в месяц вместо $19. Отменить можно в любой момент прямо в боте.';
+    document.getElementById('swap').innerHTML =
+      'Хочется сначала на месяц? <a href="/oplata-new?plan=month">Взять месяц за $19</a>';
+  } else {
+    document.getElementById('swap').innerHTML =
+      'Полгода выходят дешевле: $99 вместо $114. <a href="/oplata-new?plan=half">Взять полгода</a>';
+  }
+
+  try { sessionStorage.setItem('club_amount', plan === 'half' ? '99' : '19'); } catch(e){}
+  if (window.fbq) fbq('track','InitiateCheckout',{value: plan==='half'?99:19, currency:'USD'});
+
+  function fail(){
+    document.getElementById('pay').innerHTML =
+      '<div class="err">Форма оплаты не открылась. Попробуйте обновить страницу. ' +
+      'Если не поможет, напишите в <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">заботу</a>, ' +
+      'оформим вручную за пару минут.</div>';
+  }
+
+  var url = FN + '/session?plan=' + plan
+          + (email ? '&email=' + encodeURIComponent(email) : '')
+          + (utm ? '&utm_source=' + encodeURIComponent(utm) : '')
+          + '&s=' + encodeURIComponent(q('s') || 'oplata');
+
+  fetch(url)
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (!d || !d.client_secret) throw new Error('no secret');
+      return Stripe(PK).initEmbeddedCheckout({ clientSecret: d.client_secret });
+    })
+    .then(function(ch){
+      document.getElementById('pay').innerHTML = '';
+      ch.mount('#pay');
+    })
+    .catch(function(e){ console.error(e); fail(); });
+})();
+</script>
+
+</body>
+</html>
