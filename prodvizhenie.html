@@ -38,6 +38,60 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
 / fetchpriority="high" decoding="async"></noscript>
 <!-- End Meta Pixel Code -->
+
+<!-- Откуда пришёл человек.
+     Метка запоминается при ПЕРВОМ заходе и живёт 30 дней: покупка редко случается
+     в тот же визит, а засчитывать её надо тому каналу, который человека привёл.
+     Понимает и полные utm_*, и короткое ?r=ig-story для сторис и шапки профиля.
+     Если метки нет совсем, канал определяется по тому, откуда человек перешёл. -->
+<script>
+(function(){
+  var KEY='club_src', DAYS=30;
+  function q(n){ try{ return new URLSearchParams(location.search).get(n)||''; }catch(e){ return ''; } }
+  function fromRef(){
+    var r=document.referrer||'';
+    if(!r) return '';
+    if(/malenapocladova\.com/i.test(r)) return '';
+    if(/instagram\./i.test(r)) return 'instagram';
+    if(/t\.me|telegram\./i.test(r)) return 'telegram';
+    if(/facebook\.|fb\.com|fb\.me/i.test(r)) return 'facebook';
+    if(/youtube\.|youtu\.be/i.test(r)) return 'youtube';
+    if(/tiktok\./i.test(r)) return 'tiktok';
+    if(/google\./i.test(r)) return 'google';
+    if(/mail\.ru|yahoo\.|gmail|outlook/i.test(r)) return 'email';
+    try { return 'ref:'+new URL(r).hostname.replace(/^www\./,''); } catch(e){ return ''; }
+  }
+  var now={ s:q('utm_source')||q('r')||fromRef(), m:q('utm_medium'), c:q('utm_campaign'),
+            t:q('utm_content'), at:Date.now() };
+  var first=null;
+  try { first=JSON.parse(localStorage.getItem(KEY)||'null'); } catch(e){}
+  if (first && Date.now()-first.at > DAYS*864e5) first=null;
+  if (!first && now.s) { try{ localStorage.setItem(KEY, JSON.stringify(now)); }catch(e){} first=now; }
+  var src = first || now;
+  var repeat = !!(first && first.at !== now.at);
+  window.clubSrc = function(){ return src; };
+  window.clubSrcQuery = function(){
+    var p=[];
+    if(src.s) p.push('utm_source='+encodeURIComponent(src.s));
+    if(src.m) p.push('utm_medium='+encodeURIComponent(src.m));
+    if(src.c) p.push('utm_campaign='+encodeURIComponent(src.c));
+    if(src.t) p.push('utm_content='+encodeURIComponent(src.t));
+    return p.join('&');
+  };
+  /* Свой счётчик захода. Пиксель Меты стоит и на лендингах интенсива, и отдаёт все
+     страницы одним адресом, поэтому по нему не видно, сколько человек дошло
+     именно до клуба. Уходит в фоне и человека не задерживает. */
+  try {
+    var body=JSON.stringify({ path:location.pathname, src:src.s||null, medium:src.m||null,
+      campaign:src.c||null, content:src.t||null, repeat:repeat,
+      ref:(document.referrer||'').slice(0,180)||null, w:innerWidth });
+    var url='https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/club-pay/hit';
+    if (navigator.sendBeacon) navigator.sendBeacon(url, new Blob([body],{type:'text/plain'}));
+    else fetch(url,{method:'POST',body:body,keepalive:true,mode:'no-cors'});
+  } catch(e){}
+})();
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Prata&family=Oswald:wght@300;400;500;600;700&family=Onest:wght@300;400;500;600;700&family=Marck+Script&display=swap" rel="stylesheet">
@@ -541,6 +595,30 @@ footer a{color:rgba(242,234,217,.72)}
   .lb-f img{max-width:93vw;max-height:calc(100vh - 128px)}
 }
 @media(prefers-reduced-motion:reduce){.lb{transition:none}}
+
+/* ═══════ ПОДАРОК ТЕМ, КТО ДО 1 СЕНТЯБРЯ ═══════ */
+.gift{margin-top:40px;background:linear-gradient(180deg,#FFF8E2 0%,#FDF3D8 100%);
+  border:1px solid rgba(245,198,58,.62);border-radius:5px;padding:32px 38px 34px;position:relative}
+.gift .bdg{position:absolute;top:-13px;left:34px;background:var(--sun);color:var(--wine3);
+  font-family:var(--pos);font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  padding:6px 16px;border-radius:999px;box-shadow:0 4px 12px rgba(245,198,58,.5)}
+.gift h3{font-family:var(--pos);font-weight:700;text-transform:uppercase;color:var(--wine);
+  font-size:clamp(23px,3.2vw,33px);line-height:1.02;letter-spacing:-.01em;margin-top:6px}
+.gift .sub{font-size:16.5px;line-height:1.55;color:var(--ink2);max-width:64ch;margin-top:12px}
+.gift .gl{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+.gift .gi{background:rgba(255,253,248,.86);border-left:4px solid var(--wine);border-radius:3px;
+  padding:20px 22px 22px}
+.gift .gi b{display:block;font-family:var(--pos);font-weight:600;font-size:14px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--wine);margin-bottom:8px;line-height:1.2}
+.gift .gi p{font-size:15.5px;line-height:1.5;color:var(--ink2)}
+.gift .dl{margin-top:24px;padding-top:18px;border-top:1px solid rgba(245,198,58,.6);
+  font-family:var(--pos);font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--wine)}
+@media(max-width:760px){
+  .gift{padding:26px 22px 26px;margin-top:34px}
+  .gift .bdg{left:22px}
+  .gift .gl{grid-template-columns:1fr;gap:14px}
+}
 </style>
 </head>
 <body>
@@ -891,6 +969,26 @@ footer a{color:rgba(242,234,217,.72)}
       <div class="kicker">Стоимость</div>
       <h2>Цена, которая <span class="yl">вас не остановит</span></h2>
     </div>
+
+    <div class="gift rv">
+      <span class="bdg">Подарок</span>
+      <h3>Тем, кто заходит до 1 сентября</h3>
+      <p class="sub">Клуб открывается первого сентября. Всё, что оплачено до этого дня, приходит
+      с двумя вещами сверху. После открытия дверей они больше не выдаются.</p>
+      <div class="gl">
+        <div class="gi">
+          <b>Разбор вашего профиля от куратора</b>
+          <p>Куратор смотрит шапку, закреп и последние публикации и присылает в бот список правок,
+          что поменять первым. Полагается на обоих тарифах.</p>
+        </div>
+        <div class="gi">
+          <b>Дополнительный групповой созвон с Маленой</b>
+          <p>Сверх двух эфиров месяца. Малена отвечает на ваши вопросы вживую и разбирает то,
+          с чем вы пришли. Дату объявим внутри клуба.</p>
+        </div>
+      </div>
+      <div class="dl">Действует по 31 августа включительно</div>
+    </div>
     <div class="pr">
       <div class="l rv">
         <div class="hand" style="margin-bottom:4px">что входит</div>
@@ -935,7 +1033,7 @@ footer a{color:rgba(242,234,217,.72)}
             <div class="note">Сегодня $19, это весь сентябрь. Следующее списание 1 октября, дальше первого числа каждого месяца</div>
           </div>
         </div>
-        <div class="aft">Место закрепляется сразу, бот подтвердит. Доступ в группу и канал придёт в этот же бот 31 августа, первый звонок 1 сентября<br>Отмена в любой момент прямо в боте, в разделе «Моя подписка» · <a href="/terms-club" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">условия</a></div>
+        <div class="aft">Место закрепляется сразу, бот подтвердит. Доступ в группу и канал придёт в этот же бот 31 августа, первый звонок 1 сентября<br>Оплата до 31 августа включительно добавляет разбор профиля от куратора и подарочный групповой созвон с Маленой<br>Отмена в любой момент прямо в боте, в разделе «Моя подписка» · <a href="/terms-club" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">условия</a></div>
       </div>
     </div>
   </div>
@@ -1046,7 +1144,12 @@ footer a{color:rgba(242,234,217,.72)}
          Исходную ссылку держим отдельно, иначе при втором клике метка задвоится. */
       var base=a.getAttribute('data-base')||a.getAttribute('href');
       a.setAttribute('data-base', base);
-      a.setAttribute('href', from ? base.replace(/([?&]s=)([^&]*)/,'$1$2-'+from) : base);
+      var href = from ? base.replace(/([?&]s=)([^&]*)/,'$1$2-'+from) : base;
+      /* Метка канала едет вместе с человеком на оплату: без неё потом не видно,
+         из какой сторис или письма пришли деньги. */
+      var utm = window.clubSrcQuery ? window.clubSrcQuery() : '';
+      if (utm) href += (href.indexOf('?')>-1 ? '&' : '?') + utm;
+      a.setAttribute('href', href);
       var val = half ? 99 : 19;
       /* Запоминаем сумму, чтобы страница «Оплата прошла» знала,
          сколько человек заплатил. Переживает уход на чекаут и возврат. */

@@ -115,7 +115,22 @@ p{color:var(--ink2);margin:10px 0 0}
 
   <!-- Прямая диплинк-ссылка, а не редирект через /bot. С параметром start Telegram
        сам отправляет боту «/start paid», человеку не нужно ничего печатать. -->
-  <a class="btn" href="https://t.me/prodvizhenie_malena_bot?start=paid">Открыть бота →</a>
+  <a class="btn" id="tobot" href="https://t.me/prodvizhenie_malena_bot?start=paid">Открыть бота →</a>
+  <script>
+  /* Метка канала едет дальше в бота. Telegram разрешает в start только буквы,
+     цифры, дефис и подчёркивание, поэтому всё остальное вырезаем.
+     Бот запишет источник человеку в карточку и передаст в GoHighLevel. */
+  (function(){
+    try{
+      var s=JSON.parse(localStorage.getItem('club_src')||'null');
+      if(!s || !s.s) return;
+      var tag=String(s.s).toLowerCase().replace(/[^a-z0-9_-]+/g,'-').replace(/^-+|-+$/g,'').slice(0,40);
+      if(!tag) return;
+      var a=document.getElementById('tobot');
+      a.href=a.href.replace('start=paid','start=paid_'+tag);
+    }catch(e){}
+  })();
+  </script>
 
   <div class="note">
     Чек и условия придут вам на почту. Подписка продлевается автоматически.
