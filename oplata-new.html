@@ -117,7 +117,9 @@ li:before{content:"";position:absolute;left:2px;top:9px;width:8px;height:8px;bac
 
 <script>
 (function(){
-  var PK = 'PK_LIVE_SYUDA';   /* публичный ключ Stripe, не секрет */
+  /* Публичный ключ Stripe. Он не секрет: по замыслу лежит открыто в коде
+     любого сайта, который принимает оплату. Секретный живёт только на сервере. */
+  var PK = 'pk_live_51Rf5Lw01ZpjJWDNZyDOGMxLoBlNUCdHWStPjJP7whEgWMaMQ8QNuSmSVmLfuaA4DgBcjoDY1QQFTlr81dl0xD5PG00ejFrCoU7';
   var FN = 'https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/club-stripe';
 
   function q(n){ try{ return new URLSearchParams(location.search).get(n)||''; }catch(e){ return ''; } }
