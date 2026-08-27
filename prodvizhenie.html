@@ -47,7 +47,16 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
 <script>
 (function(){
   var KEY='club_src', DAYS=30;
-  function q(n){ try{ return new URLSearchParams(location.search).get(n)||''; }catch(e){ return ''; } }
+  /* Мета подставляет {{site_source_name}} и соседние макросы только при настоящем
+     показе объявления. Её собственные обходчики и предпросмотр открывают страницу
+     без подстановки, и тогда в метку приезжает сам текст макроса. Такой заход
+     считаем без канала, иначе в отчёте заводится несуществующий источник. */
+  function q(n){
+    try{
+      var v = new URLSearchParams(location.search).get(n) || '';
+      return v.indexOf('{{') === -1 ? v : '';
+    }catch(e){ return ''; }
+  }
   function fromRef(){
     var r=document.referrer||'';
     if(!r) return '';
