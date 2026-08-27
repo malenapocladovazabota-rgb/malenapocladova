@@ -477,6 +477,21 @@ footer a{color:rgba(242,234,217,.72)}
 .sticky .p b{font-family:var(--pos);font-weight:600;font-size:19px;display:block}
 .sticky .btn{padding:12px 20px;font-size:13px;flex:none}
 
+/* Ловушка для тех, кто дочитал и не купил. Стоит перед финальным блоком:
+   человек уже видел цену и вопросы, решение принято или отложено. Ничего
+   не перекрывает и не всплывает, чтобы не мешать тем, кто идёт оплачивать. */
+.gift{background:var(--paper2);border-top:1px solid rgba(23,19,19,.1);
+  border-bottom:1px solid rgba(23,19,19,.1);padding:52px 0}
+.gift .in{max-width:760px;margin:0 auto;padding:0 22px;text-align:center}
+.gift .kick{font-family:var(--pos);font-weight:600;font-size:11px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--wine);margin-bottom:12px}
+.gift h2{font-family:var(--disp);font-weight:400;font-size:clamp(24px,4vw,34px);
+  line-height:1.16;margin:0 0 12px}
+.gift p{font-size:16.5px;line-height:1.6;color:var(--ink2);margin:0 auto 22px;max-width:560px}
+.gift .btn{margin-bottom:14px}
+.gift .fine{font-size:13.5px;color:var(--ink3);max-width:520px;margin:0 auto;line-height:1.5}
+@media(max-width:700px){.gift{padding:40px 0}.gift p{font-size:15.6px}}
+
 /* ═══════ АДАПТИВ ═══════ */
 @media(max-width:1000px){
   section{padding:70px 0}
@@ -1079,6 +1094,20 @@ footer a{color:rgba(242,234,217,.72)}
   </div>
 </section>
 
+<!-- ═══════ ПОДАРОК ДЛЯ ТЕХ, КТО НЕ ГОТОВ СЕЙЧАС ═══════ -->
+<section class="gift">
+  <div class="in">
+    <div class="kick">Бесплатно</div>
+    <h2>Пока не готовы вступать?</h2>
+    <p>Заберите 100 заголовков для Reels, постов и сторис. Двадцать форматов,
+    в каждом по пять готовых первых строк. Открывается в Telegram за минуту.</p>
+    <a class="btn sun" id="giftBtn" href="https://t.me/prodvizhenie_malena_bot?start=podarok"
+       target="_blank" rel="noopener">Забрать 100 заголовков <span class="ar">→</span></a>
+    <p class="fine">Заодно покажу, как ими пользоваться, и расскажу про клуб изнутри.
+    Несколько сообщений, дальше тишина.</p>
+  </div>
+</section>
+
 <!-- ═══════ ФИНАЛ ═══════ -->
 <section class="fin" style="padding-top:0">
   <div class="bleed bl"><b>ПЕРВОЕ СЕНТЯБРЯ</b></div>
@@ -1168,6 +1197,23 @@ footer a{color:rgba(242,234,217,.72)}
       fbq('trackCustom', half ? 'ClubCheckout_Half' : 'ClubCheckout_Month');
     });
   });
+
+  /* Подарок. Канал дописываем прямо в аргумент бота: он сохраняет его целиком
+     в источник карточки, и потом видно, из какой сторис пришёл человек, который
+     клуб сегодня не купил. Без этого все подарочные заходы сливаются в один. */
+  (function(){
+    var g = document.getElementById('giftBtn');
+    if (!g) return;
+    var s = window.clubSrc ? window.clubSrc() : null;
+    var tag = s && s.s ? String(s.s).toLowerCase().replace(/[^a-z0-9_-]+/g,'-').slice(0,40) : '';
+    if (tag) g.href = g.href + '_' + tag;
+    /* Свой счётчик кликов сюда сознательно не вешаем: маршрут /hit пишет
+       заходы на страницу, и подмешивать в него клики значило бы испортить
+       цифры трафика. Сколько людей реально дошло, видно по заходам в бота. */
+    g.addEventListener('click', function(){
+      if (window.fbq) fbq('trackCustom','ClubGiftClick',{src: tag || 'нет'});
+    });
+  })();
 
   /* ViewContent, когда человек долистал до блока цены. На старте кампании
      покупок мало, и Мете не на чем учиться: этот сигнал даёт ей десятки
