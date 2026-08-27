@@ -61,3 +61,9 @@
 /oplata          https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/club-pay       302
 /oplata-polgoda  https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/club-pay/half  302
 /bot             https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/club-pay/bot   302
+
+# Ученицам курса: первый месяц бесплатно. Код в адресе не тайна, он нужен,
+# чтобы бесплатный месяц не достался всем, кто допишет trial к обычной ссылке.
+# Срок и код лежат в club_config, ключи trial_days и trial_code.
+# Метка uchenicy садится человеку в карточку, по ней их и считаем.
+/oplata-uchenicy /oplata-new?plan=month&trial=uch2026&s=uchenicy&utm_source=uchenicy  302

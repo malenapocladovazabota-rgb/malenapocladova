@@ -147,12 +147,43 @@ li:before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;bac
 
   var plan = q('plan') === 'half' ? 'half' : 'month';
   var email = q('email');
+  var trial = q('trial');
 
-  var utm = '';
-  try {
-    var s = JSON.parse(localStorage.getItem('club_src')||'null');
-    if (s && s.s) utm = s.s;
-  } catch(e){}
+  /* Канал берём сначала из адреса, потом из памяти браузера. Порядок важен:
+     ученица курса могла заходить на лендинг из сторис месяц назад, и тогда
+     в памяти лежит «ig». Метка в ссылке точнее, она и должна побеждать. */
+  var utm = q('utm_source');
+  if (!utm) {
+    try {
+      var s = JSON.parse(localStorage.getItem('club_src')||'null');
+      if (s && s.s) utm = s.s;
+    } catch(e){}
+  }
+
+  var MES = ['января','февраля','марта','апреля','мая','июня','июля','августа',
+             'сентября','октября','ноября','декабря'];
+  function cherez(dney){
+    var d = new Date(Date.now() + dney*864e5);
+    return d.getDate() + ' ' + MES[d.getMonth()];
+  }
+
+  /* Пробный месяц. Показываем его сразу, не дожидаясь ответа сервера, иначе
+     человек успеет увидеть «$19 сегодня» и передумать. Если сервер код
+     не примет, ниже в fetch всё вернётся к обычной цене. */
+  function pokazatTrial(dney){
+    set('zag','Месяц в клубе бесплатно');  set('zag2','Месяц в клубе бесплатно');
+    set('cena','$0');                      set('cena2','$0');
+    set('period','сегодня');               set('period2','сегодня');
+    set('bylo','$19');                     set('bylo2','$19');
+    set('kogda','Сегодня не списывается ничего. Карта привязывается, чтобы клуб '
+      + 'продолжился сам. ' + cherez(dney) + ' спишется $19, дальше раз в месяц '
+      + 'в этот же день. Отменить можно в любой момент, в том числе до первого списания.');
+    var a = document.getElementById('alt');
+    if (a) a.innerHTML = 'Бесплатный месяц открыт для тех, кто учился у Малены.';
+    var af = document.querySelector('.after');
+    if (af) af.innerHTML = 'Сразу после оформления откроется бот клуба и закрепит за вами место. '
+      + 'Доступ в группу и канал придёт туда же 31 августа, первый эфир 1 сентября.';
+  }
 
   if (plan === 'half') {
     set('zag','Полгода в клубе');    set('zag2','Полгода в клубе');
@@ -167,6 +198,8 @@ li:before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;bac
       'Полгода стоят $99 вместо $114 и списываются один раз. <a href="/oplata-new?plan=half">Взять полгода</a>';
   }
 
+  if (trial && plan === 'month') pokazatTrial(30);
+
   try { sessionStorage.setItem('club_amount', plan === 'half' ? '99' : '19'); } catch(e){}
   if (window.fbq) fbq('track','InitiateCheckout',{value: plan==='half'?99:19, currency:'USD'});
 
@@ -180,12 +213,31 @@ li:before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;bac
   var url = FN + '/session?plan=' + plan
           + (email ? '&email=' + encodeURIComponent(email) : '')
           + (utm ? '&utm_source=' + encodeURIComponent(utm) : '')
+          + (trial ? '&trial=' + encodeURIComponent(trial) : '')
           + '&s=' + encodeURIComponent(q('s') || 'oplata');
 
   fetch(url)
     .then(function(r){ return r.json(); })
     .then(function(d){
       if (!d || !d.client_secret) throw new Error('no secret');
+      /* Сервер решает, дать ли бесплатный месяц. Здесь мы только приводим
+         текст в соответствие с его решением, чтобы на странице не осталось
+         обещания, которого в самой оплате нет. */
+      if (trial && plan === 'month') {
+        if (d.trial > 0) pokazatTrial(d.trial);
+        else {
+          set('zag','Месяц в клубе');  set('zag2','Месяц в клубе');
+          set('cena','$19');           set('cena2','$19');
+          set('period','в месяц');     set('period2','в месяц');
+          set('bylo','$150');          set('bylo2','$150');
+          set('kogda','Списывается сегодня, дальше раз в месяц в этот же день. '
+            + 'Отменить можно в любой момент.');
+          document.getElementById('alt').innerHTML =
+            'Ссылка на бесплатный месяц не подошла. Напишите в '
+            + '<a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">заботу</a>, '
+            + 'пришлём рабочую.';
+        }
+      }
       return Stripe(PK).initEmbeddedCheckout({ clientSecret: d.client_secret });
     })
     .then(function(ch){
