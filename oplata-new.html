@@ -201,7 +201,6 @@ li:before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;bac
   if (trial && plan === 'month') pokazatTrial(30);
 
   try { sessionStorage.setItem('club_amount', plan === 'half' ? '99' : '19'); } catch(e){}
-  if (window.fbq) fbq('track','InitiateCheckout',{value: plan==='half'?99:19, currency:'USD'});
 
   function fail(){
     document.getElementById('pay').innerHTML =
@@ -243,6 +242,14 @@ li:before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;bac
     .then(function(ch){
       document.getElementById('pay').innerHTML = '';
       ch.mount('#pay');
+      /* Единственное место, где мы говорим Мете «человек начал оплату».
+         Именно здесь, а не при загрузке страницы: событие уходит только
+         когда форма карты действительно собралась и человек её видит.
+         Если Stripe не ответил, событие не уйдёт, и Мета не будет учиться
+         на людях, у которых оплата вообще не открылась. */
+      if (window.fbq) {
+        fbq('track','InitiateCheckout',{ value: plan === 'half' ? 99 : 19, currency:'USD' });
+      }
     })
     .catch(function(e){ console.error(e); fail(); });
 })();
