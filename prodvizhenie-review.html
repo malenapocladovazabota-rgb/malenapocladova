@@ -47,7 +47,16 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
 <script>
 (function(){
   var KEY='club_src', DAYS=30;
-  function q(n){ try{ return new URLSearchParams(location.search).get(n)||''; }catch(e){ return ''; } }
+  /* Мета подставляет {{site_source_name}} и соседние макросы только при настоящем
+     показе объявления. Её собственные обходчики и предпросмотр открывают страницу
+     без подстановки, и тогда в метку приезжает сам текст макроса. Такой заход
+     считаем без канала, иначе в отчёте заводится несуществующий источник. */
+  function q(n){
+    try{
+      var v = new URLSearchParams(location.search).get(n) || '';
+      return v.indexOf('{{') === -1 ? v : '';
+    }catch(e){ return ''; }
+  }
   function fromRef(){
     var r=document.referrer||'';
     if(!r) return '';
@@ -91,7 +100,6 @@ src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
   } catch(e){}
 })();
 </script>
-
 <meta name="robots" content="noindex, nofollow">
 <script src="gate-prodvizhenie.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -470,6 +478,21 @@ footer a{color:rgba(242,234,217,.72)}
 .sticky .p b{font-family:var(--pos);font-weight:600;font-size:19px;display:block}
 .sticky .btn{padding:12px 20px;font-size:13px;flex:none}
 
+/* Ловушка для тех, кто дочитал и не купил. Стоит перед финальным блоком:
+   человек уже видел цену и вопросы, решение принято или отложено. Ничего
+   не перекрывает и не всплывает, чтобы не мешать тем, кто идёт оплачивать. */
+.gift{background:var(--paper2);border-top:1px solid rgba(23,19,19,.1);
+  border-bottom:1px solid rgba(23,19,19,.1);padding:52px 0}
+.gift .in{max-width:760px;margin:0 auto;padding:0 22px;text-align:center}
+.gift .kick{font-family:var(--pos);font-weight:600;font-size:11px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--wine);margin-bottom:12px}
+.gift h2{font-family:var(--disp);font-weight:400;font-size:clamp(24px,4vw,34px);
+  line-height:1.16;margin:0 0 12px}
+.gift p{font-size:16.5px;line-height:1.6;color:var(--ink2);margin:0 auto 22px;max-width:560px}
+.gift .btn{margin-bottom:14px}
+.gift .fine{font-size:13.5px;color:var(--ink3);max-width:520px;margin:0 auto;line-height:1.5}
+@media(max-width:700px){.gift{padding:40px 0}.gift p{font-size:15.6px}}
+
 /* ═══════ АДАПТИВ ═══════ */
 @media(max-width:1000px){
   section{padding:70px 0}
@@ -598,29 +621,6 @@ footer a{color:rgba(242,234,217,.72)}
 }
 @media(prefers-reduced-motion:reduce){.lb{transition:none}}
 
-/* ═══════ ПОДАРОК ТЕМ, КТО ДО 1 СЕНТЯБРЯ ═══════ */
-.gift{margin-top:40px;background:linear-gradient(180deg,#FFF8E2 0%,#FDF3D8 100%);
-  border:1px solid rgba(245,198,58,.62);border-radius:5px;padding:32px 38px 34px;position:relative}
-.gift .bdg{position:absolute;top:-13px;left:34px;background:var(--sun);color:var(--wine3);
-  font-family:var(--pos);font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
-  padding:6px 16px;border-radius:999px;box-shadow:0 4px 12px rgba(245,198,58,.5)}
-.gift h3{font-family:var(--pos);font-weight:700;text-transform:uppercase;color:var(--wine);
-  font-size:clamp(23px,3.2vw,33px);line-height:1.02;letter-spacing:-.01em;margin-top:6px}
-.gift .sub{font-size:16.5px;line-height:1.55;color:var(--ink2);max-width:64ch;margin-top:12px}
-.gift .gl{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
-.gift .gi{background:rgba(255,253,248,.86);border-left:4px solid var(--wine);border-radius:3px;
-  padding:20px 22px 22px}
-.gift .gi b{display:block;font-family:var(--pos);font-weight:600;font-size:14px;letter-spacing:.09em;
-  text-transform:uppercase;color:var(--wine);margin-bottom:8px;line-height:1.2}
-.gift .gi p{font-size:15.5px;line-height:1.5;color:var(--ink2)}
-.gift .dl{margin-top:24px;padding-top:18px;border-top:1px solid rgba(245,198,58,.6);
-  font-family:var(--pos);font-weight:600;font-size:12px;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--wine)}
-@media(max-width:760px){
-  .gift{padding:26px 22px 26px;margin-top:34px}
-  .gift .bdg{left:22px}
-  .gift .gl{grid-template-columns:1fr;gap:14px}
-}
 </style>
 </head>
 <body>
@@ -636,14 +636,17 @@ footer a{color:rgba(242,234,217,.72)}
     <a href="#year">Учебный год</a>
     <a href="#faq">Вопросы</a>
   </div>
-  <a class="go" href="#price">$19 в месяц</a>
+  <!-- Шапка ведёт прямо на оплату месяца, минуя блок выбора: человек,
+       нажавший цену наверху, уже решил, и лишний экран ему только мешает.
+       Метку s=price-nav дописывает общий обработчик ссылок на /oplata. -->
+  <a class="go" href="/oplata?s=nav">$19 в месяц</a>
 </nav>
 
 <!-- ═══════ ГЕРОЙ ═══════ -->
 <header class="hero">
   <div class="top">
     <div class="yr">Клуб · Учебный год 2026 / 2027</div>
-    <div class="cl">первый звонок 1 сентября</div>
+    <div class="cl">доступ открывается 1 сентября</div>
   </div>
 
   <div class="bleed big"><b>ПРО<span class="d">Д</span>ВИЖЕНИЕ</b></div>
@@ -974,24 +977,6 @@ footer a{color:rgba(242,234,217,.72)}
       <h2>Цена, которая <span class="yl">вас не остановит</span></h2>
     </div>
 
-    <div class="gift rv">
-      <span class="bdg">Подарок</span>
-      <h3>Тем, кто заходит до 1 сентября</h3>
-      <p class="sub">Клуб открывается первого сентября. Всё, что оплачено до этого дня, приходит
-      с двумя вещами сверху. После открытия дверей они больше не выдаются.</p>
-      <div class="gl">
-        <div class="gi">
-          <b>Разбор вашего профиля от куратора</b>
-          <p>Куратор смотрит шапку, закреп и последние публикации и присылает в бот список правок,
-          что поменять первым. Полагается на обоих тарифах.</p>
-        </div>
-        <div class="gi">
-          <b>Дополнительный групповой созвон с Маленой</b>
-          <p>Сверх двух эфиров месяца. Малена отвечает на ваши вопросы вживую и разбирает то,
-          с чем вы пришли. Дату объявим внутри клуба.</p>
-        </div>
-      </div>
-      <div class="dl">Действует по 31 августа включительно</div>
     </div>
     <div class="pr">
       <div class="l rv">
@@ -1000,7 +985,6 @@ footer a{color:rgba(242,234,217,.72)}
           <li>Два эфира в месяц с Маленой и приглашёнными экспертами</li>
           <li>Разбор <b>ваших</b> работ каждый четверг</li>
           <li>Тренды и фишки: всё, что помогает становиться лучше в контенте, продвижении и своей работе</li>
-          <li>Подарки и сюрпризы от клуба</li>
           <li>Дневник: цели, недельные отметки, табель месяца</li>
           <li>Библиотека знаний, которая постоянно пополняется</li>
           <li>Обмен контактами: в клубе разные профессии, участницы помогают друг другу с работой и проектами</li>
@@ -1034,10 +1018,10 @@ footer a{color:rgba(242,234,217,.72)}
             <div class="amt">$19</div>
             <div class="per">в месяц</div>
             <a class="btn ghost" href="/oplata?s=price">Вступить за $19</a>
-            <div class="note">$19 списываются сегодня, дальше раз в месяц в этот же день. Отменить можно в любой момент</div>
+            <div class="note">Списывается сегодня, дальше раз в месяц в этот же день. Отменить можно в любой момент</div>
           </div>
         </div>
-        <div class="aft">Место закрепляется сразу, бот подтвердит. Доступ в группу и канал придёт в этот же бот 31 августа, первый звонок 1 сентября<br>Оплата до 31 августа включительно добавляет разбор профиля от куратора и подарочный групповой созвон с Маленой<br>Отмена в любой момент прямо в боте, в разделе «Моя подписка» · <a href="/terms-club" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">условия</a></div>
+        <div class="aft">Место закрепляется сразу, бот подтвердит. Доступ в группу и к урокам открывается 1 сентября<br>Отмена в любой момент прямо в боте, в разделе «Моя подписка» · <a href="/terms-club" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">условия</a></div>
       </div>
     </div>
   </div>
@@ -1068,9 +1052,23 @@ footer a{color:rgba(242,234,217,.72)}
       <details class="fq rv d2"><summary>Чем это отличается от курса?</summary><p>Курс это когда вы полностью включаетесь в профессию или в один большой прикладной навык. В клубе навык вы тоже получаете, но главный акцент на поддержке, коммьюнити и на том, чтобы двигаться регулярно, а не рывками.</p></details>
       <details class="fq rv d1"><summary>Можно ли оплатить сразу надолго?</summary><p>Есть два варианта: месяц за $19 и полгода за $99. Полгода списывается один раз и выходит выгоднее. Подписка продлевается сама, поэтому оставаться можно столько, сколько захотите.</p></details>
       <details class="fq rv d2"><summary>Что если я приду в середине года?</summary><p>Ничего страшного. Темы работают и в связке, когда вы с нами с самого начала, и по отдельности. Можно взять один месяц, прожить его тему и остаться дальше.</p></details>
-      <details class="fq rv d2"><summary>Как я попаду в клуб после оплаты?</summary><p>Сразу после оплаты откроется страница с ботом клуба. Откройте его одной кнопкой, и бот подтвердит, что место за вами. Ссылки в группу и в канал он пришлёт туда же 31 августа, за день до старта: так вы попадёте не в пустой чат, а в уже собравшуюся комнату. Ссылки личные и одноразовые. Закрепите бота у себя в Telegram, через него будут приходить задания и всё важное по клубу.</p></details>
+      <details class="fq rv d2"><summary>Как я попаду в клуб после оплаты?</summary><p>Сразу после оплаты откроется страница с ботом клуба. Откройте его одной кнопкой, и бот подтвердит, что место за вами. Доступ в группу и к урокам открывается 1 сентября, ссылки придут в этот же бот. Ссылки личные, пересылать их не нужно. Закрепите бота у себя в Telegram, через него будут приходить задания и всё важное по клубу.</p></details>
       <details class="fq rv d1"><summary>Как отменить подписку?</summary><p>В боте клуба: «Моя подписка», дальше «Управление подпиской» и «Отменить подписку». Объяснять ничего не нужно, кнопка «просто отмените» стоит на первом же шаге. Доступ в клуб останется до конца оплаченного периода: оплаченное мы не забираем. Там же ставится пауза на месяц, при ней место и цена сохраняются за вами. Если что-то не получится, напишите в <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener" style="color:var(--wine)">@Malena_Pocladova_Zabota</a>, сделаем руками.</p></details>
     </div>
+  </div>
+</section>
+
+<!-- ═══════ ПОДАРОК ДЛЯ ТЕХ, КТО НЕ ГОТОВ СЕЙЧАС ═══════ -->
+<section class="gift">
+  <div class="in">
+    <div class="kick">Бесплатно</div>
+    <h2>Пока не готовы вступать?</h2>
+    <p>Заберите 100 заголовков для Reels, постов и сторис. Двадцать форматов,
+    в каждом по пять готовых первых строк. Открывается в Telegram за минуту.</p>
+    <a class="btn sun" id="giftBtn" href="https://t.me/prodvizhenie_malena_bot?start=podarok"
+       target="_blank" rel="noopener">Забрать 100 заголовков <span class="ar">→</span></a>
+    <p class="fine">Заодно покажу, как ими пользоваться, и расскажу про клуб изнутри.
+    Несколько сообщений, дальше тишина.</p>
   </div>
 </section>
 
@@ -1091,7 +1089,7 @@ footer a{color:rgba(242,234,217,.72)}
 </footer>
 
 <div class="sticky" id="sticky">
-  <div class="p"><b>$19 В МЕСЯЦ</b>первый звонок 1 сентября</div>
+  <div class="p"><b>$19 В МЕСЯЦ</b>доступ открывается 1 сентября</div>
   <a class="btn sun" href="#vybor" data-pick="sticky">Вступить</a>
 </div>
 
@@ -1150,7 +1148,7 @@ footer a{color:rgba(242,234,217,.72)}
       a.setAttribute('data-base', base);
       var href = from ? base.replace(/([?&]s=)([^&]*)/,'$1$2-'+from) : base;
       /* Метка канала едет вместе с человеком на оплату: без неё потом не видно,
-         из какой сторис или письма пришли деньги. */
+         из какой сторис или из какого объявления пришли деньги. */
       var utm = window.clubSrcQuery ? window.clubSrcQuery() : '';
       if (utm) href += (href.indexOf('?')>-1 ? '&' : '?') + utm;
       a.setAttribute('href', href);
@@ -1159,10 +1157,40 @@ footer a{color:rgba(242,234,217,.72)}
          сколько человек заплатил. Переживает уход на чекаут и возврат. */
       try { sessionStorage.setItem('club_amount', String(val)); } catch(e){}
       if(!window.fbq) return;
-      fbq('track','InitiateCheckout',{value: val, currency:'USD'});
+      /* Стандартное InitiateCheckout отсюда убрано сознательно. Раньше оно
+         срабатывало и здесь, и при загрузке страницы оплаты, поэтому одно
+         намерение считалось дважды, а Мета училась искать людей, которые
+         открывают страницу и уходят. Теперь оно живёт ровно в одном месте:
+         на странице оплаты, после того как форма Stripe собралась.
+         Здесь остаётся своё событие, для наших отчётов. */
+      fbq('trackCustom','ClubPayClick',{value: val, currency:'USD'});
       fbq('trackCustom', half ? 'ClubCheckout_Half' : 'ClubCheckout_Month');
     });
   });
+
+  /* Подарок. Канал дописываем прямо в аргумент бота: он сохраняет его целиком
+     в источник карточки, и потом видно, из какой сторис пришёл человек, который
+     клуб сегодня не купил. Без этого все подарочные заходы сливаются в один. */
+  (function(){
+    var g = document.getElementById('giftBtn');
+    if (!g) return;
+    var s = window.clubSrc ? window.clubSrc() : null;
+    var tag = s && s.s ? String(s.s).toLowerCase().replace(/[^a-z0-9_-]+/g,'-').slice(0,40) : '';
+    if (tag) g.href = g.href + '_' + tag;
+    /* Свой счётчик кликов сюда сознательно не вешаем: маршрут /hit пишет
+       заходы на страницу, и подмешивать в него клики значило бы испортить
+       цифры трафика. Сколько людей реально дошло, видно по заходам в бота. */
+    g.addEventListener('click', function(){
+      if (!window.fbq) return;
+      /* Стандартное событие лида. Раньше его на сайте не было вообще, поэтому
+         кампания с целью «Лиды» потратила деньги и не увидела ни одного
+         результата. Теперь у Меты есть сигнал, на котором можно учиться,
+         и появляется аудитория для догона: взял подарок и не купил.
+         Уходит ровно отсюда и больше ниоткуда, чтобы не задваивалось. */
+      fbq('track','Lead',{ content_name:'100 заголовков', currency:'USD', value:0 });
+      fbq('trackCustom','ClubGiftClick',{ src: tag || 'нет' });
+    });
+  })();
 
   /* ViewContent, когда человек долистал до блока цены. На старте кампании
      покупок мало, и Мете не на чем учиться: этот сигнал даёт ей десятки
