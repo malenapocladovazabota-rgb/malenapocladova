@@ -38,6 +38,68 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1350449057220500&ev=PageView&noscript=1"
 / fetchpriority="high" decoding="async"></noscript>
 <!-- End Meta Pixel Code -->
+
+<!-- Откуда пришёл человек.
+     Метка запоминается при ПЕРВОМ заходе и живёт 30 дней: покупка редко случается
+     в тот же визит, а засчитывать её надо тому каналу, который человека привёл.
+     Понимает и полные utm_*, и короткое ?r=ig-story для сторис и шапки профиля.
+     Если метки нет совсем, канал определяется по тому, откуда человек перешёл. -->
+<script>
+(function(){
+  var KEY='club_src', DAYS=30;
+  /* Мета подставляет {{site_source_name}} и соседние макросы только при настоящем
+     показе объявления. Её собственные обходчики и предпросмотр открывают страницу
+     без подстановки, и тогда в метку приезжает сам текст макроса. Такой заход
+     считаем без канала, иначе в отчёте заводится несуществующий источник. */
+  function q(n){
+    try{
+      var v = new URLSearchParams(location.search).get(n) || '';
+      return v.indexOf('{{') === -1 ? v : '';
+    }catch(e){ return ''; }
+  }
+  function fromRef(){
+    var r=document.referrer||'';
+    if(!r) return '';
+    if(/malenapocladova\.com/i.test(r)) return '';
+    if(/instagram\./i.test(r)) return 'instagram';
+    if(/t\.me|telegram\./i.test(r)) return 'telegram';
+    if(/facebook\.|fb\.com|fb\.me/i.test(r)) return 'facebook';
+    if(/youtube\.|youtu\.be/i.test(r)) return 'youtube';
+    if(/tiktok\./i.test(r)) return 'tiktok';
+    if(/google\./i.test(r)) return 'google';
+    if(/mail\.ru|yahoo\.|gmail|outlook/i.test(r)) return 'email';
+    try { return 'ref:'+new URL(r).hostname.replace(/^www\./,''); } catch(e){ return ''; }
+  }
+  var now={ s:q('utm_source')||q('r')||fromRef(), m:q('utm_medium'), c:q('utm_campaign'),
+            t:q('utm_content'), at:Date.now() };
+  var first=null;
+  try { first=JSON.parse(localStorage.getItem(KEY)||'null'); } catch(e){}
+  if (first && Date.now()-first.at > DAYS*864e5) first=null;
+  if (!first && now.s) { try{ localStorage.setItem(KEY, JSON.stringify(now)); }catch(e){} first=now; }
+  var src = first || now;
+  var repeat = !!(first && first.at !== now.at);
+  window.clubSrc = function(){ return src; };
+  window.clubSrcQuery = function(){
+    var p=[];
+    if(src.s) p.push('utm_source='+encodeURIComponent(src.s));
+    if(src.m) p.push('utm_medium='+encodeURIComponent(src.m));
+    if(src.c) p.push('utm_campaign='+encodeURIComponent(src.c));
+    if(src.t) p.push('utm_content='+encodeURIComponent(src.t));
+    return p.join('&');
+  };
+  /* Свой счётчик захода. Пиксель Меты стоит и на лендингах интенсива, и отдаёт все
+     страницы одним адресом, поэтому по нему не видно, сколько человек дошло
+     именно до клуба. Уходит в фоне и человека не задерживает. */
+  try {
+    var body=JSON.stringify({ path:location.pathname, src:src.s||null, medium:src.m||null,
+      campaign:src.c||null, content:src.t||null, repeat:repeat,
+      ref:(document.referrer||'').slice(0,180)||null, w:innerWidth });
+    var url='https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/club-pay/hit';
+    if (navigator.sendBeacon) navigator.sendBeacon(url, new Blob([body],{type:'text/plain'}));
+    else fetch(url,{method:'POST',body:body,keepalive:true,mode:'no-cors'});
+  } catch(e){}
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Prata&family=Oswald:wght@300;400;500;600;700&family=Onest:wght@300;400;500;600;700&family=Marck+Script&display=swap" rel="stylesheet">
@@ -413,6 +475,21 @@ footer a{color:rgba(242,234,217,.72)}
 .sticky .p{color:#F2EAD9;font-size:12.5px;line-height:1.3;flex:1}
 .sticky .p b{font-family:var(--pos);font-weight:600;font-size:19px;display:block}
 .sticky .btn{padding:12px 20px;font-size:13px;flex:none}
+
+/* Ловушка для тех, кто дочитал и не купил. Стоит перед финальным блоком:
+   человек уже видел цену и вопросы, решение принято или отложено. Ничего
+   не перекрывает и не всплывает, чтобы не мешать тем, кто идёт оплачивать. */
+.gift{background:var(--paper2);border-top:1px solid rgba(23,19,19,.1);
+  border-bottom:1px solid rgba(23,19,19,.1);padding:52px 0}
+.gift .in{max-width:760px;margin:0 auto;padding:0 22px;text-align:center}
+.gift .kick{font-family:var(--pos);font-weight:600;font-size:11px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--wine);margin-bottom:12px}
+.gift h2{font-family:var(--disp);font-weight:400;font-size:clamp(24px,4vw,34px);
+  line-height:1.16;margin:0 0 12px}
+.gift p{font-size:16.5px;line-height:1.6;color:var(--ink2);margin:0 auto 22px;max-width:560px}
+.gift .btn{margin-bottom:14px}
+.gift .fine{font-size:13.5px;color:var(--ink3);max-width:520px;margin:0 auto;line-height:1.5}
+@media(max-width:700px){.gift{padding:40px 0}.gift p{font-size:15.6px}}
 
 /* ═══════ АДАПТИВ ═══════ */
 @media(max-width:1000px){
@@ -904,7 +981,6 @@ footer a{color:rgba(242,234,217,.72)}
           <li>Два эфира в месяц с Маленой и приглашёнными экспертами</li>
           <li>Разбор <b>ваших</b> работ каждый четверг</li>
           <li>Тренды и фишки: всё, что помогает становиться лучше в контенте, продвижении и своей работе</li>
-          <li>Подарки и сюрпризы от клуба</li>
           <li>Дневник: цели, недельные отметки, табель месяца</li>
           <li>Библиотека знаний, которая постоянно пополняется</li>
           <li>Обмен контактами: в клубе разные профессии, участницы помогают друг другу с работой и проектами</li>
@@ -975,6 +1051,20 @@ footer a{color:rgba(242,234,217,.72)}
       <details class="fq rv d2"><summary>Как я попаду в клуб после оплаты?</summary><p>Сразу после оплаты откроется страница с ботом клуба. Откройте его одной кнопкой, и бот подтвердит, что место за вами. Ссылки в группу и в канал он пришлёт туда же 31 августа, за день до старта: так вы попадёте не в пустой чат, а в уже собравшуюся комнату. Ссылки личные и одноразовые. Закрепите бота у себя в Telegram, через него будут приходить задания и всё важное по клубу.</p></details>
       <details class="fq rv d1"><summary>Как отменить подписку?</summary><p>В боте клуба: «Моя подписка», дальше «Управление подпиской» и «Отменить подписку». Объяснять ничего не нужно, кнопка «просто отмените» стоит на первом же шаге. Доступ в клуб останется до конца оплаченного периода: оплаченное мы не забираем. Там же ставится пауза на месяц, при ней место и цена сохраняются за вами. Если что-то не получится, напишите в <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener" style="color:var(--wine)">@Malena_Pocladova_Zabota</a>, сделаем руками.</p></details>
     </div>
+  </div>
+</section>
+
+<!-- ═══════ ПОДАРОК ДЛЯ ТЕХ, КТО НЕ ГОТОВ СЕЙЧАС ═══════ -->
+<section class="gift">
+  <div class="in">
+    <div class="kick">Бесплатно</div>
+    <h2>Пока не готовы вступать?</h2>
+    <p>Заберите 100 заголовков для Reels, постов и сторис. Двадцать форматов,
+    в каждом по пять готовых первых строк. Открывается в Telegram за минуту.</p>
+    <a class="btn sun" id="giftBtn" href="https://t.me/prodvizhenie_malena_bot?start=podarok"
+       target="_blank" rel="noopener">Забрать 100 заголовков <span class="ar">→</span></a>
+    <p class="fine">Заодно покажу, как ими пользоваться, и расскажу про клуб изнутри.
+    Несколько сообщений, дальше тишина.</p>
   </div>
 </section>
 
@@ -1052,7 +1142,12 @@ footer a{color:rgba(242,234,217,.72)}
          Исходную ссылку держим отдельно, иначе при втором клике метка задвоится. */
       var base=a.getAttribute('data-base')||a.getAttribute('href');
       a.setAttribute('data-base', base);
-      a.setAttribute('href', from ? base.replace(/([?&]s=)([^&]*)/,'$1$2-'+from) : base);
+      var href = from ? base.replace(/([?&]s=)([^&]*)/,'$1$2-'+from) : base;
+      /* Метка канала едет вместе с человеком на оплату: без неё потом не видно,
+         из какой сторис или из какого объявления пришли деньги. */
+      var utm = window.clubSrcQuery ? window.clubSrcQuery() : '';
+      if (utm) href += (href.indexOf('?')>-1 ? '&' : '?') + utm;
+      a.setAttribute('href', href);
       var val = half ? 99 : 19;
       /* Запоминаем сумму, чтобы страница «Оплата прошла» знала,
          сколько человек заплатил. Переживает уход на чекаут и возврат. */
@@ -1068,6 +1163,30 @@ footer a{color:rgba(242,234,217,.72)}
       fbq('trackCustom', half ? 'ClubCheckout_Half' : 'ClubCheckout_Month');
     });
   });
+
+  /* Подарок. Канал дописываем прямо в аргумент бота: он сохраняет его целиком
+     в источник карточки, и потом видно, из какой сторис пришёл человек, который
+     клуб сегодня не купил. Без этого все подарочные заходы сливаются в один. */
+  (function(){
+    var g = document.getElementById('giftBtn');
+    if (!g) return;
+    var s = window.clubSrc ? window.clubSrc() : null;
+    var tag = s && s.s ? String(s.s).toLowerCase().replace(/[^a-z0-9_-]+/g,'-').slice(0,40) : '';
+    if (tag) g.href = g.href + '_' + tag;
+    /* Свой счётчик кликов сюда сознательно не вешаем: маршрут /hit пишет
+       заходы на страницу, и подмешивать в него клики значило бы испортить
+       цифры трафика. Сколько людей реально дошло, видно по заходам в бота. */
+    g.addEventListener('click', function(){
+      if (!window.fbq) return;
+      /* Стандартное событие лида. Раньше его на сайте не было вообще, поэтому
+         кампания с целью «Лиды» потратила деньги и не увидела ни одного
+         результата. Теперь у Меты есть сигнал, на котором можно учиться,
+         и появляется аудитория для догона: взял подарок и не купил.
+         Уходит ровно отсюда и больше ниоткуда, чтобы не задваивалось. */
+      fbq('track','Lead',{ content_name:'100 заголовков', currency:'USD', value:0 });
+      fbq('trackCustom','ClubGiftClick',{ src: tag || 'нет' });
+    });
+  })();
 
   /* ViewContent, когда человек долистал до блока цены. На старте кампании
      покупок мало, и Мете не на чем учиться: этот сигнал даёт ей десятки
