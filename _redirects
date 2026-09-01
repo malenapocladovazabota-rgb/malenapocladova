@@ -1,5 +1,5 @@
 # Cloudflare Pages редиректы
-# Каноничные URLs без .html (если кто-то перешёл по .html — 301 на чистый URL)
+# Каноничные URLs без .html (если кто-то перешёл по .html : 301 на чистый URL)
 
 /index.html         /              301
 /razbor.html        /razbor        301
@@ -22,7 +22,7 @@
 # Короткие ссылки продаж по интенсиву → лендинг с UTM (трекинг по utm_content)
 /intensiv/aleksandra   /intensiv?utm_source=manager&utm_medium=personal&utm_campaign=intensive_july&utm_content=aleksandra   302
 
-# Cloudflare Pages автоматически отдаёт razbor.html по запросу /razbor —
+# Cloudflare Pages автоматически отдаёт razbor.html по запросу /razbor :
 # редиректы выше нужны только для каноничности (если кто-то ввёл вручную с .html)
 /intensiv-b1.html  /intensiv-b1  301
 /intensiv-b2.html  /intensiv-b2  301

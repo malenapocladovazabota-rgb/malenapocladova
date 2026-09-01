@@ -157,7 +157,7 @@ li:before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;bac
 
     <div class="after">
       Сразу после оплаты откроется бот клуба в Telegram и закрепит за вами место.
-      Доступ в группу и к урокам открывается 1 сентября.
+      Доступ в группу и к урокам уже открыт.
     </div>
 
     <p class="note">
@@ -215,7 +215,7 @@ li:before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;bac
     if (a) a.innerHTML = 'Вам как моим ученицам подарок: первый месяц бесплатно.';
     var af = document.querySelector('.after');
     if (af) af.innerHTML = 'Сразу после оформления откроется бот клуба и закрепит за вами место. '
-      + 'Доступ в группу и к урокам открывается 1 сентября.';
+      + 'Доступ в группу и к урокам уже открыт.';
   }
 
   /* Тексты цены под выбранный срок. Вынесены в функцию, потому что теперь
@@ -306,6 +306,9 @@ li:before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;bac
         if (trial && p === 'month') {
           if (d.trial > 0) pokazatTrial(d.trial);
           else {
+            /* Сервер отказал. Сначала возвращаем цену на место, иначе
+               на экране остаётся «$0 сегодня», а спишется $19. */
+            opisat('month');
             document.getElementById('alt').innerHTML =
               'Ссылка на бесплатный месяц не подошла. Напишите в '
               + '<a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">заботу</a>, '
