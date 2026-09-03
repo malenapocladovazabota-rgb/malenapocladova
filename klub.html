@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Клуб «ПроДвижение» · начните вести блог, в этот раз получится · $19</title>
-<meta name="description" content="Тему, сценарий и тренды приносим мы, каждую неделю. Вам остаётся снять и выложить. Клуб Малены Покладовой, $19 в месяц.">
+<title>Ролик в неделю · Клуб «ПроДвижение» Малены Покладовой</title>
+<meta name="description" content="Тема в понедельник, тренды во вторник, разбор вашего ролика в четверг. Клуб Малены Покладовой.">
 <link rel="icon" href="/images/club/favicon.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Начните вести блог. В этот раз получится.">
-<meta property="og:description" content="Каждый понедельник готовое задание, каждый вторник тренды. Клуб «ПроДвижение», $19 в месяц.">
+<meta property="og:title" content="Ролик в неделю. Клуб Малены Покладовой">
+<meta property="og:description" content="Тема в понедельник, тренды во вторник, разбор вашего ролика в четверг.">
 <meta property="og:image" content="https://malenapocladova.com/images/club/og-club-v3.jpg">
 
 <!-- Meta Pixel -->
@@ -180,7 +180,7 @@ h2{font-family:var(--disp);font-weight:400;font-size:clamp(29px,4.2vw,50px);line
 .board .kick::after{background:rgba(237,230,216,.3)}
 .board h2{color:#F4EDE0}
 .board .lede{color:#C9C0B0}
-.chalk{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:38px;position:relative}
+.chalk{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:38px;position:relative}
 .chalk .c{position:relative;padding:0 18px 0 0}
 .chalk .c .n{font-family:var(--hand);font-size:44px;line-height:1;color:var(--sun);margin-bottom:8px;
   text-shadow:0 0 12px rgba(245,198,58,.35)}
@@ -202,17 +202,6 @@ h2{font-family:var(--disp);font-weight:400;font-size:clamp(29px,4.2vw,50px);line
   background:rgba(255,255,255,.55);transform:rotate(-2deg);box-shadow:0 1px 2px rgba(0,0,0,.08)}
 .pain .lede.big{font-size:22px;color:var(--ink);margin-top:40px;font-family:var(--disp);max-width:34ch}
 
-/* ── КАРТОЧКИ: куда идти ── разделители из тетради на кольцах */
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
-.tab{background:var(--card);border:1px solid var(--line);padding:26px 24px 24px;position:relative;
-  box-shadow:0 2px 6px rgba(23,19,19,.06);transition:transform .2s,box-shadow .2s}
-.tab:hover{transform:translateY(-4px) rotate(-.4deg);box-shadow:var(--sh)}
-.tab::before{content:attr(data-n);position:absolute;right:18px;top:-14px;background:var(--wine);color:#FBF3E6;
-  font-family:var(--pos);font-weight:600;font-size:11px;letter-spacing:.2em;padding:5px 12px;border-radius:2px 2px 0 0}
-.tab b{display:block;font-family:var(--disp);font-weight:400;font-size:21px;line-height:1.2;margin-bottom:9px}
-.tab p{font-size:15px;color:var(--ink2);line-height:1.52}
-.tab .h{display:block;margin-top:12px;font-family:var(--hand);font-size:19px;color:var(--wine)}
-
 /* ── ПОЛАРОИДЫ: отзывы ── */
 .polas{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:38px}
 .pola{background:#fff;padding:12px 12px 20px;box-shadow:var(--sh);position:relative}
@@ -229,10 +218,16 @@ h2{font-family:var(--disp);font-weight:400;font-size:clamp(29px,4.2vw,50px);line
 /* ── ЦЕНА ── лист с печатью «доступ открыт» */
 .price{background:var(--paper2)}
 .pgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;margin-top:36px}
-.pgrid ul{list-style:none}
-.pgrid li{position:relative;padding-left:34px;margin-bottom:12px;font-size:17px;color:var(--ink2)}
-.pgrid li::before{content:'';position:absolute;left:4px;top:8px;width:14px;height:14px;border:2px solid var(--wine);border-radius:2px}
-.pgrid li::after{content:'';position:absolute;left:8px;top:7px;width:6px;height:11px;border:solid var(--wine);border-width:0 2.5px 2.5px 0;transform:rotate(42deg)}
+/* Четыре плитки вместо списка: картинка-вырезка сверху, одно слово, одна строка */
+.inc{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.inc .it{background:var(--card);border:1px solid var(--line);padding:18px 16px 16px;position:relative;
+  box-shadow:0 1px 0 rgba(23,19,19,.05)}
+.inc .it:nth-child(odd){transform:rotate(-.6deg)}
+.inc .it:nth-child(even){transform:rotate(.5deg)}
+.inc .it img{width:54px;height:54px;object-fit:contain;display:block;margin-bottom:10px;
+  filter:drop-shadow(0 2px 0 rgba(23,19,19,.12))}
+.inc .it b{display:block;font-family:var(--disp);font-weight:400;font-size:22px;line-height:1.1;margin-bottom:5px}
+.inc .it span{display:block;font-size:14px;line-height:1.4;color:var(--ink2)}
 .pcard{background:var(--card);padding:38px 34px 34px;box-shadow:var(--sh);position:relative;transform:rotate(.8deg);text-align:center;overflow:hidden}
 .pcard .was{font-family:var(--hand);font-size:22px;color:var(--ink3);text-decoration:line-through;text-decoration-color:var(--red)}
 .pcard .n{font-family:var(--disp);font-size:clamp(66px,8vw,96px);line-height:1;margin:2px 0 0}
@@ -288,15 +283,14 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
 @media(prefers-reduced-motion:reduce){
   .js .rv{opacity:1;transform:none;transition:none}
   .tick i{animation:none}
-  .tab:hover{transform:none}
 }
 
 @media(max-width:980px){
   .hero .wrap{grid-template-columns:1fr;gap:30px}
   .pin{max-width:440px;margin:6px auto 10px}
-  .chalk{grid-template-columns:1fr 1fr;gap:26px 22px}
+  .chalk{gap:0 18px}
   .chalk .c::after{display:none}
-  .stickies,.cards,.polas{grid-template-columns:1fr 1fr}
+  .stickies,.polas{grid-template-columns:1fr 1fr}
   .pgrid,.auth .wrap{grid-template-columns:1fr}
   .diary .after{grid-template-columns:1fr}
 }
@@ -340,15 +334,14 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
   .stickies{grid-template-columns:1fr;gap:22px}
   .sticky{min-height:0;padding:22px 20px 22px;font-size:22px}
   .pain .lede.big{font-size:19px;margin-top:30px}
-  .cards{grid-template-columns:1fr;gap:18px}
-  .tab{padding:20px 18px 18px}
-  .tab b{font-size:19px}
-  .tab p{font-size:14.4px}
-  .tab .h{font-size:17px;margin-top:8px}
   .polas{grid-template-columns:1fr;gap:22px}
   .pola p{font-size:20px}
   .pcard .n{font-size:64px}
-  .pgrid li{font-size:15.5px}
+  .inc{gap:10px}
+  .inc .it{padding:14px 12px 12px}
+  .inc .it img{width:44px;height:44px;margin-bottom:8px}
+  .inc .it b{font-size:19px}
+  .inc .it span{font-size:13px}
   h2{font-size:clamp(26px,7.6vw,32px)}
   .lede{font-size:16.5px}
   .pola:nth-child(2){transform:rotate(1.1deg)}
@@ -367,7 +360,7 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
 <div class="bar">
   <img src="images/club/logo-club.png" alt="">
   <b>Клуб «ПроДвижение»</b>
-  <a class="go" href="/oplata?s=k-nav">$19 в месяц</a>
+  <a class="go" href="/oplata?s=k-nav">Вступить</a>
 </div>
 
 <!-- ═══ ГЕРОЙ ═══ -->
@@ -375,12 +368,10 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
   <div class="wrap">
     <div>
       <div class="eyebrow">Клуб Малены Покладовой · учебный год 2026 / 2027</div>
-      <h1>Начните вести блог.<br><span class="u">В этот раз получится.</span></h1>
-      <p class="lede">Тему, сценарий и тренды <b>приносим мы</b>, каждую неделю. Вам остаётся снять
-        и выложить. К концу месяца профиль упакован, работы вышли, и рядом Малена,
-        которая делает это вместе с вами.</p>
+      <h1>Ролик <span class="u">в неделю.</span></h1>
+      <p class="lede">Тема в понедельник, тренды во вторник. <b>В четверг ваш ролик разбирает Малена.</b></p>
       <div class="cta">
-        <a class="btn" href="/oplata?s=k-hero">Вступить за $19 <span class="ar">&rarr;</span></a>
+        <a class="btn" href="/oplata?s=k-hero">Вступить в клуб <span class="ar">&rarr;</span></a>
         <small>Отмена в любой момент в боте, объяснять ничего не нужно</small>
       </div>
     </div>
@@ -398,7 +389,7 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
   </div>
 
   <div class="tick" aria-hidden="true">
-    <i><span class="hl">ПОНЕДЕЛЬНИК · ЗАДАНИЕ</span><span>ВТОРНИК · ТРЕНДЫ</span><span>СРЕДА · РАБОЧИЙ ЧАС</span><span>ЧЕТВЕРГ · РАЗБОР РАБОТ</span><span>$19 В МЕСЯЦ</span><span class="hl">ПОНЕДЕЛЬНИК · ЗАДАНИЕ</span><span>ВТОРНИК · ТРЕНДЫ</span><span>СРЕДА · РАБОЧИЙ ЧАС</span><span>ЧЕТВЕРГ · РАЗБОР РАБОТ</span><span>$19 В МЕСЯЦ</span><span class="hl">ПОНЕДЕЛЬНИК · ЗАДАНИЕ</span><span>ВТОРНИК · ТРЕНДЫ</span><span>СРЕДА · РАБОЧИЙ ЧАС</span><span>ЧЕТВЕРГ · РАЗБОР РАБОТ</span><span>$19 В МЕСЯЦ</span></i>
+    <i><span class="hl">ПОНЕДЕЛЬНИК · ЗАДАНИЕ</span><span>ВТОРНИК · ТРЕНДЫ</span><span>СРЕДА · РАБОЧИЙ ЧАС</span><span>ЧЕТВЕРГ · РАЗБОР РАБОТ</span><span>РОЛИК В НЕДЕЛЮ</span><span class="hl">ПОНЕДЕЛЬНИК · ЗАДАНИЕ</span><span>ВТОРНИК · ТРЕНДЫ</span><span>СРЕДА · РАБОЧИЙ ЧАС</span><span>ЧЕТВЕРГ · РАЗБОР РАБОТ</span><span>РОЛИК В НЕДЕЛЮ</span><span class="hl">ПОНЕДЕЛЬНИК · ЗАДАНИЕ</span><span>ВТОРНИК · ТРЕНДЫ</span><span>СРЕДА · РАБОЧИЙ ЧАС</span><span>ЧЕТВЕРГ · РАЗБОР РАБОТ</span><span>РОЛИК В НЕДЕЛЮ</span></i>
   </div>
 </header>
 
@@ -406,8 +397,7 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
 <section class="diary">
   <div class="wrap">
     <div class="kick">Как устроена неделя</div>
-    <h2>Каждую неделю всё уже подготовлено. <span class="yl">Вам остаётся снять</span></h2>
-    <p class="lede">Так выглядит неделя в клубе. Всё, что нужно, приходит само.</p>
+    <h2>Так выглядит <span class="yl">одна неделя</span></h2>
 
     <div class="sheet">
       <img class="stk k1" src="images/club/st-markers.png" alt="" loading="lazy" decoding="async">
@@ -428,8 +418,7 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
     </div>
 
     <div class="after">
-      <p>Четыре понедельника это четыре готовых задания. <b>Тема, сценарий и тренды подготовлены
-        заранее.</b> Вы приходите, а материал уже лежит. Так проще начать и труднее бросить.</p>
+      <p><b>Думать, что снимать, не нужно.</b> Материал уже лежит, вы приходите и снимаете.</p>
     </div>
   </div>
 </section>
@@ -440,17 +429,14 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
     <div class="frame">
       <div class="kick">Что из этого выйдет</div>
       <h2>Дальше начинает работать само</h2>
-      <p class="lede">Регулярному автору алгоритмы дают показы. Дальше подключаются люди.</p>
 
       <div class="chalk">
-        <div class="c rv d1"><div class="n">1</div><b>Профиль оживает</b><p>Посты выходят каждую неделю, и вас начинают показывать чаще</p></div>
-        <div class="c rv d1"><div class="n">2</div><b>Растут охваты</b><p>Чем больше роликов, тем выше шанс, что один разлетится</p></div>
-        <div class="c rv d2"><div class="n">3</div><b>Приходят люди</b><p>Подписчики, которые нашли вас сами</p></div>
-        <div class="c rv d2"><div class="n">4</div><b>Пишут в директ</b><p>Первые вопросы и первые заявки</p></div>
-        <div class="c rv d3"><div class="n">5</div><b>Уходит страх</b><p>Съёмка занимает двадцать минут вместо вечера</p></div>
+        <div class="c rv d1"><div class="n">4</div><b>ролика в месяц</b><p>Профиль оживает, вас показывают чаще</p></div>
+        <div class="c rv d2"><div class="n">36</div><b>до мая</b><p>Приходят люди, которые нашли вас сами</p></div>
+        <div class="c rv d3"><div class="n">20</div><b>минут на съёмку</b><p>Вместо вечера. Страх уходит с практикой</p></div>
       </div>
 
-      <div class="note">и всё это без единого придуманного самой сценария</div>
+      <div class="note">и ни одного сценария, придуманного самой</div>
     </div>
   </div>
 </section>
@@ -465,24 +451,7 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
       <div class="sticky rv d2">В галерее двенадцать видео. Выложено ноль.</div>
       <div class="sticky rv d3">Курс куплен. Лента пустая с прошлой зимы.</div>
     </div>
-    <p class="lede big">Знаний хватает. Не хватает того, кто каждую неделю принесёт готовое и будет рядом.</p>
-  </div>
-</section>
-
-<!-- ═══ КАРТОЧКИ ═══ -->
-<section class="doors">
-  <div class="wrap">
-    <div class="kick">Ради чего всё</div>
-    <h2>Куда с этим <span class="yl">можно прийти</span></h2>
-    <p class="lede">У каждой своя причина. Найдите свою.</p>
-    <div class="cards">
-      <div class="tab rv d1" data-n="своё дело"><b>Продавать своё</b><p>Рукоделие, кондитерка, косметология, консультации. Блог заменяет и витрину, и рекламу, и портфолио.</p><span class="h">о вас должны узнать</span></div>
-      <div class="tab rv d2" data-n="работа"><b>Вести чужие аккаунты</b><p>Самое короткое расстояние до первых денег: навык нужен рынку прямо сейчас, входить можно без вложений.</p><span class="h">учитесь, чтобы делать это для других</span></div>
-      <div class="tab rv d3" data-n="съёмка"><b>Снимать для брендов</b><p>Короткие ролики на заказ. Из дома, без публичности и без своей аудитории.</p><span class="h">лицо в кадре не обязательно</span></div>
-      <div class="tab rv d1" data-n="эксперт"><b>Экспертный блог</b><p>Очередь стоит к тому, кого слышно. Блог превращает знание в поток клиентов.</p><span class="h">вы знаете, но вас не видно</span></div>
-      <div class="tab rv d2" data-n="карьера"><b>Блог вместо резюме</b><p>Вас проверяют в соцсетях раньше, чем читают резюме. Живой профиль говорит больше двух страниц.</p><span class="h">работодатель уже гуглит</span></div>
-      <div class="tab rv d3" data-n="голос"><b>Просто быть услышанной</b><p>Иногда нужны не деньги, а голос: перестать бояться камеры и собрать вокруг своих людей.</p><span class="h">чтобы вас было слышно</span></div>
-    </div>
+    <p class="lede big">Знаний хватает. Не хватает расписания и людей рядом.</p>
   </div>
 </section>
 
@@ -512,19 +481,16 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
 <!-- ═══ ЦЕНА ═══ -->
 <section class="price" id="price">
   <div class="wrap">
-    <div class="kick">Сколько стоит</div>
-    <h2>$19 в месяц</h2>
-    <p class="lede">Отменить можно в любой момент, в боте, в два нажатия.</p>
+    <div class="kick">Что внутри</div>
+    <h2>Всё, что нужно для ролика в неделю</h2>
 
     <div class="pgrid">
-      <ul>
-        <li>Каждый понедельник готовое задание: тема, сценарий, пример</li>
-        <li>Каждый вторник подборка трендов недели</li>
-        <li>Среда рабочий час, четверг разбор работ</li>
-        <li>Чат, где рядом женщины, которые тоже делают</li>
-        <li>Библиотека материалов</li>
-        <li>Девять месяцев, с сентября по май</li>
-      </ul>
+      <div class="inc">
+        <div class="it rv d1"><img src="images/club/cut-bulb.png" alt="" loading="lazy" decoding="async"><b>Задание</b><span>тема и сценарий, каждый понедельник</span></div>
+        <div class="it rv d2"><img src="images/club/cut-phone.png" alt="" loading="lazy" decoding="async"><b>Тренды</b><span>звуки и форматы недели, каждый вторник</span></div>
+        <div class="it rv d3"><img src="images/club/cut-camera.png" alt="" loading="lazy" decoding="async"><b>Разбор</b><span>ваших работ с Маленой, каждый четверг</span></div>
+        <div class="it rv d3"><img src="images/club/cut-megaphone.png" alt="" loading="lazy" decoding="async"><b>Чат</b><span>женщины, которые тоже снимают</span></div>
+      </div>
       <div class="pcard">
         <img class="seal" src="images/club/seal-2026.png" alt="" loading="lazy" decoding="async">
         <div class="was">ценность $150</div>
@@ -549,8 +515,7 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
     <div>
       <span class="hand">Малена Покладова</span>
       <h2>Семь лет в продвижении, четыре года преподаю</h2>
-      <p class="lede">Через программы школы прошли больше двух тысяч человек, больше двухсот женщин закончили курс.</p>
-      <p class="lede">В клубе я рядом каждую неделю: приношу задания, показываю тренды и разбираю работы.</p>
+      <p class="lede">Больше двухсот женщин закончили курс. В клубе я рядом каждую неделю и разбираю ваши работы сама.</p>
     </div>
   </div>
 </section>
@@ -563,8 +528,6 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
     <div style="margin-top:24px">
       <details class="fq"><summary>Я совсем новичок, мне подойдёт?</summary>
         <p>Да. Задание приходит с готовой темой и сценарием. Начать можно с телефона и без единой съёмки за спиной.</p></details>
-      <details class="fq"><summary>Сколько времени это занимает?</summary>
-        <p>Одно задание в неделю. Кто-то снимает за двадцать минут, кто-то растягивает на вечер. Решаете вы.</p></details>
       <details class="fq"><summary>Что будет, если я захочу уйти?</summary>
         <p>Отмена в боте клуба в два нажатия, объяснять ничего не нужно. Списание прекратится, доступ останется до конца оплаченного месяца.</p></details>
       <details class="fq"><summary>Как я попаду внутрь после оплаты?</summary>
@@ -577,9 +540,9 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
 <section class="fin">
   <div class="bleed" aria-hidden="true">ПРОДВИЖЕНИЕ</div>
   <div class="wrap">
-    <h2>Начните вести блог. В этот раз получится</h2>
-    <p class="lede">Темы, сценарии, тренды и люди рядом уже есть. $19 в месяц, отмена в любой момент.</p>
-    <a class="btn" href="/oplata?s=k-final">Вступить за $19 <span class="ar">&rarr;</span></a>
+    <h2>Первое задание уже в понедельник</h2>
+    <p class="lede">Тема, сценарий, тренды и люди рядом уже есть. Отмена в любой момент.</p>
+    <a class="btn" href="/oplata?s=k-final">Вступить в клуб <span class="ar">&rarr;</span></a>
   </div>
 </section>
 
@@ -589,7 +552,7 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
 </footer>
 
 <div class="stick">
-  <div class="t"><b>$19 В МЕСЯЦ</b>отмена в любой момент</div>
+  <div class="t"><b>РОЛИК В НЕДЕЛЮ</b>отмена в любой момент</div>
   <a class="btn" href="/oplata?s=k-stick">Вступить</a>
 </div>
 
