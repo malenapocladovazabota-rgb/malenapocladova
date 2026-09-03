@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Клуб «ПроДвижение» · за месяц вы снимете четыре ролика · $19</title>
-<meta name="description" content="Каждый понедельник вам говорят, что снимать. Каждый четверг разбор работ. Клуб Малены Покладовой, $19 в месяц.">
+<title>Клуб «ПроДвижение» · начните вести блог, в этот раз получится · $19</title>
+<meta name="description" content="Тему, сценарий и тренды приносим мы, каждую неделю. Вам остаётся снять и выложить. Клуб Малены Покладовой, $19 в месяц.">
 <link rel="icon" href="/images/club/favicon.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="За месяц вы снимете четыре ролика">
-<meta property="og:description" content="Каждый понедельник задание, каждый четверг разбор работ. Клуб «ПроДвижение», $19 в месяц.">
+<meta property="og:title" content="Начните вести блог. В этот раз получится.">
+<meta property="og:description" content="Каждый понедельник готовое задание, каждый вторник тренды. Клуб «ПроДвижение», $19 в месяц.">
 <meta property="og:image" content="https://malenapocladova.com/images/club/og-club-v3.jpg">
 
 <!-- Meta Pixel -->
@@ -27,167 +27,338 @@ fbq('init','1350449057220500');fbq('track','PageView');
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Prata&family=Oswald:wght@400;500;600&family=Onest:wght@400;500;600&family=Marck+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Oswald:wght@400;500;600;700&family=Onest:wght@400;500;600&family=Marck+Script&display=swap" rel="stylesheet">
 
 <style>
+/* ──────────────────────────────────────────────────────────────────
+   Язык страницы: школьный дневник. Каждый блок это другой предмет
+   с парты: тетрадный лист, школьная доска, стикеры, карточки,
+   полароиды, печать. Материалы разные, правила одни: бумага одного
+   цвета, наклон в пределах двух градусов, одна тень на всех.
+   ────────────────────────────────────────────────────────────────── */
 :root{
-  --paper:#F2EAD9; --paper2:#FBF6EC; --card:#FFFDF8; --ink:#171313; --ink2:#3B3333; --ink3:#6B605C;
-  --wine:#6B2138; --navy:#22314A; --blue:#B7D9FE; --sun:#F5C63A; --line:rgba(23,19,19,.13);
-  --disp:'Prata',Georgia,serif; --pos:'Oswald',sans-serif; --txt:'Onest',sans-serif; --hand:'Marck Script',cursive;
+  --paper:#F2EAD9; --paper2:#FBF6EC; --card:#FFFDF8;
+  --ink:#171313; --ink2:#3B3333; --ink3:#6B605C;
+  --wine:#6B2138; --wine2:#8C2C49; --navy:#22314A; --navy2:#2A3B58;
+  --blue:#B7D9FE; --sun:#F5C63A; --sun2:#FFDD6B; --red:#D9534F;
+  --pen:#1F2E4D;
+  --line:rgba(23,19,19,.13);
+  --sh:0 10px 26px rgba(23,19,19,.14), 0 2px 5px rgba(23,19,19,.08);
+  --disp:'Prata',Georgia,serif; --pos:'Oswald',Impact,sans-serif;
+  --txt:'Onest',-apple-system,sans-serif; --hand:'Marck Script',cursive;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--txt);
-  font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--txt);font-size:17px;line-height:1.6;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
-.wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+a{color:inherit}
+::selection{background:var(--sun);color:var(--ink)}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 22px}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
 
-/* Липкая шапка: на короткой странице кнопка должна быть в поле зрения всегда. */
+/* Кнопка: одна на всю страницу, чтобы её узнавали */
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--sun);color:var(--ink);
+  text-decoration:none;font-family:var(--pos);font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;padding:17px 30px;font-size:16.5px;border-radius:2px;
+  box-shadow:0 7px 0 var(--wine);transition:transform .12s,box-shadow .12s;position:relative}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 0 var(--wine)}
+.btn:active{transform:translateY(4px);box-shadow:0 3px 0 var(--wine)}
+.btn .ar{font-family:var(--txt);font-weight:400;font-size:20px;line-height:1}
+
+/* ── ШАПКА ── */
 .bar{position:sticky;top:0;z-index:40;background:var(--wine);color:#F7F0E4;
-  display:flex;align-items:center;gap:12px;padding:9px 16px}
-.bar img{width:24px;height:24px;border-radius:2px}
-.bar b{font-family:var(--pos);font-weight:600;font-size:11px;letter-spacing:.19em;text-transform:uppercase}
+  display:flex;align-items:center;gap:12px;padding:10px 18px}
+.bar img{width:26px;height:26px;border-radius:2px}
+.bar b{font-family:var(--pos);font-weight:600;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase}
 .bar .go{margin-left:auto;background:var(--sun);color:var(--ink);text-decoration:none;
-  font-family:var(--pos);font-weight:600;font-size:13px;letter-spacing:.06em;
-  text-transform:uppercase;padding:8px 15px;white-space:nowrap}
+  font-family:var(--pos);font-weight:600;font-size:13px;letter-spacing:.07em;
+  text-transform:uppercase;padding:9px 16px;white-space:nowrap;border-radius:2px}
 
-/* ГЕРОЙ */
-.hero{padding:26px 0 8px}
-.yr{font-family:var(--pos);font-weight:500;font-size:11px;letter-spacing:.24em;
-  text-transform:uppercase;color:var(--wine);margin-bottom:14px}
-.frame{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--ink)}
-.frame>img{width:100%;height:100%;object-fit:cover;object-position:70% 30%}
-.cap{position:absolute;inset:auto 0 0 0;padding:26px 26px 24px;
-  background:linear-gradient(to top,rgba(11,9,9,.93) 0%,rgba(11,9,9,.78) 46%,rgba(11,9,9,0) 100%);
-  color:#FBF6EC;display:flex;align-items:flex-end;gap:26px;flex-wrap:wrap}
-.cap .l{flex:1 1 380px;min-width:0}
-h1{font-family:var(--disp);font-weight:400;font-size:clamp(27px,4.6vw,50px);
-  line-height:1.1;margin:0 0 10px;letter-spacing:-.01em}
-h1 em{font-style:normal;color:var(--sun)}
-.cap p{margin:0;font-size:clamp(15px,1.7vw,18px);color:#E8DFD0;max-width:33em}
-.cta{flex:0 0 auto}
-.btn{display:inline-flex;align-items:center;gap:9px;background:var(--sun);color:var(--ink);
-  text-decoration:none;font-family:var(--pos);font-weight:600;letter-spacing:.05em;
-  text-transform:uppercase;padding:15px 26px;font-size:16px;
-  box-shadow:0 6px 0 rgba(23,19,19,.22);transition:transform .12s,box-shadow .12s}
-.btn:active{transform:translateY(3px);box-shadow:0 3px 0 rgba(23,19,19,.22)}
-.btn.big{font-size:18px;padding:17px 32px}
-.cta small{display:block;text-align:center;margin-top:8px;font-family:var(--txt);
-  font-size:12.6px;color:#CFC5B6;text-transform:none;letter-spacing:0}
+/* ── ГЕРОЙ ──
+   Слева слова, справа фотография, приколотая к странице. Между ними воздух.
+   Заголовок в Prata, но крупно и с переносом по смыслу: две строки, два удара. */
+.hero{position:relative;padding:54px 0 0;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.eyebrow{font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--wine);display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.eyebrow::after{content:'';height:1px;width:64px;background:var(--wine);opacity:.5}
+h1{font-family:var(--disp);font-weight:400;font-size:clamp(36px,4.1vw,52px);line-height:1.06;
+  letter-spacing:-.015em;margin-bottom:22px}
+h1 .u{background:linear-gradient(transparent 62%,var(--sun) 62%,var(--sun) 94%,transparent 94%);
+  padding:0 .06em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.hero .lede{font-size:clamp(17px,1.5vw,19.5px);color:var(--ink2);max-width:34em;margin-bottom:30px}
+.hero .lede b{color:var(--ink);font-weight:600}
+.hero .cta{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.hero .cta small{font-size:13.5px;color:var(--ink3);line-height:1.4;max-width:15em}
 
-/* Четыре факта под героем */
-.four{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
-  border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:0}
-.four div{background:var(--paper);padding:16px 15px}
-.four span{display:block;font-family:var(--pos);font-weight:600;font-size:11px;
-  letter-spacing:.17em;text-transform:uppercase;color:var(--wine);margin-bottom:5px}
-.four p{margin:0;font-size:14.4px;line-height:1.45;color:var(--ink2)}
+/* Фото как карточка, приколотая скрепкой, чуть под углом */
+.pin{position:relative;transform:rotate(1.6deg);margin:10px 0 20px}
+.pin .ph{background:#fff;padding:12px 12px 14px;box-shadow:var(--sh);position:relative}
+.pin .ph img{width:100%;aspect-ratio:4/4.3;object-fit:cover;object-position:60% 20%}
+.pin .ph .cap{margin:12px 4px 0;font-family:var(--hand);font-size:23px;line-height:1.2;
+  color:var(--pen);transform:rotate(-1deg)}
+.pin .clip{position:absolute;left:38px;top:-16px;width:18px;height:46px;border:3px solid #A19A90;
+  border-radius:9px;border-bottom-color:transparent;z-index:3}
+.pin .clip::after{content:'';position:absolute;left:3px;top:6px;width:6px;height:30px;border:3px solid #A19A90;
+  border-radius:6px;border-top-color:transparent}
+.pin .tape{position:absolute;right:-18px;top:22px;width:110px;height:30px;background:rgba(245,198,58,.82);
+  transform:rotate(9deg);box-shadow:0 1px 2px rgba(0,0,0,.08);z-index:3}
+.pin .stk{position:absolute;pointer-events:none;filter:drop-shadow(0 6px 12px rgba(23,19,19,.18));z-index:4}
+.pin .s1{width:92px;right:-30px;bottom:44px;transform:rotate(14deg)}
+.pin .s2{width:74px;left:-34px;bottom:96px;transform:rotate(-18deg)}
 
-section{padding:52px 0}
-.kick{font-family:var(--pos);font-weight:600;font-size:11px;letter-spacing:.24em;
-  text-transform:uppercase;color:var(--wine);margin-bottom:11px}
-h2{font-family:var(--disp);font-weight:400;font-size:clamp(24px,3.6vw,38px);
-  line-height:1.16;margin:0 0 12px}
-h2 .yl{background:linear-gradient(transparent 62%,var(--sun) 62%);padding:0 .12em}
-.lede{font-size:17.5px;color:var(--ink2);margin:0 0 4px;max-width:34em}
+/* Бегущая строка: ритм недели, как надпись на обложке тетради */
+.tick{background:var(--wine);color:#FBF3E6;padding:14px 0;overflow:hidden;white-space:nowrap;margin-top:34px}
+.tick i{display:inline-block;animation:sc 40s linear infinite;font-family:var(--pos);font-weight:500;
+  font-style:normal;font-size:14px;letter-spacing:.24em;text-transform:uppercase}
+.tick i span{margin:0 22px;opacity:.6}
+.tick i span.hl{opacity:1;color:var(--sun)}
+@keyframes sc{from{transform:translateX(0)}to{transform:translateX(-33.333%)}}
 
-/* МЕХАНИКА: три шага недели */
-.week{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
-.day{background:var(--card);border:1px solid var(--line);padding:22px 20px;position:relative}
-.day:before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:var(--sun)}
-.day.b:before{background:var(--blue)}
-.day.n:before{background:var(--navy)}
-.day b{display:block;font-family:var(--pos);font-weight:600;font-size:12.5px;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--wine);margin:6px 0 8px}
-.day h3{font-family:var(--disp);font-weight:400;font-size:20px;margin:0 0 7px;line-height:1.22}
-.day p{margin:0;font-size:15px;color:var(--ink2);line-height:1.52}
-.itog{margin-top:22px;background:var(--navy);color:#EFE7DA;padding:22px 24px;
-  display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.itog .n{font-family:var(--disp);font-size:46px;line-height:1;color:var(--sun);flex:none}
-.itog p{margin:0;font-size:16.5px;max-width:40em}
+section{padding:88px 0;position:relative}
+.kick{font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--wine);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.kick::after{content:'';height:1px;flex:1;max-width:80px;background:var(--line)}
+h2{font-family:var(--disp);font-weight:400;font-size:clamp(29px,4.2vw,50px);line-height:1.08;
+  letter-spacing:-.01em;margin-bottom:14px}
+.yl{background:linear-gradient(transparent 58%,var(--sun2) 58%,var(--sun2) 94%,transparent 94%);padding:0 3px}
+.lede{font-size:18px;color:var(--ink2);max-width:56ch}
 
-/* БОЛЬ */
-.pain{background:var(--paper2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
-.nt{background:var(--card);border:1px solid var(--line);padding:19px 20px;font-size:15.4px;
-  color:var(--ink2);position:relative;box-shadow:0 3px 10px rgba(23,19,19,.05)}
-.nt:before{content:"";position:absolute;left:22px;top:-7px;width:34px;height:13px;
-  background:rgba(183,217,254,.75);transform:rotate(-3deg)}
-.nt b{color:var(--ink)}
+/* ── ДНЕВНИК: главный блок страницы ──
+   Настоящий тетрадный лист: линейка, красное поле слева, записи ручкой.
+   Не «карточки дней», а неделя, прожитая в дневнике. */
+.diary{background:var(--paper2)}
+.sheet{position:relative;background:var(--card);margin-top:34px;
+  box-shadow:var(--sh);transform:rotate(-.6deg);
+  background-image:
+    linear-gradient(to right, transparent 0, transparent 78px, rgba(217,83,79,.55) 78px, rgba(217,83,79,.55) 80px, transparent 80px),
+    repeating-linear-gradient(to bottom, transparent 0, transparent 35px, rgba(34,49,74,.16) 35px, rgba(34,49,74,.16) 36px);
+  background-size:100% 100%, 100% 36px;
+  padding:36px 40px 44px 108px}
+.sheet::before{content:'';position:absolute;left:0;top:0;bottom:0;width:22px;
+  background:repeating-linear-gradient(to bottom, transparent 0, transparent 22px, rgba(23,19,19,.18) 22px, rgba(23,19,19,.18) 30px, transparent 30px, transparent 52px);
+  background-size:22px 52px;opacity:.55}
+.sheet .head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;
+  flex-wrap:wrap;margin-bottom:8px;line-height:36px}
+.sheet .head .hand{font-family:var(--hand);font-size:30px;color:var(--pen)}
+.sheet .head .wk{font-family:var(--pos);font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3)}
+.row{display:grid;grid-template-columns:96px 1fr;align-items:baseline;line-height:36px;position:relative}
+.row .d{font-family:var(--pos);font-weight:600;font-size:15px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--wine);margin-left:-28px}
+.row .e{font-family:var(--hand);font-size:clamp(21px,2.1vw,27px);color:var(--pen);
+  padding-right:120px}
+.row .e mark{background:linear-gradient(transparent 20%,var(--sun2) 20%,var(--sun2) 85%,transparent 85%);color:inherit;padding:0 2px}
+.row .e s{text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px;opacity:.75}
+.row.gap{line-height:36px;min-height:36px}
+.sheet .stk{position:absolute;pointer-events:none;filter:drop-shadow(0 6px 12px rgba(23,19,19,.18))}
+.sheet .k1{width:96px;right:26px;top:-30px;transform:rotate(12deg)}
+.sheet .k2{width:78px;right:120px;bottom:-26px;transform:rotate(-9deg)}
+.sheet .k3{width:60px;left:-26px;bottom:110px;transform:rotate(-22deg)}
+/* Печать «4 работы»: стоит поверх записей, как штамп проверяющего */
+.stamp{position:absolute;right:44px;bottom:38px;width:158px;height:158px;border:3px double var(--wine);
+  border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:var(--wine);transform:rotate(-12deg);opacity:.88;background:rgba(255,253,248,.6)}
+.stamp b{font-family:var(--disp);font-size:66px;line-height:.9}
+.stamp span{font-family:var(--pos);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  text-align:center;line-height:1.25;margin-top:6px}
+.stamp::before{content:'';position:absolute;inset:6px;border:1.5px solid var(--wine);border-radius:50%;opacity:.7}
+.diary .after{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+.diary .after p{font-size:17px;color:var(--ink2)}
+.diary .after p b{color:var(--ink);font-weight:600}
 
-/* ОТЗЫВЫ */
-.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
-.rev{background:var(--card);border:1px solid var(--line);padding:20px}
-.rev img{width:52px;height:52px;border-radius:50%;object-fit:cover;margin-bottom:12px}
-.rev p{margin:0 0 8px;font-size:15.4px;line-height:1.5;color:var(--ink2)}
-.rev .who{font-family:var(--pos);font-size:11.5px;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--wine)}
+/* ── ДОСКА: что начнёт происходить ──
+   Школьная доска. Мел, стрелки, пять остановок. Здесь мы объясняем следствие,
+   и объясняем как учитель у доски, потому что это и есть урок. */
+.board{background:var(--navy);color:#EDE6D8;position:relative;overflow:hidden}
+.board::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 20%, rgba(255,255,255,.07), transparent 55%),
+             radial-gradient(ellipse at 80% 90%, rgba(255,255,255,.05), transparent 50%);pointer-events:none}
+.board .frame{position:relative;border:14px solid #7A5A3C;border-image:linear-gradient(135deg,#8C6A48,#6A4B31) 1;
+  padding:44px 40px 40px;box-shadow:inset 0 0 60px rgba(0,0,0,.35), var(--sh)}
+.board .kick{color:var(--sun)}
+.board .kick::after{background:rgba(237,230,216,.3)}
+.board h2{color:#F4EDE0}
+.board .lede{color:#C9C0B0}
+.chalk{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:38px;position:relative}
+.chalk .c{position:relative;padding:0 18px 0 0}
+.chalk .c .n{font-family:var(--hand);font-size:44px;line-height:1;color:var(--sun);margin-bottom:8px;
+  text-shadow:0 0 12px rgba(245,198,58,.35)}
+.chalk .c b{display:block;font-family:var(--pos);font-weight:500;font-size:15px;letter-spacing:.1em;
+  text-transform:uppercase;color:#F4EDE0;margin-bottom:8px}
+.chalk .c p{font-size:14.6px;line-height:1.5;color:#C9C0B0}
+.chalk .c::after{content:'→';position:absolute;right:6px;top:8px;font-family:var(--hand);font-size:34px;color:rgba(244,237,224,.5)}
+.chalk .c:last-child::after{display:none}
+.board .note{margin-top:34px;font-family:var(--hand);font-size:25px;color:var(--sun);transform:rotate(-1deg);display:inline-block}
 
-/* ЦЕНА */
-.price{background:var(--ink);color:#F4EDE0}
-.price h2{color:#F4EDE0}
-.price .lede{color:#C7BCAE}
-.pbox{background:#211B1B;border:1px solid rgba(244,237,224,.16);padding:30px;margin-top:26px;
-  display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
-.pbox ul{list-style:none;margin:0;padding:0}
-.pbox li{position:relative;padding-left:24px;margin-bottom:9px;font-size:15.8px;color:#DCD2C4}
-.pbox li:before{content:"";position:absolute;left:2px;top:9px;width:8px;height:8px;background:var(--sun)}
-.pr{text-align:center}
-.pr .was{color:#8E837A;text-decoration:line-through;font-size:16px}
-.pr .n{font-family:var(--disp);font-size:64px;line-height:1;margin:4px 0 2px}
-.pr .m{font-family:var(--pos);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:#B3A89C}
-.pr .btn{margin-top:18px}
-.pr small{display:block;margin-top:10px;font-size:13px;color:#9C9086;line-height:1.5}
-.pr small a{color:var(--blue)}
+/* ── СТИКЕРЫ: боль ── три записки на холодильник */
+.stickies{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:36px}
+.sticky{background:var(--sun2);padding:28px 24px 30px;font-family:var(--hand);font-size:25px;line-height:1.28;
+  color:var(--ink);box-shadow:var(--sh);position:relative;min-height:170px}
+.sticky:nth-child(1){transform:rotate(-2deg)}
+.sticky:nth-child(2){transform:rotate(1.2deg);background:var(--blue)}
+.sticky:nth-child(3){transform:rotate(-1deg);background:#FBF0F0}
+.sticky::before{content:'';position:absolute;left:50%;top:-12px;width:92px;height:26px;margin-left:-46px;
+  background:rgba(255,255,255,.55);transform:rotate(-2deg);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.pain .lede.big{font-size:22px;color:var(--ink);margin-top:40px;font-family:var(--disp);max-width:34ch}
 
-/* ВОПРОСЫ */
-.fq{background:var(--card);border:1px solid var(--line);padding:16px 20px;margin-bottom:9px}
-.fq summary{cursor:pointer;font-family:var(--pos);font-weight:500;font-size:16px;
-  letter-spacing:.02em;list-style:none}
+/* ── КАРТОЧКИ: куда идти ── разделители из тетради на кольцах */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+.tab{background:var(--card);border:1px solid var(--line);padding:26px 24px 24px;position:relative;
+  box-shadow:0 2px 6px rgba(23,19,19,.06);transition:transform .2s,box-shadow .2s}
+.tab:hover{transform:translateY(-4px) rotate(-.4deg);box-shadow:var(--sh)}
+.tab::before{content:attr(data-n);position:absolute;right:18px;top:-14px;background:var(--wine);color:#FBF3E6;
+  font-family:var(--pos);font-weight:600;font-size:11px;letter-spacing:.2em;padding:5px 12px;border-radius:2px 2px 0 0}
+.tab b{display:block;font-family:var(--disp);font-weight:400;font-size:21px;line-height:1.2;margin-bottom:9px}
+.tab p{font-size:15px;color:var(--ink2);line-height:1.52}
+.tab .h{display:block;margin-top:12px;font-family:var(--hand);font-size:19px;color:var(--wine)}
+
+/* ── ПОЛАРОИДЫ: отзывы ── */
+.polas{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:38px}
+.pola{background:#fff;padding:12px 12px 20px;box-shadow:var(--sh);position:relative}
+.pola:nth-child(1){transform:rotate(-1.8deg)}
+.pola:nth-child(2){transform:rotate(1.1deg) translateY(10px)}
+.pola:nth-child(3){transform:rotate(-.8deg)}
+.pola .top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.pola img{width:56px;height:56px;border-radius:50%;object-fit:cover}
+.pola .who{font-family:var(--pos);font-weight:500;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--wine)}
+.pola .who small{display:block;font-family:var(--txt);font-size:12px;letter-spacing:0;text-transform:none;color:var(--ink3);margin-top:2px}
+.pola p{font-family:var(--hand);font-size:22px;line-height:1.3;color:var(--pen)}
+.revs .lede.small{font-size:14.5px;color:var(--ink3);margin-top:26px}
+
+/* ── ЦЕНА ── лист с печатью «доступ открыт» */
+.price{background:var(--paper2)}
+.pgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;margin-top:36px}
+.pgrid ul{list-style:none}
+.pgrid li{position:relative;padding-left:34px;margin-bottom:12px;font-size:17px;color:var(--ink2)}
+.pgrid li::before{content:'';position:absolute;left:4px;top:8px;width:14px;height:14px;border:2px solid var(--wine);border-radius:2px}
+.pgrid li::after{content:'';position:absolute;left:8px;top:7px;width:6px;height:11px;border:solid var(--wine);border-width:0 2.5px 2.5px 0;transform:rotate(42deg)}
+.pcard{background:var(--card);padding:38px 34px 34px;box-shadow:var(--sh);position:relative;transform:rotate(.8deg);text-align:center;overflow:hidden}
+.pcard .was{font-family:var(--hand);font-size:22px;color:var(--ink3);text-decoration:line-through;text-decoration-color:var(--red)}
+.pcard .n{font-family:var(--disp);font-size:clamp(66px,8vw,96px);line-height:1;margin:2px 0 0}
+.pcard .m{font-family:var(--pos);font-weight:500;font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--ink3);margin-bottom:22px}
+.pcard small{display:block;margin-top:16px;font-size:13.5px;color:var(--ink3);line-height:1.5}
+.pcard small a{color:var(--wine)}
+.pcard .seal{position:absolute;right:-28px;top:-22px;width:130px;opacity:.16;transform:rotate(12deg);pointer-events:none}
+.pcard .ok{display:inline-block;margin-top:18px;border:2.5px solid var(--wine);color:var(--wine);
+  font-family:var(--pos);font-weight:600;font-size:12px;letter-spacing:.24em;text-transform:uppercase;
+  padding:6px 14px;transform:rotate(-4deg);opacity:.85;background:rgba(255,253,248,.7)}
+
+/* ── АВТОР ── */
+.auth .wrap{display:grid;grid-template-columns:.7fr 1.3fr;gap:44px;align-items:center}
+.auth .ph{background:#fff;padding:10px 10px 44px;box-shadow:var(--sh);transform:rotate(-2deg);position:relative;max-width:360px}
+.auth .ph img{aspect-ratio:4/5;object-fit:cover;width:100%}
+.auth .ph .cap{position:absolute;left:14px;bottom:10px;font-family:var(--hand);font-size:22px;color:var(--pen)}
+.auth .hand{font-family:var(--hand);font-size:28px;color:var(--wine);transform:rotate(-1.5deg);display:inline-block;margin-bottom:6px}
+.auth p.lede{margin-bottom:12px}
+
+/* ── ВОПРОСЫ ── */
+.faq{padding-top:0}
+.fq{background:var(--card);border:1px solid var(--line);padding:18px 22px;margin-bottom:10px}
+.fq summary{cursor:pointer;font-family:var(--pos);font-weight:500;font-size:16.5px;letter-spacing:.02em;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:16px}
 .fq summary::-webkit-details-marker{display:none}
-.fq summary:after{content:"+";float:right;color:var(--wine);font-size:19px;line-height:1}
-.fq[open] summary:after{content:"–"}
-.fq p{margin:11px 0 0;font-size:15.4px;color:var(--ink2)}
+.fq summary::after{content:'+';color:var(--wine);font-size:22px;line-height:1;font-family:var(--txt)}
+.fq[open] summary::after{content:'–'}
+.fq p{margin-top:12px;font-size:15.5px;color:var(--ink2)}
 
-/* АВТОР */
-.auth{display:grid;grid-template-columns:.75fr 1.25fr;gap:30px;align-items:center}
-.auth img{width:100%;aspect-ratio:4/5;object-fit:cover}
-.auth .hand{font-family:var(--hand);font-size:27px;color:var(--wine);margin:0 0 4px}
+/* ── ФИНАЛ ── */
+.fin{background:var(--wine);color:#F7F0E4;text-align:center;overflow:hidden;position:relative}
+.fin h2{color:#F7F0E4;max-width:18ch;margin:0 auto 14px}
+.fin .lede{color:#E4D0D5;margin:0 auto 30px;text-align:center}
+.fin .btn{box-shadow:0 7px 0 var(--ink)}
+.fin .bleed{position:absolute;left:0;right:0;bottom:-.18em;font-family:var(--pos);font-weight:700;
+  font-size:clamp(70px,16vw,200px);line-height:.85;letter-spacing:-.03em;text-transform:uppercase;
+  color:rgba(255,255,255,.05);white-space:nowrap;pointer-events:none;text-align:center}
+.fin .wrap{position:relative;z-index:1}
 
-/* ФИНАЛ */
-.fin{background:var(--wine);color:#F7F0E4;text-align:center}
-.fin h2{color:#F7F0E4}
-.fin p{max-width:32em;margin:0 auto 22px;color:#E4D6D0;font-size:17px}
-footer{padding:26px 0 40px;font-size:13.4px;color:var(--ink3);text-align:center}
-footer a{color:var(--ink3)}
+footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
 
-/* Липкая кнопка снизу на телефоне: главный источник кликов на мобильном. */
+/* Липкая кнопка снизу на телефоне: главный источник кликов с мобильного */
 .stick{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;
   background:var(--ink);color:#F4EDE0;align-items:center;gap:12px;padding:10px 14px}
 .stick .t{flex:1;min-width:0;font-size:12.6px;line-height:1.3;color:#C7BCAE}
 .stick .t b{display:block;font-family:var(--pos);font-size:15px;letter-spacing:.05em;color:#F4EDE0}
 .stick .btn{padding:12px 20px;font-size:14px;box-shadow:none}
 
-@media(max-width:900px){
-  .four{grid-template-columns:repeat(2,1fr)}
-  .week,.notes,.revs{grid-template-columns:1fr}
-  .pbox{grid-template-columns:1fr;padding:24px 20px;gap:22px}
-  .auth{grid-template-columns:1fr;gap:20px}
-  .auth img{max-width:260px}
+/* Появление: предметы «прикладываются» к странице */
+.js .rv{opacity:0;transform:translateY(18px)}
+.js .rv.in{opacity:1;transform:none;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.rv.d1.in{transition-delay:.08s}.rv.d2.in{transition-delay:.16s}.rv.d3.in{transition-delay:.24s}
+@media(prefers-reduced-motion:reduce){
+  .js .rv{opacity:1;transform:none;transition:none}
+  .tick i{animation:none}
+  .tab:hover{transform:none}
+}
+
+@media(max-width:980px){
+  .hero .wrap{grid-template-columns:1fr;gap:30px}
+  .pin{max-width:440px;margin:6px auto 10px}
+  .chalk{grid-template-columns:1fr 1fr;gap:26px 22px}
+  .chalk .c::after{display:none}
+  .stickies,.cards,.polas{grid-template-columns:1fr 1fr}
+  .pgrid,.auth .wrap{grid-template-columns:1fr}
+  .diary .after{grid-template-columns:1fr}
 }
 @media(max-width:640px){
-  section{padding:38px 0}
-  .hero{padding:16px 0 0}
-  .frame{aspect-ratio:1/1.02}
-  .frame>img{object-position:66% 22%}
-  .cap{padding:20px 18px 20px;display:block}
-  .cap .l{margin-bottom:16px}
-  .cta{display:block}
-  .cta .btn{width:100%;justify-content:center}
+  section{padding:60px 0}
+  .hero{padding-top:30px}
+  h1{font-size:clamp(27px,7.8vw,34px);margin-bottom:16px;line-height:1.1}
+  .eyebrow{font-size:10.5px;letter-spacing:.22em;margin-bottom:16px}
+  .eyebrow::after{display:none}
+  .hero .cta .btn{width:100%;justify-content:center}
+  .hero .cta small{max-width:none;text-align:center;width:100%}
+  .hero .lede{margin-bottom:22px}
+  .pin{max-width:330px;margin:14px auto 0}
+  .pin .ph img{aspect-ratio:4/3.6}
+  .pin .ph .cap{font-size:20px}
+  .pin .s1{width:60px;right:-16px;bottom:50px}
+  .pin .s2{width:52px;left:-18px;bottom:110px}
+  .sheet{padding:26px 18px 34px 64px;transform:none;
+    background-image:
+      linear-gradient(to right, transparent 0, transparent 46px, rgba(217,83,79,.55) 46px, rgba(217,83,79,.55) 48px, transparent 48px),
+      repeating-linear-gradient(to bottom, transparent 0, transparent 33px, rgba(34,49,74,.16) 33px, rgba(34,49,74,.16) 34px);
+    background-size:100% 100%, 100% 34px}
+  .sheet::before{width:14px}
+  .row{grid-template-columns:44px 1fr;line-height:34px}
+  .row .d{font-size:11.5px;margin-left:-14px;letter-spacing:.06em}
+  .row .e{font-size:19.5px;padding-right:0;line-height:34px}
+  .row.gap{display:none}
+  .sheet .head{line-height:34px}
+  .sheet .head .hand{font-size:24px}
+  .sheet .head .wk{display:none}
+  .sheet .k1{width:64px;right:8px;top:-22px}
+  .sheet .k2,.sheet .k3{display:none}
+  .stamp{position:static;transform:rotate(-6deg);width:130px;height:130px;margin:26px 0 0 auto}
+  .stamp b{font-size:54px}
+  .board .frame{border-width:9px;padding:30px 20px 28px}
+  .chalk{grid-template-columns:1fr;gap:16px}
+  .chalk .c{display:grid;grid-template-columns:44px 1fr;column-gap:10px;padding:0}
+  .chalk .c .n{font-size:36px;margin:0;grid-row:1/3}
+  .chalk .c b{margin-bottom:3px}
+  .board h2{font-size:27px}
+  .stickies{grid-template-columns:1fr;gap:22px}
+  .sticky{min-height:0;padding:22px 20px 22px;font-size:22px}
+  .pain .lede.big{font-size:19px;margin-top:30px}
+  .cards{grid-template-columns:1fr;gap:18px}
+  .tab{padding:20px 18px 18px}
+  .tab b{font-size:19px}
+  .tab p{font-size:14.4px}
+  .tab .h{font-size:17px;margin-top:8px}
+  .polas{grid-template-columns:1fr;gap:22px}
+  .pola p{font-size:20px}
+  .pcard .n{font-size:64px}
+  .pgrid li{font-size:15.5px}
+  h2{font-size:clamp(26px,7.6vw,32px)}
+  .lede{font-size:16.5px}
+  .pola:nth-child(2){transform:rotate(1.1deg)}
+  .pcard{transform:none;padding:30px 22px 26px}
+  .pcard .seal{width:96px;right:-22px;top:-16px}
+  .fin .bleed{display:none}
+  .fin h2{font-size:26px}
+  .auth .ph{max-width:280px;margin:0 auto}
   .stick{display:flex}
-  body{padding-bottom:66px}
-  .itog{gap:12px;padding:18px}
-  .itog .n{font-size:38px}
+  body{padding-bottom:64px}
 }
 </style>
 </head>
@@ -202,156 +373,198 @@ footer a{color:var(--ink3)}
 <!-- ═══ ГЕРОЙ ═══ -->
 <header class="hero">
   <div class="wrap">
-    <div class="yr">Клуб Малены Покладовой · учебный год 2026 / 2027</div>
-    <div class="frame">
-      <img src="images/club/m-hero-v6.jpg" alt="Малена Покладова" fetchpriority="high" decoding="async">
-      <div class="cap">
-        <div class="l">
-          <h1>За месяц вы снимете <em>четыре ролика</em></h1>
-          <p>Каждый понедельник вам говорят, что снимать. Каждый четверг разбираем работы. Вам остаётся достать телефон.</p>
-        </div>
-        <div class="cta">
-          <a class="btn big" href="/oplata?s=k-hero">Вступить за $19 <span>&rarr;</span></a>
-          <small>Отмена в любой момент в боте</small>
-        </div>
+    <div>
+      <div class="eyebrow">Клуб Малены Покладовой · учебный год 2026 / 2027</div>
+      <h1>Начните вести блог.<br><span class="u">В этот раз получится.</span></h1>
+      <p class="lede">Тему, сценарий и тренды <b>приносим мы</b>, каждую неделю. Вам остаётся снять
+        и выложить. К концу месяца профиль упакован, работы вышли, и рядом Малена,
+        которая делает это вместе с вами.</p>
+      <div class="cta">
+        <a class="btn" href="/oplata?s=k-hero">Вступить за $19 <span class="ar">&rarr;</span></a>
+        <small>Отмена в любой момент в боте, объяснять ничего не нужно</small>
       </div>
+    </div>
+
+    <div class="pin">
+      <span class="clip"></span>
+      <span class="tape"></span>
+      <div class="ph">
+        <img src="images/club/m-hero-v6.jpg" alt="Малена Покладова" fetchpriority="high" decoding="async">
+        <div class="cap">Малена. Ведёт клуб и каждую неделю рядом</div>
+      </div>
+      <img class="stk s1" src="images/club/st-pencil.png" alt="" loading="lazy" decoding="async">
+      <img class="stk s2" src="images/club/st-scissors.png" alt="" loading="lazy" decoding="async">
     </div>
   </div>
 
-  <div class="four" style="margin-top:22px">
-    <div><span>Понедельник</span><p>Задание недели с готовой темой и сценарием</p></div>
-    <div><span>Вторник</span><p>Подборка трендов, которые работают прямо сейчас</p></div>
-    <div><span>Четверг</span><p>Разбор работ участниц в прямом эфире</p></div>
-    <div><span>Каждый день</span><p>Чат, где рядом женщины, которые тоже делают</p></div>
+  <div class="tick" aria-hidden="true">
+    <i><span class="hl">ПОНЕДЕЛЬНИК · ЗАДАНИЕ</span><span>ВТОРНИК · ТРЕНДЫ</span><span>СРЕДА · РАБОЧИЙ ЧАС</span><span>ЧЕТВЕРГ · РАЗБОР РАБОТ</span><span>$19 В МЕСЯЦ</span><span class="hl">ПОНЕДЕЛЬНИК · ЗАДАНИЕ</span><span>ВТОРНИК · ТРЕНДЫ</span><span>СРЕДА · РАБОЧИЙ ЧАС</span><span>ЧЕТВЕРГ · РАЗБОР РАБОТ</span><span>$19 В МЕСЯЦ</span><span class="hl">ПОНЕДЕЛЬНИК · ЗАДАНИЕ</span><span>ВТОРНИК · ТРЕНДЫ</span><span>СРЕДА · РАБОЧИЙ ЧАС</span><span>ЧЕТВЕРГ · РАЗБОР РАБОТ</span><span>$19 В МЕСЯЦ</span></i>
   </div>
 </header>
 
-<!-- ═══ МЕХАНИКА ═══ -->
-<section>
+<!-- ═══ ДНЕВНИК ═══ -->
+<section class="diary">
   <div class="wrap">
-    <div class="kick">Почему получится</div>
-    <h2>Неделя, которая <span class="yl">не даёт слиться</span></h2>
-    <p class="lede">Вы не решаете каждый день заново, снимать сегодня или нет. За вас это решает расписание.</p>
+    <div class="kick">Как устроена неделя</div>
+    <h2>Каждую неделю всё уже подготовлено. <span class="yl">Вам остаётся снять</span></h2>
+    <p class="lede">Так выглядит неделя в клубе. Всё, что нужно, приходит само.</p>
 
-    <div class="week">
-      <div class="day">
-        <b>Понедельник</b>
-        <h3>Приходит задание</h3>
-        <p>Тема, сценарий и пример. Думать, о чём снимать, больше не нужно.</p>
+    <div class="sheet">
+      <img class="stk k1" src="images/club/st-markers.png" alt="" loading="lazy" decoding="async">
+      <img class="stk k2" src="images/club/st-sharpener.png" alt="" loading="lazy" decoding="async">
+      <img class="stk k3" src="images/club/st-eraser.png" alt="" loading="lazy" decoding="async">
+      <div class="head">
+        <span class="hand">Неделя вторая. Тема месяца: перезагрузка</span>
+        <span class="wk">сентябрь · reset</span>
       </div>
-      <div class="day b">
-        <b>Вторник</b>
-        <h3>Приходят тренды</h3>
-        <p>Готовая подборка звуков и форматов недели. Искать их самой не надо.</p>
-      </div>
-      <div class="day n">
-        <b>Четверг</b>
-        <h3>Разбираем работы</h3>
-        <p>Смотрим, что получилось у участниц, и разбираем, почему одно работает, а другое нет.</p>
-      </div>
+      <div class="row"><span class="d">пн</span><span class="e">Пришло задание: <mark>зачем я это делаю</mark>. Сценарий уже внутри</span></div>
+      <div class="row"><span class="d">вт</span><span class="e">Тренды недели: три звука, один формат. Взяла второй</span></div>
+      <div class="row"><span class="d">ср</span><span class="e">Рабочий час. Сняла за двадцать минут, <s>переснимала</s> нет</span></div>
+      <div class="row"><span class="d">чт</span><span class="e">Разбор. Поняла, почему первые три секунды решают всё</span></div>
+      <div class="row"><span class="d">пт</span><span class="e">Выложила. Первый комментарий от незнакомой</span></div>
+      <div class="row gap"><span class="d"></span><span class="e"></span></div>
+      <div class="row gap"><span class="d"></span><span class="e"></span></div>
+      <div class="stamp"><b>4</b><span>работы<br>к концу месяца</span></div>
     </div>
 
-    <div class="itog">
-      <div class="n">4</div>
-      <p>Четыре понедельника в месяце это четыре задания. Просто ходите по расписанию, и к концу месяца у вас четыре готовые работы. Сегодня их ноль.</p>
+    <div class="after">
+      <p>Четыре понедельника это четыре готовых задания. <b>Тема, сценарий и тренды подготовлены
+        заранее.</b> Вы приходите, а материал уже лежит. Так проще начать и труднее бросить.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══ БОЛЬ ═══ -->
+<!-- ═══ ДОСКА ═══ -->
+<section class="board">
+  <div class="wrap">
+    <div class="frame">
+      <div class="kick">Что из этого выйдет</div>
+      <h2>Дальше начинает работать само</h2>
+      <p class="lede">Регулярному автору алгоритмы дают показы. Дальше подключаются люди.</p>
+
+      <div class="chalk">
+        <div class="c rv d1"><div class="n">1</div><b>Профиль оживает</b><p>Посты выходят каждую неделю, и вас начинают показывать чаще</p></div>
+        <div class="c rv d1"><div class="n">2</div><b>Растут охваты</b><p>Чем больше роликов, тем выше шанс, что один разлетится</p></div>
+        <div class="c rv d2"><div class="n">3</div><b>Приходят люди</b><p>Подписчики, которые нашли вас сами</p></div>
+        <div class="c rv d2"><div class="n">4</div><b>Пишут в директ</b><p>Первые вопросы и первые заявки</p></div>
+        <div class="c rv d3"><div class="n">5</div><b>Уходит страх</b><p>Съёмка занимает двадцать минут вместо вечера</p></div>
+      </div>
+
+      <div class="note">и всё это без единого придуманного самой сценария</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ЗАПИСКИ ═══ -->
 <section class="pain">
   <div class="wrap">
     <div class="kick">Знакомо?</div>
     <h2>Вы всё знаете. <span class="yl">И всё равно не делаете</span></h2>
-    <div class="notes">
-      <div class="nt">Вы начинаете <b>с понедельника</b> уже четвёртый месяц подряд.</div>
-      <div class="nt">Вы снимаете и <b>не выкладываете</b>. В галерее лежат видео, которые никто не увидит.</div>
-      <div class="nt">Курсы куплены, а <b>лента пустая</b> с прошлой зимы.</div>
+    <div class="stickies">
+      <div class="sticky rv d1">Начинаю с понедельника. Четвёртый месяц подряд.</div>
+      <div class="sticky rv d2">В галерее двенадцать видео. Выложено ноль.</div>
+      <div class="sticky rv d3">Курс куплен. Лента пустая с прошлой зимы.</div>
     </div>
-    <p class="lede" style="margin-top:22px">Знаний вам хватает. Не хватает среды, в которой делать проще, чем не делать.</p>
+    <p class="lede big">Знаний хватает. Не хватает того, кто каждую неделю принесёт готовое и будет рядом.</p>
   </div>
 </section>
 
-<!-- ═══ ОТЗЫВЫ ═══ -->
-<section>
+<!-- ═══ КАРТОЧКИ ═══ -->
+<section class="doors">
+  <div class="wrap">
+    <div class="kick">Ради чего всё</div>
+    <h2>Куда с этим <span class="yl">можно прийти</span></h2>
+    <p class="lede">У каждой своя причина. Найдите свою.</p>
+    <div class="cards">
+      <div class="tab rv d1" data-n="своё дело"><b>Продавать своё</b><p>Рукоделие, кондитерка, косметология, консультации. Блог заменяет и витрину, и рекламу, и портфолио.</p><span class="h">о вас должны узнать</span></div>
+      <div class="tab rv d2" data-n="работа"><b>Вести чужие аккаунты</b><p>Самое короткое расстояние до первых денег: навык нужен рынку прямо сейчас, входить можно без вложений.</p><span class="h">учитесь, чтобы делать это для других</span></div>
+      <div class="tab rv d3" data-n="съёмка"><b>Снимать для брендов</b><p>Короткие ролики на заказ. Из дома, без публичности и без своей аудитории.</p><span class="h">лицо в кадре не обязательно</span></div>
+      <div class="tab rv d1" data-n="эксперт"><b>Экспертный блог</b><p>Очередь стоит к тому, кого слышно. Блог превращает знание в поток клиентов.</p><span class="h">вы знаете, но вас не видно</span></div>
+      <div class="tab rv d2" data-n="карьера"><b>Блог вместо резюме</b><p>Вас проверяют в соцсетях раньше, чем читают резюме. Живой профиль говорит больше двух страниц.</p><span class="h">работодатель уже гуглит</span></div>
+      <div class="tab rv d3" data-n="голос"><b>Просто быть услышанной</b><p>Иногда нужны не деньги, а голос: перестать бояться камеры и собрать вокруг своих людей.</p><span class="h">чтобы вас было слышно</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ПОЛАРОИДЫ ═══ -->
+<section class="revs">
   <div class="wrap">
     <div class="kick">Ученицы курса Малены</div>
     <h2>Это их собственные слова</h2>
-    <div class="revs">
-      <div class="rev">
-        <img src="images/club/otzyvy/face-toma.jpg" alt="" loading="lazy" decoding="async">
+    <div class="polas">
+      <div class="pola rv d1">
+        <div class="top"><img src="images/club/otzyvy/face-toma.jpg" alt="" loading="lazy" decoding="async"><div class="who">Тома<small>ученица курса</small></div></div>
         <p>«Ролик клиентки набрал 1,4 млн просмотров. Работает стабильно: есть постоянный проект и разовые съёмки»</p>
-        <div class="who">Тома</div>
       </div>
-      <div class="rev">
-        <img src="images/club/otzyvy/face-olga.jpg" alt="" loading="lazy" decoding="async">
+      <div class="pola rv d2">
+        <div class="top"><img src="images/club/otzyvy/face-olga.jpg" alt="" loading="lazy" decoding="async"><div class="who">Ольга<small>ученица курса</small></div></div>
         <p>«С 6400 подписчиков до 12,4 тысяч»</p>
-        <div class="who">Ольга</div>
       </div>
-      <div class="rev">
-        <img src="images/club/otzyvy/face-yuliya.jpg" alt="" loading="lazy" decoding="async">
+      <div class="pola rv d3">
+        <div class="top"><img src="images/club/otzyvy/face-yuliya.jpg" alt="" loading="lazy" decoding="async"><div class="who">Юлия<small>ученица курса</small></div></div>
         <p>«Преодолела страх съёмки видео и за время обучения развила два аккаунта»</p>
-        <div class="who">Юлия</div>
       </div>
     </div>
-    <p class="lede" style="margin-top:18px;font-size:15px;color:var(--ink3)">
-      Это ученицы курса Малены. Клуб только открылся, и первые истории участниц появятся здесь же.
-    </p>
+    <p class="lede small">Это ученицы курса Малены. Клуб только открылся, и первые истории участниц появятся здесь же.</p>
   </div>
 </section>
 
 <!-- ═══ ЦЕНА ═══ -->
 <section class="price" id="price">
   <div class="wrap">
-    <div class="kick" style="color:var(--sun)">Сколько стоит</div>
-    <h2>Месяц в клубе стоит <span style="color:var(--sun)">$19</span></h2>
-    <p class="lede">Меньше, чем один обед вдвоём. И меньше, чем стоила любая из ваших недосмотренных программ.</p>
+    <div class="kick">Сколько стоит</div>
+    <h2>$19 в месяц</h2>
+    <p class="lede">Отменить можно в любой момент, в боте, в два нажатия.</p>
 
-    <div class="pbox">
+    <div class="pgrid">
       <ul>
-        <li>Задание с темой и сценарием каждый понедельник</li>
-        <li>Подборка трендов каждый вторник</li>
-        <li>Разбор работ участниц каждый четверг</li>
-        <li>Два живых эфира с Маленой в месяц</li>
-        <li>Чат участниц и поддержка кураторов</li>
-        <li>Девять месяцев программы, от сентября до мая</li>
+        <li>Каждый понедельник готовое задание: тема, сценарий, пример</li>
+        <li>Каждый вторник подборка трендов недели</li>
+        <li>Среда рабочий час, четверг разбор работ</li>
+        <li>Чат, где рядом женщины, которые тоже делают</li>
+        <li>Библиотека материалов</li>
+        <li>Девять месяцев, с сентября по май</li>
       </ul>
-      <div class="pr">
+      <div class="pcard">
+        <img class="seal" src="images/club/seal-2026.png" alt="" loading="lazy" decoding="async">
         <div class="was">ценность $150</div>
         <div class="n">$19</div>
         <div class="m">в месяц</div>
-        <a class="btn big" href="/oplata?s=k-price">Вступить в клуб</a>
+        <a class="btn" href="/oplata?s=k-price">Вступить в клуб <span class="ar">&rarr;</span></a>
         <small>Списывается сегодня, дальше раз в месяц в этот же день.<br>
-          Отменить можно в любой момент в боте.
-          <a href="/terms-club" target="_blank" rel="noopener">Условия</a></small>
+          Отменить можно в любой момент в боте. <a href="/terms-club" target="_blank" rel="noopener">Условия</a></small>
+        <span class="ok">доступ открыт</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══ АВТОР ═══ -->
-<section>
-  <div class="wrap auth">
-    <img src="images/club/m-portrait-v3.jpg" alt="Малена Покладова" loading="lazy" decoding="async">
+<section class="auth">
+  <div class="wrap">
+    <div class="ph">
+      <img src="images/club/m-portrait-v3.jpg" alt="Малена Покладова" loading="lazy" decoding="async">
+      <div class="cap">кто ведёт</div>
+    </div>
     <div>
-      <p class="hand">кто ведёт</p>
-      <h2>Малена Покладова</h2>
-      <p class="lede">Семь лет в продвижении, четыре года преподаю. Через программы школы прошли больше двух тысяч человек, больше двухсот женщин закончили курс.</p>
-      <p class="lede">В клубе я рядом каждую неделю: приношу задания, показываю тренды и разбираю работы на эфирах.</p>
+      <span class="hand">Малена Покладова</span>
+      <h2>Семь лет в продвижении, четыре года преподаю</h2>
+      <p class="lede">Через программы школы прошли больше двух тысяч человек, больше двухсот женщин закончили курс.</p>
+      <p class="lede">В клубе я рядом каждую неделю: приношу задания, показываю тренды и разбираю работы.</p>
     </div>
   </div>
 </section>
 
 <!-- ═══ ВОПРОСЫ ═══ -->
-<section style="padding-top:0">
+<section class="faq">
   <div class="wrap">
     <div class="kick">Коротко</div>
     <h2>Вопросы, которые задают чаще всего</h2>
-    <div style="margin-top:20px">
+    <div style="margin-top:24px">
       <details class="fq"><summary>Я совсем новичок, мне подойдёт?</summary>
-        <p>Да. Задание приходит с готовой темой и сценарием, разбирать его будут на понятном языке. Начать можно с телефона и без единой съёмки за спиной.</p></details>
+        <p>Да. Задание приходит с готовой темой и сценарием. Начать можно с телефона и без единой съёмки за спиной.</p></details>
       <details class="fq"><summary>Сколько времени это занимает?</summary>
-        <p>Одно задание в неделю. Сколько времени вы на него потратите, решаете вы: кто-то снимает за двадцать минут, кто-то растягивает на вечер.</p></details>
+        <p>Одно задание в неделю. Кто-то снимает за двадцать минут, кто-то растягивает на вечер. Решаете вы.</p></details>
       <details class="fq"><summary>Что будет, если я захочу уйти?</summary>
         <p>Отмена в боте клуба в два нажатия, объяснять ничего не нужно. Списание прекратится, доступ останется до конца оплаченного месяца.</p></details>
       <details class="fq"><summary>Как я попаду внутрь после оплаты?</summary>
@@ -362,10 +575,11 @@ footer a{color:var(--ink3)}
 
 <!-- ═══ ФИНАЛ ═══ -->
 <section class="fin">
+  <div class="bleed" aria-hidden="true">ПРОДВИЖЕНИЕ</div>
   <div class="wrap">
-    <h2>Через месяц у вас будет четыре работы</h2>
-    <p>Или снова ноль, и мы встретимся здесь же в октябре. Разница между этими двумя вариантами стоит $19.</p>
-    <a class="btn big" href="/oplata?s=k-final">Вступить за $19 <span>&rarr;</span></a>
+    <h2>Начните вести блог. В этот раз получится</h2>
+    <p class="lede">Темы, сценарии, тренды и люди рядом уже есть. $19 в месяц, отмена в любой момент.</p>
+    <a class="btn" href="/oplata?s=k-final">Вступить за $19 <span class="ar">&rarr;</span></a>
   </div>
 </section>
 
@@ -381,10 +595,11 @@ footer a{color:var(--ink3)}
 
 <script>
 (function(){
-  /* ── Метка источника ──────────────────────────────────────────────
-     Мета подставляет свои макросы только при настоящем показе объявления.
-     Её обходчики открывают страницу с текстом {{...}} внутри, и такие
-     значения надо отбрасывать, иначе они попадут в статистику как источник. */
+  document.documentElement.className += ' js';
+  /* ── Метка источника ──
+     Мета подставляет макросы только при настоящем показе объявления.
+     Её обходчики открывают страницу с текстом {{...}} внутри, такие
+     значения отбрасываем, иначе они попадут в статистику как источник. */
   var KEY='club_src', DAYS=30;
   function q(n){
     try{
@@ -393,9 +608,7 @@ footer a{color:var(--ink3)}
     }catch(e){ return ''; }
   }
   var got = { s:q('s')||q('utm_source'), c:q('utm_campaign'), n:q('utm_content'), t:Date.now() };
-  try{
-    if (got.s || got.c || got.n) localStorage.setItem(KEY, JSON.stringify(got));
-  }catch(e){}
+  try{ if (got.s || got.c || got.n) localStorage.setItem(KEY, JSON.stringify(got)); }catch(e){}
   function saved(){
     try{
       var raw = localStorage.getItem(KEY); if (!raw) return null;
@@ -414,8 +627,7 @@ footer a{color:var(--ink3)}
     return p.join('&');
   };
 
-  /* Свой счётчик заходов: Мета считает по-своему, а нам нужна честная
-     цифра, с которой можно сверять клики по кнопке. */
+  /* Свой счётчик заходов, с которым сверяем клики по кнопке */
   try{
     var o = window.clubSrc() || {};
     var b = new URLSearchParams({ kind:'klub', src:o.s||'', camp:o.c||'', cont:o.n||'' });
@@ -423,9 +635,7 @@ footer a{color:var(--ink3)}
       { method:'GET', mode:'no-cors', keepalive:true }).catch(function(){});
   }catch(e){}
 
-  /* ── Ссылки на оплату ──────────────────────────────────────────────
-     К каждой кнопке дописываем метки, чтобы в базе было видно,
-     с какого объявления пришёл человек, и с какого места страницы. */
+  /* ── Ссылки на оплату: метки объявления и места на странице ── */
   var utm = window.clubSrcQuery();
   Array.prototype.forEach.call(document.querySelectorAll('a[href^="/oplata"]'), function(a){
     var href = a.getAttribute('href');
@@ -437,21 +647,29 @@ footer a{color:var(--ink3)}
     });
   });
 
-  /* ViewContent, когда человек долистал до цены. На старте кампании покупок
-     мало, и Мете не на чем учиться: этот сигнал даёт ей десятки событий в день.
-     Уходит ровно один раз за визит. */
+  /* Появление предметов на странице */
+  if (window.IntersectionObserver) {
+    var ioRv = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); ioRv.unobserve(e.target); } });
+    }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.rv').forEach(function(el){ ioRv.observe(el); });
+  } else {
+    document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ViewContent один раз, когда человек долистал до цены */
   var priceEl = document.getElementById('price');
   if (priceEl && window.IntersectionObserver) {
     var fired = false;
-    var io = new IntersectionObserver(function(es){
+    var ioPrice = new IntersectionObserver(function(es){
       if (fired || !es[0].isIntersecting) return;
       fired = true;
-      io.disconnect();
+      ioPrice.disconnect();
       if (window.fbq) fbq('track','ViewContent',{
         content_name: 'Клуб · короткий лендинг · блок цены', value: 19, currency: 'USD'
       });
     }, { threshold: 0.4 });
-    io.observe(priceEl);
+    ioPrice.observe(priceEl);
   }
 })();
 </script>
