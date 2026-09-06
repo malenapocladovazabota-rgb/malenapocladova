@@ -121,13 +121,28 @@ p{color:var(--ink2);margin:10px 0 0}
      цифры, дефис и подчёркивание, поэтому всё остальное вырезаем.
      Бот запишет источник человеку в карточку и передаст в GoHighLevel. */
   (function(){
+    var a=document.getElementById('tobot');
+    var tag='';
     try{
       var s=JSON.parse(localStorage.getItem('club_src')||'null');
-      if(!s || !s.s) return;
-      var tag=String(s.s).toLowerCase().replace(/[^a-z0-9_-]+/g,'-').replace(/^-+|-+$/g,'').slice(0,40);
-      if(!tag) return;
-      var a=document.getElementById('tobot');
-      a.href=a.href.replace('start=paid','start=paid_'+tag);
+      if(s && s.s) tag=String(s.s).toLowerCase().replace(/[^a-z0-9_-]+/g,'-').replace(/^-+|-+$/g,'').slice(0,40);
+    }catch(e){}
+    if(tag) a.href=a.href.replace('start=paid','start=paid_'+tag);
+
+    /* Токен узнавания. Страница знает сессию Stripe, функция check отдаёт по ней
+       короткий токен, а бот по нему находит почту и оплату сам. Без токена бот
+       просит напечатать почту, и на этом шаге люди терялись. Хвост __c<токен>
+       идёт после метки канала, чтобы учёт источников не сломался. */
+    try{
+      var sid=new URLSearchParams(location.search).get('sid');
+      if(!sid) return;
+      fetch('https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/club-stripe/check?sid='+encodeURIComponent(sid))
+        .then(function(r){return r.json();})
+        .then(function(j){
+          if(!j || !j.token) return;
+          if(a.href.indexOf('__c')>=0) return;
+          a.href=a.href+'__c'+j.token;
+        }).catch(function(){});
     }catch(e){}
   })();
   </script>
