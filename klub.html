@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ролик в неделю · Клуб «ПроДвижение» Малены Покладовой</title>
-<meta name="description" content="Тема в понедельник, тренды во вторник, разбор вашего ролика в четверг. Клуб Малены Покладовой.">
+<meta name="description" content="Тема в понедельник, тренды во вторник, разбор работ в четверг. Первые уроки уже внутри. Клуб Малены Покладовой.">
 <link rel="icon" href="/images/club/favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Ролик в неделю. Клуб Малены Покладовой">
-<meta property="og:description" content="Тема в понедельник, тренды во вторник, разбор вашего ролика в четверг.">
+<meta property="og:description" content="Тема в понедельник, тренды во вторник, разбор работ в четверг. Первые уроки уже внутри.">
 <meta property="og:image" content="https://malenapocladova.com/images/club/og-club-v3.jpg">
 
 <!-- Meta Pixel -->
@@ -218,16 +218,21 @@ h2{font-family:var(--disp);font-weight:400;font-size:clamp(29px,4.2vw,50px);line
 /* ── ЦЕНА ── лист с печатью «доступ открыт» */
 .price{background:var(--paper2)}
 .pgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;margin-top:36px}
-/* Четыре плитки вместо списка: картинка-вырезка сверху, одно слово, одна строка */
-.inc{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.inc .it{background:var(--card);border:1px solid var(--line);padding:18px 16px 16px;position:relative;
-  box-shadow:0 1px 0 rgba(23,19,19,.05)}
-.inc .it:nth-child(odd){transform:rotate(-.6deg)}
-.inc .it:nth-child(even){transform:rotate(.5deg)}
-.inc .it img{width:54px;height:54px;object-fit:contain;display:block;margin-bottom:10px;
+/* ── ЧТО ВНУТРИ: четыре карточки сразу после первого экрана ──
+   Вырезка слева, слово и два предложения справа. Это ответ на «что за клуб»,
+   поэтому стоит выше дневника и доски. */
+.inside{padding-top:70px}
+.inc{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+.inc .it{background:var(--card);border:1px solid var(--line);padding:20px 20px 18px;position:relative;
+  box-shadow:0 1px 0 rgba(23,19,19,.05);display:grid;grid-template-columns:58px 1fr;column-gap:16px;align-items:start}
+.inc .it:nth-child(odd){transform:rotate(-.5deg)}
+.inc .it:nth-child(even){transform:rotate(.4deg)}
+.inc .it img{width:58px;height:58px;object-fit:contain;display:block;margin-top:2px;
   filter:drop-shadow(0 2px 0 rgba(23,19,19,.12))}
-.inc .it b{display:block;font-family:var(--disp);font-weight:400;font-size:22px;line-height:1.1;margin-bottom:5px}
-.inc .it span{display:block;font-size:14px;line-height:1.4;color:var(--ink2)}
+.inc .it b{display:block;font-family:var(--disp);font-weight:400;font-size:24px;line-height:1.1;margin-bottom:7px}
+.inc .it span{display:block;font-size:15.5px;line-height:1.5;color:var(--ink2)}
+.price .pgrid{grid-template-columns:1fr;justify-items:center}
+.price .pcard{width:100%;max-width:440px}
 .pcard{background:var(--card);padding:38px 34px 34px;box-shadow:var(--sh);position:relative;transform:rotate(.8deg);text-align:center;overflow:hidden}
 .pcard .was{font-family:var(--hand);font-size:22px;color:var(--ink3);text-decoration:line-through;text-decoration-color:var(--red)}
 .pcard .n{font-family:var(--disp);font-size:clamp(66px,8vw,96px);line-height:1;margin:2px 0 0}
@@ -337,11 +342,12 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
   .polas{grid-template-columns:1fr;gap:22px}
   .pola p{font-size:20px}
   .pcard .n{font-size:64px}
-  .inc{gap:10px}
-  .inc .it{padding:14px 12px 12px}
-  .inc .it img{width:44px;height:44px;margin-bottom:8px}
-  .inc .it b{font-size:19px}
-  .inc .it span{font-size:13px}
+  .inside{padding-top:50px}
+  .inc{grid-template-columns:1fr;gap:12px;margin-top:22px}
+  .inc .it{padding:16px 16px 14px;grid-template-columns:46px 1fr;column-gap:12px}
+  .inc .it img{width:46px;height:46px}
+  .inc .it b{font-size:21px}
+  .inc .it span{font-size:14.5px}
   h2{font-size:clamp(26px,7.6vw,32px)}
   .lede{font-size:16.5px}
   .pola:nth-child(2){transform:rotate(1.1deg)}
@@ -369,7 +375,7 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
     <div>
       <div class="eyebrow">Клуб Малены Покладовой · учебный год 2026 / 2027</div>
       <h1>Ролик <span class="u">в неделю.</span></h1>
-      <p class="lede">Тема в понедельник, тренды во вторник. <b>В четверг ваш ролик разбирает Малена.</b></p>
+      <p class="lede">Тема в понедельник, тренды во вторник, разбор работ в четверг. <b>Первые уроки уже внутри.</b></p>
       <div class="cta">
         <a class="btn" href="/oplata?s=k-hero">Вступить в клуб <span class="ar">&rarr;</span></a>
         <small>Отмена в любой момент в боте, объяснять ничего не нужно</small>
@@ -393,11 +399,26 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
   </div>
 </header>
 
+<!-- ═══ ЧТО ВНУТРИ ═══ Малена, 8 сентября: «самая важная инфа, что за клуб
+     и что там будет», поэтому блок стоит первым после первого экрана -->
+<section class="inside">
+  <div class="wrap">
+    <div class="kick">Что за клуб</div>
+    <h2>Каждую неделю <span class="yl">четыре вещи</span></h2>
+    <div class="inc">
+      <div class="it rv d1"><img src="images/club/cut-bulb.png" alt="" loading="lazy" decoding="async"><div><b>Задание</b><span>Каждую неделю вы получаете задание с готовым сценарием и хуками. Снимаете сильный ролик и не тратите на монтаж несколько часов.</span></div></div>
+      <div class="it rv d2"><img src="images/club/cut-phone.png" alt="" loading="lazy" decoding="async"><div><b>Тренды</b><span>Больше не нужно искать трендовые звуки, анимации и шрифты. Готовые паки, файлы и ссылки приходят каждую неделю.</span></div></div>
+      <div class="it rv d3"><img src="images/club/cut-camera.png" alt="" loading="lazy" decoding="async"><div><b>Разбор работ</b><span>Каждый четверг разбираем работы участниц: что сработало, что поправить и почему одно видео смотрят, а другое листают.</span></div></div>
+      <div class="it rv d3"><img src="images/club/cut-megaphone.png" alt="" loading="lazy" decoding="async"><div><b>Чат</b><span>Вы попадаете в круг единомышленниц, которые поддерживают, отвечают и помогают дойти до цели.</span></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ ДНЕВНИК ═══ -->
 <section class="diary">
   <div class="wrap">
-    <div class="kick">Как устроена неделя</div>
-    <h2>Так выглядит <span class="yl">одна неделя</span></h2>
+    <div class="kick">Например</div>
+    <h2>Одна неделя <span class="yl">из дневника участницы</span></h2>
 
     <div class="sheet">
       <img class="stk k1" src="images/club/st-markers.png" alt="" loading="lazy" decoding="async">
@@ -427,16 +448,16 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
 <section class="board">
   <div class="wrap">
     <div class="frame">
-      <div class="kick">Что из этого выйдет</div>
+      <div class="kick">Что вы получаете</div>
       <h2>Дальше начинает работать само</h2>
 
       <div class="chalk">
-        <div class="c rv d1"><div class="n">4</div><b>ролика в месяц</b><p>Профиль оживает, вас показывают чаще</p></div>
-        <div class="c rv d2"><div class="n">36</div><b>до мая</b><p>Приходят люди, которые нашли вас сами</p></div>
-        <div class="c rv d3"><div class="n">20</div><b>минут на съёмку</b><p>Вместо вечера. Страх уходит с практикой</p></div>
+        <div class="c rv d1"><div class="n">4</div><b>продуманных ролика в месяц</b><p>Вас уже начинают видеть</p></div>
+        <div class="c rv d2"><div class="n">36</div><b>роликов до мая</b><p>Подписчики и первые клиенты приходят сами</p></div>
+        <div class="c rv d3"><div class="n">20</div><b>минут на съёмку и монтаж</b><p>Вместо нескольких часов</p></div>
       </div>
 
-      <div class="note">и ни одного сценария, придуманного самой</div>
+      <div class="note">снимаете быстро, отдачу видите сразу</div>
     </div>
   </div>
 </section>
@@ -459,7 +480,7 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
 <section class="revs">
   <div class="wrap">
     <div class="kick">Ученицы курса Малены</div>
-    <h2>Это их собственные слова</h2>
+    <h2>Отзывы учениц</h2>
     <div class="polas">
       <div class="pola rv d1">
         <div class="top"><img src="images/club/otzyvy/face-toma.jpg" alt="" loading="lazy" decoding="async"><div class="who">Тома<small>ученица курса</small></div></div>
@@ -481,16 +502,10 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
 <!-- ═══ ЦЕНА ═══ -->
 <section class="price" id="price">
   <div class="wrap">
-    <div class="kick">Что внутри</div>
-    <h2>Всё, что нужно для ролика в неделю</h2>
+    <div class="kick">Сколько стоит</div>
+    <h2>Месяц в клубе</h2>
 
     <div class="pgrid">
-      <div class="inc">
-        <div class="it rv d1"><img src="images/club/cut-bulb.png" alt="" loading="lazy" decoding="async"><b>Задание</b><span>тема и сценарий, каждый понедельник</span></div>
-        <div class="it rv d2"><img src="images/club/cut-phone.png" alt="" loading="lazy" decoding="async"><b>Тренды</b><span>звуки и форматы недели, каждый вторник</span></div>
-        <div class="it rv d3"><img src="images/club/cut-camera.png" alt="" loading="lazy" decoding="async"><b>Разбор</b><span>ваших работ с Маленой, каждый четверг</span></div>
-        <div class="it rv d3"><img src="images/club/cut-megaphone.png" alt="" loading="lazy" decoding="async"><b>Чат</b><span>женщины, которые тоже снимают</span></div>
-      </div>
       <div class="pcard">
         <img class="seal" src="images/club/seal-2026.png" alt="" loading="lazy" decoding="async">
         <div class="was">ценность $150</div>
@@ -515,7 +530,7 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
     <div>
       <span class="hand">Малена Покладова</span>
       <h2>Семь лет в продвижении, четыре года преподаю</h2>
-      <p class="lede">Больше двухсот женщин закончили курс. В клубе я рядом каждую неделю и разбираю ваши работы сама.</p>
+      <p class="lede">Больше двухсот женщин закончили курс. В клубе я рядом каждую неделю: приношу задания, тренды и первые уроки уже записаны.</p>
     </div>
   </div>
 </section>
@@ -540,7 +555,7 @@ footer{padding:28px 0 44px;font-size:13.5px;color:var(--ink3);text-align:center}
 <section class="fin">
   <div class="bleed" aria-hidden="true">ПРОДВИЖЕНИЕ</div>
   <div class="wrap">
-    <h2>Первое задание уже в понедельник</h2>
+    <h2>Получите своё первое задание уже в понедельник</h2>
     <p class="lede">Тема, сценарий, тренды и люди рядом уже есть. Отмена в любой момент.</p>
     <a class="btn" href="/oplata?s=k-final">Вступить в клуб <span class="ar">&rarr;</span></a>
   </div>
