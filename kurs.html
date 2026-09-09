@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#EAE0CB">
+<meta name="format-detection" content="telephone=no">
+
+<title>SMM с нуля · 8 поток · Профессия с искусственным интеллектом и системой агентства</title>
+<meta name="description" content="Курс Малены Покладовой. 52 урока в шести блоках, 6 недель уроков и 2 недели поддержки, куратор и эфиры. В этом потоке добавляем AI-блок и разбираем живого клиента агентства PGL. Три тарифа, первая волна от $390 до 27 сентября. Старт в октябре.">
+<meta name="author" content="Малена Покладова">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="SMM с нуля · 8 поток · старт в октябре">
+<meta property="og:description" content="Профессия SMM с нуля. 52 урока, куратор, эфиры, AI-блок и разбор живого клиента агентства. Первая волна от $390 до 27 сентября.">
+<meta property="og:image" content="https://malenapocladova.com/images/og-image.png">
+<meta property="og:site_name" content="Школа Малены Покладовой">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="images/malena-hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel · школа -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1521940319314090');
+fbq('track','PageView');
+fbq('track','ViewContent',{content_name:'kurs-smm-8',content_category:'course',content_type:'product'});
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1521940319314090&ev=PageView&noscript=1"></noscript>
+<!-- End Meta Pixel -->
+
+<style>
+:root{
+  --ink:#161110;--ink2:#453B36;
+  --beige:#EAE0CB;--beige2:#DFD1B6;--card:#F9F4E8;
+  --wine:#6E1E2B;--wine-d:#521621;--wine-soft:#E5CFC9;
+  --line:rgba(22,17,16,.16);--line-soft:rgba(22,17,16,.08);--muted:#8C8172;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--beige);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+::selection{background:var(--wine);color:var(--beige)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+section{padding:52px 0}
+.band{background:var(--card);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:18px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:2.6px;text-transform:uppercase;color:var(--wine)}
+.eyebrow::after{content:'';flex:1;height:1px;background:var(--line)}
+h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.6vw,54px);line-height:1.05;letter-spacing:-1px;max-width:760px}
+h2 em,h1 em{font-style:italic;color:var(--wine)}
+.lede{font-size:16.5px;color:var(--ink2);max-width:620px;margin-top:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;padding:17px 26px;border-radius:2px;border:1.5px solid transparent;cursor:pointer;transition:background .2s,color .2s,transform .12s}
+.btn:active{transform:scale(.98)}
+.btn-wine{background:var(--wine);color:#F3EADF;box-shadow:0 14px 30px -12px rgba(110,30,43,.55)}
+.btn-wine:hover{background:var(--ink)}
+.btn-line{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:var(--beige)}
+.btn-beige{background:var(--beige);color:var(--ink)}
+.btn-beige:hover{background:#fff}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(234,224,203,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line-soft)}
+.nav .brand{font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:-.3px}
+.nav .brand em{font-style:italic;color:var(--wine)}
+.nav .links{display:none;gap:24px;font-size:13.5px;font-weight:500;color:var(--ink2)}
+.nav .links a:hover{color:var(--wine)}
+.nav .btn{padding:11px 16px;font-size:11px}
+
+/* hero */
+.hero{padding:36px 0 44px}
+.hero .wrap{display:grid;gap:26px;align-items:center}
+.hero .tag{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--wine);margin-bottom:16px}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(38px,9vw,74px);line-height:.98;letter-spacing:-1.6px}
+.hero .sub{font-size:17px;color:var(--ink2);margin-top:18px;max-width:520px}
+.hero .sub b{color:var(--ink);font-weight:600}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.hero .note{margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.hero .ph{position:relative;aspect-ratio:4/3.7;overflow:hidden;border-radius:2px;background:var(--beige2)}
+.hero .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 8%;filter:contrast(1.03)}
+.hero .ph .cap{position:absolute;left:14px;bottom:14px;background:var(--card);padding:10px 14px;font-family:var(--mono);font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink2);border:1px solid var(--line)}
+
+/* facts strip */
+.facts{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--card)}
+.facts .wrap{display:grid;grid-template-columns:repeat(2,1fr)}
+.facts div{padding:18px 8px 16px;border-right:1px solid var(--line-soft)}
+.facts div:nth-child(2n){border-right:none}
+.facts div:nth-child(-n+2){border-bottom:1px solid var(--line-soft)}
+.facts b{display:block;font-family:var(--serif);font-size:30px;font-weight:600;letter-spacing:-.8px;line-height:1;color:var(--wine)}
+.facts span{display:block;margin-top:6px;font-size:12.5px;color:var(--ink2);line-height:1.3}
+
+/* new */
+.new-grid{display:grid;gap:14px;margin-top:30px}
+.new{background:var(--card);border:1px solid var(--line);padding:24px 22px;border-radius:2px}
+.new .k{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;color:var(--wine);margin-bottom:12px}
+.new h3{font-family:var(--serif);font-weight:600;font-size:24px;line-height:1.1;letter-spacing:-.5px;margin-bottom:10px}
+.new p{font-size:15px;color:var(--ink2)}
+
+/* tariffs */
+.tf-grid{display:grid;gap:16px;margin-top:32px}
+.tf{background:var(--card);border:1px solid var(--line);border-radius:2px;padding:26px 22px;display:flex;flex-direction:column;position:relative}
+.tf.main{border:1.5px solid var(--wine);box-shadow:0 26px 50px -30px rgba(110,30,43,.5)}
+.tf.max{background:var(--ink);color:var(--beige);border-color:var(--ink)}
+.tf .badge{position:absolute;top:-11px;left:22px;background:var(--wine);color:#F3EADF;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 10px}
+.tf.max .badge{background:var(--beige);color:var(--ink)}
+.tf .who{font-family:var(--mono);font-size:10.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.tf.max .who{color:rgba(234,224,203,.6)}
+.tf h3{font-family:var(--serif);font-weight:600;font-size:32px;letter-spacing:-.8px;line-height:1}
+.tf .price{margin:18px 0 4px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.tf .price b{font-family:var(--serif);font-size:44px;font-weight:600;letter-spacing:-1.5px;line-height:1}
+.tf .price s{color:var(--muted);font-size:17px}
+.tf .wave{font-size:13px;color:var(--ink2)}
+.tf.max .wave{color:rgba(234,224,203,.7)}
+.tf-dep{margin-top:22px;padding:16px 18px;background:var(--card);border:1px dashed var(--line);border-radius:2px;font-size:14.5px;color:var(--ink2);display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between}
+.tf-dep b{color:var(--ink)}
+.tf-dep a{color:var(--wine);text-decoration:underline;white-space:nowrap}
+.tf ul{list-style:none;margin:20px 0 24px;border-top:1px solid var(--line);flex:1}
+.tf.max ul{border-color:rgba(234,224,203,.18)}
+.tf li{padding:10px 0;border-bottom:1px solid var(--line-soft);font-size:14.5px;display:flex;gap:10px;align-items:flex-start}
+.tf.max li{border-color:rgba(234,224,203,.12)}
+.tf li::before{content:'';flex:none;width:6px;height:6px;border-radius:50%;background:var(--wine);margin-top:8px}
+.tf.max li::before{background:var(--beige)}
+.tf li.plus{font-weight:600}
+.tf .btn{width:100%}
+.tf .fine{margin-top:10px;font-size:12px;color:var(--muted);text-align:center}
+.tf.max .fine{color:rgba(234,224,203,.55)}
+.tf-note{margin-top:22px;font-size:14px;color:var(--ink2);max-width:760px}
+
+/* program */
+.prog{margin-top:30px;border-top:1px solid var(--line)}
+.blk{display:grid;grid-template-columns:44px 1fr;gap:8px 12px;padding:20px 0;border-bottom:1px solid var(--line)}
+.blk .n{font-family:var(--serif);font-style:italic;font-weight:600;font-size:28px;color:var(--wine);line-height:1}
+.blk h3{font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:-.4px;line-height:1.15}
+.blk .m{grid-column:2;font-family:var(--mono);font-size:10.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted)}
+.blk p{grid-column:2;font-size:14.5px;color:var(--ink2)}
+.blk.ai h3 em{font-style:italic;color:var(--wine)}
+
+/* cases */
+.case-grid{display:grid;gap:14px;margin-top:30px}
+.case{background:var(--card);border:1px solid var(--line);border-radius:2px;padding:20px;display:grid;grid-template-columns:56px 1fr;gap:6px 14px;align-items:start}
+.case img{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:50% 20%;flex:none;filter:saturate(.9);grid-row:1/3}
+.case b{display:block;font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:-.3px;line-height:1.1}
+.case small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-top:3px;word-break:break-all}
+.case .num{grid-column:1/3;margin-top:10px;font-family:var(--serif);font-size:26px;font-weight:600;letter-spacing:-.8px;line-height:1;color:var(--wine)}
+.case .num span{display:block;margin-top:5px;font-family:var(--mono);font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted)}
+.case p{grid-column:1/3;font-size:14.5px;color:var(--ink2);margin-top:8px}
+.case-note{margin-top:18px;font-size:13px;color:var(--muted)}
+.shots-h{margin-top:34px;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:2.6px;text-transform:uppercase;color:var(--wine)}
+.shots{display:flex;gap:12px;margin-top:14px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.shots a{flex:none;width:200px;scroll-snap-align:start;border:1px solid var(--line);border-radius:2px;overflow:hidden;background:#fff}
+.shots img{width:100%;height:auto;display:block}
+
+/* author */
+.author .wrap{display:grid;gap:26px;align-items:center}
+.author .ph{aspect-ratio:4/3.4;overflow:hidden;border-radius:2px;background:var(--beige2)}
+.author .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.author p{font-size:16px;color:var(--ink2);margin-top:14px;max-width:560px}
+.author .row{display:flex;flex-wrap:wrap;gap:22px;margin-top:22px}
+.author .row b{display:block;font-family:var(--serif);font-size:28px;font-weight:600;color:var(--wine);line-height:1}
+.author .row span{font-size:12.5px;color:var(--ink2)}
+
+/* faq */
+.faq{max-width:820px;margin-top:26px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 34px 18px 0;font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:-.3px;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';position:absolute;right:2px;top:14px;font-family:var(--mono);font-size:22px;color:var(--wine);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{padding:0 0 18px;font-size:15px;color:var(--ink2);max-width:700px}
+
+/* final */
+.final{background:var(--wine);color:#F3EADF;padding:64px 0}
+.final h2{color:#F3EADF}
+.final h2 em{color:var(--wine-soft)}
+.final p{margin-top:14px;font-size:16px;color:rgba(243,234,223,.8);max-width:560px}
+.final .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.final .btn-line{color:#F3EADF;border-color:rgba(243,234,223,.6)}
+.final .btn-line:hover{background:#F3EADF;color:var(--wine)}
+footer{padding:26px 0;font-size:12.5px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+footer a:hover{color:var(--wine)}
+
+/* mobile sticky pay bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(22,17,16,.94);color:var(--beige);transform:translateY(110%);transition:transform .3s}
+.bar.on{transform:none}
+.bar .t{font-size:13px;line-height:1.25}
+.bar .t b{display:block;font-family:var(--serif);font-size:17px}
+.bar .btn{padding:12px 18px;font-size:11px;flex:none}
+
+@media (min-width:760px){
+  section{padding:88px 0}
+  .nav{padding:16px 28px}
+  .nav .links{display:flex}
+  .hero{padding:56px 0 64px}
+  .hero .wrap{grid-template-columns:1.15fr .85fr;gap:48px}
+  .hero .ph{aspect-ratio:4/4.8}
+  .facts .wrap{grid-template-columns:repeat(4,1fr)}
+  .facts div{padding:22px 14px;border-bottom:none!important;border-right:1px solid var(--line-soft)!important}
+  .facts div:last-child{border-right:none!important}
+  .new-grid{grid-template-columns:repeat(3,1fr)}
+  .tf-grid{grid-template-columns:repeat(3,1fr);align-items:stretch}
+  .tf.main{transform:translateY(-10px)}
+  .blk{grid-template-columns:56px 1fr 1.2fr;gap:6px 20px;padding:24px 0}
+  .blk .m{grid-column:2;grid-row:2}
+  .blk p{grid-column:3;grid-row:1/3}
+  .case-grid{grid-template-columns:repeat(3,1fr)}
+  .shots a{width:230px}
+  .author .wrap{grid-template-columns:.8fr 1.2fr;gap:56px}
+  .author .ph{aspect-ratio:4/4.6}
+  .bar{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="brand" href="#top">SMM <em>с нуля</em></a>
+  <div class="links">
+    <a href="#tarify">Тарифы</a><a href="#programma">Программа</a><a href="#ucenicy">Ученицы</a><a href="#faq">Вопросы</a>
+  </div>
+  <a class="btn btn-wine" href="#tarify">Выбрать тариф</a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="tag">8 поток · старт в октябре · 6 недель</div>
+      <h1>Профессия SMM. <em>С нуля</em> и с искусственным интеллектом.</h1>
+      <p class="sub">Для тех, кто хочет зарабатывать на продвижении. 52 урока, куратор и эфиры. В этом потоке добавляем <b>AI-блок</b> и разбираем <b>живого клиента</b> агентства PGL.</p>
+      <div class="cta">
+        <a class="btn btn-wine" href="#tarify">Тарифы от $390</a>
+        <a class="btn btn-line" href="#programma">Программа</a>
+      </div>
+      <div class="note">Оплата на сайте · первая волна до 27 сентября</div>
+    </div>
+    <div class="ph">
+      <img src="images/malena-hero.jpg" alt="Малена Покладова" width="1280" height="1600" fetchpriority="high">
+      <div class="cap">Малена Покладова · автор курса</div>
+    </div>
+  </div>
+</header>
+
+<div class="facts">
+  <div class="wrap">
+    <div><b>6+2</b><span>недель уроков и недели поддержки</span></div>
+    <div><b>52</b><span>урока в шести блоках</span></div>
+    <div><b>143</b><span>ученицы за пять последних потоков</span></div>
+    <div><b>7+</b><span>лет Малены в SMM, 4 года обучает</span></div>
+  </div>
+</div>
+
+<section id="novoe">
+  <div class="wrap">
+    <div class="eyebrow">Что нового в восьмом потоке</div>
+    <h2>Программа переписана под то, как SMM <em>работает сейчас</em></h2>
+    <div class="new-grid">
+      <div class="new">
+        <div class="k">01 · Искусственный интеллект</div>
+        <h3>В этом потоке добавляем AI-блок</h3>
+        <p>Идеи, сценарии, тексты и монтаж с помощью нейросетей. Блок собирает команда агентства на тех инструментах, которыми работает сама. В программе появятся также экспресс-стратегия и парная домашка: два видео, снятые вместе с другой ученицей.</p>
+      </div>
+      <div class="new">
+        <div class="k">02 · Система агентства</div>
+        <h3>Разбираем живого клиента PGL Marketing</h3>
+        <p>Как агентство выстраивает продвижение: стратегия, реклама в Meta, трекинг заявок, отчёт клиенту. В этом потоке разбираем текущий проект агентства с его цифрами.</p>
+      </div>
+      <div class="new">
+        <div class="k">03 · Два уровня</div>
+        <h3>С нуля и с опытом раздельно</h3>
+        <p>Новичок сначала учится снимать и вести аккаунт, стратегия приходит позже. Кто уже в сфере, идёт по треку «Система» на уровень выше.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="tarify">
+  <div class="wrap">
+    <div class="eyebrow">Тарифы</div>
+    <h2>Три уровня. <em>Цена на странице</em>, оплата сразу</h2>
+    <p class="lede">Цены первой волны действуют до 27 сентября. Рассрочка Klarna и Affirm для США, PayPal Pay in 3 для Европы.</p>
+
+    <div class="tf-grid">
+      <div class="tf">
+        <div class="who">Попробовать самой</div>
+        <h3>Старт</h3>
+        <div class="price"><b>$390</b></div>
+        <div class="wave">до 27 сентября, дальше $490</div>
+        <ul>
+          <li>52 урока в записи, 6 блоков</li>
+          <li>Блок AI для SMM-специалиста</li>
+          <li>Чат потока</li>
+          <li>Сертификат</li>
+          <li>Без проверки заданий и эфиров</li>
+        </ul>
+        <a class="btn btn-line" href="/oplata-kurs?plan=start&s=t-start">Выбрать Старт</a>
+        <div class="fine">Уроки остаются в записи</div>
+      </div>
+
+      <div class="tf main">
+        <div class="badge">Основной · для новичков</div>
+        <div class="who">Зарабатывать на SMM</div>
+        <h3>Профессия</h3>
+        <div class="price"><b>$690</b></div>
+        <div class="wave">до 27 сентября, дальше $890</div>
+        <ul>
+          <li>Всё из Старта</li>
+          <li class="plus">Куратор и проверка каждого задания</li>
+          <li>5 живых эфиров с разборами</li>
+          <li>Персональный чат с куратором</li>
+        </ul>
+        <a class="btn btn-wine" href="/oplata-kurs?plan=pro&s=t-pro">Выбрать Профессию</a>
+        <div class="fine">Klarna, Affirm, PayPal Pay in 3</div>
+      </div>
+
+      <div class="tf max">
+        <div class="badge">Максимум</div>
+        <div class="who">Уже в сфере или хочу быстро</div>
+        <h3>Система</h3>
+        <div class="price"><b>$1 490</b></div>
+        <div class="wave">до 27 сентября, дальше $1 990</div>
+        <ul>
+          <li>Всё из Профессии</li>
+          <li class="plus">Личная стратегия от Малены под вашу нишу</li>
+          <li>Разбор живого клиента агентства: трекинг, реклама, отчёт</li>
+          <li>Уроки по рекламе в Meta, блогерам и UGC</li>
+        </ul>
+        <a class="btn btn-beige" href="/oplata-kurs?plan=system&s=t-system">Выбрать Систему</a>
+        <div class="fine">Klarna, Affirm, PayPal Pay in 3</div>
+      </div>
+    </div>
+    <div class="tf-dep"><span><b>Не готовы решить сегодня?</b> Депозит $50 держит цену первой волны семь дней и засчитывается в оплату тарифа.</span><a href="/oplata-kurs?plan=deposit&s=t-deposit">Внести депозит $50</a></div>
+    <p class="tf-note">Все тарифы: 6 недель обучения, 2 недели поддержки, уроки остаются в записи. Если курс пока дорог, есть клуб <a href="/klub" style="text-decoration:underline">«ПроДвижение»</a> за $19 в месяц.</p>
+  </div>
+</section>
+
+<section id="programma">
+  <div class="wrap">
+    <div class="eyebrow">Программа · 6 блоков</div>
+    <h2>52 урока. <em>Половина курса</em> это съёмка и монтаж</h2>
+    <p class="lede">Плюс стратегия, продвижение и продажи. Блоки идут по порядку, каждый рассчитан на одну-три недели.</p>
+    <div class="prog">
+      <div class="blk">
+        <div class="n">0</div><h3>Фундамент</h3>
+        <div class="m">5 уроков</div>
+        <p>Как проходить обучение и сдавать задания, мифы новичка, регулярность без выгорания, базовые понятия SMM, клиенты разного уровня.</p>
+      </div>
+      <div class="blk">
+        <div class="n">1</div><h3>Позиционирование и стратегия</h3>
+        <div class="m">9 уроков</div>
+        <p>Кто вы на рынке, целевая аудитория, конкуренты, упаковка профиля, стратегия контента на 90 дней и как быть гибкой, когда план ломается.</p>
+      </div>
+      <div class="blk">
+        <div class="n">2</div><h3>Визуал и сторис</h3>
+        <div class="m">13 уроков</div>
+        <p>Техника, свет, композиция, ракурсы, оформление аккаунта, сторителлинг, структура сторис и 12 ошибок в Stories.</p>
+      </div>
+      <div class="blk">
+        <div class="n">3</div><h3>Съёмка и монтаж</h3>
+        <div class="m">18 уроков</div>
+        <p>Приёмы «говорящая голова», «подборка», «обзор», экспертное видео, монтаж, звук, цветокоррекция, авторская техника вирусных видео.</p>
+      </div>
+      <div class="blk">
+        <div class="n">4</div><h3>Продажи и клиенты</h3>
+        <div class="m">3 урока</div>
+        <p>Продажи в блоге и через переписку, скрипт до оплаты, onboarding клиента и удержание.</p>
+      </div>
+      <div class="blk ai">
+        <div class="n">5</div><h3>Реклама, TikTok и <em>искусственный интеллект</em></h3>
+        <div class="m">4 урока</div>
+        <p>Таргет в Meta, блогеры и UGC, алгоритмы TikTok. Сюда в этом потоке добавляем AI-блок, а для тарифа «Система» разбор живого клиента агентства.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="ucenicy">
+  <div class="wrap">
+    <div class="eyebrow">Ученицы</div>
+    <h2>Что сделали <em>после курса</em></h2>
+    <p class="lede">Реальные ученицы, их аккаунты и их цифры. Подписи на карточках это их собственные слова.</p>
+    <div class="case-grid">
+      <div class="case"><img src="images/portrait-alina.jpg" alt="Алина" loading="lazy" decoding="async"><div><b>Алина</b><small>@hannacenter.md</small></div><div class="num">5 клиентов<span>3 человека в команде</span></div><p>Из декрета в свою SMM-студию: косметология, стоматология, нутрициология. Делегирует и платит зарплату.</p></div>
+      <div class="case"><img src="images/portrait-margarita.jpg" alt="Маргарита" loading="lazy" decoding="async"><div><b>Маргарита</b><small>@flames.creative.m</small></div><div class="num">2,5K → 50,8K<span>TikTok · 4,4M просмотров</span></div><p>Шоу-балет FLAMES: рост подписчиков, вовлечённости и продаж после курса. Instagram 10,4K.</p></div>
+      <div class="case"><img src="images/portrait-elizaveta.jpg" alt="Елизавета" loading="lazy" decoding="async"><div><b>Елизавета</b><small>@ecopresa.md</small></div><div class="num">0 → 74,2K<span>TikTok · 4,6M лайков</span></div><p>С нуля вырастила самое большое СМИ об экологии в Молдове, приглашение снимать для DW Romania.</p></div>
+      <div class="case"><img src="images/portrait-aleksandra.jpg" alt="Александра" loading="lazy" decoding="async"><div><b>Александра</b><small>@sashafeminism</small></div><div class="num">0 → 173,5K<span>TikTok · 8 видео от 100K</span></div><p>Аккаунт с нуля по методике курса, 6,3M лайков, ролики расходятся сотнями тысяч просмотров.</p></div>
+      <div class="case"><img src="images/portrait-anastasia2.jpg" alt="Анастасия" loading="lazy" decoding="async"><div><b>Анастасия</b><small>клиент @cleanit.md</small></div><div class="num">+1 200<span>подписчиков за неделю у клиента</span></div><p>Пик 316,1K просмотров, стабильно 40–50K. Делает продающие стратегии и сложные динамичные видео.</p></div>
+      <div class="case"><img src="images/club/otzyvy/face-toma.jpg" alt="Тома" loading="lazy" decoding="async"><div><b>Тома</b><small>ученица курса</small></div><div class="num">1,4 млн<span>просмотров у ролика клиентки</span></div><p>Работает стабильно: постоянный проект и разовые съёмки.</p></div>
+      <div class="case"><img src="images/portrait-mariia-b.jpg" alt="Мария Бабурина" loading="lazy" decoding="async"><div><b>Мария Бабурина</b><small>ученица курса · Португалия</small></div><div class="num">3 клиента<span>во время курса</span></div><p>Окупила курс ещё во время обучения. Reels на 944K на личном блоге, набрала первую тысячу подписчиков в TikTok за неделю.</p></div>
+      <div class="case"><img src="images/portrait-mariia-k.jpg" alt="Мария" loading="lazy" decoding="async"><div><b>Мария</b><small>ученица курса</small></div><div class="num">1 591 → 10,5K<span>подписчиков · 3 клиента</span></div><p>Ведёт челлендж 365 дней и 365 Reels, помогает аккаунтам расти и зарабатывать.</p></div>
+      <div class="case"><img src="images/club/otzyvy/face-olga.jpg" alt="Ольга" loading="lazy" decoding="async"><div><b>Ольга</b><small>ученица курса</small></div><div class="num">6 400 → 12 400<span>подписчиков</span></div><p>Вырастила свой аккаунт почти вдвое за время обучения.</p></div>
+      <div class="case"><img src="images/portrait-anastasia.jpg" alt="Анастасия" loading="lazy" decoding="async"><div><b>Анастасия</b><small>куратор потока</small></div><div class="num">5 проектов<span>доход ×3</span></div><p>До этого прошла другой курс без результата. Бренды пишут сами, стала куратором на курсе.</p></div>
+      <div class="case"><img src="images/portrait-iuliana.jpeg" alt="Юлиана" loading="lazy" decoding="async"><div><b>Юлиана</b><small>@iulianamocanu23</small></div><div class="num">Куратор<span>потока</span></div><p>Снимала только тренды, после курса регулярный авторский контент и коллаборации с брендами.</p></div>
+      <div class="case"><img src="images/portrait-kristina.jpg" alt="Кристина" loading="lazy" decoding="async"><div><b>Кристина</b><small>@cristinapopov</small></div><div class="num">Первые клиенты<span>пришли из блога</span></div><p>Была неуверенность в себе как в специалисте. Привлекла первых клиентов через блог и запустила новогоднюю акцию.</p></div>
+      <div class="case"><img src="images/club/otzyvy/face-loredana.jpg" alt="Лоредана" loading="lazy" decoding="async"><div><b>Лоредана</b><small>ученица курса</small></div><div class="num">4 клиента<span>плюс проект из Турции</span></div><p>Собирает свою команду.</p></div>
+    </div>
+    <p class="case-note">Все истории опубликованы с разрешения учениц. Цифры сняты с их аккаунтов и присланы ими самими.</p>
+    <div class="shots-h">Отзывы в Telegram</div>
+    <div class="shots">
+      <a href="images/club/otzyvy/shot-01.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-01.jpg" alt="Отзыв ученицы в Telegram" loading="lazy" decoding="async"></a>
+      <a href="images/club/otzyvy/shot-02.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-02.jpg" alt="Отзыв ученицы в Telegram" loading="lazy" decoding="async"></a>
+      <a href="images/club/otzyvy/shot-03.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-03.jpg" alt="Отзыв ученицы в Telegram" loading="lazy" decoding="async"></a>
+      <a href="images/club/otzyvy/shot-04.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-04.jpg" alt="Отзыв ученицы в Telegram" loading="lazy" decoding="async"></a>
+      <a href="images/club/otzyvy/shot-05.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-05.jpg" alt="Отзыв ученицы в Telegram" loading="lazy" decoding="async"></a>
+      <a href="images/club/otzyvy/shot-06.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-06.jpg" alt="Отзыв ученицы в Telegram" loading="lazy" decoding="async"></a>
+      <a href="images/club/otzyvy/shot-07.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-07.jpg" alt="Отзыв ученицы в Telegram" loading="lazy" decoding="async"></a>
+      <a href="images/club/otzyvy/shot-08.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-08.jpg" alt="Отзыв ученицы в Telegram" loading="lazy" decoding="async"></a>
+      <a href="images/club/otzyvy/shot-09.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-09.jpg" alt="Отзыв ученицы в Telegram" loading="lazy" decoding="async"></a>
+      <a href="images/club/otzyvy/shot-10.jpg" target="_blank" rel="noopener"><img src="images/club/otzyvy/shot-10.jpg" alt="Отзыв ученицы в Telegram" loading="lazy" decoding="async"></a>
+    </div>
+  </div>
+</section>
+
+<section class="author" id="avtor">
+  <div class="wrap">
+    <div class="ph"><img src="images/malena-portrait.jpg" alt="Малена Покладова" loading="lazy" decoding="async" width="1280" height="1600"></div>
+    <div>
+      <div class="eyebrow">Автор</div>
+      <h2>Малена <em>Покладова</em></h2>
+      <p>В SMM больше семи лет, обучает четыре года. Основатель школы @socialmedia__school. Вместе с агентством PGL Marketing ведёт продвижение клиентов в США и Европе. Сертифицированный коуч: кроме техники, на курсе есть разговор о том, как видеть возможности и отличать своего клиента от чужого.</p>
+      <p>Живёт в Сан-Диего. Эфиры идут в удобное время для Калифорнии и Европы, записи остаются.</p>
+      <div class="row">
+        <div><b>7+</b><span>лет в SMM</span></div>
+        <div><b>7-й</b><span>поток идёт сейчас</span></div>
+        <div><b>51K</b><span>подписчиков в Instagram</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="faq">
+  <div class="wrap">
+    <div class="eyebrow">Вопросы</div>
+    <h2>Что спрашивают <em>перед оплатой</em></h2>
+    <div class="faq">
+      <details><summary>Когда старт и сколько времени нужно в неделю?</summary><p>Старт в начале октября. Уроки в записи, смотрите в своём темпе. Один блок рассчитан на одну-две недели. Эфиры записываются, если не попали вживую, посмотрите позже.</p></details>
+      <details><summary>Я совсем с нуля, без аккаунта и без опыта. Подойдёт?</summary><p>Да, тариф «Профессия» построен для новичков: сначала снимаете и ведёте аккаунт, стратегия и продажи приходят позже. Куратор ведёт вас по каждому заданию.</p></details>
+      <details><summary>Как работает рассрочка?</summary><p>Рассрочка Klarna и Affirm для США, PayPal Pay in 3 для Европы. Выбирается прямо в форме оплаты. Если решить сегодня не получается, депозит $50 держит цену первой волны семь дней и засчитывается в оплату тарифа.</p></details>
+      <details><summary>Чем отличается «Система» от «Профессии»?</summary><p>В «Системе» Малена лично собирает стратегию под вашу нишу, и вы разбираете живого клиента агентства с трекингом, рекламой и отчётом. Плюс уроки по рекламе в Meta, блогерам и UGC, которых нет в других тарифах.</p></details>
+      <details><summary>Заменит ли искусственный интеллект SMM-специалиста?</summary><p>Он уже заменяет тех, кто им не пользуется. В этом потоке добавляем AI-блок: быстрее идеи, тексты и монтаж. Решения и вкус остаются за вами. Этот вопрос разбираем отдельным уроком в первую неделю.</p></details>
+      <details><summary>В каком часовом поясе эфиры?</summary><p>Утро по Калифорнии, вечер по Европе и Молдове. Все эфиры остаются в записи.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>Восьмой поток стартует <em>в октябре</em></h2>
+    <p>Выберите тариф и оплатите на странице. Цены первой волны действуют до 27 сентября. Если остались вопросы, напишите команде Малены в Telegram.</p>
+    <div class="cta">
+      <a class="btn btn-beige" href="/oplata-kurs?plan=pro&s=final">Оплатить Профессию · $690</a>
+      <a class="btn btn-line" href="#tarify">Все тарифы</a>
+      <a class="btn btn-line" href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">Написать в Telegram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Personal Growth Lab LLC · Школа Малены Покладовой</span>
+    <span><a href="https://instagram.com/malenapocladova" target="_blank" rel="noopener">@malenapocladova</a> · <a href="/klub">Клуб «ПроДвижение»</a></span>
+  </div>
+</footer>
+
+<div class="bar" id="bar">
+  <div class="t">Профессия<b>$690 до 27 сентября</b></div>
+  <a class="btn btn-wine" href="/oplata-kurs?plan=pro&s=bar">Оплатить</a>
+</div>
+
+<script>
+(function(){
+  var bar=document.getElementById('bar'),t=document.getElementById('tarify'),f=document.querySelector('.final');
+  function tick(){
+    var r=t.getBoundingClientRect(),fr=f.getBoundingClientRect();
+    var past=r.bottom<window.innerHeight*.5, atFinal=fr.top<window.innerHeight;
+    bar.classList.toggle('on',past&&!atFinal);
+  }
+  addEventListener('scroll',tick,{passive:true});tick();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Оплата прошла · SMM с нуля</title>
+<link rel="icon" href="/favicon.svg">
+
+<!-- Meta Pixel школы. Здесь фиксируется сама покупка -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1521940319314090');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1521940319314090&ev=PageView&noscript=1"
+/></noscript>
+
+<script>
+/* Один запрос к check на всю страницу. Его ответ нужен в двух местах сразу:
+   пикселю нужна сумма, ссылке на бота нужен токен, а тексту нужен тариф.
+   Два запроса означали бы два обращения к Stripe на каждого оплатившего. */
+window.KURS = (function(){
+  var sid = '';
+  try { sid = new URLSearchParams(location.search).get('sid') || ''; } catch(e){}
+  if (!sid) return Promise.resolve(null);
+  return fetch('https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/kurs-stripe/check?sid=' + encodeURIComponent(sid))
+    .then(function(r){ return r.json(); })
+    .catch(function(){ return null; });
+})();
+
+/* Покупку отправляем один раз и с настоящей суммой. Настоящую знает только
+   Stripe, поэтому ждём ответ check до двух с половиной секунд. Если сеть
+   молчит, берём то, что запомнила страница оплаты при выборе тарифа: это
+   почти всегда та же цифра, а событие без суммы Мете бесполезно. */
+(function(){
+  var poslano = false;
+  function zapas(){
+    try { var s = sessionStorage.getItem('kurs_amount'); if (s && !isNaN(s)) return Number(s); } catch(e){}
+    return 690;
+  }
+  function poslat(v, plan){
+    if (poslano) return;
+    poslano = true;
+    try { sessionStorage.removeItem('kurs_amount'); } catch(e){}
+    if (!window.fbq) return;
+    fbq('track','Purchase',{ value: v, currency:'USD', content_name: plan || 'kurs8' });
+    fbq('trackCustom','KursPurchase',{ value: v, plan: plan || '' });
+  }
+  window.KURS.then(function(j){
+    if (j && j.paid && j.amount) poslat(Number(j.amount), j.plan);
+    else poslat(zapas(), j && j.plan);
+  });
+  setTimeout(function(){ poslat(zapas(), null); }, 2500);
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#161110;--ink2:#453B36;
+  --beige:#EAE0CB;--beige2:#DFD1B6;--card:#F9F4E8;
+  --wine:#6E1E2B;--wine-d:#521621;--wine-soft:#E5CFC9;
+  --line:rgba(22,17,16,.16);--line-soft:rgba(22,17,16,.08);--muted:#8C8172;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--beige);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  display:flex;align-items:center;justify-content:center;min-height:100vh;padding:28px 18px}
+a{color:var(--wine)}
+
+.card{background:var(--card);max-width:560px;width:100%;padding:42px 40px 36px;
+  border:1px solid var(--line);border-radius:6px;border-top:4px solid var(--wine);
+  box-shadow:0 22px 60px rgba(22,17,16,.14)}
+.kicker{font-family:var(--mono);font-weight:700;font-size:11.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--wine)}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,4vw,34px);line-height:1.14;margin:12px 0 0}
+.sub{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);margin-top:10px}
+p{color:var(--ink2);margin:14px 0 0}
+
+.step{display:flex;gap:14px;align-items:flex-start;margin-top:16px;padding-top:16px;border-top:1px solid var(--line-soft)}
+.step .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--wine);color:#F6EFE2;
+  font-family:var(--mono);font-weight:700;font-size:12.5px;
+  display:flex;align-items:center;justify-content:center;margin-top:2px}
+.step b{display:block;color:var(--ink);font-weight:600}
+.step span{font-size:14.5px;color:var(--muted)}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--wine);color:#F6EFE2;text-decoration:none;
+  font-family:var(--sans);font-weight:600;font-size:15.5px;letter-spacing:.02em;
+  padding:18px 28px;border-radius:4px;margin-top:24px;
+  transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{background:var(--wine-d);transform:translateY(-2px);box-shadow:0 12px 26px rgba(110,30,43,.28)}
+.btn.line{background:none;color:var(--wine);border:1.5px solid var(--wine);margin-top:12px}
+.btn.line:hover{background:var(--wine-soft);color:var(--ink);box-shadow:none}
+
+.note{margin-top:22px;padding-top:18px;border-top:1px solid var(--line-soft);
+  font-size:13.5px;line-height:1.55;color:var(--muted)}
+
+@media(max-width:560px){
+  .card{padding:32px 22px 28px}
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="kicker">SMM с нуля · 8 поток</div>
+  <h1 id="zag">Спасибо, оплата прошла</h1>
+  <div class="sub" id="sub">остался один шаг</div>
+
+  <p id="vstup">Место в потоке закреплено за вами. Курс живёт в Telegram: бот школы
+  ведёт поток, присылает уроки, задания и напоминания.</p>
+
+  <div id="shagi">
+    <div class="step">
+      <div class="n">1</div>
+      <div><b>Откройте бота школы</b><span>Одно нажатие на кнопку ниже, печатать ничего не нужно</span></div>
+    </div>
+    <div class="step">
+      <div class="n">2</div>
+      <div><b>Закрепите чат с ним</b><span>Через бота придут уроки, задания и всё, что жалко пропустить</span></div>
+    </div>
+    <div class="step">
+      <div class="n">3</div>
+      <div><b>Ждите письмо со стартом</b><span>За три дня до начала потока придёт расписание и ссылка на чат</span></div>
+    </div>
+  </div>
+
+  <!-- Прямая диплинк-ссылка, а не редирект. С параметром start Telegram сам
+       отправляет боту «/start kurs», человеку не нужно ничего печатать. -->
+  <a class="btn" id="tobot" href="https://t.me/prodvizhenie_malena_bot?start=kurs">Открыть бота школы</a>
+  <a class="btn line" id="ktarifam" href="/kurs#tarify" style="display:none">Вернуться к тарифам</a>
+
+  <div class="note" id="note">
+    Чек придёт вам на почту. Если бот не открылся или что-то пошло не так, напишите в
+    <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">@Malena_Pocladova_Zabota</a>,
+    разберёмся вручную.
+  </div>
+</div>
+
+<script>
+(function(){
+  var a = document.getElementById('tobot');
+
+  /* Метка канала едет дальше в бота. Telegram разрешает в start только буквы,
+     цифры, дефис и подчёркивание, поэтому всё остальное вырезаем.
+     Бот запишет источник в карточку и передаст в GoHighLevel. */
+  try {
+    var s = JSON.parse(localStorage.getItem('kurs_src') || 'null');
+    var tag = (s && s.s) ? String(s.s).toLowerCase().replace(/[^a-z0-9_-]+/g,'-').replace(/^-+|-+$/g,'').slice(0,40) : '';
+    if (tag) a.href = a.href.replace('start=kurs', 'start=kurs_' + tag);
+  } catch(e){}
+
+  /* Депозит это не покупка курса, а бронь цены, и обещать человеку старт
+     потока тут нельзя. Тариф берём сначала из памяти страницы оплаты, чтобы
+     текст не мигал, потом подтверждаем ответом check. */
+  function depozit(){
+    document.getElementById('zag').textContent = 'Депозит внесён';
+    document.getElementById('sub').textContent = 'цена закреплена на семь дней';
+    document.getElementById('vstup').textContent =
+      'Цена первой волны держится за вами семь дней, а $50 полностью засчитываются ' +
+      'в оплату любого тарифа. Выбрать тариф можно в любой момент до конца срока.';
+    document.getElementById('shagi').innerHTML = '';
+    document.getElementById('note').innerHTML =
+      'Чек придёт вам на почту. Депозит возвращается по первой просьбе в течение суток. ' +
+      'Вопросы по тарифам и рассрочке в <a href="https://t.me/Malena_Pocladova_Zabota" ' +
+      'target="_blank" rel="noopener">@Malena_Pocladova_Zabota</a>.';
+    var k = document.getElementById('ktarifam');
+    k.style.display = '';
+    /* Депозиту главная кнопка это возврат к тарифам, а бот второстепенный:
+       напоминания о сроке приходят от команды, а не из потока. */
+    k.parentNode.insertBefore(k, a);
+    k.className = 'btn';
+    a.className = 'btn line';
+    a.textContent = 'Открыть бота школы';
+  }
+
+  var srazu = '';
+  try { srazu = sessionStorage.getItem('kurs_plan') || ''; } catch(e){}
+  if (srazu === 'deposit') depozit();
+
+  window.KURS.then(function(j){
+    if (!j) return;
+    if (j.plan === 'deposit' && srazu !== 'deposit') depozit();
+    /* Токен узнавания. Страница знает сессию Stripe, функция check отдаёт по ней
+       короткий токен, а бот по нему находит почту и оплату сам. Без токена бот
+       просит напечатать почту, и на этом шаге люди теряются. Хвост __c<токен>
+       идёт после метки канала, чтобы учёт источников не сломался. */
+    if (!j.token) return;
+    if (a.href.indexOf('__c') >= 0) return;
+    a.href = a.href + '__c' + j.token;
+  });
+
+  try { sessionStorage.removeItem('kurs_plan'); } catch(e){}
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Оплата · SMM с нуля</title>
+<link rel="icon" href="/images/favicon.svg">
+
+<!-- Meta Pixel школы -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1521940319314090');fbq('track','PageView');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://js.stripe.com/v3/"></script>
+<style>
+:root{
+  --ink:#161110;--ink2:#453B36;
+  --beige:#EAE0CB;--beige2:#DFD1B6;--card:#F9F4E8;
+  --wine:#6E1E2B;--wine-d:#521621;--wine-soft:#E5CFC9;
+  --line:rgba(22,17,16,.16);--line-soft:rgba(22,17,16,.08);--muted:#8C8172;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--beige);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--wine)}
+
+.top{background:var(--wine);color:#F6EFE2;padding:11px 16px;display:flex;align-items:center;gap:12px}
+.top b{font-family:var(--mono);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase}
+.top a{margin-left:auto;color:#E9D8C8;text-decoration:none;font-size:13.5px}
+
+.wrap{max-width:1080px;margin:0 auto;padding:26px 18px 60px;
+  display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:start}
+
+/* Выбор тарифа. Депозит стоит отдельной строкой под тремя: это не четвёртый
+   тариф, а способ подождать, и в один ряд с ценами он вставать не должен. */
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
+.tab{background:var(--card);border:1.5px solid var(--line);border-radius:4px;padding:11px 8px;
+  cursor:pointer;font-family:var(--sans);font-size:14px;color:var(--ink2);text-align:center;line-height:1.25}
+.tab b{display:block;font-size:15.5px;color:var(--ink);font-weight:600}
+.tab span{display:block;font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:3px}
+.tab.on{background:var(--wine);border-color:var(--wine);color:#F6EFE2}
+.tab.on b,.tab.on span{color:#F6EFE2}
+.tab:disabled{opacity:.55;cursor:default}
+.dep{width:100%;background:none;border:1.5px dashed var(--line);border-radius:4px;
+  padding:10px;cursor:pointer;font-family:var(--sans);font-size:13.5px;color:var(--ink2);margin-bottom:20px}
+.dep.on{border-style:solid;border-color:var(--wine);background:var(--card);color:var(--ink)}
+
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.4vw,34px);line-height:1.12;margin:0 0 6px}
+.price{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+.price .n{font-family:var(--serif);font-size:44px;font-weight:600;line-height:1}
+.price .p{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.price .was{font-size:17px;color:var(--muted);text-decoration:line-through}
+.kogda{font-size:14.5px;color:var(--ink2);margin:0 0 20px}
+
+#pay{min-height:320px;background:var(--card);border:1px solid var(--line-soft);border-radius:6px;padding:6px}
+.wait,.err{padding:30px 20px;text-align:center;color:var(--muted);font-size:15px}
+.err{color:var(--wine)}
+
+.side{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px 22px}
+.side h2{font-family:var(--serif);font-weight:500;font-size:20px;margin:0 0 14px}
+.side ul{list-style:none;margin:0 0 18px;padding:0}
+.side li{position:relative;padding-left:24px;margin-bottom:9px;font-size:15px;color:var(--ink2)}
+.side li::before{content:'';position:absolute;left:2px;top:8px;width:7px;height:12px;
+  border:solid var(--wine);border-width:0 2px 2px 0;transform:rotate(42deg)}
+.alt{font-size:14px;color:var(--ink2);background:var(--wine-soft);border-radius:4px;padding:11px 13px;margin-bottom:18px}
+
+.rev{display:flex;gap:12px;align-items:flex-start;border-top:1px solid var(--line-soft);padding-top:16px}
+.rev img{width:48px;height:48px;border-radius:50%;object-fit:cover;flex:none}
+.rev p{margin:0 0 4px;font-size:14.5px;line-height:1.5}
+.rev small{color:var(--muted);font-size:13px}
+
+.after{margin-top:18px;font-size:14.5px;color:var(--ink2);border-top:1px solid var(--line-soft);padding-top:16px}
+.note{margin-top:16px;font-size:13px;color:var(--muted);line-height:1.5}
+
+@media(max-width:900px){
+  .wrap{grid-template-columns:1fr;gap:24px;padding-top:18px}
+  .side{order:2}
+  .price .n{font-size:38px}
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <b>SMM с нуля · 8 поток</b>
+  <a href="/kurs">← вернуться к программе</a>
+</div>
+
+<div class="wrap">
+  <div>
+    <div class="tabs" id="tabs">
+      <button class="tab" data-plan="start"><b>Старт</b><span>$390</span></button>
+      <button class="tab" data-plan="pro"><b>Профессия</b><span>$690</span></button>
+      <button class="tab" data-plan="system"><b>Система</b><span>$1 490</span></button>
+    </div>
+    <button class="dep" id="depbtn" data-plan="deposit">Не готовы решить сегодня? Депозит $50 держит цену семь дней</button>
+
+    <h1 id="zag">Тариф «Профессия»</h1>
+    <div class="price"><span class="n" id="cena">$690</span><span class="p" id="period">до 27 сентября</span><span class="was" id="bylo">$890</span></div>
+    <p class="kogda" id="kogda">Списывается сегодня один раз. Старт потока в начале октября, доступ к урокам открывается в день старта.</p>
+
+    <div id="pay"><div class="wait">Готовим форму оплаты…</div></div>
+  </div>
+
+  <div class="side">
+    <h2 id="zag2">Что входит</h2>
+    <ul id="spisok"></ul>
+    <div class="alt" id="alt"></div>
+
+    <div class="rev">
+      <img src="images/portrait-anastasia.jpg" alt="Анастасия" loading="lazy" decoding="async">
+      <div>
+        <p>«Прошла другой курс два года назад, безрезультатно. После SMM с нуля пять проектов, доход вырос втрое.»</p>
+        <small>Анастасия, ученица курса и куратор потока</small>
+      </div>
+    </div>
+
+    <div class="after">
+      Сразу после оплаты откроется бот школы и закрепит за вами место.
+      За три дня до старта придёт письмо с расписанием и ссылкой на чат потока.
+    </div>
+
+    <p class="note">
+      Оплата проходит через Stripe, данные карты к нам не попадают.
+      Рассрочка Klarna и Affirm для США, PayPal Pay in 3 для Европы, они появятся в форме, если доступны для вашей страны.<br>
+      <a href="/terms">Условия участия</a>.
+    </p>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* Публичный ключ Stripe, он по замыслу лежит открыто. Секретный на сервере.
+     Функция kurs-stripe ещё не написана: ей нужны ключи цен в club_config
+     stripe_price_kurs_start, _pro, _system, _deposit. */
+  var PK = 'pk_live_51Rf5Lw01ZpjJWDNZyDOGMxLoBlNUCdHWStPjJP7whEgWMaMQ8QNuSmSVmLfuaA4DgBcjoDY1QQFTlr81dl0xD5PG00ejFrCoU7';
+  var FN = 'https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/kurs-stripe';
+
+  function q(n){ try{ return new URLSearchParams(location.search).get(n)||''; }catch(e){ return ''; } }
+  function set(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; }
+
+  var PLANY = {
+    start:   { zag:'Тариф «Старт»',      cena:'$390',   bylo:'$490',   val:390,
+      kogda:'Списывается сегодня один раз. Старт потока в начале октября, доступ к урокам открывается в день старта.',
+      alt:'Если захотите куратора, доплатите разницу до «Профессии» в любой момент до старта.',
+      spisok:['52 урока в записи, шесть блоков','Блок AI для SMM-специалиста','Чат потока','Сертификат','Уроки остаются в записи'] },
+    pro:     { zag:'Тариф «Профессия»',  cena:'$690',   bylo:'$890',   val:690,
+      kogda:'Списывается сегодня один раз. Старт потока в начале октября, доступ к урокам открывается в день старта.',
+      alt:'Основной тариф: с ним домашние задания проверяет куратор, и до результата доходят чаще.',
+      spisok:['Всё из «Старта»','Куратор и проверка каждого задания','Пять живых эфиров с разборами','Персональный чат с куратором','Сертификат'] },
+    system:  { zag:'Тариф «Система»',    cena:'$1 490', bylo:'$1 990', val:1490,
+      kogda:'Списывается сегодня один раз. Старт потока в начале октября. Мест на этом тарифе меньше, чем на других.',
+      alt:'Для тех, кто уже в сфере: личная стратегия и разбор живого клиента агентства с его цифрами.',
+      spisok:['Всё из «Профессии»','Личная стратегия от Малены под вашу нишу','Разбор живого клиента агентства: трекинг, реклама, отчёт','Уроки по рекламе в Meta, блогерам и UGC'] },
+    deposit: { zag:'Депозит $50',        cena:'$50',    bylo:'',       val:50,
+      kogda:'Списывается сегодня. Держит цену первой волны семь дней и полностью засчитывается в оплату любого тарифа.',
+      alt:'Депозит возвращается по первой просьбе в течение суток, если вы передумали.',
+      spisok:['Цена первой волны закреплена на семь дней','Место в потоке забронировано','Сумма вычитается из оплаты тарифа','Возврат по первой просьбе'] }
+  };
+
+  var plan = PLANY[q('plan')] ? q('plan') : 'pro';
+  var email = q('email');
+
+  /* Метка источника: сначала из адреса, потом из памяти браузера. Метка
+     в ссылке точнее, человек мог заходить на лендинг месяц назад. */
+  var utm = q('utm_source');
+  if (!utm) {
+    try { var s = JSON.parse(localStorage.getItem('kurs_src')||'null'); if (s && s.s) utm = s.s; } catch(e){}
+  }
+
+  function opisat(p){
+    var d = PLANY[p];
+    set('zag', d.zag);
+    set('cena', d.cena);
+    set('period', p === 'deposit' ? 'депозит' : 'до 27 сентября');
+    set('bylo', d.bylo);
+    set('kogda', d.kogda);
+    document.getElementById('alt').textContent = d.alt;
+    document.getElementById('zag2').textContent = p === 'deposit' ? 'Что даёт депозит' : 'Что входит';
+    var ul = document.getElementById('spisok');
+    ul.innerHTML = '';
+    for (var i = 0; i < d.spisok.length; i++) {
+      var li = document.createElement('li'); li.textContent = d.spisok[i]; ul.appendChild(li);
+    }
+    try { sessionStorage.setItem('kurs_amount', String(d.val)); sessionStorage.setItem('kurs_plan', p); } catch(e){}
+  }
+
+  function fail(){
+    document.getElementById('pay').innerHTML =
+      '<div class="err">Форма оплаты не открылась. Попробуйте обновить страницу. ' +
+      'Если не поможет, напишите в <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">заботу</a>, ' +
+      'оформим вручную за пару минут.</div>';
+  }
+
+  var tabs = document.getElementById('tabs');
+  var depbtn = document.getElementById('depbtn');
+  var checkout = null;
+  var poslano = false;   /* событие Мете отправляем один раз за визит */
+  var zanyato = false;
+
+  function knopki(p){
+    var bs = tabs.querySelectorAll('.tab');
+    for (var i = 0; i < bs.length; i++) {
+      bs[i].classList.toggle('on', bs[i].getAttribute('data-plan') === p);
+      bs[i].disabled = zanyato;
+    }
+    depbtn.classList.toggle('on', p === 'deposit');
+    depbtn.disabled = zanyato;
+  }
+
+  function sobrat(p){
+    if (zanyato) return;
+    zanyato = true;
+    plan = p;
+    opisat(p);
+    knopki(p);
+
+    try {
+      var u = new URL(location.href);
+      u.searchParams.set('plan', p);
+      history.replaceState(null, '', u.toString());
+    } catch(e){}
+
+    /* Прежнюю форму обязательно разбираем: Stripe не держит две встроенные
+       формы сразу и молча откажется монтировать вторую. */
+    if (checkout) { try { checkout.destroy(); } catch(e){} checkout = null; }
+    document.getElementById('pay').innerHTML = '<div class="wait">Готовим форму оплаты…</div>';
+
+    var url = FN + '/session?plan=' + p
+            + (email ? '&email=' + encodeURIComponent(email) : '')
+            + (utm ? '&utm_source=' + encodeURIComponent(utm) : '')
+            + '&s=' + encodeURIComponent(q('s') || 'oplata');
+
+    fetch(url)
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (!d || !d.client_secret) throw new Error('no secret');
+        return Stripe(PK).initEmbeddedCheckout({ clientSecret: d.client_secret });
+      })
+      .then(function(ch){
+        checkout = ch;
+        document.getElementById('pay').innerHTML = '';
+        ch.mount('#pay');
+        zanyato = false;
+        knopki(p);
+        /* Событие уходит, только когда форма карты собралась и человек её видит.
+           Один раз за визит: переключение тарифа это тот же человек. */
+        if (window.fbq && !poslano) {
+          poslano = true;
+          fbq('track','InitiateCheckout',{ value: PLANY[p].val, currency:'USD', content_name: p });
+        }
+      })
+      .catch(function(e){ console.error(e); zanyato = false; knopki(p); fail(); });
+  }
+
+  tabs.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('.tab') : null;
+    if (!b) return;
+    var p = b.getAttribute('data-plan');
+    if (!p || p === plan) return;
+    if (window.fbq) fbq('trackCustom','KursPlanSwitch',{ plan: p });
+    sobrat(p);
+  });
+  depbtn.addEventListener('click', function(){
+    if (plan === 'deposit') return;
+    if (window.fbq) fbq('trackCustom','KursPlanSwitch',{ plan:'deposit' });
+    sobrat('deposit');
+  });
+
+  sobrat(plan);
+})();
+</script>
+
+</body>
+</html>

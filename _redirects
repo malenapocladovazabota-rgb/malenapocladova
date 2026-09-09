@@ -47,6 +47,11 @@
 /video-a.html  /video-a  301
 /video-b.html  /video-b  301
 
+# Курс «SMM с нуля», восьмой поток
+/kurs.html         /kurs         301
+/oplata-kurs.html  /oplata-kurs  301
+/kurs-spasibo.html /kurs-spasibo 301
+
 # Клуб «Продвижение»
 /prodvizhenie.html         /prodvizhenie         301
 /oplata-new.html           /oplata-new           301
