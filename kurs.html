@@ -207,7 +207,8 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--wine)}
 .author p{font-size:16px;color:var(--ink2);margin-top:12px}
 
 /* Форма */
-.form-wrap{padding:30px 22px 26px}
+/* overflow у стекла обрезал бы выпадающий список стран, поэтому у формы снимаем */
+.form-wrap{padding:30px 22px 26px;overflow:visible}
 .form-wrap h2{font-size:clamp(28px,4vw,44px)}
 .fields{display:grid;gap:12px;margin-top:22px}
 .f{position:relative}
@@ -250,10 +251,42 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 .mid-cta{margin-top:30px;display:flex;flex-wrap:wrap;align-items:center;gap:14px}
 .mid-cta span{font-size:14px;color:var(--ink2)}
 
-/* Выбранный вход показываем над формой, чтобы человек видел, что его услышали */
+/* Выбранный вход показываем над формой, чтобы человек видел, что его услышали.
+   Правило с [hidden] обязательно: display:flex иначе перебивает атрибут hidden,
+   и над формой висит пустая плашка с крестиком. */
 .picked{display:flex;align-items:center;gap:10px;margin-top:18px;padding:12px 14px;border-radius:999px;background:rgba(110,30,43,.1);border:1px solid rgba(110,30,43,.22);font-size:14px;color:var(--ink)}
+.picked[hidden]{display:none}
 .picked span{flex:1}
 .picked button{border:0;background:none;font-size:20px;line-height:1;color:var(--wine);cursor:pointer;padding:0 4px}
+
+/* Телефон с выбором страны. Флаг рисуем эмодзи из кода страны: ничего не грузим
+   со стороны, на телефоне выглядит как родное. Там, где эмодзи-флагов нет
+   (Windows), остаются две буквы кода, и плашка сделана так, чтобы это выглядело
+   задуманным. Страна подставляется по стране запроса из /cdn-cgi/trace. */
+.f.tel input{padding-left:112px}
+.f.tel label{left:112px}
+.cc{position:absolute;left:6px;top:6px;bottom:6px;display:flex;align-items:center;gap:7px;padding:0 11px;border:1px solid rgba(255,255,255,.75);
+  border-radius:11px;background:rgba(255,255,255,.7);cursor:pointer;font:inherit;font-size:15px;color:var(--ink);transition:background .2s,box-shadow .2s}
+.cc:hover{background:#fff}
+.cc:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(110,30,43,.2)}
+.cc .flag{font-size:19px;line-height:1;letter-spacing:.5px}
+.cc .dial{font-variant-numeric:tabular-nums;letter-spacing:.2px}
+.cc .chev{width:9px;height:9px;opacity:.45;transition:transform .25s var(--ease)}
+.f.tel.open .cc .chev{transform:rotate(180deg)}
+.cclist{position:absolute;z-index:60;left:0;right:0;top:calc(100% + 8px);max-height:290px;border-radius:16px;
+  background:rgba(251,246,236,.94);backdrop-filter:blur(22px) saturate(160%);-webkit-backdrop-filter:blur(22px) saturate(160%);
+  border:1px solid rgba(255,255,255,.85);box-shadow:0 30px 60px -22px rgba(22,17,16,.4);flex-direction:column;display:none;overflow:hidden}
+.f.tel.open .cclist{display:flex;animation:ccin .26s var(--ease)}
+@keyframes ccin{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:none}}
+.cclist .srch{margin:8px;padding:11px 13px;text-align:left;border-radius:11px;border:1px solid rgba(110,30,43,.16);background:rgba(255,255,255,.8);font:inherit;font-size:15px;color:var(--ink);outline:none;width:calc(100% - 16px)}
+.cclist .srch:focus{box-shadow:0 0 0 3px rgba(110,30,43,.14)}
+.cclist ul{list-style:none;margin:0;padding:0 8px 8px;overflow-y:auto;overscroll-behavior:contain}
+.cclist li{display:flex;align-items:center;gap:11px;padding:11px 12px;border-radius:10px;cursor:pointer;font-size:15px;color:var(--ink)}
+.cclist li:hover,.cclist li.hi{background:rgba(110,30,43,.1)}
+.cclist li .flag{font-size:19px;line-height:1}
+.cclist li .nm{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cclist li .dl{color:var(--muted);font-variant-numeric:tabular-nums}
+.cclist .none{padding:16px 14px;color:var(--muted);font-size:14px}
 
 /* Липкая панель, только на телефоне */
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:120;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
@@ -437,7 +470,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   <div class="wrap">
     <div class="eyebrow rv"><i></i>Что изменилось</div>
     <h2 class="rv d1">SMM больше <em>не такой</em>, как был</h2>
-    <p class="lede rv d2">Программа создана под SMM нового времени. Раньше учили снимать и выкладывать. Теперь важно другое: чтобы контент приводил клиента, а клиент оставался и платил за результат.</p>
+    <p class="lede rv d2">Профессия за два года стала другой. Сегодня в ней искусственный интеллект, собранный под себя, работа на результат клиента и приёмы, которые мы забираем с американского рынка. Шесть вещей, которые поменялись, и на которых построена программа.</p>
     <div class="shift">
       <div class="sw glass tilt rv d1"><div class="was">Контент ради контента</div><div class="arr">→</div><div class="now">Контент, который <em>приводит клиента</em></div></div>
       <div class="sw glass tilt rv d2"><div class="was">Охваты и лайки в отчёте</div><div class="arr">→</div><div class="now">Заявки, записи и <em>деньги</em> в отчёте</div></div>
@@ -574,7 +607,18 @@ footer a{text-decoration:underline;text-underline-offset:3px}
       <form id="lead" novalidate>
         <div class="fields">
           <div class="f"><input type="text" id="name" name="name" placeholder=" " autocomplete="given-name" required><label for="name">Как вас зовут</label></div>
-          <div class="f"><input type="tel" id="phone" name="phone" placeholder=" " autocomplete="tel" inputmode="tel"><label for="phone">Телефон с кодом страны</label></div>
+          <div class="f tel" id="telf">
+            <button class="cc" type="button" id="ccbtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Код страны">
+              <span class="flag" id="ccflag">🇲🇩</span><span class="dial" id="ccdial">+373</span>
+              <svg class="chev" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </button>
+            <input type="tel" id="phone" name="phone" placeholder=" " autocomplete="tel" inputmode="tel">
+            <label for="phone">Телефон</label>
+            <div class="cclist" id="cclist" role="listbox">
+              <input class="srch" type="text" id="ccsrch" placeholder="Страна или код" autocomplete="off" spellcheck="false">
+              <ul id="ccul"></ul>
+            </div>
+          </div>
           <div class="f full"><input type="email" id="email" name="email" placeholder=" " autocomplete="email" inputmode="email" required><label for="email">Почта</label></div>
         </div>
         <button class="btn btn-wine" type="submit" id="send"><span>Записаться на разбор</span></button>
@@ -583,9 +627,9 @@ footer a{text-decoration:underline;text-underline-offset:3px}
       </form>
       <div class="ok" id="ok">
         <div class="mark">✓</div>
-        <h3>Письмо уже летит</h3>
-        <p>Осталось выбрать время. Календарь откроется в новой вкладке, займёт минуту.</p>
-        <a class="btn btn-wine" id="book" href="#" target="_blank" rel="noopener"><span>Выбрать время разбора</span></a>
+        <h3>Открываем календарь</h3>
+        <p>Осталось выбрать время. Если страница не открылась сама, нажмите кнопку.</p>
+        <a class="btn btn-wine" id="book" href="#" rel="noopener"><span>Выбрать время разбора</span></a>
       </div>
     </div>
   </div>
@@ -751,6 +795,56 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   var utm={ source:q('utm_source'), medium:q('utm_medium'), campaign:q('utm_campaign'), content:q('utm_content') };
   try{ if(utm.source) localStorage.setItem('newsmm_src', JSON.stringify(utm)); else { var s=JSON.parse(localStorage.getItem('newsmm_src')||'null'); if(s) utm=s; } }catch(e){}
 
+  /* Телефон с выбором страны. Флаг собираем из букв кода страны, список стран
+     ищется и по названию, и по коду. Страна подставляется сама по стране запроса:
+     Cloudflare отдаёт её на /cdn-cgi/trace, свой же домен, ничего наружу не уходит. */
+  var CCRAW='AU,61,Австралия|AT,43,Австрия|AZ,994,Азербайджан|AL,355,Албания|AR,54,Аргентина|AM,374,Армения|BD,880,Бангладеш|BH,973,Бахрейн|BY,375,Беларусь|BE,32,Бельгия|BG,359,Болгария|BO,591,Боливия|BA,387,Босния и Герцеговина|BR,55,Бразилия|GB,44,Великобритания|HU,36,Венгрия|VE,58,Венесуэла|VN,84,Вьетнам|DE,49,Германия|GR,30,Греция|GE,995,Грузия|DK,45,Дания|EG,20,Египет|IL,972,Израиль|IN,91,Индия|ID,62,Индонезия|JO,962,Иордания|IQ,964,Ирак|IR,98,Иран|IE,353,Ирландия|IS,354,Исландия|ES,34,Испания|IT,39,Италия|KZ,7,Казахстан|CA,1,Канада|QA,974,Катар|KE,254,Кения|CY,357,Кипр|KG,996,Киргизия|CN,86,Китай|CO,57,Колумбия|KR,82,Корея|CR,506,Коста-Рика|KW,965,Кувейт|LV,371,Латвия|LB,961,Ливан|LT,370,Литва|LU,352,Люксембург|MY,60,Малайзия|MT,356,Мальта|MA,212,Марокко|MX,52,Мексика|MD,373,Молдова|MC,377,Монако|NL,31,Нидерланды|NZ,64,Новая Зеландия|NG,234,Нигерия|NO,47,Норвегия|AE,971,ОАЭ|PK,92,Пакистан|PA,507,Панама|PY,595,Парагвай|PE,51,Перу|PL,48,Польша|PT,351,Португалия|RU,7,Россия|RO,40,Румыния|SA,966,Саудовская Аравия|MK,389,Северная Македония|RS,381,Сербия|SG,65,Сингапур|SK,421,Словакия|SI,386,Словения|US,1,США|TJ,992,Таджикистан|TH,66,Таиланд|TM,993,Туркмения|TR,90,Турция|TN,216,Тунис|UZ,998,Узбекистан|UA,380,Украина|UY,598,Уругвай|PH,63,Филиппины|FI,358,Финляндия|FR,33,Франция|HR,385,Хорватия|ME,382,Черногория|CZ,420,Чехия|CL,56,Чили|CH,41,Швейцария|SE,46,Швеция|LK,94,Шри-Ланка|EC,593,Эквадор|EE,372,Эстония|ZA,27,ЮАР|JP,81,Япония';
+  var CC=CCRAW.split('|').map(function(s){ var p=s.split(','); return {c:p[0],d:p[1],n:p[2]}; })
+    .sort(function(a,b){ return a.n.localeCompare(b.n,'ru'); });
+  function ccFind(code){ for(var i=0;i<CC.length;i++) if(CC[i].c===code) return CC[i]; return null; }
+  function ccFlag(c){ return String.fromCodePoint(0x1F1E6+c.charCodeAt(0)-65, 0x1F1E6+c.charCodeAt(1)-65); }
+
+  var telf=document.getElementById('telf'), ccbtn=document.getElementById('ccbtn'),
+      ccflag=document.getElementById('ccflag'), ccdial=document.getElementById('ccdial'),
+      ccsrch=document.getElementById('ccsrch'), ccul=document.getElementById('ccul'),
+      tel=document.getElementById('phone'), country=ccFind('MD');
+
+  function ccSet(x){ if(!x) return; country=x; ccflag.textContent=ccFlag(x.c); ccdial.textContent='+'+x.d; }
+  function ccDraw(q){
+    q=(q||'').trim().toLowerCase().replace(/^\+/,'');
+    var out=q ? CC.filter(function(x){ return x.n.toLowerCase().indexOf(q)>-1 || x.d.indexOf(q)===0 || x.c.toLowerCase()===q; }) : CC;
+    ccul.innerHTML = out.length
+      ? out.map(function(x){ return '<li role="option" data-c="'+x.c+'"><span class="flag">'+ccFlag(x.c)+'</span><span class="nm">'+x.n+'</span><span class="dl">+'+x.d+'</span></li>'; }).join('')
+      : '<div class="none">Такой страны в списке нет. Напишите номер с кодом в поле рядом.</div>';
+  }
+  function ccOpen(){ telf.classList.add('open'); ccbtn.setAttribute('aria-expanded','true'); ccsrch.value=''; ccDraw(''); if(innerWidth>760) setTimeout(function(){ ccsrch.focus(); },20); }
+  function ccClose(){ telf.classList.remove('open'); ccbtn.setAttribute('aria-expanded','false'); }
+  ccbtn.addEventListener('click',function(e){ e.stopPropagation(); telf.classList.contains('open')?ccClose():ccOpen(); });
+  ccsrch.addEventListener('input',function(){ ccDraw(ccsrch.value); });
+  ccsrch.addEventListener('click',function(e){ e.stopPropagation(); });
+  ccul.addEventListener('click',function(e){
+    var li=e.target.closest ? e.target.closest('li') : null; if(!li) return;
+    ccSet(ccFind(li.getAttribute('data-c'))); ccClose(); tel.focus();
+  });
+  document.addEventListener('click',function(e){ if(!telf.contains(e.target)) ccClose(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') ccClose(); });
+
+  /* Если человек вставил номер целиком с плюсом, страну достаём из него сами */
+  tel.addEventListener('input',function(){
+    var v=tel.value;
+    if(v.charAt(0)==='+'){
+      var digits=v.replace(/\D/g,''), best=null;
+      CC.forEach(function(x){ if(digits.indexOf(x.d)===0 && (!best || x.d.length>best.d.length)) best=x; });
+      if(best){ ccSet(best); tel.value=digits.slice(best.d.length); return; }
+    }
+    tel.value=v.replace(/[^\d\s\-()]/g,'');
+  });
+  ccDraw('');
+  fetch('/cdn-cgi/trace').then(function(r){ return r.text(); }).then(function(t){
+    var m=/(?:^|\n)loc=([A-Z]{2})/.exec(t);
+    if(m && !tel.value) ccSet(ccFind(m[1]));
+  }).catch(function(){});
+
   /* Форма: имя, почта, телефон → функция newsmm-lead → письмо и календарь */
   var FN='https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/newsmm-lead';
   /* Публичный ключ проекта. Он и задуман для браузера, секретов за ним нет:
@@ -763,7 +857,8 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   var form=document.getElementById('lead'), fw=document.getElementById('fw'), err=document.getElementById('err'), btn=document.getElementById('send');
   form.addEventListener('submit',function(ev){
     ev.preventDefault();
-    var name=form.name.value.trim(), email=form.email.value.trim().toLowerCase(), phone=form.phone.value.trim();
+    var name=form.name.value.trim(), email=form.email.value.trim().toLowerCase();
+    var raw=tel.value.replace(/\D/g,''), phone=raw ? '+'+country.d+raw : '';
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ err.style.display='block'; form.email.focus(); return; }
     err.style.display='none'; btn.disabled=true; btn.querySelector('span').textContent='Отправляем…';
     var body={ name:name, email:email, phone:phone, src:'kurs', track:track, utm:utm, page:location.pathname, tz:zone() };
@@ -775,10 +870,15 @@ footer a{text-decoration:underline;text-underline-offset:3px}
            а заявку доберём из письма или из календаря. */
         var book=(d&&d.booking_url)||BOOK;
         var u=new URL(book); if(name) u.searchParams.set('first_name',name); if(email) u.searchParams.set('email',email); if(phone) u.searchParams.set('phone',phone);
-        document.getElementById('book').href=u.toString();
+        var go=u.toString();
+        document.getElementById('book').href=go;
         fw.classList.add('done');
         if(window.fbq) fbq('track','Lead',{content_name:'new-smm-razbor'});
         fw.scrollIntoView({behavior:'smooth',block:'center'});
+        /* Письмо человек и так получит. Дальше ему нужно только время разбора,
+           поэтому уводим на календарь сами, а экран с кнопкой остаётся запасным
+           на случай, если переход не случился. */
+        setTimeout(function(){ location.href=go; },600);
       });
   });
 })();
