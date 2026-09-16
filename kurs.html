@@ -247,6 +247,32 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--wine)}
 .qsum span{font-size:13px;padding:7px 12px;border-radius:999px;background:rgba(110,30,43,.09);border:1px solid rgba(110,30,43,.18);color:var(--ink2)}
 .qstep[data-q="form"] .fields{margin-top:0}
 
+/* Выбор времени. Окна берутся из тех же календарей GoHighLevel, что и раньше,
+   поэтому Zoom, письма, перенос и отмена работают как прежде. Своё тут только
+   оформление: человек не уходит со страницы и не видит чужой белый виджет. */
+.cal[hidden]{display:none}
+.cal h3{font-family:var(--serif);font-size:clamp(22px,2.8vw,30px);font-weight:600;margin:10px 0 18px}
+.caldays{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+.caldays::-webkit-scrollbar{height:0}
+.caldays button{flex:0 0 auto;scroll-snap-align:start;min-width:72px;padding:10px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.7);
+  background:rgba(255,255,255,.55);font:inherit;cursor:pointer;text-align:center;line-height:1.15;transition:background .2s,border-color .2s,transform .2s var(--ease)}
+.caldays button:hover{background:#fff;transform:translateY(-2px)}
+.caldays button b{display:block;font-size:19px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;margin:2px 0}
+.caldays button i{display:block;font-style:normal;font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted)}
+.caldays button.on{background:var(--wine);border-color:var(--wine)}
+.caldays button.on b,.caldays button.on i{color:#F6EFE2}
+.caltimes{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:8px;margin-top:14px;max-height:236px;overflow-y:auto;overscroll-behavior:contain}
+.caltimes button{padding:13px 8px;border-radius:12px;border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.55);font:inherit;font-size:15px;
+  font-variant-numeric:tabular-nums;color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s,box-shadow .25s}
+.caltimes button:hover{background:#fff;border-color:rgba(110,30,43,.3)}
+.caltimes button.on{background:rgba(110,30,43,.12);border-color:var(--wine);box-shadow:0 0 0 3px rgba(110,30,43,.14);font-weight:600}
+.calnote{padding:24px 0;color:var(--muted);font-size:14px}
+.calzone{font-size:12.5px;color:var(--muted);margin:14px 0}
+.cal .btn{width:100%}
+.calalt{display:inline-block;margin-top:14px;font-size:12.5px;color:var(--muted);text-decoration:underline}
+.form-wrap.booking .qz,.form-wrap.booking .lede,.form-wrap.booking .picked{display:none}
+.form-wrap.done .cal{display:none}
+
 .fine{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.45}
 .ok{display:none;text-align:center;padding:14px 0 6px}
 .ok .mark{width:64px;height:64px;border-radius:50%;background:var(--wine);margin:0 auto 16px;display:grid;place-items:center;color:#F6EFE2;font-size:28px;transform:scale(0);animation:pop .5s var(--ease) forwards}
@@ -633,7 +659,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     <div class="form-wrap glass rv" id="fw">
       <div class="eyebrow"><i></i>Разбор · бесплатно · 20 минут</div>
       <h2>Запишитесь на разбор, <em>дальше поговорим</em></h2>
-      <p class="lede">Четыре коротких вопроса, чтобы прийти на разговор подготовленными. Дальше вы выберете время, и за двадцать минут мы разберём вашу ситуацию и честно скажем, подходит ли вам <b>New SMM</b>.</p>
+      <p class="lede">Четыре коротких вопроса, дальше выберете время. На разборе посмотрим, что у вас сейчас с соцсетями и с клиентами, подробно расскажем, что входит в обучение <b>New SMM</b>, и скажем, подойдёт ли оно именно вам.</p>
       <div class="picked" id="picked" hidden><span></span><button type="button" id="unpick" aria-label="Убрать выбор">×</button></div>
 
       <!-- Квиз. Отвечают одним касанием, шаг переключается сам. Ветка про чек
@@ -667,8 +693,13 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 
         <div class="qstep" data-q="check">
           <div class="qnum">Вопрос 3 из 4</div>
-          <h3 data-has="Какой у вас чек за проект в месяц?" data-none="Сколько хотите зарабатывать через полгода?">Какой у вас чек за проект в месяц?</h3>
-          <div class="qopts" data-has-opts="До $300|$300 – $700|$700 – $1500|Больше $1500" data-none-opts="До $500 в месяц|$500 – $1500 в месяц|$1500 – $3000 в месяц|Больше $3000 в месяц"></div>
+          <h3 data-has="Какой у вас чек за проект в месяц?" data-none="Сколько хотите зарабатывать в месяц через полгода?">Какой у вас чек за проект в месяц?</h3>
+          <!-- Вилка тянется до пяти и десяти тысяч сознательно. У нас есть люди
+               в Америке, для которых три тысячи в месяц это не цель, а нижняя
+               граница нормы, и упереться в потолок вопроса им было бы странно. -->
+          <div class="qopts"
+               data-has-opts="До $300|$300 – $800|$800 – $2000|$2000 – $5000|Больше $5000"
+               data-none-opts="До $500|$500 – $2000|$2000 – $5000|$5000 – $10 000|Больше $10 000"></div>
           <button class="qback" type="button">Назад</button>
         </div>
 
@@ -710,11 +741,23 @@ footer a{text-decoration:underline;text-underline-offset:3px}
         </div>
       </div>
 
+      <div class="cal" id="cal" hidden>
+        <div class="eyebrow"><i></i>Осталось выбрать время</div>
+        <h3>Когда вам удобно?</h3>
+        <div class="caldays" id="caldays"></div>
+        <div class="caltimes" id="caltimes"></div>
+        <div class="calnote" id="calnote">Смотрим свободные окна…</div>
+        <p class="calzone" id="calzone"></p>
+        <button class="btn btn-wine" type="button" id="calgo" disabled><span>Выберите время</span></button>
+        <div class="err" id="calerr"></div>
+        <a class="calalt" id="book" href="#" rel="noopener">Открыть календарь отдельной страницей</a>
+      </div>
+
       <div class="ok" id="ok">
         <div class="mark">✓</div>
-        <h3>Открываем календарь</h3>
-        <p>Осталось выбрать время. Если страница не открылась сама, нажмите кнопку.</p>
-        <a class="btn btn-wine" id="book" href="#" rel="noopener"><span>Выбрать время разбора</span></a>
+        <h3>Вы записаны</h3>
+        <p id="okwhen"></p>
+        <p>Ссылка на Zoom придёт на почту вместе с подтверждением. Если планы поменяются, перенести или отменить встречу можно из того же письма.</p>
       </div>
     </div>
   </div>
@@ -991,6 +1034,97 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     if(m && !tel.value) ccSet(ccFind(m[1]));
   }).catch(function(){});
 
+  /* Выбор времени на нашей странице. Свободные окна и сама запись идут через
+     функцию newsmm-book, а она уже разговаривает с календарями GoHighLevel.
+     Человек никуда не уходит, но встреча создаётся ровно та же: с Zoom, письмом,
+     переносом и отменой. Если окна не пришли, показываем ссылку на виджет,
+     чтобы заявка не упёрлась в нашу поломку. */
+  var BOOKFN='https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/newsmm-book';
+  var cal=document.getElementById('cal'), caldays=document.getElementById('caldays'),
+      caltimes=document.getElementById('caltimes'), calnote=document.getElementById('calnote'),
+      calzone=document.getElementById('calzone'), calgo=document.getElementById('calgo'),
+      calerr=document.getElementById('calerr');
+  var calDays=[], calDay=0, calSlot='', calRegion='eu', who={ name:'', email:'', phone:'' };
+  var MON=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+  var MON3=['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'];
+  var WD=['вс','пн','вт','ср','чт','пт','сб'];
+  /* Дату разбираем по частям: new Date('2026-09-17') это полночь по Гринвичу,
+     и в Сан-Диего она показала бы шестнадцатое. */
+  function dparse(s){ var p=String(s).split('-'); return new Date(+p[0],+p[1]-1,+p[2]); }
+  function hhmm(iso){ var d=new Date(iso); return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2); }
+
+  function calPaint(){
+    caldays.innerHTML=calDays.map(function(d,i){
+      var dt=dparse(d.date);
+      return '<button type="button" data-i="'+i+'"'+(i===calDay?' class="on"':'')+
+             '><i>'+WD[dt.getDay()]+'</i><b>'+dt.getDate()+'</b><i>'+MON3[dt.getMonth()]+'</i></button>';
+    }).join('');
+    var day=calDays[calDay];
+    caltimes.innerHTML=day ? day.slots.map(function(s){
+      return '<button type="button" data-s="'+s+'"'+(s===calSlot?' class="on"':'')+'>'+hhmm(s)+'</button>';
+    }).join('') : '';
+    var lab=calgo.querySelector('span');
+    if(calSlot && day){
+      var dt=dparse(day.date);
+      lab.textContent='Записаться на '+dt.getDate()+' '+MON[dt.getMonth()]+', '+hhmm(calSlot);
+      calgo.disabled=false;
+    } else { lab.textContent='Выберите время'; calgo.disabled=true; }
+  }
+
+  function calLoad(){
+    calnote.style.display='block'; calnote.textContent='Смотрим свободные окна…';
+    caldays.innerHTML=''; caltimes.innerHTML=''; calSlot=''; calDay=0; calgo.disabled=true;
+    fetch(BOOKFN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK},
+      body:JSON.stringify({ action:'slots', region:calRegion, tz:zone() }) })
+      .then(function(r){ return r.json(); })
+      .catch(function(){ return {}; })
+      .then(function(d){
+        calDays=(d&&d.days)||[];
+        if(!calDays.length){
+          calnote.textContent='Не получилось показать свободное время здесь. Откройте календарь отдельной страницей, ссылка ниже.';
+          return;
+        }
+        calnote.style.display='none';
+        calzone.textContent='Время показано в вашем часовом поясе: '+(zone()||'по настройкам устройства')+'. Разбор идёт в Zoom, ссылка придёт на почту.';
+        calPaint();
+      });
+  }
+
+  caldays.addEventListener('click',function(e){
+    var b=e.target.closest?e.target.closest('button'):null; if(!b) return;
+    calDay=+b.getAttribute('data-i'); calSlot=''; calPaint();
+  });
+  caltimes.addEventListener('click',function(e){
+    var b=e.target.closest?e.target.closest('button'):null; if(!b) return;
+    calSlot=b.getAttribute('data-s'); calerr.style.display='none'; calPaint();
+  });
+
+  calgo.addEventListener('click',function(){
+    if(!calSlot) return;
+    var slot=calSlot;
+    calgo.disabled=true; calgo.querySelector('span').textContent='Записываем…'; calerr.style.display='none';
+    fetch(BOOKFN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK},
+      body:JSON.stringify({ action:'book', region:calRegion, tz:zone(), start:slot, name:who.name, email:who.email, phone:who.phone }) })
+      .then(function(r){ return r.json().then(function(j){ return { ok:r.ok, j:j }; }); })
+      .catch(function(){ return { ok:false, j:{} }; })
+      .then(function(res){
+        if(res.ok && res.j && res.j.ok){
+          var dt=new Date(slot);
+          document.getElementById('okwhen').textContent=
+            WD[dt.getDay()].toUpperCase().slice(0,1)+WD[dt.getDay()].slice(1)+', '+dt.getDate()+' '+MON[dt.getMonth()]+', '+hhmm(slot)+'.';
+          fw.classList.add('done');
+          if(window.fbq) fbq('track','Schedule',{content_name:'new-smm-razbor'});
+          fw.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
+          return;
+        }
+        calerr.textContent = (res.j && res.j.error==='slot_taken')
+          ? 'Это время только что заняли. Выберите другое, список уже обновлён.'
+          : 'Не получилось записать. Попробуйте другое время или откройте календарь отдельной страницей.';
+        calerr.style.display='block';
+        calLoad();
+      });
+  });
+
   /* Форма: имя, почта, телефон → функция newsmm-lead → письмо и календарь */
   var FN='https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/newsmm-lead';
   /* Публичный ключ проекта. Он и задуман для браузера, секретов за ним нет:
@@ -1019,15 +1153,15 @@ footer a{text-decoration:underline;text-underline-offset:3px}
            а заявку доберём из письма или из календаря. */
         var book=(d&&d.booking_url)||BOOK;
         var u=new URL(book); if(name) u.searchParams.set('first_name',name); if(email) u.searchParams.set('email',email); if(phone) u.searchParams.set('phone',phone);
-        var go=u.toString();
-        document.getElementById('book').href=go;
-        fw.classList.add('done');
+        document.getElementById('book').href=u.toString();
         if(window.fbq) fbq('track','Lead',{content_name:'new-smm-razbor'});
-        fw.scrollIntoView({behavior:'smooth',block:'center'});
-        /* Письмо человек и так получит. Дальше ему нужно только время разбора,
-           поэтому уводим на календарь сами, а экран с кнопкой остаётся запасным
-           на случай, если переход не случился. */
-        setTimeout(function(){ location.href=go; },600);
+        /* Письмо человек получит сам. На странице остаётся один шаг: время. */
+        who={ name:name, email:email, phone:phone };
+        calRegion=(d&&d.region==='us') ? 'us' : 'eu';
+        fw.classList.add('booking');
+        cal.hidden=false;
+        fw.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+        calLoad();
       });
   });
 })();
