@@ -217,13 +217,44 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--wine)}
 .f label{position:absolute;left:16px;top:15px;font-size:15px;color:var(--muted);pointer-events:none;transition:all .2s var(--ease)}
 .f input:focus+label,.f input:not(:placeholder-shown)+label{top:7px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--wine)}
 .form-wrap .btn{width:100%;margin-top:6px}
+/* Квиз. Один вопрос на экране, ответ одним касанием, шаг переключается сам.
+   Высота контейнера тянется за активным шагом, чтобы страница не прыгала. */
+.qz{margin-top:22px}
+.qbar{height:4px;border-radius:999px;background:rgba(110,30,43,.12);overflow:hidden}
+.qbar i{display:block;height:100%;width:20%;border-radius:999px;background:var(--wine);transition:width .45s var(--ease)}
+.qstep{display:none;animation:qin .38s var(--ease)}
+.qstep.on{display:block}
+.qstep.back{animation:qinb .38s var(--ease)}
+@keyframes qin{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@keyframes qinb{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:none}}
+.qnum{margin-top:22px;font-family:var(--mono);font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--wine)}
+.qstep h3{font-family:var(--serif);font-size:clamp(21px,2.6vw,28px);font-weight:600;line-height:1.25;margin:8px 0 18px}
+.qopts{display:grid;gap:10px}
+.qopts button{position:relative;text-align:left;padding:17px 46px 17px 18px;border-radius:14px;border:1px solid rgba(255,255,255,.7);
+  background:rgba(255,255,255,.55);font:inherit;font-size:16px;line-height:1.35;color:var(--ink);cursor:pointer;
+  transition:transform .2s var(--ease),background .2s,border-color .2s,box-shadow .25s var(--ease)}
+.qopts button::after{content:'';position:absolute;right:18px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;
+  border:1.5px solid rgba(110,30,43,.3);transition:background .2s,border-color .2s,transform .2s}
+.qopts button:hover{background:rgba(255,255,255,.85);border-color:rgba(110,30,43,.3);transform:translateX(3px)}
+.qopts button:hover::after{border-color:var(--wine)}
+.qopts button.on{background:rgba(110,30,43,.1);border-color:rgba(110,30,43,.4);box-shadow:0 0 0 3px rgba(110,30,43,.12)}
+.qopts button.on::after{background:var(--wine);border-color:var(--wine);transform:scale(1.25)}
+.qback{margin-top:16px;border:0;background:none;font-family:var(--mono);font-size:11px;letter-spacing:1.4px;text-transform:uppercase;
+  color:var(--muted);cursor:pointer;padding:6px 0;transition:color .2s}
+.qback::before{content:'← '}
+.qback:hover{color:var(--wine)}
+.qsum{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+.qsum span{font-size:13px;padding:7px 12px;border-radius:999px;background:rgba(110,30,43,.09);border:1px solid rgba(110,30,43,.18);color:var(--ink2)}
+.qstep[data-q="form"] .fields{margin-top:0}
+
 .fine{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.45}
 .ok{display:none;text-align:center;padding:14px 0 6px}
 .ok .mark{width:64px;height:64px;border-radius:50%;background:var(--wine);margin:0 auto 16px;display:grid;place-items:center;color:#F6EFE2;font-size:28px;transform:scale(0);animation:pop .5s var(--ease) forwards}
 @keyframes pop{to{transform:scale(1)}}
 .ok h3{font-family:var(--serif);font-size:26px;font-weight:600;margin-bottom:8px}
 .ok p{color:var(--ink2);font-size:15px;margin-bottom:18px}
-.form-wrap.done form{display:none}.form-wrap.done .ok{display:block}
+.form-wrap.done form,.form-wrap.done .qz,.form-wrap.done .lede,.form-wrap.done .picked{display:none}
+.form-wrap.done .ok{display:block}
 .err{color:var(--wine);font-size:13.5px;margin-top:8px;display:none}
 
 /* Вопросы */
@@ -602,8 +633,58 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     <div class="form-wrap glass rv" id="fw">
       <div class="eyebrow"><i></i>Разбор · бесплатно · 20 минут</div>
       <h2>Запишитесь на разбор, <em>дальше поговорим</em></h2>
-      <p class="lede">Оставьте контакты, письмо с деталями придёт сразу, а на следующем шаге вы выберете время разговора. За двадцать минут разберём вашу ситуацию и честно скажем, подходит ли вам <b>New SMM</b>.</p>
+      <p class="lede">Четыре коротких вопроса, чтобы прийти на разговор подготовленными. Дальше вы выберете время, и за двадцать минут мы разберём вашу ситуацию и честно скажем, подходит ли вам <b>New SMM</b>.</p>
       <div class="picked" id="picked" hidden><span></span><button type="button" id="unpick" aria-label="Убрать выбор">×</button></div>
+
+      <!-- Квиз. Отвечают одним касанием, шаг переключается сам. Ветка про чек
+           меняется для тех, у кого проектов пока нет: у них спрашиваем цель,
+           а не текущую цену. Ярлыков «новичок» и «профи» человек не видит. -->
+      <div class="qz" id="qz">
+        <div class="qbar"><i id="qfill"></i></div>
+
+        <div class="qstep on" data-q="job">
+          <div class="qnum">Вопрос 1 из 4</div>
+          <h3>Чем вы занимаетесь сейчас?</h3>
+          <div class="qopts">
+            <button type="button" data-v="Веду соцсети клиентам">Веду соцсети клиентам</button>
+            <button type="button" data-v="Веду свой блог">Веду свой блог</button>
+            <button type="button" data-v="Свой бизнес и его соцсети">У меня свой бизнес и его соцсети</button>
+            <button type="button" data-v="Другая сфера, хочу в SMM">Работаю в другой сфере, хочу в SMM</button>
+          </div>
+        </div>
+
+        <div class="qstep" data-q="projects">
+          <div class="qnum">Вопрос 2 из 4</div>
+          <h3>Сколько проектов ведёте прямо сейчас?</h3>
+          <div class="qopts">
+            <button type="button" data-v="0">Пока ни одного</button>
+            <button type="button" data-v="1">Один</button>
+            <button type="button" data-v="2-3">Два или три</button>
+            <button type="button" data-v="4+">Четыре и больше</button>
+          </div>
+          <button class="qback" type="button">Назад</button>
+        </div>
+
+        <div class="qstep" data-q="check">
+          <div class="qnum">Вопрос 3 из 4</div>
+          <h3 data-has="Какой у вас чек за проект в месяц?" data-none="Сколько хотите зарабатывать через полгода?">Какой у вас чек за проект в месяц?</h3>
+          <div class="qopts" data-has-opts="До $300|$300 – $700|$700 – $1500|Больше $1500" data-none-opts="До $500 в месяц|$500 – $1500 в месяц|$1500 – $3000 в месяц|Больше $3000 в месяц"></div>
+          <button class="qback" type="button">Назад</button>
+        </div>
+
+        <div class="qstep" data-q="block">
+          <div class="qnum">Вопрос 4 из 4</div>
+          <h3>Что мешает больше всего прямо сейчас?</h3>
+          <div class="qopts"
+               data-has-opts="Клиентов мало, не знаю где искать|Не получается поднять чек|Клиенты уходят через месяц или два|Не умею показывать результат в деньгах|Тону в рутине, не хватает времени"
+               data-none-opts="Не знаю, с чего начать|Не понимаю, где брать клиентов|Не хватает уверенности в навыках|Нет времени на обучение|Не понимаю, сколько на этом реально зарабатывают"></div>
+          <button class="qback" type="button">Назад</button>
+        </div>
+
+        <div class="qstep" data-q="form">
+          <div class="qnum">Последний шаг</div>
+          <h3>Куда прислать подтверждение?</h3>
+          <div class="qsum" id="qsum"></div>
       <form id="lead" novalidate>
         <div class="fields">
           <div class="f"><input type="text" id="name" name="name" placeholder=" " autocomplete="given-name" required><label for="name">Как вас зовут</label></div>
@@ -625,6 +706,10 @@ footer a{text-decoration:underline;text-underline-offset:3px}
         <div class="err" id="err">Проверьте почту, без неё письмо не дойдёт.</div>
         <p class="fine">Нажимая кнопку, вы соглашаетесь на обработку данных. Никаких рассылок без вашего согласия. <a href="/privacy" style="text-decoration:underline">Политика</a>.</p>
       </form>
+          <button class="qback" type="button">Назад</button>
+        </div>
+      </div>
+
       <div class="ok" id="ok">
         <div class="mark">✓</div>
         <h3>Открываем календарь</h3>
@@ -795,6 +880,67 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   var utm={ source:q('utm_source'), medium:q('utm_medium'), campaign:q('utm_campaign'), content:q('utm_content') };
   try{ if(utm.source) localStorage.setItem('newsmm_src', JSON.stringify(utm)); else { var s=JSON.parse(localStorage.getItem('newsmm_src')||'null'); if(s) utm=s; } }catch(e){}
 
+  /* Квиз перед контактами. Один вопрос на экране, ответ одним касанием.
+     Третий и четвёртый вопросы меняются в зависимости от того, есть ли у человека
+     проекты: спрашивать про текущий чек того, у кого клиентов нет, бессмысленно.
+     Человек нигде не видит ярлыка «новичок» или «профессионал», разделение
+     остаётся внутри: продажам оно нужно, ему нет. */
+  var qz=document.getElementById('qz'), qfill=document.getElementById('qfill'),
+      qsum=document.getElementById('qsum'),
+      qsteps=[].slice.call(qz.querySelectorAll('.qstep')), quiz={}, qi=0;
+
+  function hasClients(){ return !!quiz.projects && quiz.projects!=='0'; }
+  function qtext(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function qrender(step){
+    var key=hasClients()?'has':'none', h3=step.querySelector('h3'), opts=step.querySelector('.qopts');
+    if(h3 && h3.getAttribute('data-'+key)) h3.textContent=h3.getAttribute('data-'+key);
+    if(!opts) return;
+    var raw=opts.getAttribute('data-'+key+'-opts');
+    if(raw) opts.innerHTML=raw.split('|').map(function(v){ return '<button type="button" data-v="'+qtext(v)+'">'+qtext(v)+'</button>'; }).join('');
+    var q=step.getAttribute('data-q');
+    [].forEach.call(opts.querySelectorAll('button'),function(b){
+      b.classList.toggle('on', quiz[q]===b.getAttribute('data-v'));
+    });
+  }
+
+  function qsummary(){
+    var parts=[];
+    if(quiz.job) parts.push(quiz.job);
+    if(quiz.projects) parts.push(quiz.projects==='0'?'проектов пока нет':'проектов: '+quiz.projects);
+    if(quiz.check) parts.push(quiz.check);
+    if(quiz.block) parts.push(quiz.block);
+    qsum.innerHTML=parts.map(function(t){ return '<span>'+qtext(t)+'</span>'; }).join('');
+  }
+
+  function qgo(n,back){
+    if(n<0 || n>=qsteps.length) return;
+    qsteps[qi].classList.remove('on','back');
+    qi=n;
+    var s=qsteps[qi];
+    qrender(s);
+    if(s.getAttribute('data-q')==='form') qsummary();
+    s.classList.add('on'); if(back) s.classList.add('back');
+    qfill.style.width=Math.round((qi+1)/qsteps.length*100)+'%';
+    /* Подтягиваем к вопросу только если он уехал вверх за экран */
+    var top=qz.getBoundingClientRect().top;
+    if(top<70) scrollTo({top:qz.getBoundingClientRect().top+scrollY-100,behavior:reduce?'auto':'smooth'});
+  }
+
+  qz.addEventListener('click',function(e){
+    var b=e.target.closest ? e.target.closest('button') : null;
+    if(!b) return;
+    if(b.classList.contains('qback')){ qgo(qi-1,true); return; }
+    if(!b.parentNode || !b.parentNode.classList.contains('qopts')) return;
+    var step=b.parentNode.parentNode, q=step.getAttribute('data-q');
+    quiz[q]=b.getAttribute('data-v');
+    [].forEach.call(b.parentNode.querySelectorAll('button'),function(x){ x.classList.remove('on'); });
+    b.classList.add('on');
+    if(window.fbq) fbq('trackCustom','NewSmmQuiz',{ step:q });
+    setTimeout(function(){ qgo(qi+1); }, reduce?0:260);
+  });
+  qfill.style.width=Math.round(100/qsteps.length)+'%';
+
   /* Телефон с выбором страны. Флаг собираем из букв кода страны, список стран
      ищется и по названию, и по коду. Страна подставляется сама по стране запроса:
      Cloudflare отдаёт её на /cdn-cgi/trace, свой же домен, ничего наружу не уходит. */
@@ -861,7 +1007,10 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     var raw=tel.value.replace(/\D/g,''), phone=raw ? '+'+country.d+raw : '';
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ err.style.display='block'; form.email.focus(); return; }
     err.style.display='none'; btn.disabled=true; btn.querySelector('span').textContent='Отправляем…';
-    var body={ name:name, email:email, phone:phone, src:'kurs', track:track, utm:utm, page:location.pathname, tz:zone() };
+    /* Ярлык считаем сами из ответов: есть проекты значит разговор про чек
+       и удержание, нет значит про первый шаг. Выбор карточки выше идёт запасным. */
+    var lane=hasClients() ? 'pro' : (quiz.projects ? 'start' : (track||''));
+    var body={ name:name, email:email, phone:phone, src:'kurs', track:lane, quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
     fetch(FN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK}, body:JSON.stringify(body) })
       .then(function(r){ return r.json(); })
       .catch(function(){ return {ok:false}; })
