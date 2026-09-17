@@ -48,7 +48,9 @@ fbq('track','ViewContent',{content_name:'new-smm',content_category:'course',cont
    блик, который едет за курсором. Движение мягкое, ничего не прыгает.
    ────────────────────────────────────────────────────────────── */
 :root{
-  --ink:#161110;--ink2:#453B36;--muted:#8C8172;
+  /* muted затемнён до контраста 4.5:1 на бумаге: им набраны мелкие важные
+     строки вроде «разбор бесплатный», и прежний цвет на телефоне не читался */
+  --ink:#161110;--ink2:#453B36;--muted:#6F6558;
   --paper:#F3ECDF;--paper2:#EAE0CB;
   --wine:#6E1E2B;--wine-d:#521621;--gold:#D9A441;--sky:#9DB8E8;--mint:#B9D8C8;
   --glass:rgba(255,255,255,.42);--glass-2:rgba(255,255,255,.28);--edge:rgba(255,255,255,.75);
@@ -270,7 +272,10 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--wine)}
 .calnote{padding:24px 0;color:var(--muted);font-size:14px}
 .calzone{font-size:12.5px;color:var(--muted);margin:14px 0}
 .cal .btn{width:100%}
+/* Запасную ссылку на чужой виджет показываем только при сбое: пока окна
+   грузятся и выбираются, уводить человека со страницы незачем. */
 .calalt{display:inline-block;margin-top:14px;font-size:12.5px;color:var(--muted);text-decoration:underline}
+.calalt[hidden]{display:none}
 .form-wrap.booking .qz,.form-wrap.booking .lede,.form-wrap.booking .picked{display:none}
 .form-wrap.done .cal{display:none}
 
@@ -345,6 +350,13 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 .cclist li .nm{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cclist li .dl{color:var(--muted);font-variant-numeric:tabular-nums}
 .cclist .none{padding:16px 14px;color:var(--muted);font-size:14px}
+/* На узких экранах плашка страны отъедала слишком много места у самого номера */
+@media(max-width:400px){
+  .f.tel input{padding-left:99px}
+  .f.tel label{left:99px}
+  .cc{gap:5px;padding:0 9px;font-size:14px}
+  .cc .flag{font-size:17px}
+}
 
 /* Липкая панель, только на телефоне */
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:120;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
@@ -698,8 +710,8 @@ footer a{text-decoration:underline;text-underline-offset:3px}
           <div class="qnum">Вопрос 3 из 4</div>
           <h3 data-has="Какой у вас чек за проект в месяц?" data-none="Сколько хотите зарабатывать в месяц через полгода?">Какой у вас чек за проект в месяц?</h3>
           <!-- Вилка тянется до пяти и десяти тысяч сознательно. У нас есть люди
-               в Америке, для которых три тысячи в месяц это не цель, а нижняя
-               граница нормы, и упереться в потолок вопроса им было бы странно. -->
+               в Америке, для которых три тысячи в месяц это нижняя граница нормы,
+               и упереться в потолок вопроса им было бы странно. -->
           <div class="qopts"
                data-has-opts="До $300|$300 – $800|$800 – $2000|$2000 – $5000|Больше $5000"
                data-none-opts="До $500|$500 – $2000|$2000 – $5000|$5000 – $10 000|Больше $10 000"></div>
@@ -716,7 +728,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
         </div>
 
         <div class="qstep" data-q="form">
-          <div class="qnum">Последний шаг</div>
+          <div class="qnum">Контакты, дальше время</div>
           <h3>Куда прислать подтверждение?</h3>
           <div class="qsum" id="qsum"></div>
       <form id="lead" novalidate>
@@ -736,7 +748,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
           </div>
           <div class="f full"><input type="email" id="email" name="email" placeholder=" " autocomplete="email" inputmode="email" required><label for="email">Почта</label></div>
         </div>
-        <button class="btn btn-wine" type="submit" id="send"><span>Записаться на разбор</span></button>
+        <button class="btn btn-wine" type="submit" id="send"><span>Дальше выберу время</span></button>
         <div class="err" id="err">Проверьте почту, без неё письмо не дойдёт.</div>
         <p class="fine">Нажимая кнопку, вы соглашаетесь на обработку данных. Никаких рассылок без вашего согласия. <a href="/privacy" style="text-decoration:underline">Политика</a>.</p>
       </form>
@@ -753,7 +765,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
         <p class="calzone" id="calzone"></p>
         <button class="btn btn-wine" type="button" id="calgo" disabled><span>Выберите время</span></button>
         <div class="err" id="calerr"></div>
-        <a class="calalt" id="book" href="#" rel="noopener">Открыть календарь отдельной страницей</a>
+        <a class="calalt" id="book" href="#" rel="noopener" hidden>Открыть календарь отдельной страницей</a>
       </div>
 
       <div class="ok" id="ok">
@@ -884,11 +896,15 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   /* Липкая панель: показываем после первого экрана и прячем, когда форма
      уже на виду. Иначе она стоит поверх полей ввода и мешает заполнять. */
   var sticky=document.getElementById('sticky'), hero=document.querySelector('.hero'), razbor=document.getElementById('razbor');
+  /* Два состояния, а не одно: иначе панель, один раз спрятанная над формой,
+     не возвращалась до конца страницы, и на вопросах с финалом кнопки не было. */
+  var pastHero=false, atForm=false;
   var sio=new IntersectionObserver(function(es){
     es.forEach(function(e){
-      if(e.target===hero) sticky.classList.toggle('on', !e.isIntersecting);
-      if(e.target===razbor && e.isIntersecting) sticky.classList.remove('on');
+      if(e.target===hero) pastHero=!e.isIntersecting;
+      if(e.target===razbor) atForm=e.isIntersecting;
     });
+    sticky.classList.toggle('on', pastHero && !atForm);
   },{threshold:.05});
   sio.observe(hero); sio.observe(razbor);
 
@@ -967,7 +983,9 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     qrender(s);
     if(s.getAttribute('data-q')==='form') qsummary();
     s.classList.add('on'); if(back) s.classList.add('back');
-    qfill.style.width=Math.round((qi+1)/qsteps.length*100)+'%';
+    /* Шагов на один больше, чем экранов квиза: после контактов идёт выбор
+       времени. Полоса это учитывает, иначе на контактах она врала бы про сто процентов. */
+    qfill.style.width=Math.round((qi+1)/(qsteps.length+1)*100)+'%';
     /* Подтягиваем к вопросу только если он уехал вверх за экран */
     var top=qz.getBoundingClientRect().top;
     if(top<70) scrollTo({top:qz.getBoundingClientRect().top+scrollY-100,behavior:reduce?'auto':'smooth'});
@@ -979,13 +997,17 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     if(b.classList.contains('qback')){ qgo(qi-1,true); return; }
     if(!b.parentNode || !b.parentNode.classList.contains('qopts')) return;
     var step=b.parentNode.parentNode, q=step.getAttribute('data-q');
+    /* Ответы про деньги и про помеху зависят от того, есть ли проекты. Если человек
+       вернулся назад и поменял ответ, старые значения остались бы из другой шкалы,
+       и продажам ушла бы цифра, означающая совсем другое. Поэтому сбрасываем. */
+    if(q==='projects' && quiz.projects!==b.getAttribute('data-v')){ delete quiz.check; delete quiz.block; }
     quiz[q]=b.getAttribute('data-v');
     [].forEach.call(b.parentNode.querySelectorAll('button'),function(x){ x.classList.remove('on'); });
     b.classList.add('on');
     if(window.fbq) fbq('trackCustom','NewSmmQuiz',{ step:q });
     setTimeout(function(){ qgo(qi+1); }, reduce?0:260);
   });
-  qfill.style.width=Math.round(100/qsteps.length)+'%';
+  qfill.style.width=Math.round(100/(qsteps.length+1))+'%';
 
   /* Телефон с выбором страны. Флаг собираем из букв кода страны, список стран
      ищется и по названию, и по коду. Страна подставляется сама по стране запроса:
@@ -1085,6 +1107,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
         calDays=(d&&d.days)||[];
         if(!calDays.length){
           calnote.textContent='Не получилось показать свободное время здесь. Откройте календарь отдельной страницей, ссылка ниже.';
+          document.getElementById('book').hidden=false;
           return;
         }
         calnote.style.display='none';
@@ -1142,7 +1165,8 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     ev.preventDefault();
     var name=form.name.value.trim(), email=form.email.value.trim().toLowerCase();
     var raw=tel.value.replace(/\D/g,''), phone=raw ? '+'+country.d+raw : '';
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ err.style.display='block'; form.email.focus(); return; }
+    if(name.length<2){ err.textContent='Напишите, как к вам обращаться.'; err.style.display='block'; form.name.focus(); return; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ err.textContent='Проверьте почту, без неё письмо не дойдёт.'; err.style.display='block'; form.email.focus(); return; }
     err.style.display='none'; btn.disabled=true; btn.querySelector('span').textContent='Отправляем…';
     /* Ярлык считаем сами из ответов: есть проекты значит разговор про чек
        и удержание, нет значит про первый шаг. Выбор карточки выше идёт запасным. */
@@ -1157,7 +1181,9 @@ footer a{text-decoration:underline;text-underline-offset:3px}
         var book=(d&&d.booking_url)||BOOK;
         var u=new URL(book); if(name) u.searchParams.set('first_name',name); if(email) u.searchParams.set('email',email); if(phone) u.searchParams.set('phone',phone);
         document.getElementById('book').href=u.toString();
-        if(window.fbq) fbq('track','Lead',{content_name:'new-smm-razbor'});
+        /* Пиксель учим только на заявках, которые сервер действительно принял.
+           Иначе кампании оптимизируются на лидов, которых у нас нет. */
+        if(d && d.ok && window.fbq) fbq('track','Lead',{content_name:'new-smm-razbor'});
         /* Письмо человек получит сам. На странице остаётся один шаг: время. */
         who={ name:name, email:email, phone:phone };
         calRegion=(d&&d.region==='us') ? 'us' : 'eu';
