@@ -531,14 +531,17 @@ h2{font-weight:500;letter-spacing:-.6px}
 .hero{padding:0;position:relative;color:#F6EFE2;background:var(--ink);min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
 .hero .wrap{display:block;width:100%;position:relative;z-index:2;padding-bottom:36px}
 .hero .bgph{position:absolute;inset:0;z-index:0}
-.hero .bgph img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
-.hero .bgph::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,20,.15) 0%,rgba(27,20,20,.05) 35%,rgba(27,20,20,.78) 78%,rgba(27,20,20,.92) 100%)}
+.hero .bgph img{width:100%;height:100%;object-fit:cover;object-position:50% 12%}
+.hero .bgph::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,20,.2) 0%,rgba(27,20,20,.08) 30%,rgba(27,20,20,.72) 60%,rgba(27,20,20,.94) 100%)}
 .hero .eyebrow{color:#EAD7B0}.hero .eyebrow i{background:#EAD7B0}
 .hero h1{font-size:clamp(72px,17vw,190px);letter-spacing:-3px;line-height:.86;color:#F6EFE2;text-transform:uppercase;font-weight:500}
 .hero h1 em{color:#F6EFE2;font-weight:500;text-transform:none;letter-spacing:-2px}
 .hero .sub{color:#E6DCC8;font-size:16px;max-width:520px;margin-top:18px}
 .hero .sub b{color:#fff}
-.hero .cta{margin-top:26px}
+.hero .cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px}
+.hero .cta .btn{width:100%}
+.e-dark .btn-wine{background:#F6EFE2;color:var(--wine)}
+.e-cta .btn{width:100%}
 .hero .note{color:#C9BBA3}
 .hero .card-ph{display:none}
 
@@ -558,8 +561,8 @@ h2{font-weight:500;letter-spacing:-.6px}
 /* Тёмная полоса с карточками «что изменилось»: фото фоном, вино на карточках */
 .e-dark{position:relative;background:var(--ink);color:#F6EFE2;padding:84px 0;overflow:hidden}
 .e-dark .bgph{position:absolute;inset:0}
-.e-dark .bgph img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:grayscale(1) contrast(1.05);opacity:.32}
-.e-dark .bgph::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,20,.55),rgba(27,20,20,.85))}
+.e-dark .bgph img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;opacity:.55}
+.e-dark .bgph::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,20,.45),rgba(27,20,20,.7))}
 .e-dark .wrap{position:relative;z-index:1}
 .e-dark h2{color:#F6EFE2}.e-dark h2 em{color:#EAD7B0}
 .e-dark .eyebrow{color:#EAD7B0}.e-dark .eyebrow i{background:#EAD7B0}
@@ -597,6 +600,10 @@ h2{font-weight:500;letter-spacing:-.6px}
 .e-author p{color:#EADFCB;font-size:15.5px;margin-top:14px;max-width:520px}
 .e-author p.mono{font-family:var(--mono);font-size:12px;letter-spacing:.3px;line-height:1.8;color:#D9C6B3}
 .e-author .btn{margin-top:24px}
+/* Одна фотография с прямым взглядом, в бумажной рамке с кусочком плёнки */
+.one .p{position:relative;background:#FBF7EE;padding:12px 12px 40px;box-shadow:0 34px 60px -28px rgba(0,0,0,.65);transform:rotate(-2deg);max-width:440px;margin:0 auto}
+.one .p img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 15%;display:block}
+.one .p::before{content:'';position:absolute;left:50%;top:-12px;width:84px;height:24px;margin-left:-42px;background:rgba(232,215,180,.78);transform:rotate(-3deg)}
 .pola{position:relative;height:520px}
 .pola .p{position:absolute;background:#FBF7EE;padding:10px 10px 34px;box-shadow:0 30px 50px -25px rgba(0,0,0,.6);transform:rotate(var(--r,0deg))}
 .pola .p img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
@@ -654,6 +661,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   .hero{min-height:92vh}
   .hero .wrap{padding-bottom:64px}
   .hero .sub{font-size:17.5px}
+  .hero .cta .btn,.e-cta .btn{width:auto}
   .e-cards{grid-template-columns:repeat(3,1fr)}
   .e-steps{grid-template-columns:repeat(4,1fr)}
   .e-author .grid{grid-template-columns:1.05fr 1fr}
@@ -663,7 +671,16 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   .pola{height:620px}
 }
 @media(max-width:759px){
-  .hero h1{font-size:clamp(80px,26vw,120px)}
+  /* Первый экран на телефоне: весь текст и обе кнопки видны без прокрутки */
+  /* Минус шапка, она липкая и стоит над первым экраном */
+  .hero{min-height:0;height:calc(100svh - 65px)}
+  .hero .wrap{padding-bottom:22px}
+  .hero h1{font-size:clamp(64px,22vw,92px);letter-spacing:-2px}
+  .hero .sub{font-size:14.5px;margin-top:12px;line-height:1.45}
+  .hero .cta{margin-top:16px;gap:8px}
+  .hero .cta .btn{padding:14px 20px}
+  .hero .note{margin-top:10px;font-size:10px}
+  .hero .eyebrow{margin-bottom:10px}
   .pola{height:440px;margin-top:6px}
   .pola .p1{width:62%}
   .pola .p2{width:40%;top:90px}
@@ -724,7 +741,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 
 <!-- ═══ ЧТО ИЗМЕНИЛОСЬ ═══ -->
 <section class="e-dark" id="chto">
-  <div class="bgph" aria-hidden="true"><img src="images/malena-b4.jpg" alt="" loading="lazy"></div>
+  <div class="bgph" aria-hidden="true"><img src="images/malena-b4-blur.jpg" alt="" loading="lazy"></div>
   <div class="wrap">
     <div class="eyebrow rv"><i></i>Что изменилось</div>
     <h2 class="rv d1">SMM больше <em>не такой</em>, как был</h2>
@@ -772,11 +789,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 <section class="e-author" id="avtor">
   <div class="wrap">
     <div class="grid">
-      <div class="pola rv">
-        <div class="p p1"><img src="images/malena-b6.jpg" alt="Малена Покладова" loading="lazy"></div>
-        <div class="p p2"><img src="images/malena-b2.jpg" alt="" loading="lazy"></div>
-        <div class="p p3"><img src="images/malena-b5.jpg" alt="" loading="lazy"></div>
-      </div>
+      <div class="one rv"><div class="p"><img src="images/malena-b2.jpg" alt="Малена Покладова" loading="lazy" width="1200" height="1800"></div></div>
       <div>
         <div class="eyebrow rv"><i></i>Кто ведёт</div>
         <h2 class="rv d1">Малена <em>Покладова</em></h2>
