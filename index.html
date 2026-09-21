@@ -627,6 +627,9 @@ h2{font-weight:500;letter-spacing:-.6px}
 .hero .sub b{color:#fff}
 .hero .cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px}
 .hero .cta .btn{width:100%}
+.hero .cta .dn{width:13px;height:13px;vertical-align:-1px;margin-left:6px;animation:dnb 1.6s ease-in-out infinite}
+@keyframes dnb{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+@media(prefers-reduced-motion:reduce){.hero .cta .dn{animation:none}}
 .e-dark .btn-wine{background:#F6EFE2;color:var(--wine)}
 .e-cta .btn{width:100%}
 .hero .note{color:#C9BBA3}
@@ -747,7 +750,7 @@ h2{font-weight:500;letter-spacing:-.6px}
 .final{padding:0}
 .final .in{border-radius:0;padding:84px 20px;background:var(--wine)}
 .final h2{color:#F6EFE2}.final p{color:#EADFCB}
-#razbor{background:var(--cream);padding:70px 0;border-top:1px solid rgba(110,30,43,.12)}
+#razbor{background:var(--cream);padding:48px 0 64px;border-top:1px solid rgba(110,30,43,.12)}
 .form-wrap.glass{background:var(--paper);border-radius:6px}
 footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 .sticky .in{border-radius:6px;background:var(--cream)}
@@ -839,69 +842,11 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     <h1 class="rv d1"><em>New</em> SMM</h1>
     <p class="sub rv d2"><b>Клиенты, которые платят в долларах и остаются на годы.</b> Учим с нуля привлекать клиентов и доводить их до результата с помощью искусственного интеллекта, по методике, на которой работает наше агентство в США.</p>
     <div class="cta rv d3">
-      <a class="btn btn-wine" href="#razbor" data-go><span>Записаться на разбор</span></a>
+      <a class="btn btn-wine" href="#razbor" data-go><span>Записаться на разбор <svg class="dn" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
     </div>
     <div class="note rv d3">Бесплатно · 20 минут в Zoom · ни к чему не обязывает</div>
   </div>
 </header>
-
-<!-- ═══ ДОКАЗАТЕЛЬСТВА ОДНОЙ СТРОКОЙ ═══ -->
-<section class="e-proof" aria-label="Коротко о школе">
-  <div class="wrap">
-    <div class="row">
-      <div class="rv d1"><b>×10</b><span>окупаемость рекламы у клиента агентства</span></div>
-      <div class="rv d2"><b>200+</b><span>женщин закончили обучение</span></div>
-      <div class="rv d3"><b>7 лет</b><span>Малена зарабатывает только на соцсетях</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ ЧТО ВНУТРИ ═══ -->
-<section class="e-dark" id="chto">
-  <div class="bgph" aria-hidden="true"><img src="images/malena-b4-blur.jpg" alt="" loading="lazy"></div>
-  <div class="wrap">
-    <div class="eyebrow rv"><i></i>Что вы получите</div>
-    <h2 class="rv d1">Три вещи, которые <em>вместе есть только здесь</em></h2>
-    <div class="e-cards">
-      <div class="e-card rv d1"><div class="was">Вместо «пользуюсь нейросетью»</div><h3>Искусственный интеллект, <em>собранный под вас</em>: знает вашего клиента и забирает всю механику</h3></div>
-      <div class="e-card rv d2"><div class="was">Вместо охватов в отчёте</div><h3>Путь ведения клиента от первого разговора <em>до продления договора</em>, на живом проекте агентства</h3></div>
-      <div class="e-card rv d3"><div class="was">Вместо локальных цен</div><h3>Методика <em>американского рынка</em> и выход на заказчиков, которые платят в долларах</h3></div>
-    </div>
-    <p class="lede rv d3" style="margin-top:26px">На разборе покажем клиента, у которого реклама окупается в десять раз, и расскажем, как встроились в его работу так, что работаем с ним на постоянной основе за высокий чек.</p>
-    <div class="e-cta rv"><a class="btn btn-wine" href="#razbor" data-go><span>Записаться на разбор</span></a><span>Подходит и с нуля, и тем, кто уже в сфере</span></div>
-  </div>
-</section>
-
-<!-- ═══ АВТОР ═══ -->
-<section class="e-author" id="avtor">
-  <div class="wrap">
-    <div class="grid">
-      <div class="one rv"><div class="p"><img src="images/malena-b2.jpg" alt="Малена Покладова" loading="lazy" width="1200" height="1800"></div></div>
-      <div>
-        <div class="eyebrow rv"><i></i>Кто ведёт</div>
-        <h2 class="rv d1">Малена <em>Покладова</em></h2>
-        <p class="mono rv d2">Сан-Диего · агентство PGL Marketing · семь лет в продвижении · четыре года обучает</p>
-        <p class="rv d2">Ведёт американский бизнес прямо сейчас: студии, клиники, рестораны, эксперты. Приводит им миллионные просмотры и стабильный поток клиентов: адвокату 1,7 миллиона просмотров за месяц, студии красоты полную запись за 30 дней и рекламу, которая окупается в восемь раз. Всё это по системе, которую она собрала сама и которой учит.</p>
-        <p class="rv d3">По этой же методике переехала в Америку и ни одного дня не работала здесь в найме: только свои клиенты и своё агентство.</p>
-        <a class="btn btn-line rv d3" href="#razbor" data-go><span>Записаться на разбор</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ УЧЕНИЦЫ ═══ -->
-<section class="e-cases" id="ucenicy">
-  <div class="wrap">
-    <div class="eyebrow rv"><i></i>Ученицы</div>
-    <h2 class="rv d1">Реальные ученицы, <em>реальные цифры</em></h2>
-    <div class="cases" style="margin-top:26px">
-      <div class="case rv d1"><img src="images/club/otzyvy/face-toma.jpg" alt="Тома" loading="lazy"><div><b>Тома</b><small>ведёт клиентов</small><div class="num">1,4M просмотров<span>набрал ролик её клиентки</span></div></div><p>Работает стабильно: постоянный проект плюс разовые съёмки.</p></div>
-      <div class="case rv d2"><img src="images/club/otzyvy/face-loredana.jpg" alt="Лоредана" loading="lazy"><div><b>Лоредана</b><small>собирает команду</small><div class="num">4 клиента<span>и крупный проект из Турции</span></div></div><p>Проектов стало больше, чем рук, поэтому набирает свою команду.</p></div>
-      <div class="case rv d3"><img src="images/club/otzyvy/face-anastasiya.jpg" alt="Анастасия" loading="lazy"><div><b>Анастасия</b><small>ведёт клиентов</small><div class="num">+1 200<span>подписчиков за неделю у клиента</span></div></div><p>Результат на чужом аккаунте, за который платят: то, чему учим.</p></div>
-    </div>
-    <p class="note">Истории опубликованы с разрешения учениц, цифры сняты с их аккаунтов.</p>
-  </div>
-</section>
 
 <!-- ═══ ФОРМА ═══ -->
 <section id="razbor">
@@ -1013,6 +958,64 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
         <p>Ссылка на Zoom придёт на почту вместе с подтверждением. Если планы поменяются, перенести или отменить встречу можно из того же письма.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══ ДОКАЗАТЕЛЬСТВА ОДНОЙ СТРОКОЙ ═══ -->
+<section class="e-proof" aria-label="Коротко о школе">
+  <div class="wrap">
+    <div class="row">
+      <div class="rv d1"><b>×10</b><span>окупаемость рекламы у клиента агентства</span></div>
+      <div class="rv d2"><b>200+</b><span>женщин закончили обучение</span></div>
+      <div class="rv d3"><b>7 лет</b><span>Малена зарабатывает только на соцсетях</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ЧТО ВНУТРИ ═══ -->
+<section class="e-dark" id="chto">
+  <div class="bgph" aria-hidden="true"><img src="images/malena-b4-blur.jpg" alt="" loading="lazy"></div>
+  <div class="wrap">
+    <div class="eyebrow rv"><i></i>Что вы получите</div>
+    <h2 class="rv d1">Три вещи, которые <em>вместе есть только здесь</em></h2>
+    <div class="e-cards">
+      <div class="e-card rv d1"><div class="was">Вместо «пользуюсь нейросетью»</div><h3>Искусственный интеллект, <em>собранный под вас</em>: знает вашего клиента и забирает всю механику</h3></div>
+      <div class="e-card rv d2"><div class="was">Вместо охватов в отчёте</div><h3>Путь ведения клиента от первого разговора <em>до продления договора</em>, на живом проекте агентства</h3></div>
+      <div class="e-card rv d3"><div class="was">Вместо локальных цен</div><h3>Методика <em>американского рынка</em> и выход на заказчиков, которые платят в долларах</h3></div>
+    </div>
+    <p class="lede rv d3" style="margin-top:26px">На разборе покажем клиента, у которого реклама окупается в десять раз, и расскажем, как встроились в его работу так, что работаем с ним на постоянной основе за высокий чек.</p>
+    <div class="e-cta rv"><a class="btn btn-wine" href="#razbor" data-go><span>Записаться на разбор</span></a><span>Подходит и с нуля, и тем, кто уже в сфере</span></div>
+  </div>
+</section>
+
+<!-- ═══ АВТОР ═══ -->
+<section class="e-author" id="avtor">
+  <div class="wrap">
+    <div class="grid">
+      <div class="one rv"><div class="p"><img src="images/malena-b2.jpg" alt="Малена Покладова" loading="lazy" width="1200" height="1800"></div></div>
+      <div>
+        <div class="eyebrow rv"><i></i>Кто ведёт</div>
+        <h2 class="rv d1">Малена <em>Покладова</em></h2>
+        <p class="mono rv d2">Сан-Диего · агентство PGL Marketing · семь лет в продвижении · четыре года обучает</p>
+        <p class="rv d2">Ведёт американский бизнес прямо сейчас: студии, клиники, рестораны, эксперты. Приводит им миллионные просмотры и стабильный поток клиентов: адвокату 1,7 миллиона просмотров за месяц, студии красоты полную запись за 30 дней и рекламу, которая окупается в восемь раз. Всё это по системе, которую она собрала сама и которой учит.</p>
+        <p class="rv d3">По этой же методике переехала в Америку и ни одного дня не работала здесь в найме: только свои клиенты и своё агентство.</p>
+        <a class="btn btn-line rv d3" href="#razbor" data-go><span>Записаться на разбор</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ УЧЕНИЦЫ ═══ -->
+<section class="e-cases" id="ucenicy">
+  <div class="wrap">
+    <div class="eyebrow rv"><i></i>Ученицы</div>
+    <h2 class="rv d1">Реальные ученицы, <em>реальные цифры</em></h2>
+    <div class="cases" style="margin-top:26px">
+      <div class="case rv d1"><img src="images/club/otzyvy/face-toma.jpg" alt="Тома" loading="lazy"><div><b>Тома</b><small>ведёт клиентов</small><div class="num">1,4M просмотров<span>набрал ролик её клиентки</span></div></div><p>Работает стабильно: постоянный проект плюс разовые съёмки.</p></div>
+      <div class="case rv d2"><img src="images/club/otzyvy/face-loredana.jpg" alt="Лоредана" loading="lazy"><div><b>Лоредана</b><small>собирает команду</small><div class="num">4 клиента<span>и крупный проект из Турции</span></div></div><p>Проектов стало больше, чем рук, поэтому набирает свою команду.</p></div>
+      <div class="case rv d3"><img src="images/club/otzyvy/face-anastasiya.jpg" alt="Анастасия" loading="lazy"><div><b>Анастасия</b><small>ведёт клиентов</small><div class="num">+1 200<span>подписчиков за неделю у клиента</span></div></div><p>Результат на чужом аккаунте, за который платят: то, чему учим.</p></div>
+    </div>
+    <p class="note">Истории опубликованы с разрешения учениц, цифры сняты с их аккаунтов.</p>
   </div>
 </section>
 
@@ -1349,7 +1352,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
       caltimes=document.getElementById('caltimes'), calnote=document.getElementById('calnote'),
       calzone=document.getElementById('calzone'), calgo=document.getElementById('calgo'),
       calerr=document.getElementById('calerr');
-  var calDays=[], calDay=0, calSlot='', calRegion='eu', who={ name:'', email:'', phone:'' };
+  var calDays=[], calDay=0, calSlot='', calRegion='eu', who={ name:'', email:'', phone:'', cid:'' };
   var MON=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
   var MON3=['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'];
   var WD=['вс','пн','вт','ср','чт','пт','сб'];
@@ -1433,7 +1436,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     var slot=calSlot;
     calgo.disabled=true; calgo.querySelector('span').textContent='Записываем…'; calerr.style.display='none';
     fetch(BOOKFN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK},
-      body:JSON.stringify({ action:'book', region:calRegion, tz:zone(), start:slot, name:who.name, email:who.email, phone:who.phone }) })
+      body:JSON.stringify({ action:'book', region:calRegion, tz:zone(), start:slot, name:who.name, email:who.email, phone:who.phone, cid:who.cid }) })
       .then(function(r){ return r.json().then(function(j){ return { ok:r.ok, j:j }; }); })
       .catch(function(){ return { ok:false, j:{} }; })
       .then(function(res){
@@ -1490,7 +1493,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
            Иначе кампании оптимизируются на лидов, которых у нас нет. */
         if(d && d.ok && window.fbq) fbq('track','Lead',{content_name:'new-smm-razbor'});
         /* Письмо человек получит сам. На странице остаётся один шаг: время. */
-        who={ name:name, email:email, phone:phone };
+        who={ name:name, email:email, phone:phone, cid:(d&&d.cid)||'' };
         /* Кого именно подставил сервер, он и говорит в route. Регион человека
            лежит рядом в region и нужен только для статистики. */
         calRegion=(d&&(d.route||d.region)==='eu') ? 'eu' : 'us';
@@ -1505,8 +1508,14 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   var pop=document.getElementById('pop'), popShown=false, quizTouched=false;
   try{ if(localStorage.getItem('newsmm_pop')&&Date.now()-(+localStorage.getItem('newsmm_pop'))<7*864e5) popShown=true; }catch(e){}
   qz.addEventListener('click',function(){ quizTouched=true; });
+  /* Нажал «Записаться на разбор» или начал заполнять форму: человек уже идёт
+     к записи, подарок ему только мешает. Раньше окно выскакивало ровно в этот
+     момент, потому что кнопка прокручивала страницу за половину. */
+  [].forEach.call(document.querySelectorAll('[data-go]'),function(a){ a.addEventListener('click',function(){ quizTouched=true; }); });
+  fw.addEventListener('focusin',function(){ quizTouched=true; });
+  function formInView(){ var r=fw.getBoundingClientRect(); return r.top<innerHeight && r.bottom>0; }
   function popOpen(){
-    if(popShown||quizTouched||fw.classList.contains('booking')||fw.classList.contains('done')) return;
+    if(popShown||quizTouched||formInView()||fw.classList.contains('booking')||fw.classList.contains('done')) return;
     popShown=true; try{ localStorage.setItem('newsmm_pop',String(Date.now())); }catch(e){}
     pop.hidden=false; pop.classList.add('on');
     if(window.fbq) fbq('trackCustom','MagnetShown');
@@ -1519,10 +1528,9 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   if(matchMedia('(hover:hover)').matches){
     document.addEventListener('mouseleave',function(e){ if(e.clientY<=0) popOpen(); });
   } else {
-    var popT=setTimeout(popOpen,25000);
-    addEventListener('scroll',function(){
-      var h=document.documentElement; if(h.scrollTop/(h.scrollHeight-h.clientHeight)>.45){ clearTimeout(popT); popOpen(); }
-    },{passive:true});
+    /* На телефоне только по времени: две с половиной минуты на странице.
+       Триггер по прокрутке убран, он срабатывал от кнопки записи. */
+    setTimeout(popOpen,150000);
   }
   document.getElementById('popf').addEventListener('submit',function(ev){
     ev.preventDefault();
