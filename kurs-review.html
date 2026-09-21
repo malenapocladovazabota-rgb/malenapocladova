@@ -745,6 +745,9 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 
 @media(min-width:760px){
   .hero{min-height:92vh}
+  /* На широком экране кадр 2:3 режется сверху и снизу. 12% показывало один
+     потолок, 52% ставит Малену в верхнюю половину экрана, текст ниже неё. */
+  .hero .bgph img{object-position:50% 52%}
   .hero .wrap{padding-bottom:64px}
   .hero .sub{font-size:17.5px}
   .hero .cta .btn,.e-cta .btn{width:auto}
@@ -780,6 +783,29 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   .e-dark,.e-client,.e-method,.e-author,.e-who,.e-intro,.faq{padding:64px 0}
   .final .in{padding:64px 20px}
 }
+/* Всплывающее окно с подарком. Появляется один раз: на компьютере, когда курсор
+   уходит к закрытию вкладки, на телефоне после половины страницы или через
+   25 секунд. Не показывается тем, кто уже начал квиз или оставил заявку. */
+.pop{position:fixed;inset:0;z-index:300;display:none;align-items:flex-end;justify-content:center;padding:0;background:rgba(27,20,20,.55)}
+.pop.on{display:flex}
+.pop .card{position:relative;width:100%;max-width:520px;background:var(--cream);border-radius:16px 16px 0 0;padding:28px 22px 26px;box-shadow:0 -20px 60px rgba(0,0,0,.35);animation:popin .35s var(--ease)}
+@keyframes popin{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+.pop .x{position:absolute;right:12px;top:10px;border:0;background:none;font-size:26px;line-height:1;color:var(--muted);cursor:pointer;padding:6px}
+.pop .eyebrow{margin-bottom:10px}
+.pop h3{font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.15}
+.pop h3 em{font-style:italic;color:var(--wine)}
+.pop p{font-size:14.5px;color:var(--ink2);margin-top:10px}
+.pop form{margin-top:16px;display:grid;gap:10px}
+.pop input{width:100%;padding:15px 14px;border-radius:10px;border:1px solid rgba(110,30,43,.2);background:#fff;font:inherit;font-size:16px;color:var(--ink);outline:none}
+.pop input:focus{box-shadow:0 0 0 3px rgba(110,30,43,.14)}
+.pop .btn{width:100%}
+.pop .fine{margin-top:8px}
+.pop .done{display:none;text-align:center;padding:8px 0 4px}
+.pop.ok form,.pop.ok .lead{display:none}
+.pop.ok .done{display:block}
+.pop .done h3{margin-bottom:8px}
+.pop .done .btn{margin-top:14px}
+@media(min-width:760px){.pop{align-items:center;padding:20px}.pop .card{border-radius:16px;padding:34px 32px 30px}}
 </style>
 </head>
 <body>
@@ -828,13 +854,13 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   <div class="bgph" aria-hidden="true"><img src="images/malena-b4-blur.jpg" alt="" loading="lazy"></div>
   <div class="wrap">
     <div class="eyebrow rv"><i></i>Что вы получите</div>
-    <h2 class="rv d1">Три вещи, которых <em>нет в других курсах</em></h2>
+    <h2 class="rv d1">Три вещи, которые <em>вместе есть только здесь</em></h2>
     <div class="e-cards">
       <div class="e-card rv d1"><div class="was">Вместо «пользуюсь нейросетью»</div><h3>Искусственный интеллект, <em>собранный под вас</em>: знает вашего клиента и забирает всю механику</h3></div>
       <div class="e-card rv d2"><div class="was">Вместо охватов в отчёте</div><h3>Путь ведения клиента от первого разговора <em>до продления договора</em>, на живом проекте агентства</h3></div>
       <div class="e-card rv d3"><div class="was">Вместо локальных цен</div><h3>Методика <em>американского рынка</em> и выход на заказчиков, которые платят в долларах</h3></div>
     </div>
-    <p class="lede rv d3" style="margin-top:26px">На разборе покажем клиента, у которого реклама окупается в десять раз, и расскажем, как встроились в его работу так, что работаем с ним годами за высокий чек.</p>
+    <p class="lede rv d3" style="margin-top:26px">На разборе покажем клиента, у которого реклама окупается в десять раз, и расскажем, как встроились в его работу так, что работаем с ним на постоянной основе за высокий чек.</p>
     <div class="e-cta rv"><a class="btn btn-wine" href="#razbor" data-go><span>Записаться на разбор</span></a><span>Подходит и с нуля, и тем, кто уже в сфере</span></div>
   </div>
 </section>
@@ -848,8 +874,8 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
         <div class="eyebrow rv"><i></i>Кто ведёт</div>
         <h2 class="rv d1">Малена <em>Покладова</em></h2>
         <p class="mono rv d2">Сан-Диего · агентство PGL Marketing · семь лет в продвижении · четыре года обучает</p>
-        <p class="rv d2">Ведёт американский бизнес прямо сейчас: студии, кофейни, клиники, эксперты. В обучении показывает то, что делает с клиентами на этой неделе: цифры, отчёты и рекламный кабинет на экране.</p>
-        <p class="rv d3">По этой же методике переехала в Америку и ни одного дня не работала здесь на чужой работе.</p>
+        <p class="rv d2">Ведёт американский бизнес прямо сейчас: студии, клиники, рестораны, эксперты. Приводит им миллионные просмотры и стабильный поток клиентов: адвокату 1,7 миллиона просмотров за месяц, студии красоты полную запись за 30 дней и рекламу, которая окупается в восемь раз. Всё это по системе, которую она собрала сама и которой учит.</p>
+        <p class="rv d3">По этой же методике переехала в Америку и ни одного дня не работала здесь в найме: только свои клиенты и своё агентство.</p>
         <a class="btn btn-line rv d3" href="#razbor" data-go><span>Записаться на разбор</span></a>
       </div>
     </div>
@@ -862,9 +888,9 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     <div class="eyebrow rv"><i></i>Ученицы</div>
     <h2 class="rv d1">Реальные ученицы, <em>реальные цифры</em></h2>
     <div class="cases" style="margin-top:26px">
-      <div class="case rv d1"><img src="images/portrait-alina.jpg" alt="Алина" loading="lazy"><div><b>Алина</b><small>студия · hannacenter.md</small><div class="num">5 клиентов<span>своя SMM-студия, 3 человека в команде</span></div></div><p>Из декрета в свою студию: косметология, стоматология, нутрициология.</p></div>
-      <div class="case rv d2"><img src="images/portrait-mariia-b.jpg" alt="Мария" loading="lazy"><div><b>Мария</b><small>Португалия</small><div class="num">3 клиента<span>во время обучения</span></div></div><p>Окупила курс ещё на курсе, Reels на 944K на личном блоге.</p></div>
-      <div class="case rv d3"><img src="images/portrait-aleksandra.jpg" alt="Александра" loading="lazy"><div><b>Александра</b><small>@sashafeminism</small><div class="num">0 → 173,5K<span>TikTok · 8 видео от 100K</span></div></div><p>Аккаунт с нуля по методике курса, 6,3M лайков.</p></div>
+      <div class="case rv d1"><img src="images/club/otzyvy/face-toma.jpg" alt="Тома" loading="lazy"><div><b>Тома</b><small>ведёт клиентов</small><div class="num">1,4M просмотров<span>набрал ролик её клиентки</span></div></div><p>Работает стабильно: постоянный проект плюс разовые съёмки.</p></div>
+      <div class="case rv d2"><img src="images/club/otzyvy/face-loredana.jpg" alt="Лоредана" loading="lazy"><div><b>Лоредана</b><small>собирает команду</small><div class="num">4 клиента<span>и крупный проект из Турции</span></div></div><p>Проектов стало больше, чем рук, поэтому набирает свою команду.</p></div>
+      <div class="case rv d3"><img src="images/club/otzyvy/face-anastasiya.jpg" alt="Анастасия" loading="lazy"><div><b>Анастасия</b><small>ведёт клиентов</small><div class="num">+1 200<span>подписчиков за неделю у клиента</span></div></div><p>Результат на чужом аккаунте, за который платят: то, чему учим.</p></div>
     </div>
     <p class="note">Истории опубликованы с разрешения учениц, цифры сняты с их аккаунтов.</p>
   </div>
@@ -997,8 +1023,8 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 <section class="final">
   <div class="wrap">
     <div class="in glass dark rv">
-      <h2 style="color:#F6EFE2">Новый SMM начинается <em style="color:var(--gold)">с разговора</em></h2>
-      <p>Двадцать минут: посмотрим вашу ситуацию, расскажем, что внутри обучения, и скажем, подойдёт ли оно вам.</p>
+      <h2 style="color:#F6EFE2">Сначала разбор, <em style="color:var(--gold)">потом обучение</em></h2>
+      <p>Двадцать минут в Zoom: разберём вашу текущую ситуацию, расскажем, как проходит обучение, и ответим на все вопросы. На обучение мы берём не всех, поэтому сначала знакомимся и вместе решаем, будет ли оно вам полезно.</p>
       <a class="btn btn-wine" href="#razbor"><span>Записаться на разбор</span></a>
     </div>
   </div>
@@ -1013,6 +1039,30 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 
 <!-- Липкая панель на телефоне: появляется после первого экрана и прячется,
      когда форма уже на виду, чтобы не перекрывать поля ввода. -->
+<!-- Подарок за почту. Один файл, одно поле, одна кнопка. -->
+<div class="pop" id="pop" role="dialog" aria-modal="true" aria-labelledby="poph" hidden>
+  <div class="card">
+    <button class="x" type="button" id="popx" aria-label="Закрыть">×</button>
+    <div class="lead">
+      <div class="eyebrow"><i></i>Подарок</div>
+      <h3 id="poph">100 заголовков, которыми мы <em>приводим клиентов</em> в США</h3>
+      <p>Формулы для постов и Reels из работы агентства. Возьмите три на ближайшие публикации, разницу увидите по охватам на этой неделе.</p>
+    </div>
+    <form id="popf" novalidate>
+      <input type="text" id="popn" placeholder="Как вас зовут" autocomplete="given-name">
+      <input type="email" id="pope" placeholder="Почта, куда прислать файл" autocomplete="email" inputmode="email" required>
+      <button class="btn btn-wine" type="submit" id="popb"><span>Забрать файл</span></button>
+      <div class="err" id="poperr">Проверьте почту, без неё файл не дойдёт.</div>
+      <p class="fine">Никаких рассылок без вашего согласия. <a href="/privacy" style="text-decoration:underline">Политика</a>.</p>
+    </form>
+    <div class="done">
+      <h3>Файл уже <em>в почте</em></h3>
+      <p>Если письма нет пару минут, загляните в «Промоакции» или «Спам».</p>
+      <a class="btn btn-wine" href="#razbor" data-go id="popgo"><span>А ещё можно на разбор</span></a>
+    </div>
+  </div>
+</div>
+
 <div class="sticky" id="sticky">
   <div class="in glass">
     <div class="t">Разбор бесплатный<b>20 минут · онлайн</b></div>
@@ -1392,6 +1442,45 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
         cal.hidden=false;
         fw.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
         calLoad();
+      });
+  });
+
+  /* Всплывающее окно с подарком. Условия показа собраны в одном месте. */
+  var pop=document.getElementById('pop'), popShown=false, quizTouched=false;
+  try{ if(localStorage.getItem('newsmm_pop')&&Date.now()-(+localStorage.getItem('newsmm_pop'))<7*864e5) popShown=true; }catch(e){}
+  qz.addEventListener('click',function(){ quizTouched=true; });
+  function popOpen(){
+    if(popShown||quizTouched||fw.classList.contains('booking')||fw.classList.contains('done')) return;
+    popShown=true; try{ localStorage.setItem('newsmm_pop',String(Date.now())); }catch(e){}
+    pop.hidden=false; pop.classList.add('on');
+    if(window.fbq) fbq('trackCustom','MagnetShown');
+  }
+  function popClose(){ pop.classList.remove('on'); pop.hidden=true; }
+  document.getElementById('popx').addEventListener('click',popClose);
+  pop.addEventListener('click',function(e){ if(e.target===pop) popClose(); });
+  document.getElementById('popgo').addEventListener('click',popClose);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&pop.classList.contains('on')) popClose(); });
+  if(matchMedia('(hover:hover)').matches){
+    document.addEventListener('mouseleave',function(e){ if(e.clientY<=0) popOpen(); });
+  } else {
+    var popT=setTimeout(popOpen,25000);
+    addEventListener('scroll',function(){
+      var h=document.documentElement; if(h.scrollTop/(h.scrollHeight-h.clientHeight)>.45){ clearTimeout(popT); popOpen(); }
+    },{passive:true});
+  }
+  document.getElementById('popf').addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var e=document.getElementById('pope').value.trim().toLowerCase(), n=document.getElementById('popn').value.trim(), err=document.getElementById('poperr'), b=document.getElementById('popb');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)){ err.style.display='block'; return; }
+    err.style.display='none'; b.disabled=true; b.querySelector('span').textContent='Отправляем…';
+    fetch(FN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK},
+      body:JSON.stringify({ name:n, email:e, phone:'', src:'popup', utm:utm, page:location.pathname, tz:zone() }) })
+      .then(function(r){ return r.json(); }).catch(function(){ return {}; })
+      .then(function(d){
+        pop.classList.add('ok');
+        if(d&&d.ok&&window.fbq) fbq('trackCustom','MagnetLead');
+        /* Почту подставляем в форму разбора: если человек пойдёт дальше, ему меньше печатать */
+        try{ form.email.value=e; if(n) form.name.value=n; }catch(x){}
       });
   });
 })();
