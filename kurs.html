@@ -303,6 +303,12 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--wine)}
 /* Квиз. Один вопрос на экране, ответ одним касанием, шаг переключается сам.
    Высота контейнера тянется за активным шагом, чтобы страница не прыгала. */
 .qz{margin-top:22px}
+/* Режим /zapis: та же страница, но форма сразу под шапкой, квиза нет.
+   Для тех, кто уже оставил контакты в лид-форме Instagram и пришёл выбрать время. */
+html[data-mode=zapis] .hero{min-height:0!important;height:auto!important}
+html[data-mode=zapis] .hero .wrap{padding-top:150px}
+html[data-mode=zapis] .hero .cta,html[data-mode=zapis] .hero .note,html[data-mode=zapis] .qbar,html[data-mode=zapis] .qstep[data-q=form] .qback,html[data-mode=zapis] #sticky{display:none!important}
+html[data-mode=zapis] #razbor{padding-top:28px}
 .qbar{height:4px;border-radius:999px;background:rgba(110,30,43,.12);overflow:hidden}
 .qbar i{display:block;height:100%;width:20%;border-radius:999px;background:var(--wine);transition:width .45s var(--ease)}
 .qstep{display:none;animation:qin .38s var(--ease)}
@@ -335,17 +341,23 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--wine)}
    оформление: человек не уходит со страницы и не видит чужой белый виджет. */
 .cal[hidden]{display:none}
 .cal h3{font-family:var(--serif);font-size:clamp(22px,2.8vw,30px);font-weight:600;margin:10px 0 18px}
-.caldays{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
-.caldays::-webkit-scrollbar{height:0}
-.caldays button{flex:0 0 auto;scroll-snap-align:start;min-width:72px;padding:10px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.7);
-  background:rgba(255,255,255,.55);font:inherit;cursor:pointer;text-align:center;line-height:1.15;transition:background .2s,border-color .2s,transform .2s var(--ease)}
-.caldays button:hover{background:#fff;transform:translateY(-2px)}
-.caldays button b{display:block;font-size:19px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;margin:2px 0}
-.caldays button i{display:block;font-style:normal;font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted)}
-.caldays button.on{background:var(--wine);border-color:var(--wine)}
-.caldays button.on b,.caldays button.on i{color:#F6EFE2}
-.caltimes{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:8px;margin-top:14px;max-height:236px;overflow-y:auto;overscroll-behavior:contain}
-.caltimes button{padding:13px 8px;border-radius:12px;border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.55);font:inherit;font-size:15px;
+.calhead{display:flex;align-items:center;justify-content:space-between;margin:4px 0 12px}
+.calhead b{font-family:var(--serif);font-size:19px;font-weight:600;text-transform:capitalize}
+.calhead .nav{display:flex;gap:6px}
+.calhead .nav button{width:38px;height:38px;border-radius:11px;border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.55);font:inherit;font-size:18px;line-height:1;color:var(--ink);cursor:pointer}
+.calhead .nav button:disabled{opacity:.35;cursor:default}
+.calwd{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:6px}
+.calwd span{text-align:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--muted)}
+.caldays{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.caldays button{aspect-ratio:1/1;width:100%;max-width:52px;margin:0 auto;border-radius:50%;border:1px solid transparent;background:transparent;font:inherit;font-size:15px;font-weight:600;color:rgba(23,19,19,.28);font-variant-numeric:tabular-nums;cursor:default;transition:background .2s,transform .2s}
+.caldays button.has{background:rgba(110,30,43,.10);color:var(--ink);cursor:pointer}
+.caldays button.has:hover{background:rgba(110,30,43,.18);transform:translateY(-1px)}
+.caldays button.on{background:var(--wine);color:#F6EFE2}
+.caldays button.today:not(.on){border-color:rgba(110,30,43,.45)}
+.caldays button.pad{visibility:hidden}
+.caldate{font-weight:600;font-size:15px;margin:18px 0 8px}
+.caltimes{display:grid;grid-template-columns:1fr;gap:8px;margin-top:0;max-height:300px;overflow-y:auto;overscroll-behavior:contain}
+.caltimes button{padding:14px 8px;border-radius:12px;border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.55);font:inherit;font-size:15px;
   font-variant-numeric:tabular-nums;color:var(--ink);cursor:pointer;transition:background .2s,border-color .2s,box-shadow .25s}
 .caltimes button:hover{background:#fff;border-color:rgba(110,30,43,.3)}
 .caltimes button.on{background:rgba(110,30,43,.12);border-color:var(--wine);box-shadow:0 0 0 3px rgba(110,30,43,.14);font-weight:600}
@@ -955,7 +967,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 
         <div class="qstep" data-q="form">
           <div class="qnum">Контакты, дальше время</div>
-          <h3>Куда прислать подтверждение?</h3>
+          <h3>Осталось выбрать время. Куда прислать подтверждение?</h3>
           <div class="qsum" id="qsum"></div>
       <form id="lead" novalidate>
         <div class="fields">
@@ -974,7 +986,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
           </div>
           <div class="f full"><input type="email" id="email" name="email" placeholder=" " autocomplete="email" inputmode="email" required><label for="email">Почта</label></div>
         </div>
-        <button class="btn btn-wine" type="submit" id="send"><span>Дальше выберу время</span></button>
+        <button class="btn btn-wine" type="submit" id="send"><span>Выбрать время разбора</span></button>
         <div class="err" id="err">Проверьте почту, без неё письмо не дойдёт.</div>
         <p class="fine">Нажимая кнопку, вы соглашаетесь на обработку данных и на письма и сообщения от школы в WhatsApp: подтверждение, напоминания, материалы и новости обучения. Отписаться можно в любой момент. <a href="/privacy" style="text-decoration:underline">Политика</a>.</p>
       </form>
@@ -984,8 +996,11 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 
       <div class="cal" id="cal" hidden>
         <div class="eyebrow"><i></i>Осталось выбрать время</div>
-        <h3>Когда вам удобно?</h3>
+        <h3 id="calh">Когда вам удобно?</h3>
+        <div class="calhead"><b id="calmon"></b><div class="nav"><button type="button" id="calprev" aria-label="Предыдущий месяц">‹</button><button type="button" id="calnext" aria-label="Следующий месяц">›</button></div></div>
+        <div class="calwd"><span>пн</span><span>вт</span><span>ср</span><span>чт</span><span>пт</span><span>сб</span><span>вс</span></div>
         <div class="caldays" id="caldays"></div>
+        <div class="caldate" id="caldate"></div>
         <div class="caltimes" id="caltimes"></div>
         <div class="calnote" id="calnote">Смотрим свободные окна…</div>
         <p class="calzone" id="calzone"></p>
@@ -1255,6 +1270,30 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   });
   qfill.style.width=Math.round(100/(qsteps.length+1))+'%';
 
+  /* Режим записи без квиза: форма поднята под шапку, контакты подставлены из адреса
+     (name, email, phone), сразу после отправки календарь. */
+  var ZAPIS=document.documentElement.getAttribute('data-mode')==='zapis';
+  if(ZAPIS){
+    var rz=document.getElementById('razbor'), hero=document.querySelector('.hero');
+    hero.parentNode.insertBefore(rz, hero.nextSibling);
+    var fwx=document.getElementById('fw');
+    fwx.querySelector('.eyebrow').innerHTML='<i></i>Разбор · бесплатно · 20 минут';
+    fwx.querySelector('h2').innerHTML='Осталось <em>выбрать время</em>';
+    fwx.querySelector('.lede').textContent='Оставьте контакты, чтобы прислать подтверждение и ссылку на Zoom, и выберите удобное время. Двадцать минут, бесплатно.';
+    var fs=qsteps[qsteps.length-1];
+    fs.querySelector('.qnum').textContent='Шаг 1 из 2 · контакты';
+    fs.querySelector('h3').textContent='Куда прислать подтверждение?';
+    qgo(qsteps.length-1);
+    try{
+      var sp=new URLSearchParams(location.search);
+      var pn=sp.get('name')||sp.get('first_name')||'', pe=sp.get('email')||'', pp=sp.get('phone')||'';
+      if(pn) document.getElementById('name').value=pn;
+      if(pe) document.getElementById('email').value=pe;
+      if(pp){ var digits=pp.replace(/\D/g,''); document.getElementById('phone').value=digits.replace(/^(1|373)/,''); }
+    }catch(e){}
+    document.getElementById('calnote').textContent='Смотрим свободные окна…';
+  }
+
   /* Телефон с выбором страны. Флаг собираем из букв кода страны, список стран
      ищется и по названию, и по коду. Страна подставляется сама по стране запроса:
      Cloudflare отдаёт её на /cdn-cgi/trace, свой же домен, ничего наружу не уходит. */
@@ -1324,23 +1363,43 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   function dparse(s){ var p=String(s).split('-'); return new Date(+p[0],+p[1]-1,+p[2]); }
   function hhmm(iso){ var d=new Date(iso); return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2); }
 
+  var calmon=document.getElementById('calmon'), caldate=document.getElementById('caldate'),
+      calprev=document.getElementById('calprev'), calnext=document.getElementById('calnext');
+  var MONN=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+  var WDF=['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'];
+  var calY=0, calM=0;  /* показанный месяц */
+  function ymd(d){ return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }
   function calPaint(){
-    caldays.innerHTML=calDays.map(function(d,i){
-      var dt=dparse(d.date);
-      return '<button type="button" data-i="'+i+'"'+(i===calDay?' class="on"':'')+
-             '><i>'+WD[dt.getDay()]+'</i><b>'+dt.getDate()+'</b><i>'+MON3[dt.getMonth()]+'</i></button>';
-    }).join('');
-    var day=calDays[calDay];
-    caltimes.innerHTML=day ? day.slots.map(function(s){
+    var byDate={}; calDays.forEach(function(d,i){ byDate[d.date]=i; });
+    var first=new Date(calY,calM,1), last=new Date(calY,calM+1,0), todayS=ymd(new Date());
+    calmon.textContent=MONN[calM]+' '+calY;
+    var minM=calDays.length?dparse(calDays[0].date):first, maxM=calDays.length?dparse(calDays[calDays.length-1].date):first;
+    calprev.disabled=(calY*12+calM)<=(minM.getFullYear()*12+minM.getMonth());
+    calnext.disabled=(calY*12+calM)>=(maxM.getFullYear()*12+maxM.getMonth());
+    var html='', pad=(first.getDay()+6)%7;
+    for(var k=0;k<pad;k++) html+='<button type="button" class="pad" tabindex="-1"></button>';
+    for(var day=1;day<=last.getDate();day++){
+      var key=ymd(new Date(calY,calM,day)), i=byDate[key], cls=[];
+      if(i!==undefined) cls.push('has');
+      if(i===calDay && i!==undefined) cls.push('on');
+      if(key===todayS) cls.push('today');
+      html+='<button type="button"'+(i!==undefined?' data-i="'+i+'"':' disabled')+(cls.length?' class="'+cls.join(' ')+'"':'')+'>'+day+'</button>';
+    }
+    caldays.innerHTML=html;
+    var d=calDays[calDay];
+    if(d){ var dt=dparse(d.date); caldate.textContent=WDF[dt.getDay()]+', '+dt.getDate()+' '+MON[dt.getMonth()]; }
+    caltimes.innerHTML=d ? d.slots.map(function(s){
       return '<button type="button" data-s="'+s+'"'+(s===calSlot?' class="on"':'')+'>'+hhmm(s)+'</button>';
     }).join('') : '';
     var lab=calgo.querySelector('span');
-    if(calSlot && day){
-      var dt=dparse(day.date);
-      lab.textContent='Записаться на '+dt.getDate()+' '+MON[dt.getMonth()]+', '+hhmm(calSlot);
+    if(calSlot && d){
+      var dt2=dparse(d.date);
+      lab.textContent='Записаться на '+dt2.getDate()+' '+MON[dt2.getMonth()]+', '+hhmm(calSlot);
       calgo.disabled=false;
     } else { lab.textContent='Выберите время'; calgo.disabled=true; }
   }
+  calprev.addEventListener('click',function(){ calM--; if(calM<0){calM=11;calY--;} calPaint(); });
+  calnext.addEventListener('click',function(){ calM++; if(calM>11){calM=0;calY++;} calPaint(); });
 
   function calLoad(){
     calnote.style.display='block'; calnote.textContent='Смотрим свободные окна…';
@@ -1357,6 +1416,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
           return;
         }
         calnote.style.display='none';
+        var f0=dparse(calDays[0].date); calY=f0.getFullYear(); calM=f0.getMonth();
         calzone.textContent='Время показано в вашем часовом поясе: '+(zone()||'по настройкам устройства')+'. Разбор идёт в Zoom, ссылка придёт на почту.';
         calPaint();
       });
@@ -1364,7 +1424,9 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 
   caldays.addEventListener('click',function(e){
     var b=e.target.closest?e.target.closest('button'):null; if(!b) return;
+    if(!b.hasAttribute('data-i')) return;
     calDay=+b.getAttribute('data-i'); calSlot=''; calPaint();
+    caldate.scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
   });
   caltimes.addEventListener('click',function(e){
     var b=e.target.closest?e.target.closest('button'):null; if(!b) return;
@@ -1419,7 +1481,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     /* Ярлык считаем сами из ответов: есть проекты значит разговор про чек
        и удержание, нет значит про первый шаг. Выбор карточки выше идёт запасным. */
     var lane=hasClients() ? 'pro' : (quiz.projects ? 'start' : (track||''));
-    var body={ name:name, email:email, phone:phone, src:'kurs', track:lane, quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
+    var body={ name:name, email:email, phone:phone, src:(ZAPIS?'zapis':'kurs'), track:lane, quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
     fetch(FN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK}, body:JSON.stringify(body) })
       .then(function(r){ return r.json(); })
       .catch(function(){ return {ok:false}; })

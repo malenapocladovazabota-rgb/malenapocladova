@@ -43,3 +43,15 @@ print('готово:', dst, len(h), 'байт')
 root = dst.parent / 'index.html'
 root.write_text(src.read_text(encoding='utf-8'), encoding='utf-8')
 print('главная:', root, root.stat().st_size, 'байт')
+
+# Страница записи без квиза для трафика из лид-форм Instagram: /zapis.
+# Та же kurs.html, режим включает атрибут на <html>, вся логика внутри страницы.
+z = src.read_text(encoding='utf-8')
+z = z.replace('<html lang="ru">', '<html lang="ru" data-mode="zapis">', 1)
+z = z.replace('<title>', '<title>Запись на разбор · ', 1)
+z = z.replace('<link rel="preconnect" href="https://fonts.googleapis.com">',
+              '<meta name="robots" content="noindex, nofollow">\n'
+              '<link rel="preconnect" href="https://fonts.googleapis.com">', 1)
+zp = dst.parent / 'zapis.html'
+zp.write_text(z, encoding='utf-8')
+print('запись:', zp, zp.stat().st_size, 'байт')
