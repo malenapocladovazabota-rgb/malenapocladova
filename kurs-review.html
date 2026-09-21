@@ -17,6 +17,12 @@
 <meta property="og:site_name" content="Школа Малены Покладовой">
 <meta name="twitter:card" content="summary_large_image">
 
+<!-- Страница живёт на корне домена. Файл называется kurs.html, потому что
+     на него ссылается сборщик версии для правок, а index.html делается его
+     точной копией при каждом запуске build-review-kurs.py. Канонический адрес
+     один, корневой, иначе поисковик увидит две одинаковые страницы. -->
+<link rel="canonical" href="https://malenapocladova.com/">
+<meta property="og:url" content="https://malenapocladova.com/">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="preload" as="image" href="images/malena-hero-v3.jpg">
 <meta name="robots" content="noindex, nofollow">
@@ -1352,9 +1358,10 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   /* Публичный ключ проекта. Он и задуман для браузера, секретов за ним нет:
      шлюз без него отвечает 401 и заявка до функции не доходит. */
   var SBK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqeWZiZnFjZ3JldHJidXB5aGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNzU4NDYsImV4cCI6MjA5NjY1MTg0Nn0.amLiv4BuwDuEI0z2V3WiPKeWzvENSEwPlDeaGRq0CFM';
-  /* Запасной календарь на случай, если функция не ответила: разбор для Молдовы
-     и Европы. Кому отдать заявку на самом деле, решает сервер по телефону и поясу. */
-  var BOOK='https://api.leadconnectorhq.com/widget/booking/ha3wLwIBwQ9RKCQpPXcY';
+  /* Запасной календарь на случай, если функция не ответила. Кому на самом деле
+     отдать заявку, решает сервер: сейчас все разборы ведёт Малена, позже
+     выключатель newsmm_split_on вернёт молдавские заявки Александре. */
+  var BOOK='https://api.leadconnectorhq.com/widget/booking/k3vObJo44lcPodJUj57L';
   function zone(){ try{ return Intl.DateTimeFormat().resolvedOptions().timeZone||''; }catch(e){ return ''; } }
   var form=document.getElementById('lead'), fw=document.getElementById('fw'), err=document.getElementById('err'), btn=document.getElementById('send');
   form.addEventListener('submit',function(ev){
@@ -1382,7 +1389,9 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
         if(d && d.ok && window.fbq) fbq('track','Lead',{content_name:'new-smm-razbor'});
         /* Письмо человек получит сам. На странице остаётся один шаг: время. */
         who={ name:name, email:email, phone:phone };
-        calRegion=(d&&d.region==='us') ? 'us' : 'eu';
+        /* Кого именно подставил сервер, он и говорит в route. Регион человека
+           лежит рядом в region и нужен только для статистики. */
+        calRegion=(d&&(d.route||d.region)==='eu') ? 'eu' : 'us';
         fw.classList.add('booking');
         cal.hidden=false;
         fw.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});

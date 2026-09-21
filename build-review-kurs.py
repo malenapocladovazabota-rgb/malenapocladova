@@ -37,3 +37,9 @@ h = h.replace('</body>', '<script src="review.js"></script>\n</body>', 1)
 
 dst.write_text(h, encoding='utf-8')
 print('готово:', dst, len(h), 'байт')
+
+# Боевая страница лежит на корне домена. Держим index.html точной копией,
+# чтобы два файла не разъехались: правится всегда kurs.html.
+root = dst.parent / 'index.html'
+root.write_text(src.read_text(encoding='utf-8'), encoding='utf-8')
+print('главная:', root, root.stat().st_size, 'байт')

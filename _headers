@@ -22,3 +22,12 @@
 /prodvizhenie-review*
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
+
+/kurs-review*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+
+# Прежняя главная. Оставлена как резерв, из поиска убрана, чтобы не спорила
+# с новой главной за один и тот же запрос.
+/smm-s-nulya*
+  X-Robots-Tag: noindex, nofollow
