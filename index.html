@@ -305,10 +305,7 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--wine)}
 .qz{margin-top:22px}
 /* Режим /zapis: та же страница, но форма сразу под шапкой, квиза нет.
    Для тех, кто уже оставил контакты в лид-форме Instagram и пришёл выбрать время. */
-html[data-mode=zapis] .hero{min-height:0!important;height:auto!important}
-html[data-mode=zapis] .hero .wrap{padding-top:150px}
-html[data-mode=zapis] .hero .cta,html[data-mode=zapis] .hero .note,html[data-mode=zapis] .qbar,html[data-mode=zapis] .qstep[data-q=form] .qback,html[data-mode=zapis] #sticky{display:none!important}
-html[data-mode=zapis] #razbor{padding-top:28px}
+html[data-mode=zapis] .qbar,html[data-mode=zapis] .qstep[data-q=form] .qback{display:none!important}
 .qbar{height:4px;border-radius:999px;background:rgba(110,30,43,.12);overflow:hidden}
 .qbar i{display:block;height:100%;width:20%;border-radius:999px;background:var(--wine);transition:width .45s var(--ease)}
 .qstep{display:none;animation:qin .38s var(--ease)}
@@ -1274,12 +1271,10 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
      (name, email, phone), сразу после отправки календарь. */
   var ZAPIS=document.documentElement.getAttribute('data-mode')==='zapis';
   if(ZAPIS){
-    var rz=document.getElementById('razbor'), hero=document.querySelector('.hero');
-    hero.parentNode.insertBefore(rz, hero.nextSibling);
     var fwx=document.getElementById('fw');
     fwx.querySelector('.eyebrow').innerHTML='<i></i>Разбор · бесплатно · 20 минут';
     fwx.querySelector('h2').innerHTML='Осталось <em>выбрать время</em>';
-    fwx.querySelector('.lede').textContent='Оставьте контакты, чтобы прислать подтверждение и ссылку на Zoom, и выберите удобное время. Двадцать минут, бесплатно.';
+    fwx.querySelector('.lede').textContent='Контакты для подтверждения и ссылки на Zoom, потом удобное время. Двадцать минут, бесплатно.';
     var fs=qsteps[qsteps.length-1];
     fs.querySelector('.qnum').textContent='Шаг 1 из 2 · контакты';
     fs.querySelector('h3').textContent='Куда прислать подтверждение?';
