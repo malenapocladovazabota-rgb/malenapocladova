@@ -96,7 +96,8 @@
 </script>
 <meta property="og:url" content="https://malenapocladova.com/">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-<link rel="preload" as="image" href="images/malena-hero-v4.jpg">
+<link rel="preload" as="image" href="images/malena-hero-v4-m.jpg" media="(max-width:759px)">
+<link rel="preload" as="image" href="images/malena-hero-v4.jpg" media="(min-width:760px)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -609,7 +610,7 @@ h2{font-weight:500;letter-spacing:-.6px}
 .hero .wrap{display:block;width:100%;position:relative;z-index:2;padding-bottom:36px}
 .hero .bgph{position:absolute;inset:0;z-index:0}
 .hero .bgph img{width:100%;height:100%;object-fit:cover;object-position:50% 12%}
-.hero .bgph::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,20,.2) 0%,rgba(27,20,20,.08) 30%,rgba(27,20,20,.72) 60%,rgba(27,20,20,.94) 100%)}
+.hero .bgph::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,20,.12) 0%,rgba(27,20,20,.04) 30%,rgba(27,20,20,.7) 60%,rgba(27,20,20,.94) 100%)}
 .hero .eyebrow{color:#EAD7B0}.hero .eyebrow i{background:#EAD7B0}
 .hero h1{font-size:clamp(72px,17vw,190px);letter-spacing:-3px;line-height:.86;color:#F6EFE2;text-transform:uppercase;font-weight:500}
 .hero h1 em{color:#F6EFE2;font-weight:500;text-transform:none;letter-spacing:-2px}
@@ -823,7 +824,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 
 <!-- ═══ ПЕРВЫЙ ЭКРАН ═══ -->
 <header class="hero" id="top">
-  <div class="bgph" aria-hidden="true"><img src="images/malena-hero-v4.jpg" alt="" width="1600" height="2400" fetchpriority="high"></div>
+  <div class="bgph" aria-hidden="true"><picture><source media="(max-width:759px)" srcset="images/malena-hero-v4-m.jpg"><img src="images/malena-hero-v4.jpg" alt="" width="1600" height="2400" fetchpriority="high"></picture></div>
   <div class="wrap">
     <div class="eyebrow rv"><i></i>Обучение Малены Покладовой · набор на ноябрьский поток открыт</div>
     <h1 class="rv d1"><em>New</em> SMM</h1>
@@ -964,7 +965,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
               <span class="flag" id="ccflag">🇲🇩</span><span class="dial" id="ccdial">+373</span>
               <svg class="chev" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
             </button>
-            <input type="tel" id="phone" name="phone" placeholder=" " autocomplete="tel" inputmode="tel">
+            <input type="tel" id="phone" name="phone" placeholder=" " autocomplete="tel" inputmode="tel" required>
             <label for="phone">Телефон</label>
             <div class="cclist" id="cclist" role="listbox">
               <input class="srch" type="text" id="ccsrch" placeholder="Страна или код" autocomplete="off" spellcheck="false">
@@ -975,7 +976,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
         </div>
         <button class="btn btn-wine" type="submit" id="send"><span>Дальше выберу время</span></button>
         <div class="err" id="err">Проверьте почту, без неё письмо не дойдёт.</div>
-        <p class="fine">Нажимая кнопку, вы соглашаетесь на обработку данных. Никаких рассылок без вашего согласия. <a href="/privacy" style="text-decoration:underline">Политика</a>.</p>
+        <p class="fine">Нажимая кнопку, вы соглашаетесь на обработку данных и на письма и сообщения от школы в WhatsApp: подтверждение, напоминания, материалы и новости обучения. Отписаться можно в любой момент. <a href="/privacy" style="text-decoration:underline">Политика</a>.</p>
       </form>
           <button class="qback" type="button">Назад</button>
         </div>
@@ -1050,7 +1051,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
       <input type="email" id="pope" placeholder="Почта, куда прислать файл" autocomplete="email" inputmode="email" required>
       <button class="btn btn-wine" type="submit" id="popb"><span>Забрать файл</span></button>
       <div class="err" id="poperr">Проверьте почту, без неё файл не дойдёт.</div>
-      <p class="fine">Никаких рассылок без вашего согласия. <a href="/privacy" style="text-decoration:underline">Политика</a>.</p>
+      <p class="fine">Оставляя почту, вы соглашаетесь получать файл и письма школы: материалы и новости обучения. Отписаться можно в один клик. <a href="/privacy" style="text-decoration:underline">Политика</a>.</p>
     </form>
     <div class="done">
       <h3>Файл уже <em>в почте</em></h3>
@@ -1413,6 +1414,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     var raw=tel.value.replace(/\D/g,''), phone=raw ? '+'+country.d+raw : '';
     if(name.length<2){ err.textContent='Напишите, как к вам обращаться.'; err.style.display='block'; form.name.focus(); return; }
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ err.textContent='Проверьте почту, без неё письмо не дойдёт.'; err.style.display='block'; form.email.focus(); return; }
+    if(raw.length<6){ err.textContent='Оставьте телефон: подтверждение и напоминание придут в WhatsApp.'; err.style.display='block'; tel.focus(); return; }
     err.style.display='none'; btn.disabled=true; btn.querySelector('span').textContent='Отправляем…';
     /* Ярлык считаем сами из ответов: есть проекты значит разговор про чек
        и удержание, нет значит про первый шаг. Выбор карточки выше идёт запасным. */
