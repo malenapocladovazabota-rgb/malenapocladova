@@ -11,14 +11,14 @@
 <meta name="author" content="Малена Покладова">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
-<meta property="og:title" content="New SMM · поток стартует в октябре">
+<meta property="og:title" content="New SMM · поток стартует в ноябре">
 <meta property="og:description" content="Методика, по которой мы приводим клиентов бизнесу в США. Работает на любом рынке. Запишитесь на разбор.">
 <meta property="og:image" content="https://malenapocladova.com/images/og-image.png">
 <meta property="og:site_name" content="Школа Малены Покладовой">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-<link rel="preload" as="image" href="images/malena-hero.jpg">
+<link rel="preload" as="image" href="images/malena-hero-v3.jpg">
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -126,7 +126,9 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--wine)}
 .hero{padding:44px 0 30px}
 .hero .wrap{display:grid;gap:30px;align-items:center}
 .hero h1{font-size:clamp(64px,13vw,150px)}
-.hero h1 .n{display:block;font-size:.42em;letter-spacing:-.5px;font-style:italic;color:var(--wine);margin-bottom:-.1em}
+/* «New» выделено курсивом и вином, «SMM» остаётся чернилами: имя продукта
+   читается как одно целое, но новое в нём видно сразу */
+.hero h1 em{font-style:italic;color:var(--wine)}
 .motto{font-family:var(--serif);font-size:clamp(20px,2.6vw,29px);line-height:1.25;margin-top:20px;max-width:620px;color:var(--ink)}
 .motto b{font-weight:500;font-style:italic;color:var(--wine)}
 .hero .sub{font-size:16.5px;color:var(--ink2);margin-top:16px;max-width:560px}
@@ -134,7 +136,7 @@ h2 em,h1 em,h3 em{font-style:italic;color:var(--wine)}
 .hero .note{margin-top:14px;font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
 .card-ph{padding:12px;border-radius:28px}
 .card-ph .ph{border-radius:18px;overflow:hidden;aspect-ratio:4/4.4;background:var(--paper2)}
-.card-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 10%;transform:scale(1.02);transition:transform 1.2s var(--ease)}
+.card-ph img{width:100%;height:100%;object-fit:cover;object-position:50% 32%;transform:scale(1.02);transition:transform 1.2s var(--ease)}
 .card-ph:hover img{transform:scale(1.06)}
 .card-ph{position:relative}
 .chips{position:absolute;inset:0;pointer-events:none}
@@ -312,7 +314,9 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 .wc.on{border-color:var(--wine);box-shadow:0 0 0 2px rgba(110,30,43,.25),0 22px 50px -30px rgba(22,17,16,.35)}
 .live-cta{margin-top:26px}
 .mid-cta{margin-top:30px;display:flex;flex-wrap:wrap;align-items:center;gap:14px}
-.mid-cta span{font-size:14px;color:var(--ink2)}
+/* Только подпись рядом с кнопкой. Без «>» правило доставало и до текста
+   внутри кнопки и красило его в серый на бордовом. */
+.mid-cta > span{font-size:14px;color:var(--ink2)}
 
 /* Выбранный вход показываем над формой, чтобы человек видел, что его услышали.
    Правило с [hidden] обязательно: display:flex иначе перебивает атрибут hidden,
@@ -406,7 +410,6 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 
   .hero{padding:24px 0 18px}
   .hero h1{font-size:clamp(58px,19vw,92px);letter-spacing:-1.4px}
-  .hero h1 .n{font-size:.36em}
   .motto{font-size:19.5px;margin-top:16px;line-height:1.3}
   .hero .sub{font-size:15.5px;margin-top:14px}
   .hero .cta{margin-top:22px;gap:10px}
@@ -442,7 +445,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   .live .src{font-size:12.5px}
   .live-cta .btn,.mid-cta .btn,.wc-go{width:100%}
   .mid-cta{gap:10px;margin-top:24px}
-  .mid-cta span{width:100%;text-align:center;font-size:13px}
+  .mid-cta > span{width:100%;text-align:center;font-size:13px}
 
   .step{padding:20px 18px 20px 62px}
   .step .n{left:16px;top:20px;width:32px;height:32px}
@@ -511,10 +514,10 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 <header class="hero" id="top">
   <div class="wrap">
     <div>
-      <div class="eyebrow rv"><i></i>Обучение Малены Покладовой · поток стартует в октябре</div>
-      <h1 class="rv d1"><span class="n">новый</span>New SMM</h1>
+      <div class="eyebrow rv"><i></i>Обучение Малены Покладовой · поток стартует в ноябре</div>
+      <h1 class="rv d1"><em>New</em> SMM</h1>
       <p class="motto rv d2">Как доводить клиентов <b>до результата</b> по методике американского рынка.</p>
-      <p class="sub rv d2">Обучение <b>New SMM</b>: методика, по которой мы приводим клиентов бизнесу в США. Внутри путь ведения клиента от начала и до конца на живом проекте и искусственный интеллект, который вы настраиваете под себя.</p>
+      <p class="sub rv d2">Обучение <b>New SMM</b>: методика, по которой мы учим с нуля привлекать клиентов и доводить их до результата, используя искусственный интеллект, на рынке Америки и всего мира.</p>
       <div class="cta rv d3">
         <a class="btn btn-wine" href="#razbor"><span>Записаться на разбор</span></a>
         <a class="btn btn-glass" href="#chto"><span>Как это работает</span></a>
@@ -522,7 +525,9 @@ footer a{text-decoration:underline;text-underline-offset:3px}
       <div class="note rv d3">Разбор бесплатный · 20 минут · подходит новичкам и тем, кто уже в сфере</div>
     </div>
     <div class="card-ph glass tilt rv d2">
-      <div class="ph"><img src="images/malena-hero.jpg" alt="Малена Покладова" width="1280" height="1600" fetchpriority="high"></div>
+      <!-- Новая съёмка, кадр у стола. Пока файла нет на месте, страница сама
+           откатывается на прежний портрет, чтобы первый экран не пустовал. -->
+      <div class="ph"><img src="images/malena-hero-v3.jpg" onerror="this.onerror=null;this.src='images/malena-hero.jpg'" alt="Малена Покладова" width="1341" height="2000" fetchpriority="high"></div>
       <div class="chips">
         <div class="chip glass c1"><b>×10</b>окупаемость рекламы у клиента</div>
         <div class="chip glass c2"><b>20K+</b>подписчиков за пять месяцев</div>
@@ -547,7 +552,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
       <div class="sw glass tilt rv d1"><div class="was">Контент ради контента</div><div class="arr">→</div><div class="now">Контент, который <em>приводит клиента</em></div></div>
       <div class="sw glass tilt rv d2"><div class="was">Охваты и лайки в отчёте</div><div class="arr">→</div><div class="now">Заявки, записи и <em>деньги</em> в отчёте</div></div>
       <div class="sw glass tilt rv d1"><div class="was">Клиент на месяц, потом искать нового</div><div class="arr">→</div><div class="now">Клиент на годы <em>за высокий чек</em></div></div>
-      <div class="sw glass tilt rv d2"><div class="was">Всё руками, вечер на один сценарий</div><div class="arr">→</div><div class="now">Нейросети, автоматизация, <em>своя платформа</em></div></div>
+      <div class="sw glass tilt rv d2"><div class="was">Каждый сценарий пишется вручную и отнимает целый вечер</div><div class="arr">→</div><div class="now">Нейросети, автоматизация, <em>своя платформа</em></div></div>
       <div class="sw glass tilt rv d1"><div class="was">Локальный рынок и локальные цены</div><div class="arr">→</div><div class="now">Методика <em>американского рынка</em></div></div>
       <div class="sw glass tilt rv d2"><div class="was">Одинаковый контент у всех</div><div class="arr">→</div><div class="now">Проявленная <em>уникальность бизнеса</em></div></div>
     </div>
@@ -561,15 +566,11 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     <div class="live glass dark tilt rv">
       <div class="eyebrow" style="color:var(--gold)"><i style="background:var(--gold)"></i>Живой клиент агентства · Сан-Диего</div>
       <h2 style="color:#F6EFE2">Разбираем клиента, у которого реклама <em style="color:var(--gold)">окупается в десять раз</em></h2>
-      <p class="lede" style="color:#D8CDB9">Новая студия с нулевой известностью в районе. Показываем изнутри: стратегию, рекламу, трекинг каждой записи и отчёт, после которого клиент продлевает договор.</p>
-      <div class="grid">
-        <div class="stat rv d1"><b data-count="10" data-prefix="×">×10</b><span>окупаемость вложений в рекламу</span></div>
-        <div class="stat rv d2"><b data-count="20" data-suffix="K+">20K+</b><span>подписчиков за пять месяцев, органика и реклама вместе</span></div>
-        <div class="stat rv d3"><b data-count="30">30</b><span>дней до полной записи новой студии</span></div>
-        <div class="stat rv d3"><b data-count="28">28</b><span>оплаченных записей в первую неделю запуска</span></div>
-      </div>
+      <!-- Детали сознательно не раскрываем: цифры и механика остаются на разбор
+           и внутрь обучения. Здесь только что это за клиент и чем мы поделимся. -->
+      <p class="lede" style="color:#D8CDB9">Новый профиль с нуля. Покажем, как мы приводили ему клиентов: органические видео на миллионы просмотров и реклама, которая окупается в десять раз.</p>
       <div class="nets"><span>Instagram</span><span>TikTok</span><span>YouTube</span><span>Реклама Meta</span><span>Трекинг заявок</span><span>Отчёт клиенту</span></div>
-      <p class="src">Цифры агентства PGL Marketing, недельные отчёты. Внутри обучения разбираем этот проект целиком: от первого разговора с владелицей до системы, которая приводит и удерживает клиентов.</p>
+      <p class="src">Внутри обучения делимся всем: как закрыли этого клиента, как встроились в его работу и как сделали так, что работаем с ним уже долго, за высокий чек и с сильным результатом.</p>
       <div class="live-cta"><a class="btn btn-wine" href="#razbor" data-go><span>Хочу так же у своих клиентов</span></a></div>
     </div>
   </div>
@@ -790,7 +791,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
       <details class="glass rv d1"><summary>Вы помогаете с трудоустройством?</summary><p>Работу мы не предоставляем и клиентов за вас не приводим. Мы отдаём методику, по которой вы находите их сами, и ведём по ней на протяжении обучения. Если вы ищете работодателя, вам будет полезнее другое место.</p></details>
       <details class="glass rv d2"><summary>Я не хочу вести чужие проекты, только свои соцсети. Подойдёт?</summary><p>Да. Те же навыки работают на ваш собственный аккаунт: контент, который приводит людей, нейросеть под ваши задачи и понимание, как превратить соцсети в постоянный доход.</p></details>
       <details class="glass rv d2"><summary>Сколько стоит?</summary><p>Зависит от формата участия, поэтому цену называем на разборе, когда понимаем вашу ситуацию. Есть рассрочка.</p></details>
-      <details class="glass rv d1"><summary>Когда старт и в каком часовом поясе эфиры?</summary><p>Поток стартует в октябре. Эфиры утром по Калифорнии и вечером по Европе, все остаются в записи.</p></details>
+      <details class="glass rv d1"><summary>Когда старт и в каком часовом поясе эфиры?</summary><p>Поток стартует в ноябре. Эфиры утром по Калифорнии и вечером по Европе, все остаются в записи.</p></details>
     </div>
   </div>
 </section>
