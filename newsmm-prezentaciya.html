@@ -155,7 +155,8 @@ h3{font-family:var(--serif);font-weight:500;font-size:34px;line-height:1.15}
 .chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
 .chip{font-family:var(--mono);font-size:14px;letter-spacing:1.5px;text-transform:uppercase;padding:12px 18px;border-radius:999px;border:1px solid rgba(110,30,43,.3);background:rgba(255,255,255,.5);color:var(--wine);font-weight:700}
 .dark .chip,.wine .chip{border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:#EAD7B0}
-.btn{display:inline-flex;align-items:center;gap:14px;background:var(--wine);color:#F6EFE2;font-family:var(--mono);font-size:16px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;padding:26px 40px;border-radius:14px;box-shadow:0 18px 36px -16px rgba(110,30,43,.7);text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:14px;background:var(--wine);color:#F6EFE2;font-family:var(--mono);font-size:16px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;padding:26px 40px;border-radius:14px;box-shadow:0 18px 36px -16px rgba(110,30,43,.7);text-decoration:none;cursor:pointer;transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 26px 46px -18px rgba(110,30,43,.85)}
 .btn.gold{background:var(--gold);color:var(--ink)}
 
 /* управление */
@@ -164,7 +165,6 @@ body:hover #hud,html[data-variant=client] #hud{opacity:1}
 #hud button{font:600 13px var(--sans);letter-spacing:.5px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(20,14,14,.8);color:#F6EFE2;cursor:pointer}
 #hud button:hover{background:var(--wine)}
 html[data-variant=client] #nbtn{display:none}
-html[data-variant=call] [data-client-only]{display:none}
 #notes{position:fixed;right:0;top:0;bottom:0;width:420px;z-index:60;background:#171111;color:#F6EFE2;padding:28px 26px;font-size:16px;line-height:1.55;overflow:auto;transform:translateX(100%);transition:transform .3s var(--ease);border-left:1px solid rgba(255,255,255,.12)}
 #notes.on{transform:none}
 #notes h4{font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
@@ -538,17 +538,16 @@ html[data-variant=call] [data-client-only]{display:none}
 
 <!-- 18 · ФИНАЛ -->
 <section class="slide dark" style="padding:0">
-  <div style="position:absolute;inset:0;z-index:1"><img src="images/malena-b6.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 22%;opacity:.6"></div>
+  <div style="position:absolute;inset:0;z-index:1"><img src="images/malena-b6.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 38%;opacity:.62"></div>
   <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(27,20,20,.94) 0%,rgba(27,20,20,.8) 45%,rgba(27,20,20,.2) 100%)"></div>
   <div class="in" style="padding:100px 150px 96px;justify-content:center;align-items:flex-start">
     <div class="eyebrow"><i></i>Ноябрьский поток</div>
     <h2 style="font-size:96px">Начнём <em>в ноябре</em></h2>
     <p class="lede" style="font-size:26px;max-width:960px">Выбираете формат, оформляем договор и добавляем вас на платформу. Дальше десять блоков в порядке работы агентства, и первый кейс или новый уровень с вашим клиентом.</p>
-    <div style="margin-top:38px;display:flex;gap:16px;flex-wrap:wrap">
-      <a class="btn" href="https://malenapocladova.com/zapis">Записаться на разбор</a>
-      <a class="btn gold" data-client-only="1" href="https://malenapocladova.com/zapis">malenapocladova.com/zapis</a>
+    <div style="margin-top:38px">
+      <a class="btn" href="https://malenapocladova.com/zapis" target="_blank" rel="noopener">Записаться на разбор<svg viewBox="0 0 16 16" width="15" height="15" fill="none" aria-hidden="true"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
-    <p class="mono" style="margin-top:26px">Двадцать минут в Zoom, бесплатно · @malenapocladova</p>
+    <p class="mono" style="margin-top:24px">malenapocladova.com/zapis · двадцать минут в Zoom, бесплатно · @malenapocladova</p>
   </div>
   <div class="foot"><span>malenapocladova.com</span><span class="n">16</span></div>
 </section>

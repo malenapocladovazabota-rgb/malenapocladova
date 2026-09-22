@@ -15,8 +15,6 @@ h = h.replace('<title>New SMM · презентация</title>', '<title>New SM
 h = re.sub(r'<!-- \d\d · [^\n]*только созвон -->\n<section class="slide[^>]*data-call="1"[\s\S]*?</section>\n<div class="notes">[\s\S]*?</div>\n', '', h)
 # все заметки
 h = re.sub(r'<div class="notes">[\s\S]*?</div>\n', '', h)
-# кнопка финала
-h = h.replace('<span class="btn" data-client-text="Записаться на разбор">Оформляем?</span>', '<a class="btn" href="https://malenapocladova.com/zapis">Записаться на разбор</a>', 1)
 # картинки относительно course-site
 h = h.replace('src="course-site/images/', 'src="images/')
 # сквозная нумерация в футерах
