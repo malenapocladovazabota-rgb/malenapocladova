@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="ru" data-variant="client">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>New SMM · обучение Малены Покладовой · презентация</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* ═══ Дизайн-система сайта New SMM (kurs.html) ═══
+   Один источник для двух версий. Слайды с data-call="1" только для созвона,
+   build-deck.py вырезает их и заметки в клиентскую версию. */
+:root{--paper:#F5EFE3;--paper2:#EDE4D3;--cream:#FBF7EE;--wine:#6E1E2B;--wine-d:#4E141F;--ink:#1B1414;--ink2:#4A3F3F;--muted:#8A7C78;--gold:#D9A441;
+  --glass:rgba(251,247,238,.62);--edge:rgba(255,255,255,.9);--r:22px;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0f0b0b;color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+body{overflow:hidden}
+b,strong{font-weight:600}
+em{font-style:italic;color:var(--wine)}
+.dark em{color:var(--gold)}
+
+#stage{position:fixed;inset:0;display:grid;place-items:center}
+.slide{position:absolute;width:1920px;height:1080px;transform-origin:center;display:none;overflow:hidden;
+  background:var(--paper);color:var(--ink);padding:100px 150px 96px}
+.slide.on{display:block}
+.slide.dark{background:var(--ink);color:#F6EFE2}
+.slide .bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.slide .bg::before,.slide .bg::after{content:'';position:absolute;border-radius:50%;filter:blur(90px);opacity:.55}
+.slide .bg::before{width:900px;height:900px;left:-300px;top:-250px;background:radial-gradient(closest-side,rgba(110,30,43,.22),transparent 70%)}
+.slide .bg::after{width:800px;height:800px;right:-260px;bottom:-320px;background:radial-gradient(closest-side,rgba(217,164,65,.28),transparent 70%)}
+.slide.dark .bg::before{background:radial-gradient(closest-side,rgba(110,30,43,.55),transparent 70%)}
+.slide.dark .bg::after{background:radial-gradient(closest-side,rgba(217,164,65,.18),transparent 70%)}
+/* заголовок сверху, содержимое по центру оставшегося места */
+.in{position:relative;z-index:2;height:100%;display:flex;flex-direction:column}
+.head{flex:0 0 auto}
+.mid{flex:1;display:flex;flex-direction:column;justify-content:center;padding:20px 0}
+.mid > * + *{margin-top:30px}
+
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--wine);margin-bottom:24px}
+.eyebrow i{width:34px;height:2px;background:var(--wine)}
+.dark .eyebrow{color:#EAD7B0}.dark .eyebrow i{background:#EAD7B0}
+h1{font-family:var(--serif);font-weight:500;font-size:150px;line-height:.92;letter-spacing:-3px}
+h2{font-family:var(--serif);font-weight:500;font-size:74px;line-height:1.02;letter-spacing:-1.5px;max-width:1500px}
+h3{font-family:var(--serif);font-weight:500;font-size:34px;line-height:1.15}
+.lede{font-size:27px;line-height:1.45;color:var(--ink2);max-width:1250px;margin-top:22px}
+.dark .lede{color:#E6DCC8}
+.mono{font-family:var(--mono);font-size:15px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+.dark .mono{color:#C9BBA3}
+.foot{position:absolute;left:150px;right:150px;bottom:44px;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);z-index:3}
+.dark .foot{color:#9B8C86}
+.foot .n{font-weight:700;color:var(--wine)}.dark .foot .n{color:var(--gold)}
+
+.glass{position:relative;background:var(--glass);border:1px solid rgba(255,255,255,.55);border-top-color:var(--edge);border-radius:var(--r);
+  -webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);
+  box-shadow:0 22px 50px -30px rgba(22,17,16,.35),inset 0 1px 0 rgba(255,255,255,.7)}
+.dark .glass{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+.wine{background:var(--wine);color:#F6EFE2;border-radius:8px;box-shadow:0 30px 50px -30px rgba(0,0,0,.7)}
+.wine em{color:var(--gold)}
+.dark .wine{border:1px solid rgba(255,255,255,.12)}
+.inkcard{background:var(--ink);color:#F6EFE2;border-radius:8px;box-shadow:0 30px 50px -30px rgba(0,0,0,.8);border:1px solid rgba(217,164,65,.35)}
+.inkcard em{color:var(--gold)}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.card{padding:34px 36px}
+.card h3{margin-bottom:12px}
+.card p{font-size:21px;line-height:1.5;color:var(--ink2)}
+.dark .card p,.wine p,.inkcard p{color:#E6DCC8}
+.num{font-family:var(--serif);font-size:86px;line-height:1;color:var(--wine);letter-spacing:-2px}
+.dark .num,.inkcard .num{color:var(--gold)}
+.num small{display:block;font-family:var(--mono);font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink2);margin-top:12px;line-height:1.5}
+.dark .num small,.inkcard .num small{color:#C9BBA3}
+
+/* восемь шагов */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:44px 30px}
+.step{position:relative;padding-left:84px}
+.step i{position:absolute;left:0;top:-4px;width:62px;height:62px;border-radius:50%;background:var(--wine);color:#F6EFE2;display:grid;place-items:center;font-family:var(--serif);font-size:26px;font-style:normal}
+.step h3{font-size:27px;margin-bottom:10px}
+.step p{font-size:18px;line-height:1.5;color:var(--ink2)}
+
+/* карта блоков тремя группами */
+.grp{padding:30px 32px 26px;display:flex;flex-direction:column}
+.grp .t{font-family:var(--mono);font-size:13px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--wine)}
+.grp h3{font-size:30px;margin:10px 0 6px}
+.grp .who{font-size:17px;color:var(--ink2);line-height:1.4;min-height:48px}
+.grp ul{list-style:none;margin-top:18px;display:grid;gap:9px}
+.grp li{font-size:19px;line-height:1.35;padding:12px 16px;border-radius:12px;background:rgba(255,255,255,.55);border:1px solid rgba(110,30,43,.12)}
+.grp li b{font-family:var(--mono);font-size:12px;letter-spacing:1px;color:var(--wine);margin-right:10px;font-weight:700}
+.grp.wine .t,.grp.wine .who{color:#E6DCC8}.grp.wine li{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.14)}.grp.wine li b{color:var(--gold)}
+.grp .lv{margin-top:auto;padding-top:16px;display:grid;gap:6px;font-size:15px;color:var(--ink2)}
+.grp .lv span b{color:var(--ink);font-weight:600}
+.grp.wine .lv{color:#C9BBA3}.grp.wine .lv span b{color:#fff}
+
+/* кейсы */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.case{display:grid;grid-template-columns:96px 1fr;gap:20px;align-items:start;padding:26px 28px}
+.case img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.9);box-shadow:0 10px 24px -10px rgba(0,0,0,.4)}
+.case b{display:block;font-family:var(--serif);font-size:26px;line-height:1.1;font-weight:500}
+.case .mono{margin-top:4px;font-size:12px}
+.case .val{font-family:var(--serif);font-size:38px;color:var(--wine);letter-spacing:-1px;margin-top:12px;line-height:1}
+.case .val span{display:block;font-family:var(--sans);font-size:16px;letter-spacing:0;color:var(--ink2);margin-top:6px}
+.case p{grid-column:1/-1;font-size:17px;line-height:1.45;color:var(--ink2);margin-top:4px}
+
+.ph{border-radius:18px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.6)}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.polar{background:#fff;padding:14px 14px 40px;border-radius:6px;box-shadow:0 30px 60px -30px rgba(0,0,0,.55);transform:rotate(-2.5deg)}
+.polar img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.shots{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;align-items:start}
+.shots img{width:100%;border-radius:14px;box-shadow:0 30px 50px -30px rgba(0,0,0,.6);display:block}
+
+/* тарифы */
+.tiers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;align-items:stretch}
+.tier{position:relative;padding:36px 34px 32px;display:flex;flex-direction:column}
+.tier .t{font-family:var(--mono);font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:var(--wine);font-weight:700}
+.tier h3{font-size:40px;margin:12px 0 6px;line-height:1.05}
+.tier .who{font-size:18px;line-height:1.45;color:var(--ink2);min-height:78px}
+.tier .price{font-family:var(--serif);font-size:80px;line-height:1;letter-spacing:-3px;margin:22px 0 8px;color:var(--ink)}
+.tier .price small{font-family:var(--mono);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);display:block;margin-top:10px}
+.tier ul{list-style:none;margin-top:16px;display:grid;gap:9px}
+.tier li{font-size:17.5px;line-height:1.4;padding-left:24px;position:relative}
+.tier li::before{content:'';position:absolute;left:0;top:10px;width:11px;height:11px;border-radius:50%;background:var(--wine)}
+.tier.wine .t,.tier.wine .price{color:#F6EFE2}.tier.wine .who{color:#E6DCC8}.tier.wine li::before{background:var(--gold)}.tier.wine .price small{color:#C9BBA3}
+.tier.inkcard .t{color:var(--gold)}.tier.inkcard .price{color:#F6EFE2}.tier.inkcard .who{color:#E6DCC8}.tier.inkcard li::before{background:var(--gold)}.tier.inkcard .price small{color:#C9BBA3}
+.tier .tag{position:absolute;top:20px;right:20px;font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;background:var(--gold);color:var(--ink);padding:8px 12px;border-radius:999px;font-weight:700}
+
+/* сравнение */
+.cmp{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:0}
+.cmp > div{padding:18px 22px;border-bottom:1px solid rgba(110,30,43,.14);font-size:20px;line-height:1.35}
+.cmp .h{font-family:var(--mono);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--wine);font-weight:700;border-bottom:2px solid rgba(110,30,43,.35);padding-bottom:12px}
+.cmp .h.r{text-align:center}
+.cmp .k{font-weight:600;color:var(--ink)}
+.cmp .v{text-align:center;color:var(--ink2)}
+.cmp .v.y{font-family:var(--serif);color:var(--wine);font-size:26px}
+.cmp .v.n{color:var(--muted)}
+.cmp .sec{grid-column:1/-1;font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:22px 22px 6px;border:0}
+.cmp .last{border-bottom:0}
+
+/* вопросы */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:26px 60px}
+.faq .qa{padding:6px 0 22px;border-bottom:1px solid rgba(110,30,43,.14)}
+.faq h3{font-size:30px;margin-bottom:10px}
+.faq p{font-size:19px;line-height:1.5;color:var(--ink2)}
+
+/* после оплаты */
+.after{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.after .a{padding:32px 30px 30px}
+.after .k{font-family:var(--mono);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--wine);font-weight:700;margin-bottom:14px}
+.after h3{font-size:30px;margin-bottom:12px}
+.after p{font-size:18px;line-height:1.5;color:var(--ink2)}
+
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.chip{font-family:var(--mono);font-size:14px;letter-spacing:1.5px;text-transform:uppercase;padding:12px 18px;border-radius:999px;border:1px solid rgba(110,30,43,.3);background:rgba(255,255,255,.5);color:var(--wine);font-weight:700}
+.dark .chip,.wine .chip{border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:#EAD7B0}
+.btn{display:inline-flex;align-items:center;gap:14px;background:var(--wine);color:#F6EFE2;font-family:var(--mono);font-size:16px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;padding:26px 40px;border-radius:14px;box-shadow:0 18px 36px -16px rgba(110,30,43,.7);text-decoration:none}
+.btn.gold{background:var(--gold);color:var(--ink)}
+
+/* управление */
+#hud{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;justify-content:center;gap:10px;padding:12px;opacity:0;transition:opacity .3s}
+body:hover #hud,html[data-variant=client] #hud{opacity:1}
+#hud button{font:600 13px var(--sans);letter-spacing:.5px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(20,14,14,.8);color:#F6EFE2;cursor:pointer}
+#hud button:hover{background:var(--wine)}
+html[data-variant=client] #nbtn{display:none}
+html[data-variant=call] [data-client-only]{display:none}
+#notes{position:fixed;right:0;top:0;bottom:0;width:420px;z-index:60;background:#171111;color:#F6EFE2;padding:28px 26px;font-size:16px;line-height:1.55;overflow:auto;transform:translateX(100%);transition:transform .3s var(--ease);border-left:1px solid rgba(255,255,255,.12)}
+#notes.on{transform:none}
+#notes h4{font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+#notes p{margin-bottom:12px;color:#E6DCC8}
+#notes p b{color:#fff}
+.notes{display:none}
+#bar{position:fixed;left:0;top:0;height:3px;background:var(--gold);z-index:70;transition:width .3s}
+#cnt{position:fixed;right:16px;bottom:16px;z-index:50;font-family:var(--mono);font-size:12px;letter-spacing:2px;color:#9B8C86}
+
+@media print{
+  body{overflow:visible;background:#fff}
+  #stage{position:static;display:block}
+  .slide{position:relative;display:block!important;transform:none!important;page-break-after:always;margin:0}
+  #hud,#notes,#bar,#cnt{display:none!important}
+  .notes{display:block;page-break-after:always;padding:40px;font-size:18px}
+  html[data-variant=client] .notes{display:none}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+<div id="stage">
+
+<!-- 01 · ОБЛОЖКА -->
+<section class="slide dark" style="padding:0">
+  <div style="position:absolute;inset:0;z-index:1"><img src="images/malena-hero-v4.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:62% 30%"></div>
+  <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(27,20,20,.94) 0%,rgba(27,20,20,.82) 40%,rgba(27,20,20,.25) 75%,rgba(27,20,20,.05) 100%)"></div>
+  <div class="in" style="padding:100px 150px 96px;justify-content:center">
+    <div class="eyebrow"><i></i>Обучение Малены Покладовой</div>
+    <h1><em>New</em> SMM</h1>
+    <div class="lede" style="max-width:860px;font-size:29px"><b style="color:#fff">Клиенты, которые платят в долларах и остаются на годы.</b> Учим с нуля привлекать клиентов и доводить их до результата с помощью искусственного интеллекта, по методике, на которой работает наше агентство в США.</div>
+    <div class="chips"><span class="chip">Ноябрьский поток</span><span class="chip">Онлайн</span><span class="chip">С нуля и для тех, кто в сфере</span></div>
+  </div>
+  <div class="foot"><span>malenapocladova.com</span><span class="n">01</span></div>
+</section>
+
+
+<!-- 03 · КТО ВЕДЁТ -->
+<section class="slide">
+  <div class="bg"></div>
+  <div class="in">
+    <div class="g2" style="grid-template-columns:540px 1fr;gap:70px;align-items:center;height:100%">
+      <div class="polar"><img src="images/malena-b2.jpg" alt="Малена Покладова"></div>
+      <div>
+        <div class="eyebrow"><i></i>Кто ведёт</div>
+        <h2>Малена <em>Покладова</em></h2>
+        <p class="mono" style="margin:18px 0 22px">Сан-Диего · своё агентство · семь лет в продвижении · четыре года обучает</p>
+        <p class="lede" style="margin-top:0;font-size:23px">Ведёт американский бизнес прямо сейчас: студии, клиники, рестораны, эксперты. Приводит им миллионные просмотры и стабильный поток клиентов. По этой же методике переехала в Америку и ни одного дня не работала здесь в найме: только свои клиенты и своё агентство.</p>
+        <p class="lede" style="font-size:21px;margin-top:16px">Вместе с ней обучение ведёт <b>Лев Покладов</b>, сооснователь агентства: стратегия, реклама, автоматизация и искусственный интеллект. Семь лет в маркетинге, клиенты в США, Европе и Азии.</p>
+        <div class="g3" style="margin-top:34px;gap:18px">
+          <div><div class="num" style="font-size:62px">×10<small>окупаемость рекламы у клиента агентства</small></div></div>
+          <div><div class="num" style="font-size:62px">200+<small>женщин закончили обучение</small></div></div>
+          <div><div class="num" style="font-size:62px">7 лет<small>Малена зарабатывает только на соцсетях</small></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>New SMM</span><span class="n">02</span></div>
+</section>
+
+
+<!-- 05 · ТРИ ВЕЩИ -->
+<section class="slide dark">
+  <div class="bg"></div>
+  <div class="in">
+    <div class="head"><div class="eyebrow"><i></i>Что вы получите</div><h2>Три вещи, которые <em>вместе есть только здесь</em></h2></div>
+    <div class="mid">
+      <div class="g3">
+        <div class="wine card" style="padding:40px 36px"><div class="mono" style="color:#C9BBA3">Вместо «пользуюсь нейросетью»</div><h3 style="margin-top:14px;font-size:33px">Искусственный интеллект, который вы <em>настроите под себя</em>: он знает ваших клиентов, ваш стиль и забирает рутину</h3></div>
+        <div class="wine card" style="padding:40px 36px"><div class="mono" style="color:#C9BBA3">Вместо охватов в отчёте</div><h3 style="margin-top:14px;font-size:33px">Путь ведения клиента от первого разговора <em>до продления договора</em>, на живом проекте агентства</h3></div>
+        <div class="wine card" style="padding:40px 36px"><div class="mono" style="color:#C9BBA3">Вместо локальных цен</div><h3 style="margin-top:14px;font-size:33px">Методика <em>американского рынка</em> и выход на заказчиков, которые платят в долларах</h3></div>
+      </div>
+      <p class="lede" style="font-size:23px">Подходит и с нуля, и тем, кто уже в сфере: вход разный, методика одна.</p>
+    </div>
+  </div>
+  <div class="foot"><span>New SMM</span><span class="n">03</span></div>
+</section>
+
+<!-- 06 · ЦИФРЫ КЛИЕНТОВ АГЕНТСТВА -->
+<section class="slide">
+  <div class="bg"></div>
+  <div class="in">
+    <div class="head"><div class="eyebrow"><i></i>Клиенты агентства</div><h2>Цифры клиентов агентства, <em>которые разбираем на обучении</em></h2></div>
+    <div class="mid"><div class="g3" style="gap:22px">
+      <div class="glass card" style="padding:36px">
+        <div class="mono" style="margin-bottom:18px">Студия красоты · Сан-Диего</div>
+        <div class="num" style="font-size:64px">~22K<small>подписчиков, аккаунт выведен с нуля</small></div>
+        <div class="g2" style="gap:14px;margin-top:22px">
+          <div class="num" style="font-size:52px">30<small>дней до полной записи</small></div>
+          <div class="num" style="font-size:52px">×8<small>окупаемость рекламы</small></div>
+        </div>
+        <p style="margin-top:22px;font-size:19px">Сквозной пример всей программы: в каждом блоке показываем, что сделали для этой студии, почему так и что дало результат.</p>
+      </div>
+      <div class="glass card" style="padding:36px">
+        <div class="mono" style="margin-bottom:18px">Онлайн-образование · США</div>
+        <div class="num" style="font-size:64px">×10<small>окупаемость рекламы</small></div>
+        <div class="num" style="font-size:52px;margin-top:22px">200+<small>клиентов на премиум-продукт</small></div>
+        <p style="margin-top:22px;font-size:19px">Реклама окупается в десять раз, работаем на постоянной основе за высокий чек. Как встроились в его работу, разбираем на обучении.</p>
+      </div>
+      <div class="glass card" style="padding:36px">
+        <div class="mono" style="margin-bottom:18px">Иммиграционный адвокат · США</div>
+        <div class="num" style="font-size:64px">1,7M<small>органических просмотров за месяц</small></div>
+        <div class="num" style="font-size:52px;margin-top:22px">1000+<small>новых подписчиков за тот же месяц</small></div>
+        <p style="margin-top:22px;font-size:19px">Что именно в контенте даёт такие просмотры, разбираем на его примере.</p>
+      </div>
+    </div></div>
+  </div>
+  <div class="foot"><span>New SMM</span><span class="n">04</span></div>
+</section>
+
+<!-- 07 · ЦИКЛ АГЕНТСТВА -->
+<section class="slide">
+  <div class="bg"></div>
+  <div class="in">
+    <div class="head"><div class="eyebrow"><i></i>Методика</div><h2>Программа идёт в том же порядке, <em>в каком агентство ведёт клиента</em></h2></div>
+    <div class="mid">
+      <div class="steps">
+        <div class="step"><i>1</i><h3>Стратегия</h3><p>Аудит аккаунта, аудитория, цели на первые месяцы, позиционирование: на чём акцент, от чего отказались.</p></div>
+        <div class="step"><i>2</i><h3>Идеи и сценарии</h3><p>Откуда брать идеи под нишу, как отбирать, как писать сценарии, какие форматы заходят.</p></div>
+        <div class="step"><i>3</i><h3>Съёмка</h3><p>Съёмочный день у клиента, что снимать на телефон, что просить снимать самого клиента.</p></div>
+        <div class="step"><i>4</i><h3>Монтаж и обработка</h3><p>Как монтирует агентство, субтитры, обложки, где AI ускоряет работу, а где вредит.</p></div>
+        <div class="step"><i>5</i><h3>Публикация</h3><p>Контент-план, ритм постинга, сторис, тексты, как держать регулярность месяцами.</p></div>
+        <div class="step"><i>6</i><h3>Аналитика</h3><p>Какие ролики привели подписчиков, что усиливать, от чего отказаться, план на следующий месяц.</p></div>
+        <div class="step"><i>7</i><h3>Реклама и рост</h3><p>Реклама в Meta, локальный таргет, запись через рекламу, стоимость одной записи.</p></div>
+        <div class="step"><i>8</i><h3>Клиент и деньги</h3><p>Отчёт клиенту, удержание, как называть цену, как выглядит предложение в долларах.</p></div>
+      </div>
+      <p class="lede" style="font-size:22px">Показываем, как агентство ведёт американского клиента, шаг за шагом, и вы повторяете каждый шаг на своём проекте.</p>
+    </div>
+  </div>
+  <div class="foot"><span>New SMM</span><span class="n">05</span></div>
+</section>
+
+<!-- 08 · КАРТА БЛОКОВ ТРЕМЯ ГРУППАМИ -->
+<section class="slide">
+  <div class="bg"></div>
+  <div class="in">
+    <div class="head"><div class="eyebrow"><i></i>Программа</div><h2>Десять блоков: <em>что входит в каждый формат</em></h2></div>
+    <div class="mid"><div class="g3" style="gap:22px;align-items:stretch">
+      <div class="glass grp">
+        <div class="t">База · с азов</div>
+        <h3>Полностью в «С нуля»</h3>
+        <div class="who">В «Повышении» коротко, как проверка: самотест и разбор ошибок</div>
+        <ul>
+          <li><b>0</b>Как устроена работа с клиентом</li>
+          <li><b>2</b>Упаковка профиля</li>
+          <li><b>4</b>Съёмка</li>
+          <li><b>6</b>Публикация и системность</li>
+        </ul>
+        <div class="lv"><span><b>С нуля:</b> полностью, с практикой и проверкой</span><span><b>Повышение:</b> обзор и самопроверка</span></div>
+      </div>
+      <div class="wine grp">
+        <div class="t">Ядро · в обоих форматах</div>
+        <h3>То, что отличает агентство</h3>
+        <div class="who">Полностью, с практикой на своём проекте, в обоих форматах</div>
+        <ul>
+          <li><b>1</b>Стратегия</li>
+          <li><b>3</b>Идеи и сценарии</li>
+          <li><b>5</b>Монтаж, обработка, AI-инструменты</li>
+          <li><b>7</b>Аналитика</li>
+        </ul>
+        <div class="lv"><span><b>С нуля:</b> полностью</span><span><b>Повышение:</b> полностью, глубже на своём клиенте</span></div>
+      </div>
+      <div class="glass grp">
+        <div class="t">Продвинутые · деньги</div>
+        <h3>Полностью в «Повышении»</h3>
+        <div class="who">В «С нуля» ознакомительно, чтобы понимать, куда расти</div>
+        <ul>
+          <li><b>8</b>Реклама и рост</li>
+          <li><b>9</b>Клиент и деньги</li>
+        </ul>
+        <div class="lv"><span><b>С нуля:</b> обзор: как реклама дополняет контент, кейс и первое предложение</span><span><b>Повышение:</b> тестовая кампания, отчёт своему клиенту, предложение с ценой в долларах</span></div>
+      </div>
+    </div></div>
+  </div>
+  <div class="foot"><span>New SMM</span><span class="n">06</span></div>
+</section>
+
+<!-- 09 · КАК ПРОХОДИТ -->
+<section class="slide">
+  <div class="bg"></div>
+  <div class="in">
+    <div class="g2" style="grid-template-columns:1fr 500px;gap:70px;align-items:center;height:100%">
+      <div>
+        <div class="eyebrow"><i></i>Формат</div>
+        <h2>Как проходит <em>обучение</em></h2>
+        <div class="g2" style="margin-top:40px;gap:20px">
+          <div class="glass card" style="padding:26px 28px"><h3 style="font-size:26px">Старт в ноябре</h3><p style="font-size:18px">Набор на поток открыт. Дату и расписание присылаем всем, кто записался.</p></div>
+          <div class="glass card" style="padding:26px 28px"><h3 style="font-size:26px">Своя платформа</h3><p style="font-size:18px">Уроки, задания и чат в одном месте, на платформе, которую мы собрали сами. Всё остаётся в записи.</p></div>
+          <div class="glass card" style="padding:26px 28px"><h3 style="font-size:26px">Проверка каждого задания</h3><p style="font-size:18px">Куратор проверяет по чек-листу блока. На эфире Малена разбирает три-пять работ.</p></div>
+          <div class="glass card" style="padding:26px 28px"><h3 style="font-size:26px">Шаблоны агентства</h3><p style="font-size:18px">Стратегия, чек-листы съёмки и аналитики, структура отчёта клиенту. Сертификат по итогам.</p></div>
+        </div>
+      </div>
+      <div class="ph" style="height:740px"><img src="images/malena-b5.jpg" alt="" style="object-position:50% 20%"></div>
+    </div>
+  </div>
+  <div class="foot"><span>New SMM</span><span class="n">07</span></div>
+</section>
+
+<!-- 10 · УЧЕНИЦЫ -->
+<section class="slide">
+  <div class="bg"></div>
+  <div class="in">
+    <div class="head"><div class="eyebrow"><i></i>Ученицы</div><h2>Реальные ученицы, <em>реальные цифры</em></h2></div>
+    <div class="mid">
+      <div class="cases">
+        <div class="glass case"><img src="images/club/otzyvy/face-toma.jpg" alt="Тома"><div><b>Тома</b><div class="mono">ведёт клиентов</div><div class="val">1,4M<span>просмотров набрал ролик её клиентки</span></div></div><p>Работает стабильно: постоянный проект плюс разовые съёмки.</p></div>
+        <div class="glass case"><img src="images/club/otzyvy/face-loredana.jpg" alt="Лоредана"><div><b>Лоредана</b><div class="mono">собирает команду</div><div class="val">4 клиента<span>и крупный проект из Турции</span></div></div><p>Проектов стало больше, чем рук, поэтому набирает свою команду.</p></div>
+        <div class="glass case"><img src="images/club/otzyvy/face-anastasiya.jpg" alt="Анастасия"><div><b>Анастасия</b><div class="mono">ведёт клиентов</div><div class="val">+1 200<span>подписчиков за неделю у клиента</span></div></div><p>Результат на чужом аккаунте, за который платят. То, чему учим.</p></div>
+        <div class="glass case"><img src="images/portrait-alina.jpg" alt="Алина"><div><b>Алина</b><div class="mono">своя SMM-студия</div><div class="val">5 клиентов<span>косметология, стоматология, нутрициология</span></div></div><p>Из декрета в свою студию, три человека в команде.</p></div>
+        <div class="glass case"><img src="images/portrait-elizaveta.jpg" alt="Елизавета"><div><b>Елизавета</b><div class="mono">@ecopresa.md</div><div class="val">0 → 74,2K<span>TikTok · 4,6M лайков</span></div></div><p>Самое большое СМИ об экологии в Молдове, приглашение от DW Romania.</p></div>
+        <div class="glass case"><img src="images/portrait-margarita.jpg" alt="Маргарита"><div><b>Маргарита</b><div class="mono">@flames.creative.m</div><div class="val">2,5K → 50,8K<span>TikTok · 4,4M просмотров</span></div></div><p>Рост подписчиков и вовлечённости у шоу-балета, всё снято на телефон.</p></div>
+      </div>
+      <p class="mono">Истории опубликованы с разрешения учениц, цифры сняты с их аккаунтов</p>
+    </div>
+  </div>
+  <div class="foot"><span>New SMM</span><span class="n">08</span></div>
+</section>
+
+<!-- 11 · ОТЗЫВЫ -->
+<section class="slide dark">
+  <div class="bg"></div>
+  <div class="in">
+    <div class="head"><div class="eyebrow"><i></i>Своими словами</div><h2>Что пишут <em>после обучения</em></h2></div>
+    <div class="mid"><div class="shots">
+      <img src="images/club/otzyvy/shot-01.jpg" alt="Отзыв">
+      <img src="images/club/otzyvy/shot-02.jpg" alt="Отзыв">
+      <img src="images/club/otzyvy/shot-03.jpg" alt="Отзыв">
+      <img src="images/club/otzyvy/shot-04.jpg" alt="Отзыв">
+      <img src="images/club/otzyvy/shot-05.jpg" alt="Отзыв">
+    </div></div>
+  </div>
+  <div class="foot"><span>New SMM</span><span class="n">09</span></div>
+</section>
+
+<!-- 12 · ДВА ФОРМАТА -->
+<section class="slide">
+  <div class="bg"></div>
+  <div class="in">
+    <div class="head"><div class="eyebrow"><i></i>Формат</div><h2>Два пути, <em>одна методика</em></h2></div>
+    <div class="mid"><div class="g2" style="gap:34px">
+      <div class="glass card" style="padding:44px 46px">
+        <div class="mono" style="color:var(--wine);margin-bottom:14px">Путь первый</div>
+        <h3 style="font-size:44px">С нуля</h3>
+        <p style="font-size:22px;margin-top:14px">Никогда не вели аккаунт для клиента или вели по наитию. Проходите весь цикл агентства руками на своём аккаунте или учебном проекте. Итог: упакованный аккаунт, две недели контента, первые цифры и кейс для портфолио.</p>
+        <div class="chips"><span class="chip">Первый кейс</span><span class="chip">Куратор на каждом задании</span><span class="chip">Сертификат</span></div>
+      </div>
+      <div class="wine card" style="padding:44px 46px">
+        <div class="mono" style="color:#C9BBA3;margin-bottom:14px">Путь второй</div>
+        <h3 style="font-size:44px">Повышение квалификации</h3>
+        <p style="font-size:22px;margin-top:14px">Уже работаете с клиентами или ведёте свой блог и упёрлись в потолок результата и цены. Перестраиваете работу по системе агентства на своём действующем клиенте: куратор разбирает вашего клиента по методике агентства, стратегию собирает Малена, личные созвоны с Маленой и Львом.</p>
+        <div class="chips"><span class="chip">Малена и Лев лично</span><span class="chip">Свой клиент</span><span class="chip">Цена в долларах</span></div>
+      </div>
+    </div></div>
+  </div>
+  <div class="foot"><span>New SMM</span><span class="n">10</span></div>
+</section>
+
+<!-- 13 · ТРИ ФОРМАТА И ЦЕНЫ -->
+<section class="slide">
+  <div class="bg"></div>
+  <div class="in">
+    <div class="head"><div class="eyebrow"><i></i>Стоимость</div><h2>Три формата <em>участия</em></h2></div>
+    <div class="mid"><div class="tiers">
+      <div class="glass tier">
+        <div class="t">Формат первый</div>
+        <h3>С нуля</h3>
+        <div class="who">Для тех, кто входит в SMM и хочет собрать первый кейс по системе агентства</div>
+        <div class="price">$1 200<small>рассрочка на 3 платежа</small></div>
+        <ul><li>Все десять блоков, базовые полностью</li><li>Куратор проверяет каждое задание</li><li>Эфиры с разборами работ, чат потока</li><li>Шаблоны, чек-листы и таблицы агентства</li><li>Сертификат и оформленный кейс</li></ul>
+      </div>
+      <div class="wine tier">
+        <div class="tag">8 мест</div>
+        <div class="t">Формат второй</div>
+        <h3>Повышение квалификации</h3>
+        <div class="who">Для тех, кто уже в сфере и хочет новый уровень результата и чека</div>
+        <div class="price">$2 000<small>рассрочка на 4 платежа</small></div>
+        <ul><li>Реклама и деньги с практикой на вашем клиенте</li><li>Куратор разбирает аккаунт вашего клиента</li><li>Личная стратегия от Малены под вашу нишу</li><li>Два личных созвона с Маленой и Львом</li><li>Отчёт и предложение клиенту в долларах</li></ul>
+      </div>
+      <div class="inkcard tier">
+        <div class="tag">По приглашению</div>
+        <div class="t">Формат третий</div>
+        <h3>Закрытый</h3>
+        <div class="who">Индивидуальная программа для тех, кому нужен максимум личного участия Малены и Льва</div>
+        <div class="price">$5 000<small>условия обсуждаются лично</small></div>
+        <ul><li>Состав программы собирается под ваш проект</li><li>Личная работа с Маленой и Львом</li><li>Условия и формат называем на отдельном разговоре</li></ul>
+      </div>
+    </div></div>
+  </div>
+  <div class="foot"><span>New SMM</span><span class="n">11</span></div>
+</section>
+
+<!-- 14 · ЧТО ВХОДИТ · сравнение -->
+<section class="slide">
+  <div class="bg"></div>
+  <div class="in">
+    <div class="head"><div class="eyebrow"><i></i>Сравнение</div><h2>Что входит <em>в «С нуля» и в «Повышение»</em></h2></div>
+    <div class="mid"><div class="glass" style="padding:10px 26px 18px"><div class="cmp">
+      <div class="h"></div><div class="h r">С нуля · $1 200</div><div class="h r">Повышение · $2 000</div>
+      <div class="sec">Проект</div>
+      <div class="k">На чём работаете весь поток</div><div class="v">свой аккаунт или учебный проект</div><div class="v">действующий клиент или свой блог</div>
+      <div class="sec">Программа</div>
+      <div class="k">База: работа с клиентом, упаковка, съёмка, публикация</div><div class="v">полностью, с азов</div><div class="v">сжато, самопроверка</div>
+      <div class="k">Ядро: стратегия, сценарии, монтаж с AI, аналитика</div><div class="v y">✓</div><div class="v y">✓</div>
+      <div class="k">Продвинутые: реклама и рост, клиент и деньги</div><div class="v">ознакомительно</div><div class="v y">✓ с практикой</div>
+      <div class="sec">Обратная связь</div>
+      <div class="k">Куратор проверяет каждое задание, разборы на эфирах</div><div class="v y">✓</div><div class="v y">✓</div>
+      <div class="k">Разбор аккаунта вашего клиента по методике агентства</div><div class="v n">нет</div><div class="v y">✓</div>
+      <div class="k">Личная стратегия от Малены, два личных созвона с Маленой и Львом</div><div class="v n">нет</div><div class="v y">✓</div>
+      <div class="sec">Итог</div>
+      <div class="k last">С чем выходите</div><div class="v last">упакованный аккаунт, две недели контента, первые цифры, кейс</div><div class="v last">стратегия и отчёт клиенту, реклама, предложение в долларах</div>
+    </div></div></div>
+  </div>
+  <div class="foot"><span>New SMM</span><span class="n">12</span></div>
+</section>
+
+<!-- 15 · РАССРОЧКА -->
+<section class="slide dark">
+  <div class="bg"></div>
+  <div class="in">
+    <div class="g2" style="grid-template-columns:1fr 1fr;gap:60px;align-items:center;height:100%">
+      <div>
+        <div class="eyebrow"><i></i>Условия</div>
+        <h2>Можно <em>частями</em></h2>
+        <p class="lede" style="font-size:24px">Рассрочка на три платежа для «С нуля» и на четыре для «Повышения квалификации». Для США через Klarna и Affirm, для Европы PayPal в три платежа, где проходит по лимиту.</p>
+        <p class="lede" style="font-size:24px;margin-top:18px">Депозит <b style="color:#fff">$100</b> держит место и цену семь дней и засчитывается в оплату. Если передумали, возвращаем по первой просьбе в течение суток.</p>
+      </div>
+      <div class="glass card" style="padding:46px 48px">
+        <div class="mono" style="margin-bottom:18px">Почему это окупается</div>
+        <div class="num" style="font-size:64px">от $1 000 до $1 500<small>в месяц платит агентству один клиент на ведении в США</small></div>
+        <p style="margin-top:26px;font-size:22px">Один такой клиент за два месяца перекрывает обучение целиком. Мы учим доводить его до продления, чтобы дальше вы работали на себя.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>New SMM</span><span class="n">13</span></div>
+</section>
+
+<!-- 16 · ПОСЛЕ ОПЛАТЫ -->
+<section class="slide">
+  <div class="bg"></div>
+  <div class="in">
+    <div class="head"><div class="eyebrow"><i></i>Дальше</div><h2>Что происходит <em>после решения</em></h2></div>
+    <div class="mid"><div class="after">
+      <div class="glass a"><div class="k">Шаг 1</div><h3>Договор</h3><p>Оформляем контракт: формат, сроки, условия. Оплата целиком или первый платёж рассрочки.</p></div>
+      <div class="glass a"><div class="k">Шаг 2</div><h3>Платформа</h3><p>Добавляем вас на нашу платформу: там уроки, задания, проверка и чат с куратором или с нами, в зависимости от формата.</p></div>
+      <div class="glass a"><div class="k">Шаг 3</div><h3>Ноябрь · старт</h3><p>Десять блоков в порядке работы агентства, задания с проверкой, разбор клиента агентства на каждом шаге.</p></div>
+      <div class="glass a"><div class="k">Шаг 4</div><h3>Год доступа</h3><p>После потока доступ к урокам и шаблонам остаётся ещё на год. Вы работаете по методике на своём проекте.</p></div>
+    </div></div>
+  </div>
+  <div class="foot"><span>New SMM</span><span class="n">14</span></div>
+</section>
+
+<!-- 17 · ВОПРОСЫ -->
+<section class="slide">
+  <div class="bg"></div>
+  <div class="in">
+    <div class="head"><div class="eyebrow"><i></i>Вопросы</div><h2>Что спрашивают <em>перед решением</em></h2></div>
+    <div class="mid"><div class="faq">
+      <div class="qa"><h3>Успею ли совмещать с работой и семьёй?</h3><p>Всё в записи на платформе, задания строятся одно на другом, догнать можно с любого блока. Эфиры в двух часовых поясах.</p></div>
+      <div class="qa"><h3>Можно ли оплатить частями?</h3><p>Да: три платежа для «С нуля», четыре для «Повышения». Депозит $100 держит цену семь дней и возвращается, если передумали.</p></div>
+      <div class="qa"><h3>На ком практиковаться, если клиентов пока нет?</h3><p>На своём аккаунте или на учебном проекте: знакомый мастер, локальный бизнес, которому вы ведёте аккаунт ради кейса. Так собирается первое портфолио.</p></div>
+      <div class="qa"><h3>Не заменит ли искусственный интеллект саму профессию?</h3><p>Мы сами работаем с ним каждый день и показываем, где он ускоряет работу, а где вредит. Клиент платит за результат, инструмент тут вторичен.</p></div>
+      <div class="qa"><h3>Я совсем с нуля, без аккаунта. Подойдёт?</h3><p>Да, для этого есть формат «С нуля»: базовые блоки с азов и куратор на каждом задании.</p></div>
+      <div class="qa"><h3>Что будет с доступом после потока?</h3><p>Уроки и шаблоны остаются у вас ещё на год после окончания.</p></div>
+    </div></div>
+  </div>
+  <div class="foot"><span>New SMM</span><span class="n">15</span></div>
+</section>
+
+<!-- 18 · ФИНАЛ -->
+<section class="slide dark" style="padding:0">
+  <div style="position:absolute;inset:0;z-index:1"><img src="images/malena-b6.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 22%;opacity:.6"></div>
+  <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(27,20,20,.94) 0%,rgba(27,20,20,.8) 45%,rgba(27,20,20,.2) 100%)"></div>
+  <div class="in" style="padding:100px 150px 96px;justify-content:center;align-items:flex-start">
+    <div class="eyebrow"><i></i>Ноябрьский поток</div>
+    <h2 style="font-size:96px">Начнём <em>в ноябре</em></h2>
+    <p class="lede" style="font-size:26px;max-width:960px">Выбираете формат, оформляем договор и добавляем вас на платформу. Дальше десять блоков в порядке работы агентства, и первый кейс или новый уровень с вашим клиентом.</p>
+    <div style="margin-top:38px;display:flex;gap:16px;flex-wrap:wrap">
+      <a class="btn" href="https://malenapocladova.com/zapis">Записаться на разбор</a>
+      <a class="btn gold" data-client-only="1" href="https://malenapocladova.com/zapis">malenapocladova.com/zapis</a>
+    </div>
+    <p class="mono" style="margin-top:26px">Двадцать минут в Zoom, бесплатно · @malenapocladova</p>
+  </div>
+  <div class="foot"><span>malenapocladova.com</span><span class="n">16</span></div>
+</section>
+
+</div>
+
+<div id="hud">
+  <button data-go="-1">← Назад</button>
+  <button data-go="1">Вперёд →</button>
+  <button id="nbtn">Заметки · N</button>
+  <button id="fbtn">Во весь экран · F</button>
+</div>
+<div id="cnt"></div>
+<aside id="notes"></aside>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide')), notes=[].slice.call(document.querySelectorAll('.notes'));
+  var i=Math.max(0,Math.min(slides.length-1,(+location.hash.slice(1)||1)-1)), panel=document.getElementById('notes'), bar=document.getElementById('bar'), cnt=document.getElementById('cnt');
+  function fit(){ var s=Math.min(innerWidth/1920,innerHeight/1080); slides.forEach(function(el){ el.style.transform='scale('+s+')'; }); }
+  function show(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach(function(el,k){ el.classList.toggle('on',k===i); });
+    panel.innerHTML=notes[i]?notes[i].innerHTML:''; bar.style.width=((i+1)/slides.length*100)+'%';
+    cnt.textContent=(i+1)+' / '+slides.length;
+    history.replaceState(null,'','#'+(i+1));
+  }
+  addEventListener('resize',fit); fit(); show(i);
+  addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') show(i+1);
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') show(i-1);
+    else if(e.key==='Home') show(0); else if(e.key==='End') show(slides.length-1);
+    else if(e.key.toLowerCase()==='n'&&notes.length) panel.classList.toggle('on');
+    else if(e.key.toLowerCase()==='f'){ document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen(); }
+  });
+  document.getElementById('hud').addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    if(b.dataset.go) show(i+ +b.dataset.go);
+    else if(b.id==='nbtn') panel.classList.toggle('on');
+    else if(b.id==='fbtn'){ document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen(); }
+  });
+  document.getElementById('stage').addEventListener('click',function(e){ if(e.target.closest('#hud')||e.target.closest('a')) return; show(e.clientX>innerWidth/2?i+1:i-1); });
+  /* свайп на телефоне */
+  var x0=null; addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+  addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; x0=null; if(Math.abs(dx)>50) show(dx<0?i+1:i-1); },{passive:true});
+})();
+</script>
+</body>
+</html>
