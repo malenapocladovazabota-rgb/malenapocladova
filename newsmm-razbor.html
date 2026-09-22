@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ru" data-variant="client">
+<html lang="ru" data-variant="call">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>New SMM · обучение Малены Покладовой</title>
+<title>Разбор New SMM · для команды</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -192,6 +192,34 @@ html[data-variant=client] .only-call{display:none}
 </style>
 </head>
 <body>
+<div id="int">Внутренняя версия · заметки по клавише N · клиенту отправлять <b>malenapocladova.com/newsmm-prezentaciya</b><button id="intx" title="Скрыть насовсем">&times;</button></div>
+<style>
+#int{position:fixed;left:0;right:0;top:0;z-index:80;background:#6E1E2B;color:#F6EFE2;
+  font:600 12px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;letter-spacing:.4px;
+  text-align:center;padding:7px 38px 7px 14px;opacity:.94;transition:opacity .25s}
+#int b{color:#F5C463}
+#int:hover{opacity:.22}
+#intx{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:22px;height:22px;border:0;
+  border-radius:50%;background:rgba(255,255,255,.18);color:#F6EFE2;font:400 15px/1 sans-serif;cursor:pointer;padding:0}
+#intx:hover{background:rgba(255,255,255,.36)}
+#int.off{display:none}
+@media print{#int{display:none}}
+</style>
+<script>
+(function(){
+  var b=document.getElementById('int');
+  /* крестик прячет полоску навсегда на этом компьютере */
+  try{ if(localStorage.getItem('newsmm_int_hidden')==='1') b.classList.add('off'); }catch(e){}
+  document.getElementById('intx').addEventListener('click',function(){
+    b.classList.add('off');
+    try{ localStorage.setItem('newsmm_int_hidden','1'); }catch(e){}
+  });
+  /* в полноэкранном режиме полоски нет: идёт показ экрана */
+  document.addEventListener('fullscreenchange',function(){
+    b.style.visibility=document.fullscreenElement?'hidden':'';
+  });
+})();
+</script>
 <div id="bar"></div>
 <div id="stage">
 
@@ -209,7 +237,22 @@ html[data-variant=client] .only-call{display:none}
   </div>
   <div class="foot"><span>malenapocladova.com</span><span class="n">01</span></div>
 </section>
+<div class="notes"><h4>Что сказать</h4><p>Поздороваться, назвать по имени. «У нас двадцать минут. Сначала расспрошу вас, потом покажу, как это устроено у нас, и в конце обсудим формат. Если что-то не подойдёт, скажу прямо».</p><p><b>Не читать слайд вслух.</b> Он работает фоном, пока вы знакомитесь.</p></div>
 
+<!-- 02 · ПЛАН · только созвон -->
+<section class="slide" data-call="1">
+  <div class="bg"></div>
+  <div class="in">
+    <div class="head"><div class="eyebrow"><i></i>План разговора</div><h2>Три части <em>и одно решение</em></h2></div>
+    <div class="mid"><div class="g3">
+      <div class="glass card"><div class="num">1<small>пять минут</small></div><h3>Ваша ситуация</h3><p>Чем занимаетесь, сколько проектов, какой чек, что мешает. От этого зависит, какой формат имеет смысл.</p></div>
+      <div class="glass card"><div class="num">2<small>десять минут</small></div><h3>Как это работает у нас</h3><p>Что вы получите, клиенты агентства в цифрах, порядок работы, программа.</p></div>
+      <div class="glass card"><div class="num">3<small>пять минут</small></div><h3>Формат и условия</h3><p>Три формата, цены, рассрочка, что происходит после оплаты. Ответы на вопросы.</p></div>
+    </div></div>
+  </div>
+  <div class="foot"><span>New SMM</span><span class="n">02</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4><p>Проговорить план одной фразой и сразу перейти к вопросам. Слайд нужен, чтобы человек понимал, что цена будет в конце и никуда не денется.</p></div>
 
 <!-- 03 · КТО ВЕДЁТ -->
 <section class="slide">
@@ -231,9 +274,25 @@ html[data-variant=client] .only-call{display:none}
       </div>
     </div>
   </div>
-  <div class="foot"><span>New SMM</span><span class="n">02</span></div>
+  <div class="foot"><span>New SMM</span><span class="n">03</span></div>
 </section>
+<div class="notes"><h4>Что сказать</h4><p>Коротко. Главное для доверия: Малена живёт в Сан-Диего и ведёт американских клиентов сегодня, это её собственный текущий опыт. Название агентства вслух не обязательно.</p><p>Если разбор ведёт не Малена: «Я из команды Малены, разборы веду я, обучение ведут Малена и Лев». Цифру 200+ не расшифровывать, точная сверка выпускниц в работе.</p></div>
 
+<!-- 04 · ВАША СИТУАЦИЯ · только созвон -->
+<section class="slide dark" data-call="1">
+  <div class="bg"></div>
+  <div class="in">
+    <div class="head"><div class="eyebrow"><i></i>Часть первая</div><h2>Расскажите, <em>что у вас сейчас</em></h2></div>
+    <div class="mid"><div class="g4">
+      <div class="glass card"><div class="mono" style="color:#EAD7B0;margin-bottom:12px">01</div><h3>Чем занимаетесь</h3><p>Ведёте клиентов, свой блог, свой бизнес или пока в другой сфере.</p></div>
+      <div class="glass card"><div class="mono" style="color:#EAD7B0;margin-bottom:12px">02</div><h3>Сколько проектов</h3><p>Ни одного, один, два-три, четыре и больше. Кто эти клиенты.</p></div>
+      <div class="glass card"><div class="mono" style="color:#EAD7B0;margin-bottom:12px">03</div><h3>Какой чек</h3><p>Сколько платит один клиент в месяц. Если клиентов нет: сколько хотите через полгода.</p></div>
+      <div class="glass card"><div class="mono" style="color:#EAD7B0;margin-bottom:12px">04</div><h3>Что мешает</h3><p>Мало клиентов, низкий чек, уходят через месяц, не видно результата в деньгах, рутина.</p></div>
+    </div></div>
+  </div>
+  <div class="foot"><span>New SMM</span><span class="n">04</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4><p>Ответы из анкеты уже в карточке контакта в CRM. Уточняйте, вместо того чтобы спрашивать заново: «Вы написали, что ведёте один проект. Что это за клиент и почему один?»</p><p><b>Слушать больше, чем говорить.</b> Всё, что человек скажет здесь, вернётся в конце как аргумент за формат.</p></div>
 
 <!-- 05 · ТРИ ВЕЩИ -->
 <section class="slide dark">
@@ -249,8 +308,9 @@ html[data-variant=client] .only-call{display:none}
       <p class="lede" style="font-size:23px">Подходит и с нуля, и тем, кто уже в сфере: вход разный, методика одна.</p>
     </div>
   </div>
-  <div class="foot"><span>New SMM</span><span class="n">03</span></div>
+  <div class="foot"><span>New SMM</span><span class="n">05</span></div>
 </section>
+<div class="notes"><h4>Что сказать</h4><p>Ядро оффера, те же три карточки, что человек видел на сайте. Не перечислять подряд, выбрать одну под его боль и раскрыть на минуту.</p><p>Про AI честно: мы не выдаём готового робота. Мы показываем, как настроить ассистента под себя и под каждого клиента, и вы делаете это своими руками на обучении. Дальше он ваш.</p><p>Под боль «клиенты уходят через месяц»: продление договора это часть работы, ей и учим. Под «охваты есть, денег нет»: отчёт клиенту в заявках и выручке.</p></div>
 
 <!-- 06 · ЦИФРЫ КЛИЕНТОВ АГЕНТСТВА -->
 <section class="slide">
@@ -281,8 +341,9 @@ html[data-variant=client] .only-call{display:none}
       </div>
     </div></div>
   </div>
-  <div class="foot"><span>New SMM</span><span class="n">04</span></div>
+  <div class="foot"><span>New SMM</span><span class="n">06</span></div>
 </section>
+<div class="notes"><h4>Что сказать</h4><p>Это цифры клиентов агентства, и мы так и говорим: чьи они. Долларовых кейсов учениц нового формата пока нет, поток первый. Честность здесь продаёт лучше, чем округление.</p><p>Название студии и имя владелицы вслух не называем, пока нет разрешения. Средняя карточка это обещание с сайта «покажем клиента, у которого реклама окупается в десять раз», обязательно остановиться на ней.</p></div>
 
 <!-- 07 · ЦИКЛ АГЕНТСТВА -->
 <section class="slide">
@@ -303,8 +364,9 @@ html[data-variant=client] .only-call{display:none}
       <p class="lede" style="font-size:22px">Показываем, как агентство ведёт американского клиента, шаг за шагом, и вы повторяете каждый шаг на своём проекте.</p>
     </div>
   </div>
-  <div class="foot"><span>New SMM</span><span class="n">05</span></div>
+  <div class="foot"><span>New SMM</span><span class="n">07</span></div>
 </section>
+<div class="notes"><h4>Что сказать</h4><p>Провести по восьми шагам за полминуты. Спросить: «На каком шаге вы сейчас застреваете?» Обычно называют 6, 7 или 8: аналитика, реклама, деньги. Это та часть, о которой на разборах спрашивают чаще всего.</p></div>
 
 <!-- 08 · КАРТА БЛОКОВ ТРЕМЯ ГРУППАМИ -->
 <section class="slide">
@@ -348,8 +410,9 @@ html[data-variant=client] .only-call{display:none}
       </div>
     </div></div>
   </div>
-  <div class="foot"><span>New SMM</span><span class="n">06</span></div>
+  <div class="foot"><span>New SMM</span><span class="n">08</span></div>
 </section>
+<div class="notes"><h4>Что сказать</h4><p>«Один набор уроков, два формата. Разница в том, какие блоки вы проходите с практикой и проверкой, а какие как обзор». Левая колонка это то, что новичку нужно с азов, а опытному только проверить. Правая наоборот. Середина одинаково важна всем.</p><p>Если спросят подробности: «Карта блоков вот, расписание по неделям присылаем участницам до старта».</p></div>
 
 <!-- 09 · КАК ПРОХОДИТ -->
 <section class="slide">
@@ -369,8 +432,9 @@ html[data-variant=client] .only-call{display:none}
       <div class="ph" style="height:740px"><img src="images/malena-b5.jpg" alt="" style="object-position:50% 20%"></div>
     </div>
   </div>
-  <div class="foot"><span>New SMM</span><span class="n">07</span></div>
+  <div class="foot"><span>New SMM</span><span class="n">09</span></div>
 </section>
+<div class="notes"><h4>Что сказать</h4><p>Самый частый страх: «не успею». Ответ: всё в записи на платформе. Второй: «останусь одна». Ответ: куратор проверяет каждое задание, в «Повышении» разбирает ещё и аккаунт вашего клиента.</p></div>
 
 <!-- 10 · УЧЕНИЦЫ -->
 <section class="slide">
@@ -389,8 +453,9 @@ html[data-variant=client] .only-call{display:none}
       <p class="mono">Истории опубликованы с разрешения учениц, цифры сняты с их аккаунтов</p>
     </div>
   </div>
-  <div class="foot"><span>New SMM</span><span class="n">08</span></div>
+  <div class="foot"><span>New SMM</span><span class="n">10</span></div>
 </section>
+<div class="notes"><h4>Что сказать</h4><p>Выбрать одну историю под собеседника. Новичку: Алина или Елизавета, обе начинали с нуля. Тому, кто в сфере: Тома, Лоредана, Анастасия, у них результат на клиентских аккаунтах.</p><p>Это выпускницы прошлых потоков. Так и говорим: «Это результаты на прошлой программе. Новая идёт по методике агентства и глубже в деньги, поэтому ждём других результатов, но обещать их пока не имеем права».</p></div>
 
 <!-- 11 · ОТЗЫВЫ -->
 <section class="slide dark">
@@ -405,8 +470,9 @@ html[data-variant=client] .only-call{display:none}
       <img src="images/club/otzyvy/shot-05.jpg" alt="Отзыв">
     </div></div>
   </div>
-  <div class="foot"><span>New SMM</span><span class="n">09</span></div>
+  <div class="foot"><span>New SMM</span><span class="n">11</span></div>
 </section>
+<div class="notes"><h4>Что сказать</h4><p>Не задерживаться. Десять секунд, чтобы человек увидел живые переписки, и дальше к формату. Не читать вслух и не увеличивать.</p></div>
 
 <!-- 12 · ДВА ФОРМАТА -->
 <section class="slide">
@@ -428,8 +494,9 @@ html[data-variant=client] .only-call{display:none}
       </div>
     </div></div>
   </div>
-  <div class="foot"><span>New SMM</span><span class="n">10</span></div>
+  <div class="foot"><span>New SMM</span><span class="n">12</span></div>
 </section>
+<div class="notes"><h4>Что сказать</h4><p>К этому моменту вы уже знаете, какой путь подходит. Назовите его сами: «Судя по тому, что вы рассказали, вам второй, и вот почему». Не предлагать выбирать, это возвращает человека в сомнения.</p><p><b>Правило:</b> «Повышение квалификации» и закрытый формат продаются только через разговор с Маленой или Львом. Если разбор ведёт Александра, её шаг здесь это назначить второй разговор, счёт на нём.</p></div>
 
 <!-- 13 · ТРИ ФОРМАТА И ЦЕНЫ -->
 <section class="slide">
@@ -462,8 +529,9 @@ html[data-variant=client] .only-call{display:none}
       </div>
     </div></div>
   </div>
-  <div class="foot"><span>New SMM</span><span class="n">11</span></div>
+  <div class="foot"><span>New SMM</span><span class="n">13</span></div>
 </section>
+<div class="notes"><h4>Что сказать</h4><p>Называть цену спокойно, без паузы после цифры, сразу переходя к тому, что входит. Восемь мест на «Повышении» это предел по личным созвонам Малены за поток.</p><p>Про закрытый формат: «Есть третий формат, по приглашению, там другое участие Малены и Льва. Если интересно, договоримся об отдельном разговоре». Состав пока не расписан, детали не выдумывать.</p><p><b>Экономика:</b> один клиент на ведении в США платит агентству от $1 000 до $1 500 в месяц. Два месяца с одним таким клиентом перекрывают любой из форматов.</p></div>
 
 <!-- 14 · ЧТО ВХОДИТ · сравнение -->
 <section class="slide">
@@ -487,8 +555,9 @@ html[data-variant=client] .only-call{display:none}
       <tr class="last"><td class="k">С чем выходите</td><td class="v">упакованный аккаунт, контент, первые цифры, кейс</td><td class="v">стратегия и отчёт клиенту, реклама, предложение в долларах</td></tr>
     </table></div></div>
   </div>
-  <div class="foot"><span>New SMM</span><span class="n">12</span></div>
+  <div class="foot"><span>New SMM</span><span class="n">14</span></div>
 </section>
+<div class="notes"><h4>Что сказать</h4><p>Уроки одни и те же. Разница в цене это глубина практики и обратной связи. Новичка на «Повышение» не тянуть, ему там нечего перестраивать.</p></div>
 
 <!-- 15 · РАССРОЧКА -->
 <section class="slide dark">
@@ -508,8 +577,9 @@ html[data-variant=client] .only-call{display:none}
       </div>
     </div>
   </div>
-  <div class="foot"><span>New SMM</span><span class="n">13</span></div>
+  <div class="foot"><span>New SMM</span><span class="n">15</span></div>
 </section>
+<div class="notes"><h4>Что сказать</h4><p>Депозит предлагать всем, кто говорит «мне надо подумать»: «Давайте зафиксируем цену на неделю, это $100, они возвратные. Подумаете спокойно, семь дней цена и место за вами».</p></div>
 
 <!-- 16 · ПОСЛЕ ОПЛАТЫ -->
 <section class="slide">
@@ -523,8 +593,9 @@ html[data-variant=client] .only-call{display:none}
       <div class="glass a"><div class="k">Шаг 4</div><h3>Год доступа</h3><p>После потока доступ к урокам и шаблонам остаётся ещё на год. Вы работаете по методике на своём проекте.</p></div>
     </div></div>
   </div>
-  <div class="foot"><span>New SMM</span><span class="n">14</span></div>
+  <div class="foot"><span>New SMM</span><span class="n">16</span></div>
 </section>
+<div class="notes"><h4>Что сказать</h4><p>Снять неопределённость: человек должен понимать, что будет завтра после решения. Для «Повышения» добавить: личная стратегия от Малены собирается на одном из личных созвонов, дату согласуем после старта.</p></div>
 
 <!-- 17 · ВОПРОСЫ -->
 <section class="slide">
@@ -540,8 +611,9 @@ html[data-variant=client] .only-call{display:none}
       <div class="qa"><h3>Что будет с доступом после потока?</h3><p>Уроки и шаблоны остаются у вас ещё на год после окончания.</p></div>
     </div></div>
   </div>
-  <div class="foot"><span>New SMM</span><span class="n">15</span></div>
+  <div class="foot"><span>New SMM</span><span class="n">17</span></div>
 </section>
+<div class="notes"><h4>Что сказать</h4><p>Отвечать только на тот вопрос, который человек задал, остальные не зачитывать. Ничего сверх этих формулировок не обещать.</p></div>
 
 <!-- 18 · ФИНАЛ -->
 <section class="slide dark" style="padding:0">
@@ -551,13 +623,18 @@ html[data-variant=client] .only-call{display:none}
     <div class="eyebrow"><i></i>Ноябрьский поток</div>
     <h2 style="font-size:96px">Начнём <em>в ноябре</em></h2>
     <p class="lede" style="font-size:26px;max-width:960px">Выбираете формат, оформляем договор и добавляем вас на платформу. Дальше десять блоков в порядке работы агентства, и первый кейс или новый уровень с вашим клиентом.</p>
-        <div class="only-client" style="margin-top:38px">
-      <a class="btn" href="https://malenapocladova.com/zapis" target="_blank" rel="noopener">Записаться на разбор<svg viewBox="0 0 16 16" width="15" height="15" fill="none" aria-hidden="true"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <p class="mono" style="margin-top:24px">malenapocladova.com/zapis · двадцать минут в Zoom, бесплатно · @malenapocladova</p>
+    <div class="only-call">
+      <div class="nx">
+        <div><b>1</b><span>Выбираем формат</span></div>
+        <div><b>2</b><span>Договор и первый платёж</span></div>
+        <div><b>3</b><span>Платформа и старт в ноябре</span></div>
+      </div>
+      <p class="mono" style="margin-top:26px">Депозит $100 держит место и цену семь дней, возвратный</p>
     </div>
-  </div>
-  <div class="foot"><span>malenapocladova.com</span><span class="n">16</span></div>
+      </div>
+  <div class="foot"><span>malenapocladova.com</span><span class="n">18</span></div>
 </section>
+<div class="notes"><h4>Что сказать</h4><p>Три шага на экране держат разговор в конкретике, пока вы закрываете. Закрывайте голосом, без паузы: назовите формат, который вы уже выбрали за человека, и спросите «Оформляем сегодня или фиксируем депозитом?» Дальше по ответу: договор и оплата, депозит или следующий разговор с конкретным днём и часом.</p><p>После созвона: перевести сделку в CRM на нужную стадию и написать человеку итог разговора одним сообщением.</p></div>
 
 </div>
 
