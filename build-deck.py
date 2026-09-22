@@ -13,6 +13,8 @@ h = h.replace('<html lang="ru" data-variant="call">', '<html lang="ru" data-vari
 h = h.replace('<title>New SMM · презентация</title>', '<title>New SMM · обучение Малены Покладовой · презентация</title>', 1)
 # слайды только для созвона вместе с их заметками
 h = re.sub(r'<!-- \d\d · [^\n]*только созвон -->\n<section class="slide[^>]*data-call="1"[\s\S]*?</section>\n<div class="notes">[\s\S]*?</div>\n', '', h)
+# блоки только для созвона
+h = re.sub(r'<div class="only-call">[\s\S]*?\n    </div>\n', '', h)
 # все заметки
 h = re.sub(r'<div class="notes">[\s\S]*?</div>\n', '', h)
 # картинки относительно course-site
