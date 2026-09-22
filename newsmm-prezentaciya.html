@@ -127,17 +127,17 @@ h3{font-family:var(--serif);font-weight:500;font-size:34px;line-height:1.15}
 .tier.inkcard .t{color:var(--gold)}.tier.inkcard .price{color:#F6EFE2}.tier.inkcard .who{color:#E6DCC8}.tier.inkcard li::before{background:var(--gold)}.tier.inkcard .price small{color:#C9BBA3}
 .tier .tag{position:absolute;top:20px;right:20px;font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;background:var(--gold);color:var(--ink);padding:8px 12px;border-radius:999px;font-weight:700}
 
-/* сравнение */
-.cmp{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:0}
-.cmp > div{padding:18px 22px;border-bottom:1px solid rgba(110,30,43,.14);font-size:20px;line-height:1.35}
-.cmp .h{font-family:var(--mono);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--wine);font-weight:700;border-bottom:2px solid rgba(110,30,43,.35);padding-bottom:12px}
-.cmp .h.r{text-align:center}
-.cmp .k{font-weight:600;color:var(--ink)}
-.cmp .v{text-align:center;color:var(--ink2)}
-.cmp .v.y{font-family:var(--serif);color:var(--wine);font-size:26px}
-.cmp .v.n{color:var(--muted)}
-.cmp .sec{grid-column:1/-1;font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:22px 22px 6px;border:0}
-.cmp .last{border-bottom:0}
+/* сравнение: обычная таблица, предсказуема и в браузере, и в печати */
+.cmp{width:100%;border-collapse:collapse;table-layout:fixed}
+.cmp td,.cmp th{padding:13px 20px;border-bottom:1px solid rgba(110,30,43,.14);font-size:19px;line-height:1.35;vertical-align:middle}
+.cmp th{font-family:var(--mono);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--wine);font-weight:700;border-bottom:2px solid rgba(110,30,43,.35);padding:4px 20px 12px;text-align:center}
+.cmp th.k{text-align:left}
+.cmp td.k{font-weight:600;color:var(--ink)}
+.cmp td.v{text-align:center;color:var(--ink2)}
+.cmp td.v.y{font-family:var(--serif);color:var(--wine);font-size:24px}
+.cmp td.v.n{color:var(--muted)}
+.cmp td.sec{font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:15px 20px 3px;border:0}
+.cmp tr.last td{border-bottom:0}
 
 /* вопросы */
 .faq{display:grid;grid-template-columns:1fr 1fr;gap:26px 60px}
@@ -462,22 +462,23 @@ html[data-variant=call] [data-client-only]{display:none}
 <section class="slide">
   <div class="bg"></div>
   <div class="in">
-    <div class="head"><div class="eyebrow"><i></i>Сравнение</div><h2>Что входит <em>в «С нуля» и в «Повышение»</em></h2></div>
-    <div class="mid"><div class="glass" style="padding:10px 26px 18px"><div class="cmp">
-      <div class="h"></div><div class="h r">С нуля · $1 200</div><div class="h r">Повышение · $2 000</div>
-      <div class="sec">Проект</div>
-      <div class="k">На чём работаете весь поток</div><div class="v">свой аккаунт или учебный проект</div><div class="v">действующий клиент или свой блог</div>
-      <div class="sec">Программа</div>
-      <div class="k">База: работа с клиентом, упаковка, съёмка, публикация</div><div class="v">полностью, с азов</div><div class="v">сжато, самопроверка</div>
-      <div class="k">Ядро: стратегия, сценарии, монтаж с AI, аналитика</div><div class="v y">✓</div><div class="v y">✓</div>
-      <div class="k">Продвинутые: реклама и рост, клиент и деньги</div><div class="v">ознакомительно</div><div class="v y">✓ с практикой</div>
-      <div class="sec">Обратная связь</div>
-      <div class="k">Куратор проверяет каждое задание, разборы на эфирах</div><div class="v y">✓</div><div class="v y">✓</div>
-      <div class="k">Разбор аккаунта вашего клиента по методике агентства</div><div class="v n">нет</div><div class="v y">✓</div>
-      <div class="k">Личная стратегия от Малены, два личных созвона с Маленой и Львом</div><div class="v n">нет</div><div class="v y">✓</div>
-      <div class="sec">Итог</div>
-      <div class="k last">С чем выходите</div><div class="v last">упакованный аккаунт, две недели контента, первые цифры, кейс</div><div class="v last">стратегия и отчёт клиенту, реклама, предложение в долларах</div>
-    </div></div></div>
+    <div class="head"><div class="eyebrow"><i></i>Сравнение</div><h2>Что входит <em>в каждый формат</em></h2></div>
+    <div class="mid"><div class="glass" style="padding:8px 24px 14px"><table class="cmp">
+      <colgroup><col style="width:46%"><col style="width:27%"><col style="width:27%"></colgroup>
+      <tr><th class="k"></th><th>С нуля · $1 200</th><th>Повышение · $2 000</th></tr>
+      <tr><td class="sec" colspan="3">Проект</td></tr>
+      <tr><td class="k">На чём работаете весь поток</td><td class="v">свой аккаунт или учебный проект</td><td class="v">действующий клиент или свой блог</td></tr>
+      <tr><td class="sec" colspan="3">Программа</td></tr>
+      <tr><td class="k">База: работа с клиентом, упаковка, съёмка, публикация</td><td class="v">полностью, с азов</td><td class="v">сжато, самопроверка</td></tr>
+      <tr><td class="k">Ядро: стратегия, сценарии, монтаж с AI, аналитика</td><td class="v y">✓</td><td class="v y">✓</td></tr>
+      <tr><td class="k">Продвинутые: реклама и рост, клиент и деньги</td><td class="v">ознакомительно</td><td class="v y">✓ с практикой</td></tr>
+      <tr><td class="sec" colspan="3">Обратная связь</td></tr>
+      <tr><td class="k">Куратор проверяет каждое задание, разборы на эфирах</td><td class="v y">✓</td><td class="v y">✓</td></tr>
+      <tr><td class="k">Разбор аккаунта вашего клиента по методике агентства</td><td class="v n">нет</td><td class="v y">✓</td></tr>
+      <tr><td class="k">Личная стратегия и два созвона с Маленой и Львом</td><td class="v n">нет</td><td class="v y">✓</td></tr>
+      <tr><td class="sec" colspan="3">Итог</td></tr>
+      <tr class="last"><td class="k">С чем выходите</td><td class="v">упакованный аккаунт, контент, первые цифры, кейс</td><td class="v">стратегия и отчёт клиенту, реклама, предложение в долларах</td></tr>
+    </table></div></div>
   </div>
   <div class="foot"><span>New SMM</span><span class="n">12</span></div>
 </section>
