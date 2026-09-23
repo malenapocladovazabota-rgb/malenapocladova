@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>New SMM · слайды для VSL</title>
+<style>
+/* ═══ VSL New SMM · слайды на половину горизонтального кадра ═══
+   Панель 960×1080: в горизонтальном видео справа от Малены, в вертикальном сверху.
+   Два трека: ?t=a (7 минут, 26 слайдов) и ?t=b (2 минуты, 7 слайдов).
+   ?ig=1 ставит в конец трека А финал «Ссылка в профиле» для органики в Instagram.
+   Вид: ?view=panel (по умолчанию) · h (кадр 16:9 с Маленой) · v (кадр 9:16).
+   ?static=1 выключает анимацию, так снимаются PNG для монтажа. */
+@font-face{font-family:'PF';font-style:normal;font-weight:500;src:url(fonts/vsl/playfair-display-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'PF';font-style:normal;font-weight:500;src:url(fonts/vsl/playfair-display-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2190-2199,U+2212,U+2215}
+@font-face{font-family:'PF';font-style:italic;font-weight:500;src:url(fonts/vsl/playfair-display-cyrillic-500-italic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'PF';font-style:italic;font-weight:500;src:url(fonts/vsl/playfair-display-latin-500-italic.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2190-2199,U+2212,U+2215}
+@font-face{font-family:'PF';font-style:normal;font-weight:600;src:url(fonts/vsl/playfair-display-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'PF';font-style:normal;font-weight:600;src:url(fonts/vsl/playfair-display-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2190-2199,U+2212,U+2215}
+@font-face{font-family:'PF';font-style:italic;font-weight:600;src:url(fonts/vsl/playfair-display-cyrillic-600-italic.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'PF';font-style:italic;font-weight:600;src:url(fonts/vsl/playfair-display-latin-600-italic.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2190-2199,U+2212,U+2215}
+@font-face{font-family:'IN';font-weight:400;src:url(fonts/vsl/inter-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'IN';font-weight:400;src:url(fonts/vsl/inter-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212}
+@font-face{font-family:'IN';font-weight:500;src:url(fonts/vsl/inter-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'IN';font-weight:500;src:url(fonts/vsl/inter-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212}
+@font-face{font-family:'IN';font-weight:600;src:url(fonts/vsl/inter-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'IN';font-weight:600;src:url(fonts/vsl/inter-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212}
+@font-face{font-family:'IN';font-weight:700;src:url(fonts/vsl/inter-cyrillic-700-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'IN';font-weight:700;src:url(fonts/vsl/inter-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212}
+@font-face{font-family:'JB';font-weight:500;src:url(fonts/vsl/jetbrains-mono-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'JB';font-weight:500;src:url(fonts/vsl/jetbrains-mono-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212}
+@font-face{font-family:'JB';font-weight:700;src:url(fonts/vsl/jetbrains-mono-cyrillic-700-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'JB';font-weight:700;src:url(fonts/vsl/jetbrains-mono-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212}
+
+:root{--paper:#F5EFE3;--paper2:#EBE1CE;--cream:#FBF7EE;--wine:#6E1E2B;--wine-d:#4E141F;--ink:#1B1414;--ink2:#4A3F3F;--muted:#8A7C78;--gold:#D9A441;--sand:#F1E6CF;
+  --serif:'PF',Georgia,serif;--sans:'IN',system-ui,sans-serif;--mono:'JB',ui-monospace,monospace;--ease:cubic-bezier(.2,.75,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0e0a0a;font-family:var(--sans);-webkit-font-smoothing:antialiased;color:var(--ink)}
+body{overflow:hidden}
+b{font-weight:600}
+em{font-style:italic;color:var(--wine)}
+.dark em,.wine em,.photo em{color:var(--gold)}
+
+/* ── сцена и виды ── */
+#stage{position:fixed;inset:0;display:grid;place-items:center}
+#frame{position:relative;transform-origin:center;flex:none}
+.view-panel #frame{width:960px;height:1080px}
+.view-h #frame{width:1920px;height:1080px}
+.view-v #frame{width:1080px;height:1920px}
+#panel{position:absolute;width:960px;height:1080px;overflow:hidden;transform-origin:0 0}
+.view-panel #panel{left:0;top:0}
+.view-h #panel{left:960px;top:0}
+.view-v #panel{left:0;top:0;transform:scale(1.125)}
+#cam{display:none;position:absolute;overflow:hidden;background:#241a1a}
+#cam img{width:100%;height:100%;object-fit:cover}
+#cam span{position:absolute;left:24px;bottom:22px;font:700 16px var(--mono);letter-spacing:3px;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.45);padding:9px 14px;border-radius:8px}
+.view-h #cam{display:block;left:0;top:0;width:960px;height:1080px}
+.view-v #cam{display:block;left:0;top:1215px;width:1080px;height:705px}
+.view-v #cam img{object-position:50% 12%}
+
+/* ── слайд ── */
+.s{position:absolute;inset:0;display:none;overflow:hidden;background:var(--paper);padding:80px 72px 100px}
+.s.on{display:flex;flex-direction:column}
+.s.cream{background:var(--cream)}
+.s.paper2{background:var(--paper2)}
+.s.dark{background:var(--ink);color:#F6EFE2}
+.s.wine{background:var(--wine);color:#F6EFE2}
+.glow{position:absolute;inset:0;pointer-events:none;z-index:0}
+.glow::before,.glow::after{content:'';position:absolute;border-radius:50%;filter:blur(80px)}
+.glow::before{width:760px;height:760px;left:-300px;top:-260px;background:radial-gradient(closest-side,rgba(110,30,43,.55),transparent 70%)}
+.glow::after{width:700px;height:700px;right:-300px;bottom:-280px;background:radial-gradient(closest-side,rgba(217,164,65,.22),transparent 70%)}
+.wine .glow::before{background:radial-gradient(closest-side,rgba(255,255,255,.1),transparent 70%)}
+.s > *{position:relative;z-index:2}
+.grow{flex:1}
+.vc{display:flex;flex-direction:column;justify-content:center}
+
+/* прогресс видео */
+.pg{position:absolute!important;left:72px;right:72px;bottom:44px;height:10px;border-radius:10px;background:rgba(27,20,20,.1);z-index:5}
+.pg i{display:block;height:100%;border-radius:10px;background:var(--wine);width:var(--p,0%)}
+.dark .pg,.wine .pg,.photo .pg{background:rgba(255,255,255,.16)}
+.dark .pg i,.wine .pg i,.photo .pg i{background:var(--gold)}
+
+/* типографика: всё смысловое от 56px, второстепенное от 36px */
+.k{display:flex;align-items:center;gap:16px;font:700 28px/1.25 var(--mono);letter-spacing:3px;text-transform:uppercase;color:var(--wine)}
+.k::before{content:'';width:14px;height:14px;border-radius:50%;background:currentColor;flex:none}
+.dark .k,.wine .k,.photo .k{color:#EAD7B0}
+h1{font:500 176px/.9 var(--serif);letter-spacing:-4px}
+h2{font:500 96px/1 var(--serif);letter-spacing:-2.5px}
+.k + h1,.k + h2{margin-top:26px}
+.lead{font:500 44px/1.25 var(--sans);color:var(--ink2)}
+.dark .lead,.wine .lead,.photo .lead{color:#EFE5D2}
+.sm{font:500 36px/1.3 var(--sans);color:var(--ink2)}
+.dark .sm,.wine .sm,.photo .sm{color:#E3D7C1}
+.tag{display:inline-flex;align-items:center;gap:12px;font:700 30px/1 var(--mono);letter-spacing:2px;text-transform:uppercase;padding:18px 24px;border-radius:999px;background:var(--gold);color:var(--ink)}
+
+/* ── анимация ── */
+.a{opacity:0;transform:translateY(28px)}
+.s.on .a{animation:up .75s var(--ease) forwards;animation-delay:calc(var(--d,0) * 150ms + 120ms)}
+@keyframes up{to{opacity:1;transform:none}}
+.static .a{opacity:1!important;transform:none!important;animation:none!important}
+
+/* ── обложка ── */
+.seven{display:flex;align-items:flex-end;gap:26px}
+.seven b{font:500 150px/.8 var(--serif);color:var(--gold);letter-spacing:-4px}
+.seven span{font:500 44px/1.15 var(--serif);color:#F6EFE2}
+
+/* ── маршрут видео ── */
+.route{margin-top:70px;position:relative;padding-left:100px}
+.route::before{content:'';position:absolute;left:34px;top:60px;bottom:60px;width:6px;border-radius:6px;background:repeating-linear-gradient(180deg,var(--wine) 0 22px,transparent 22px 36px)}
+.route div{position:relative;padding:34px 0;font:500 108px/1 var(--serif);letter-spacing:-3px}
+.route div::before{content:'';position:absolute;left:-84px;top:50%;margin-top:-18px;width:36px;height:36px;border-radius:50%;background:var(--paper);border:7px solid var(--wine)}
+.route div.fin{color:var(--wine);font-style:italic}
+.route div.fin::before{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 12px rgba(217,164,65,.25)}
+
+/* ── кто я ── */
+.pin{display:flex;align-items:center;gap:18px;font:700 30px var(--mono);letter-spacing:3px;text-transform:uppercase;color:var(--wine)}
+.clients{margin-top:34px;display:flex;flex-direction:column;gap:6px}
+.clients div{font:500 58px/1.15 var(--serif);letter-spacing:-1px;padding:14px 0;border-top:3px solid rgba(110,30,43,.15)}
+.clients div:last-child{border-bottom:3px solid rgba(110,30,43,.15)}
+
+/* ── цифры столбиком ── */
+.st3{display:flex;flex-direction:column;gap:44px}
+.st3 .n{font:500 150px/.86 var(--serif);letter-spacing:-5px;color:var(--gold)}
+.st3 .n.big{font-size:230px;letter-spacing:-9px}
+.st3 .l{margin-top:12px;font:500 44px/1.2 var(--sans);color:#EFE5D2}
+
+/* ── инструкция с пустой строкой ── */
+.note{position:relative;margin-top:50px;background:#FFFDF7;border-radius:6px;padding:56px 60px 46px 60px;box-shadow:0 40px 70px -40px rgba(40,20,20,.5)}
+.note .t{font:700 26px var(--mono);letter-spacing:3px;text-transform:uppercase;color:var(--muted);padding-bottom:22px;border-bottom:3px solid rgba(27,20,20,.12)}
+.note li{list-style:none;display:flex;align-items:center;gap:26px;padding:24px 0;border-bottom:2px solid rgba(80,110,160,.18);font:500 72px/1 var(--serif);letter-spacing:-1px}
+.note li i{width:56px;height:56px;border-radius:12px;border:4px solid var(--ink2);flex:none;position:relative}
+.note li i::after{content:'';position:absolute;left:12px;top:4px;width:22px;height:34px;border-right:6px solid var(--wine);border-bottom:6px solid var(--wine);transform:rotate(40deg)}
+.note li.q{color:var(--muted)}
+.note li.q i{border-style:dashed}.note li.q i::after{display:none}
+.note li.q span{flex:1;height:6px;border-bottom:5px dotted rgba(110,30,43,.45);transform:translateY(22px)}
+.tape{position:absolute;width:170px;height:48px;background:rgba(232,219,190,.9);box-shadow:0 4px 10px rgba(0,0,0,.08);z-index:3}
+
+/* ── чек ── */
+.receipt{position:relative;margin:46px auto 0;width:100%;background:#fff;padding:40px 48px 44px;color:var(--ink);box-shadow:0 44px 70px -40px rgba(40,20,20,.55)}
+.receipt::after{content:'';position:absolute;left:0;right:0;bottom:-22px;height:24px;background:linear-gradient(-45deg,transparent 16px,#fff 0),linear-gradient(45deg,transparent 16px,#fff 0);background-size:32px 24px;background-repeat:repeat-x}
+.receipt.tight .row{padding:18px 0}.receipt.tight{margin-top:36px;padding:28px 44px 30px}
+.receipt .row{display:flex;align-items:baseline;gap:18px;padding:26px 0;border-bottom:3px dashed rgba(27,20,20,.16)}
+.receipt .row:last-child{border-bottom:0}
+.receipt .row .t{font:500 64px/1 var(--serif);letter-spacing:-1px;white-space:nowrap}
+.receipt .row .dots{flex:1;border-bottom:4px dotted rgba(27,20,20,.25);transform:translateY(-12px)}
+.receipt .row .v{font:600 88px/1 var(--serif);color:var(--gold)}
+.sticker{display:inline-block;padding:22px 30px;border-radius:10px;background:var(--wine);color:#F6EFE2;font:500 50px/1.12 var(--serif);transform:rotate(-2deg);box-shadow:0 24px 40px -24px rgba(0,0,0,.6)}
+.sticker em{color:var(--gold)}
+
+/* ── переписка ── */
+.chat{margin-top:40px;display:flex;flex-direction:column;gap:30px}
+.bub{max-width:820px;padding:34px 40px;border-radius:38px;font:500 54px/1.18 var(--sans);letter-spacing:-.5px}
+.bub.me{align-self:flex-end;background:var(--wine);color:#fff;border-bottom-right-radius:12px}
+.bub.them{align-self:flex-start;background:#E4DACB;color:var(--ink);border-bottom-left-radius:12px}
+.typing{align-self:flex-start;display:flex;gap:12px;padding:28px 34px;border-radius:38px;background:#E4DACB;border-bottom-left-radius:12px;height:0;padding:0 34px;overflow:hidden;opacity:0}
+.typing i{width:18px;height:18px;border-radius:50%;background:#9B8C86}
+.s.on .typing{animation:typ 1.3s ease forwards;animation-delay:.6s}
+@keyframes typ{0%{opacity:0;height:0;padding:0 34px}15%{opacity:1;height:74px;padding:28px 34px}80%{opacity:1;height:74px;padding:28px 34px}100%{opacity:0;height:0;padding:0 34px;margin-top:-30px}}
+.static .typing{display:none}
+.verdict{font:500 76px/1.06 var(--serif);letter-spacing:-2px}
+
+/* ── точки ── */
+.dots{display:grid;grid-template-columns:repeat(10,1fr);gap:20px;margin-top:54px}
+.dots i{width:100%;aspect-ratio:1;border-radius:50%;background:rgba(246,239,226,.18)}
+.dots i.g{background:var(--gold);box-shadow:0 0 0 12px rgba(217,164,65,.2)}
+.money b{display:block;font:500 118px/.95 var(--serif);color:var(--gold);letter-spacing:-4px}
+.money span{display:block;margin-top:20px;font:500 44px/1.2 var(--sans);color:#EFE5D2}
+
+/* ── три вещи ── */
+.three{margin-top:60px;display:flex;flex-direction:column;gap:18px}
+.three div{display:flex;align-items:center;gap:32px;padding:26px 0;border-top:3px solid rgba(255,255,255,.18)}
+.three div:last-child{border-bottom:3px solid rgba(255,255,255,.18)}
+.three i{width:108px;height:108px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--ink);font:500 58px var(--serif);font-style:normal;flex:none}
+.three b{font:500 80px/1 var(--serif);letter-spacing:-2px;font-weight:500}
+.three b small{display:block;margin-top:10px;font:500 34px/1.2 var(--sans);letter-spacing:0;color:#E3D7C1}
+
+/* ── путь клиента ── */
+.path{margin-top:60px;position:relative;padding-left:92px}
+.path::before{content:'';position:absolute;left:30px;top:40px;bottom:40px;width:6px;border-radius:6px;background:var(--wine)}
+.path .st{position:relative;padding:30px 0;font:500 70px/1.02 var(--serif);letter-spacing:-1.5px}
+.path .st::before{content:'';position:absolute;left:-78px;top:50%;margin-top:-20px;width:40px;height:40px;border-radius:50%;background:var(--paper);border:7px solid var(--wine)}
+.stamp{position:absolute;display:grid;place-items:center;text-align:center;border-radius:50%;border:7px solid var(--gold);color:var(--gold);font:700 40px/1.2 var(--mono);letter-spacing:3px;text-transform:uppercase;transform:rotate(-10deg)}
+.stamp::before{content:'';position:absolute;inset:14px;border-radius:50%;border:3px solid var(--gold)}
+.stamp.w{border-color:var(--wine);color:var(--wine)}.stamp.w::before{border-color:var(--wine)}
+.s.on .stamp.pop{opacity:0;animation:stamp .5s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:1.6s}
+@keyframes stamp{from{opacity:0;transform:rotate(-10deg) scale(1.7)}to{opacity:1;transform:rotate(-10deg) scale(1)}}
+.static .stamp.pop{opacity:1!important;animation:none!important}
+
+/* ── окно ассистента ── */
+.win{margin-top:52px;border-radius:28px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);overflow:hidden;box-shadow:0 50px 90px -50px rgba(0,0,0,.9)}
+.win .bar{display:flex;align-items:center;gap:12px;padding:22px 28px;border-bottom:1px solid rgba(255,255,255,.12);font:700 24px var(--mono);letter-spacing:2px;text-transform:uppercase;color:#C9BBA3}
+.win .bar i{width:16px;height:16px;border-radius:50%}
+.win .bar i:first-child{background:#D9695A}.win .bar i:nth-child(2){background:#D9A441}.win .bar i:nth-child(3){background:#7FAF6A}
+.win .bar span{margin-left:14px}
+.task{display:flex;align-items:center;gap:26px;padding:26px 32px;border-top:1px solid rgba(255,255,255,.1);font:500 56px/1 var(--sans);letter-spacing:-.5px;color:#F6EFE2}
+.task:first-of-type{border-top:0}
+.task i{width:60px;height:60px;border-radius:14px;background:var(--gold);display:grid;place-items:center;flex:none}
+.task i::after{content:'';width:24px;height:13px;border-left:6px solid var(--ink);border-bottom:6px solid var(--ink);transform:rotate(-45deg) translate(2px,-3px)}
+.gold-line{font:italic 500 64px/1.1 var(--serif);color:var(--gold);letter-spacing:-1px}
+
+/* ── журнал заявок ── */
+.log{margin-top:48px;background:#FFFDF7;border-radius:22px;overflow:hidden;box-shadow:0 50px 80px -46px rgba(0,0,0,.8)}
+.log .lh{display:grid;grid-template-columns:1fr 1fr;padding:24px 34px;background:#EFE6D6;font:700 26px var(--mono);letter-spacing:3px;text-transform:uppercase;color:var(--muted)}
+.log .lr{display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:28px 34px;border-top:2px solid rgba(27,20,20,.08);font:500 50px/1 var(--sans);color:var(--ink);letter-spacing:-.5px}
+.log .lr span:last-child{justify-self:start;font:700 30px var(--mono);letter-spacing:2px;text-transform:uppercase;padding:14px 20px;border-radius:999px;background:rgba(110,30,43,.1);color:var(--wine)}
+.log .lr.paid span:last-child{background:var(--gold);color:var(--ink)}
+
+/* ── огромные цифры ── */
+.huge{font:500 300px/.84 var(--serif);letter-spacing:-12px;color:var(--wine)}
+.dark .huge,.wine .huge{color:var(--gold)}
+.sub{margin-top:26px;font:500 60px/1.1 var(--serif);letter-spacing:-1.5px}
+.dark .sub,.wine .sub{color:#F6EFE2}
+.ctx{font:700 38px/1.3 var(--mono);letter-spacing:3px;text-transform:uppercase;color:var(--ink2)}
+.dark .ctx,.wine .ctx{color:#E3D7C1}
+.pill{display:flex;align-items:center;gap:26px;padding:26px 32px;border-radius:24px;background:rgba(255,255,255,.6);border:3px solid rgba(110,30,43,.12)}
+.pill b{font:500 88px/1 var(--serif);color:var(--wine);letter-spacing:-3px;white-space:nowrap}
+.pill span{font:500 40px/1.15 var(--sans);color:var(--ink2)}
+.wine .pill,.dark .pill{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18)}
+.wine .pill b,.dark .pill b{color:var(--gold)}.wine .pill span,.dark .pill span{color:#EFE5D2}
+
+/* ── календарь ── */
+.cal{margin-top:36px;display:grid;grid-template-columns:repeat(7,1fr);gap:10px;width:100%}
+.cal i{aspect-ratio:1.3;border-radius:14px;position:relative;overflow:hidden;background:rgba(255,255,255,.06)}
+.cal i.x{background:transparent}
+.cal i.d::before{content:'';position:absolute;inset:0;background:var(--wine);transform:scaleY(0);transform-origin:bottom}
+.cal i.d::after{content:'';position:absolute;left:50%;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--gold)}
+.cal .wd{font:700 22px var(--mono);letter-spacing:1px;color:#9B8C86;text-align:center}
+.s.on .cal i.d::before{animation:fill .35s var(--ease) forwards;animation-delay:calc(var(--i) * 45ms + 500ms)}
+.static .cal i.d::before{transform:none!important;animation:none!important}
+@keyframes fill{to{transform:none}}
+.cal .x8{grid-column:span 3;aspect-ratio:auto;background:var(--gold);display:flex;align-items:center;justify-content:center;gap:14px;border-radius:14px}
+.cal .x8 b{font:500 78px/1 var(--serif);color:var(--ink);letter-spacing:-2px}
+
+/* ── $1 → $10 ── */
+.roi{display:flex;align-items:flex-end;gap:40px;margin-top:44px;height:240px}
+.roi div{display:flex;flex-direction:column;align-items:center;gap:16px}
+.roi i{display:block;width:150px;border-radius:12px}
+.roi .a1 i{height:18px;background:rgba(246,239,226,.35)}
+.roi .a2 i{height:180px;background:var(--gold)}
+.roi span{font:500 60px/1 var(--serif);color:#F6EFE2}
+.roi .arr{font:500 80px var(--serif);color:rgba(246,239,226,.5);align-self:center}
+
+/* ── кому подходит ── */
+.paths{margin-top:50px;display:flex;flex-direction:column;gap:22px}
+.pc{display:flex;align-items:center;gap:30px;padding:32px 36px;border-radius:26px;background:#fff;border:3px solid rgba(110,30,43,.1)}
+.pc i{font:500 60px var(--serif);font-style:normal;color:var(--wine);width:70px;flex:none}
+.pc b{display:block;font:500 72px/1 var(--serif);letter-spacing:-2px}
+.pc span{display:block;margin-top:10px;font:500 34px/1.2 var(--sans);color:var(--ink2)}
+.pc.w{background:var(--wine);border-color:var(--wine);color:#F6EFE2}
+.pc.w i{color:var(--gold)}.pc.w span{color:#EBDCCB}
+
+/* ── ученицы ── */
+.polar{position:relative;background:#fff;padding:14px 14px 18px;border-radius:4px;box-shadow:0 40px 70px -34px rgba(0,0,0,.6)}
+.polar img{display:block;width:100%;height:100%;object-fit:cover}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px}
+.duo .polar{height:400px}
+.duo .nm{margin-top:30px;font:italic 500 52px/1 var(--serif);color:#F6EFE2}
+.duo .n{margin-top:12px;font:500 80px/.95 var(--serif);color:var(--gold);letter-spacing:-2.5px;white-space:nowrap}
+.duo .l{margin-top:14px;font:500 38px/1.2 var(--sans);color:#EFE5D2}
+.rowcase{display:grid;grid-template-columns:230px 1fr;gap:40px;align-items:center;padding:40px 0;border-top:3px solid rgba(110,30,43,.14)}
+.rowcase:last-of-type{border-bottom:3px solid rgba(110,30,43,.14)}
+.rowcase img{width:230px;height:230px;border-radius:50%;object-fit:cover;border:6px solid #fff;box-shadow:0 20px 40px -20px rgba(0,0,0,.45)}
+.rowcase .nm{font:italic 500 46px/1 var(--serif);color:var(--ink2)}
+.rowcase b{display:block;margin-top:10px;font:500 118px/.9 var(--serif);color:var(--wine);letter-spacing:-5px}
+.rowcase span{display:block;margin-top:12px;font:500 38px/1.2 var(--sans);color:var(--ink2)}
+
+/* ── фото на весь слайд ── */
+.s.photo{background:var(--ink);color:#F6EFE2}
+.bgimg{position:absolute!important;inset:0;z-index:0!important}
+.bgimg img{width:100%;height:100%;object-fit:cover}
+.bgimg::before{content:'';position:absolute;left:0;right:0;top:0;height:300px;z-index:1;background:linear-gradient(180deg,rgba(27,20,20,.8),rgba(27,20,20,0))}
+.bgimg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,20,0) 34%,rgba(27,20,20,.85) 60%,rgba(27,20,20,.97) 78%)}
+
+/* ── сомнения ── */
+.doubts{margin-top:44px;display:flex;flex-direction:column;gap:18px}
+.doubt{padding:30px 0 30px;border-top:3px solid rgba(110,30,43,.16)}
+.doubt:last-child{border-bottom:3px solid rgba(110,30,43,.16)}
+.doubt q{display:block;font:italic 500 64px/1.02 var(--serif);letter-spacing:-1.5px;quotes:'«' '»';color:var(--ink)}
+.doubt span{display:flex;align-items:center;gap:16px;margin-top:14px;font:500 46px/1.15 var(--sans);color:var(--wine)}
+.doubt span::before{content:'→';font:500 48px var(--serif)}
+
+/* ── программа ── */
+.seven-steps{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;margin-top:30px}
+.seven-steps .big{font:500 270px/.8 var(--serif);color:var(--wine);letter-spacing:-12px}
+.seven-steps .cap{font:500 52px/1.1 var(--serif);letter-spacing:-1px}
+.steps{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:10px 36px}
+.steps div{display:flex;align-items:baseline;gap:14px;padding:12px 0;border-top:3px solid rgba(110,30,43,.14);font:500 52px/1.1 var(--serif);letter-spacing:-1px}
+.steps div i{font:700 24px var(--mono);font-style:normal;color:var(--wine)}
+.branch{margin-top:auto;padding:28px 34px;border-radius:24px;background:var(--wine);color:#F6EFE2;display:flex;align-items:center;gap:22px}
+.branch b{font:500 46px/1.1 var(--serif)}
+.branch b em{color:var(--gold)}
+.branch i{font:500 80px/1 var(--serif);color:var(--gold);font-style:normal}
+
+/* ── цикл шага ── */
+.loop{margin-top:54px;display:grid;grid-template-columns:1fr 1fr;gap:22px;position:relative}
+.loop div{padding:36px 34px;border-radius:28px;background:#fff;border:3px solid rgba(110,30,43,.1);min-height:300px;display:flex;flex-direction:column;justify-content:flex-end}
+.loop div i{font:700 30px var(--mono);font-style:normal;letter-spacing:3px;color:var(--wine)}
+.loop div b{display:block;margin-top:12px;font:500 64px/1 var(--serif);letter-spacing:-1.5px}
+.loop div.w{background:var(--wine);border-color:var(--wine);color:#F6EFE2}.loop div.w i{color:var(--gold)}
+.loop .ca{position:absolute;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;font:500 44px/1 var(--sans);z-index:3;box-shadow:0 0 0 10px var(--ink)}
+.dark .loop div{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.16);color:#F6EFE2}.dark .loop div i{color:var(--gold)}.dark .loop div.w{background:var(--wine);border-color:var(--wine)}
+.loop .arr{position:absolute;left:50%;top:50%;width:110px;height:110px;margin:-55px 0 0 -55px;border-radius:50%;background:var(--gold);display:grid;place-items:center;z-index:3;box-shadow:0 0 0 12px var(--paper)}
+
+/* ── 10 · 5 · 1 ── */
+.outs{display:flex;flex-direction:column;gap:10px;margin-top:40px}
+.outs div{display:flex;align-items:baseline;gap:30px;padding:16px 0;border-top:3px solid rgba(255,255,255,.16)}
+.outs div:last-child{border-bottom:3px solid rgba(255,255,255,.16)}
+.outs b{font:500 150px/.85 var(--serif);color:var(--gold);letter-spacing:-5px;min-width:170px}
+.outs span{font:500 58px/1.05 var(--serif);letter-spacing:-1.5px}
+
+/* ── разбор ── */
+.free{display:flex;flex-direction:column;gap:0;margin-top:40px}
+.free div{font:500 112px/1.02 var(--serif);letter-spacing:-3px;padding:18px 0;border-top:3px solid rgba(255,255,255,.16)}
+.free div:last-child{border-bottom:3px solid rgba(255,255,255,.16)}
+.free div em{color:var(--gold)}
+
+/* ── финал ── */
+.arrow svg{display:block}
+.s.on .arrow svg{animation:bob 1.3s ease-in-out infinite;animation-delay:1.2s}
+.static .arrow svg{animation:none!important}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(26px)}}
+.btnplate{display:inline-flex;align-items:center;gap:26px;padding:32px 44px;border-radius:24px;background:var(--gold);color:var(--ink);font:500 84px/1 var(--serif);letter-spacing:-2px;box-shadow:0 30px 50px -26px rgba(0,0,0,.7)}
+
+/* управление */
+#hud{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;justify-content:center;gap:8px;padding:12px;opacity:0;transition:opacity .3s;flex-wrap:wrap}
+body:hover #hud{opacity:1}
+#hud button{font:600 13px var(--sans);padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(20,14,14,.85);color:#F6EFE2;cursor:pointer}
+#hud button.on{background:var(--wine)}
+#cnt{position:fixed;right:16px;top:14px;z-index:50;font:700 12px var(--mono);letter-spacing:2px;color:#9B8C86}
+.export #hud,.export #cnt{display:none}
+</style>
+</head>
+<body>
+<div id="stage"><div id="frame">
+<div id="cam"><img src="images/vsl/vsl-malena-hero-v1.jpg" alt=""><span>Здесь кадр Малены</span></div>
+<div id="panel">
+
+<!-- ═════════════ ТРЕК А · 7 минут ═════════════ -->
+
+<!-- С01 · обложка -->
+<section class="s dark" data-t="a" data-id="C01">
+  <div class="glow"></div>
+  <div class="grow vc">
+    <h1 class="a" style="font-size:230px"><em>New</em><br>SMM</h1>
+    <p class="a" style="--d:1;margin-top:52px;font:500 64px/1.1 var(--serif);letter-spacing:-1.5px;color:#F6EFE2">За что бизнес платит SMM&#8209;специалисту</p>
+  </div>
+  <div class="seven a" style="--d:2"><b>7</b><span>минут<br>о профессии</span></div>
+</section>
+
+<!-- С02 · маршрут видео -->
+<section class="s" data-t="a" data-id="C02">
+  <div class="k a">В этом видео</div>
+  <div class="route">
+    <div class="a" style="--d:1">Профессия</div>
+    <div class="a" style="--d:2">Клиенты</div>
+    <div class="fin a" style="--d:3">Разбор</div>
+  </div>
+  <div class="grow"></div>
+  <p class="sm a" style="--d:4">Что изменилось, кого мы ведём и&nbsp;как попасть на&nbsp;бесплатный разбор</p>
+</section>
+
+<!-- С03 · кто я -->
+<section class="s cream" data-t="a" data-id="C03">
+  <div class="pin a"><svg width="40" height="52" viewBox="0 0 40 52" fill="none"><path d="M20 50s18-17.5 18-30A18 18 0 0 0 2 20c0 12.5 18 30 18 30Z" fill="#6E1E2B"/><circle cx="20" cy="20" r="7" fill="#FBF7EE"/></svg>Сан-Диего · Калифорния</div>
+  <h2 class="a" style="--d:1;margin-top:40px;font-size:118px;line-height:.95">Малена<br><em>Покладова</em></h2>
+  <p class="a" style="--d:2;margin-top:34px;font:italic 500 60px/1.1 var(--serif);color:var(--wine)">Агентство в&nbsp;США</p>
+  <div class="clients">
+    <div class="a" style="--d:3">Студии красоты</div>
+    <div class="a" style="--d:4">Клиники и адвокаты</div>
+    <div class="a" style="--d:5">Онлайн-школы и рестораны</div>
+  </div>
+</section>
+
+<!-- С04 · цифры Малены -->
+<section class="s dark" data-t="a" data-id="C04">
+  <div class="glow"></div>
+  <div class="st3 grow vc">
+    <div class="a"><div class="n">7 лет</div><div class="l">только на соцсетях</div></div>
+    <div class="a" style="--d:1"><div class="n big">12 000+</div><div class="l">видео для себя и клиентов</div></div>
+    <div class="a" style="--d:2"><div class="n">200+</div><div class="l">выпускниц обучения</div></div>
+  </div>
+</section>
+
+<!-- С05 · как нас приучили -->
+<section class="s paper2" data-t="a" data-id="C05">
+  <h2 class="a">Чему учат <em>почти везде</em></h2>
+  <div class="note a" style="--d:1">
+    <div class="tape" style="left:50%;top:-24px;margin-left:-85px;transform:rotate(2deg)"></div>
+    <div class="t">Обязанности SMM-специалиста</div>
+    <ul>
+      <li class="a" style="--d:2"><i></i>Посты</li>
+      <li class="a" style="--d:3"><i></i>Ролики</li>
+      <li class="a" style="--d:4"><i></i>Красивая лента</li>
+      <li class="q a" style="--d:5"><i></i>4.<span></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- С06 · бизнес ждёт клиентов -->
+<section class="s wine" data-t="a" data-id="C06">
+  <div class="glow"></div>
+  <div class="grow vc">
+    <div class="a" style="display:flex;align-items:center;gap:22px;font:500 60px/1 var(--serif);color:#F6EFE2"><span style="width:62px;height:62px;border-radius:14px;background:var(--gold);display:grid;place-items:center"><svg width="34" height="26" viewBox="0 0 34 26" fill="none"><path d="M3 13l9 9L31 3" stroke="#1B1414" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Пункт 4</div>
+    <h1 class="a" style="--d:1;font-size:150px;margin-top:30px">Клиенты<br><em>из&nbsp;соцсетей</em></h1>
+    <p class="lead a" style="--d:2;margin-top:44px;font-size:52px">Этого сегодня ждёт бизнес</p>
+  </div>
+</section>
+
+<!-- С07 · три цифры владельца -->
+<section class="s" data-t="a" data-id="C07">
+  <h2 class="a">Три цифры <em>в&nbsp;голове владельца</em></h2>
+  <div class="receipt a" style="--d:1">
+    <div class="row"><span class="t">Клиенты</span><span class="dots"></span><span class="v">?</span></div>
+    <div class="row"><span class="t">Цена клиента</span><span class="dots"></span><span class="v">$?</span></div>
+    <div class="row"><span class="t">Заработок</span><span class="dots"></span><span class="v">$?</span></div>
+  </div>
+</section>
+
+<!-- С08 · гарантий нет -->
+<section class="s cream" data-t="a" data-id="C08">
+  <div class="chat">
+    <div class="bub me a">Сколько клиентов вы&nbsp;приведёте?</div>
+    <div class="typing"><i></i><i></i><i></i></div>
+    <div class="bub them a" style="--d:6">Гарантий нет. Это не моя зона.</div>
+  </div>
+  <div class="grow"></div>
+  <p class="verdict a" style="--d:9">Кто не отвечает за&nbsp;результат, <em>дорого стоить не&nbsp;может</em></p>
+</section>
+
+<!-- С09 · возможность -->
+<section class="s dark" data-t="a" data-id="C09">
+  <div class="glow"></div>
+  <h2 class="a">Таких специалистов <em>мало</em></h2>
+  <div class="dots a" style="--d:1">
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    <i></i><i></i><i></i><i></i><i></i><i></i><i class="g"></i><i></i><i></i><i></i>
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+  </div>
+  <div class="grow"></div>
+  <div class="money a" style="--d:2"><b>от $1 000<br>до $1 500</b><span>в месяц платит агентству один клиент в&nbsp;США</span></div>
+</section>
+
+<!-- С10 · новый SMM -->
+<section class="s wine" data-t="a" data-id="C10">
+  <div class="glow"></div>
+  <h1 class="a" style="font-size:150px">Новый <em>SMM</em></h1>
+  <div class="three grow vc">
+    <div class="a" style="--d:1"><i>1</i><b>Клиент<small>до продления договора</small></b></div>
+    <div class="a" style="--d:2"><i>2</i><b>ИИ<small>под вашего клиента</small></b></div>
+    <div class="a" style="--d:3"><i>3</i><b>Как в&nbsp;Америке<small>заявки и деньги на учёте</small></b></div>
+  </div>
+</section>
+
+<!-- С11 · 1/3 клиент до продления -->
+<section class="s" data-t="a" data-id="C11">
+  <div class="k a">1 из 3</div>
+  <h2 class="a" style="--d:1">Клиент <em>до&nbsp;продления</em></h2>
+  <div class="path">
+    <div class="st a" style="--d:2">Первый разговор</div>
+    <div class="st a" style="--d:3">Заявки на учёте</div>
+    <div class="st a" style="--d:4">Отчёт в деньгах</div>
+  </div>
+  <div class="stamp w pop" style="right:56px;bottom:96px;width:250px;height:250px;font-size:36px">Договор<br>продлён</div>
+</section>
+
+<!-- С12 · 2/3 ИИ -->
+<section class="s dark" data-t="a" data-id="C12">
+  <div class="glow"></div>
+  <div class="k a">2 из 3</div>
+  <h2 class="a" style="--d:1">ИИ <em>под клиента</em></h2>
+  <div class="win a" style="--d:2">
+    <div class="bar"><i></i><i></i><i></i><span>Ассистент · ваш клиент</span></div>
+    <div class="task a" style="--d:3"><i></i>Идеи</div>
+    <div class="task a" style="--d:4"><i></i>Сценарии</div>
+    <div class="task a" style="--d:5"><i></i>Разбор цифр</div>
+  </div>
+  <div class="grow"></div>
+  <p class="gold-line a" style="--d:6">Решения остаются за&nbsp;вами</p>
+</section>
+
+<!-- С13 · 3/3 как в Америке -->
+<section class="s wine" data-t="a" data-id="C13">
+  <div class="glow"></div>
+  <div class="k a">3 из 3</div>
+  <h2 class="a" style="--d:1">Каждая заявка <em>на&nbsp;учёте</em></h2>
+  <div class="log a" style="--d:2">
+    <div class="lh"><span>Заявка</span><span>Статус</span></div>
+    <div class="lr a" style="--d:3"><span>Instagram</span><span>записана</span></div>
+    <div class="lr a" style="--d:4"><span>Реклама</span><span>пришла</span></div>
+    <div class="lr paid a" style="--d:5"><span>Сайт</span><span>оплатила</span></div>
+  </div>
+  <div class="grow"></div>
+  <p class="sm a" style="--d:6">Так работают с&nbsp;клиентами в&nbsp;Америке</p>
+</section>
+
+<!-- С14 · адвокат -->
+<section class="s" data-t="a" data-id="C14">
+  <div class="ctx a">Адвокат · США</div>
+  <div class="grow vc">
+    <div class="huge a" style="--d:1;font-size:250px">1,7 млн</div>
+    <div class="sub a" style="--d:2">органических просмотров <em>за&nbsp;месяц</em></div>
+  </div>
+  <div class="pill a" style="--d:3"><b>1 000+</b><span>новых подписчиков за&nbsp;тот же месяц</span></div>
+</section>
+
+<!-- С15 · студия красоты -->
+<section class="s dark" data-t="a" data-id="C15">
+  <div class="glow"></div>
+  <div class="ctx a">Студия красоты · Сан-Диего</div>
+  <h2 class="a" style="--d:1;margin-top:22px;font-size:88px">Полная запись <em>за&nbsp;30&nbsp;дней</em></h2>
+  <div class="cal a" style="--d:2">
+    <span class="wd">ПН</span><span class="wd">ВТ</span><span class="wd">СР</span><span class="wd">ЧТ</span><span class="wd">ПТ</span><span class="wd">СБ</span><span class="wd">ВС</span>
+    <i class="x"></i><i class="x"></i>
+    <i class="d" style="--i:1"></i><i class="d" style="--i:2"></i><i class="d" style="--i:3"></i><i class="d" style="--i:4"></i><i class="d" style="--i:5"></i>
+    <i class="d" style="--i:6"></i><i class="d" style="--i:7"></i><i class="d" style="--i:8"></i><i class="d" style="--i:9"></i><i class="d" style="--i:10"></i><i class="d" style="--i:11"></i><i class="d" style="--i:12"></i>
+    <i class="d" style="--i:13"></i><i class="d" style="--i:14"></i><i class="d" style="--i:15"></i><i class="d" style="--i:16"></i><i class="d" style="--i:17"></i><i class="d" style="--i:18"></i><i class="d" style="--i:19"></i>
+    <i class="d" style="--i:20"></i><i class="d" style="--i:21"></i><i class="d" style="--i:22"></i><i class="d" style="--i:23"></i><i class="d" style="--i:24"></i><i class="d" style="--i:25"></i><i class="d" style="--i:26"></i>
+    <i class="d" style="--i:27"></i><i class="d" style="--i:28"></i><i class="d" style="--i:29"></i><i class="d" style="--i:30"></i>
+  </div>
+  <div class="grow"></div>
+  <div class="pill a" style="--d:3"><b>×8</b><span>окупилась реклама</span></div>
+</section>
+
+<!-- С16 · онлайн-школа -->
+<section class="s wine" data-t="a" data-id="C16">
+  <div class="glow"></div>
+  <div class="ctx a">Онлайн-школа · США</div>
+  <div class="grow vc">
+    <div class="huge a" style="--d:1;font-size:230px">×10</div>
+    <div class="sub a" style="--d:1;margin-top:10px">окупаемость <em>рекламы</em></div>
+    <div class="roi a" style="--d:2">
+      <div class="a1"><i></i><span>$1</span></div>
+      <div class="arr">→</div>
+      <div class="a2"><i></i><span>$10</span></div>
+    </div>
+  </div>
+  <div class="pill a" style="--d:3"><b>200+</b><span>клиентов на&nbsp;премиум&#8209;продукт</span></div>
+</section>
+
+<!-- С17 · кому подходит -->
+<section class="s cream" data-t="a" data-id="C17">
+  <h2 class="a">Кому <em>подходит</em></h2>
+  <div class="paths grow vc">
+    <div class="pc a" style="--d:1"><i>1</i><div><b>С нуля</b><span>куратор на&nbsp;каждом задании</span></div></div>
+    <div class="pc w a" style="--d:2"><i>2</i><div><b>Уже с клиентами</b><span>система агентства на&nbsp;вашем клиенте</span></div></div>
+    <div class="pc a" style="--d:3"><i>3</i><div><b>Свой блог</b><span>или свой бизнес</span></div></div>
+  </div>
+</section>
+
+<!-- С18 · Алина и Лоредана -->
+<section class="s dark" data-t="a" data-id="C18">
+  <div class="glow"></div>
+  <div class="duo grow vc" style="margin-top:0;align-content:center">
+    <div class="a">
+      <div class="polar" style="transform:rotate(-2.5deg)"><img src="images/vsl/vsl-alina-v1.jpg" alt="Алина" style="object-position:50% 16%"></div>
+      <div class="nm">Алина</div>
+      <div class="n">14 дней</div>
+      <div class="l">до первого клиента. Сейчас своя студия</div>
+    </div>
+    <div class="a" style="--d:1">
+      <div class="polar" style="transform:rotate(2deg)"><img src="images/vsl/vsl-loredana-v1.jpg" alt="Лоредана" style="object-position:50% 30%"></div>
+      <div class="nm">Лоредана</div>
+      <div class="n">4 клиента</div>
+      <div class="l">и проект из&nbsp;Турции</div>
+    </div>
+  </div>
+</section>
+
+<!-- С19 · Тома и Елизавета -->
+<section class="s" data-t="a" data-id="C19">
+  <div class="grow vc">
+    <div class="rowcase a"><img src="images/vsl/vsl-toma-v1.jpg" alt="Тома"><div><div class="nm">Тома</div><b>1,4 млн</b><span>просмотров у&nbsp;ролика клиентки</span></div></div>
+    <div class="rowcase a" style="--d:1"><img src="images/vsl/vsl-elizaveta-v2.jpg" alt="Елизавета" style="object-position:50% 25%"><div><div class="nm">Елизавета, с нуля</div><b>74,2 тыс.</b><span>подписчиков в&nbsp;TikTok</span></div></div>
+  </div>
+</section>
+
+<!-- С20 · выпускной -->
+<section class="s photo" data-t="a" data-id="C20">
+  <div class="bgimg"><img src="images/vsl/vsl-grad-color-v1.jpg" alt="" style="object-position:50% 34%;transform:scale(1.28);transform-origin:50% 22%"></div>
+  <div class="grow"></div>
+  <h1 class="a" style="font-size:190px">200+</h1>
+  <p class="a" style="--d:1;margin-top:10px;font:500 56px/1.1 var(--serif);color:#F6EFE2">выпускниц прошлых потоков</p>
+  <p class="a" style="--d:2;margin-top:24px;font:500 44px/1.2 var(--sans);color:var(--gold)">В новой программе: реклама, цифры клиента, продление</p>
+</section>
+
+<!-- С21 · три сомнения -->
+<section class="s paper2" data-t="a" data-id="C21">
+  <h2 class="a">Если <em>сомневаетесь</em></h2>
+  <div class="doubts grow vc" style="margin-top:0">
+    <div class="doubt a" style="--d:1"><q>Рынок переполнен</q><span>тех, кто считает заявки, мало</span></div>
+    <div class="doubt a" style="--d:2"><q>Нет клиентов</q><span>первый проект на&nbsp;обучении</span></div>
+    <div class="doubt a" style="--d:3"><q>Страшно сниматься</q><span>Юлия прошла через это</span></div>
+  </div>
+</section>
+
+<!-- С22 · программа -->
+<section class="s cream" data-t="a" data-id="C22">
+  <div class="seven-steps a">
+    <div class="big">7</div>
+    <div class="cap" style="font-size:72px">шагов,<br><em>как в&nbsp;агентстве</em></div>
+  </div>
+  <div class="steps a" style="--d:1">
+    <div><i>1</i>Стратегия</div><div><i>5</i>Монтаж</div>
+    <div><i>2</i>Профиль</div><div><i>6</i>Публикация</div>
+    <div><i>3</i>Сценарии</div><div><i>7</i>Аналитика</div>
+    <div><i>4</i>Съёмка</div><div></div>
+  </div>
+  <div class="branch a" style="--d:2"><i>+</i><b>Для тех, кто с&nbsp;клиентами: <em>реклама и&nbsp;деньги</em></b></div>
+</section>
+
+<!-- С23 · как проходит шаг -->
+<section class="s dark" data-t="a" data-id="C23">
+  <div class="glow"></div>
+  <h2 class="a">Каждый <em>шаг</em></h2>
+  <div class="loop grow" style="align-content:center">
+    <div class="w a" style="--d:1"><i>01</i><b>Проект агентства</b></div>
+    <div class="a" style="--d:2"><i>02</i><b>Ваш проект</b></div>
+    <div class="a" style="--d:4"><i>04</i><b>Разбор на&nbsp;эфире</b></div>
+    <div class="a" style="--d:3"><i>03</i><b>Проверка куратора</b></div>
+    <span class="ca a" style="--d:5;left:50%;top:25%">→</span>
+    <span class="ca a" style="--d:5;left:75%;top:50%">↓</span>
+    <span class="ca a" style="--d:5;left:50%;top:75%">←</span>
+    <span class="ca a" style="--d:5;left:25%;top:50%">↑</span>
+  </div>
+</section>
+
+<!-- С24 · с чем выходите -->
+<section class="s dark" data-t="a" data-id="C24">
+  <div class="glow"></div>
+  <div class="k a">Если начинаете с нуля</div>
+  <h2 class="a" style="--d:1">Что у вас <em>будет</em></h2>
+  <div class="outs grow vc" style="margin-top:30px">
+    <div class="a" style="--d:2"><b>10</b><span>сценариев</span></div>
+    <div class="a" style="--d:3"><b>5</b><span>готовых Reels</span></div>
+    <div class="a" style="--d:4"><b>1</b><span>готовый профиль</span></div>
+    <div class="a" style="--d:5"><b>1</b><span>кейс в&nbsp;портфолио</span></div>
+  </div>
+</section>
+
+<!-- С25 · разбор -->
+<section class="s cream" data-t="a" data-id="C25">
+  <div class="k a">Сначала знакомимся</div>
+  <div class="free" style="margin-top:150px">
+    <div class="a" style="--d:1;border-color:rgba(110,30,43,.16)"><em style="color:var(--wine)">Бесплатно</em></div>
+    <div class="a" style="--d:2;border-color:rgba(110,30,43,.16)">20 минут</div>
+    <div class="a" style="--d:3;border-color:rgba(110,30,43,.16)">Zoom</div>
+  </div>
+  <p class="a" style="--d:4;margin-top:40px;font:500 46px/1.2 var(--sans);color:var(--ink2)">Смотрим, подходит ли вам формат и&nbsp;с&nbsp;чего начать</p>
+  <div class="stamp w pop" style="right:36px;top:290px;width:270px;height:270px;font-size:38px">Берём<br>не всех</div>
+</section>
+
+<!-- С26 · финал, сайт и реклама -->
+<section class="s wine" data-t="a" data-id="C26">
+  <div class="glow"></div>
+  <div class="grow vc">
+    <h1 class="a" style="font-size:140px;line-height:.95">Запишитесь<br><em>на разбор</em></h1>
+    <div class="a" style="--d:1;margin-top:50px"><span class="btnplate">Кнопка под видео</span></div>
+    <div class="arrow a" style="--d:2;margin-top:40px"><svg width="170" height="200" viewBox="0 0 150 170" fill="none"><path d="M75 8v140" stroke="#D9A441" stroke-width="12" stroke-linecap="round"/><path d="M22 100l53 55 53-55" stroke="#D9A441" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+  <div class="a" style="--d:3;display:flex;align-items:baseline;gap:22px"><b style="font:500 96px/1 var(--serif);color:var(--gold)">8 мест</b><span class="sm">для тех, кто с&nbsp;клиентами</span></div>
+</section>
+
+<!-- С26и · финал для органики в Instagram, где кнопки под видео нет -->
+<section class="s wine" data-t="i" data-id="C26i">
+  <div class="glow"></div>
+  <div class="grow vc">
+    <h1 class="a" style="font-size:140px;line-height:.95">Запишитесь<br><em>на разбор</em></h1>
+    <div class="a" style="--d:1;margin-top:50px"><span class="btnplate">Ссылка в профиле</span></div>
+    <p class="lead a" style="--d:2;margin-top:40px">@malenapocladova</p>
+  </div>
+  <div class="a" style="--d:3;display:flex;align-items:baseline;gap:22px"><b style="font:500 96px/1 var(--serif);color:var(--gold)">8 мест</b><span class="sm">для тех, кто с&nbsp;клиентами</span></div>
+</section>
+
+<!-- ═════════════ ТРЕК Б · 2 минуты ═════════════ -->
+
+<!-- Б1 · хук, Алина -->
+<section class="s photo" data-t="b" data-id="B1">
+  <div class="bgimg"><img src="images/vsl/vsl-alina-v1.jpg" alt="" style="object-position:50% 10%"></div>
+  <div class="a"><span class="tag" style="transform:rotate(-2deg)">Пришла в декрете</span></div>
+  <div class="grow"></div>
+  <div class="a" style="--d:1;font:700 34px var(--mono);letter-spacing:3px;text-transform:uppercase;color:#EAD7B0">Алина</div>
+  <h1 class="a" style="--d:2;font-size:220px;margin-top:10px;color:var(--gold)">14 дней</h1>
+  <p class="a" style="--d:3;margin-top:14px;font:500 64px/1.05 var(--serif);color:#F6EFE2">до первого клиента</p>
+  <p class="sm a" style="--d:4;margin-top:22px;color:#F6EFE2">Сейчас своя студия и&nbsp;команда из&nbsp;3</p>
+</section>
+
+<!-- Б2 · кто я -->
+<section class="s cream" data-t="b" data-id="B2">
+  <div class="pin a"><svg width="40" height="52" viewBox="0 0 40 52" fill="none"><path d="M20 50s18-17.5 18-30A18 18 0 0 0 2 20c0 12.5 18 30 18 30Z" fill="#6E1E2B"/><circle cx="20" cy="20" r="7" fill="#FBF7EE"/></svg>Сан-Диего</div>
+  <h2 class="a" style="--d:1;margin-top:34px;font-size:116px;line-height:.95">Малена<br><em>Покладова</em></h2>
+  <div class="grow"></div>
+  <div class="clients" style="margin-top:0">
+    <div class="a" style="--d:2;font-size:56px">Агентство в&nbsp;США</div>
+    <div class="a" style="--d:3;font-size:56px">Переехали благодаря соцсетям</div>
+  </div>
+  <div class="a" style="--d:4;display:flex;align-items:baseline;gap:24px;margin-top:34px"><b style="font:500 150px/.9 var(--serif);color:var(--wine);letter-spacing:-5px">200+</b><span class="lead">выпускниц обучения</span></div>
+</section>
+
+<!-- Б3 · бизнес платит за клиентов -->
+<section class="s" data-t="b" data-id="B3">
+  <h2 class="a">Бизнес платит <em>за&nbsp;клиентов</em></h2>
+  <div class="receipt tight a" style="--d:1">
+    <div class="row"><span class="t">Клиенты</span><span class="dots"></span><span class="v">?</span></div>
+    <div class="row"><span class="t">Цена клиента</span><span class="dots"></span><span class="v">$?</span></div>
+    <div class="row"><span class="t">Заработок</span><span class="dots"></span><span class="v">$?</span></div>
+  </div>
+  <div class="grow"></div>
+  <div class="a" style="--d:3"><span class="sticker">Кто считает,<br><em>тому платят больше</em></span></div>
+</section>
+
+<!-- Б4 · чему учим -->
+<section class="s wine" data-t="b" data-id="B4">
+  <div class="glow"></div>
+  <h1 class="a" style="font-size:150px"><em>New</em> SMM</h1>
+  <div class="three grow vc">
+    <div class="a" style="--d:1"><i>1</i><b>Клиент<small>до продления договора</small></b></div>
+    <div class="a" style="--d:2"><i>2</i><b>ИИ<small>под вашего клиента</small></b></div>
+    <div class="a" style="--d:3"><i>3</i><b>Отчёт<small>в деньгах, как в Америке</small></b></div>
+  </div>
+</section>
+
+<!-- Б5 · два кейса агентства -->
+<section class="s" data-t="b" data-id="B5">
+  <div class="grow" style="display:flex;flex-direction:column;justify-content:space-evenly">
+    <div class="a">
+      <div class="ctx">Адвокат · США</div>
+      <div class="huge" style="font-size:210px;margin-top:18px">1,7 млн</div>
+      <div class="sub" style="margin-top:22px">просмотров <em>за&nbsp;месяц</em></div>
+    </div>
+    <div style="height:3px;background:rgba(110,30,43,.18)"></div>
+    <div class="a" style="--d:1">
+      <div class="ctx">Студия красоты · Сан-Диего</div>
+      <div class="huge" style="font-size:210px;margin-top:18px">30 дней</div>
+      <div class="sub" style="margin-top:30px">до <em>полной записи</em></div>
+    </div>
+  </div>
+</section>
+
+<!-- Б6 · Елизавета -->
+<section class="s photo" data-t="b" data-id="B6">
+  <div class="bgimg"><img src="images/vsl/vsl-elizaveta-v2.jpg" alt="" style="object-position:50% 18%"></div>
+  <div class="a"><span class="tag" style="transform:rotate(-2deg)">Ученица · с нуля</span></div>
+  <div class="grow"></div>
+  <div class="a" style="--d:1;font:700 34px var(--mono);letter-spacing:3px;text-transform:uppercase;color:#EAD7B0">Елизавета</div>
+  <h1 class="a" style="--d:2;font-size:180px;margin-top:10px;color:var(--gold)">74,2 тыс.</h1>
+  <p class="a" style="--d:3;margin-top:18px;font:500 56px/1.1 var(--serif);color:#F6EFE2">в TikTok. Самое большое СМИ об&nbsp;экологии в&nbsp;Молдове</p>
+</section>
+
+<!-- Б7 · финал -->
+<section class="s wine" data-t="b" data-id="B7">
+  <div class="glow"></div>
+  <div class="a"><span class="tag" style="transform:rotate(-2deg)">Берём не всех</span></div>
+  <div class="grow vc">
+    <h1 class="a" style="--d:1;font-size:140px;line-height:.95">Бесплатный<br><em>разбор</em></h1>
+    <p class="lead a" style="--d:2;margin-top:30px;font-size:56px">20 минут в&nbsp;Zoom</p>
+    <div class="a" style="--d:3;margin-top:50px"><span class="btnplate">Кнопка под видео</span></div>
+  </div>
+  <div class="arrow a" style="--d:4"><svg width="150" height="170" viewBox="0 0 150 170" fill="none"><path d="M75 8v140" stroke="#D9A441" stroke-width="12" stroke-linecap="round"/><path d="M22 100l53 55 53-55" stroke="#D9A441" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+</section>
+
+</div></div></div>
+
+<div id="hud">
+  <button data-go="-1">← Назад</button><button data-go="1">Вперёд →</button>
+  <button data-t="a">7 минут</button><button data-t="b">2 минуты</button>
+  <button data-v="panel">Слайд</button><button data-v="h">Кадр 16:9</button><button data-v="v">Кадр 9:16</button>
+  <button id="stat">Без анимации</button><button id="fs">Во весь экран</button>
+</div>
+<div id="cnt"></div>
+
+<script>
+(function(){
+  var q=new URLSearchParams(location.search);
+  var track=q.get('t')==='b'?'b':'a', view=q.get('view')||'panel', insta=q.get('ig')==='1';
+  if(q.get('static')) document.body.classList.add('static');
+  if(q.get('export')) document.body.classList.add('export');
+  var all=[].slice.call(document.querySelectorAll('.s')), list=[], i=0;
+  var frame=document.getElementById('frame'), cnt=document.getElementById('cnt');
+  all.forEach(function(s){ var p=document.createElement('div'); p.className='pg'; p.innerHTML='<i></i>'; s.appendChild(p); });
+  function build(){
+    /* трек А: 26 слайдов; с ?ig=1 последний заменяется финалом для органики */
+    list=all.filter(function(s){
+      if(track==='a') return s.dataset.t==='a'&&!(insta&&s.dataset.id==='C26') || (insta&&s.dataset.t==='i');
+      return s.dataset.t===track;
+    });
+    list.forEach(function(s,k){ s.querySelector('.pg').style.setProperty('--p',((k+1)/list.length*100)+'%'); });
+    document.body.className=document.body.className.replace(/view-\w+/g,'').trim()+' view-'+view;
+    [].forEach.call(document.querySelectorAll('#hud [data-t]'),function(b){ b.classList.toggle('on',b.dataset.t===track); });
+    [].forEach.call(document.querySelectorAll('#hud [data-v]'),function(b){ b.classList.toggle('on',b.dataset.v===view); });
+    fit();
+  }
+  function fit(){
+    var w=view==='h'?1920:view==='v'?1080:960, h=view==='v'?1920:1080;
+    frame.style.transform='scale('+Math.min(innerWidth/w,innerHeight/h)+')';
+  }
+  function show(n){
+    i=Math.max(0,Math.min(list.length-1,n));
+    all.forEach(function(s){ s.classList.remove('on'); });
+    var el=list[i]; void el.offsetWidth; el.classList.add('on');
+    cnt.textContent=(track==='a'?'7 мин · ':'2 мин · ')+(i+1)+' / '+list.length+' · '+el.dataset.id;
+  }
+  window.vsl={show:show,count:function(){return list.length;},id:function(){return list[i].dataset.id;},
+    all:function(){ return all.map(function(s){return s.dataset.id;}); },
+    showId:function(id){ var el=all.filter(function(s){return s.dataset.id===id;})[0]; all.forEach(function(s){s.classList.remove('on');}); el.classList.add('on'); }};
+  addEventListener('resize',fit); build(); show((+location.hash.slice(1)||1)-1);
+  addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown') show(i+1);
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') show(i-1);
+    else if(e.key==='Home') show(0); else if(e.key==='End') show(list.length-1);
+    else if(e.key.toLowerCase()==='r') show(i);
+    else if(e.key.toLowerCase()==='f'){ document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen(); }
+  });
+  document.getElementById('hud').addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    if(b.dataset.go) show(i+ +b.dataset.go);
+    else if(b.dataset.t){ track=b.dataset.t; build(); show(0); }
+    else if(b.dataset.v){ view=b.dataset.v; build(); }
+    else if(b.id==='stat'){ document.body.classList.toggle('static'); }
+    else if(b.id==='fs'){ document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen(); }
+  });
+})();
+</script>
+</body>
+</html>
