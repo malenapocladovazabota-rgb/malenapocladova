@@ -1,4 +1,7 @@
 # Cloudflare Pages редиректы
+
+# Ссылка в шапке Instagram Малены: главная New SMM с меткой, чтобы видеть заявки из профиля
+/ig                 /?utm_source=ig&utm_medium=bio&utm_campaign=profile   302
 # Каноничные URLs без .html (если кто-то перешёл по .html : 301 на чистый URL)
 
 /index.html         /              301
