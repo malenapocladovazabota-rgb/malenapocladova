@@ -139,6 +139,16 @@ b{font-weight:700}
 #app.lite #link .cap{color:#4A3F3F;text-shadow:none}
 @media (prefers-reduced-motion:reduce){#link button,#link button::after{animation:none}}
 #link.hide{opacity:0;transform:translateY(10px)}#link.hide button{pointer-events:none}
+/* тихий режим на контентных сторис 2–7: кнопка на месте, но не спорит со слайдом.
+   Яркая только на первой сторис и на сторис с предложением разбора. */
+#link .cap,#link button,#link button .ar{transition:all .35s ease}
+#link.calm .cap{opacity:0;height:0;margin:-7px 0 0;overflow:hidden}
+#link.calm button{background:rgba(20,12,12,.34);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-color:rgba(255,255,255,.4);
+  font-size:16px;font-weight:600;padding:12px 16px;box-shadow:none;animation:none}
+#link.calm button::after{display:none}
+#link.calm button .ar{width:24px;height:24px;flex-basis:24px;font-size:14px;background:rgba(255,255,255,.2);color:#fff}
+#app.lite #link.calm button{background:rgba(27,20,20,.08);color:var(--ink);border-color:rgba(27,20,20,.25)}
+#app.lite #link.calm button .ar{background:rgba(27,20,20,.1);color:var(--ink)}
 
 /* опрос-стикер для квиза */
 .poll{background:#fff;color:var(--ink);border-radius:22px;padding:18px 16px 16px;box-shadow:0 18px 44px -14px rgba(0,0,0,.6)}
@@ -317,7 +327,7 @@ b{font-weight:700}
       <div><span class="hl">Скажем, с чего начать именно вам</span></div>
       <div><span class="hl">Подберём формат: с нуля или для тех, кто уже ведёт клиентов</span></div>
     </div>
-    <p class="txt anim d3" style="margin-top:14px;font-size:16px;opacity:.85">На обучение берём не всех, поэтому сначала знакомимся. Четыре вопроса, дальше выбор времени.</p>
+    <p class="txt anim d3" style="margin-top:14px;font-size:16px;opacity:.85">На обучение берём не всех, поэтому сначала знакомимся. Расскажите немного о себе и выберите удобное время.</p>
   </section>
 
   <!-- 9–12 · квиз -->
@@ -416,7 +426,7 @@ b{font-weight:700}
     <div style="height:30px"></div>
   </section>
 
-  <div id="link"><div class="cap">Бесплатно · 4 вопроса и выбор времени</div><button type="button" id="linkbtn">Записаться на разбор<span class="ar">→</span></button></div>
+  <div id="link"><div class="cap">Бесплатно, в Zoom</div><button type="button" id="linkbtn">Записаться на разбор<span class="ar">→</span></button></div>
   <div id="hint"><span><i>←</i>Нажмите<br>слева: назад</span><span><i class="pp"><u></u><u></u></i>Держите палец,<br>чтобы дочитать</span><span><i>→</i>Нажмите<br>справа: дальше</span><b>Коснитесь, чтобы начать</b></div>
 </div>
 
@@ -470,6 +480,7 @@ b{font-weight:700}
     fills.forEach(function(f,k){ f.style.width=k<i?'100%':'0%'; });
     dur=(+st[i].getAttribute('data-t')||0)*1000; elapsed=0; t0=performance.now();
     link.classList.toggle('hide', i>=QUIZ0);
+    link.classList.toggle('calm', i>0 && i<QUIZ0-1);
     app.classList.toggle('lite', st[i].classList.contains('paper'));
     hideHint();
     if(i===0 && !sessionStorage.getItem('sthint')){ hint.classList.add('on'); paused=true; try{sessionStorage.setItem('sthint','1');}catch(e){} setTimeout(hideHint,4000); }
