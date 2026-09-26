@@ -1289,7 +1289,9 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
       var pn=sp.get('name')||sp.get('first_name')||'', pe=sp.get('email')||'', pp=sp.get('phone')||'';
       if(pn) document.getElementById('name').value=pn;
       if(pe) document.getElementById('email').value=pe;
-      if(pp){ var digits=pp.replace(/\D/g,''); document.getElementById('phone').value=digits.replace(/^(1|373)/,''); }
+      /* Номер из ссылки кладём целиком с плюсом: обработчик поля сам достанет
+         из него страну (он подключается ниже, поэтому через setTimeout). */
+      if(pp){ var tp=document.getElementById('phone'); tp.value='+'+pp.replace(/\D/g,''); setTimeout(function(){ tp.dispatchEvent(new Event('input')); },0); }
     }catch(e){}
     document.getElementById('calnote').textContent='Смотрим свободные окна…';
   }
@@ -1354,14 +1356,17 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
       caltimes=document.getElementById('caltimes'), calnote=document.getElementById('calnote'),
       calzone=document.getElementById('calzone'), calgo=document.getElementById('calgo'),
       calerr=document.getElementById('calerr');
-  var calDays=[], calDay=0, calSlot='', calRegion='eu', who={ name:'', email:'', phone:'', cid:'' };
+  var calDays=[], calDay=0, calSlot='', calRegion='eu', calTz='', who={ name:'', email:'', phone:'', cid:'', country:'' };
   var MON=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
   var MON3=['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'];
   var WD=['вс','пн','вт','ср','чт','пт','сб'];
   /* Дату разбираем по частям: new Date('2026-09-17') это полночь по Гринвичу,
      и в Сан-Диего она показала бы шестнадцатое. */
   function dparse(s){ var p=String(s).split('-'); return new Date(+p[0],+p[1]-1,+p[2]); }
-  function hhmm(iso){ var d=new Date(iso); return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2); }
+  /* Время берём прямо из строки слота: функция отдаёт слоты уже в поясе показа
+     (Молдова, США или пояс человека), и переводить их в пояс браузера нельзя. */
+  function hhmm(iso){ var m=/T(\d{2}):(\d{2})/.exec(String(iso)); if(m) return m[1]+':'+m[2]; var d=new Date(iso); return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2); }
+  function tzName(z){ return String(z||'').replace(/_/g,' '); }
 
   var calmon=document.getElementById('calmon'), caldate=document.getElementById('caldate'),
       calprev=document.getElementById('calprev'), calnext=document.getElementById('calnext');
@@ -1405,7 +1410,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     calnote.style.display='block'; calnote.textContent='Смотрим свободные окна…';
     caldays.innerHTML=''; caltimes.innerHTML=''; calSlot=''; calDay=0; calgo.disabled=true;
     fetch(BOOKFN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK},
-      body:JSON.stringify({ action:'slots', region:calRegion, tz:zone() }) })
+      body:JSON.stringify({ action:'slots', region:calRegion, tz:zone(), country:who.country, phone:who.phone }) })
       .then(function(r){ return r.json(); })
       .catch(function(){ return {}; })
       .then(function(d){
@@ -1417,7 +1422,12 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
         }
         calnote.style.display='none';
         var f0=dparse(calDays[0].date); calY=f0.getFullYear(); calM=f0.getMonth();
-        calzone.textContent='Время показано в вашем часовом поясе: '+(zone()||'по настройкам устройства')+'. Разбор идёт в Zoom, ссылка придёт на почту.';
+        /* Молдова: время по Кишинёву. США и Канада: по американскому поясу.
+           Другая страна: в поясе человека. Какой пояс, решает функция. */
+        calTz=(d&&d.tz)||zone();
+        calzone.textContent=(d&&d.kind==='md' ? 'Время указано по Молдове (Кишинёв).'
+          : d&&d.kind==='us' ? 'Время указано по США: '+tzName(calTz)+'.'
+          : 'Время показано в вашем часовом поясе: '+(tzName(calTz)||'по настройкам устройства')+'.')+' Разбор идёт в Zoom, ссылка придёт на почту.';
         calPaint();
       });
   }
@@ -1438,12 +1448,12 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     var slot=calSlot;
     calgo.disabled=true; calgo.querySelector('span').textContent='Записываем…'; calerr.style.display='none';
     fetch(BOOKFN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK},
-      body:JSON.stringify({ action:'book', region:calRegion, tz:zone(), start:slot, name:who.name, email:who.email, phone:who.phone, cid:who.cid }) })
+      body:JSON.stringify({ action:'book', region:calRegion, tz:zone(), start:slot, name:who.name, email:who.email, phone:who.phone, cid:who.cid, country:who.country }) })
       .then(function(r){ return r.json().then(function(j){ return { ok:r.ok, j:j }; }); })
       .catch(function(){ return { ok:false, j:{} }; })
       .then(function(res){
         if(res.ok && res.j && res.j.ok){
-          var dt=new Date(slot);
+          var dt=dparse(String(slot).slice(0,10));
           document.getElementById('okwhen').textContent=
             WD[dt.getDay()].toUpperCase().slice(0,1)+WD[dt.getDay()].slice(1)+', '+dt.getDate()+' '+MON[dt.getMonth()]+', '+hhmm(slot)+'.';
           fw.classList.add('done');
@@ -1465,8 +1475,8 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
      шлюз без него отвечает 401 и заявка до функции не доходит. */
   var SBK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqeWZiZnFjZ3JldHJidXB5aGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNzU4NDYsImV4cCI6MjA5NjY1MTg0Nn0.amLiv4BuwDuEI0z2V3WiPKeWzvENSEwPlDeaGRq0CFM';
   /* Запасной календарь на случай, если функция не ответила. Кому на самом деле
-     отдать заявку, решает сервер: сейчас все разборы ведёт Малена, позже
-     выключатель newsmm_split_on вернёт молдавские заявки Александре. */
+     отдать заявку, решает сервер (с 26.09.2026): США и Канада Малене, Молдова
+     Александре, другие страны по часовому поясу браузера. */
   var BOOK='https://api.leadconnectorhq.com/widget/booking/k3vObJo44lcPodJUj57L';
   function zone(){ try{ return Intl.DateTimeFormat().resolvedOptions().timeZone||''; }catch(e){ return ''; } }
   var form=document.getElementById('lead'), fw=document.getElementById('fw'), err=document.getElementById('err'), btn=document.getElementById('send');
@@ -1483,7 +1493,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     var lane=hasClients() ? 'pro' : (quiz.projects ? 'start' : (track||''));
     /* Инстаграм необязательный: берём ник из @ника или из ссылки на профиль. */
     var igRaw=(form.ig&&form.ig.value||'').trim(), igm=igRaw.match(/instagram\.com\/([A-Za-z0-9._]{1,30})/i), ig=(igm?igm[1]:igRaw.replace(/^@+/,'')).replace(/[^A-Za-z0-9._]/g,'').slice(0,30);
-    var body={ name:name, email:email, phone:phone, ig:ig, src:(ZAPIS?'zapis':'kurs'), track:lane, quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
+    var body={ name:name, email:email, phone:phone, country:country.c, ig:ig, src:(ZAPIS?'zapis':'kurs'), track:lane, quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
     fetch(FN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK}, body:JSON.stringify(body) })
       .then(function(r){ return r.json(); })
       .catch(function(){ return {ok:false}; })
@@ -1497,7 +1507,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
            Иначе кампании оптимизируются на лидов, которых у нас нет. */
         if(d && d.ok && window.fbq) fbq('track','Lead',{content_name:'new-smm-razbor'});
         /* Письмо человек получит сам. На странице остаётся один шаг: время. */
-        who={ name:name, email:email, phone:phone, cid:(d&&d.cid)||'' };
+        who={ name:name, email:email, phone:phone, cid:(d&&d.cid)||'', country:country.c };
         /* Кого именно подставил сервер, он и говорит в route. Регион человека
            лежит рядом в region и нужен только для статистики. */
         calRegion=(d&&(d.route||d.region)==='eu') ? 'eu' : 'us';
