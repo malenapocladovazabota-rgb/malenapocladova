@@ -154,15 +154,34 @@ b{font-weight:700}
 .fine{font-size:11px;line-height:1.35;color:#8A7C78;margin-top:10px;text-align:center}
 .fine a{color:inherit}
 
-/* выбор времени */
-.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.days::-webkit-scrollbar{display:none}
-.days button{flex:0 0 auto;min-width:62px;border:0;border-radius:14px;background:#F2EDE6;color:var(--ink);padding:10px 8px;font:600 14px var(--sans);cursor:pointer;line-height:1.2}
-.days button small{display:block;font-weight:500;font-size:12px;color:#8A7C78}
-.days button.on{background:var(--wine);color:#fff}.days button.on small{color:#F6D9DE}
-.times{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;max-height:200px;overflow-y:auto}
-.times button{border:0;border-radius:12px;background:#F2EDE6;color:var(--ink);padding:12px 0;font:600 16px var(--sans);cursor:pointer}
-.times button.on{background:var(--wine);color:#fff}
+/* выбор времени · как в Calendly: месяц сеткой, потом список времени,
+   выбранное время раскрывается в кнопку «Подтвердить» */
+.cal{padding:16px 14px 14px}
+.calhd{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid #EEE6DC;margin-bottom:10px}
+.calhd img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.calhd .who2{font-size:13px;color:#8A7C78;font-weight:600}
+.calhd .ttl{font-weight:700;font-size:18px;line-height:1.2}
+.calhd .meta{font-size:13px;color:#4A3F3F;margin-top:2px;display:flex;align-items:center;gap:5px}
+.mnav{display:flex;align-items:center;justify-content:space-between;margin:4px 2px 8px}
+.mnav b{font-size:16px}
+.mnav button{width:34px;height:34px;border-radius:50%;border:0;background:#F6EEF0;color:var(--wine);font:700 18px var(--sans);cursor:pointer}
+.mnav button:disabled{opacity:.3;cursor:default}
+.wdr,.grid{display:grid;grid-template-columns:repeat(7,1fr);text-align:center}
+.wdr span{font-size:11px;font-weight:600;color:#8A7C78;text-transform:uppercase;padding:4px 0}
+.grid button{aspect-ratio:1;max-width:44px;width:100%;margin:2px auto;border-radius:50%;border:0;background:none;color:#B9AEA8;font:500 15px var(--sans);cursor:default}
+.grid button.has{background:#F6EEF0;color:var(--wine);font-weight:700;cursor:pointer}
+.grid button.on{background:var(--wine);color:#fff}
+.grid button.today{position:relative}
+.grid button.today::after{content:'';position:absolute;left:50%;bottom:5px;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:currentColor}
+.dback{display:flex;align-items:center;gap:8px;border:0;background:none;font:700 16px var(--sans);color:var(--ink);cursor:pointer;padding:4px 2px 10px}
+.dback i{width:30px;height:30px;border-radius:50%;background:#F6EEF0;color:var(--wine);display:grid;place-items:center;font-style:normal}
+.tlist{display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto;padding-right:2px}
+.trow{display:flex;gap:8px}
+.trow .t{flex:1;border:1.5px solid var(--wine);background:#fff;color:var(--wine);border-radius:10px;padding:13px 0;font:700 16px var(--sans);cursor:pointer;transition:flex .2s}
+.trow.on .t{background:#6B5F5C;border-color:#6B5F5C;color:#fff}
+.trow .c{display:none;flex:1;border:0;background:var(--wine);color:#fff;border-radius:10px;font:700 16px var(--sans);cursor:pointer}
+.trow.on .c{display:block}
+.tz{font-size:12px;color:#8A7C78;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:5px}
 .note{font-size:13px;color:#8A7C78;margin-top:10px;text-align:center}
 
 .ok{font-size:64px;line-height:1;width:96px;height:96px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;margin:0 auto 18px}
@@ -356,15 +375,20 @@ b{font-weight:700}
   <!-- 14 · время -->
   <section class="st wine" id="sCal">
     <div class="push"></div>
-    <div class="poll">
-      <div class="qn">Последний шаг</div>
-      <div class="q">Когда вам удобно?</div>
-      <div class="days" id="days"></div>
-      <div class="times" id="times"></div>
+    <div class="poll cal">
+      <div class="calhd"><img src="images/malena-avatar-v1.jpg" alt=""><div><div class="who2">Малена Покладова</div><div class="ttl">Разбор New SMM</div><div class="meta"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg>Zoom · бесплатно</div></div></div>
+      <div id="vMonth">
+        <div class="mnav"><button type="button" id="mprev" aria-label="Предыдущий месяц">‹</button><b id="mlab"></b><button type="button" id="mnext" aria-label="Следующий месяц">›</button></div>
+        <div class="wdr"><span>пн</span><span>вт</span><span>ср</span><span>чт</span><span>пт</span><span>сб</span><span>вс</span></div>
+        <div class="grid" id="grid"></div>
+      </div>
+      <div id="vTimes" hidden>
+        <button type="button" class="dback" id="dback"><i>←</i><span id="dlab"></span></button>
+        <div class="tlist" id="tlist"></div>
+      </div>
       <div class="note" id="calnote">Смотрим свободные окна…</div>
-      <button class="go" type="button" id="calgo" disabled>Выберите время</button>
       <div class="err" id="calerr"></div>
-      <p class="fine" id="calzone"></p>
+      <p class="tz" id="calzone"></p>
       <p class="fine"><a id="book" href="https://api.leadconnectorhq.com/widget/booking/k3vObJo44lcPodJUj57L" target="_blank" rel="noopener">Открыть календарь отдельной страницей</a></p>
     </div>
     <div class="push"></div>
@@ -390,6 +414,35 @@ b{font-weight:700}
   var app=document.getElementById('app'), st=[].slice.call(document.querySelectorAll('.st')),
       bars=document.getElementById('bars'), link=document.getElementById('link'), hint=document.getElementById('hint');
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Аналитика воронки. Каждое событие уходит в три места:
+     1) Amplitude, если в AMP_KEY вписан ключ проекта (Settings → Projects → API Key);
+     2) своя таблица newsmm_funnel_events в Supabase: работает всегда, даже без Amplitude;
+     3) пиксель Меты только для крупных шагов.
+     Личные данные (имя, почта, телефон) в события не пишем никогда. */
+  var PAGE='stories', AMP_KEY='',
+      EV_URL='https://kjyfbfqcgretrbupyhiq.supabase.co/rest/v1/newsmm_funnel_events',
+      EV_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqeWZiZnFjZ3JldHJidXB5aGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNzU4NDYsImV4cCI6MjA5NjY1MTg0Nn0.amLiv4BuwDuEI0z2V3WiPKeWzvENSEwPlDeaGRq0CFM';
+  var SID=(function(){ try{ var s=sessionStorage.getItem('st_sid'); if(!s){ s=Date.now().toString(36)+Math.random().toString(36).slice(2,10); sessionStorage.setItem('st_sid',s); } return s; }catch(e){ return 'x'+Date.now().toString(36); } })();
+  var ampQ=[], ampReady=false;
+  if(AMP_KEY){
+    var sc=document.createElement('script'); sc.src='https://cdn.amplitude.com/script/'+AMP_KEY+'.js'; sc.async=true;
+    sc.onload=function(){ try{ window.amplitude.init(AMP_KEY,{ autocapture:{ attribution:true, pageViews:true, sessions:true } }); ampReady=true; ampQ.forEach(function(a){ window.amplitude.track(a[0],a[1]); }); ampQ=[]; }catch(e){} };
+    document.head.appendChild(sc);
+  }
+  var seen={};
+  function track(ev,step,label){
+    var u=(typeof utm==='object'&&utm)||{}, props={ page:PAGE, step:step||null, label:label||null, utm_source:u.source||null, utm_campaign:u.campaign||null, utm_content:u.content||null };
+    if(AMP_KEY){ if(ampReady) try{ window.amplitude.track(ev,props); }catch(e){} else ampQ.push([ev,props]); }
+    try{
+      fetch(EV_URL,{ method:'POST', keepalive:true, headers:{'content-type':'application/json','apikey':EV_KEY,'authorization':'Bearer '+EV_KEY,'prefer':'return=minimal'},
+        body:JSON.stringify({ sid:SID, page:PAGE, event:ev, step:step||null, label:label?String(label).slice(0,80):null,
+          utm_source:(u.source||'').slice(0,60)||null, utm_campaign:(u.campaign||'').slice(0,120)||null, utm_content:(u.content||'').slice(0,120)||null,
+          device:(innerWidth<700?'mobile':'desktop') }) }).catch(function(){});
+    }catch(e){}
+  }
+  var NAMES=['hook','problem','about','clients','offer','students','review','razbor','q_job','q_projects','q_check','q_block','form','calendar','booked'];
+  addEventListener('pagehide',function(){ track('exit',i+1,NAMES[i]); });
   var QUIZ0=st.findIndex(function(s){ return s.classList.contains('quiz'); });
   var iForm=st.indexOf(document.getElementById('sForm')), iCal=st.indexOf(document.getElementById('sCal')), iOk=st.indexOf(document.getElementById('sOk'));
   var nBars=iOk; /* полоски только до «готово» */
@@ -408,7 +461,7 @@ b{font-weight:700}
     link.classList.toggle('hide', i>=QUIZ0);
     hint.classList.remove('on');
     if(i===0 && !sessionStorage.getItem('sthint')){ hint.classList.add('on'); try{sessionStorage.setItem('sthint','1');}catch(e){} setTimeout(function(){ hint.classList.remove('on'); },2600); }
-    if(window.fbq) fbq('trackCustom','StoriesView',{ n:i+1 });
+    if(!seen[i]){ seen[i]=1; track('story_view',i+1,NAMES[i]); if(window.fbq) fbq('trackCustom','StoriesView',{ n:i+1 }); }
     if(st[i].classList.contains('quiz')) qrender(st[i]);
   }
   function tick(now){
@@ -445,6 +498,7 @@ b{font-weight:700}
     else if(e.key===' '){ paused=!paused; app.classList.toggle('paused',paused); e.preventDefault(); }
   });
   document.getElementById('linkbtn').addEventListener('click',function(){
+    track('link_click',i+1,NAMES[i]);
     if(window.fbq) fbq('trackCustom','StoriesLink',{ from:i+1 });
     show(QUIZ0);
   });
@@ -472,6 +526,7 @@ b{font-weight:700}
     if(name==='projects' && quiz.projects!==b.getAttribute('data-v')){ delete quiz.check; delete quiz.block; }
     quiz[name]=b.getAttribute('data-v');
     [].forEach.call(b.parentNode.querySelectorAll('button'),function(x){ x.classList.remove('on'); }); b.classList.add('on');
+    track('quiz_answer',i+1,name+': '+quiz[name]);
     if(window.fbq) fbq('trackCustom','NewSmmQuiz',{ step:name, page:'stories' });
     setTimeout(function(){ show(i+1); }, reduce?0:280);
   });
@@ -505,6 +560,7 @@ b{font-weight:700}
     var body={ name:name, email:email, phone:phone, ig:ig, src:'stories', track:hasClients()?'pro':(quiz.projects?'start':''), quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
     fetch(FN,{ method:'POST', headers:H, body:JSON.stringify(body) }).then(function(r){ return r.json(); }).catch(function(){ return {}; })
       .then(function(res){
+        track(res && res.ok ? 'lead_ok' : 'lead_fail', iForm+1);
         if(res && res.ok && window.fbq) fbq('track','Lead',{content_name:'new-smm-razbor',page:'stories'});
         who={ name:name, email:email, phone:phone, cid:(res&&res.cid)||'' };
         region=(res&&(res.route||res.region)==='eu')?'eu':'us';
@@ -514,45 +570,74 @@ b{font-weight:700}
       });
   });
 
-  /* выбор времени: дни лентой, время сеткой */
+  /* выбор времени как в Calendly: месяц, день, список времени, «Подтвердить» */
   var MON=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'],
-      WD=['вс','пн','вт','ср','чт','пт','сб'], WDF=['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
-  var daysEl=document.getElementById('days'), timesEl=document.getElementById('times'), calnote=document.getElementById('calnote'),
-      calgo=document.getElementById('calgo'), calerr=document.getElementById('calerr'), calDays=[], dI=0, slot='';
+      MONN=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+      WDF=['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
+  var grid=document.getElementById('grid'), tlist=document.getElementById('tlist'), calnote=document.getElementById('calnote'),
+      calerr=document.getElementById('calerr'), vMonth=document.getElementById('vMonth'), vTimes=document.getElementById('vTimes'),
+      mlab=document.getElementById('mlab'), mprev=document.getElementById('mprev'), mnext=document.getElementById('mnext'),
+      calDays=[], byDate={}, dI=-1, slot='', calY=0, calM=0;
   function dparse(s){ var p=String(s).split('-'); return new Date(+p[0],+p[1]-1,+p[2]); }
+  function ymd(d){ return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }
   function hhmm(iso){ var d=new Date(iso); return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2); }
+  function cap(s){ return s.slice(0,1).toUpperCase()+s.slice(1); }
   function calLoad(){
-    calnote.style.display='block'; calnote.textContent='Смотрим свободные окна…';
+    calnote.style.display='block'; calnote.textContent='Смотрим свободные окна…'; grid.innerHTML=''; vTimes.hidden=true; vMonth.hidden=false;
     fetch(BOOKFN,{ method:'POST', headers:H, body:JSON.stringify({ action:'slots', region:region, tz:zone() }) })
       .then(function(r){ return r.json(); }).catch(function(){ return {}; })
       .then(function(d){
-        calDays=(d&&d.days)||[]; dI=0; slot='';
-        if(!calDays.length){ calnote.textContent='Не получилось показать время здесь. Откройте календарь отдельной страницей.'; return; }
+        calDays=(d&&d.days)||[]; byDate={}; calDays.forEach(function(x,k){ byDate[x.date]=k; }); dI=-1; slot='';
+        if(!calDays.length){ calnote.textContent='Не получилось показать время здесь. Откройте календарь отдельной страницей.'; track('slots_empty',iCal+1); return; }
         calnote.style.display='none';
-        document.getElementById('calzone').textContent='Время в вашем часовом поясе: '+(zone()||'по настройкам устройства');
-        paint();
+        var f=dparse(calDays[0].date); calY=f.getFullYear(); calM=f.getMonth();
+        document.getElementById('calzone').innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>'+(zone()||'Время по настройкам устройства');
+        paintMonth(); track('slots_shown',iCal+1,String(calDays.length)+' дней');
       });
   }
-  function paint(){
-    daysEl.innerHTML=calDays.map(function(d,k){ var dt=dparse(d.date); return '<button type="button" data-i="'+k+'"'+(k===dI?' class="on"':'')+'><small>'+WD[dt.getDay()]+'</small>'+dt.getDate()+' '+MON[dt.getMonth()].slice(0,3)+'</button>'; }).join('');
-    var d=calDays[dI];
-    timesEl.innerHTML=d?d.slots.map(function(s){ return '<button type="button" data-s="'+s+'"'+(s===slot?' class="on"':'')+'>'+hhmm(s)+'</button>'; }).join(''):'';
-    if(slot){ var dt=dparse(d.date); calgo.textContent='Записаться: '+dt.getDate()+' '+MON[dt.getMonth()]+', '+hhmm(slot); calgo.disabled=false; }
-    else { calgo.textContent='Выберите время'; calgo.disabled=true; }
+  function paintMonth(){
+    mlab.textContent=MONN[calM]+' '+calY;
+    var first=new Date(calY,calM,1), last=new Date(calY,calM+1,0), today=ymd(new Date()), html='';
+    var minD=dparse(calDays[0].date), maxD=dparse(calDays[calDays.length-1].date);
+    mprev.disabled=(calY*12+calM)<=(minD.getFullYear()*12+minD.getMonth());
+    mnext.disabled=(calY*12+calM)>=(maxD.getFullYear()*12+maxD.getMonth());
+    for(var k=0;k<(first.getDay()+6)%7;k++) html+='<span></span>';
+    for(var day=1;day<=last.getDate();day++){
+      var key=ymd(new Date(calY,calM,day)), i=byDate[key], cls=[];
+      if(i!==undefined) cls.push('has'); if(i===dI) cls.push('on'); if(key===today) cls.push('today');
+      html+='<button type="button"'+(i!==undefined?' data-i="'+i+'"':' disabled')+(cls.length?' class="'+cls.join(' ')+'"':'')+'>'+day+'</button>';
+    }
+    grid.innerHTML=html;
   }
-  daysEl.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return; dI=+b.getAttribute('data-i'); slot=''; paint(); });
-  timesEl.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return; slot=b.getAttribute('data-s'); calerr.style.display='none'; paint(); });
-  calgo.addEventListener('click',function(){
-    if(!slot) return; var s=slot; calgo.disabled=true; calgo.textContent='Записываем…';
+  function paintTimes(){
+    var d=calDays[dI], dt=dparse(d.date);
+    document.getElementById('dlab').textContent=cap(WDF[dt.getDay()])+', '+dt.getDate()+' '+MON[dt.getMonth()];
+    tlist.innerHTML=d.slots.map(function(s){ return '<div class="trow'+(s===slot?' on':'')+'"><button type="button" class="t" data-s="'+s+'">'+hhmm(s)+'</button><button type="button" class="c" data-go="'+s+'">Подтвердить</button></div>'; }).join('');
+  }
+  mprev.addEventListener('click',function(){ if(--calM<0){ calM=11; calY--; } paintMonth(); });
+  mnext.addEventListener('click',function(){ if(++calM>11){ calM=0; calY++; } paintMonth(); });
+  grid.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-i]'); if(!b) return;
+    dI=+b.getAttribute('data-i'); slot=''; vMonth.hidden=true; vTimes.hidden=false; calerr.style.display='none'; paintTimes();
+    track('day_pick',iCal+1,calDays[dI].date);
+  });
+  document.getElementById('dback').addEventListener('click',function(){ vTimes.hidden=true; vMonth.hidden=false; paintMonth(); });
+  tlist.addEventListener('click',function(e){
+    var t=e.target.closest('.t'), c=e.target.closest('.c');
+    if(t){ slot=t.getAttribute('data-s'); paintTimes(); track('time_pick',iCal+1,hhmm(slot)); return; }
+    if(!c) return;
+    var s=c.getAttribute('data-go'); c.disabled=true; c.textContent='Записываем…';
     fetch(BOOKFN,{ method:'POST', headers:H, body:JSON.stringify({ action:'book', region:region, tz:zone(), start:s, name:who.name, email:who.email, phone:who.phone, cid:who.cid }) })
       .then(function(r){ return r.json().then(function(j){ return {ok:r.ok,j:j}; }); }).catch(function(){ return {ok:false,j:{}}; })
       .then(function(res){
         if(res.ok && res.j && res.j.ok){
           var dt=new Date(s);
-          document.getElementById('okwhen').textContent=WDF[dt.getDay()].slice(0,1).toUpperCase()+WDF[dt.getDay()].slice(1)+', '+dt.getDate()+' '+MON[dt.getMonth()]+', '+hhmm(s);
+          document.getElementById('okwhen').textContent=cap(WDF[dt.getDay()])+', '+dt.getDate()+' '+MON[dt.getMonth()]+', '+hhmm(s);
           if(window.fbq) fbq('track','Schedule',{content_name:'new-smm-razbor',page:'stories'});
+          track('booked',iOk+1);
           booked=true; show(iOk); return;
         }
+        track('book_fail',iCal+1,(res.j&&res.j.error)||'error');
         calerr.textContent=(res.j&&res.j.error==='slot_taken')?'Это время только что заняли. Выберите другое.':'Не получилось записать. Попробуйте другое время.';
         calerr.style.display='block'; calLoad();
       });
