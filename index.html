@@ -927,6 +927,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
             </div>
           </div>
           <div class="f full"><input type="email" id="email" name="email" placeholder=" " autocomplete="email" inputmode="email" required><label for="email">Почта</label></div>
+          <div class="f full"><input type="text" id="ig" name="ig" placeholder=" " autocomplete="off" autocapitalize="off" spellcheck="false"><label for="ig">Ваш Instagram, например @malenapocladova</label></div>
         </div>
         <button class="btn btn-wine" type="submit" id="send"><span>Выбрать время разбора</span></button>
         <div class="err" id="err">Проверьте почту, без неё письмо не дойдёт.</div>
@@ -1479,7 +1480,9 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     /* Ярлык считаем сами из ответов: есть проекты значит разговор про чек
        и удержание, нет значит про первый шаг. Выбор карточки выше идёт запасным. */
     var lane=hasClients() ? 'pro' : (quiz.projects ? 'start' : (track||''));
-    var body={ name:name, email:email, phone:phone, src:(ZAPIS?'zapis':'kurs'), track:lane, quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
+    /* Инстаграм необязательный: берём ник из @ника или из ссылки на профиль. */
+    var igRaw=(form.ig&&form.ig.value||'').trim(), igm=igRaw.match(/instagram\.com\/([A-Za-z0-9._]{1,30})/i), ig=(igm?igm[1]:igRaw.replace(/^@+/,'')).replace(/[^A-Za-z0-9._]/g,'').slice(0,30);
+    var body={ name:name, email:email, phone:phone, ig:ig, src:(ZAPIS?'zapis':'kurs'), track:lane, quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
     fetch(FN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK}, body:JSON.stringify(body) })
       .then(function(r){ return r.json(); })
       .catch(function(){ return {ok:false}; })

@@ -42,6 +42,11 @@ h = re.sub(r'<div class="only-call">[\s\S]*?\n    </div>\n', '', h)
 # все заметки
 h = re.sub(r'<div class="notes">[\s\S]*?</div>\n', '', h)
 h = h.replace('src="course-site/images/', 'src="images/')
+# телефоны сразу на вертикальную версию /newsmm-prezentaciya-m (правится руками,
+# отдельный файл). ?desktop=1 оставляет широкую версию.
+h = h.replace('<meta name="robots" content="noindex, nofollow">',
+    '<meta name="robots" content="noindex, nofollow">\n<script>(function(){try{if(/desktop=1/.test(location.search))return;'
+    'if(Math.min(screen.width,screen.height)<600)location.replace("/newsmm-prezentaciya-m"+location.search)}catch(e){}})();</script>', 1)
 h, n = renumber(h)
 dst = pathlib.Path('newsmm-prezentaciya.html')
 dst.write_text(h, encoding='utf-8')
