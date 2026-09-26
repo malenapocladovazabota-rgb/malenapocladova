@@ -73,14 +73,12 @@ b{font-weight:700}
 #who img{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:50% 15%;border:2px solid #fff}
 #who .nm{font-weight:600;font-size:14px}
 #who .ago{font-size:13px;color:rgba(255,255,255,.7);margin-left:2px}
-#who .tick{display:inline-block;width:14px;height:14px;border-radius:50%;background:#3897F0;vertical-align:-2px;margin-left:3px;position:relative}
-#who .tick::after{content:'';position:absolute;left:4.5px;top:2.5px;width:3.5px;height:7px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
 #pz{margin-left:auto;font-size:12px;font-family:var(--mono);letter-spacing:.06em;opacity:0;transition:opacity .2s}
 #app.paused #pz{opacity:.8}
 
 /* сторис */
 .st{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden;
-  padding:calc(env(safe-area-inset-top) + 76px) 22px calc(env(safe-area-inset-bottom) + 96px)}
+  padding:calc(env(safe-area-inset-top) + 76px) 22px calc(env(safe-area-inset-bottom) + 118px)}
 .st.on{display:flex}
 .st .ph{position:absolute;inset:0;z-index:0}
 .st .ph img{width:100%;height:100%;object-fit:cover}
@@ -127,12 +125,20 @@ b{font-weight:700}
 .shot{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;margin-top:14px}
 .shot img{max-width:100%;max-height:100%;border-radius:16px;box-shadow:0 20px 50px -16px rgba(0,0,0,.7);transform:rotate(-1.5deg)}
 
-/* ссылка-стикер снизу, как «ссылка» в сторис */
-#link{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom) + 22px);z-index:30;display:flex;justify-content:center;pointer-events:none;transition:opacity .25s}
-#link button{pointer-events:auto;display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--ink);border:0;border-radius:12px;
-  font:600 16px var(--sans);padding:12px 18px;box-shadow:0 10px 30px -8px rgba(0,0,0,.6);cursor:pointer}
-#link svg{color:#3897F0}
-#link.hide{opacity:0}#link.hide button{pointer-events:none}
+/* главная кнопка записи: на всех контентных сторис, всегда на одном месте */
+#link{position:absolute;left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom) + 16px);z-index:30;display:flex;flex-direction:column;align-items:center;gap:7px;transition:opacity .25s,transform .25s}
+#link .cap{font:600 12px var(--sans);letter-spacing:.02em;color:rgba(255,255,255,.92);text-shadow:0 1px 6px rgba(0,0,0,.6)}
+#link button{position:relative;overflow:hidden;width:100%;display:flex;align-items:center;justify-content:center;gap:12px;
+  background:linear-gradient(135deg,#8E2A3B 0%,#6E1E2B 60%,#551521 100%);color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:18px;
+  font:700 18px var(--sans);padding:17px 18px;cursor:pointer;box-shadow:0 14px 34px -10px rgba(110,30,43,.95),0 0 0 0 rgba(217,164,65,.55);animation:ring 2.4s ease-out infinite}
+#link button .ar{width:30px;height:30px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;font-size:17px;flex:0 0 30px}
+#link button::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.28),rgba(255,255,255,0));transform:skewX(-20deg);animation:shine 3.2s ease-in-out infinite}
+#link button:active{transform:scale(.98)}
+@keyframes shine{0%,55%{left:-60%}85%,100%{left:130%}}
+@keyframes ring{0%{box-shadow:0 14px 34px -10px rgba(110,30,43,.95),0 0 0 0 rgba(217,164,65,.55)}70%{box-shadow:0 14px 34px -10px rgba(110,30,43,.95),0 0 0 12px rgba(217,164,65,0)}100%{box-shadow:0 14px 34px -10px rgba(110,30,43,.95),0 0 0 0 rgba(217,164,65,0)}}
+#app.lite #link .cap{color:#4A3F3F;text-shadow:none}
+@media (prefers-reduced-motion:reduce){#link button,#link button::after{animation:none}}
+#link.hide{opacity:0;transform:translateY(10px)}#link.hide button{pointer-events:none}
 
 /* опрос-стикер для квиза */
 .poll{background:#fff;color:var(--ink);border-radius:22px;padding:18px 16px 16px;box-shadow:0 18px 44px -14px rgba(0,0,0,.6)}
@@ -186,20 +192,25 @@ b{font-weight:700}
 
 .ok{font-size:64px;line-height:1;width:96px;height:96px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;margin:0 auto 18px}
 
-/* подсказка на первой сторис */
-#hint{position:absolute;inset:0;z-index:40;display:flex;align-items:flex-end;justify-content:center;padding-bottom:calc(env(safe-area-inset-bottom) + 90px);
-  background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.55));pointer-events:none;opacity:0;transition:opacity .4s}
-#hint.on{opacity:1}
-#hint div{display:flex;gap:22px;font:600 13px var(--sans);color:#fff;text-align:center}
-#hint span{display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.95}
-#hint i{width:36px;height:36px;border-radius:50%;border:2px solid #fff;display:grid;place-items:center;font-style:normal;font-size:16px}
+/* подсказка на первой сторис: три зоны касания между шапкой и кнопкой.
+   Кнопку записи не перекрывает, закрывается сама или любым касанием. */
+#hint{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top) + 64px);bottom:calc(env(safe-area-inset-bottom) + 112px);z-index:40;
+  display:flex;background:rgba(10,6,6,.55);opacity:0;pointer-events:none;transition:opacity .35s}
+#hint.on{opacity:1;pointer-events:auto}
+#hint span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font:600 14px var(--sans);color:#fff;text-align:center;line-height:1.3}
+#hint span:nth-child(1){flex:0 0 30%;border-right:1.5px dashed rgba(255,255,255,.45)}
+#hint span:nth-child(2){flex:1;border-right:1.5px dashed rgba(255,255,255,.45)}
+#hint span:nth-child(3){flex:0 0 30%}
+#hint i{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.16);border:2px solid #fff;display:grid;place-items:center;font-style:normal;font-size:20px}
+#hint .pp{display:flex;gap:6px}#hint .pp u{width:5px;height:16px;border-radius:2px;background:#fff}
+#hint b{position:absolute;left:0;right:0;top:14px;text-align:center;font:600 12px var(--sans);color:rgba(255,255,255,.75)}
 
 @media (max-height:680px){
   .big{font-size:36px}.mid{font-size:28px}.txt{font-size:17px}.hl{font-size:17px}
   .stk .n{font-size:30px}.stk{padding:11px 14px}.stack{gap:9px}
   .face img{width:50px;height:50px;flex-basis:50px}.face .n{font-size:23px}
   .poll .q{font-size:18px}.opts button{padding:11px 12px;font-size:15px}
-  .st{padding-bottom:calc(env(safe-area-inset-bottom) + 84px)}
+  .st{padding-bottom:calc(env(safe-area-inset-bottom) + 108px)}
 }
 @media (prefers-reduced-motion:reduce){.st.on .anim{animation:none}}
 </style>
@@ -210,7 +221,7 @@ b{font-weight:700}
 
   <div id="top">
     <div id="bars"></div>
-    <div id="who"><img src="images/malena-avatar-v1.jpg" alt=""><span class="nm">malenapocladova<span class="tick"></span></span><span class="ago">New SMM</span><span id="pz">❚❚ пауза</span></div>
+    <div id="who"><img src="images/malena-avatar-v1.jpg" alt=""><span class="nm">Малена Покладова</span><span class="ago">· New SMM</span><span id="pz">❚❚ пауза</span></div>
   </div>
 
   <!-- 1 · хук -->
@@ -405,8 +416,8 @@ b{font-weight:700}
     <div style="height:30px"></div>
   </section>
 
-  <div id="link"><button type="button" id="linkbtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>Записаться на разбор</button></div>
-  <div id="hint"><div><span><i>←</i>назад</span><span><i>❚❚</i>держите,<br>чтобы читать</span><span><i>→</i>вперёд</span></div></div>
+  <div id="link"><div class="cap">Бесплатно · 4 вопроса и выбор времени</div><button type="button" id="linkbtn">Записаться на разбор<span class="ar">→</span></button></div>
+  <div id="hint"><span><i>←</i>Нажмите<br>слева: назад</span><span><i class="pp"><u></u><u></u></i>Держите палец,<br>чтобы дочитать</span><span><i>→</i>Нажмите<br>справа: дальше</span><b>Коснитесь, чтобы начать</b></div>
 </div>
 
 <script>
@@ -459,11 +470,15 @@ b{font-weight:700}
     fills.forEach(function(f,k){ f.style.width=k<i?'100%':'0%'; });
     dur=(+st[i].getAttribute('data-t')||0)*1000; elapsed=0; t0=performance.now();
     link.classList.toggle('hide', i>=QUIZ0);
-    hint.classList.remove('on');
-    if(i===0 && !sessionStorage.getItem('sthint')){ hint.classList.add('on'); try{sessionStorage.setItem('sthint','1');}catch(e){} setTimeout(function(){ hint.classList.remove('on'); },2600); }
+    app.classList.toggle('lite', st[i].classList.contains('paper'));
+    hideHint();
+    if(i===0 && !sessionStorage.getItem('sthint')){ hint.classList.add('on'); paused=true; try{sessionStorage.setItem('sthint','1');}catch(e){} setTimeout(hideHint,4000); }
     if(!seen[i]){ seen[i]=1; track('story_view',i+1,NAMES[i]); if(window.fbq) fbq('trackCustom','StoriesView',{ n:i+1 }); }
     if(st[i].classList.contains('quiz')) qrender(st[i]);
   }
+  function hideHint(){ if(!hint.classList.contains('on')) return; hint.classList.remove('on'); paused=false; }
+  hint.addEventListener('pointerdown',function(e){ e.stopPropagation(); hideHint(); });
+  hint.addEventListener('pointerup',function(e){ e.stopPropagation(); });
   function tick(now){
     if(dur && !paused && !document.hidden){
       elapsed+=now-t0; var p=Math.min(1,elapsed/dur);
