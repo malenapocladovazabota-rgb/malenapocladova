@@ -59,6 +59,8 @@
 /kurs.html         /             301
 /kurs-review.html  /kurs-review  301
 /newsmm-prezentaciya-m.html  /newsmm-prezentaciya-m  301
+# Тест: лендинг New SMM в формате сторис
+/stories.html  /stories  301
 
 # Прежняя главная, лендинг «SMM с нуля». Лежит целиком, поисковикам закрыта.
 /smm-s-nulya.html  /smm-s-nulya  301

@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0f0b0b">
+<title>New SMM · Малена Покладова</title>
+<meta property="og:title" content="New SMM · обучение Малены Покладовой">
+<meta property="og:description" content="Клиенты, которые платят в долларах и остаются на годы. Бесплатный разбор в Zoom.">
+<meta property="og:image" content="https://malenapocladova.com/images/malena-hero-v4-m.jpg">
+<link rel="preload" as="image" href="images/malena-hero-v4-m.jpg">
+
+<!-- Meta Pixel · школа -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1521940319314090');
+fbq('track','PageView');
+fbq('track','ViewContent',{content_name:'new-smm-stories',content_category:'course',content_type:'product'});
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1521940319314090&ev=PageView&noscript=1"></noscript>
+
+<style>
+/* ─────────────────────────────────────────────────────────────
+   New SMM · лендинг в формате сторис (тест против /).
+   Листается как Instagram: сторис идут сами, тап справа вперёд, слева назад,
+   удержание ставит на паузу. Вопросы квиза выглядят как стикеры-опросы.
+   Заявка уходит в ту же newsmm-lead с src=stories, запись в тот же newsmm-book.
+   ───────────────────────────────────────────────────────────── */
+@font-face{font-family:'Inter';font-weight:400;font-display:swap;src:url(fonts/vsl/inter-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Inter';font-weight:400;font-display:swap;src:url(fonts/vsl/inter-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+00D7}
+@font-face{font-family:'Inter';font-weight:600;font-display:swap;src:url(fonts/vsl/inter-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Inter';font-weight:600;font-display:swap;src:url(fonts/vsl/inter-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+00D7}
+@font-face{font-family:'Inter';font-weight:700;font-display:swap;src:url(fonts/vsl/inter-cyrillic-700-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Inter';font-weight:700;font-display:swap;src:url(fonts/vsl/inter-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+00D7}
+@font-face{font-family:'Playfair Display';font-weight:500;font-display:swap;src:url(fonts/vsl/playfair-display-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Playfair Display';font-weight:500;font-display:swap;src:url(fonts/vsl/playfair-display-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+00D7}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:500;font-display:swap;src:url(fonts/vsl/playfair-display-cyrillic-500-italic.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:500;font-display:swap;src:url(fonts/vsl/playfair-display-latin-500-italic.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+00D7}
+@font-face{font-family:'JetBrains Mono';font-weight:700;font-display:swap;src:url(fonts/vsl/jetbrains-mono-cyrillic-700-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'JetBrains Mono';font-weight:700;font-display:swap;src:url(fonts/vsl/jetbrains-mono-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+00D7}
+
+:root{--wine:#6E1E2B;--wine2:#8E2A3B;--ink:#1B1414;--gold:#D9A441;--paper:#F5EFE3;--cream:#FBF7EE;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0f0b0b;overflow:hidden;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+body{font-family:var(--sans);color:#fff;overscroll-behavior:none}
+em{font-style:italic;color:var(--gold)}
+b{font-weight:700}
+
+/* на компьютере телефонная рамка по центру поверх размытого фото */
+#bgblur{position:fixed;inset:-40px;background:url(images/malena-hero-v4-m.jpg) center/cover;filter:blur(40px) brightness(.35);display:none}
+#app{position:fixed;inset:0;margin:0 auto;max-width:560px;overflow:hidden;background:var(--ink);user-select:none;-webkit-user-select:none}
+@media (min-width:700px){
+  #bgblur{display:block}
+  #app{top:3vh;bottom:3vh;width:calc(94vh * 9 / 16);max-width:none;border-radius:18px;box-shadow:0 40px 120px -20px rgba(0,0,0,.8)}
+}
+
+/* шапка как в Instagram */
+#top{position:absolute;left:0;right:0;top:0;z-index:30;padding:calc(env(safe-area-inset-top) + 8px) 10px 0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,0));padding-bottom:26px}
+#bars{display:flex;gap:3px}
+#bars i{flex:1;height:2.5px;border-radius:2px;background:rgba(255,255,255,.35);overflow:hidden;position:relative}
+#bars i b{position:absolute;left:0;top:0;bottom:0;width:0;background:#fff;border-radius:2px}
+#who{display:flex;align-items:center;gap:9px;margin-top:10px}
+#who img{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:50% 15%;border:2px solid #fff}
+#who .nm{font-weight:600;font-size:14px}
+#who .ago{font-size:13px;color:rgba(255,255,255,.7);margin-left:2px}
+#who .tick{display:inline-block;width:14px;height:14px;border-radius:50%;background:#3897F0;vertical-align:-2px;margin-left:3px;position:relative}
+#who .tick::after{content:'';position:absolute;left:4.5px;top:2.5px;width:3.5px;height:7px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+#pz{margin-left:auto;font-size:12px;font-family:var(--mono);letter-spacing:.06em;opacity:0;transition:opacity .2s}
+#app.paused #pz{opacity:.8}
+
+/* сторис */
+.st{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden;
+  padding:calc(env(safe-area-inset-top) + 76px) 22px calc(env(safe-area-inset-bottom) + 96px)}
+.st.on{display:flex}
+.st .ph{position:absolute;inset:0;z-index:0}
+.st .ph img{width:100%;height:100%;object-fit:cover}
+.st .ph::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.25) 55%,rgba(10,6,6,.92) 100%)}
+.st .ph.dim::after{background:linear-gradient(180deg,rgba(0,0,0,.2) 0%,rgba(10,6,6,.55) 35%,rgba(10,6,6,.93) 70%)}
+.st > *:not(.ph){position:relative;z-index:1}
+.st.wine{background:radial-gradient(120% 80% at 80% 10%,#8E2A3B 0%,#5A1722 45%,#2A0B11 100%)}
+.st.ink{background:radial-gradient(120% 80% at 20% 0%,#3A2323 0%,#1B1414 55%,#0f0b0b 100%)}
+.st.paper{background:radial-gradient(120% 80% at 80% 0%,#FBF7EE 0%,#F1E7D6 60%,#E6D7BF 100%);color:var(--ink)}
+.st.paper em{color:var(--wine)}
+.st.on .anim{animation:rise .55s cubic-bezier(.2,.7,.2,1) both}
+.st.on .anim.d1{animation-delay:.12s}.st.on .anim.d2{animation-delay:.28s}.st.on .anim.d3{animation-delay:.44s}.st.on .anim.d4{animation-delay:.6s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.push{flex:1}
+
+/* типографика сторис */
+.big{font-family:var(--serif);font-weight:500;font-size:44px;line-height:1.04;letter-spacing:-.015em}
+.mid{font-family:var(--serif);font-weight:500;font-size:34px;line-height:1.1}
+.txt{font-size:19px;line-height:1.42}
+.lab{font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+/* текст с подложкой, как текстовый стикер в Instagram */
+.hl{display:inline;background:#fff;color:var(--ink);padding:3px 9px;line-height:1.6;border-radius:8px;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;font-weight:600;font-size:20px}
+.hl.w{background:var(--wine);color:#fff}
+.hl.g{background:var(--gold);color:var(--ink)}
+
+/* стикеры-карточки */
+.stk{background:rgba(255,255,255,.95);color:var(--ink);border-radius:18px;padding:14px 16px;box-shadow:0 12px 30px -12px rgba(0,0,0,.5)}
+.stk .n{font-family:var(--serif);font-size:38px;line-height:1;color:var(--wine)}
+.stk .t{font-size:15px;line-height:1.3;margin-top:4px;color:#4A3F3F}
+.stk .k{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8A7C78;margin-bottom:6px}
+.stk.tilt-l{transform:rotate(-2deg)}.stk.tilt-r{transform:rotate(2deg)}
+.stack{display:flex;flex-direction:column;gap:12px}
+.two{display:flex;gap:10px}.two > *{flex:1}
+
+/* ученицы */
+.face{display:flex;align-items:center;gap:12px}
+.face img{width:62px;height:62px;border-radius:50%;object-fit:cover;object-position:50% 25%;flex:0 0 62px;border:3px solid var(--gold)}
+.face .n{font-family:var(--serif);font-size:28px;line-height:1;color:var(--wine)}
+.face .nm{font-weight:700;font-size:15px}
+.face .t{font-size:14px;line-height:1.25;color:#4A3F3F;margin-top:2px}
+
+/* отзыв */
+.shot{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;margin-top:14px}
+.shot img{max-width:100%;max-height:100%;border-radius:16px;box-shadow:0 20px 50px -16px rgba(0,0,0,.7);transform:rotate(-1.5deg)}
+
+/* ссылка-стикер снизу, как «ссылка» в сторис */
+#link{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom) + 22px);z-index:30;display:flex;justify-content:center;pointer-events:none;transition:opacity .25s}
+#link button{pointer-events:auto;display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--ink);border:0;border-radius:12px;
+  font:600 16px var(--sans);padding:12px 18px;box-shadow:0 10px 30px -8px rgba(0,0,0,.6);cursor:pointer}
+#link svg{color:#3897F0}
+#link.hide{opacity:0}#link.hide button{pointer-events:none}
+
+/* опрос-стикер для квиза */
+.poll{background:#fff;color:var(--ink);border-radius:22px;padding:18px 16px 16px;box-shadow:0 18px 44px -14px rgba(0,0,0,.6)}
+.poll .q{font-weight:700;font-size:21px;line-height:1.25;text-align:center;margin-bottom:14px}
+.poll .qn{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8A7C78;text-align:center;margin-bottom:8px}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts button{font:600 16px var(--sans);color:var(--ink);background:#F2EDE6;border:0;border-radius:14px;padding:14px 14px;text-align:left;cursor:pointer;position:relative;overflow:hidden}
+.opts button.on{background:var(--wine);color:#fff}
+.opts button:active{transform:scale(.98)}
+.back{margin-top:12px;background:none;border:0;color:rgba(255,255,255,.75);font:500 14px var(--sans);text-decoration:underline;cursor:pointer;align-self:center}
+
+/* форма */
+.fld{display:block;width:100%;font:500 17px var(--sans);color:var(--ink);background:#F2EDE6;border:2px solid transparent;border-radius:14px;padding:14px 14px;outline:0;margin-top:8px;-webkit-appearance:none;appearance:none}
+.fld:focus{border-color:var(--wine);background:#fff}
+.telrow{display:flex;gap:8px}.telrow select{flex:0 0 108px;padding-right:6px}.telrow input{flex:1;min-width:0}
+.go{display:flex;align-items:center;justify-content:center;width:100%;margin-top:14px;background:var(--wine);color:#fff;border:0;border-radius:14px;font:700 17px var(--sans);padding:16px;cursor:pointer}
+.go:disabled{opacity:.55}
+.err{display:none;color:#B3261E;font-size:14px;margin-top:8px;text-align:center}
+.fine{font-size:11px;line-height:1.35;color:#8A7C78;margin-top:10px;text-align:center}
+.fine a{color:inherit}
+
+/* выбор времени */
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.days::-webkit-scrollbar{display:none}
+.days button{flex:0 0 auto;min-width:62px;border:0;border-radius:14px;background:#F2EDE6;color:var(--ink);padding:10px 8px;font:600 14px var(--sans);cursor:pointer;line-height:1.2}
+.days button small{display:block;font-weight:500;font-size:12px;color:#8A7C78}
+.days button.on{background:var(--wine);color:#fff}.days button.on small{color:#F6D9DE}
+.times{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;max-height:200px;overflow-y:auto}
+.times button{border:0;border-radius:12px;background:#F2EDE6;color:var(--ink);padding:12px 0;font:600 16px var(--sans);cursor:pointer}
+.times button.on{background:var(--wine);color:#fff}
+.note{font-size:13px;color:#8A7C78;margin-top:10px;text-align:center}
+
+.ok{font-size:64px;line-height:1;width:96px;height:96px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;margin:0 auto 18px}
+
+/* подсказка на первой сторис */
+#hint{position:absolute;inset:0;z-index:40;display:flex;align-items:flex-end;justify-content:center;padding-bottom:calc(env(safe-area-inset-bottom) + 90px);
+  background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.55));pointer-events:none;opacity:0;transition:opacity .4s}
+#hint.on{opacity:1}
+#hint div{display:flex;gap:22px;font:600 13px var(--sans);color:#fff;text-align:center}
+#hint span{display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.95}
+#hint i{width:36px;height:36px;border-radius:50%;border:2px solid #fff;display:grid;place-items:center;font-style:normal;font-size:16px}
+
+@media (max-height:680px){
+  .big{font-size:36px}.mid{font-size:28px}.txt{font-size:17px}.hl{font-size:17px}
+  .stk .n{font-size:30px}.stk{padding:11px 14px}.stack{gap:9px}
+  .face img{width:50px;height:50px;flex-basis:50px}.face .n{font-size:23px}
+  .poll .q{font-size:18px}.opts button{padding:11px 12px;font-size:15px}
+  .st{padding-bottom:calc(env(safe-area-inset-bottom) + 84px)}
+}
+@media (prefers-reduced-motion:reduce){.st.on .anim{animation:none}}
+</style>
+</head>
+<body>
+<div id="bgblur"></div>
+<div id="app">
+
+  <div id="top">
+    <div id="bars"></div>
+    <div id="who"><img src="images/malena-avatar-v1.jpg" alt=""><span class="nm">malenapocladova<span class="tick"></span></span><span class="ago">New SMM</span><span id="pz">❚❚ пауза</span></div>
+  </div>
+
+  <!-- 1 · хук -->
+  <section class="st" data-t="7">
+    <div class="ph"><img src="images/malena-hero-v4-m.jpg" alt="Малена Покладова" style="object-position:50% 10%"></div>
+    <div class="push"></div>
+    <div class="lab anim">Обучение Малены Покладовой</div>
+    <div class="big anim d1" style="margin-top:10px;font-size:62px"><em>New</em> SMM</div>
+    <div class="anim d2" style="margin-top:14px"><span class="hl">Клиенты, которые платят в долларах и остаются на годы</span></div>
+  </section>
+
+  <!-- 2 · проблема -->
+  <section class="st ink" data-t="8">
+    <div class="lab anim">Как изменилась профессия</div>
+    <div class="mid anim d1" style="margin-top:12px">Бизнес больше не платит <em>за красивую ленту</em></div>
+    <div class="push"></div>
+    <p class="txt anim d2">У владельца бизнеса в голове три цифры:</p>
+    <div class="stack" style="margin-top:12px">
+      <div class="anim d2"><span class="hl">1 · Сколько клиентов пришло</span></div>
+      <div class="anim d3"><span class="hl">2 · Сколько стоил каждый</span></div>
+      <div class="anim d4"><span class="hl g">3 · Сколько он на них заработал</span></div>
+    </div>
+    <div class="push"></div>
+    <p class="txt anim d4">Кто умеет показать эти цифры, тот стоит дороже и работает с клиентом годами.</p>
+  </section>
+
+  <!-- 3 · кто я -->
+  <section class="st" data-t="8">
+    <div class="ph"><img src="images/malena-b2.jpg" alt="" style="object-position:50% 18%"></div>
+    <div class="push"></div>
+    <div class="anim"><span class="hl">Я Малена. Живу в Сан-Диего,</span><br><span class="hl">с мужем ведём агентство в США</span></div>
+    <div class="two anim d2" style="margin-top:16px">
+      <div class="stk tilt-l"><div class="n">7 лет</div><div class="t">зарабатываю только на соцсетях</div></div>
+      <div class="stk tilt-r"><div class="n">12 000</div><div class="t">видео для себя и клиентов</div></div>
+    </div>
+    <div class="stk anim d3" style="margin-top:10px"><div class="n">200+</div><div class="t">женщин закончили моё обучение</div></div>
+  </section>
+
+  <!-- 4 · клиенты агентства -->
+  <section class="st paper" data-t="9">
+    <div class="lab anim" style="color:var(--wine)">Клиенты нашего агентства</div>
+    <div class="mid anim d1" style="margin-top:10px">Их цифры мы <em>разбираем на обучении</em></div>
+    <div class="push"></div>
+    <div class="stack">
+      <div class="stk anim d2"><div class="k">Студия красоты · Сан-Диего</div><div class="two"><div><div class="n">30 дней</div><div class="t">до полной записи</div></div><div><div class="n">×8</div><div class="t">окупаемость рекламы</div></div></div></div>
+      <div class="stk anim d3"><div class="k">Онлайн-школа · США</div><div class="two"><div><div class="n">×10</div><div class="t">окупаемость рекламы</div></div><div><div class="n">200+</div><div class="t">клиентов на премиум</div></div></div></div>
+      <div class="stk anim d4"><div class="k">Иммиграционный адвокат · США</div><div class="n">1,7M</div><div class="t">органических просмотров за месяц</div></div>
+    </div>
+    <div class="push"></div>
+  </section>
+
+  <!-- 5 · что внутри -->
+  <section class="st wine" data-t="9">
+    <div class="lab anim">Что такое New SMM</div>
+    <div class="mid anim d1" style="margin-top:10px">Три вещи, которые <em>вместе есть только здесь</em></div>
+    <div class="push"></div>
+    <div class="stack">
+      <div class="anim d2"><span class="hl">Ведёте клиента до продления договора</span><p class="txt" style="margin:8px 2px 0;font-size:16px;opacity:.85">Считаете заявки и показываете ему отчёт, в котором видны его деньги.</p></div>
+      <div class="anim d3"><span class="hl">Настраиваете AI под каждого клиента</span><p class="txt" style="margin:8px 2px 0;font-size:16px;opacity:.85">Он берёт на себя идеи, сценарии, тексты и разбор цифр.</p></div>
+      <div class="anim d4"><span class="hl g">Работаете как агентство в США</span><p class="txt" style="margin:8px 2px 0;font-size:16px;opacity:.85">И выходите на заказчиков, которые платят в долларах.</p></div>
+    </div>
+    <div class="push"></div>
+  </section>
+
+  <!-- 6 · ученицы -->
+  <section class="st paper" data-t="9">
+    <div class="lab anim" style="color:var(--wine)">Ученицы прошлых потоков</div>
+    <div class="mid anim d1" style="margin-top:10px">Начинали <em>как вы</em></div>
+    <div class="push"></div>
+    <div class="stack">
+      <div class="stk face anim d2"><img src="images/portrait-alina.jpg" alt=""><div><div class="nm">Алина, пришла в декрете</div><div class="n">5 клиентов</div><div class="t">своя SMM-студия, команда из трёх человек</div></div></div>
+      <div class="stk face anim d3"><img src="images/portrait-elizaveta.jpg" alt=""><div><div class="nm">Елизавета, с нуля</div><div class="n">0 → 74,2K</div><div class="t">самое большое СМИ об экологии в Молдове</div></div></div>
+      <div class="stk face anim d4"><img src="images/club/otzyvy/face-loredana.jpg" alt=""><div><div class="nm">Лоредана</div><div class="n">4 клиента</div><div class="t">и крупный проект из Турции</div></div></div>
+    </div>
+    <div class="push"></div>
+    <p style="font-size:11px;color:#8A7C78;text-align:center" class="anim d4">С разрешения учениц, цифры с их аккаунтов</p>
+  </section>
+
+  <!-- 7 · отзыв -->
+  <section class="st ink" data-t="8">
+    <div class="anim"><span class="hl">Тома, выпускница</span></div>
+    <div class="shot anim d1"><img src="images/club/otzyvy/shot-02.jpg" alt="Отзыв Томы"></div>
+  </section>
+
+  <!-- 8 · оффер разбора -->
+  <section class="st" data-t="9">
+    <div class="ph dim"><img src="images/malena-b6.jpg" alt="" style="object-position:50% 30%"></div>
+    <div class="push"></div>
+    <div class="lab anim">Поток стартует в ноябре</div>
+    <div class="big anim d1" style="margin-top:10px">Сначала <em>бесплатный разбор</em> в Zoom</div>
+    <div class="stack anim d2" style="margin-top:16px">
+      <div><span class="hl">Посмотрим вашу ситуацию</span></div>
+      <div><span class="hl">Скажем, с чего начать именно вам</span></div>
+      <div><span class="hl">Подберём формат: с нуля или для тех, кто уже ведёт клиентов</span></div>
+    </div>
+    <p class="txt anim d3" style="margin-top:14px;font-size:16px;opacity:.85">На обучение берём не всех, поэтому сначала знакомимся. Четыре вопроса, дальше выбор времени.</p>
+  </section>
+
+  <!-- 9–12 · квиз -->
+  <section class="st wine quiz" data-q="job">
+    <div class="push"></div>
+    <div class="poll anim"><div class="qn">Вопрос 1 из 4</div><div class="q">Чем вы занимаетесь сейчас?</div>
+      <div class="opts">
+        <button type="button" data-v="Веду соцсети клиентам">Веду соцсети клиентам</button>
+        <button type="button" data-v="Веду свой блог">Веду свой блог</button>
+        <button type="button" data-v="Свой бизнес и его соцсети">У меня свой бизнес</button>
+        <button type="button" data-v="Другая сфера, хочу в SMM">Другая сфера, хочу в SMM</button>
+      </div></div>
+    <div class="push"></div>
+  </section>
+
+  <section class="st wine quiz" data-q="projects">
+    <div class="push"></div>
+    <div class="poll anim"><div class="qn">Вопрос 2 из 4</div><div class="q">Сколько проектов ведёте прямо сейчас?</div>
+      <div class="opts">
+        <button type="button" data-v="0">Пока ни одного</button>
+        <button type="button" data-v="1">Один</button>
+        <button type="button" data-v="2-3">Два или три</button>
+        <button type="button" data-v="4+">Четыре и больше</button>
+      </div></div>
+    <button class="back" type="button">Назад</button>
+    <div class="push"></div>
+  </section>
+
+  <section class="st wine quiz" data-q="check">
+    <div class="push"></div>
+    <div class="poll anim"><div class="qn">Вопрос 3 из 4</div>
+      <div class="q" data-has="Какой у вас чек за проект в месяц?" data-none="Сколько хотите зарабатывать в месяц через полгода?"></div>
+      <div class="opts" data-has-opts="До $300|От $300 до $800|От $800 до $2000|От $2000 до $5000|Больше $5000"
+           data-none-opts="До $500|От $500 до $2000|От $2000 до $5000|От $5000 до $10 000|Больше $10 000"></div></div>
+    <button class="back" type="button">Назад</button>
+    <div class="push"></div>
+  </section>
+
+  <section class="st wine quiz" data-q="block">
+    <div class="push"></div>
+    <div class="poll anim"><div class="qn">Вопрос 4 из 4</div><div class="q">Что мешает больше всего прямо сейчас?</div>
+      <div class="opts" data-has-opts="Клиентов мало, не знаю где искать|Не получается поднять чек|Клиенты уходят через месяц или два|Не умею показывать результат в деньгах|Тону в рутине, не хватает времени"
+           data-none-opts="Не знаю, с чего начать|Не понимаю, где брать клиентов|Не хватает уверенности в навыках|Нет времени на обучение|Не понимаю, сколько на этом зарабатывают"></div></div>
+    <button class="back" type="button">Назад</button>
+    <div class="push"></div>
+  </section>
+
+  <!-- 13 · контакты -->
+  <section class="st wine" id="sForm" data-q="form">
+    <div class="push"></div>
+    <form class="poll" id="lead" novalidate>
+      <div class="qn">Почти готово</div>
+      <div class="q" style="margin-bottom:6px">Куда прислать подтверждение?</div>
+      <input class="fld" id="name" name="name" placeholder="Как вас зовут" autocomplete="given-name" required>
+      <div class="telrow"><select class="fld" id="cc" aria-label="Код страны"></select><input class="fld" id="phone" type="tel" inputmode="tel" placeholder="Телефон, WhatsApp" autocomplete="tel-national" required></div>
+      <input class="fld" id="email" type="email" inputmode="email" placeholder="Почта" autocomplete="email" required>
+      <input class="fld" id="ig" placeholder="Instagram, если есть" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <button class="go" type="submit" id="send">Выбрать время разбора</button>
+      <div class="err" id="err"></div>
+      <p class="fine">Нажимая кнопку, вы соглашаетесь на обработку данных и на письма и сообщения от школы в WhatsApp: подтверждение, напоминания, материалы. Отписаться можно в любой момент. <a href="/privacy">Политика</a>.</p>
+    </form>
+    <button class="back" type="button">Назад</button>
+    <div class="push"></div>
+  </section>
+
+  <!-- 14 · время -->
+  <section class="st wine" id="sCal">
+    <div class="push"></div>
+    <div class="poll">
+      <div class="qn">Последний шаг</div>
+      <div class="q">Когда вам удобно?</div>
+      <div class="days" id="days"></div>
+      <div class="times" id="times"></div>
+      <div class="note" id="calnote">Смотрим свободные окна…</div>
+      <button class="go" type="button" id="calgo" disabled>Выберите время</button>
+      <div class="err" id="calerr"></div>
+      <p class="fine" id="calzone"></p>
+      <p class="fine"><a id="book" href="https://api.leadconnectorhq.com/widget/booking/k3vObJo44lcPodJUj57L" target="_blank" rel="noopener">Открыть календарь отдельной страницей</a></p>
+    </div>
+    <div class="push"></div>
+  </section>
+
+  <!-- 15 · готово -->
+  <section class="st" id="sOk">
+    <div class="ph dim"><img src="images/malena-b5.jpg" alt="" style="object-position:50% 20%"></div>
+    <div class="push"></div>
+    <div class="ok anim">✓</div>
+    <div class="big anim d1" style="text-align:center">Вы <em>записаны</em></div>
+    <div class="anim d2" style="text-align:center;margin-top:14px"><span class="hl" id="okwhen"></span></div>
+    <p class="txt anim d3" style="text-align:center;margin-top:14px">Подтверждение и ссылка на Zoom придут на почту и в WhatsApp. До встречи на разборе!</p>
+    <div style="height:30px"></div>
+  </section>
+
+  <div id="link"><button type="button" id="linkbtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>Записаться на разбор</button></div>
+  <div id="hint"><div><span><i>←</i>назад</span><span><i>❚❚</i>держите,<br>чтобы читать</span><span><i>→</i>вперёд</span></div></div>
+</div>
+
+<script>
+(function(){
+  var app=document.getElementById('app'), st=[].slice.call(document.querySelectorAll('.st')),
+      bars=document.getElementById('bars'), link=document.getElementById('link'), hint=document.getElementById('hint');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var QUIZ0=st.findIndex(function(s){ return s.classList.contains('quiz'); });
+  var iForm=st.indexOf(document.getElementById('sForm')), iCal=st.indexOf(document.getElementById('sCal')), iOk=st.indexOf(document.getElementById('sOk'));
+  var nBars=iOk; /* полоски только до «готово» */
+  for(var k=0;k<nBars;k++){ var b=document.createElement('i'); b.appendChild(document.createElement('b')); bars.appendChild(b); }
+  var fills=[].slice.call(bars.querySelectorAll('b'));
+
+  var i=0, t0=0, elapsed=0, dur=0, paused=false, raf=0, booked=false, submitted=false;
+  function show(n){
+    n=Math.max(0,Math.min(st.length-1,n));
+    /* после отправки формы назад к квизу не пускаем, после записи только «готово» */
+    if(booked) n=iOk; else if(submitted && n<iCal) n=iCal;
+    if(!submitted && n>iForm) n=iForm;
+    i=n; st.forEach(function(s,k){ s.classList.toggle('on',k===i); });
+    fills.forEach(function(f,k){ f.style.width=k<i?'100%':'0%'; });
+    dur=(+st[i].getAttribute('data-t')||0)*1000; elapsed=0; t0=performance.now();
+    link.classList.toggle('hide', i>=QUIZ0);
+    hint.classList.remove('on');
+    if(i===0 && !sessionStorage.getItem('sthint')){ hint.classList.add('on'); try{sessionStorage.setItem('sthint','1');}catch(e){} setTimeout(function(){ hint.classList.remove('on'); },2600); }
+    if(window.fbq) fbq('trackCustom','StoriesView',{ n:i+1 });
+    if(st[i].classList.contains('quiz')) qrender(st[i]);
+  }
+  function tick(now){
+    if(dur && !paused && !document.hidden){
+      elapsed+=now-t0; var p=Math.min(1,elapsed/dur);
+      if(fills[i]) fills[i].style.width=(p*100)+'%';
+      if(p>=1){ show(i+1); }
+    } else if(!dur && fills[i] && i<nBars){ fills[i].style.width='100%'; }
+    t0=now; raf=requestAnimationFrame(tick);
+  }
+
+  /* касания: слева назад, справа вперёд, удержание пауза */
+  var downAt=0, holdT=0, held=false, x0=0, y0=0;
+  function interactive(el){ return el.closest('button,input,select,a,label,form,.poll'); }
+  app.addEventListener('pointerdown',function(e){
+    if(interactive(e.target)) return;
+    downAt=Date.now(); held=false; x0=e.clientX; y0=e.clientY;
+    holdT=setTimeout(function(){ held=true; paused=true; app.classList.add('paused'); },220);
+  });
+  function release(e){
+    if(!downAt) return; clearTimeout(holdT);
+    var dx=e.clientX-x0, dy=e.clientY-y0; downAt=0;
+    if(held){ paused=false; app.classList.remove('paused'); return; }
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ show(dx<0?i+1:i-1); return; }
+    var r=app.getBoundingClientRect();
+    show(e.clientX-r.left < r.width*0.3 ? i-1 : i+1);
+  }
+  app.addEventListener('pointerup',release);
+  app.addEventListener('pointercancel',function(){ clearTimeout(holdT); downAt=0; if(held){ paused=false; app.classList.remove('paused'); } });
+  app.addEventListener('contextmenu',function(e){ e.preventDefault(); });
+  addEventListener('keydown',function(e){
+    if(/INPUT|SELECT/.test((document.activeElement||{}).tagName||'')) return;
+    if(e.key==='ArrowRight') show(i+1); else if(e.key==='ArrowLeft') show(i-1);
+    else if(e.key===' '){ paused=!paused; app.classList.toggle('paused',paused); e.preventDefault(); }
+  });
+  document.getElementById('linkbtn').addEventListener('click',function(){
+    if(window.fbq) fbq('trackCustom','StoriesLink',{ from:i+1 });
+    show(QUIZ0);
+  });
+  [].forEach.call(document.querySelectorAll('.back'),function(b){ b.addEventListener('click',function(){ show(i-1); }); });
+
+  /* метки источника, как на основном сайте */
+  function q(n){ try{ return new URLSearchParams(location.search).get(n)||''; }catch(e){ return ''; } }
+  var utm={ source:q('utm_source'), medium:q('utm_medium'), campaign:q('utm_campaign'), content:q('utm_content') };
+  try{ if(utm.source) localStorage.setItem('newsmm_src', JSON.stringify(utm)); else { var s=JSON.parse(localStorage.getItem('newsmm_src')||'null'); if(s) utm=s; } }catch(e){}
+
+  /* квиз: ветка про деньги зависит от того, есть ли проекты */
+  var quiz={};
+  function hasClients(){ return !!quiz.projects && quiz.projects!=='0'; }
+  function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function qrender(s){
+    var key=hasClients()?'has':'none', qq=s.querySelector('.q'), opts=s.querySelector('.opts'), name=s.getAttribute('data-q');
+    if(qq && qq.getAttribute('data-'+key)) qq.textContent=qq.getAttribute('data-'+key);
+    var raw=opts && opts.getAttribute('data-'+key+'-opts');
+    if(raw) opts.innerHTML=raw.split('|').map(function(v){ return '<button type="button" data-v="'+esc(v)+'">'+esc(v)+'</button>'; }).join('');
+    if(opts) [].forEach.call(opts.querySelectorAll('button'),function(b){ b.classList.toggle('on',quiz[name]===b.getAttribute('data-v')); });
+  }
+  app.addEventListener('click',function(e){
+    var b=e.target.closest('.opts button'); if(!b) return;
+    var s=b.closest('.st'), name=s.getAttribute('data-q');
+    if(name==='projects' && quiz.projects!==b.getAttribute('data-v')){ delete quiz.check; delete quiz.block; }
+    quiz[name]=b.getAttribute('data-v');
+    [].forEach.call(b.parentNode.querySelectorAll('button'),function(x){ x.classList.remove('on'); }); b.classList.add('on');
+    if(window.fbq) fbq('trackCustom','NewSmmQuiz',{ step:name, page:'stories' });
+    setTimeout(function(){ show(i+1); }, reduce?0:280);
+  });
+
+  /* телефон: код страны списком, страна подставляется по Cloudflare */
+  var CC='US,1,США|CA,1,Канада|MD,373,Молдова|RO,40,Румыния|UA,380,Украина|RU,7,Россия|KZ,7,Казахстан|BY,375,Беларусь|GE,995,Грузия|AM,374,Армения|AZ,994,Азербайджан|UZ,998,Узбекистан|IL,972,Израиль|TR,90,Турция|DE,49,Германия|GB,44,Великобритания|IT,39,Италия|ES,34,Испания|FR,33,Франция|PL,48,Польша|CZ,420,Чехия|NL,31,Нидерланды|BE,32,Бельгия|AT,43,Австрия|CH,41,Швейцария|PT,351,Португалия|IE,353,Ирландия|GR,30,Греция|BG,359,Болгария|CY,357,Кипр|LT,370,Литва|LV,371,Латвия|EE,372,Эстония|SE,46,Швеция|NO,47,Норвегия|DK,45,Дания|FI,358,Финляндия|AE,971,ОАЭ|MX,52,Мексика|AU,61,Австралия'.split('|').map(function(x){ var p=x.split(','); return {c:p[0],d:p[1],n:p[2]}; });
+  function flag(c){ return String.fromCodePoint.apply(null,c.split('').map(function(ch){ return 127397+ch.charCodeAt(0); })); }
+  var ccSel=document.getElementById('cc');
+  ccSel.innerHTML=CC.map(function(x){ return '<option value="'+x.c+'">'+flag(x.c)+' +'+x.d+'</option>'; }).join('');
+  ccSel.value='US';
+  fetch('/cdn-cgi/trace').then(function(r){ return r.text(); }).then(function(t){ var m=/(?:^|\n)loc=([A-Z]{2})/.exec(t); if(m && CC.some(function(x){ return x.c===m[1]; })) ccSel.value=m[1]; }).catch(function(){});
+  function dial(){ var c=ccSel.value; for(var k=0;k<CC.length;k++) if(CC[k].c===c) return CC[k].d; return '1'; }
+
+  /* отправка заявки: та же функция, что у основного сайта, src=stories */
+  var FN='https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/newsmm-lead',
+      BOOKFN='https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/newsmm-book',
+      SBK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqeWZiZnFjZ3JldHJidXB5aGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNzU4NDYsImV4cCI6MjA5NjY1MTg0Nn0.amLiv4BuwDuEI0z2V3WiPKeWzvENSEwPlDeaGRq0CFM',
+      H={'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK};
+  function zone(){ try{ return Intl.DateTimeFormat().resolvedOptions().timeZone||''; }catch(e){ return ''; } }
+  var form=document.getElementById('lead'), err=document.getElementById('err'), send=document.getElementById('send'), who={}, region='us';
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var name=form.name.value.trim(), email=form.email.value.trim().toLowerCase(), raw=form.phone.value.replace(/\D/g,''),
+        d=dial(), phone=raw ? '+'+d+(raw.indexOf(d)===0 && raw.length>10 ? raw.slice(d.length) : raw) : '';
+    function bad(m,el){ err.textContent=m; err.style.display='block'; el.focus(); }
+    if(name.length<2) return bad('Напишите, как к вам обращаться.',form.name);
+    if(raw.length<6) return bad('Оставьте телефон: подтверждение придёт в WhatsApp.',form.phone);
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return bad('Проверьте почту, без неё письмо не дойдёт.',form.email);
+    err.style.display='none'; send.disabled=true; send.textContent='Отправляем…';
+    var igRaw=form.ig.value.trim(), igm=igRaw.match(/instagram\.com\/([A-Za-z0-9._]{1,30})/i), ig=(igm?igm[1]:igRaw.replace(/^@+/,'')).replace(/[^A-Za-z0-9._]/g,'').slice(0,30);
+    var body={ name:name, email:email, phone:phone, ig:ig, src:'stories', track:hasClients()?'pro':(quiz.projects?'start':''), quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
+    fetch(FN,{ method:'POST', headers:H, body:JSON.stringify(body) }).then(function(r){ return r.json(); }).catch(function(){ return {}; })
+      .then(function(res){
+        if(res && res.ok && window.fbq) fbq('track','Lead',{content_name:'new-smm-razbor',page:'stories'});
+        who={ name:name, email:email, phone:phone, cid:(res&&res.cid)||'' };
+        region=(res&&(res.route||res.region)==='eu')?'eu':'us';
+        var u=new URL((res&&res.booking_url)||document.getElementById('book').href); u.searchParams.set('first_name',name); u.searchParams.set('email',email); u.searchParams.set('phone',phone);
+        document.getElementById('book').href=u.toString();
+        submitted=true; show(iCal); calLoad();
+      });
+  });
+
+  /* выбор времени: дни лентой, время сеткой */
+  var MON=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'],
+      WD=['вс','пн','вт','ср','чт','пт','сб'], WDF=['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
+  var daysEl=document.getElementById('days'), timesEl=document.getElementById('times'), calnote=document.getElementById('calnote'),
+      calgo=document.getElementById('calgo'), calerr=document.getElementById('calerr'), calDays=[], dI=0, slot='';
+  function dparse(s){ var p=String(s).split('-'); return new Date(+p[0],+p[1]-1,+p[2]); }
+  function hhmm(iso){ var d=new Date(iso); return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2); }
+  function calLoad(){
+    calnote.style.display='block'; calnote.textContent='Смотрим свободные окна…';
+    fetch(BOOKFN,{ method:'POST', headers:H, body:JSON.stringify({ action:'slots', region:region, tz:zone() }) })
+      .then(function(r){ return r.json(); }).catch(function(){ return {}; })
+      .then(function(d){
+        calDays=(d&&d.days)||[]; dI=0; slot='';
+        if(!calDays.length){ calnote.textContent='Не получилось показать время здесь. Откройте календарь отдельной страницей.'; return; }
+        calnote.style.display='none';
+        document.getElementById('calzone').textContent='Время в вашем часовом поясе: '+(zone()||'по настройкам устройства');
+        paint();
+      });
+  }
+  function paint(){
+    daysEl.innerHTML=calDays.map(function(d,k){ var dt=dparse(d.date); return '<button type="button" data-i="'+k+'"'+(k===dI?' class="on"':'')+'><small>'+WD[dt.getDay()]+'</small>'+dt.getDate()+' '+MON[dt.getMonth()].slice(0,3)+'</button>'; }).join('');
+    var d=calDays[dI];
+    timesEl.innerHTML=d?d.slots.map(function(s){ return '<button type="button" data-s="'+s+'"'+(s===slot?' class="on"':'')+'>'+hhmm(s)+'</button>'; }).join(''):'';
+    if(slot){ var dt=dparse(d.date); calgo.textContent='Записаться: '+dt.getDate()+' '+MON[dt.getMonth()]+', '+hhmm(slot); calgo.disabled=false; }
+    else { calgo.textContent='Выберите время'; calgo.disabled=true; }
+  }
+  daysEl.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return; dI=+b.getAttribute('data-i'); slot=''; paint(); });
+  timesEl.addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return; slot=b.getAttribute('data-s'); calerr.style.display='none'; paint(); });
+  calgo.addEventListener('click',function(){
+    if(!slot) return; var s=slot; calgo.disabled=true; calgo.textContent='Записываем…';
+    fetch(BOOKFN,{ method:'POST', headers:H, body:JSON.stringify({ action:'book', region:region, tz:zone(), start:s, name:who.name, email:who.email, phone:who.phone, cid:who.cid }) })
+      .then(function(r){ return r.json().then(function(j){ return {ok:r.ok,j:j}; }); }).catch(function(){ return {ok:false,j:{}}; })
+      .then(function(res){
+        if(res.ok && res.j && res.j.ok){
+          var dt=new Date(s);
+          document.getElementById('okwhen').textContent=WDF[dt.getDay()].slice(0,1).toUpperCase()+WDF[dt.getDay()].slice(1)+', '+dt.getDate()+' '+MON[dt.getMonth()]+', '+hhmm(s);
+          if(window.fbq) fbq('track','Schedule',{content_name:'new-smm-razbor',page:'stories'});
+          booked=true; show(iOk); return;
+        }
+        calerr.textContent=(res.j&&res.j.error==='slot_taken')?'Это время только что заняли. Выберите другое.':'Не получилось записать. Попробуйте другое время.';
+        calerr.style.display='block'; calLoad();
+      });
+  });
+
+  window.__show=show;
+  var start=+(location.hash.slice(1))||1; show(start-1); raf=requestAnimationFrame(tick);
+  /* заранее грузим картинки всех сторис */
+  addEventListener('load',function(){ [].forEach.call(document.querySelectorAll('.st img'),function(im){ var p=new Image(); p.src=im.src; }); });
+})();
+</script>
+</body>
+</html>
