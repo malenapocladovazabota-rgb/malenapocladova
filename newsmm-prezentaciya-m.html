@@ -56,6 +56,14 @@ body.dkon #prog i{background:rgba(255,255,255,.22)} body.dkon #prog i.done{backg
 #brand{position:fixed;left:0;right:0;top:calc(env(safe-area-inset-top) + 24px);max-width:520px;margin:0 auto;z-index:20;
   padding:0 16px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--muted)}
 body.dkon #brand{color:rgba(246,239,226,.55)}
+#brand{align-items:center}
+/* тумблер Телефон / Компьютер (29 сентября) */
+#dv{display:flex;padding:2px;border-radius:999px;border:1px solid rgba(120,100,95,.3);background:rgba(255,253,248,.7);letter-spacing:0;text-transform:none}
+#dv button{display:flex;align-items:center;gap:4px;border:0;border-radius:999px;padding:5px 9px;background:transparent;color:inherit;font:600 11px/1 -apple-system,BlinkMacSystemFont,sans-serif;cursor:pointer}
+#dv button.on{background:var(--wine);color:#F6EFE2}
+#dv svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+body.dkon #dv{background:rgba(20,14,14,.5);border-color:rgba(255,255,255,.2)}
+body.dkon #dv button.on{background:var(--gold);color:#1B1413}
 
 .ey{font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--wine);font-weight:700}
 .dk .ey{color:var(--gold)}
@@ -136,7 +144,7 @@ p,.p{font-size:19px;line-height:1.42}
 </head>
 <body>
 <div id="prog"></div>
-<div id="brand"><span>NEW SMM</span><span id="cnt"></span></div>
+<div id="brand"><span>NEW SMM</span><span id="dv" role="group" aria-label="Версия презентации"><button type="button" data-v="m" class="on" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/></svg>Телефон</button><button type="button" data-v="d"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.8"/><path d="M9 20h6M12 16v4"/></svg>Компьютер</button></span><span id="cnt"></span></div>
 
 <div id="deck">
 
@@ -343,10 +351,16 @@ p,.p{font-size:19px;line-height:1.42}
     document.body.classList.toggle('dkon',s[i].classList.contains('dk'));
     cnt.textContent=(i+1)+' / '+s.length;
     hint.style.opacity=i===0?1:0;
-    full.style.display=i===s.length-1?'block':'none';
     history.replaceState(null,'','#'+(i+1));
   }
   window.__show=show;
+  /* «Компьютер»: запоминаем выбор, чтобы телефон больше не перекидывал сюда, и
+     возвращаем на внутреннюю версию, если пришли с неё */
+  document.getElementById('dv').addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b||b.classList.contains('on')) return;
+    var from=''; try{ localStorage.setItem('newsmm_deck','d'); from=sessionStorage.getItem('newsmm_deck_from')||''; }catch(x){}
+    location.href=from==='razbor'?'/newsmm-razbor':'/newsmm-prezentaciya?desktop=1';
+  });
   show(start);
   var x0=null,y0=null,moved=false;
   addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; y0=e.touches[0].clientY; moved=false; },{passive:true});

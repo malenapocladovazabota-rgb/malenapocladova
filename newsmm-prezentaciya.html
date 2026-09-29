@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<script>(function(){try{if(/desktop=1/.test(location.search))return;if(Math.min(screen.width,screen.height)<600)location.replace("/newsmm-prezentaciya-m"+location.search)}catch(e){}})();</script>
+<script>(function(){try{if(/desktop=1/.test(location.search)){localStorage.setItem("newsmm_deck","d");return;}if(localStorage.getItem("newsmm_deck")==="d")return;if(Math.min(screen.width,screen.height)<600)location.replace("/newsmm-prezentaciya-m"+location.search)}catch(e){}})();</script>
 <title>New SMM · обучение Малены Покладовой</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -603,5 +603,15 @@ html[data-variant=client] .only-call{display:none}
   addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; x0=null; if(Math.abs(dx)>50) show(dx<0?i+1:i-1); },{passive:true});
 })();
 </script>
+<div id="dv" role="group" aria-label="Версия презентации"><button type="button" data-v="m"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/></svg>Телефон</button><button type="button" data-v="d" class="on" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.8"/><path d="M9 20h6M12 16v4"/></svg>Компьютер</button></div>
+<style>
+#dv{position:fixed;left:16px;bottom:14px;z-index:55;display:flex;padding:3px;border-radius:999px;background:rgba(20,14,14,.8);border:1px solid rgba(255,255,255,.18);font:600 12px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;letter-spacing:.3px}
+#dv button{display:flex;align-items:center;gap:6px;border:0;border-radius:999px;padding:7px 12px;background:transparent;color:rgba(246,239,226,.7);cursor:pointer;font:inherit}
+#dv button:hover{color:#F6EFE2}
+#dv button.on{background:#F5C463;color:#1B1413;cursor:default}
+#dv svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+@media print{#dv{display:none}}
+</style>
+<script>(function(){var d=document.getElementById("dv");document.addEventListener("fullscreenchange",function(){d.style.display=document.fullscreenElement?"none":"";});d.addEventListener("click",function(e){var b=e.target.closest("button");if(!b||b.classList.contains("on"))return;try{localStorage.setItem("newsmm_deck","m")}catch(x){}try{sessionStorage.removeItem('newsmm_deck_from')}catch(e){}location.href="/newsmm-prezentaciya-m";});})();</script>
 </body>
 </html>

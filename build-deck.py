@@ -30,6 +30,33 @@ def renumber(h):
     return re.sub(r'<span class="n">\d\d</span>', one, h), n[0]
 
 
+
+# ── тумблер «Телефон / Компьютер» (29 сентября) ─────────────────────────
+# Внизу слева на широких версиях. Выбор запоминается в браузере (newsmm_deck):
+# «Компьютер» на телефоне отключает автопереход на вертикальную версию.
+# С внутренней версии «Телефон» ведёт на вертикальную клиентскую, а
+# «Компьютер» оттуда возвращает обратно на внутреннюю (sessionStorage).
+def toggle_html(internal):
+    back = "try{sessionStorage.setItem('newsmm_deck_from','razbor')}catch(e){}" if internal else "try{sessionStorage.removeItem('newsmm_deck_from')}catch(e){}"
+    return (
+    '<div id="dv" role="group" aria-label="Версия презентации">'
+    '<button type="button" data-v="m"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/></svg>Телефон</button>'
+    '<button type="button" data-v="d" class="on" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.8"/><path d="M9 20h6M12 16v4"/></svg>Компьютер</button>'
+    '</div>\n'
+    '<style>\n'
+    '#dv{position:fixed;left:16px;bottom:14px;z-index:55;display:flex;padding:3px;border-radius:999px;background:rgba(20,14,14,.8);border:1px solid rgba(255,255,255,.18);'
+    'font:600 12px/1 -apple-system,BlinkMacSystemFont,\'Segoe UI\',Roboto,sans-serif;letter-spacing:.3px}\n'
+    '#dv button{display:flex;align-items:center;gap:6px;border:0;border-radius:999px;padding:7px 12px;background:transparent;color:rgba(246,239,226,.7);cursor:pointer;font:inherit}\n'
+    '#dv button:hover{color:#F6EFE2}\n'
+    '#dv button.on{background:#F5C463;color:#1B1413;cursor:default}\n'
+    '#dv svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}\n'
+    '@media print{#dv{display:none}}\n'
+    '</style>\n'
+    '<script>(function(){var d=document.getElementById("dv");'
+    'document.addEventListener("fullscreenchange",function(){d.style.display=document.fullscreenElement?"none":"";});'
+    'd.addEventListener("click",function(e){var b=e.target.closest("button");if(!b||b.classList.contains("on"))return;'
+    'try{localStorage.setItem("newsmm_deck","m")}catch(x){}' + back + 'location.href="/newsmm-prezentaciya-m";});})();</script>\n')
+
 # ── клиентская ───────────────────────────────────────────────────────────
 h = raw
 h = h.replace('<html lang="ru" data-variant="call">', '<html lang="ru" data-variant="client">', 1)
@@ -45,8 +72,11 @@ h = h.replace('src="course-site/images/', 'src="images/')
 # телефоны сразу на вертикальную версию /newsmm-prezentaciya-m (правится руками,
 # отдельный файл). ?desktop=1 оставляет широкую версию.
 h = h.replace('<meta name="robots" content="noindex, nofollow">',
-    '<meta name="robots" content="noindex, nofollow">\n<script>(function(){try{if(/desktop=1/.test(location.search))return;'
+    '<meta name="robots" content="noindex, nofollow">\n<script>(function(){try{'
+    'if(/desktop=1/.test(location.search)){localStorage.setItem("newsmm_deck","d");return;}'
+    'if(localStorage.getItem("newsmm_deck")==="d")return;'
     'if(Math.min(screen.width,screen.height)<600)location.replace("/newsmm-prezentaciya-m"+location.search)}catch(e){}})();</script>', 1)
+h = h.replace('</body>', toggle_html(False) + '</body>', 1)
 h, n = renumber(h)
 dst = pathlib.Path('newsmm-prezentaciya.html')
 dst.write_text(h, encoding='utf-8')
@@ -92,6 +122,7 @@ banner = r'''<div id="int">Внутренняя версия · заметки �
 </script>
 '''
 g = g.replace('<body>\n', '<body>\n' + banner, 1)
+g = g.replace('</body>', toggle_html(True) + '</body>', 1)
 g, n = renumber(g)
 dst2 = pathlib.Path('newsmm-razbor.html')
 dst2.write_text(g, encoding='utf-8')
