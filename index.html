@@ -869,7 +869,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
           <div class="qopts">
             <button type="button" data-v="Веду соцсети клиентам">Веду соцсети клиентам</button>
             <button type="button" data-v="Веду свой блог">Веду свой блог</button>
-            <button type="button" data-v="Свой бизнес и его соцсети">У меня свой бизнес и его соцсети</button>
+            <button type="button" data-v="Предприниматель, SMM для своего бизнеса">Предприниматель: хочу разобраться в SMM для своего бизнеса</button>
             <button type="button" data-v="Другая сфера, хочу в SMM">Работаю в другой сфере, хочу в SMM</button>
           </div>
         </div>
@@ -887,23 +887,25 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
         </div>
 
         <div class="qstep" data-q="check">
-          <div class="qnum">Вопрос 3 из 4</div>
-          <h3 data-has="Какой у вас чек за проект в месяц?" data-none="Сколько хотите зарабатывать в месяц через полгода?">Какой у вас чек за проект в месяц?</h3>
+          <div class="qnum" data-biz="Вопрос 2 из 3">Вопрос 3 из 4</div>
+          <h3 data-biz="Сколько сейчас приносит ваш бизнес в месяц?" data-has="Какой у вас чек за проект в месяц?" data-none="Сколько хотите зарабатывать в месяц через полгода?">Какой у вас чек за проект в месяц?</h3>
           <!-- Вилка тянется до пяти и десяти тысяч сознательно. У нас есть люди
                в Америке, для которых три тысячи в месяц это нижняя граница нормы,
                и упереться в потолок вопроса им было бы странно. -->
           <div class="qopts"
                data-has-opts="До $300|$300 – $800|$800 – $2000|$2000 – $5000|Больше $5000"
-               data-none-opts="До $500|$500 – $2000|$2000 – $5000|$5000 – $10 000|Больше $10 000"></div>
+               data-none-opts="До $500|$500 – $2000|$2000 – $5000|$5000 – $10 000|Больше $10 000"
+               data-biz-opts="До $3000|От $3000 до $10 000|От $10 000 до $30 000|Больше $30 000|Бизнес только запускаю"></div>
           <button class="qback" type="button">Назад</button>
         </div>
 
         <div class="qstep" data-q="block">
-          <div class="qnum">Вопрос 4 из 4</div>
+          <div class="qnum" data-biz="Вопрос 3 из 3">Вопрос 4 из 4</div>
           <h3>Что мешает больше всего прямо сейчас?</h3>
           <div class="qopts"
                data-has-opts="Клиентов мало, не знаю где искать|Не получается поднять чек|Клиенты уходят через месяц или два|Не умею показывать результат в деньгах|Тону в рутине, не хватает времени"
-               data-none-opts="Не знаю, с чего начать|Не понимаю, где брать клиентов|Не хватает уверенности в навыках|Нет времени на обучение|Не понимаю, сколько на этом реально зарабатывают"></div>
+               data-none-opts="Не знаю, с чего начать|Не понимаю, где брать клиентов|Не хватает уверенности в навыках|Нет времени на обучение|Не понимаю, сколько на этом реально зарабатывают"
+               data-biz-opts="Не понимаю, что снимать и публиковать|Соцсети не приводят клиентов|Нет времени вести соцсети самой|Платила SMM-специалисту, результата не было|Хочу понимать SMM, чтобы ставить задачи команде"></div>
           <button class="qback" type="button">Назад</button>
         </div>
 
@@ -1214,11 +1216,18 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
       qsteps=[].slice.call(qz.querySelectorAll('.qstep')), quiz={}, qi=0;
 
   function hasClients(){ return !!quiz.projects && quiz.projects!=='0'; }
+  /* Предприниматели (29 сентября): учатся SMM для своего бизнеса. Вопрос про проекты
+     им не задаём, про деньги и помехи у них своя ветка. */
+  var BIZ='Предприниматель, SMM для своего бизнеса';
+  function isBiz(){ return quiz.job===BIZ; }
+  function qkey(){ return isBiz()?'biz':(hasClients()?'has':'none'); }
   function qtext(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
   function qrender(step){
-    var key=hasClients()?'has':'none', h3=step.querySelector('h3'), opts=step.querySelector('.qopts');
+    var key=qkey(), h3=step.querySelector('h3'), opts=step.querySelector('.qopts'), qn=step.querySelector('.qnum');
+    if(qn && qn.getAttribute('data-biz')){ if(!qn.getAttribute('data-std')) qn.setAttribute('data-std',qn.textContent); qn.textContent=isBiz()?qn.getAttribute('data-biz'):qn.getAttribute('data-std'); }
     if(h3 && h3.getAttribute('data-'+key)) h3.textContent=h3.getAttribute('data-'+key);
+    else if(h3 && h3.getAttribute('data-has')) h3.textContent=h3.getAttribute('data-'+(hasClients()?'has':'none'));
     if(!opts) return;
     var raw=opts.getAttribute('data-'+key+'-opts');
     if(raw) opts.innerHTML=raw.split('|').map(function(v){ return '<button type="button" data-v="'+qtext(v)+'">'+qtext(v)+'</button>'; }).join('');
@@ -1256,18 +1265,20 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   qz.addEventListener('click',function(e){
     var b=e.target.closest ? e.target.closest('button') : null;
     if(!b) return;
-    if(b.classList.contains('qback')){ qgo(qi-1,true); return; }
+    if(b.classList.contains('qback')){ var bk=qi-1; if(isBiz() && qsteps[bk] && qsteps[bk].getAttribute('data-q')==='projects') bk--; qgo(bk,true); return; }
     if(!b.parentNode || !b.parentNode.classList.contains('qopts')) return;
     var step=b.parentNode.parentNode, q=step.getAttribute('data-q');
     /* Ответы про деньги и про помеху зависят от того, есть ли проекты. Если человек
        вернулся назад и поменял ответ, старые значения остались бы из другой шкалы,
        и продажам ушла бы цифра, означающая совсем другое. Поэтому сбрасываем. */
     if(q==='projects' && quiz.projects!==b.getAttribute('data-v')){ delete quiz.check; delete quiz.block; }
+    if(q==='job' && (quiz.job===BIZ)!==(b.getAttribute('data-v')===BIZ)){ delete quiz.projects; delete quiz.check; delete quiz.block; }
     quiz[q]=b.getAttribute('data-v');
     [].forEach.call(b.parentNode.querySelectorAll('button'),function(x){ x.classList.remove('on'); });
     b.classList.add('on');
     if(window.fbq) fbq('trackCustom','NewSmmQuiz',{ step:q });
-    setTimeout(function(){ qgo(qi+1); }, reduce?0:260);
+    var nx=qi+1; if(isBiz() && qsteps[nx] && qsteps[nx].getAttribute('data-q')==='projects') nx++;
+    setTimeout(function(){ qgo(nx); }, reduce?0:260);
   });
   qfill.style.width=Math.round(100/(qsteps.length+1))+'%';
 
@@ -1489,7 +1500,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     err.style.display='none'; btn.disabled=true; btn.querySelector('span').textContent='Отправляем…';
     /* Ярлык считаем сами из ответов: есть проекты значит разговор про чек
        и удержание, нет значит про первый шаг. Выбор карточки выше идёт запасным. */
-    var lane=hasClients() ? 'pro' : (quiz.projects ? 'start' : (track||''));
+    var lane=isBiz() ? 'biz' : (hasClients() ? 'pro' : (quiz.projects ? 'start' : (track||'')));
     /* Инстаграм необязательный: берём ник из @ника или из ссылки на профиль. */
     var igRaw=(form.ig&&form.ig.value||'').trim(), igm=igRaw.match(/instagram\.com\/([A-Za-z0-9._]{1,30})/i), ig=(igm?igm[1]:igRaw.replace(/^@+/,'')).replace(/[^A-Za-z0-9._]/g,'').slice(0,30);
     var body={ name:name, email:email, phone:phone, country:country.c, ig:ig, src:(ZAPIS?'zapis':'kurs'), track:lane, quiz:quiz, utm:utm, page:location.pathname, tz:zone() };

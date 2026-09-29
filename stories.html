@@ -337,7 +337,7 @@ b{font-weight:700}
       <div class="opts">
         <button type="button" data-v="Веду соцсети клиентам">Веду соцсети клиентам</button>
         <button type="button" data-v="Веду свой блог">Веду свой блог</button>
-        <button type="button" data-v="Свой бизнес и его соцсети">У меня свой бизнес</button>
+        <button type="button" data-v="Предприниматель, SMM для своего бизнеса">Предприниматель: SMM для своего бизнеса</button>
         <button type="button" data-v="Другая сфера, хочу в SMM">Другая сфера, хочу в SMM</button>
       </div></div>
     <div class="push"></div>
@@ -358,19 +358,21 @@ b{font-weight:700}
 
   <section class="st wine quiz" data-q="check">
     <div class="push"></div>
-    <div class="poll anim"><div class="qn">Вопрос 3 из 4</div>
-      <div class="q" data-has="Какой у вас чек за проект в месяц?" data-none="Сколько хотите зарабатывать в месяц через полгода?"></div>
+    <div class="poll anim"><div class="qn" data-biz="Вопрос 2 из 3">Вопрос 3 из 4</div>
+      <div class="q" data-biz="Сколько сейчас приносит ваш бизнес в месяц?" data-has="Какой у вас чек за проект в месяц?" data-none="Сколько хотите зарабатывать в месяц через полгода?"></div>
       <div class="opts" data-has-opts="До $300|От $300 до $800|От $800 до $2000|От $2000 до $5000|Больше $5000"
-           data-none-opts="До $500|От $500 до $2000|От $2000 до $5000|От $5000 до $10 000|Больше $10 000"></div></div>
+           data-none-opts="До $500|От $500 до $2000|От $2000 до $5000|От $5000 до $10 000|Больше $10 000"
+           data-biz-opts="До $3000|От $3000 до $10 000|От $10 000 до $30 000|Больше $30 000|Бизнес только запускаю"></div></div>
     <button class="back" type="button">Назад</button>
     <div class="push"></div>
   </section>
 
   <section class="st wine quiz" data-q="block">
     <div class="push"></div>
-    <div class="poll anim"><div class="qn">Вопрос 4 из 4</div><div class="q">Что мешает больше всего прямо сейчас?</div>
+    <div class="poll anim"><div class="qn" data-biz="Вопрос 3 из 3">Вопрос 4 из 4</div><div class="q">Что мешает больше всего прямо сейчас?</div>
       <div class="opts" data-has-opts="Клиентов мало, не знаю где искать|Не получается поднять чек|Клиенты уходят через месяц или два|Не умею показывать результат в деньгах|Тону в рутине, не хватает времени"
-           data-none-opts="Не знаю, с чего начать|Не понимаю, где брать клиентов|Не хватает уверенности в навыках|Нет времени на обучение|Не понимаю, сколько на этом зарабатывают"></div></div>
+           data-none-opts="Не знаю, с чего начать|Не понимаю, где брать клиентов|Не хватает уверенности в навыках|Нет времени на обучение|Не понимаю, сколько на этом зарабатывают"
+           data-biz-opts="Не понимаю, что снимать и публиковать|Соцсети не приводят клиентов|Нет времени вести соцсети самой|Платила SMM-специалисту, результата не было|Хочу понимать SMM, чтобы ставить задачи команде"></div></div>
     <button class="back" type="button">Назад</button>
     <div class="push"></div>
   </section>
@@ -528,7 +530,7 @@ b{font-weight:700}
     if(window.fbq) fbq('trackCustom','StoriesLink',{ from:i+1 });
     show(QUIZ0);
   });
-  [].forEach.call(document.querySelectorAll('.back'),function(b){ b.addEventListener('click',function(){ show(i-1); }); });
+  [].forEach.call(document.querySelectorAll('.back'),function(b){ b.addEventListener('click',function(){ var bk=i-1; if(isBiz() && st[bk] && st[bk].getAttribute('data-q')==='projects') bk--; show(bk); }); });
 
   /* метки источника, как на основном сайте */
   function q(n){ try{ return new URLSearchParams(location.search).get(n)||''; }catch(e){ return ''; } }
@@ -538,10 +540,15 @@ b{font-weight:700}
   /* квиз: ветка про деньги зависит от того, есть ли проекты */
   var quiz={};
   function hasClients(){ return !!quiz.projects && quiz.projects!=='0'; }
+  var BIZ='Предприниматель, SMM для своего бизнеса';
+  function isBiz(){ return quiz.job===BIZ; }
+  function qkey(){ return isBiz()?'biz':(hasClients()?'has':'none'); }
   function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
   function qrender(s){
-    var key=hasClients()?'has':'none', qq=s.querySelector('.q'), opts=s.querySelector('.opts'), name=s.getAttribute('data-q');
+    var key=qkey(), qq=s.querySelector('.q'), opts=s.querySelector('.opts'), name=s.getAttribute('data-q'), qn=s.querySelector('.qn');
+    if(qn && qn.getAttribute('data-biz')){ if(!qn.getAttribute('data-std')) qn.setAttribute('data-std',qn.textContent); qn.textContent=isBiz()?qn.getAttribute('data-biz'):qn.getAttribute('data-std'); }
     if(qq && qq.getAttribute('data-'+key)) qq.textContent=qq.getAttribute('data-'+key);
+    else if(qq && qq.getAttribute('data-has')) qq.textContent=qq.getAttribute('data-'+(hasClients()?'has':'none'));
     var raw=opts && opts.getAttribute('data-'+key+'-opts');
     if(raw) opts.innerHTML=raw.split('|').map(function(v){ return '<button type="button" data-v="'+esc(v)+'">'+esc(v)+'</button>'; }).join('');
     if(opts) [].forEach.call(opts.querySelectorAll('button'),function(b){ b.classList.toggle('on',quiz[name]===b.getAttribute('data-v')); });
@@ -550,11 +557,13 @@ b{font-weight:700}
     var b=e.target.closest('.opts button'); if(!b) return;
     var s=b.closest('.st'), name=s.getAttribute('data-q');
     if(name==='projects' && quiz.projects!==b.getAttribute('data-v')){ delete quiz.check; delete quiz.block; }
+    if(name==='job' && (quiz.job===BIZ)!==(b.getAttribute('data-v')===BIZ)){ delete quiz.projects; delete quiz.check; delete quiz.block; }
     quiz[name]=b.getAttribute('data-v');
     [].forEach.call(b.parentNode.querySelectorAll('button'),function(x){ x.classList.remove('on'); }); b.classList.add('on');
     track('quiz_answer',i+1,name+': '+quiz[name]);
     if(window.fbq) fbq('trackCustom','NewSmmQuiz',{ step:name, page:'stories' });
-    setTimeout(function(){ show(i+1); }, reduce?0:280);
+    var nx=i+1; if(isBiz() && st[nx] && st[nx].getAttribute('data-q')==='projects') nx++;
+    setTimeout(function(){ show(nx); }, reduce?0:280);
   });
 
   /* телефон: код страны списком, страна подставляется по Cloudflare */
@@ -583,7 +592,7 @@ b{font-weight:700}
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return bad('Проверьте почту, без неё письмо не дойдёт.',form.email);
     err.style.display='none'; send.disabled=true; send.textContent='Отправляем…';
     var igRaw=form.ig.value.trim(), igm=igRaw.match(/instagram\.com\/([A-Za-z0-9._]{1,30})/i), ig=(igm?igm[1]:igRaw.replace(/^@+/,'')).replace(/[^A-Za-z0-9._]/g,'').slice(0,30);
-    var body={ name:name, email:email, phone:phone, ig:ig, src:'stories', track:hasClients()?'pro':(quiz.projects?'start':''), quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
+    var body={ name:name, email:email, phone:phone, ig:ig, src:'stories', track:isBiz()?'biz':(hasClients()?'pro':(quiz.projects?'start':'')), quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
     fetch(FN,{ method:'POST', headers:H, body:JSON.stringify(body) }).then(function(r){ return r.json(); }).catch(function(){ return {}; })
       .then(function(res){
         track(res && res.ok ? 'lead_ok' : 'lead_fail', iForm+1);
