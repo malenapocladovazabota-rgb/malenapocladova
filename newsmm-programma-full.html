@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1B1414">
+<title>New SMM · программа, тарифы и оплата</title>
+<style>
+
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/vsl/inter-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/vsl/inter-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vsl/inter-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vsl/inter-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/vsl/inter-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/vsl/inter-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vsl/playfair-display-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vsl/playfair-display-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/vsl/playfair-display-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/vsl/playfair-display-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:500;font-display:swap;src:url(fonts/vsl/playfair-display-cyrillic-500-italic.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:500;font-display:swap;src:url(fonts/vsl/playfair-display-latin-500-italic.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:600;font-display:swap;src:url(fonts/vsl/playfair-display-cyrillic-600-italic.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:600;font-display:swap;src:url(fonts/vsl/playfair-display-latin-600-italic.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vsl/jetbrains-mono-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vsl/jetbrains-mono-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/vsl/jetbrains-mono-cyrillic-700-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/vsl/jetbrains-mono-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+
+/* Страница программы New SMM: блоки, тарифы, цены, оплата, заявка.
+   Отправляется человеку после разбора. Заявка уходит в функцию newsmm-apply.
+   График цен продублирован в функции: менять в двух местах (или в club_config.newsmm_price_steps для сервера). */
+:root{--paper:#F5EFE3;--paper2:#EDE4D3;--cream:#FBF7EE;--wine:#6E1E2B;--wine-d:#4E141F;--ink:#1B1414;--ink2:#4A3F3F;--muted:#8A7C78;--gold:#D9A441;--line:#E2D6C2;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+b,strong{font-weight:600}
+em{font-style:italic;color:var(--wine)}
+.dk em{color:var(--gold)}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.dk{background:var(--ink);color:#F6EFE2}
+.ey{font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--wine);display:flex;align-items:center;gap:10px}
+.ey::before{content:'';width:26px;height:2px;background:currentColor}
+.dk .ey{color:#EAD7B0}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12;letter-spacing:-.3px}
+h1{font-size:clamp(46px,9vw,92px)}
+h2{font-size:clamp(32px,5.4vw,52px);margin-top:14px}
+h3{font-size:24px}
+.lead{font-size:clamp(18px,2.2vw,21px);color:var(--ink2);max-width:760px;margin-top:18px}
+.dk .lead{color:#D9CFC3}
+.muted{color:var(--muted)}
+
+/* верх */
+.hero{padding:0;min-height:88vh;display:flex;align-items:flex-end;background:radial-gradient(circle at 85% 20%,rgba(110,30,43,.65),transparent 55%),radial-gradient(circle at 10% 90%,rgba(217,164,65,.18),transparent 50%),var(--ink)}
+.hero .wrap{padding-top:90px;padding-bottom:64px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chip{border:1px solid rgba(246,239,226,.35);border-radius:999px;padding:7px 14px;font-size:14px}
+.nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.nav a{background:#F6EFE2;color:var(--ink);text-decoration:none;border-radius:999px;padding:12px 18px;font-weight:600;font-size:15px}
+.nav a.alt{background:transparent;color:#F6EFE2;border:1px solid rgba(246,239,226,.5)}
+
+/* как устроено */
+.grid{display:grid;gap:14px;margin-top:34px}
+@media(min-width:760px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}}
+.card{background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:22px}
+.dk .card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}
+.card .k{font-family:var(--mono);font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:700}
+.card h3{margin-top:8px;font-size:22px}
+.card p{margin-top:8px;color:var(--ink2);font-size:16px}
+.dk .card p{color:#CFC4B8}
+
+/* программа */
+.part{margin-top:44px;font-family:var(--mono);font-size:12.5px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.blk{background:var(--cream);border:1px solid var(--line);border-radius:22px;margin-top:14px;overflow:hidden}
+.blk>summary{list-style:none;cursor:pointer;padding:20px 22px;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center}
+.blk>summary::-webkit-details-marker{display:none}
+.blk .n{font-family:var(--serif);font-size:34px;color:var(--wine);width:52px}
+.blk .t h3{font-size:23px}
+.blk .t p{color:var(--ink2);font-size:15.5px;margin-top:4px}
+.blk .pm{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:20px;color:var(--wine);transition:transform .2s}
+.blk[open] .pm{transform:rotate(45deg)}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.tag{font-size:12.5px;border-radius:999px;padding:3px 10px;background:var(--paper2);color:var(--ink2)}
+.tag.full{background:var(--wine);color:#fff}
+.tag.lite{background:transparent;border:1px solid var(--line)}
+.body{padding:0 22px 24px;display:grid;gap:18px}
+@media(min-width:860px){.body{grid-template-columns:1fr 1fr;padding-left:90px}}
+.col h4{font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--wine);margin-bottom:8px}
+.col ul{padding-left:18px}
+.col li{margin-top:5px;font-size:16px;color:var(--ink2)}
+.res{background:var(--ink);color:#F6EFE2;border-radius:16px;padding:16px 18px}
+.res h4{color:var(--gold)}
+.res p{font-size:16.5px}
+.ai{background:var(--paper2);border-radius:16px;padding:14px 16px;font-size:15.5px;color:var(--ink2)}
+.ai b{color:var(--wine)}
+.split{display:grid;gap:10px}
+@media(min-width:640px){.split{grid-template-columns:1fr 1fr}}
+.split>div{border:1px dashed var(--line);border-radius:14px;padding:12px 14px;font-size:15px;color:var(--ink2)}
+.split b{display:block;color:var(--ink);margin-bottom:4px}
+
+/* тарифы */
+.tariffs{display:grid;gap:16px;margin-top:34px}
+@media(min-width:900px){.tariffs{grid-template-columns:1fr 1fr 1fr}}
+.tf{background:var(--cream);border:1px solid var(--line);border-radius:24px;padding:26px 22px;display:flex;flex-direction:column}
+.tf.hot{border:2px solid var(--wine)}
+.tf.done{background:var(--ink);color:#F6EFE2;border-color:var(--ink)}
+.tf .kind{font-size:13.5px;font-weight:600;color:var(--wine);background:var(--paper2);border-radius:999px;padding:5px 12px;align-self:flex-start}
+.tf.done .kind{background:var(--gold);color:var(--ink)}
+.tf h3{font-size:30px;margin-top:14px}
+.tf .for{color:var(--ink2);font-size:15.5px;margin-top:8px}
+.tf.done .for{color:#CFC4B8}
+.tf ul{list-style:none;margin-top:18px;display:grid;gap:9px}
+.tf li{padding-left:24px;position:relative;font-size:15.5px}
+.tf li::before{content:'';position:absolute;left:2px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--wine)}
+.tf.done li::before{background:var(--gold)}
+.tf .out{margin-top:18px;border-top:1px solid var(--line);padding-top:14px;font-size:15.5px}
+.tf.done .out{border-color:rgba(255,255,255,.15)}
+.tf .out b{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.price{margin-top:auto;padding-top:22px}
+.price .now{font-family:var(--serif);font-size:44px;line-height:1}
+.price .old{font-size:14.5px;color:var(--muted);margin-top:6px}
+.tf.done .price .old{color:#BFB2A6}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:14px;padding:15px 20px;font:600 16px var(--sans);cursor:pointer;background:var(--wine);color:#fff;text-decoration:none;margin-top:14px;width:100%}
+.btn.gold{background:var(--gold);color:var(--ink)}
+.btn.ghost{background:transparent;border:1.5px solid var(--wine);color:var(--wine)}
+.band{margin-top:22px;border-radius:18px;padding:16px 18px;background:var(--paper2);font-size:16px;color:var(--ink2)}
+
+.paths{display:grid;gap:14px;margin-top:30px}
+@media(min-width:760px){.paths{grid-template-columns:1fr 1fr}}
+.path{display:block;text-decoration:none;border-radius:24px;padding:26px;background:var(--cream);border:2px solid var(--wine)}
+.path.dkp{background:var(--ink);color:#F6EFE2;border-color:var(--ink)}
+.path .k{font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--wine)}
+.path.dkp .k{color:var(--gold)}
+.path h3{font-size:30px;margin-top:10px}
+.path p{margin-top:8px;color:var(--ink2)}
+.path.dkp p{color:#CFC4B8}
+.path .go{display:inline-block;margin-top:14px;font-weight:600;font-size:15px}
+.grp{margin-top:56px}
+.gh{font-size:34px;margin-top:10px}
+.tariffs.two{grid-template-columns:1fr}
+@media(min-width:760px){.tariffs.two{grid-template-columns:1fr 1fr}}
+.turnkey{margin-top:64px;background:var(--ink);color:#F6EFE2;border-radius:28px;padding:34px 24px}
+@media(min-width:760px){.turnkey{padding:48px 44px}}
+.turnkey .ey{color:#EAD7B0}.turnkey em{color:var(--gold)}.turnkey .lead{color:#D9CFC3}
+.tk3{display:grid;gap:14px;margin-top:28px}
+@media(min-width:860px){.tk3{grid-template-columns:1.3fr 1fr 1fr}}
+.tkc{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:20px}
+.tkc.res2{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.tkc .k{font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.tkc.res2 .k{color:var(--ink)}
+.tkc ul{list-style:none;margin-top:12px;display:grid;gap:9px}
+.tkc li{padding-left:20px;position:relative;font-size:15.5px}
+.tkc li::before{content:'';position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.tkc.res2 li::before{background:var(--wine)}
+.tkfoot{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;justify-content:space-between;margin-top:26px}
+.tkfoot .now{font-family:var(--serif);font-size:48px;line-height:1}
+.tkfoot .old{font-size:14.5px;color:#BFB2A6;margin-top:6px}
+.up{background:#fff;border:1.5px solid var(--wine);border-radius:16px;padding:14px 16px;font-size:15.5px;color:var(--ink2);grid-column:1/-1}
+.up b{color:var(--wine)}
+.up ul{padding-left:18px;margin-top:6px}
+.up li{margin-top:4px}
+/* сравнение */
+.tbl{width:100%;border-collapse:collapse;margin-top:28px;font-size:15px;background:var(--cream);border-radius:18px;overflow:hidden}
+.tbl th,.tbl td{padding:12px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.tbl thead th{background:var(--wine);color:#fff;font-weight:600}
+.tbl td:first-child{font-weight:600;width:34%}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scroll .tbl{min-width:620px}
+
+/* цены */
+.steps{display:grid;gap:10px;margin-top:30px}
+@media(min-width:760px){.steps{grid-template-columns:repeat(4,1fr)}}
+.st{border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:18px}
+.st.cur{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.st.past{opacity:.4}
+.st .d{font-family:var(--mono);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700}
+.st .p{font-family:var(--serif);font-size:26px;margin-top:10px;line-height:1.25}
+.st .p small{display:block;font-family:var(--sans);font-size:13.5px;opacity:.8}
+.st .flag{font-size:13px;margin-top:8px;font-weight:600}
+
+/* оплата и калькулятор */
+.pay{display:grid;gap:16px;margin-top:30px}
+@media(min-width:900px){.pay{grid-template-columns:1fr 1.25fr 1fr}}
+.pay .card h3{font-size:24px}
+.calc label{display:block;font-size:14px;color:var(--muted);margin-top:14px}
+.seg{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.seg button{flex:1;min-width:90px;border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 8px;font:500 14.5px var(--sans);cursor:pointer;color:var(--ink)}
+.seg button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+input[type=range]{width:100%;margin-top:10px;accent-color:var(--wine)}
+.out-big{font-family:var(--serif);font-size:40px;margin-top:14px;line-height:1.05}
+.out-big small{font-family:var(--sans);font-size:15px;color:var(--muted)}
+.who{margin-top:10px;font-size:14.5px;color:var(--ink2);background:var(--paper2);border-radius:12px;padding:10px 12px}
+
+/* форма */
+.fwrap{max-width:720px}
+form{margin-top:26px;display:grid;gap:14px}
+.f label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.f input,.f select,.f textarea{width:100%;border:1px solid var(--line);background:#fff;border-radius:12px;padding:13px 14px;font:16px var(--sans);color:var(--ink)}
+.f textarea{min-height:80px;resize:vertical}
+.row2{display:grid;gap:14px}
+@media(min-width:640px){.row2{grid-template-columns:1fr 1fr}}
+.idbox{border:1.5px dashed var(--wine);border-radius:16px;padding:16px;background:var(--cream)}
+.idbox p{font-size:14.5px;color:var(--ink2);margin-bottom:10px}
+.drop{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;padding:10px;background:#fff;cursor:pointer}
+.drop img{width:64px;height:44px;object-fit:cover;border-radius:6px;background:var(--paper2)}
+.drop span{font-size:14.5px}
+.drop input{display:none}
+.consent{display:flex;gap:10px;font-size:14px;color:var(--ink2);align-items:flex-start}
+.consent input{margin-top:4px;width:18px;height:18px;accent-color:var(--wine)}
+.err{color:#A11;font-size:15px;display:none}
+.ok{display:none;background:var(--ink);color:#F6EFE2;border-radius:20px;padding:24px;margin-top:22px}
+.ok h3{font-size:28px}
+.ok p{margin-top:10px;color:#D9CFC3}
+.faq details{border-top:1px solid var(--line);padding:16px 0}
+.faq summary{cursor:pointer;font-weight:600;font-size:17px}
+.faq p{margin-top:8px;color:var(--ink2);font-size:16px}
+footer{padding:40px 0 60px;font-size:14px;color:var(--muted)}
+@media(max-width:600px){.blk>summary{grid-template-columns:auto 1fr;gap:10px;padding:18px 16px}.blk .n{font-size:24px;width:auto}.blk .pm{display:none}.blk .t h3{font-size:21px}.body{padding:0 16px 20px}section{padding:56px 0}}
+.sticky{position:fixed;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom) + 12px);z-index:30;display:none}
+.sticky a{display:block;text-align:center;background:var(--wine);color:#fff;border-radius:14px;padding:15px;font-weight:600;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+@media(max-width:760px){.sticky.show{display:block}}
+</style>
+</head>
+<body>
+
+<!-- ВЕРХ -->
+<section class="hero dk">
+  <div class="wrap">
+    <div class="ey">Обучение Малены и Льва Покладовых</div>
+    <h1 style="margin-top:14px"><em>New</em> SMM</h1>
+    <p class="lead">Программа по блокам, три тарифа, цены и оплата. Всё, что нужно, чтобы выбрать формат и занять место в ноябрьском потоке.</p>
+    <div class="chips"><span class="chip">Старт в ноябре</span><span class="chip">2 месяца</span><span class="chip">Онлайн</span><span class="chip">Доступ к урокам 12 месяцев</span></div>
+    <div class="nav"><a href="#program">Программа</a><a href="#tariffs">Тарифы</a><a href="#prices" class="alt">Цены</a><a href="#pay" class="alt">Оплата и рассрочка</a></div>
+  </div>
+</section>
+
+<!-- КАК УСТРОЕНО -->
+<section>
+  <div class="wrap">
+    <div class="ey">Как устроено обучение</div>
+    <h2>Вы проходите весь цикл агентства <em>на своём проекте</em></h2>
+    <p class="lead">Блоки идут в том порядке, в каком наше агентство ведёт клиента: от стратегии до рекламы, аналитики и продаж. Так мы работаем с клиентами в США, Европе и других странах. В каждом блоке мы показываем, как сделали это для реального клиента, и вы повторяете шаг у себя.</p>
+    <div class="grid g4">
+      <div class="card"><div class="k">Платформа</div><h3>Уроки и задания</h3><p>Все уроки, шаблоны и задания на нашей учебной платформе. Всё остаётся в записи.</p></div>
+      <div class="card"><div class="k">Telegram</div><h3>Чат потока</h3><p>Общение с группой и куратором, анонсы эфиров, быстрые вопросы.</p></div>
+      <div class="card"><div class="k">Куратор</div><h3>Проверка</h3><p>Куратор проверяет задания по чек-листу блока и возвращает с правками.</p></div>
+      <div class="card"><div class="k">Эфиры</div><h3>Разборы</h3><p>Малена и Лев разбирают работы учеников и отвечают на вопросы.</p></div>
+    </div>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card"><div class="k">Направление 1</div><h3>Я SMM-специалист</h3><p>Хотите вести аккаунты клиентов и брать за это достойные деньги. Практика на своём аккаунте, учебном проекте или действующем клиенте. В конце: портфолио, предложение с ценой и первые переговоры.</p></div>
+      <div class="card"><div class="k">Направление 2</div><h3>Продвигаю свой бизнес</h3><p>Эксперт, мастер, владелица студии или магазина. Практика на своём бизнесе. В конце: работающий аккаунт, реклама с заявками и система продаж своего продукта.</p></div>
+    </div>
+    <p class="band">На разборе мы порекомендуем тариф и направление, которые подходят именно вам: под ваши цели, опыт и запрос.</p>
+  </div>
+</section>
+
+<!-- ПРОГРАММА -->
+<section id="program" style="background:var(--paper2)">
+  <div class="wrap">
+    <div class="ey">Программа</div>
+    <h2>12 блоков, <em>что внутри каждого</em></h2>
+    <p class="lead">Нажмите на блок, чтобы открыть: какие вопросы разбираем, что вы делаете руками, где помогает искусственный интеллект и с каким результатом выходите из блока. В каждом блоке есть база и усложнение: база входит в оба тарифа, усложнение только в «Повышение квалификации».</p>
+    <div id="blocks"></div>
+  </div>
+</section>
+
+<!-- ТАРИФЫ -->
+<section id="tariffs">
+  <div class="wrap">
+    <div class="ey">Тарифы</div>
+    <h2>Два пути: <em>научиться</em> или <em>доверить нам</em></h2>
+    <div class="paths">
+      <a class="path" href="#learn"><span class="k">Путь 1 · Обучение</span><h3>Вы учитесь и делаете сами</h3><p>Мы даём всю систему агентства, вы применяете её на своём проекте. Куратор проверяет задания.</p><span class="go">«С нуля» и «Повышение квалификации» ↓</span></a>
+      <a class="path dkp" href="#turnkey"><span class="k">Путь 2 · Под ключ</span><h3>Мы делаем за вас</h3><p>Два месяца наша команда запускает ваш проект: стратегия, 30 видео, реклама.</p><span class="go">Тариф «Под ключ» ↓</span></a>
+    </div>
+
+    <div id="learn" class="grp"><div class="ey">Путь 1 · Обучение</div><h3 class="gh">Вы учитесь и делаете сами</h3>
+      <p class="lead" style="font-size:17px">Уроки одни и те же. Разница в глубине: в «Повышении квалификации» к каждому блоку добавляется усложнение, а реклама, аналитика, сайт и продажи идут с заданиями и обратной связью.</p></div>
+    <div class="tariffs two" id="tf"></div>
+    <div class="scroll"><table class="tbl" id="cmp"></table></div>
+
+    <div id="turnkey" class="turnkey">
+      <div class="ey">Путь 2 · Под ключ</div>
+      <h2>Не хотите разбираться сами? <em>Сделаем за вас</em></h2>
+      <p class="lead">Два месяца ваш проект ведёт наша команда. Подходит для бизнеса, эксперта, онлайн-проекта, товара: для всего, что нужно продвигать в соцсетях.</p>
+      <div class="tk3">
+        <div class="tkc"><div class="k">Что делаем мы</div><ul id="tkWe"></ul></div>
+        <div class="tkc"><div class="k">Что делаете вы</div><ul id="tkYou"></ul></div>
+        <div class="tkc res2"><div class="k">Что у вас через 2 месяца</div><ul id="tkRes"></ul></div>
+      </div>
+      <div class="tkfoot"><div><div class="now">$5 000</div><div class="old">Рекламный бюджет оплачивается отдельно · рассрочка до 4 месяцев</div></div>
+        <a class="btn gold" href="#apply" data-tar="closed" data-kind="deposit" style="max-width:320px">Забронировать за $100</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ЦЕНЫ -->
+<section id="prices" class="dk">
+  <div class="wrap">
+    <div class="ey">Цены</div>
+    <h2>Цена растёт <em>ближе к старту</em></h2>
+    <p class="lead" id="pnote">Чем раньше вы занимаете место, тем ниже цена. Депозит $100 фиксирует цену на дату брони до самого старта.</p>
+    <div class="steps" id="steps"></div>
+    <p class="lead" style="font-size:16px">Тариф «Под ключ»: $5 000, цена не меняется. Все цены в долларах США.</p>
+  </div>
+</section>
+
+<!-- ОПЛАТА -->
+<section id="pay">
+  <div class="wrap">
+    <div class="ey">Оплата</div>
+    <h2>Три способа <em>занять место</em></h2>
+    <div class="pay">
+      <div class="card">
+        <div class="k">Бронь</div>
+        <h3>Забронировать место за $100</h3>
+        <p>Депозит держит за вами место и сегодняшнюю цену до старта потока и засчитывается в оплату. До старта возвращаем по первой просьбе.</p>
+        <a class="btn" href="#apply" data-kind="deposit">Забронировать место</a>
+      </div>
+      <div class="card calc">
+        <div class="k">Рассрочка</div>
+        <h3>Калькулятор рассрочки</h3>
+        <label>Тариф</label>
+        <div class="seg" id="cT"><button type="button" data-t="zero" class="on">С нуля</button><button type="button" data-t="upskill">Повышение</button><button type="button" data-t="closed">Под ключ</button></div>
+        <label>Срок: <b id="cM">4</b> мес.</label>
+        <input type="range" id="cR" min="2" max="12" value="4">
+        <div class="out-big" id="cOut">$300 <small>в месяц</small></div>
+        <div class="who" id="cWho"></div>
+        <a class="btn" href="#apply" data-kind="installment">Оформить рассрочку</a>
+      </div>
+      <div class="card">
+        <div class="k">Целиком</div>
+        <h3>Оплатить сразу</h3>
+        <p>Картой, через PayPal или банковским переводом. Ученики из Молдовы оплачивают в леях по курсу Национального банка на день платежа.</p>
+        <a class="btn ghost" href="#apply" data-kind="full">Оплатить целиком</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ЗАЯВКА -->
+<section id="apply" style="background:var(--paper2)">
+  <div class="wrap fwrap">
+    <div class="ey">Заявка</div>
+    <h2 id="fTitle">Оформить участие</h2>
+    <p class="lead" style="font-size:17px">Заполните данные. Мы подготовим договор и пришлём ссылку на оплату. Данные нужны только для договора и оплаты.</p>
+    <form id="form" novalidate>
+      <div class="f"><label>Что оформляем</label>
+        <div class="seg" id="fK"><button type="button" data-k="deposit">Бронь $100</button><button type="button" data-k="installment">Рассрочка</button><button type="button" data-k="full">Целиком</button></div></div>
+      <div class="row2">
+        <div class="f"><label for="fTar">Тариф</label><select id="fTar"><option value="zero">С нуля</option><option value="upskill">Повышение квалификации</option><option value="closed">Под ключ</option></select></div>
+        <div class="f"><label for="fTrack">Направление</label><select id="fTrack"><option value="smm">Я SMM-специалист</option><option value="biz">Продвигаю свой бизнес</option></select></div>
+      </div>
+      <div class="f" id="fMonthsBox" hidden><label for="fMonths">Срок рассрочки</label><select id="fMonths"></select></div>
+      <div class="f"><label for="fName">Имя и фамилия, как в документе</label><input id="fName" autocomplete="name" placeholder="Анна Иванова"></div>
+      <div class="row2">
+        <div class="f"><label for="fPhone">Телефон с WhatsApp</label><input id="fPhone" type="tel" autocomplete="tel" placeholder="+373 69 123 456"></div>
+        <div class="f"><label for="fEmail">Почта</label><input id="fEmail" type="email" autocomplete="email" placeholder="anna@mail.com"></div>
+      </div>
+      <div class="f"><label for="fCountry">Страна проживания</label><select id="fCountry">
+        <option value="">Выберите страну</option><option>Молдова</option><option>США</option><option>Канада</option><option>Румыния</option><option>Италия</option><option>Германия</option><option>Великобритания</option><option>Испания</option><option>Франция</option><option>Другая страна Европы</option><option>Другая страна</option></select></div>
+      <div class="idbox" id="idBox" hidden>
+        <p><b>Для рассрочки в Молдове нужен буллетин.</b> Сфотографируйте обе стороны удостоверения личности так, чтобы всё читалось. Фото видят только сотрудники, которые оформляют договор.</p>
+        <div class="row2">
+          <label class="drop"><img id="pF" alt=""><span id="tF">Лицевая сторона</span><input type="file" id="idF" accept="image/*,application/pdf"></label>
+          <label class="drop"><img id="pB" alt=""><span id="tB">Обратная сторона</span><input type="file" id="idB" accept="image/*,application/pdf"></label>
+        </div>
+      </div>
+      <div class="f"><label for="fComment">Комментарий (необязательно)</label><textarea id="fComment" placeholder="Удобное время для связи, вопросы по оплате"></textarea></div>
+      <label class="consent"><input type="checkbox" id="fOk"><span>Согласна(ен) на обработку моих данных для оформления договора и оплаты обучения New SMM.</span></label>
+      <div class="err" id="fErr"></div>
+      <button class="btn" type="submit" id="fSend" style="font-size:17px;padding:17px">Отправить заявку</button>
+    </form>
+    <div class="ok" id="fOkBox"><h3>Заявка принята</h3><p id="fOkText"></p><div id="fOkPay"></div></div>
+  </div>
+</section>
+
+<!-- ВОПРОСЫ -->
+<section>
+  <div class="wrap faq">
+    <div class="ey">Вопросы</div>
+    <h2>Коротко <em>об условиях</em></h2>
+    <details><summary>Когда старт и сколько длится обучение?</summary><p>Старт в ноябре, точную дату присылаем всем, кто записался. Обучение идёт 2 месяца с первого урока. Уроки и шаблоны остаются доступны 12 месяцев с даты старта.</p></details>
+    <details><summary>Успею ли я совмещать с работой?</summary><p>Все уроки в записи на платформе, эфиры тоже записываются. Задания можно сдавать в своём темпе в течение двух месяцев потока.</p></details>
+    <details><summary>Как оформляется участие?</summary><p>После заявки мы присылаем договор, вы подписываете его по ссылке с телефона. Затем оплата целиком или первый платёж рассрочки, и мы открываем доступ к платформе и чату.</p></details>
+    <details><summary>Можно ли вернуть деньги?</summary><p>До старта потока возвращаем всю сумму. В первые 14 дней после старта возвращаем оплату за вычетом недель, которые уже прошли. Подробно всё записано в договоре.</p></details>
+    <details><summary>В какой валюте платить?</summary><p>Цены в долларах. Из США и других стран платите в долларах, из Европы можно в евро, из Молдовы в леях по курсу Национального банка Молдовы на день платежа.</p></details>
+    <details><summary>Что если я совсем с нуля?</summary><p>Для этого есть тариф «С нуля»: базовые блоки с азов и куратор на каждом задании. Опыт и аккаунт с подписчиками не нужны.</p></details>
+  </div>
+</section>
+
+<footer><div class="wrap">New SMM · команда Малены Покладовой · malenapocladova.com</div></footer>
+<div class="sticky" id="sticky"><a href="#pay">Выбрать способ оплаты</a></div>
+
+<script>
+(function(){
+/* ─── Данные ─── */
+var STEPS=[ /* даты включительно; держать в синхроне с функцией newsmm-apply */
+  {until:'2026-10-05', label:'до 5 октября', zero:1200, upskill:2000},
+  {until:'2026-10-19', label:'6–19 октября', zero:1300, upskill:2100},
+  {until:'2026-11-30', label:'с 20 октября до старта', zero:1400, upskill:2200},
+  {until:'9999-12-31', label:'после старта потока', zero:1500, upskill:2300, final:true}
+];
+var CLOSED=5000, OWN_MAX=4;
+var FN='https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/newsmm-apply';
+var SBK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqeWZiZnFjZ3JldHJidXB5aGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNzU4NDYsImV4cCI6MjA5NjY1MTg0Nn0.amLiv4BuwDuEI0z2V3WiPKeWzvENSEwPlDeaGRq0CFM';
+function today(){ var d=new Date(Date.now()-8*3600e3); return d.toISOString().slice(0,10); }
+function stepIdx(){ var t=today(); for(var i=0;i<STEPS.length;i++) if(t<=STEPS[i].until) return i; return STEPS.length-1; }
+function price(tar){ if(tar==='closed') return CLOSED; var s=STEPS[stepIdx()]; return tar==='upskill'?s.upskill:s.zero; }
+function $(s){ return document.querySelector(s); }
+function fmt(n){ return '$'+String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'\u00a0'); }
+
+/* Блоки. z = как в «С нуля», u = как в «Повышении»: full полностью, lite сжато/обзор */
+var P1='Часть 1 · Система контента', P2='Часть 2 · Реклама, продажи и деньги';
+/* adv=true: в «С нуля» обзором, в «Повышении» с заданиями и обратной связью.
+   up: усложнение, которое получает только «Повышение квалификации». */
+var B=[
+ {part:P1,t:'Старт: как агентство ведёт клиента',s:'Карта всей работы и ваш проект на два месяца',
+  q:['Из чего состоит услуга SMM и сколько она стоит в США и в Европе','Путь клиента: первый разговор, запуск, отчёты, продление договора','Какие роли есть в команде агентства и какие инструменты мы используем каждый день','Как мы работаем с искусственным интеллектом: что отдаём ему и что оставляем себе','Реальный клиент агентства: каким был аккаунт до нас и что изменилось'],
+  d:['Выбираете проект для практики: свой аккаунт, аккаунт знакомого бизнеса, клиента или свой бизнес','Настраиваете рабочее место и своего ассистента на нейросети'],
+  ai:'настраиваете ассистента, который знает ваш проект, стиль и клиентов. Дальше он помогает в каждом блоке.',
+  up:['Разбор вашей текущей работы: где теряете время и деньги','Ассистент на несколько клиентов сразу'],
+  r:'Вы видите всю карту работы целиком, выбрали проект и настроили ассистента.'},
+ {part:P1,t:'Стратегия и позиционирование',s:'Кому продаём, чем отличаемся, куда ведём человека',
+  q:['Кто покупает и почему: портрет клиента по реальным отзывам и вопросам','Чем бизнес отличается от конкурентов: наш метод проявления уникальности','Аудит аккаунта и трёх конкурентов','Цели на 1–3 месяца в цифрах: заявки, записи, продажи','Путь человека от первого ролика до покупки','От чего отказаться, чтобы не распыляться'],
+  d:['Аудит своего проекта и конкурентов по чек-листу агентства','Позиционирование одной фразой','Стратегия на три месяца по шаблону агентства'],
+  ai:'разбор конкурентов, портрет аудитории, черновик стратегии, который вы правите под себя.',
+  up:['Более глубокая стратегия: воронка продаж, стоимость клиента, средний чек и повторные покупки','Стратегия на шесть месяцев вместо трёх','Как защитить стратегию перед клиентом на созвоне','Личная стратегия от Малены под ваш проект'],
+  r:'Стратегия вашего проекта, проверенная куратором.',
+  split:['стратегию собираете для клиента и учитесь защищать её на созвоне.','стратегию собираете для себя и сразу видите, какие продукты продвигать первыми.']},
+ {part:P1,t:'Идеи и сценарии',s:'Видео разных форматов, которые смотрят, сохраняют и пересылают',
+  q:['Где брать идеи под нишу и как не выгорать на поиске тем','Форматы видео и зачем каждый: продающие, экспертные, вирусные, трендовые','Рубрики и серии, ради которых подписываются','Структура сценария: хук, польза, призыв','Первые три секунды: что держит зрителя','Психология: почему люди сохраняют, пересылают и покупают'],
+  d:['Банк идей под свой проект','Сценарии для каждого формата: продающие, экспертные, вирусные, трендовые','Проверка хуков куратором'],
+  ai:'банк идей под нишу, сценарии по нашей структуре, проверка хуков.',
+  up:['Серии и рубрики под воронку продаж','Сценарии для рекламы','Сценарии для англоязычной аудитории'],
+  r:'Банк из 30 идей и 10 готовых сценариев разных форматов.'},
+ {part:P1,t:'Съёмка',s:'Снимаем видео разных форматов на телефон',
+  q:['Как снимать продающие, экспертные, вирусные и трендовые видео','Как организовать съёмочный день у клиента или у себя','Свет, звук и ракурсы на телефон','Как снимать человека, который стесняется камеры','Шот-лист: что снять, чтобы хватило на две недели','Какие футажи снимать про запас'],
+  d:['Шот-лист под свои сценарии','Съёмочный день на своём проекте: 10 роликов разных форматов'],
+  ai:'шот-лист по сценариям, подбор ракурсов и референсов.',
+  up:['Сложные форматы: интервью, отзывы клиентов, съёмка команды, контент от пользователей','Как снимать клиента дистанционно, если вы в другой стране'],
+  r:'Отснятый материал на 10 роликов разных форматов.'},
+ {part:P1,t:'Монтаж и видео',s:'Монтируем видео разных форматов, которые досматривают',
+  q:['Монтаж продающих, экспертных, вирусных и трендовых видео: в чём разница','Ритм, склейки, субтитры, звук и обложки','Что делает ролик смотрибельным до конца','Монтаж на телефоне: приложения, которыми работает агентство','Озвучка, перевод на английский и вставки с помощью нейросетей','Где видео от нейросети выглядит дёшево и как этого избежать'],
+  d:['Монтаж всех роликов по чек-листу агентства','Обложки и субтитры в едином стиле'],
+  ai:'автосубтитры, озвучка, перевод, генерация вставок и футажей.',
+  up:['Продвинутый монтаж: динамика, графика, видео с нейросетью','Рекламные креативы из готовых роликов'],
+  r:'10 готовых Reels разных форматов, проверенных куратором.'},
+ {part:P1,t:'Упаковка профиля',s:'Профиль, который за пять секунд объясняет, кто вы и что делать дальше',
+  q:['Имя, шапка, аватар, закреп и актуальные','Единый визуал из отснятого материала','Кнопка записи и ссылка: куда ведём человека','Профиль глазами нового человека: пять секунд на решение'],
+  d:['Упаковка своего профиля по формуле агентства','Сравнение до и после'],
+  ai:'варианты шапки, обложки актуальных, шаблоны обложек Reels, проверка читаемости.',
+  up:['Упаковка под рекламный трафик','Профиль как воронка: закреп, актуальные и ссылка ведут к покупке','Версия для англоязычной аудитории'],
+  r:'Упакованный профиль, готовый к рекламе.'},
+ {part:P1,t:'Публикация и системность',s:'Регулярность месяцами без выгорания',
+  q:['Контент-план агентства и ритм публикаций','Сторис каждый день: сюжет, прогрев, продажи','Тексты к постам и подписи','Ответы на комментарии и директ','Как держать регулярность, когда клиентов несколько'],
+  d:['Контент-план на месяц','Две недели публикаций по плану'],
+  ai:'тексты и подписи, идеи сторис на неделю, план на месяц из банка идей.',
+  up:['Система на несколько клиентов сразу','Что и как передать помощнику','Контент-план под запуск продукта'],
+  r:'Две недели опубликованного контента и план на месяц вперёд.'},
+ {part:P2,adv:1,t:'Реклама и продвижение',s:'Контент подхватывает реклама и приводит заявки',
+  q:['Когда запускать рекламу и когда рано','Кабинет Meta: кампании, цели, аудитории, локальный таргет','Креативы из вашего контента','Бюджет, стоимость заявки и записи','Запись через рекламу сразу в календарь','Как не потратить бюджет впустую'],
+  d:['Запуск тестовой кампании на своего клиента или свой бизнес'],
+  ai:'тексты и креативы для рекламы, варианты аудиторий.',
+  r:'Запущенная тестовая кампания и понимание, как её вести.'},
+ {part:P2,adv:1,t:'Аналитика',s:'Какие ролики и объявления приводят клиентов и что усиливать',
+  q:['Какие цифры смотреть в контенте и в рекламе','Стоимость заявки, записи и клиента','Какие ролики привели подписчиков, а какие покупателей','Что масштабировать, а что выключать','Отчёт клиенту в заявках и деньгах'],
+  d:['Разбор результатов своего контента и рекламы','План на следующий месяц','Отчёт по шаблону агентства'],
+  ai:'загружаете статистику и получаете разбор и гипотезы на следующую неделю.',
+  r:'Разбор ваших цифр, план на месяц и отчёт, который не стыдно показать клиенту.'},
+ {part:P2,adv:1,t:'Сайт, запись и автоматизация',s:'Заявка не теряется, ответ приходит за минуту',
+  q:['Страница записи или лендинг с помощью нейросетей','Квиз и форма заявки','Автоответ, напоминание, сообщение перед встречей','Почему скорость ответа решает продажу','Где хранить заявки и клиентов'],
+  d:['Страница записи или лендинг для своего проекта','Цепочка автоответов на заявку'],
+  ai:'собирает страницу, тексты и баннеры, пишет автоответы.',
+  r:'Работающая страница записи и автоответ на каждую заявку.'},
+ {part:P2,adv:1,t:'Продажи и деньги',s:'Цена в долларах, клиенты, которые остаются',
+  q:['Как назвать цену спокойно и без оправданий','Созвон-разбор с клиентом: структура и вопросы','Предложение и договор','Удержание: отчёт, результат, продление','Как работать без скидок'],
+  d:['Своё предложение с ценой','Отработка созвона на эфире'],
+  ai:'поиск и квалификация клиентов, письма на английском, ответы на возражения.',
+  r:'Готовое предложение с ценой и первые переговоры.',
+  split:['где искать клиентов в США, Европе и дома, первое сообщение, пакеты услуг, три первых переписки с потенциальными клиентами.','оффер и продуктовая линейка, средний чек, продажи в директе и на созвоне, повторные покупки.']},
+ {part:P2,t:'Кейс и следующий шаг',s:'Результат, который продаёт вас дальше',
+  q:['Как оформить результат в кейс','Портфолио','План на следующие три месяца','Когда пора брать помощника или команду'],
+  d:['Кейс по своему проекту','Портфолио или страница результатов','Итоговый разбор с куратором'],
+  ai:'собирает кейс и портфолио.',
+  up:['Кейс с результатом в деньгах','Портфолио на английском для клиентов из США'],
+  r:'Оформленный кейс, портфолио и план развития. Сертификат при сданных заданиях.'}
+];
+var h='', last='';
+B.forEach(function(b,i){
+  if(b.part!==last){ last=b.part; h+='<div class="part"><span>'+b.part+'</span><span>'+(i===0?'база в обоих тарифах':'то, за что платят больше')+'</span></div>'; }
+  var tags=b.adv?'<span class="tag lite">«С нуля»: обзор</span><span class="tag full">«Повышение»: с заданиями и обратной связью</span>'
+                :'<span class="tag full">Оба тарифа: с заданиями и обратной связью</span>'+(b.up?'<span class="tag lite">+ усложнение в «Повышении»</span>':'');
+  h+='<details class="blk"'+(i===0?' open':'')+'><summary><div class="n">'+String(i+1).padStart(2,'0')+'</div><div class="t"><h3>'+b.t+'</h3><p>'+b.s+'</p>'+
+     '<div class="tags">'+tags+'</div></div><div class="pm">+</div></summary>'+
+     '<div class="body"><div class="col"><h4>Разбираем</h4><ul>'+b.q.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul></div>'+
+     '<div class="col" style="display:grid;gap:12px;align-content:start"><div><h4>Делаете</h4><ul>'+b.d.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul></div>'+
+     '<div class="ai"><b>Искусственный интеллект:</b> '+b.ai+'</div>'+
+     '<div class="res"><h4 style="font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;color:var(--gold)">Результат блока</h4><p>'+b.r+'</p></div></div>'+
+     (b.up?'<div class="up"><b>Усложнение в «Повышении квалификации»</b><ul>'+b.up.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul></div>':'')+
+     (b.adv?'<div class="up"><b>Как проходится:</b> в «С нуля» вы смотрите уроки и понимаете, как это устроено. В «Повышении квалификации» делаете задания на своём проекте, куратор проверяет.</div>':'')+
+     (b.split?'<div class="split" style="grid-column:1/-1"><div><b>Я SMM-специалист</b>'+b.split[0]+'</div><div><b>Продвигаю свой бизнес</b>'+b.split[1]+'</div></div>':'')+
+     '</div></details>';
+});
+$('#blocks').innerHTML=h;
+
+/* Тарифы */
+var si=stepIdx(), fin=STEPS[STEPS.length-1];
+var T=[
+ {id:'zero',name:'С нуля',for:'Для тех, кто входит в SMM или вёл аккаунты без системы. Опыт не нужен.',
+  li:['Блоки 1–7 и 12: полностью, с заданиями и обратной связью куратора','Блоки 8–11 (реклама, аналитика, сайт, продажи): обзор','Куратор проверяет каждое задание','Эфиры с разборами работ, чат потока в Telegram','Шаблоны, чек-листы и таблицы агентства','Своя платформа, уроки в записи, доступ 12 месяцев','Сертификат и оформленный кейс'],
+  out:'Стратегия, упакованный профиль, 10 готовых Reels разных форматов, две недели контента по плану и кейс в портфолио.'},
+ {id:'upskill',hot:1,name:'Повышение квалификации',for:'Для тех, кто уже ведёт клиентов, блог или свой бизнес и хочет новый уровень результата и цены. 8 мест.',
+  li:['Всё, что входит в «С нуля»','Все 12 блоков с заданиями и обратной связью, включая рекламу, аналитику, сайт и продажи','Усложнение в каждом блоке: более глубокая стратегия, сложные форматы, продвинутый монтаж','Практика на действующем клиенте или своём бизнесе','Куратор разбирает аккаунт вашего клиента по методике агентства','Личная стратегия от Малены под ваш проект','Два личных созвона с Маленой и Львом'],
+  out:'Всё из «С нуля», плюс запущенная реклама, страница записи с автоответом, отчёт клиенту и предложение с ценой в долларах.'}
+];
+$('#tf').innerHTML=T.map(function(t){
+  var now=price(t.id), fp=fin[t.id];
+  return '<div class="tf'+(t.hot?' hot':'')+'"><span class="kind">Вы делаете по нашей системе</span><h3>'+t.name+'</h3><p class="for">'+t.for+'</p><ul>'+t.li.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>'+
+    '<div class="out"><b>Через два месяца</b>'+t.out+'</div>'+
+    '<div class="price"><div class="now">'+fmt(now)+'</div><div class="old">Финальная цена '+fmt(fp)+' · есть рассрочка</div>'+
+    '<a class="btn" href="#apply" data-tar="'+t.id+'" data-kind="deposit">Забронировать за $100</a></div></div>';
+}).join('');
+
+var rows=[
+ ['Проект для практики','Свой аккаунт, учебный проект или свой бизнес','Действующий клиент или свой бизнес'],
+ ['Блоки 1–7 и 12: стратегия, сценарии, съёмка, монтаж, упаковка, публикации, кейс','С заданиями и обратной связью','С заданиями, обратной связью и усложнением'],
+ ['Блоки 8–11: реклама, аналитика, сайт, продажи','Обзор','С заданиями и обратной связью'],
+ ['Проверка куратором','Каждое задание','Каждое задание'],
+ ['Разбор аккаунта вашего клиента','Нет','Да'],
+ ['Личная стратегия от Малены','Нет','Да'],
+ ['Личные созвоны с Маленой и Львом','Нет','Два'],
+ ['Доступ к урокам','12 месяцев','12 месяцев'],
+ ['Цена сейчас',fmt(price('zero')),fmt(price('upskill'))],
+ ['Финальная цена',fmt(fin.zero),fmt(fin.upskill)]
+];
+$('#cmp').innerHTML='<thead><tr><th></th><th>С нуля</th><th>Повышение квалификации</th></tr></thead><tbody>'+rows.map(function(r){return '<tr>'+r.map(function(c){return '<td>'+c+'</td>';}).join('')+'</tr>';}).join('')+'</tbody>';
+
+/* Под ключ */
+function lis(id,arr){ $(id).innerHTML=arr.map(function(x){return '<li>'+x+'</li>';}).join(''); }
+lis('#tkWe',['Стратегия и позиционирование вашего проекта','Упаковка профиля','Контент-план на два месяца','30 видео разных форматов: продающие, экспертные, вирусные, трендовые. Сценарии, съёмочный план и монтаж','Запуск и ведение рекламы в Meta','Страница записи или лендинг и автоответы на заявки','Отчёт каждую неделю в заявках и деньгах','Личная работа Малены и Льва над вашим проектом']);
+lis('#tkYou',['Рассказываете о проекте на старте','Участвуете в съёмке по нашему плану','Публикуете готовые видео по контент-плану','Оплачиваете рекламный бюджет']);
+lis('#tkRes',['Упакованный аккаунт','30 готовых видео','Реклама, которая приводит заявки','Система, которую можно вести дальше самим или с нами','Доступ ко всем урокам обучения']);
+
+/* Цены */
+$('#steps').innerHTML=STEPS.map(function(s,i){
+  return '<div class="st'+(i===si?' cur':'')+(i<si?' past':'')+'"><div class="d">'+s.label+'</div><div class="p">С нуля '+fmt(s.zero)+'<br>Повышение '+fmt(s.upskill)+(s.final?'<small>финальная цена</small>':'')+'</div>'+(i===si?'<div class="flag">Действует сейчас</div>':'')+'</div>';
+}).join('');
+
+/* Калькулятор */
+var cT='zero';
+function calc(){
+  var r=$('#cR'); if(cT==='closed'){ r.max=OWN_MAX; if(+r.value>OWN_MAX) r.value=OWN_MAX; } else r.max=12;
+  var m=+r.value, p=price(cT), mo=Math.ceil(p/m);
+  $('#cM').textContent=m;
+  $('#cOut').innerHTML=(m>OWN_MAX?'≈ ':'')+fmt(mo)+' <small>в месяц · '+m+' платеж'+(m<5?'а':'ей')+' · всего '+fmt(p)+(m>OWN_MAX?' без учёта процента партнёра':'')+'</small>';
+  $('#cWho').innerHTML=m<=OWN_MAX?'<b>Наша рассрочка без процентов.</b> Первый платёж при подписании договора, дальше раз в 30 дней.'
+    :'<b>Рассрочка через партнёра.</b> В США через Klarna или Affirm, в Молдове через банк-партнёра. Итоговый платёж с процентом рассчитывает партнёр после проверки.';
+}
+$('#cT').addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return; cT=b.dataset.t; [].forEach.call(this.children,function(x){x.classList.toggle('on',x===b);}); calc(); });
+$('#cR').addEventListener('input',calc); calc();
+
+/* Форма */
+var kind='deposit';
+function setKind(k){ kind=k; [].forEach.call($('#fK').children,function(x){x.classList.toggle('on',x.dataset.k===k);});
+  $('#fTitle').textContent=k==='deposit'?'Забронировать место за $100':k==='installment'?'Оформить рассрочку':'Оплатить целиком';
+  $('#fMonthsBox').hidden=k!=='installment'; months(); idbox(); }
+function months(){ var tar=$('#fTar').value, max=tar==='closed'?OWN_MAX:12, p=price(tar), cur=+$('#fMonths').value||+$('#cR').value||4, o='';
+  for(var m=2;m<=max;m++) o+='<option value="'+m+'"'+(m===Math.min(cur,max)?' selected':'')+'>'+m+' мес. · '+(m>OWN_MAX?'≈ ':'')+fmt(Math.ceil(p/m))+' в месяц'+(m>OWN_MAX?' (через партнёра)':' (без процентов)')+'</option>';
+  $('#fMonths').innerHTML=o; }
+function isMd(){ return /Молдова/.test($('#fCountry').value); }
+function idbox(){ $('#idBox').hidden=!(kind==='installment'&&isMd()); }
+$('#fK').addEventListener('click',function(e){ var b=e.target.closest('button'); if(b) setKind(b.dataset.k); });
+$('#fTar').addEventListener('change',months); $('#fCountry').addEventListener('change',idbox);
+document.addEventListener('click',function(e){ var a=e.target.closest('a[data-kind]'); if(!a) return;
+  if(a.dataset.tar) $('#fTar').value=a.dataset.tar;
+  if(a.dataset.kind==='installment'){ $('#fTar').value=cT; months(); $('#fMonths').value=$('#cR').value; }
+  setKind(a.dataset.kind); if(a.dataset.kind==='installment') $('#fMonths').value=$('#cR').value; });
+setKind('deposit');
+
+/* Фото документа: сжимаем до 1600 px, чтобы уходило быстро и с телефона */
+var files={F:'',B:''};
+function takeFile(inp,side){ inp.addEventListener('change',function(){ var f=inp.files[0]; if(!f) return;
+  var t=$('#t'+side), p=$('#p'+side);
+  if(f.type==='application/pdf'){ if(f.size>5*1024*1024){ t.textContent='Файл больше 5 МБ'; return; }
+    var rd=new FileReader(); rd.onload=function(){ files[side]=rd.result; t.textContent='PDF добавлен'; }; rd.readAsDataURL(f); return; }
+  var img=new Image(), url=URL.createObjectURL(f);
+  img.onload=function(){ var k=Math.min(1,1600/Math.max(img.width,img.height)), c=document.createElement('canvas'); c.width=Math.round(img.width*k); c.height=Math.round(img.height*k);
+    c.getContext('2d').drawImage(img,0,0,c.width,c.height); files[side]=c.toDataURL('image/jpeg',.82); p.src=files[side]; t.textContent=side==='F'?'Лицевая сторона добавлена':'Обратная сторона добавлена'; URL.revokeObjectURL(url); };
+  img.onerror=function(){ t.textContent='Не получилось открыть фото, попробуйте другое'; };
+  img.src=url; }); }
+takeFile($('#idF'),'F'); takeFile($('#idB'),'B');
+
+var ERR={name:'Напишите имя и фамилию.',email:'Проверьте почту.',phone:'Проверьте телефон.',id_photos:'Добавьте фото обеих сторон буллетина.',save:'Не получилось сохранить заявку. Попробуйте ещё раз или напишите нам в WhatsApp.'};
+$('#form').addEventListener('submit',function(ev){ ev.preventDefault();
+  var e=$('#fErr'), btn=$('#fSend'); function bad(t,el){ e.textContent=t; e.style.display='block'; if(el) el.focus(); }
+  var name=$('#fName').value.trim(), email=$('#fEmail').value.trim().toLowerCase(), phone=$('#fPhone').value.trim(), country=$('#fCountry').value;
+  if(name.split(/\s+/).length<2) return bad('Напишите имя и фамилию, как в документе.',$('#fName'));
+  if(phone.replace(/\D/g,'').length<7) return bad('Оставьте телефон с кодом страны.',$('#fPhone'));
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return bad('Проверьте почту: на неё придёт договор.',$('#fEmail'));
+  if(!country) return bad('Выберите страну проживания.',$('#fCountry'));
+  if(kind==='installment'&&isMd()&&(!files.F||!files.B)) return bad('Для рассрочки в Молдове добавьте фото обеих сторон буллетина.');
+  if(!$('#fOk').checked) return bad('Отметьте согласие на обработку данных.');
+  e.style.display='none'; btn.disabled=true; btn.textContent='Отправляем…';
+  var body={kind:kind,tariff:$('#fTar').value,track:$('#fTrack').value,months:kind==='installment'?+$('#fMonths').value:0,name:name,email:email,phone:phone,country:country,
+    comment:$('#fComment').value.trim(),id_front:kind==='installment'&&isMd()?files.F:'',id_back:kind==='installment'&&isMd()?files.B:'',page:location.pathname};
+  fetch(FN,{method:'POST',headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK},body:JSON.stringify(body)})
+   .then(function(r){ return r.json(); }).catch(function(){ return {ok:false,error:'save'}; })
+   .then(function(d){ btn.disabled=false; btn.textContent='Отправить заявку';
+     if(!d||!d.ok) return bad(ERR[d&&d.error]||ERR.save);
+     $('#form').style.display='none'; var ok=$('#fOkBox'); ok.style.display='block';
+     var tn={zero:'С нуля',upskill:'Повышение квалификации',closed:'Под ключ'}[body.tariff];
+     $('#fOkText').textContent=kind==='deposit'?'Место в тарифе «'+tn+'» за вами по цене '+fmt(d.price)+'. Мы пришлём договор на почту и напишем в WhatsApp.'
+       :kind==='installment'?'Рассрочка на '+d.months+' мес., около '+fmt(d.monthly)+' в месяц, тариф «'+tn+'». Мы проверим данные, пришлём договор и график платежей.'
+       :'Тариф «'+tn+'», '+fmt(d.price)+'. Мы пришлём договор и ссылку на оплату.';
+     if(kind==='deposit'&&d.deposit_url) $('#fOkPay').innerHTML='<a class="btn gold" href="'+d.deposit_url+'">Оплатить депозит $100</a>';
+     ok.scrollIntoView({behavior:'smooth',block:'center'});
+   });
+});
+
+/* Кнопка внизу на телефоне, пока человек читает программу */
+var st=$('#sticky'), pay=$('#pay');
+addEventListener('scroll',function(){ var y=scrollY, top=pay.offsetTop-innerHeight; st.classList.toggle('show',y>innerHeight*.8&&y<top); },{passive:true});
+})();
+</script>
+</body>
+</html>
