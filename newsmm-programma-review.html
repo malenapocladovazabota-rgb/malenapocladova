@@ -121,6 +121,7 @@ b{font-weight:700}
 .tg{font-size:12px;font-weight:600;border-radius:999px;padding:4px 10px;border:1px solid rgba(110,30,43,.35);color:var(--wine)}
 .tg.on{background:var(--wine);color:#fff;border-color:var(--wine)}
 .blk .stk{margin-top:0}
+.ul li.mg{font-weight:700;color:var(--wine)}.ul li.mg::before{content:'✦';background:none;width:auto;height:auto;top:0;left:-1px;font-size:12px;color:var(--gold);border-radius:0}
 .res{margin-top:10px;background:var(--ink);color:#F6EFE2;border-radius:16px;padding:12px 15px;font-size:15.5px;line-height:1.35;box-shadow:0 12px 30px -14px rgba(0,0,0,.5)}
 .res .k{color:var(--gold)}
 .upx{margin-top:10px;border:1.5px dashed var(--wine);border-radius:14px;padding:10px 14px;font-size:14px;line-height:1.35;color:var(--ink2);background:rgba(255,255,255,.5)}
@@ -234,10 +235,11 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
   .bn{font-size:36px}.price .now{font-size:38px}.cc .ul li{font-size:13px}
   .st{padding-top:calc(env(safe-area-inset-top) + 70px);padding-bottom:calc(env(safe-area-inset-bottom) + 100px)}
   .toc li{font-size:13.5px;padding:4px 8px}
+  .blk .mid{font-size:23px;margin-top:4px!important}.blk .bn{font-size:30px}.blk .ul{gap:4px}.blk .ul li{font-size:13px;line-height:1.25}.blk .stk{padding:9px 12px}.blk .res{margin-top:7px;font-size:13.5px;padding:8px 12px}.blk .upx{margin-top:7px;font-size:12.5px;padding:7px 11px}.blk .tgs{margin-top:6px}
 }
 @media (max-height:740px){.toc{grid-template-columns:1fr 1fr;gap:4px}.toc .sep{grid-column:1/-1}.toc li{font-size:12.5px;padding:5px 7px;gap:6px}.toc li b{flex-basis:18px;font-size:11px}}
 @media (max-height:620px){.mid{font-size:22px}.ul{gap:3px}.tgs{margin-top:5px}.tg{font-size:11px;padding:3px 8px}.res{margin-top:6px;font-size:13px}.upx{margin-top:6px;font-size:12px}
-  .blk .ul li:nth-child(4){display:none}.toc li{font-size:11.5px;padding:3px 6px}.toc{gap:3px}.bn{font-size:30px}.chips .chip:nth-child(4){display:none}.price .now{font-size:32px}.stk .n{font-size:24px}
+  .blk .ul li:nth-child(4){display:none}.toc li{font-size:11.5px;padding:3px 6px}.toc{gap:3px}.bn{font-size:30px}.chips .chip:nth-child(4){display:none}.ul li.opt{display:none}.blk .mid{font-size:21px}.blk .ul li{font-size:12.5px}.blk .res{font-size:12.5px;padding:7px 11px}.blk .upx{font-size:11.5px;padding:6px 10px}.blk .ul{gap:2px}.price .now{font-size:32px}.stk .n{font-size:24px}
   .st{padding-bottom:calc(env(safe-area-inset-bottom) + 96px)}#link button{padding:13px 16px;font-size:16px}}
 </style>
 </head>
@@ -268,23 +270,23 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="anim"><span class="hl">Ведут Малена и Лев Покладовы.</span><br><span class="hl">Своё агентство, клиенты в США, Европе и Азии</span></div>
     <div class="two anim d2" style="margin-top:14px">
       <div class="stk tilt-l"><div class="n">7 лет</div><div class="t">Малена зарабатывает только на соцсетях</div></div>
-      <div class="stk tilt-r"><div class="n">200+</div><div class="t">женщин закончили обучение</div></div>
+      <div class="stk tilt-r"><div class="n">250+</div><div class="t">женщин закончили обучение</div></div>
     </div>
-    <div class="stk anim d3" style="margin-top:10px"><div class="n">×10</div><div class="t">окупаемость рекламы у клиента агентства</div></div>
+    <div class="stk anim d3" style="margin-top:10px"><div class="n">48 записей</div><div class="t">за месяц с одного ролика у клиента агентства</div></div>
   </section>
 
-  <!-- 3 · как устроено -->
-  <section class="st ink" data-t="9" data-name="how">
-    <div class="lab anim">Как устроено обучение</div>
-    <div class="mid anim d1" style="margin-top:10px">Весь цикл агентства <em>на вашем проекте</em></div>
-    <p class="txt anim d1" style="margin-top:10px;font-size:16px;opacity:.85">Блоки идут в том порядке, в каком наше агентство ведёт клиента. Так мы работаем с клиентами в США, Европе и других странах.</p>
+  <!-- 3 · как устроено: результаты -->
+  <section class="st ink" data-t="10" data-name="how">
+    <div class="lab anim">Почему этому можно верить</div>
+    <div class="mid anim d1" style="margin-top:10px">Учим тому, что <em>работает у нас прямо сейчас</em></div>
     <div class="push"></div>
     <div class="stack">
-      <div class="anim d2"><span class="hl">Платформа: уроки, задания, шаблоны</span></div>
-      <div class="anim d2"><span class="hl">Telegram: чат потока и куратор</span></div>
-      <div class="anim d3"><span class="hl">Куратор проверяет задания</span></div>
-      <div class="anim d4"><span class="hl g">Эфиры с Маленой и Львом: разборы работ</span></div>
+      <div class="anim d2"><span class="hl">Клиенты агентства расписаны на месяц вперёд</span></div>
+      <div class="anim d2"><span class="hl">250+ учениц уже прошли обучение</span></div>
+      <div class="anim d3"><span class="hl">Этой же системой приводим клиентов в своё агентство</span></div>
+      <div class="anim d4"><span class="hl g">Система, которая считает окупаемость каждого доллара</span></div>
     </div>
+    <p class="mini anim d4" style="margin-top:14px;opacity:.85">Как проходит: уроки на платформе, чат потока в Telegram, куратор проверяет задания, эфиры с Маленой и Львом.</p>
     <div class="push"></div>
   </section>
 
@@ -317,9 +319,9 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="mid anim d1" style="margin-top:8px">Старт: как агентство ведёт клиента</div>
     <div class="tgs anim d1"><span class="tg on">Оба тарифа: задания и обратная связь</span></div>
     <div class="push"></div>
-    <div class="stk anim d2"><div class="k">Разбираем</div><ul class="ul"><li>Из чего состоит услуга SMM и сколько она стоит в США и Европе</li><li>Путь клиента: от первого разговора до продления договора</li><li>Инструменты агентства и где помогает нейросеть</li><li>Реальный клиент агентства: до и после</li></ul></div>
-    <div class="res anim d3"><div class="k">Результат блока</div>Карта всей работы, выбранный проект и настроенный ассистент на нейросети</div>
-    <div class="upx anim d3"><b>+ В «Повышении»</b>Разбор вашей текущей работы: где теряете время и деньги</div>
+    <div class="stk anim d2"><div class="k">Внутри блока</div><ul class="ul"><li class="mg">Сколько на самом деле стоит SMM в США и Европе и из чего складывается цена</li><li>Путь клиента: от первого «здравствуйте» до продления договора</li><li>Наши инструменты и нейросеть, которая забирает рутину</li><li>Реальный клиент агентства: что было до нас и что стало</li></ul></div>
+    <div class="res anim d3"><div class="k">Результат блока</div>Ясность: вы знаете, что делать с клиентом на каждом этапе, и больше не боитесь начинать</div>
+    <div class="upx anim d3"><b>+ В «Повышении»</b>Увидите, каких блоков не хватает в вашей работе или у клиента и как именно они тормозят рост</div>
     <div class="push"></div>
   </section>
   <section class="st cream2 blk" data-t="13" data-name="block2">
@@ -327,9 +329,9 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="mid anim d1" style="margin-top:8px">Стратегия и позиционирование</div>
     <div class="tgs anim d1"><span class="tg on">Оба тарифа: задания и обратная связь</span></div>
     <div class="push"></div>
-    <div class="stk anim d2"><div class="k">Разбираем</div><ul class="ul"><li>Кто покупает и почему</li><li>Чем вы отличаетесь: метод проявления уникальности</li><li>Аудит аккаунта и трёх конкурентов</li><li>Цели в цифрах: заявки, записи, продажи</li></ul></div>
-    <div class="res anim d3"><div class="k">Результат блока</div>Стратегия вашего проекта, проверенная куратором</div>
-    <div class="upx anim d3"><b>+ В «Повышении»</b>Воронка, стоимость клиента и средний чек, стратегия на 6 месяцев, личная стратегия от Малены</div>
+    <div class="stk anim d2"><div class="k">Внутри блока</div><ul class="ul"><li class="mg">Научитесь находить то, чем бизнес отличается от всех вокруг, и упаковывать это</li><li>Кто на самом деле покупает и почему выбирает именно вас</li><li>Аудит аккаунта и трёх конкурентов: где они теряют клиентов</li><li>Цели в цифрах: заявки, записи, продажи, а не «просто красивый блог»</li></ul></div>
+    <div class="res anim d3"><div class="k">Результат блока</div>Стратегия, в которой видно, за что клиенты выберут именно этот проект. Проверена куратором</div>
+    <div class="upx anim d3"><b>+ В «Повышении»</b>Воронка, стоимость клиента и средний чек, стратегия на 6 месяцев и личная стратегия от Малены</div>
     <div class="push"></div>
   </section>
   <section class="st paper blk" data-t="13" data-name="block3">
@@ -337,9 +339,9 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="mid anim d1" style="margin-top:8px">Идеи и сценарии</div>
     <div class="tgs anim d1"><span class="tg on">Оба тарифа: задания и обратная связь</span></div>
     <div class="push"></div>
-    <div class="stk anim d2"><div class="k">Разбираем</div><ul class="ul"><li>Форматы: продающие, экспертные, вирусные, трендовые</li><li>Рубрики и серии, ради которых подписываются</li><li>Структура сценария: хук, польза, призыв</li><li>Почему люди сохраняют, пересылают и покупают</li></ul></div>
-    <div class="res anim d3"><div class="k">Результат блока</div>Банк из 30 идей и 10 сценариев разных форматов</div>
-    <div class="upx anim d3"><b>+ В «Повышении»</b>Серии под воронку продаж, сценарии для рекламы и англоязычной аудитории</div>
+    <div class="stk anim d2"><div class="k">Внутри блока</div><ul class="ul"><li class="mg">Разберём, что на самом деле влияет на результат видео</li><li>Сценарии, которые цепляют с первых секунд</li><li>Как сделать, чтобы видео сохраняли, пересылали и покупали</li><li>Продающие, экспертные, вирусные, трендовые: когда какой формат стреляет</li></ul></div>
+    <div class="res anim d3"><div class="k">Результат блока</div>Банк из 30 идей и 10 сценариев, которые хочется снять прямо сегодня</div>
+    <div class="upx anim d3"><b>+ В «Повышении»</b>Серии под воронку продаж, сценарии для рекламы и для англоязычной аудитории</div>
     <div class="push"></div>
   </section>
   <section class="st cream2 blk" data-t="13" data-name="block4">
@@ -347,9 +349,9 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="mid anim d1" style="margin-top:8px">Съёмка</div>
     <div class="tgs anim d1"><span class="tg on">Оба тарифа: задания и обратная связь</span></div>
     <div class="push"></div>
-    <div class="stk anim d2"><div class="k">Разбираем</div><ul class="ul"><li>Как снимать видео четырёх форматов на телефон</li><li>Съёмочный день у клиента или у себя</li><li>Свет, звук, ракурсы</li><li>Как снимать человека, который стесняется камеры</li></ul></div>
-    <div class="res anim d3"><div class="k">Результат блока</div>Материал на 10 роликов разных форматов</div>
-    <div class="upx anim d3"><b>+ В «Повышении»</b>Интервью, отзывы клиентов, съёмка команды, съёмка клиента дистанционно</div>
+    <div class="stk anim d2"><div class="k">Внутри блока</div><ul class="ul"><li class="mg">Как мы снимаем 20 видео за час</li><li>Авторская техника: ничего не нужно учить наизусть и не нужно волноваться</li><li>Как снять человека, который никогда не снимался, чтобы он сам захотел ещё</li><li>Подготовка до съёмки: комфортно и без потери времени</li></ul></div>
+    <div class="res anim d3"><div class="k">Результат блока</div>Вы снимаете легко и быстро, клиент раскрывается в кадре, а видео хватает на недели вперёд</div>
+    <div class="upx anim d3"><b>+ В «Повышении»</b>Интервью, отзывы клиентов, съёмка команды и съёмка клиента на расстоянии</div>
     <div class="push"></div>
   </section>
   <section class="st paper blk" data-t="13" data-name="block5">
@@ -357,8 +359,8 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="mid anim d1" style="margin-top:8px">Монтаж и видео</div>
     <div class="tgs anim d1"><span class="tg on">Оба тарифа: задания и обратная связь</span></div>
     <div class="push"></div>
-    <div class="stk anim d2"><div class="k">Разбираем</div><ul class="ul"><li>Монтаж каждого формата: в чём разница</li><li>Ритм, склейки, субтитры, обложки</li><li>Приложения, которыми монтирует агентство</li><li>Озвучка, перевод и вставки с нейросетью</li></ul></div>
-    <div class="res anim d3"><div class="k">Результат блока</div>10 готовых Reels разных форматов, проверенных куратором</div>
+    <div class="stk anim d2"><div class="k">Внутри блока</div><ul class="ul"><li class="mg">Монтаж, который удерживает до последней секунды</li><li>Ритм, склейки, субтитры и обложки, на которых останавливают ленту</li><li>Приложения, в которых монтирует наше агентство</li><li>Нейросеть: озвучка, перевод и вставки за минуты</li></ul></div>
+    <div class="res anim d3"><div class="k">Результат блока</div>10 готовых Reels разных форматов, которые не стыдно показать клиенту. Проверены куратором</div>
     <div class="upx anim d3"><b>+ В «Повышении»</b>Продвинутый монтаж и рекламные креативы из готовых роликов</div>
     <div class="push"></div>
   </section>
@@ -367,8 +369,8 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="mid anim d1" style="margin-top:8px">Упаковка профиля</div>
     <div class="tgs anim d1"><span class="tg on">Оба тарифа: задания и обратная связь</span></div>
     <div class="push"></div>
-    <div class="stk anim d2"><div class="k">Разбираем</div><ul class="ul"><li>Имя, шапка, аватар, закреп, актуальные</li><li>Единый визуал из отснятого</li><li>Кнопка записи и ссылка</li><li>Пять секунд на решение подписаться</li></ul></div>
-    <div class="res anim d3"><div class="k">Результат блока</div>Профиль, готовый к рекламе</div>
+    <div class="stk anim d2"><div class="k">Внутри блока</div><ul class="ul"><li class="mg">Пять секунд, за которые человек решает подписаться</li><li>Имя, шапка, аватар, закреп и актуальные, которые продают без слов</li><li>Стильный единый визуал из того, что уже отснято</li><li>Кнопка записи и ссылка, на которые правда нажимают</li></ul></div>
+    <div class="res anim d3"><div class="k">Результат блока</div>Профиль, в который заходят и сразу хотят записаться. Готов к рекламе</div>
     <div class="upx anim d3"><b>+ В «Повышении»</b>Профиль как воронка продаж и версия для англоязычной аудитории</div>
     <div class="push"></div>
   </section>
@@ -377,19 +379,19 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="mid anim d1" style="margin-top:8px">Публикация и системность</div>
     <div class="tgs anim d1"><span class="tg on">Оба тарифа: задания и обратная связь</span></div>
     <div class="push"></div>
-    <div class="stk anim d2"><div class="k">Разбираем</div><ul class="ul"><li>Контент-план и ритм публикаций</li><li>Сторис каждый день: сюжет, прогрев, продажи</li><li>Тексты к постам, комментарии и директ</li><li>Регулярность без выгорания</li></ul></div>
-    <div class="res anim d3"><div class="k">Результат блока</div>Две недели опубликованного контента и план на месяц</div>
+    <div class="stk anim d2"><div class="k">Внутри блока</div><ul class="ul"><li class="mg">Контент-план, по которому публиковать легко, а не мучительно</li><li>Сторис каждый день: сюжет, прогрев, продажи</li><li>Тексты, комментарии и директ, которые превращают зрителей в клиентов</li><li>Как держать регулярность и не выгореть</li></ul></div>
+    <div class="res anim d3"><div class="k">Результат блока</div>Две недели опубликованного контента и система, которая работает без вдохновения</div>
     <div class="upx anim d3"><b>+ В «Повышении»</b>Система на несколько клиентов, делегирование помощнику, план под запуск продукта</div>
     <div class="push"></div>
   </section>
   <section class="st cream2 blk" data-t="13" data-name="block8">
     <div class="bh anim"><span class="bn">08</span><span class="lab" style="color:var(--wine)">Блок 8 из 12 · часть 2</span></div>
     <div class="mid anim d1" style="margin-top:8px">Реклама и продвижение</div>
-    <div class="tgs anim d1"><span class="tg">«С нуля»: обзор</span><span class="tg on">«Повышение»: с заданиями</span></div>
+    <div class="tgs anim d1"><span class="tg on">«С нуля»: первый запуск</span><span class="tg on">«Повышение»: полная настройка</span></div>
     <div class="push"></div>
-    <div class="stk anim d2"><div class="k">Разбираем</div><ul class="ul"><li>Когда запускать рекламу и когда рано</li><li>Кабинет Meta: цели, аудитории, локальный таргет</li><li>Креативы из вашего контента</li><li>Бюджет, стоимость заявки и записи</li></ul></div>
-    <div class="res anim d3"><div class="k">Результат блока</div>Запущенная тестовая кампания и понимание, как её вести</div>
-    <div class="upx anim d3"><b>Как проходится</b>В «С нуля» смотрите уроки. В «Повышении» делаете на своём проекте, куратор проверяет.</div>
+    <div class="stk anim d2"><div class="k">Внутри блока</div><ul class="ul"><li class="mg">Как запустить первую рекламу и не слить бюджет</li><li>Кабинет Meta без страха: цели, аудитории, реклама рядом с вами</li><li>Креативы из вашего же контента</li><li>Сколько должна стоить заявка и запись, и как это понять по цифрам</li></ul></div>
+    <div class="res anim d3"><div class="k">Результат блока</div>Ваша первая реклама запущена, и вы понимаете, что с ней делать дальше</div>
+    <div class="upx anim d3"><b>+ В «Повышении»</b>Полная настройка кампаний, масштабирование и воронки продаж: от рекламы до оплаты</div>
     <div class="push"></div>
   </section>
   <section class="st paper blk" data-t="13" data-name="block9">
@@ -397,8 +399,8 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="mid anim d1" style="margin-top:8px">Аналитика</div>
     <div class="tgs anim d1"><span class="tg">«С нуля»: обзор</span><span class="tg on">«Повышение»: с заданиями</span></div>
     <div class="push"></div>
-    <div class="stk anim d2"><div class="k">Разбираем</div><ul class="ul"><li>Какие цифры смотреть в контенте и рекламе</li><li>Стоимость заявки, записи и клиента</li><li>Что масштабировать, а что выключать</li><li>Отчёт клиенту в заявках и деньгах</li></ul></div>
-    <div class="res anim d3"><div class="k">Результат блока</div>Разбор ваших цифр, план на месяц и отчёт клиенту</div>
+    <div class="stk anim d2"><div class="k">Внутри блока</div><ul class="ul"><li class="mg">Какие цифры показывают, что контент и реклама работают</li><li>Стоимость заявки, записи и клиента: считаем по-настоящему</li><li>Что масштабировать, а что выключать без сожаления</li><li>Отчёт клиенту в заявках и деньгах, после которого продлевают</li></ul></div>
+    <div class="res anim d3"><div class="k">Результат блока</div>Система, которая считает окупаемость, план на месяц и отчёт клиенту</div>
     <div class="upx anim d3"><b>Как проходится</b>В «С нуля» смотрите уроки. В «Повышении» делаете на своём проекте, куратор проверяет.</div>
     <div class="push"></div>
   </section>
@@ -407,8 +409,8 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="mid anim d1" style="margin-top:8px">Сайт, запись и автоматизация</div>
     <div class="tgs anim d1"><span class="tg">«С нуля»: обзор</span><span class="tg on">«Повышение»: с заданиями</span></div>
     <div class="push"></div>
-    <div class="stk anim d2"><div class="k">Разбираем</div><ul class="ul"><li>Страница записи или лендинг с нейросетью</li><li>Квиз и форма заявки</li><li>Автоответ, напоминание, сообщение перед встречей</li><li>Почему скорость ответа решает продажу</li></ul></div>
-    <div class="res anim d3"><div class="k">Результат блока</div>Работающая страница записи и автоответ на каждую заявку</div>
+    <div class="stk anim d2"><div class="k">Внутри блока</div><ul class="ul"><li class="mg">Страница записи или лендинг с нейросетью за один вечер</li><li>Квиз и форма, которые хочется заполнить</li><li>Автоответ, напоминание и сообщение перед встречей</li><li>Почему скорость ответа решает продажу</li></ul></div>
+    <div class="res anim d3"><div class="k">Результат блока</div>Страница записи и автоответ: ни одна заявка больше не теряется</div>
     <div class="upx anim d3"><b>Как проходится</b>В «С нуля» смотрите уроки. В «Повышении» делаете на своём проекте, куратор проверяет.</div>
     <div class="push"></div>
   </section>
@@ -417,7 +419,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="mid anim d1" style="margin-top:8px">Продажи и деньги</div>
     <div class="tgs anim d1"><span class="tg">«С нуля»: обзор</span><span class="tg on">«Повышение»: с заданиями</span></div>
     <div class="push"></div>
-    <div class="stk anim d2"><div class="k">Разбираем</div><ul class="ul"><li>Как назвать цену спокойно</li><li>Созвон с клиентом: структура и вопросы</li><li>Предложение, договор, продление</li><li>SMM-специалисту: поиск клиентов. Бизнесу: оффер и продажи своего продукта</li></ul></div>
+    <div class="stk anim d2"><div class="k">Внутри блока</div><ul class="ul"><li class="mg">Как назвать цену спокойно и уверенно</li><li>Созвон с клиентом: вопросы, после которых говорят «да»</li><li>Предложение, договор и продление</li><li>SMM-специалисту: где брать клиентов. Бизнесу: оффер и продажи своего продукта</li></ul></div>
     <div class="res anim d3"><div class="k">Результат блока</div>Готовое предложение с ценой и первые переговоры</div>
     <div class="upx anim d3"><b>Как проходится</b>В «С нуля» смотрите уроки. В «Повышении» делаете на своём проекте, куратор проверяет.</div>
     <div class="push"></div>
@@ -427,7 +429,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="mid anim d1" style="margin-top:8px">Кейс и следующий шаг</div>
     <div class="tgs anim d1"><span class="tg on">Оба тарифа: задания и обратная связь</span></div>
     <div class="push"></div>
-    <div class="stk anim d2"><div class="k">Разбираем</div><ul class="ul"><li>Как оформить результат в кейс</li><li>Портфолио</li><li>План на следующие три месяца</li><li>Когда брать помощника или команду</li></ul></div>
+    <div class="stk anim d2"><div class="k">Внутри блока</div><ul class="ul"><li class="mg">Как превратить результат в кейс, который продаёт за вас</li><li>Портфолио, после которого выбирают вас</li><li>План на следующие три месяца</li><li>Когда пора брать помощника или собирать команду</li></ul></div>
     <div class="res anim d3"><div class="k">Результат блока</div>Кейс, портфолио, план развития и сертификат</div>
     <div class="upx anim d3"><b>+ В «Повышении»</b>Кейс с результатом в деньгах, портфолио на английском</div>
     <div class="push"></div>
@@ -441,11 +443,12 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="push"></div>
     <div class="stk anim d2"><ul class="ul">
       <li>Блоки 1–7 и 12 полностью, с заданиями и обратной связью</li>
-      <li>Блоки 8–11 (реклама, аналитика, сайт, продажи): обзор</li>
+      <li>Блок 8: запускаете свою первую рекламу</li>
+      <li>Блоки 9–11 (аналитика, сайт, продажи): обзор</li>
       <li>Куратор проверяет каждое задание</li>
       <li>Эфиры с разборами, чат потока, шаблоны агентства</li>
-      <li>Сертификат и оформленный кейс</li></ul></div>
-    <div class="res anim d3"><div class="k">Через два месяца</div>Стратегия, упакованный профиль, 10 Reels разных форматов, две недели контента и кейс в портфолио</div>
+      <li class="opt">Сертификат и оформленный кейс</li></ul></div>
+    <div class="res anim d3"><div class="k">Через два месяца</div>Ясность, что делать с клиентом, стратегия, 10 Reels, профиль, первая реклама и кейс в портфолио</div>
     <div class="price anim d4" style="color:var(--ink)"><span class="now" data-price="zero"></span><span class="old" data-final="zero"></span></div>
     <div class="push"></div>
   </section>
@@ -459,7 +462,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="stk anim d2"><ul class="ul">
       <li>Всё, что входит в «С нуля»</li>
       <li>Все 12 блоков с заданиями и обратной связью</li>
-      <li>Усложнение в каждом блоке: глубже стратегия, сложные форматы, продвинутый монтаж</li>
+      <li>Усложнение в каждом блоке: глубже стратегия, сложные форматы, полная настройка рекламы и воронки</li>
       <li>Разбор аккаунта вашего клиента</li>
       <li>Личная стратегия от Малены и два созвона с Маленой и Львом</li></ul></div>
     <div class="res anim d3" style="background:#fff;color:var(--ink)"><div class="k" style="color:var(--wine)">Через два месяца</div>Плюс запущенная реклама, страница записи, отчёт клиенту и предложение с ценой в долларах</div>
@@ -582,7 +585,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     {until:'2026-10-05', label:'до 5 октября', zero:1200, upskill:2000},
     {until:'2026-10-19', label:'6–19 октября', zero:1300, upskill:2100},
     {until:'2026-11-30', label:'с 20 октября до старта', zero:1400, upskill:2200},
-    {until:'9999-12-31', label:'после старта', zero:1500, upskill:2300, final:true}
+    {until:'9999-12-31', label:'после старта', zero:1500, upskill:2500, final:true}
   ];
   var CLOSED=5000, OWN_MAX=4;
   function today(){ return new Date(Date.now()-8*3600e3).toISOString().slice(0,10); }
