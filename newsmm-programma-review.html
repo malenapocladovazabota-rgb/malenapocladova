@@ -562,7 +562,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
   </section>
 
   <div id="link"><div class="cap">Бронь $100 · рассрочка · оплата целиком</div><button type="button" id="linkbtn">Выбрать тариф и оплату<span class="ar">→</span></button></div>
-  <div id="hint"><span><i>←</i>Нажмите<br>слева: назад</span><span><i class="pp"><u></u><u></u></i>Держите палец,<br>чтобы дочитать</span><span><i>→</i>Нажмите<br>справа: дальше</span><b>Коснитесь, чтобы начать</b></div>
+  <div id="hint"><span><i>←</i>Нажмите<br>слева: назад</span><span><i>↔</i>Листайте<br>в своём темпе</span><span><i>→</i>Нажмите<br>справа: дальше</span><b>Коснитесь, чтобы начать</b></div>
   <div id="menu"><div class="sh"><button type="button" class="x" id="menuX" aria-label="Закрыть">×</button><h3>Разделы</h3>
     <button type="button" class="mi" data-go="how">Как устроено обучение<span>1 мин</span></button>
     <button type="button" class="mi" data-go="program">Программа: 12 блоков<span>3 мин</span></button>
@@ -620,7 +620,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     if(submitted) n=iOk; else if(n>iForm) n=iForm;
     i=n; st.forEach(function(s,k){ s.classList.toggle('on',k===i); });
     fills.forEach(function(f,k){ f.style.width=k<i?'100%':'0%'; });
-    dur=0; /* режим правок: без автолистания */ elapsed=0; t0=performance.now();
+    dur=0; /* без автолистания: только по нажатию */ elapsed=0; t0=performance.now();
     link.classList.toggle('hide', i>=iPay);
     link.classList.toggle('calm', i>0 && i<iPay-1);
     app.classList.toggle('lite', st[i].classList.contains('paper')||st[i].classList.contains('cream2'));
