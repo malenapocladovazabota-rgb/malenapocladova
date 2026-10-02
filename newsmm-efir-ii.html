@@ -203,6 +203,54 @@ b{font-weight:600}
 .cb .s{font-weight:600;font-size:15.5px;line-height:1.2}
 .cb .f{font-size:13px;color:var(--mut);margin-top:3px;line-height:1.3}
 
+/* шкалы силы */
+.mt{display:grid;gap:6px}
+.mt .cap{font:700 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--a)}
+.mt .cap.no{color:var(--coral);margin-top:7px}
+.mt .w{position:relative;height:30px;border-radius:9px;background:var(--pn);border:1px solid var(--ln);overflow:hidden;display:flex;align-items:center}
+.mt .w u{position:absolute;left:0;top:0;bottom:0;width:var(--w);transform-origin:0 50%;border-right:2px solid var(--c,var(--a));
+  background:linear-gradient(90deg,color-mix(in srgb,var(--c,var(--a)) 16%,transparent),color-mix(in srgb,var(--c,var(--a)) 50%,transparent))}
+.mt .w.no{--c:var(--coral)}.mt .w.no u{border-right:0;border-radius:0 8px 8px 0;background:color-mix(in srgb,var(--coral) 46%,transparent)}
+.mt .w span{position:relative;font-size:13.5px;line-height:1.1;padding:0 10px;white-space:nowrap}
+.st.on .mt .w u{animation:grow .9s cubic-bezier(.2,.7,.2,1) .25s both}
+@keyframes grow{from{transform:scaleX(0)}to{transform:none}}
+
+/* полоса «черновик / решение» */
+.sp2{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:9px}
+.sp2 i{font:700 10.5px var(--mono);font-style:normal;letter-spacing:.08em;text-align:center;padding:9px 4px;border-radius:10px 3px 3px 10px;background:rgba(255,255,255,.1);color:var(--soft)}
+.sp2 i.me{border-radius:3px 10px 10px 3px;background:var(--a);color:#06070B}
+
+/* дорожка ролика */
+.tlb{display:flex;gap:3px;height:40px}
+.tlb i{flex:var(--f,3);border-radius:6px;background:rgba(255,255,255,.08);border:1px solid var(--ln);font:500 10.5px var(--mono);font-style:normal;color:var(--soft);display:grid;place-items:center;white-space:nowrap;overflow:hidden}
+.tlb i.x{flex:.75;background:var(--a);border-color:var(--a);color:#06070B;font-weight:700}
+.tlc{font-size:12.5px;color:var(--mut);margin:7px 0 12px;line-height:1.35}
+
+/* текст с подсветкой */
+.pn .mk{font-size:14.5px;line-height:1.62;color:var(--soft)}
+.mk mark{background:color-mix(in srgb,var(--a) 26%,transparent);color:var(--tx);border-radius:4px;padding:1px 3px;box-shadow:inset 0 -2px 0 var(--a)}
+
+/* путь по меню */
+.bc{display:flex;flex-wrap:wrap;align-items:center;gap:5px 4px}
+.bc span{font:500 11.5px var(--mono);border:1px solid var(--ln);background:rgba(6,7,11,.55);border-radius:8px;padding:6px 8px;color:var(--tx);white-space:nowrap}
+.bc u{text-decoration:none;color:var(--a);font:700 11px var(--mono)}
+.bc span.go{background:var(--a);border-color:var(--a);color:#06070B;font-weight:700}
+.bc.one{flex-wrap:nowrap;justify-content:space-between}.bc.one span{font-size:11px}
+.bc.stp{counter-reset:b;gap:6px 5px}
+.bc.stp span{counter-increment:b;padding-left:6px}
+.bc.stp span::before{content:counter(b);display:inline-block;min-width:15px;margin-right:6px;padding:1px 0;border-radius:5px;text-align:center;font-weight:700;font-size:10px;background:color-mix(in srgb,var(--a) 28%,transparent);color:var(--a)}
+.bc.stp span.go::before{background:rgba(6,7,11,.22);color:#06070B}
+
+/* усилие */
+.ef{display:grid;grid-template-columns:auto 1fr;gap:7px 10px;align-items:center;margin-top:14px}
+.ef b{grid-column:1/-1;font:700 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.ef b + span ~ b{margin-top:5px}
+.ef span{font:500 11.5px var(--mono);color:var(--soft);white-space:nowrap}
+.ef u{display:block;height:11px;border-radius:6px;width:var(--w);background:rgba(255,255,255,.26);text-decoration:none;transform-origin:0 50%}
+.ef u.a{background:var(--a)}
+.st.on .ef u{animation:grow .9s cubic-bezier(.2,.7,.2,1) .3s both}
+.pn small{display:block;font-size:12.5px;line-height:1.3;color:var(--mut);margin-top:7px}
+
 /* окно запроса */
 .term{background:#0B0D13;border:1px solid var(--ln);border-radius:14px;overflow:hidden;box-shadow:0 20px 50px -24px color-mix(in srgb,var(--a) 60%,transparent)}
 .term .bar{display:flex;align-items:center;gap:5px;padding:8px 10px;border-bottom:1px solid var(--ln);background:rgba(255,255,255,.03)}
@@ -310,9 +358,9 @@ b{font-weight:600}
     <div class="lab anim">Часть 1 · зоны применения</div>
     <div class="h anim d1">Где ИИ <em>силён</em> и где слаб</div>
     <div class="push"></div>
-    <div class="col2 anim d2">
-      <div class="pn hi"><span class="k">Силён</span><ul class="ul"><li>Десять вариантов за минуту</li><li>Черновик из сумбурных мыслей</li><li>Структура и план</li><li>Разбор длинных текстов и таблиц</li><li>Перевод и смена тона</li></ul></div>
-      <div class="pn no"><span class="k">Слаб</span><ul class="ul"><li>Не знает вашего клиента</li><li>Уверенно выдумывает факты</li><li>Усредняет: пишет как все</li><li>Соглашается с вами</li><li>Не отвечает за результат</li></ul></div>
+    <div class="mt anim d2">
+      <span class="cap">Силён</span><div class="w"><u style="--w:100%"></u><span>Десять вариантов за минуту</span></div><div class="w"><u style="--w:92%"></u><span>Черновик из сумбурных мыслей</span></div><div class="w"><u style="--w:86%"></u><span>Структура и план</span></div><div class="w"><u style="--w:82%"></u><span>Разбор текстов и таблиц</span></div><div class="w"><u style="--w:78%"></u><span>Перевод и смена тона</span></div>
+      <span class="cap no">Слаб</span><div class="w no"><u style="--w:9%"></u><span>Знание вашего клиента</span></div><div class="w no"><u style="--w:26%"></u><span>Точность фактов</span></div><div class="w no"><u style="--w:22%"></u><span>Оригинальность</span></div><div class="w no"><u style="--w:13%"></u><span>Умение спорить с вами</span></div><div class="w no"><u style="--w:3%"></u><span>Ответственность за результат</span></div>
     </div>
     <div class="note anim d3">Из этого следует всё остальное: ИИ делает черновик, решение принимаете вы.</div>
     <div class="push"></div>
@@ -322,6 +370,7 @@ b{font-weight:600}
     <div class="lab anim">Часть 1 · зоны применения</div>
     <div class="h anim d1">Кто <em>что делает</em></div>
     <div class="push"></div>
+    <div class="sp2 anim d2"><i>ЧЕРНОВИК · ИИ</i><i class="me">РЕШЕНИЕ · ВЫ</i></div>
     <div class="lg2 anim d2">
       <div class="ai">Варианты идей и хуков<i>ИИ</i></div>
       <div class="ai">Черновики сценариев и текстов<i>ИИ</i></div>
@@ -465,7 +514,9 @@ b{font-weight:600}
     <div class="hd anim"><span class="num">01</span><span class="lab">Признак · не тот объём</span></div>
     <div class="push"></div>
     <div class="stat anim d1">50<u>=</u>500</div>
-    <div class="sub anim d2" style="font-size:16px;color:var(--tx)">Написать 50 слов и 500 нейросети одинаково легко: ей не нужно печатать. Поэтому без рамок она пишет размашисто.</div>
+    <div class="sub anim d2" style="font-size:16px;color:var(--tx)">Нейросети не нужно печатать. Поэтому без рамок она пишет размашисто.</div>
+    <div class="ef anim d2"><b>Усилие человека</b><span>50 слов</span><u style="--w:10%"></u><span>500 слов</span><u style="--w:100%"></u>
+      <b>Усилие нейросети</b><span>50 слов</span><u class="a" style="--w:10%"></u><span>500 слов</span><u class="a" style="--w:10%"></u></div>
     <div class="gap"></div>
     <div class="pn anim d3"><span class="k">А если попросить «короче»</span><p>Она срежет текст вместе со смыслом и станет скупой. Размашисто или скупо у неё получается само. Ёмко получается редко.</p></div>
     <div class="push"></div>
@@ -491,13 +542,12 @@ b{font-weight:600}
     <div class="hd anim"><span class="num">02</span><span class="lab">Признак</span></div>
     <div class="h anim d1">Узнаваемые <em>обороты</em></div>
     <div class="push"></div>
-    <div class="tags anim d2">
-      <span class="tag">длинное тире в каждой фразе</span><span class="tag">«не просто…, а…»</span><span class="tag">три прилагательных подряд</span>
-      <span class="tag">«в современном мире»</span><span class="tag">«давайте разберёмся»</span><span class="tag">вывод в конце каждого ответа</span><span class="tag">списки с эмодзи</span>
+    <div class="pn anim d2"><span class="k">Текст нейросети с подсветкой</span>
+      <p class="mk"><mark>В современном мире</mark> уход за руками <mark>&mdash;</mark> это <mark>не просто</mark> процедура, <mark>а</mark> способ заявить о себе. <mark>Красивые, ухоженные, здоровые</mark> ногти говорят о вас многое. <mark>Давайте разберёмся</mark>, как выбрать мастера. <mark>Подведём итог:</mark> забота о себе начинается с малого.</p></div>
+    <div class="tags anim d3" style="margin-top:10px">
+      <span class="tag">длинное тире</span><span class="tag">«не просто, а»</span><span class="tag">три прилагательных</span><span class="tag">вводная ни о чём</span><span class="tag">вывод в конце</span><span class="tag">списки с эмодзи</span>
     </div>
-    <div class="pn hi anim d3" style="margin-top:12px"><span class="k">Что делать</span><ul class="ul">
-      <li>Один раз записать запреты в инструкции проекта</li>
-      <li>Пополнять список, когда замечаете новый оборот</li></ul></div>
+    <div class="note anim d3">Запишите запреты в инструкции проекта один раз и пополняйте список. Пример учебный.</div>
     <div class="push"></div>
   </section>
 
@@ -594,6 +644,7 @@ b{font-weight:600}
     <div class="h anim d1">Сначала план, <em>потом работа</em></div>
     <div class="sub anim d1">Поправить план быстро. Переделывать готовую работу долго.</div>
     <div class="push"></div>
+    <div class="bc one anim d2" style="margin-bottom:12px"><span>план</span><u>→</u><span>правки</span><u>→</u><span>«подтверждаю»</span><u>→</u><span class="go">работа</span></div>
     <div class="term anim d2"><div class="bar"><u></u><u></u><u></u><span>план.txt</span><button type="button" class="cp" data-copy="Сначала покажи план по шагам: что сделаешь, в каком порядке и что тебе нужно от меня. Ничего не делай, пока я не подтвержу план.">Скопировать</button></div><p>Сначала покажи план по шагам: что сделаешь, в каком порядке и что тебе нужно от меня. Ничего не делай, пока я не подтвержу план.</p></div>
     <div class="chk anim d3"><b>Где это есть</b>В части инструментов планирование включается отдельным режимом. В обычном чате хватает этой фразы.</div>
     <div class="push"></div>
@@ -631,8 +682,8 @@ b{font-weight:600}
     <div class="h anim d1">Как <em>подключить</em></div>
     <div class="push"></div>
     <div class="stack anim d2">
-      <div class="pn"><span class="k">Claude</span><p style="font-size:14px">Customize → Connectors → Discover → выбрать сервис → Connect → войти в свой аккаунт сервиса.<br>В чате: «+» → Connectors → включить.</p></div>
-      <div class="pn"><span class="k">ChatGPT</span><p style="font-size:14px">Settings → Apps → выбрать приложение → Connect → войти в свой аккаунт.<br>В чате: «+» или @название приложения.</p></div>
+      <div class="pn"><span class="k">Claude</span><div class="bc stp"><span>Customize</span><span>Connectors</span><span>Discover</span><span>сервис</span><span class="go">Connect</span></div><small>В чате: «+» → Connectors → включить</small></div>
+      <div class="pn"><span class="k">ChatGPT</span><div class="bc stp"><span>Settings</span><span>Apps</span><span>приложение</span><span class="go">Connect</span></div><small>В чате: «+» или @название приложения</small></div>
       <div class="pn hi"><span class="k">Осторожно с доступом</span><ul class="ul">
         <li>Подключайте только то, что нужно для задачи</li>
         <li>Читайте, какой доступ просит сервис</li>
@@ -711,6 +762,8 @@ b{font-weight:600}
     <div class="lab anim">Часть 7 · картинки и видео</div>
     <div class="h anim d1">Где нейросеть <em>украшает</em> ролик и где портит</div>
     <div class="push"></div>
+    <div class="anim d2"><div class="tlb"><i>клиент в кадре</i><i class="x">ИИ</i><i style="--f:2">клиент</i><i class="x">ИИ</i><i style="--f:2.4">клиент</i></div>
+      <div class="tlc">Дорожка ролика: вставка нейросети длится одну-две секунды</div></div>
     <div class="col2 anim d2">
       <div class="pn hi"><span class="k">Помогает</span><ul class="ul"><li>Обложки и фоны</li><li>Вставки на одну-две секунды</li><li>Иллюстрация к мысли, которую нечем снять</li><li>Раскадровка до съёмки</li></ul></div>
       <div class="pn no"><span class="k">Портит</span><ul class="ul"><li>Замена живого клиента и его продукта</li><li>Лица и руки крупным планом</li><li>Текст внутри картинки</li><li>Одинаковые глянцевые сцены</li></ul></div>
