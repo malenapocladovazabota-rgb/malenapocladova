@@ -10,11 +10,12 @@
 @font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/vsl/inter-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/vsl/inter-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vsl/inter-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vsl/inter-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/vsl/inter-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/vsl/inter-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vsl/jetbrains-mono-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vsl/jetbrains-mono-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/vsl/jetbrains-mono-cyrillic-700-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/vsl/jetbrains-mono-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
 /* Эфир для учениц и выпускниц New SMM: «ИИ в работе SMM-специалиста». Ведёт Лев.
    Формат сторис, листается только по нажатию: справа вперёд, слева назад,
-   на компьютере стрелки и пробел. Свой технологичный стиль: без фото и без
-   цветов сайта школы. Продажи здесь нет. У запросов кнопка «Скопировать». */
+   на компьютере стрелки и пробел. Экран нарисован на холсте 360-420 x 700+ и
+   масштабируется под окно скриптом fit(): в любом окне текст крупный.
+   Свой технологичный стиль, без фото и цветов сайта школы. Продажи здесь нет. */
 
-:root{--bg:#06070B;--pn:rgba(255,255,255,.045);--ln:rgba(255,255,255,.11);--tx:#E9EDF5;--mut:#8B93A7;
-  --lime:#B8FF3C;--cyan:#4FD8FF;--coral:#FF7A59;--vio:#A78BFA;--amber:#FFC53D;--a:var(--lime);
+:root{--bg:#06070B;--pn:rgba(255,255,255,.05);--ln:rgba(255,255,255,.12);--tx:#EDF0F7;--mut:#8E96AA;--soft:#C6CCDA;
+  --lime:#B8FF3C;--cyan:#4FD8FF;--coral:#FF7A59;--vio:#A78BFA;--amber:#FFC53D;--pink:#FF6FB5;--a:var(--lime);
   --sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;background:#020305;overflow:hidden;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
@@ -26,163 +27,242 @@ body::before{content:'';position:fixed;inset:0;background:
 em{font-style:normal;color:var(--a)}
 b{font-weight:600}
 
-#app{position:fixed;inset:0;margin:0 auto;max-width:560px;overflow:hidden;background:var(--bg);user-select:none;-webkit-user-select:none}
-@media (min-width:700px){
-  #app{top:3vh;bottom:3vh;width:calc(94vh * 9 / 16);max-width:none;border-radius:22px;border:1px solid rgba(255,255,255,.14);
-    box-shadow:0 0 0 1px rgba(0,0,0,.6),0 40px 140px -30px rgba(79,216,255,.25),0 0 120px -40px rgba(184,255,60,.25)}
-}
+/* холст: размеры и масштаб ставит скрипт */
+#app{position:absolute;left:0;top:0;width:360px;height:700px;transform-origin:0 0;overflow:hidden;background:var(--bg);user-select:none;-webkit-user-select:none}
+#app.framed{box-shadow:0 0 0 1px rgba(255,255,255,.14),0 0 140px -30px rgba(79,216,255,.35),0 0 120px -40px rgba(184,255,60,.3)}
 
 /* шапка */
-#top{position:absolute;left:0;right:0;top:0;z-index:30;padding:calc(env(safe-area-inset-top) + 9px) 12px 22px;pointer-events:none;
-  background:linear-gradient(180deg,rgba(6,7,11,.92) 35%,rgba(6,7,11,0))}
-#bars{display:flex;gap:3px}
+#top{position:absolute;left:0;right:0;top:0;z-index:30;padding:calc(env(safe-area-inset-top) + 9px) 12px 18px;pointer-events:none;
+  background:linear-gradient(180deg,rgba(6,7,11,.94) 40%,rgba(6,7,11,0))}
+#bars{display:flex;gap:2px}
 #bars i{flex:1;height:2.5px;border-radius:2px;background:rgba(255,255,255,.16);overflow:hidden;position:relative}
-#bars i b{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--a);border-radius:2px;transition:background .3s}
-#who{display:flex;align-items:center;gap:9px;margin-top:11px}
-#who .lg{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:15px;color:#06070B;background:linear-gradient(135deg,var(--lime),var(--cyan))}
-#who .nm{font-weight:600;font-size:14px;white-space:nowrap}
-#who .ago{font-family:var(--mono);font-size:11.5px;color:var(--mut);white-space:nowrap}
-@media (max-width:400px){#who .ago{display:none}}
-#menuBtn{margin-left:auto;pointer-events:auto;border:1px solid var(--ln);background:rgba(255,255,255,.06);color:var(--tx);border-radius:10px;
-  font:500 12px var(--mono);padding:8px 11px;cursor:pointer}
+#bars i b{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--a);border-radius:2px}
+#who{display:flex;align-items:center;gap:8px;margin-top:9px}
+#who .lg{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:13px;color:#06070B;background:linear-gradient(135deg,var(--lime),var(--cyan))}
+#who .nm{font-weight:600;font-size:13px;white-space:nowrap}
+#who .ago{font-family:var(--mono);font-size:10.5px;color:var(--mut);white-space:nowrap}
+#menuBtn{margin-left:auto;pointer-events:auto;border:1px solid var(--ln);background:rgba(255,255,255,.06);color:var(--tx);border-radius:9px;
+  font:500 11px var(--mono);padding:7px 10px;cursor:pointer}
 
 /* экран */
 .st{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden;
-  padding:calc(env(safe-area-inset-top) + 78px) 20px calc(env(safe-area-inset-bottom) + 26px)}
+  padding:calc(env(safe-area-inset-top) + 66px) 18px calc(env(safe-area-inset-bottom) + 18px)}
 .st.on{display:flex}
 .st::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background:
-  radial-gradient(60% 34% at 85% 0%,color-mix(in srgb,var(--a) 22%,transparent) 0%,transparent 100%),
-  radial-gradient(50% 30% at 0% 100%,color-mix(in srgb,var(--a) 10%,transparent) 0%,transparent 100%)}
+  radial-gradient(70% 36% at 88% 0%,color-mix(in srgb,var(--a) 24%,transparent) 0%,transparent 100%),
+  radial-gradient(60% 30% at 0% 100%,color-mix(in srgb,var(--a) 12%,transparent) 0%,transparent 100%)}
 .st::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;background:
-  linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px) 0 0/32px 32px,
-  linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px) 0 0/32px 32px;
+  linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px) 0 0/30px 30px,
+  linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px) 0 0/30px 30px;
   -webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 55%);mask-image:linear-gradient(180deg,#000 0%,transparent 55%)}
 .st > *{position:relative;z-index:1}
-.a1{--a:var(--lime)}.a2{--a:var(--cyan)}.a3{--a:var(--coral)}.a4{--a:var(--vio)}.a5{--a:var(--amber)}
+.a1{--a:var(--lime)}.a2{--a:var(--cyan)}.a3{--a:var(--coral)}.a4{--a:var(--vio)}.a5{--a:var(--amber)}.a6{--a:var(--pink)}
 .st.on .anim{animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
 .st.on .anim.d1{animation-delay:.08s}.st.on .anim.d2{animation-delay:.2s}.st.on .anim.d3{animation-delay:.32s}.st.on .anim.d4{animation-delay:.44s}
 @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.st.on .anim{animation:none}.orb i{animation:none!important}}
-.push{flex:1}
+.push{flex:1}.gap{height:16px;flex:0 0 auto}
 
-.lab{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--a)}
+.lab{font-family:var(--mono);font-weight:700;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--a)}
 .lab::before{content:'// ';opacity:.6}
-.big{font-weight:600;font-size:40px;line-height:1.04;letter-spacing:-.03em}
-.h{font-weight:600;font-size:29px;line-height:1.12;letter-spacing:-.022em;margin-top:10px}
-.sub{font-size:16px;line-height:1.4;color:#C3CAD8;margin-top:10px}
-.mini{font-size:13.5px;line-height:1.4;color:var(--mut)}
+.h{font-weight:600;font-size:26px;line-height:1.12;letter-spacing:-.022em;margin-top:8px}
+.sub{font-size:14.5px;line-height:1.4;color:var(--soft);margin-top:8px}
+.mini{font-size:12.5px;line-height:1.4;color:var(--mut)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{border:1px solid var(--ln);border-radius:8px;padding:6px 10px;font:500 12px var(--mono);color:#C3CAD8;background:rgba(255,255,255,.04)}
+.chip{border:1px solid var(--ln);border-radius:8px;padding:6px 9px;font:500 11px var(--mono);color:var(--soft);background:rgba(6,7,11,.55)}
 
-.pn{background:var(--pn);border:1px solid var(--ln);border-radius:16px;padding:13px 15px;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.pn .k{display:block;font-family:var(--mono);font-weight:700;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:7px}
+.pn{background:var(--pn);border:1px solid var(--ln);border-radius:14px;padding:12px 13px}
+.pn .k{display:block;font-family:var(--mono);font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:7px}
 .pn.hi{border-color:color-mix(in srgb,var(--a) 55%,transparent);background:color-mix(in srgb,var(--a) 9%,transparent)}
 .pn.hi .k{color:var(--a)}
-.stack{display:flex;flex-direction:column;gap:9px}
-.col2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.pn p{font-size:15px;line-height:1.4}
+.stack{display:flex;flex-direction:column;gap:8px}
+.col2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .ul{list-style:none;display:grid;gap:7px}
-.ul li{position:relative;padding-left:15px;font-size:15px;line-height:1.3}
+.ul li{position:relative;padding-left:14px;font-size:14.5px;line-height:1.3}
 .ul li::before{content:'';position:absolute;left:0;top:7px;width:6px;height:6px;border-radius:1.5px;background:var(--a)}
-.col2 .ul li{font-size:14px}
+.col2 .ul li{font-size:13.5px}
 .pn.no .ul li::before{background:var(--coral)}.pn.no .k{color:var(--coral)}
-.note{margin-top:10px;border-left:2px solid var(--a);padding:4px 0 4px 12px;font-size:15px;line-height:1.38;color:#D6DCE8}
+.note{margin-top:10px;border-left:2px solid var(--a);padding:3px 0 3px 11px;font-size:14px;line-height:1.38;color:#DCE1EC}
 
-/* оглавление */
-.toc{list-style:none;display:grid;gap:7px}
-.toc li{display:flex;gap:11px;align-items:baseline;font-size:16px;line-height:1.25;padding:11px 13px;border-radius:12px;background:var(--pn);border:1px solid var(--ln);cursor:pointer}
-.toc li b{font:700 12px var(--mono);color:var(--a);flex:0 0 22px}
-.toc li span{color:var(--mut);font-size:13.5px}
+/* оглавление и плитки */
+.toc{list-style:none;display:grid;gap:6px}
+.toc li{display:flex;gap:10px;align-items:baseline;font-size:15px;line-height:1.25;padding:10px 12px;border-radius:11px;background:var(--pn);border:1px solid var(--ln);cursor:pointer}
+.toc li b{font:700 11px var(--mono);color:var(--a);flex:0 0 20px}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tl{background:var(--pn);border:1px solid var(--ln);border-radius:14px;padding:11px 12px;cursor:pointer}
+.tl b{display:block;font:700 11px var(--mono);color:var(--a)}
+.tl strong{display:block;font-weight:600;font-size:16px;margin-top:6px;line-height:1.15}
+.tl span{display:block;font-size:12.5px;color:var(--mut);margin-top:3px;line-height:1.25}
+.tiles.big .tl{padding:16px 13px}.tiles.big .tl b{font-size:22px}.tiles.big .tl strong{font-size:16.5px;margin-top:10px}
+
+/* кто что делает */
+.lg2{display:grid;gap:6px}
+.lg2 > div{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14.5px;line-height:1.25;padding:9px 12px;border-radius:11px;background:var(--pn);border:1px solid var(--ln)}
+.lg2 i{font:700 10.5px var(--mono);font-style:normal;letter-spacing:.08em;border-radius:7px;padding:4px 8px;white-space:nowrap}
+.lg2 .ai i{background:rgba(255,255,255,.1);color:var(--soft)}
+.lg2 .me{border-color:color-mix(in srgb,var(--a) 50%,transparent)}.lg2 .me i{background:var(--a);color:#06070B}
 
 /* шаги */
 .nl{list-style:none;display:grid;gap:10px;counter-reset:n}
-.nl li{counter-increment:n;display:grid;grid-template-columns:34px 1fr;gap:8px;align-items:baseline;font-size:16.5px;line-height:1.32}
-.nl li::before{content:counter(n,decimal-leading-zero);font:700 13px var(--mono);color:var(--a)}
-.nl li small{display:block;font-size:13.5px;color:var(--mut);margin-top:2px}
+.nl li{counter-increment:n;display:grid;grid-template-columns:30px 1fr;gap:6px;align-items:baseline;font-size:15.5px;line-height:1.3}
+.nl li::before{content:counter(n,decimal-leading-zero);font:700 12px var(--mono);color:var(--a)}
+.nl li small{display:block;font-size:12.5px;color:var(--mut);margin-top:2px}
 
-/* формула и строки «признак → действие» */
-.fr{display:grid;gap:8px}
-.fr > div{display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:baseline;background:var(--pn);border:1px solid var(--ln);border-radius:12px;padding:10px 12px}
-.fr b{font:700 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--a)}
-.fr span{font-size:15px;line-height:1.3}
-.rw{display:grid;gap:8px}
-.rw > div{background:var(--pn);border:1px solid var(--ln);border-radius:14px;padding:11px 13px}
-.rw .s{font-weight:600;font-size:15.5px;line-height:1.25}
-.rw .f{font-size:14px;line-height:1.35;color:#C3CAD8;margin-top:5px;padding-left:18px;position:relative}
+/* цепочка шагов */
+.pipe{display:grid;gap:0}
+.pipe > div{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:center;background:var(--pn);border:1px solid var(--ln);border-radius:12px;padding:10px 12px;font-size:14.5px;line-height:1.28}
+.pipe > div i{font:700 10.5px var(--mono);font-style:normal;text-align:center;border-radius:7px;padding:5px 0;background:rgba(255,255,255,.1);color:var(--soft)}
+.pipe > div.me i{background:var(--a);color:#06070B}
+.pipe > u{display:block;height:14px;width:1.5px;margin-left:33px;background:linear-gradient(var(--a),transparent);text-decoration:none}
+
+/* строки «признак → действие» */
+.rw{display:grid;gap:7px}
+.rw > div{background:var(--pn);border:1px solid var(--ln);border-radius:13px;padding:10px 12px}
+.rw .s{font-weight:600;font-size:15px;line-height:1.25}
+.rw .f{font-size:13.5px;line-height:1.35;color:var(--soft);margin-top:4px;padding-left:17px;position:relative}
 .rw .f::before{content:'→';position:absolute;left:0;color:var(--a);font-family:var(--mono)}
 
+/* было → стало */
+.sw{display:grid;gap:7px}
+.sw > div{display:grid;grid-template-columns:1fr 14px 1fr;gap:6px;align-items:center}
+.sw span{font-size:13.5px;line-height:1.3;border-radius:11px;padding:9px 10px;border:1px solid var(--ln);background:var(--pn)}
+.sw span:first-child{color:var(--mut);text-decoration:line-through;text-decoration-color:rgba(255,255,255,.3)}
+.sw span:last-child{border-color:color-mix(in srgb,var(--a) 55%,transparent);background:color-mix(in srgb,var(--a) 9%,transparent)}
+.sw u{text-decoration:none;color:var(--a);font-family:var(--mono);font-size:13px}
+.sw .hdr span{border:0;background:none;padding:0 2px;font:700 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--mut)}
+.sw .hdr span:last-child{color:var(--a);background:none}
+
 /* переписка */
-.bub{max-width:88%;border-radius:16px;padding:10px 13px;font-size:15px;line-height:1.35}
+.bub{max-width:90%;border-radius:15px;padding:9px 12px;font-size:14.5px;line-height:1.35}
 .bub.me{align-self:flex-end;background:var(--a);color:#06070B;border-bottom-right-radius:5px;font-weight:500}
-.bub.ai{align-self:flex-start;background:var(--pn);border:1px solid var(--ln);border-bottom-left-radius:5px;color:#C3CAD8}
-.bub.ai b{display:block;font:700 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:4px}
-.tags{display:flex;flex-wrap:wrap;gap:7px}
-.tag{border:1px solid color-mix(in srgb,var(--a) 50%,transparent);background:color-mix(in srgb,var(--a) 8%,transparent);border-radius:9px;padding:7px 10px;font-size:14px;line-height:1.2}
+.bub.ai{align-self:flex-start;background:var(--pn);border:1px solid var(--ln);border-bottom-left-radius:5px;color:var(--soft)}
+.bub.ai b{display:block;font:700 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:4px}
+.say{display:grid;gap:9px}
+.say > div{display:flex;flex-direction:column;align-items:flex-end}
+.say .bub{max-width:100%}
+.say small{font-size:12px;color:var(--mut);margin-top:3px;padding-right:4px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{border:1px solid color-mix(in srgb,var(--a) 50%,transparent);background:color-mix(in srgb,var(--a) 8%,transparent);border-radius:9px;padding:7px 9px;font-size:13.5px;line-height:1.2}
+.tag.ok{border-color:var(--ln);background:var(--pn);color:var(--soft)}.tag.ok::before{content:'✓ ';color:var(--a)}
+
+/* крупная цифра */
+.stat{font-weight:600;font-size:68px;line-height:1;letter-spacing:-.04em;display:flex;align-items:baseline;gap:10px}
+.stat u{text-decoration:none;font-size:40px;color:var(--a)}
+.stat + .sub{margin-top:10px}
+
+/* три текста: слова и смысл */
+.dn{display:grid;gap:8px}
+.dn > div{background:var(--pn);border:1px solid var(--ln);border-radius:13px;padding:10px 12px}
+.dn .k{font:700 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.dn .q{font-size:13.5px;line-height:1.35;margin-top:5px;color:var(--soft)}
+.dn .br{display:grid;grid-template-columns:52px 1fr;gap:8px;align-items:center;margin-top:6px;font:500 10px var(--mono);color:var(--mut)}
+.dn .br u{display:block;height:6px;border-radius:3px;background:rgba(255,255,255,.2);text-decoration:none}
+.dn .br u.m{background:var(--a)}
+.dn .best{border-color:color-mix(in srgb,var(--a) 60%,transparent);background:color-mix(in srgb,var(--a) 9%,transparent)}
+.dn .best .k{color:var(--a)}.dn .best .q{color:var(--tx)}
+
+/* круг повторов */
+.loop{display:flex;align-items:center;justify-content:space-between;gap:4px}
+.loop span{flex:1;text-align:center;font-size:12.5px;line-height:1.2;border:1px solid var(--ln);background:var(--pn);border-radius:10px;padding:9px 4px}
+.loop span:first-child{background:var(--a);color:#06070B;border-color:var(--a);font-weight:600}
+.loop u{text-decoration:none;color:var(--a);font-family:var(--mono);font-size:12px}
+.back{font:500 11px var(--mono);color:var(--a);text-align:center;margin-top:6px}
+
+/* большой кусок и маленькие блоки */
+.bl{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bl .c{display:flex;flex-direction:column;gap:5px}
+.bl .cap{font:700 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:2px}
+.bl .one{flex:1;min-height:128px;border-radius:12px;border:1px solid var(--ln);background:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.1) 0 2px,transparent 2px 11px);position:relative}
+.bl .one b{position:absolute;font:700 13px var(--mono);color:var(--coral)}
+.bl .sm{flex:1;border-radius:9px;border:1px solid color-mix(in srgb,var(--a) 55%,transparent);background:color-mix(in srgb,var(--a) 9%,transparent);
+  display:flex;align-items:center;justify-content:space-between;padding:0 10px;font:500 11px var(--mono);color:var(--soft);min-height:28px}
+.bl .sm b{color:var(--a)}
+
+/* ступени */
+.sts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;align-items:end}
+.sts > div{border-radius:12px 12px 0 0;border:1px solid var(--ln);border-bottom:0;background:linear-gradient(180deg,color-mix(in srgb,var(--a) 22%,transparent),transparent);padding:10px 9px}
+.sts > div:nth-child(1){height:74px}.sts > div:nth-child(2){height:112px}.sts > div:nth-child(3){height:150px;border-color:var(--a)}
+.sts b{display:block;font:700 10px var(--mono);letter-spacing:.1em;color:var(--a)}
+.sts strong{display:block;font-weight:600;font-size:14.5px;margin-top:5px;line-height:1.15}
+.stq{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;border-top:1px solid var(--a)}
+.stq span{font-size:12px;line-height:1.3;color:var(--soft);padding:8px 2px 0}
+
+/* журнал ошибок */
+.lgx{background:#0B0D13;border:1px solid var(--ln);border-radius:14px;overflow:hidden}
+.lgx > div{padding:9px 12px;border-bottom:1px solid rgba(255,255,255,.07)}
+.lgx > div:last-child{border-bottom:0}
+.lgx .e{font:500 12.5px var(--mono);color:var(--tx);line-height:1.3}
+.lgx .e::before{content:'! ';color:var(--a);font-weight:700}
+.lgx .r{font-size:13.5px;line-height:1.35;color:var(--soft);margin-top:3px}
+
+/* чек-лист */
+.cb{display:grid;gap:8px}
+.cb > div{display:grid;grid-template-columns:26px 1fr;gap:10px;align-items:start;background:var(--pn);border:1px solid var(--ln);border-radius:13px;padding:11px 12px}
+.cb i{width:22px;height:22px;border-radius:6px;border:1.5px solid var(--a);display:grid;place-items:center;font-style:normal;font-size:13px;color:var(--a);margin-top:1px}
+.cb .s{font-weight:600;font-size:15.5px;line-height:1.2}
+.cb .f{font-size:13px;color:var(--mut);margin-top:3px;line-height:1.3}
 
 /* окно запроса */
-.term{background:#0B0D13;border:1px solid var(--ln);border-radius:16px;overflow:hidden;box-shadow:0 20px 50px -24px color-mix(in srgb,var(--a) 60%,transparent)}
-.term .bar{display:flex;align-items:center;gap:6px;padding:9px 11px;border-bottom:1px solid var(--ln);background:rgba(255,255,255,.03)}
-.term .bar u{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18)}
-.term .bar span{font:500 11.5px var(--mono);color:var(--mut);margin-left:5px}
-.cp{margin-left:auto;border:0;background:var(--a);color:#06070B;border-radius:8px;font:700 11.5px var(--mono);padding:6px 10px;cursor:pointer}
+.term{background:#0B0D13;border:1px solid var(--ln);border-radius:14px;overflow:hidden;box-shadow:0 20px 50px -24px color-mix(in srgb,var(--a) 60%,transparent)}
+.term .bar{display:flex;align-items:center;gap:5px;padding:8px 10px;border-bottom:1px solid var(--ln);background:rgba(255,255,255,.03)}
+.term .bar u{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.18)}
+.term .bar span{font:500 11px var(--mono);color:var(--mut);margin-left:5px}
+.cp{margin-left:auto;border:0;background:var(--a);color:#06070B;border-radius:7px;font:700 10.5px var(--mono);padding:6px 9px;cursor:pointer}
 .cp.ok{background:#fff}
-.term p{padding:12px 14px 14px;font-size:15px;line-height:1.45;color:#E2E7F0}
+.term p{padding:11px 13px 13px;font-size:14px;line-height:1.42;color:#E4E8F1;white-space:pre-line}
 .term p i{font-style:normal;color:var(--a)}
-.chk{margin-top:10px;border:1px dashed color-mix(in srgb,var(--a) 55%,transparent);border-radius:12px;padding:10px 13px;font-size:14px;line-height:1.38;color:#C3CAD8}
-.chk b{display:block;font:700 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--a);margin-bottom:5px}
-.num{font:700 13px var(--mono);color:var(--a);border:1px solid color-mix(in srgb,var(--a) 50%,transparent);border-radius:8px;padding:4px 8px}
-.hd{display:flex;align-items:center;gap:10px}
+.term p b{font:700 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--a);margin-right:6px}
+.chk{margin-top:9px;border:1px dashed color-mix(in srgb,var(--a) 55%,transparent);border-radius:12px;padding:9px 12px;font-size:13px;line-height:1.38;color:var(--soft)}
+.chk b{display:block;font:700 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--a);margin-bottom:4px}
+.num{font:700 12px var(--mono);color:var(--a);border:1px solid color-mix(in srgb,var(--a) 50%,transparent);border-radius:7px;padding:3px 7px}
+.hd{display:flex;align-items:center;gap:9px}
 
 /* обложка */
-.orb{position:absolute!important;left:50%;top:15%;width:260px;height:260px;margin-left:-130px;z-index:0!important;pointer-events:none}
-.orb i{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,255,255,.12)}
-.orb i:nth-child(1){background:radial-gradient(circle at 35% 30%,rgba(184,255,60,.55),rgba(79,216,255,.25) 45%,transparent 70%);filter:blur(18px);border:0;animation:pulse 6s ease-in-out infinite}
-.orb i:nth-child(2){inset:18px;border-color:rgba(184,255,60,.35);border-style:dashed;animation:spin 40s linear infinite}
-.orb i:nth-child(3){inset:52px;border-color:rgba(79,216,255,.4);animation:spin 26s linear infinite reverse;border-top-color:transparent}
-.orb i:nth-child(4){inset:96px;background:linear-gradient(135deg,var(--lime),var(--cyan));border:0;box-shadow:0 0 60px rgba(184,255,60,.5)}
+#fx{position:absolute!important;inset:0;width:100%;height:100%;z-index:0!important}
+.cover::after{display:none}
+.cover::before{background:radial-gradient(60% 34% at 50% 30%,rgba(79,216,255,.22),transparent 100%),radial-gradient(90% 40% at 50% 100%,rgba(6,7,11,.96) 30%,transparent 100%)}
+.aiw{font-weight:600;font-size:176px;line-height:.86;letter-spacing:-.06em;text-align:center;margin-top:34px;
+  background:linear-gradient(100deg,var(--lime) 0%,var(--cyan) 35%,var(--vio) 65%,var(--lime) 100%);background-size:300% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 7s linear infinite;
+  filter:drop-shadow(0 0 34px rgba(79,216,255,.45)) drop-shadow(0 0 70px rgba(184,255,60,.25))}
+@keyframes flow{to{background-position:300% 0}}
+.halo{position:absolute!important;left:50%;top:64px;width:290px;height:290px;margin-left:-145px;border-radius:50%;z-index:0!important;pointer-events:none;
+  background:conic-gradient(from 0deg,var(--lime),var(--cyan),var(--vio),var(--lime));filter:blur(48px);opacity:.42;animation:spin 14s linear infinite}
+.ring{position:absolute!important;left:50%;top:44px;width:330px;height:330px;margin-left:-165px;border-radius:50%;z-index:0!important;pointer-events:none;
+  border:1px solid rgba(255,255,255,.14);border-top-color:var(--lime);border-right-color:transparent;animation:spin 18s linear infinite}
+.ring.r2{top:74px;width:270px;height:270px;margin-left:-135px;border:1px dashed rgba(79,216,255,.45);border-bottom-color:transparent;animation:spin 26s linear infinite reverse}
 @keyframes spin{to{transform:rotate(360deg)}}
-@keyframes pulse{50%{transform:scale(1.08);opacity:.8}}
+.ai2{text-align:center;font:700 10.5px var(--mono);letter-spacing:.34em;text-transform:uppercase;color:var(--soft);margin-top:14px}
+.ttl{font-weight:600;font-size:30px;line-height:1.08;letter-spacing:-.025em;margin-top:10px}
+.ask{display:flex;align-items:center;gap:9px;margin-top:16px;background:rgba(11,13,19,.82);border:1px solid rgba(184,255,60,.45);border-radius:14px;padding:12px 13px;
+  box-shadow:0 0 40px -12px rgba(184,255,60,.55);min-height:62px}
+.ask b{font:700 14px var(--mono);color:var(--lime)}
+.ask span{font-size:14.5px;line-height:1.3;color:var(--tx)}
+.ask span::after{content:'';display:inline-block;width:7px;height:16px;margin-left:2px;vertical-align:-3px;background:var(--lime);animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.st.on .anim,.aiw,.halo,.ring,.ask span::after{animation:none}}
 
 /* схема коннекторов */
 .net{width:100%;height:auto;display:block}
-.net text{font:500 12px var(--sans);fill:#E9EDF5}
+.net text{font:500 12px var(--sans);fill:#EDF0F7}
 .net .c text{font:700 14px var(--mono);fill:#06070B}
 
 /* подсказка и меню */
-#hint{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top) + 64px);bottom:0;z-index:40;display:flex;background:rgba(3,4,7,.72);opacity:0;pointer-events:none;transition:opacity .35s}
+#hint{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top) + 56px);bottom:0;z-index:40;display:flex;background:rgba(3,4,7,.74);opacity:0;pointer-events:none;transition:opacity .35s}
 #hint.on{opacity:1;pointer-events:auto}
-#hint span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font:500 13px var(--sans);color:#fff;text-align:center;line-height:1.3}
+#hint span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font:500 12.5px var(--sans);color:#fff;text-align:center;line-height:1.3}
 #hint span:nth-child(1){flex:0 0 30%;border-right:1px dashed rgba(255,255,255,.35)}
 #hint span:nth-child(2){flex:1}
-#hint i{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.5);display:grid;place-items:center;font-style:normal;font-size:19px}
-#hint b{position:absolute;left:0;right:0;top:14px;text-align:center;font:500 11.5px var(--mono);color:var(--lime)}
+#hint i{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.5);display:grid;place-items:center;font-style:normal;font-size:18px}
+#hint b{position:absolute;left:0;right:0;top:12px;text-align:center;font:500 11px var(--mono);color:var(--lime)}
 #menu{position:absolute;inset:0;z-index:50;background:rgba(3,4,7,.7);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:none;align-items:flex-end}
 #menu.on{display:flex}
-#menu .sh{width:100%;background:#0E1118;border-top:1px solid var(--ln);border-radius:22px 22px 0 0;padding:18px 16px calc(env(safe-area-inset-bottom) + 18px);max-height:86%;overflow-y:auto}
-#menu h3{font-weight:600;font-size:20px;letter-spacing:-.01em;margin-bottom:8px}
-#menu .mi{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;border:1px solid var(--ln);background:var(--pn);border-radius:12px;padding:13px 14px;font:500 15.5px var(--sans);color:var(--tx);margin-top:8px;cursor:pointer;text-align:left}
-#menu .mi span{font:500 11.5px var(--mono);color:var(--mut);white-space:nowrap}
+#menu .sh{width:100%;background:#0E1118;border-top:1px solid var(--ln);border-radius:20px 20px 0 0;padding:16px 14px calc(env(safe-area-inset-bottom) + 16px);max-height:88%;overflow-y:auto}
+#menu h3{font-weight:600;font-size:19px;letter-spacing:-.01em;margin-bottom:6px}
+#menu .mi{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;border:1px solid var(--ln);background:var(--pn);border-radius:11px;padding:11px 13px;font:500 14.5px var(--sans);color:var(--tx);margin-top:7px;cursor:pointer;text-align:left}
+#menu .mi span{font:500 11px var(--mono);color:var(--mut);white-space:nowrap}
 #menu .x{float:right;border:0;background:none;font-size:26px;line-height:1;color:var(--tx);cursor:pointer}
-
-@media (max-height:700px){
-  .st{padding-top:calc(env(safe-area-inset-top) + 72px)}
-  .big{font-size:34px}.h{font-size:25px}.sub{font-size:15px}
-  .ul li{font-size:14px}.col2 .ul li{font-size:13px}.pn{padding:11px 13px}
-  .toc li{font-size:14.5px;padding:8px 11px}.nl{gap:8px}.nl li{font-size:15px}.nl li small{font-size:12.5px}
-  .fr span{font-size:13.5px}.fr > div{padding:8px 10px}
-  .rw .s{font-size:14.5px}.rw .f{font-size:13px}.rw > div{padding:9px 11px}
-  .bub{font-size:14px}.tag{font-size:13px;padding:6px 9px}
-  .term p{font-size:14px;line-height:1.38;padding:10px 12px 12px}.chk{font-size:13px}.note{font-size:14px}
-  .orb{width:200px;height:200px;margin-left:-100px;top:13%}.orb i:nth-child(3){inset:40px}.orb i:nth-child(4){inset:74px}
-}
-@media (max-height:620px){
-  .big{font-size:30px}.h{font-size:22px;margin-top:7px}.sub{font-size:14px;margin-top:7px}.mini{font-size:12.5px}
-  .ul{gap:5px}.ul li{font-size:13px}.col2 .ul li{font-size:12.5px}
-  .toc{gap:5px}.toc li{font-size:13.5px;padding:6px 10px}.nl{gap:6px}.nl li{font-size:14px}
-  .fr{gap:6px}.rw{gap:6px}.rw .s{font-size:13.5px}.rw .f{font-size:12.5px;margin-top:3px}
-  .bub{font-size:13px;padding:8px 11px}.tag{font-size:12.5px;padding:5px 8px}.tags{gap:5px}
-  .term p{font-size:13px}.chk{font-size:12.5px;padding:8px 11px}.note{font-size:13px}
-  .orb{width:150px;height:150px;margin-left:-75px;top:14%}.orb i:nth-child(2){inset:12px}.orb i:nth-child(3){inset:30px}.orb i:nth-child(4){inset:54px}
-}
 
 </style>
 </head>
@@ -196,33 +276,37 @@ b{font-weight:600}
   </div>
 
   <!-- обложка -->
-  <section class="st a1" data-name="cover">
-    <div class="orb"><i></i><i></i><i></i><i></i></div>
+  <section class="st a1 cover" data-name="cover">
+    <canvas id="fx"></canvas>
+    <div class="halo"></div><div class="ring r1"></div><div class="ring r2"></div>
+    <div class="aiw anim">ИИ</div>
+    <div class="ai2 anim d1">искусственный интеллект</div>
     <div class="push"></div>
-    <div class="lab anim">Эфир для учениц и выпускниц New SMM</div>
-    <div class="big anim d1" style="margin-top:12px">ИИ в работе <em>SMM-специалиста</em></div>
-    <div class="sub anim d2">Как разговаривать с нейросетью и где она на самом деле помогает</div>
-    <div class="chips anim d3" style="margin-top:16px"><span class="chip">40 минут</span><span class="chip">ChatGPT · Claude</span><span class="chip">ведёт Лев Покладов</span></div>
+    <div class="lab anim d1">Эфир для учениц и выпускниц New SMM</div>
+    <div class="ttl anim d2">в работе <em>SMM-специалиста</em></div>
+    <div class="ask anim d3"><b>&gt;</b><span id="type"></span></div>
+    <div class="chips anim d4" style="margin-top:12px"><span class="chip">40 минут</span><span class="chip">ChatGPT · Claude</span><span class="chip">ведёт Лев Покладов</span></div>
   </section>
 
   <!-- план -->
   <section class="st a1" data-name="plan">
     <div class="lab anim">План эфира</div>
-    <div class="h anim d1">Шесть частей за <em>сорок минут</em></div>
+    <div class="h anim d1">Семь частей за <em>сорок минут</em></div>
     <div class="push"></div>
     <ul class="toc anim d2">
       <li data-go="zones"><b>01</b>Где ИИ силён и где слаб</li>
       <li data-go="context"><b>02</b>Как с ним разговаривать</li>
       <li data-go="tells"><b>03</b>Что выдаёт текст нейросети</li>
-      <li data-go="conn"><b>04</b>Коннекторы: ИИ в ваших сервисах</li>
-      <li data-go="fix1"><b>05</b>Когда что-то идёт не так</li>
-      <li data-go="map"><b>06</b>Библиотека запросов и задание</li>
+      <li data-go="boss"><b>04</b>Вы руководитель, он исполнитель</li>
+      <li data-go="conn"><b>05</b>Коннекторы: ИИ в ваших сервисах</li>
+      <li data-go="fix"><b>06</b>Когда что-то идёт не так</li>
+      <li data-go="map"><b>07</b>Библиотека запросов и задание</li>
     </ul>
-    <p class="mini anim d3" style="margin-top:14px">Ссылка на презентацию останется у вас. Каждый запрос копируется одной кнопкой.</p>
+    <p class="mini anim d3" style="margin-top:12px">Ссылка на презентацию останется у вас. Каждый запрос копируется одной кнопкой.</p>
     <div class="push"></div>
   </section>
 
-  <!-- ЧАСТЬ 1 · зоны применения -->
+  <!-- ЧАСТЬ 1 -->
   <section class="st a1" data-name="zones">
     <div class="lab anim">Часть 1 · зоны применения</div>
     <div class="h anim d1">Где ИИ <em>силён</em> и где слаб</div>
@@ -237,13 +321,19 @@ b{font-weight:600}
 
   <section class="st a1" data-name="split">
     <div class="lab anim">Часть 1 · зоны применения</div>
-    <div class="h anim d1">Что отдаём ИИ и что <em>оставляем себе</em></div>
+    <div class="h anim d1">Кто <em>что делает</em></div>
     <div class="push"></div>
-    <div class="col2 anim d2">
-      <div class="pn"><span class="k">Отдаём ИИ</span><ul class="ul"><li>Варианты идей и хуков</li><li>Черновики сценариев и текстов</li><li>Разбор цифр и конкурентов</li><li>Перевод и письма на английском</li></ul></div>
-      <div class="pn hi"><span class="k">Оставляем себе</span><ul class="ul"><li>Стратегию и приоритеты</li><li>Голос клиента</li><li>Факты, цены и цифры</li><li>Решение «публикуем»</li></ul></div>
+    <div class="lg2 anim d2">
+      <div class="ai">Варианты идей и хуков<i>ИИ</i></div>
+      <div class="ai">Черновики сценариев и текстов<i>ИИ</i></div>
+      <div class="ai">Разбор цифр и конкурентов<i>ИИ</i></div>
+      <div class="ai">Перевод и письма на английском<i>ИИ</i></div>
+      <div class="me">Стратегия и приоритеты<i>ВЫ</i></div>
+      <div class="me">Голос клиента<i>ВЫ</i></div>
+      <div class="me">Факты, цены и цифры<i>ВЫ</i></div>
+      <div class="me">Решение «публикуем»<i>ВЫ</i></div>
     </div>
-    <div class="note anim d3">Правило: всё, что написала нейросеть, до публикации читает человек.</div>
+    <div class="note anim d3">Всё, что написала нейросеть, до публикации читает человек.</div>
     <div class="push"></div>
   </section>
 
@@ -251,21 +341,21 @@ b{font-weight:600}
     <div class="lab anim">Часть 1 · зоны применения</div>
     <div class="h anim d1">ИИ на <em>каждом этапе</em> работы SMM</div>
     <div class="push"></div>
-    <ul class="toc anim d2">
-      <li data-go="p1"><b>01</b>Стратегия <span>разбор конкурентов</span></li>
-      <li data-go="p2"><b>02</b>Идеи <span>банк тем на месяц</span></li>
-      <li data-go="p3"><b>03</b>Сценарии <span>хуки и структура</span></li>
-      <li data-go="p4"><b>04</b>Съёмка <span>шот-лист</span></li>
-      <li data-go="p5"><b>05</b>Тексты <span>подписи и сторис</span></li>
-      <li data-go="media"><b>06</b>Визуал <span>обложки и вставки</span></li>
-      <li data-go="p6"><b>07</b>Аналитика <span>разбор цифр</span></li>
-      <li data-go="p7"><b>08</b>Продажи <span>письма клиентам</span></li>
-    </ul>
-    <p class="mini anim d3" style="margin-top:12px">Готовые запросы под каждый этап лежат в конце, в библиотеке.</p>
+    <div class="tiles anim d2">
+      <div class="tl" data-go="p1"><b>01</b><strong>Стратегия</strong><span>разбор конкурентов</span></div>
+      <div class="tl" data-go="p2"><b>02</b><strong>Идеи</strong><span>банк тем на месяц</span></div>
+      <div class="tl" data-go="p3"><b>03</b><strong>Сценарии</strong><span>хуки и структура</span></div>
+      <div class="tl" data-go="p4"><b>04</b><strong>Съёмка</strong><span>шот-лист</span></div>
+      <div class="tl" data-go="p5"><b>05</b><strong>Тексты</strong><span>подписи и сторис</span></div>
+      <div class="tl" data-go="media"><b>06</b><strong>Визуал</strong><span>обложки и вставки</span></div>
+      <div class="tl" data-go="p6"><b>07</b><strong>Аналитика</strong><span>разбор цифр</span></div>
+      <div class="tl" data-go="p7"><b>08</b><strong>Продажи</strong><span>письма клиентам</span></div>
+    </div>
+    <p class="mini anim d3" style="margin-top:10px">Готовые запросы под каждый этап лежат в конце, в библиотеке.</p>
     <div class="push"></div>
   </section>
 
-  <!-- ЧАСТЬ 2 · как разговаривать -->
+  <!-- ЧАСТЬ 2 -->
   <section class="st a2" data-name="context">
     <div class="lab anim">Часть 2 · как разговаривать</div>
     <div class="h anim d1">Почему ИИ пишет <em>как у всех</em></div>
@@ -283,15 +373,15 @@ b{font-weight:600}
   <section class="st a2" data-name="card">
     <div class="lab anim">Часть 2 · как разговаривать</div>
     <div class="h anim d1">Проект, который <em>знает клиента</em></div>
-    <div class="sub anim d1" style="font-size:14.5px">Один раз собираете карточку клиента и кладёте её в проект в ChatGPT или Claude. Каждый новый диалог начинается уже с неё.</div>
+    <div class="sub anim d1">Один раз собираете карточку и кладёте её в проект в ChatGPT или Claude. Каждый новый диалог начинается уже с неё.</div>
     <div class="push"></div>
-    <div class="pn anim d2"><span class="k">Карточка клиента: шесть пунктов</span><ul class="ul">
-      <li>Кто клиент, что продаёт и по каким ценам</li>
-      <li>Кто покупает и чего боится</li>
-      <li>Слова самих клиентов: отзывы, вопросы из директа</li>
-      <li>Тон: три лучших поста клиента как образец</li>
-      <li>Что нельзя: обещания, слова, темы</li>
-      <li>Цель на месяц в цифрах: заявки, записи, продажи</li></ul></div>
+    <div class="term anim d2"><div class="bar"><u></u><u></u><u></u><span>карточка_клиента.txt</span></div>
+      <p><b>клиент</b>кто он, что продаёт, по каким ценам
+<b>покупатель</b>кто покупает и чего боится
+<b>слова</b>отзывы и вопросы из директа, как есть
+<b>тон</b>три лучших поста клиента как образец
+<b>нельзя</b>обещания, слова, темы
+<b>цель</b>заявки, записи, продажи за месяц</p></div>
     <div class="push"></div>
   </section>
 
@@ -299,13 +389,15 @@ b{font-weight:600}
     <div class="lab anim">Часть 2 · как разговаривать</div>
     <div class="h anim d1">Запрос из <em>пяти строк</em></div>
     <div class="push"></div>
-    <div class="fr anim d2">
-      <div><b>Роль</b><span>«Ты SMM-специалист студии красоты»</span></div>
-      <div><b>Контекст</b><span>Карточка клиента или её часть</span></div>
-      <div><b>Задача</b><span>Одно действие: написать, сравнить, выбрать</span></div>
-      <div><b>Формат</b><span>Сколько вариантов, какой длины, в каком виде</span></div>
-      <div><b>Пример</b><span>Образец, на который нужно равняться</span></div>
-    </div>
+    <div class="term anim d2"><div class="bar"><u></u><u></u><u></u><span>запрос.txt</span><button type="button" class="cp" data-copy="Ты SMM-специалист студии красоты.
+Карточка клиента лежит в проекте.
+Напиши подпись к ролику про [тема].
+Три варианта, каждый до 400 знаков.
+Вот подпись, которая нам нравится: [текст].">Скопировать</button></div><p><b>роль</b>Ты SMM-специалист студии красоты.
+<b>контекст</b>Карточка клиента лежит в проекте.
+<b>задача</b>Напиши подпись к ролику про <i>[тема]</i>.
+<b>формат</b>Три варианта, каждый до 400 знаков.
+<b>пример</b>Вот подпись, которая нам нравится: <i>[текст]</i>.</p></div>
     <div class="note anim d3">Чаще всего пропускают формат и пример. Именно они сокращают число правок.</div>
     <div class="push"></div>
   </section>
@@ -313,22 +405,31 @@ b{font-weight:600}
   <section class="st a2" data-name="meta">
     <div class="lab anim">Часть 2 · как разговаривать</div>
     <div class="h anim d1">Пусть ИИ <em>сам напишет промпт</em></div>
-    <div class="sub anim d1" style="font-size:14.5px">Хороший промпт не обязательно писать самой. Нейросеть составит его лучше, если вы дадите ей задачу и ответите на вопросы.</div>
+    <div class="sub anim d1">Хороший промпт не обязательно писать самой. Вы даёте задачу и отвечаете на вопросы.</div>
     <div class="push"></div>
-    <ol class="nl anim d2">
-      <li><div>Опишите задачу как получается<small>Сумбурно, кусками, голосовым сообщением</small></div></li>
-      <li><div>Попросите задать вам вопросы<small>По одному, пока информации не хватит</small></div></li>
-      <li><div>Попросите собрать готовый промпт<small>С местами, куда подставлять данные</small></div></li>
-      <li><div>Сохраните его в проект<small>И используйте каждый раз для этой задачи</small></div></li>
-    </ol>
+    <div class="pipe anim d2">
+      <div class="me"><i>ВЫ</i>Описываете задачу как получается: сумбурно, голосом</div><u></u>
+      <div><i>ИИ</i>Задаёт вопросы по одному</div><u></u>
+      <div><i>ИИ</i>Пересказывает задачу. Вы поправляете</div><u></u>
+      <div><i>ИИ</i>Пишет промпт и сам ищет в нём слабые места</div><u></u>
+      <div class="me"><i>ВЫ</i>Сохраняете промпт в проект</div>
+    </div>
     <div class="push"></div>
   </section>
 
   <section class="st a2" data-name="metap">
     <div class="hd anim"><span class="num">✦</span><span class="lab">Запрос, который пишет запросы</span></div>
     <div class="h anim d1">Генератор промптов</div>
-    <div style="height:20px"></div>
-    <div class="term anim d2"><div class="bar"><u></u><u></u><u></u><span>генератор.txt</span><button type="button" class="cp" data-copy="Я хочу [задача своими словами]. Сначала задай мне вопросы, без ответов на которые результат будет слабым. Задавай по одному. Когда информации хватит, напиши готовый промпт, который я смогу использовать повторно: роль, контекст, задача, формат ответа и места, куда подставлять данные.">Скопировать</button></div><p>Я хочу <i>[задача своими словами]</i>. Сначала задай мне вопросы, без ответов на которые результат будет слабым. Задавай по одному. Когда информации хватит, напиши готовый промпт, который я смогу использовать повторно: роль, контекст, задача, формат ответа и места, куда подставлять данные.</p></div><div class="chk anim d3"><b>Проверьте сами</b>Прочитайте готовый промпт перед сохранением и уберите лишнее. Он почти всегда длиннее, чем нужно.</div>
+    <div class="push"></div>
+    <div class="term anim d2"><div class="bar"><u></u><u></u><u></u><span>генератор.txt</span><button type="button" class="cp" data-copy="Помоги мне составить промпт. Моя задача: [опишите как получается].
+1. Задавай мне вопросы по одному, пока не поймёшь: для кого результат, каким он должен быть, какие есть ограничения и примеры.
+2. Перескажи задачу в трёх предложениях. Я подтвержу или поправлю.
+3. Напиши промпт: роль, контекст, задача, формат и объём ответа, чего не делать, признаки хорошего результата, поля в [скобках] для данных.
+4. Найди в своём промпте места, которые можно понять двояко. Исправь и покажи финальную версию.">Скопировать</button></div><p>Помоги мне составить промпт. Моя задача: <i>[опишите как получается]</i>.
+1. Задавай мне вопросы по одному, пока не поймёшь: для кого результат, каким он должен быть, какие есть ограничения и примеры.
+2. Перескажи задачу в трёх предложениях. Я подтвержу или поправлю.
+3. Напиши промпт: роль, контекст, задача, формат и объём ответа, чего не делать, признаки хорошего результата, поля в <i>[скобках]</i> для данных.
+4. Найди в своём промпте места, которые можно понять двояко. Исправь и покажи финальную версию.</p></div><div class="chk anim d3"><b>Проверьте сами</b>Сохраните готовый промпт в проект под названием задачи. В следующий раз он уже есть.</div>
     <div class="push"></div>
   </section>
 
@@ -336,40 +437,54 @@ b{font-weight:600}
     <div class="lab anim">Часть 2 · как разговаривать</div>
     <div class="h anim d1">Это разговор. <em>Пять фраз</em>, которые меняют ответ</div>
     <div class="push"></div>
-    <div class="rw anim d2">
-      <div><div class="s">«Задай мне вопросы, прежде чем отвечать»</div><div class="f">Когда задача сложная и вы сами не знаете, чего не хватает</div></div>
-      <div><div class="s">«Дай три варианта, непохожих друг на друга»</div><div class="f">Чтобы было из чего выбирать</div></div>
-      <div><div class="s">«Что в этом ответе слабое?»</div><div class="f">Сама она критиковать себя не начнёт</div></div>
-      <div><div class="s">«Вот пример, как надо. Сделай так же»</div><div class="f">Образец работает сильнее любого описания</div></div>
-      <div><div class="s">«Короче. До 50 слов»</div><div class="f">Об этом следующая часть</div></div>
+    <div class="say anim d2">
+      <div><span class="bub me">Задай мне вопросы, прежде чем отвечать</span><small>когда сами не знаете, чего не хватает</small></div>
+      <div><span class="bub me">Перескажи, как ты понял задачу</span><small>ловит ошибку до начала работы</small></div>
+      <div><span class="bub me">Дай три варианта, непохожих друг на друга</span><small>чтобы было из чего выбирать</small></div>
+      <div><span class="bub me">Что в этом ответе слабое?</span><small>сама она себя не критикует</small></div>
+      <div><span class="bub me">Вот пример, как надо. Сделай так же</span><small>образец сильнее любого описания</small></div>
     </div>
     <div class="push"></div>
   </section>
 
-  <!-- ЧАСТЬ 3 · что выдаёт нейросеть -->
+  <!-- ЧАСТЬ 3 -->
   <section class="st a3" data-name="tells">
     <div class="lab anim">Часть 3 · что выдаёт нейросеть</div>
     <div class="h anim d1">Четыре признака, по которым <em>видно ИИ</em></div>
     <div class="push"></div>
-    <ul class="toc anim d2">
-      <li data-go="t1"><b>01</b>Слишком много текста</li>
-      <li data-go="t2"><b>02</b>Узнаваемые обороты</li>
-      <li data-go="t3"><b>03</b>Общие слова, которые подходят всем</li>
-      <li data-go="t4"><b>04</b>Эхо вашей похвалы</li>
-    </ul>
+    <div class="tiles big anim d2">
+      <div class="tl" data-go="t1"><b>01</b><strong>Не тот объём</strong><span>размашисто или скупо</span></div>
+      <div class="tl" data-go="t2"><b>02</b><strong>Обороты</strong><span>тире, «не просто, а»</span></div>
+      <div class="tl" data-go="t3"><b>03</b><strong>Общие слова</strong><span>подходят любому</span></div>
+      <div class="tl" data-go="t4"><b>04</b><strong>Эхо похвалы</strong><span>всё звучит одинаково</span></div>
+    </div>
     <div class="note anim d3">Клиент и подписчик считывают это за секунду. Каждый признак убирается одной фразой в запросе.</div>
     <div class="push"></div>
   </section>
 
   <section class="st a3" data-name="t1">
-    <div class="hd anim"><span class="num">01</span><span class="lab">Признак</span></div>
-    <div class="h anim d1">Слишком <em>много текста</em></div>
+    <div class="hd anim"><span class="num">01</span><span class="lab">Признак · не тот объём</span></div>
     <div class="push"></div>
-    <div class="pn anim d2"><span class="k">Почему так</span><div style="font-size:15.5px;line-height:1.4">Нейросети не нужно печатать. Написать 50 слов и 500 ей одинаково легко, поэтому она пишет 500. А читать это человеку.</div></div>
-    <div class="pn hi anim d3" style="margin-top:9px"><span class="k">Что делать</span><ul class="ul">
-      <li>Называйте предел: «до 60 слов», «три пункта», «одно предложение»</li>
-      <li>«Сократи вдвое и сохрани смысл»</li>
-      <li>«Без вступления и без вывода»</li></ul></div>
+    <div class="stat anim d1">50<u>=</u>500</div>
+    <div class="sub anim d2" style="font-size:16px;color:var(--tx)">Написать 50 слов и 500 нейросети одинаково легко: ей не нужно печатать. Поэтому без рамок она пишет размашисто.</div>
+    <div class="gap"></div>
+    <div class="pn anim d3"><span class="k">А если попросить «короче»</span><p>Она срежет текст вместе со смыслом и станет скупой. Размашисто или скупо у неё получается само. Ёмко получается редко.</p></div>
+    <div class="push"></div>
+  </section>
+
+  <section class="st a3" data-name="dense">
+    <div class="hd anim"><span class="num">01</span><span class="lab">Что с этим делать</span></div>
+    <div class="h anim d1">Цель: <em>ёмкий</em> текст</div>
+    <div class="push"></div>
+    <div class="dn anim d2">
+      <div><span class="k">Размашисто</span><div class="q">«В современном мире ухоженные руки стали неотъемлемой частью образа, и именно поэтому так важно выбрать…»</div>
+        <div class="br">слова<u style="width:100%"></u></div><div class="br">смысл<u class="m" style="width:10%"></u></div></div>
+      <div><span class="k">Скупо</span><div class="q">«Маникюр. Качество. Запись в директ.»</div>
+        <div class="br">слова<u style="width:24%"></u></div><div class="br">смысл<u class="m" style="width:10%"></u></div></div>
+      <div class="best"><span class="k">Ёмко</span><div class="q">«Покрытие держится три недели. Сколется раньше, переделаем бесплатно.»</div>
+        <div class="br">слова<u style="width:46%"></u></div><div class="br">смысл<u class="m" style="width:92%"></u></div></div>
+    </div>
+    <div class="note anim d3">Писать длиннее нормально, если каждое предложение что-то сообщает. Просите так: «Каждое предложение несёт факт, пример или действие. Остальные убери».</div>
     <div class="push"></div>
   </section>
 
@@ -391,11 +506,13 @@ b{font-weight:600}
     <div class="hd anim"><span class="num">03</span><span class="lab">Признак</span></div>
     <div class="h anim d1">Общие слова, которые <em>подходят всем</em></div>
     <div class="push"></div>
-    <div class="pn anim d2"><span class="k">Почему так</span><div style="font-size:15.5px;line-height:1.4">Нейросеть выдаёт среднее из всего, что читала. Средний текст подходит любому бизнесу и никого не цепляет.</div></div>
-    <div class="pn anim d2" style="margin-top:9px"><span class="k">Проверка</span><div style="font-size:15.5px;line-height:1.4">Можно ли то же самое сказать про конкурента? Если да, текст общий.</div></div>
-    <div class="pn hi anim d3" style="margin-top:9px"><span class="k">Что делать</span><ul class="ul">
+    <div class="pn anim d2"><span class="k">Проверка подстановкой</span><p>«Мы ценим каждого клиента и находим индивидуальный подход»</p>
+      <div class="tags" style="margin-top:9px"><span class="tag ok">салон красоты</span><span class="tag ok">стоматология</span><span class="tag ok">автосервис</span></div></div>
+    <div class="note anim d2">Фраза подошла всем троим. Значит, про вашего клиента в ней ничего нет.</div>
+    <div class="pn hi anim d3" style="margin-top:10px"><span class="k">Что делать</span><ul class="ul">
       <li>Требуйте цифру, пример или деталь</li>
-      <li>Давайте слова реальных клиентов из отзывов</li></ul></div>
+      <li>Давайте слова реальных клиентов из отзывов</li>
+      <li>Спрашивайте: «Можно сказать то же про конкурента?»</li></ul></div>
     <div class="push"></div>
   </section>
 
@@ -403,8 +520,12 @@ b{font-weight:600}
     <div class="hd anim"><span class="num">04</span><span class="lab">Признак</span></div>
     <div class="h anim d1">Эхо вашей <em>похвалы</em></div>
     <div class="push"></div>
-    <div class="pn anim d2"><span class="k">Почему так</span><div style="font-size:15.5px;line-height:1.4">Скажете «нравится», и дальше получите только это: тот же заход, тот же ритм, те же слова. Через неделю весь контент клиента звучит одинаково.</div></div>
-    <div class="pn hi anim d3" style="margin-top:9px"><span class="k">Что делать</span><ul class="ul">
+    <div class="anim d2">
+      <div class="loop"><span>«Нравится»</span><u>→</u><span>тот же заход</span><u>→</u><span>тот же ритм</span><u>→</u><span>те же слова</span></div>
+      <div class="back">↻ и так в каждом следующем тексте</div>
+    </div>
+    <div class="note anim d2">Через неделю весь контент клиента звучит одинаково.</div>
+    <div class="pn hi anim d3" style="margin-top:10px"><span class="k">Что делать</span><ul class="ul">
       <li>Хвалите точечно: что именно сработало</li>
       <li>Просите разные форматы и разные заходы</li>
       <li>Новая задача, новый чат</li>
@@ -415,30 +536,89 @@ b{font-weight:600}
   <section class="st a3" data-name="rules">
     <div class="hd anim"><span class="num">✦</span><span class="lab">Положите в инструкции проекта</span></div>
     <div class="h anim d1">Правила против четырёх признаков</div>
-    <div style="height:20px"></div>
-    <div class="term anim d2"><div class="bar"><u></u><u></u><u></u><span>правила.txt</span><button type="button" class="cp" data-copy="Пиши коротко: если я не указала объём, укладывайся в 80 слов. Без длинных тире. Без оборотов «не просто, а» и «в современном мире». Без вступлений и выводов. Вместо общих слов давай цифру, пример или деталь из карточки клиента. Если данных нет, скажи об этом и ничего не выдумывай. Не соглашайся со мной автоматически: если видишь слабое место, назови его.">Скопировать</button></div><p>Пиши коротко: если я не указала объём, укладывайся в 80 слов. Без длинных тире. Без оборотов «не просто, а» и «в современном мире». Без вступлений и выводов. Вместо общих слов давай цифру, пример или деталь из карточки клиента. Если данных нет, скажи об этом и ничего не выдумывай. Не соглашайся со мной автоматически: если видишь слабое место, назови его.</p></div><div class="chk anim d3"><b>Проверьте сами</b>Правила записываются в проект один раз и действуют в каждом диалоге. Дополняйте их своими запретами.</div>
+    <div class="push"></div>
+    <div class="term anim d2"><div class="bar"><u></u><u></u><u></u><span>правила.txt</span><button type="button" class="cp" data-copy="Пиши ёмко: каждое предложение несёт факт, пример или действие. Пустые предложения убирай, смысл ради краткости не срезай.
+Без длинных тире, без оборотов «не просто, а» и «в современном мире», без вступлений и выводов.
+Вместо общих слов давай цифру, пример или деталь из карточки клиента. Если данных нет, скажи об этом и ничего не выдумывай.
+Не соглашайся со мной автоматически: если видишь слабое место, назови его.">Скопировать</button></div><p>Пиши ёмко: каждое предложение несёт факт, пример или действие. Пустые предложения убирай, смысл ради краткости не срезай.
+Без длинных тире, без оборотов «не просто, а» и «в современном мире», без вступлений и выводов.
+Вместо общих слов давай цифру, пример или деталь из карточки клиента. Если данных нет, скажи об этом и ничего не выдумывай.
+Не соглашайся со мной автоматически: если видишь слабое место, назови его.</p></div><div class="chk anim d3"><b>Проверьте сами</b>Правила записываются в проект один раз и действуют в каждом диалоге. Дополняйте их своими запретами.</div>
     <div class="push"></div>
   </section>
 
-  <!-- ЧАСТЬ 4 · коннекторы -->
+  <!-- ЧАСТЬ 4 -->
+  <section class="st a6" data-name="boss">
+    <div class="lab anim">Часть 4 · вы руководитель</div>
+    <div class="h anim d1">Удобно должно быть <em>вам</em></div>
+    <div class="sub anim d1">Вы руководитель, нейросеть исполнитель. В простых задачах руками не подключаемся: говорим, что переделать.</div>
+    <div class="push"></div>
+    <div class="sw anim d2">
+      <div class="hdr"><span>Привычка</span><u></u><span>Как руководитель</span></div>
+      <div><span>«Быстрее самой поправить»</span><u>→</u><span>«Убери второй абзац, усиль первую фразу»</span></div>
+      <div><span>Ждать идеала с первого раза</span><u>→</u><span>Спокойно повторить и уточнить</span></div>
+      <div><span>Бросить после неудачи</span><u>→</u><span>Сказать, что важно, и попросить ещё раз</span></div>
+    </div>
+    <div class="note anim d3">Правка словами учит его вашему подходу. Правка руками остаётся только в этом тексте.</div>
+    <div class="push"></div>
+  </section>
+
+  <section class="st a6" data-name="blocks">
+    <div class="lab anim">Часть 4 · вы руководитель</div>
+    <div class="h anim d1">Давайте <em>маленькие блоки</em></div>
+    <div class="push"></div>
+    <div class="bl anim d2">
+      <div class="c"><span class="cap">Всё сразу</span><div class="one"><b style="left:14%;top:18%">✕</b><b style="left:62%;top:36%">✕</b><b style="left:30%;top:58%">✕</b><b style="left:74%;top:76%">✕</b></div></div>
+      <div class="c"><span class="cap">По частям</span><div class="sm">блок 1<b>✓</b></div><div class="sm">блок 2<b>✓</b></div><div class="sm">блок 3<b>✓</b></div><div class="sm">блок 4<b>✓</b></div></div>
+    </div>
+    <div class="gap"></div>
+    <div class="pn anim d3"><p>Нейросеть уже умеет сделать большой объём за один раз. Но в большом куске больше неточностей, и править приходится всё сразу.</p></div>
+    <div class="note anim d3">Один блок, проверка, следующий. Чем точнее задача, тем точнее результат.</div>
+    <div class="push"></div>
+  </section>
+
+  <section class="st a6" data-name="iter">
+    <div class="lab anim">Часть 4 · вы руководитель</div>
+    <div class="h anim d1">С первого раза не получится. <em>Это нормально</em></div>
+    <div class="push"></div>
+    <div class="anim d2">
+      <div class="sts"><div><b>ПРОХОД 1</b><strong>База</strong></div><div><b>ПРОХОД 2</b><strong>Лучше</strong></div><div><b>ПРОХОД 3</b><strong>Ещё лучше</strong></div></div>
+      <div class="stq"><span>«Сделай»</span><span>«Усиль слабые места»</span><span>«Что ещё улучшить? Сделай»</span></div>
+    </div>
+    <div class="gap"></div>
+    <div class="pn anim d3"><p>Тот же текст или файл со второго и третьего прохода становится заметно лучше. Просите доделать, пока есть что улучшать.</p></div>
+    <div class="push"></div>
+  </section>
+
+  <section class="st a6" data-name="planmode">
+    <div class="hd anim"><span class="num">✦</span><span class="lab">Режим планирования</span></div>
+    <div class="h anim d1">Сначала план, <em>потом работа</em></div>
+    <div class="sub anim d1">Поправить план быстро. Переделывать готовую работу долго.</div>
+    <div class="push"></div>
+    <div class="term anim d2"><div class="bar"><u></u><u></u><u></u><span>план.txt</span><button type="button" class="cp" data-copy="Сначала покажи план по шагам: что сделаешь, в каком порядке и что тебе нужно от меня. Ничего не делай, пока я не подтвержу план.">Скопировать</button></div><p>Сначала покажи план по шагам: что сделаешь, в каком порядке и что тебе нужно от меня. Ничего не делай, пока я не подтвержу план.</p></div>
+    <div class="chk anim d3"><b>Где это есть</b>В части инструментов планирование включается отдельным режимом. В обычном чате хватает этой фразы.</div>
+    <div class="push"></div>
+  </section>
+
+  <!-- ЧАСТЬ 5 -->
   <section class="st a4" data-name="conn">
-    <div class="lab anim">Часть 4 · коннекторы</div>
+    <div class="lab anim">Часть 5 · коннекторы</div>
     <div class="h anim d1">ИИ, который <em>видит ваши сервисы</em></div>
-    <div class="sub anim d1" style="font-size:14.5px">Без коннектора вы копируете текст в чат. С коннектором нейросеть сама находит бриф, таблицу или письмо.</div>
-    <svg class="net anim d2" viewBox="0 0 350 250" role="img" aria-label="Нейросеть в центре, вокруг сервисы: Диск, Почта, Календарь, Notion, Canva">
+    <div class="sub anim d1">Без коннектора вы копируете текст в чат. С коннектором нейросеть сама находит бриф, таблицу или письмо.</div>
+    <svg class="net anim d2" viewBox="0 0 350 232" role="img" aria-label="Нейросеть в центре, вокруг сервисы: Диск, Почта, Календарь, Notion, Canva">
   <g stroke="rgba(167,139,250,.55)" stroke-width="1.2" stroke-dasharray="4 5" fill="none">
-    <path d="M175 125 L62 48"/><path d="M175 125 L288 48"/><path d="M175 125 L40 150"/><path d="M175 125 L310 150"/><path d="M175 125 L175 222"/>
+    <path d="M175 112 L62 38"/><path d="M175 112 L288 38"/><path d="M175 112 L40 136"/><path d="M175 112 L310 136"/><path d="M175 112 L175 206"/>
   </g>
   <g fill="#10131B" stroke="rgba(255,255,255,.22)">
-    <rect x="12" y="30" width="100" height="36" rx="10"/><rect x="238" y="30" width="100" height="36" rx="10"/>
-    <rect x="2" y="132" width="88" height="36" rx="10"/><rect x="260" y="132" width="88" height="36" rx="10"/>
-    <rect x="125" y="204" width="100" height="36" rx="10"/>
+    <rect x="12" y="20" width="100" height="36" rx="10"/><rect x="238" y="20" width="100" height="36" rx="10"/>
+    <rect x="2" y="118" width="88" height="36" rx="10"/><rect x="260" y="118" width="88" height="36" rx="10"/>
+    <rect x="125" y="190" width="100" height="36" rx="10"/>
   </g>
   <g text-anchor="middle">
-    <text x="62" y="53">Google Диск</text><text x="288" y="53">Почта</text>
-    <text x="46" y="155">Календарь</text><text x="304" y="155">Notion</text><text x="175" y="227">Canva</text>
+    <text x="62" y="43">Google Диск</text><text x="288" y="43">Почта</text>
+    <text x="46" y="141">Календарь</text><text x="304" y="141">Notion</text><text x="175" y="213">Canva</text>
   </g>
-  <g class="c"><circle cx="175" cy="125" r="34" fill="#A78BFA"/><circle cx="175" cy="125" r="44" fill="none" stroke="rgba(167,139,250,.45)"/><text x="175" y="130" text-anchor="middle">ИИ</text></g>
+  <g class="c"><circle cx="175" cy="112" r="32" fill="#A78BFA"/><circle cx="175" cy="112" r="42" fill="none" stroke="rgba(167,139,250,.45)"/><text x="175" y="117" text-anchor="middle">ИИ</text></g>
 </svg>
     <div class="pn anim d3"><span class="k">Что можно попросить</span><ul class="ul">
       <li>«Найди в Диске бриф клиента и собери по нему контент-план»</li>
@@ -448,52 +628,41 @@ b{font-weight:600}
   </section>
 
   <section class="st a4" data-name="connhow">
-    <div class="lab anim">Часть 4 · коннекторы</div>
+    <div class="lab anim">Часть 5 · коннекторы</div>
     <div class="h anim d1">Как <em>подключить</em></div>
     <div class="push"></div>
     <div class="stack anim d2">
-      <div class="pn"><span class="k">Claude</span><div style="font-size:14.5px;line-height:1.4">Customize → Connectors → Discover → выбрать сервис → Connect → войти в свой аккаунт сервиса.<br>В чате: «+» → Connectors → включить.</div></div>
-      <div class="pn"><span class="k">ChatGPT</span><div style="font-size:14.5px;line-height:1.4">Settings → Apps → выбрать приложение → Connect → войти в свой аккаунт.<br>В чате: «+» или @название приложения.</div></div>
+      <div class="pn"><span class="k">Claude</span><p style="font-size:14px">Customize → Connectors → Discover → выбрать сервис → Connect → войти в свой аккаунт сервиса.<br>В чате: «+» → Connectors → включить.</p></div>
+      <div class="pn"><span class="k">ChatGPT</span><p style="font-size:14px">Settings → Apps → выбрать приложение → Connect → войти в свой аккаунт.<br>В чате: «+» или @название приложения.</p></div>
       <div class="pn hi"><span class="k">Осторожно с доступом</span><ul class="ul">
         <li>Подключайте только то, что нужно для задачи</li>
         <li>Читайте, какой доступ просит сервис</li>
         <li>Аккаунты клиентов только с их согласия</li></ul></div>
     </div>
-    <p class="mini anim d3" style="margin-top:10px">Названия пунктов меняются, а набор зависит от тарифа. Логика одна: выбрать сервис, войти, разрешить доступ.</p>
+    <p class="mini anim d3" style="margin-top:9px">Названия пунктов меняются, а набор зависит от тарифа. Логика одна: выбрать сервис, войти, разрешить доступ.</p>
     <div class="push"></div>
   </section>
 
-  <!-- ЧАСТЬ 5 · трудности -->
-  <section class="st a5" data-name="fix1">
-    <div class="lab anim">Часть 5 · когда что-то идёт не так</div>
-    <div class="h anim d1">Он ошибается. <em>Что делать</em></div>
+  <!-- ЧАСТЬ 6 -->
+  <section class="st a5" data-name="fix">
+    <div class="lab anim">Часть 6 · когда что-то идёт не так</div>
+    <div class="h anim d1">Пять сбоев и <em>что делать</em></div>
     <div class="push"></div>
-    <div class="rw anim d2">
-      <div><div class="s">Выдумал факт или цифру</div><div class="f">Спросите «откуда это?». Нет источника, значит не публикуем</div></div>
-      <div><div class="s">Ошибся в подсчётах</div><div class="f">Дайте таблицу файлом. Ключевые цифры пересчитайте сами</div></div>
-      <div><div class="s">Забыл, о чём говорили в начале</div><div class="f">Попросите сводку диалога и начните новый чат с неё</div></div>
+    <div class="lgx anim d2">
+      <div><div class="e">выдумал факт или цифру</div><div class="r">Спросите «откуда это?». Нет источника, значит не публикуем</div></div>
+      <div><div class="e">ошибся в подсчётах</div><div class="r">Дайте таблицу файлом. Ключевые цифры пересчитайте сами</div></div>
+      <div><div class="e">забыл, о чём говорили в начале</div><div class="r">Попросите сводку диалога и начните новый чат с неё</div></div>
+      <div><div class="e">застрял на одном варианте</div><div class="r">Новый чат. Старый диалог тянет его назад</div></div>
+      <div><div class="e">каждый раз отвечает по-разному</div><div class="r">Это нормально. Берите несколько ответов и выбирайте</div></div>
     </div>
     <div class="push"></div>
   </section>
 
-  <section class="st a5" data-name="fix2">
-    <div class="lab anim">Часть 5 · когда что-то идёт не так</div>
-    <div class="h anim d1">Он не понимает. <em>Что делать</em></div>
-    <div class="push"></div>
-    <div class="rw anim d2">
-      <div><div class="s">Третий раз отвечает не то</div><div class="f">Не переписывайте запрос с нуля. Покажите пример результата</div></div>
-      <div><div class="s">Застрял на одном варианте</div><div class="f">Новый чат. Старый диалог тянет его назад</div></div>
-      <div><div class="s">Каждый раз отвечает по-разному</div><div class="f">Это нормально. Берите несколько ответов и выбирайте</div></div>
-      <div><div class="s">Ушёл в общие слова</div><div class="f">Скажите, для кого это и что человек должен сделать</div></div>
-    </div>
-    <div class="push"></div>
-  </section>
-
-  <!-- ЧАСТЬ 6 · библиотека -->
+  <!-- ЧАСТЬ 7 -->
   <section class="st a1" data-name="map">
-    <div class="lab anim">Часть 6 · библиотека запросов</div>
+    <div class="lab anim">Часть 7 · библиотека запросов</div>
     <div class="h anim d1">Семь запросов <em>на весь цикл</em></div>
-    <p class="mini anim d1" style="margin-top:8px">На эфире открываем два. Остальные остаются вам.</p>
+    <p class="mini anim d1" style="margin-top:6px">На эфире открываем два. Остальные остаются вам.</p>
     <div class="push"></div>
     <ul class="toc anim d2">
       <li data-go="p1"><b>01</b>Стратегия: разбор конкурентов</li><li data-go="p2"><b>02</b>Идеи: банк на месяц</li><li data-go="p3"><b>03</b>Сценарии: хуки и структура</li><li data-go="p4"><b>04</b>Съёмка: шот-лист</li><li data-go="p5"><b>05</b>Тексты и сторис на неделю</li>
@@ -506,41 +675,41 @@ b{font-weight:600}
   <section class="st a1" data-name="p1">
     <div class="hd anim"><span class="num">01</span><span class="lab">Запрос 1 из 7</span></div>
     <div class="h anim d1">Стратегия: разбор конкурентов</div>
-    <div style="height:20px"></div>
+    <div class="push"></div>
     <div class="term anim d2"><div class="bar"><u></u><u></u><u></u><span>запрос.txt</span><button type="button" class="cp" data-copy="Ты стратег SMM. Ниже три аккаунта конкурентов моего клиента: [шапка профиля, темы последних 15 постов, закрепы]. Найди: что повторяется у всех, о чём не говорит никто, три темы, на которых мой клиент может отличаться. Ответ таблицей.">Скопировать</button></div><p>Ты стратег SMM. Ниже три аккаунта конкурентов моего клиента: <i>[шапка профиля, темы последних 15 постов, закрепы]</i>. Найди: что повторяется у всех, о чём не говорит никто, три темы, на которых мой клиент может отличаться. Ответ таблицей.</p></div><div class="chk anim d3"><b>Проверьте сами</b>Данные об аккаунтах дайте сами: текстом или скриншотами. Без них нейросеть начнёт додумывать.</div>
     <div class="push"></div>
   </section>
   <section class="st a1" data-name="p2">
     <div class="hd anim"><span class="num">02</span><span class="lab">Запрос 2 из 7</span></div>
     <div class="h anim d1">Идеи: банк на месяц</div>
-    <div style="height:20px"></div>
+    <div class="push"></div>
     <div class="term anim d2"><div class="bar"><u></u><u></u><u></u><span>запрос.txt</span><button type="button" class="cp" data-copy="По карточке клиента составь 30 идей для Reels на месяц. Раздели на четыре формата: продающие, экспертные, вирусные, трендовые. Для каждой идеи: тема одной строкой, для кого она, что зритель делает после просмотра. Без общих тем вроде «5 советов».">Скопировать</button></div><p>По карточке клиента составь 30 идей для Reels на месяц. Раздели на четыре формата: продающие, экспертные, вирусные, трендовые. Для каждой идеи: тема одной строкой, для кого она, что зритель делает после просмотра. Без общих тем вроде «5 советов».</p></div><div class="chk anim d3"><b>Проверьте сами</b>Оставьте 10 идей, которые вам самой хочется снять. Остальные удаляйте без сожаления.</div>
     <div class="push"></div>
   </section>
   <section class="st a1" data-name="p3">
     <div class="hd anim"><span class="num">03</span><span class="lab">Запрос 3 из 7</span></div>
     <div class="h anim d1">Сценарии: хуки и структура</div>
-    <div style="height:20px"></div>
-    <div class="term anim d2"><div class="bar"><u></u><u></u><u></u><span>запрос.txt</span><button type="button" class="cp" data-copy="Вот идея ролика: [идея]. Напиши 10 вариантов первой фразы по формулам: шок-цифра, прямой вызов, любопытство, список с числом, признание. Затем сценарий на 30 секунд под лучший вариант: хук, польза, призыв. Короткими фразами, как говорят люди.">Скопировать</button></div><p>Вот идея ролика: <i>[идея]</i>. Напиши 10 вариантов первой фразы по формулам: шок-цифра, прямой вызов, любопытство, список с числом, признание. Затем сценарий на 30 секунд под лучший вариант: хук, польза, призыв. Короткими фразами, как говорят люди.</p></div><div class="chk anim d3"><b>Проверьте сами</b>Прочитайте вслух. Всё, что звучит как реклама по телевизору, перепишите своими словами.</div>
+    <div class="push"></div>
+    <div class="term anim d2"><div class="bar"><u></u><u></u><u></u><span>запрос.txt</span><button type="button" class="cp" data-copy="Вот идея ролика: [идея]. Напиши 10 вариантов первой фразы по формулам: шок-цифра, прямой вызов, любопытство, список с числом, признание. Затем сценарий на 30 секунд под лучший вариант: хук, польза, призыв. Короткими фразами, как говорят люди.">Скопировать</button></div><p>Вот идея ролика: <i>[идея]</i>. Напиши 10 вариантов первой фразы по формулам: шок-цифра, прямой вызов, любопытство, список с числом, признание. Затем сценарий на 30 секунд под лучший вариант: хук, польза, призыв. Короткими фразами, как говорят люди.</p></div><div class="chk anim d3"><b>Проверьте сами</b>Прочитайте вслух. Всё, что звучит как реклама по телевизору, попросите переписать проще.</div>
     <div class="push"></div>
   </section>
   <section class="st a1" data-name="p4">
     <div class="hd anim"><span class="num">04</span><span class="lab">Запрос 4 из 7</span></div>
     <div class="h anim d1">Съёмка: шот-лист</div>
-    <div style="height:20px"></div>
+    <div class="push"></div>
     <div class="term anim d2"><div class="bar"><u></u><u></u><u></u><span>запрос.txt</span><button type="button" class="cp" data-copy="Вот три сценария: [сценарии]. Собери шот-лист на один съёмочный день: какие кадры снять и в каком порядке, чтобы не переставлять свет и не менять локацию. Отдельно список футажей: деталь, общий план, движение, по 3-5 секунд.">Скопировать</button></div><p>Вот три сценария: <i>[сценарии]</i>. Собери шот-лист на один съёмочный день: какие кадры снять и в каком порядке, чтобы не переставлять свет и не менять локацию. Отдельно список футажей: деталь, общий план, движение, по 3-5 секунд.</p></div><div class="chk anim d3"><b>Проверьте сами</b>Сверьте с реальной локацией клиента. Нейросеть не знает, где у него окно и сколько там места.</div>
     <div class="push"></div>
   </section>
   <section class="st a1" data-name="p5">
     <div class="hd anim"><span class="num">05</span><span class="lab">Запрос 5 из 7</span></div>
     <div class="h anim d1">Тексты и сторис на неделю</div>
-    <div style="height:20px"></div>
+    <div class="push"></div>
     <div class="term anim d2"><div class="bar"><u></u><u></u><u></u><span>запрос.txt</span><button type="button" class="cp" data-copy="По карточке клиента напиши план сторис на неделю: 4-6 сторис в день, сюжет дня одной строкой. В понедельник и четверг прогрев к записи. Добавь подписи к трём роликам недели: до 400 знаков, первая строка цепляет, в конце одно действие.">Скопировать</button></div><p>По карточке клиента напиши план сторис на неделю: 4-6 сторис в день, сюжет дня одной строкой. В понедельник и четверг прогрев к записи. Добавь подписи к трём роликам недели: до 400 знаков, первая строка цепляет, в конце одно действие.</p></div><div class="chk anim d3"><b>Проверьте сами</b>Уберите слова, которых клиент никогда не скажет. Проверьте цены, адреса и часы работы.</div>
     <div class="push"></div>
   </section>
 
   <section class="st a1" data-name="media">
-    <div class="lab anim">Часть 6 · картинки и видео</div>
+    <div class="lab anim">Часть 7 · картинки и видео</div>
     <div class="h anim d1">Где нейросеть <em>украшает</em> ролик и где портит</div>
     <div class="push"></div>
     <div class="col2 anim d2">
@@ -554,14 +723,14 @@ b{font-weight:600}
   <section class="st a1" data-name="p6">
     <div class="hd anim"><span class="num">06</span><span class="lab">Запрос 6 из 7</span></div>
     <div class="h anim d1">Аналитика: разбор цифр</div>
-    <div style="height:20px"></div>
+    <div class="push"></div>
     <div class="term anim d2"><div class="bar"><u></u><u></u><u></u><span>запрос.txt</span><button type="button" class="cp" data-copy="Вот статистика аккаунта за месяц: [таблица или скриншоты]. Покажи три ролика с лучшим удержанием и что у них общего, три худших и почему, какие темы привели заявки. Дай три гипотезы на следующую неделю. Если данных не хватает, скажи об этом и ничего не додумывай.">Скопировать</button></div><p>Вот статистика аккаунта за месяц: <i>[таблица или скриншоты]</i>. Покажи три ролика с лучшим удержанием и что у них общего, три худших и почему, какие темы привели заявки. Дай три гипотезы на следующую неделю. Если данных не хватает, скажи об этом и ничего не додумывай.</p></div><div class="chk anim d3"><b>Проверьте сами</b>Ключевые цифры пересчитайте сами. В подсчётах нейросеть ошибается чаще, чем в текстах.</div>
     <div class="push"></div>
   </section>
   <section class="st a1" data-name="p7">
     <div class="hd anim"><span class="num">07</span><span class="lab">Запрос 7 из 7</span></div>
     <div class="h anim d1">Клиенты: первое сообщение</div>
-    <div style="height:20px"></div>
+    <div class="push"></div>
     <div class="term anim d2"><div class="bar"><u></u><u></u><u></u><span>запрос.txt</span><button type="button" class="cp" data-copy="Я SMM-специалист, пишу владельцу [ниша] в [город]. Вот что я вижу в его аккаунте: [наблюдения]. Напиши первое сообщение на английском: одно наблюдение про его аккаунт, одна идея, один вопрос. До 60 слов, без комплиментов и без слова «услуги».">Скопировать</button></div><p>Я SMM-специалист, пишу владельцу <i>[ниша]</i> в <i>[город]</i>. Вот что я вижу в его аккаунте: <i>[наблюдения]</i>. Напиши первое сообщение на английском: одно наблюдение про его аккаунт, одна идея, один вопрос. До 60 слов, без комплиментов и без слова «услуги».</p></div><div class="chk anim d3"><b>Проверьте сами</b>Наблюдение должно быть вашим. Сообщение без личной детали читается как рассылка.</div>
     <div class="push"></div>
   </section>
@@ -570,11 +739,11 @@ b{font-weight:600}
     <div class="lab anim">Перед публикацией</div>
     <div class="h anim d1">Четыре вопроса <em>к любому тексту</em></div>
     <div class="push"></div>
-    <div class="rw anim d2">
-      <div><div class="s">Это правда?</div><div class="f">Цены, сроки, результаты, имена</div></div>
-      <div><div class="s">Так говорит клиент?</div><div class="f">Его слова, его интонация</div></div>
-      <div><div class="s">Можно сказать то же про конкурента?</div><div class="f">Если да, добавьте деталь</div></div>
-      <div><div class="s">Есть одно действие в конце?</div><div class="f">Записаться, написать, сохранить</div></div>
+    <div class="cb anim d2">
+      <div><i>✓</i><div><div class="s">Это правда?</div><div class="f">Цены, сроки, результаты, имена</div></div></div>
+      <div><i>✓</i><div><div class="s">Так говорит клиент?</div><div class="f">Его слова, его интонация</div></div></div>
+      <div><i>✓</i><div><div class="s">Каждое предложение по делу?</div><div class="f">Факт, пример или действие</div></div></div>
+      <div><i>✓</i><div><div class="s">Про конкурента так не скажешь?</div><div class="f">Если скажешь, добавьте деталь</div></div></div>
     </div>
     <div class="push"></div>
   </section>
@@ -584,9 +753,9 @@ b{font-weight:600}
     <div class="h anim d1">Настройте <em>своего ассистента</em></div>
     <div class="push"></div>
     <ol class="nl anim d2">
-      <li><div>Проект с карточкой клиента и правилами<small>Шесть пунктов карточки и текст «правила.txt»</small></div></li>
-      <li><div>Свой промпт через генератор<small>Под одну задачу, которую вы делаете каждую неделю</small></div></li>
-      <li><div>Один текст по четырём признакам<small>Найдите, что выдаёт нейросеть, и перепишите</small></div></li>
+      <li><div>Проект с карточкой клиента и правилами<small>Шесть строк карточки и текст «правила.txt»</small></div></li>
+      <li><div>Свой промпт через генератор<small>Под задачу, которую вы делаете каждую неделю</small></div></li>
+      <li><div>Один текст за три прохода<small>Только словами. Руками ничего не правим</small></div></li>
       <li><div>Один коннектор<small>Диск или календарь, одна рабочая задача через него</small></div></li>
     </ol>
     <div class="note anim d3">Пришлите промпт и текст «до и после» в чат потока: разберём и усилим.</div>
@@ -594,11 +763,12 @@ b{font-weight:600}
   </section>
 
   <section class="st a2" data-name="qa">
-    <div class="orb" style="top:18%"><i></i><i></i><i></i><i></i></div>
     <div class="push"></div>
-    <div class="lab anim">Ответы на вопросы</div>
-    <div class="big anim d1" style="margin-top:12px">Ваши <em>вопросы</em></div>
-    <div class="sub anim d2">Пишите в чат эфира</div>
+    <div class="aiw anim" style="font-size:150px;margin-top:0">?</div>
+    <div class="push"></div>
+    <div class="lab anim d1">Ответы на вопросы</div>
+    <div class="ttl anim d2">Ваши <em>вопросы</em></div>
+    <div class="sub anim d3">Пишите в чат эфира</div>
   </section>
 
   <div id="hint"><span><i>←</i>Нажмите слева:<br>назад</span><span><i>→</i>Нажмите справа:<br>дальше</span><b>// коснитесь, чтобы начать</b></div>
@@ -608,9 +778,10 @@ b{font-weight:600}
     <button type="button" class="mi" data-go="metap">Генератор промптов<span>запрос</span></button>
     <button type="button" class="mi" data-go="tells">Что выдаёт нейросеть<span>часть 3</span></button>
     <button type="button" class="mi" data-go="rules">Правила для проекта<span>запрос</span></button>
-    <button type="button" class="mi" data-go="conn">Коннекторы<span>часть 4</span></button>
-    <button type="button" class="mi" data-go="fix1">Когда что-то идёт не так<span>часть 5</span></button>
-    <button type="button" class="mi" data-go="map">Библиотека запросов<span>часть 6</span></button>
+    <button type="button" class="mi" data-go="boss">Вы руководитель<span>часть 4</span></button>
+    <button type="button" class="mi" data-go="conn">Коннекторы<span>часть 5</span></button>
+    <button type="button" class="mi" data-go="fix">Когда что-то идёт не так<span>часть 6</span></button>
+    <button type="button" class="mi" data-go="map">Библиотека запросов<span>часть 7</span></button>
     <button type="button" class="mi" data-go="task">Задание</button>
   </div></div>
 </div>
@@ -618,7 +789,19 @@ b{font-weight:600}
 (function(){
   var app=document.getElementById('app'), st=[].slice.call(document.querySelectorAll('.st')),
       bars=document.getElementById('bars'), hint=document.getElementById('hint'), menu=document.getElementById('menu');
-  var ACC={a1:'--lime',a2:'--cyan',a3:'--coral',a4:'--vio',a5:'--amber'};
+  var ACC={a1:'--lime',a2:'--cyan',a3:'--coral',a4:'--vio',a5:'--amber',a6:'--pink'};
+
+  /* холст 360-420 x 700+, растянутый на всё окно: в узком окне на компьютере текст крупный */
+  var scale=1;
+  function fit(){
+    var W=innerWidth, H=innerHeight; scale=Math.min(W/360,H/700);
+    var dW=Math.min(420,W/scale), dH=H/scale;
+    app.style.width=dW+'px'; app.style.height=dH+'px'; app.style.transform='scale('+scale+')';
+    app.style.left=((W-dW*scale)/2)+'px';
+    app.classList.toggle('framed', dW*scale < W-24);
+    sizeFx();
+  }
+
   function byName(n){ return st.findIndex(function(s){ return s.getAttribute('data-name')===n; }); }
   st.forEach(function(){ var b=document.createElement('i'); b.appendChild(document.createElement('b')); bars.appendChild(b); });
   var fills=[].slice.call(bars.querySelectorAll('b')), i=0;
@@ -629,14 +812,14 @@ b{font-weight:600}
     var k=Object.keys(ACC).filter(function(c){ return st[i].classList.contains(c); })[0]||'a1';
     document.getElementById('top').style.setProperty('--a','var('+ACC[k]+')');
     hint.classList.remove('on');
-    var hs=null; try{ hs=sessionStorage.getItem('efhint2'); }catch(e){}
-    if(i===0 && !hs){ hint.classList.add('on'); try{sessionStorage.setItem('efhint2','1');}catch(e){} setTimeout(function(){ hint.classList.remove('on'); },4000); }
+    var hs=null; try{ hs=sessionStorage.getItem('efhint3'); }catch(e){}
+    if(i===0 && !hs){ hint.classList.add('on'); try{sessionStorage.setItem('efhint3','1');}catch(e){} setTimeout(function(){ hint.classList.remove('on'); },3500); }
     try{ history.replaceState(null,'','#'+st[i].getAttribute('data-name')); }catch(e){}
   }
   hint.addEventListener('pointerdown',function(e){ e.stopPropagation(); hint.classList.remove('on'); });
   hint.addEventListener('pointerup',function(e){ e.stopPropagation(); });
   var downAt=0, x0=0, y0=0;
-  function interactive(el){ return el.closest('button,a,.toc li,#menu'); }
+  function interactive(el){ return el.closest('button,a,[data-go],#menu'); }
   app.addEventListener('pointerdown',function(e){ if(interactive(e.target)) return; downAt=Date.now(); x0=e.clientX; y0=e.clientY; });
   app.addEventListener('pointerup',function(e){
     if(!downAt) return; var dx=e.clientX-x0, dy=e.clientY-y0; downAt=0;
@@ -652,7 +835,7 @@ b{font-weight:600}
   document.getElementById('menuBtn').addEventListener('click',function(e){ e.stopPropagation(); menu.classList.add('on'); });
   document.getElementById('menuX').addEventListener('click',function(){ menu.classList.remove('on'); });
   menu.addEventListener('click',function(e){ if(e.target===menu) menu.classList.remove('on'); var b=e.target.closest('[data-go]'); if(!b) return; menu.classList.remove('on'); show(byName(b.getAttribute('data-go'))); });
-  [].forEach.call(document.querySelectorAll('.toc li[data-go]'),function(li){ li.addEventListener('click',function(){ show(byName(li.getAttribute('data-go'))); }); });
+  [].forEach.call(document.querySelectorAll('.st [data-go]'),function(el){ el.addEventListener('click',function(){ show(byName(el.getAttribute('data-go'))); }); });
 
   /* копирование запроса */
   function copy(text, done){
@@ -665,6 +848,40 @@ b{font-weight:600}
       copy(b.getAttribute('data-copy'),function(ok){ b.textContent=ok?'Скопировано':'Выделите вручную'; b.classList.toggle('ok',ok);
         setTimeout(function(){ b.textContent='Скопировать'; b.classList.remove('ok'); },2200); }); });
   });
+
+  /* обложка: сеть из точек и печатающийся запрос */
+  var still=false; try{ still=matchMedia('(prefers-reduced-motion:reduce)').matches; }catch(e){}
+  var fx=document.getElementById('fx'), cx=fx.getContext('2d'), P=[], fw=0, fh=0, dpr=1;
+  function sizeFx(){
+    dpr=Math.min(3,(window.devicePixelRatio||1)*scale); fw=parseFloat(app.style.width)||360; fh=parseFloat(app.style.height)||700;
+    fx.width=Math.round(fw*dpr); fx.height=Math.round(fh*dpr);
+    if(!P.length) for(var k=0;k<64;k++) P.push({x:Math.random(),y:Math.random(),vx:(Math.random()-.5)*.00035,vy:(Math.random()-.5)*.00035,r:Math.random()*1.5+.6,c:k%3});
+    if(still) draw();
+  }
+  var COL=['184,255,60','79,216,255','167,139,250'];
+  function draw(){
+    cx.setTransform(dpr,0,0,dpr,0,0); cx.clearRect(0,0,fw,fh);
+    for(var a=0;a<P.length;a++){
+      var p=P[a]; if(!still){ p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>1) p.vx*=-1; if(p.y<0||p.y>1) p.vy*=-1; }
+      for(var b=a+1;b<P.length;b++){
+        var q=P[b], dx=(p.x-q.x)*fw, dy=(p.y-q.y)*fh, d=Math.sqrt(dx*dx+dy*dy);
+        if(d<92){ cx.strokeStyle='rgba('+COL[p.c]+','+(0.34*(1-d/92)).toFixed(3)+')'; cx.lineWidth=1; cx.beginPath(); cx.moveTo(p.x*fw,p.y*fh); cx.lineTo(q.x*fw,q.y*fh); cx.stroke(); }
+      }
+      cx.fillStyle='rgba('+COL[p.c]+',.95)'; cx.beginPath(); cx.arc(p.x*fw,p.y*fh,p.r,0,6.283); cx.fill();
+    }
+  }
+  function loop(){ if(i===0 && !document.hidden) draw(); requestAnimationFrame(loop); }
+  var T=['напиши пост так, чтобы не было видно нейросеть','собери промпт под мою задачу','найди бриф клиента в моём Диске','переделай: каждое предложение по делу','сначала покажи план'];
+  var tEl=document.getElementById('type'), ti=0, tc=0, dir=1;
+  function type(){
+    var s=T[ti]; tc+=dir; tEl.textContent=s.slice(0,tc);
+    var wait=dir>0?48:18;
+    if(dir>0 && tc>=s.length){ dir=-1; wait=1700; }
+    else if(dir<0 && tc<=0){ dir=1; ti=(ti+1)%T.length; wait=350; }
+    setTimeout(type,wait);
+  }
+  fit(); addEventListener('resize',fit);
+  if(still){ tEl.textContent=T[0]; } else { requestAnimationFrame(loop); type(); }
   show(Math.max(0,byName((location.hash||'').slice(1))));
 })();
 </script>
