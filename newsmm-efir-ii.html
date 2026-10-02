@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1B1414">
+<title>New SMM · ИИ в работе SMM-специалиста</title>
+<link rel="preload" as="image" href="images/malena-b6.jpg">
+<style>
+
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/vsl/inter-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/vsl/inter-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vsl/inter-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vsl/inter-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/vsl/inter-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/vsl/inter-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vsl/playfair-display-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vsl/playfair-display-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/vsl/playfair-display-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/vsl/playfair-display-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:500;font-display:swap;src:url(fonts/vsl/playfair-display-cyrillic-500-italic.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:500;font-display:swap;src:url(fonts/vsl/playfair-display-latin-500-italic.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:600;font-display:swap;src:url(fonts/vsl/playfair-display-cyrillic-600-italic.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:600;font-display:swap;src:url(fonts/vsl/playfair-display-latin-600-italic.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vsl/jetbrains-mono-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/vsl/jetbrains-mono-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/vsl/jetbrains-mono-cyrillic-700-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/vsl/jetbrains-mono-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
+
+/* ─────────────────────────────────────────────────────────────
+   Эфир для учениц и выпускниц New SMM: «ИИ в работе SMM-специалиста».
+   Формат сторис, листается только по нажатию: справа вперёд, слева назад,
+   на компьютере стрелки и пробел. Продажи и нижней кнопки здесь нет.
+   У каждого запроса кнопка «Скопировать».
+   ───────────────────────────────────────────────────────────── */
+:root{--wine:#6E1E2B;--wine2:#8E2A3B;--ink:#1B1414;--gold:#D9A441;--paper:#F5EFE3;--cream:#FBF7EE;--ink2:#4A3F3F;--muted:#8A7C78;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0f0b0b;overflow:hidden;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+body{font-family:var(--sans);color:#fff;overscroll-behavior:none}
+em{font-style:italic;color:var(--gold)}
+b{font-weight:700}
+
+#bgblur{position:fixed;inset:-40px;background:url(images/malena-b4-blur.jpg) center/cover;filter:blur(30px) brightness(.35);display:none}
+#app{position:fixed;inset:0;margin:0 auto;max-width:560px;overflow:hidden;background:var(--ink);user-select:none;-webkit-user-select:none}
+@media (min-width:700px){
+  #bgblur{display:block}
+  #app{top:3vh;bottom:3vh;width:calc(94vh * 9 / 16);max-width:none;border-radius:18px;box-shadow:0 40px 120px -20px rgba(0,0,0,.8)}
+}
+
+/* шапка */
+#top{position:absolute;left:0;right:0;top:0;z-index:30;padding:calc(env(safe-area-inset-top) + 8px) 10px 26px;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,0))}
+#app.lite #top{background:linear-gradient(180deg,rgba(245,239,227,.9),rgba(245,239,227,0))}
+#bars{display:flex;gap:2px}
+#bars i{flex:1;height:2.5px;border-radius:2px;background:rgba(255,255,255,.35);overflow:hidden;position:relative}
+#app.lite #bars i{background:rgba(27,20,20,.18)}
+#bars i b{position:absolute;left:0;top:0;bottom:0;width:0;background:#fff;border-radius:2px}
+#app.lite #bars i b{background:var(--wine)}
+#who{display:flex;align-items:center;gap:9px;margin-top:10px}
+#who img{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:50% 15%;border:2px solid #fff}
+#who .nm{font-weight:600;font-size:14px}
+#who .ago{font-size:13px;color:rgba(255,255,255,.7);white-space:nowrap}
+#who .nm{white-space:nowrap}
+@media (max-width:400px){#who .ago{display:none}}
+#app.lite #who{color:var(--ink)}#app.lite #who .ago{color:var(--muted)}#app.lite #who img{border-color:var(--wine)}
+#pz{font-size:12px;font-family:var(--mono);opacity:0;transition:opacity .2s}
+#app.paused #pz{opacity:.8}
+#menuBtn{margin-left:auto;pointer-events:auto;border:1.5px solid rgba(255,255,255,.55);background:rgba(20,12,12,.3);color:#fff;border-radius:999px;
+  font:600 13px var(--sans);padding:7px 12px;cursor:pointer;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+#app.lite #menuBtn{border-color:rgba(27,20,20,.3);background:rgba(255,255,255,.6);color:var(--ink)}
+
+/* сторис */
+.st{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden;
+  padding:calc(env(safe-area-inset-top) + 76px) 20px calc(env(safe-area-inset-bottom) + 112px)}
+.st.on{display:flex}
+.st .ph{position:absolute;inset:0;z-index:0}
+.st .ph img{width:100%;height:100%;object-fit:cover}
+.st .ph::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,0) 28%,rgba(0,0,0,.3) 52%,rgba(10,6,6,.94) 100%)}
+.st .ph.dim::after{background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(10,6,6,.62) 35%,rgba(10,6,6,.94) 70%)}
+.st > *:not(.ph){position:relative;z-index:1}
+.st.wine{background:radial-gradient(120% 80% at 80% 10%,#8E2A3B 0%,#5A1722 45%,#2A0B11 100%)}
+.st.ink{background:radial-gradient(120% 80% at 20% 0%,#3A2323 0%,#1B1414 55%,#0f0b0b 100%)}
+.st.paper{background:radial-gradient(120% 80% at 80% 0%,#FBF7EE 0%,#F1E7D6 60%,#E6D7BF 100%);color:var(--ink)}
+.st.cream2{background:radial-gradient(120% 80% at 10% 0%,#FBF7EE 0%,#EFE3D0 60%,#E2D0B4 100%);color:var(--ink)}
+.st.paper em,.st.cream2 em{color:var(--wine)}
+.st.on .anim{animation:rise .55s cubic-bezier(.2,.7,.2,1) both}
+.st.on .anim.d1{animation-delay:.12s}.st.on .anim.d2{animation-delay:.28s}.st.on .anim.d3{animation-delay:.44s}.st.on .anim.d4{animation-delay:.6s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.push{flex:1}
+
+.big{font-family:var(--serif);font-weight:500;font-size:44px;line-height:1.04;letter-spacing:-.015em}
+.mid{font-family:var(--serif);font-weight:500;font-size:31px;line-height:1.1}
+.txt{font-size:18px;line-height:1.42}
+.lab{font-family:var(--mono);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.hl{display:inline;background:#fff;color:var(--ink);padding:3px 9px;line-height:1.62;border-radius:8px;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;font-weight:600;font-size:18px}
+.hl.w{background:var(--wine);color:#fff}.hl.g{background:var(--gold);color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:6px 11px;font-size:13.5px;font-weight:500;background:rgba(0,0,0,.2)}
+
+.stk{background:rgba(255,255,255,.96);color:var(--ink);border-radius:18px;padding:13px 15px;box-shadow:0 12px 30px -12px rgba(0,0,0,.35)}
+.stk .n{font-family:var(--serif);font-size:34px;line-height:1;color:var(--wine)}
+.stk .t{font-size:14.5px;line-height:1.3;margin-top:4px;color:var(--ink2)}
+.stk .k,.res .k,.upx b{display:block;font-family:var(--mono);font-weight:700;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.stk.tilt-l{transform:rotate(-2deg)}.stk.tilt-r{transform:rotate(2deg)}
+.stack{display:flex;flex-direction:column;gap:10px}
+.two{display:flex;gap:10px}.two > *{flex:1}
+.ul{list-style:none;display:grid;gap:6px}
+.ul li{position:relative;padding-left:16px;font-size:15px;line-height:1.3}
+.ul li::before{content:'';position:absolute;left:0;top:7px;width:7px;height:7px;border-radius:50%;background:var(--wine)}
+.dk .ul li::before,.st.ink .ul li::before,.st.wine .ul li::before{background:var(--gold)}
+
+/* блок программы */
+.bh{display:flex;align-items:center;gap:10px}
+.bn{font-family:var(--serif);font-size:44px;line-height:1;color:var(--wine)}
+.tgs{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tg{font-size:12px;font-weight:600;border-radius:999px;padding:4px 10px;border:1px solid rgba(110,30,43,.35);color:var(--wine)}
+.tg.on{background:var(--wine);color:#fff;border-color:var(--wine)}
+.blk .stk{margin-top:0}
+.ul li.mg{font-weight:700;color:var(--wine)}.ul li.mg::before{content:'✦';background:none;width:auto;height:auto;top:0;left:-1px;font-size:12px;color:var(--gold);border-radius:0}
+.res{margin-top:10px;background:var(--ink);color:#F6EFE2;border-radius:16px;padding:12px 15px;font-size:15.5px;line-height:1.35;box-shadow:0 12px 30px -14px rgba(0,0,0,.5)}
+.res .k{color:var(--gold)}
+.upx{margin-top:10px;border:1.5px dashed var(--wine);border-radius:14px;padding:10px 14px;font-size:14px;line-height:1.35;color:var(--ink2);background:rgba(255,255,255,.5)}
+.upx b{color:var(--wine)}
+
+/* оглавление программы */
+.toc{list-style:none;display:grid;gap:5px;margin-top:4px}
+.toc li{display:flex;gap:10px;align-items:baseline;font-size:15px;line-height:1.25;padding:6px 10px;border-radius:10px;background:rgba(255,255,255,.08);cursor:pointer}
+.toc li b{font-family:var(--mono);font-size:12px;color:var(--gold);flex:0 0 22px}
+.toc .sep{background:none;padding:6px 2px 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);cursor:default}
+
+/* тарифы */
+.price{display:flex;align-items:baseline;gap:10px;margin-top:6px}
+.price .now{font-family:var(--serif);font-size:46px;line-height:1}
+.price .old{font-size:13.5px;opacity:.75}
+.mini{font-size:13px;line-height:1.35;opacity:.8}
+.cols3{display:grid;gap:8px}
+.cc{border-radius:16px;padding:11px 13px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
+.cc.g{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.cc .k{font-family:var(--mono);font-weight:700;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.cc.g .k{color:var(--wine)}
+.cc .ul li{font-size:14px}
+.cc.g .ul li::before{background:var(--wine)}
+
+/* цены */
+.steps{display:grid;gap:8px}
+.sp{display:flex;align-items:center;gap:12px;border-radius:16px;padding:12px 14px;border:1px solid rgba(255,255,255,.18)}
+.sp .d{flex:0 0 112px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+.sp .p{font-size:15.5px;line-height:1.3}
+.sp .p b{font-family:var(--serif);font-weight:500;font-size:20px}
+.sp.cur{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.sp.past{opacity:.35;text-decoration:line-through}
+.sp .now{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+
+/* оплата и форма: интерактивные, без таймера, с прокруткой внутри */
+.st.scroll{overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:calc(env(safe-area-inset-bottom) + 30px)}
+.card{background:#fff;color:var(--ink);border-radius:20px;padding:16px;box-shadow:0 18px 44px -18px rgba(0,0,0,.45)}
+.card h3{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.15}
+.card p{font-size:14.5px;color:var(--ink2);margin-top:6px;line-height:1.4}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.seg button{flex:1;min-width:84px;border:0;background:#F2EDE6;border-radius:12px;padding:11px 6px;font:600 14px var(--sans);color:var(--ink);cursor:pointer}
+.seg button.on{background:var(--wine);color:#fff}
+input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
+.outb{font-family:var(--serif);font-size:34px;margin-top:8px;line-height:1.05}
+.outb small{font-family:var(--sans);font-size:13.5px;color:var(--muted)}
+.who2{margin-top:8px;font-size:13.5px;color:var(--ink2);background:#F6EFE3;border-radius:10px;padding:9px 11px;line-height:1.35}
+.go{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:12px;background:var(--wine);color:#fff;border:0;border-radius:14px;font:700 16px var(--sans);padding:15px;cursor:pointer;text-decoration:none}
+.go.gold{background:var(--gold);color:var(--ink)}
+.go.ghost{background:transparent;border:1.5px solid var(--wine);color:var(--wine)}
+.go:disabled{opacity:.55}
+.fl{display:block;font-size:13px;font-weight:600;color:var(--ink2);margin-top:12px}
+.fld{display:block;width:100%;font:500 16px var(--sans);color:var(--ink);background:#F2EDE6;border:2px solid transparent;border-radius:12px;padding:12px 12px;outline:0;margin-top:6px;-webkit-appearance:none;appearance:none}
+.fld:focus{border-color:var(--wine);background:#fff}
+.idb{margin-top:12px;border:1.5px dashed var(--wine);border-radius:14px;padding:12px;background:#FBF7EE}
+.idb p{font-size:13px;margin:0 0 8px}
+.drop{display:flex;align-items:center;gap:10px;border-radius:10px;padding:8px;background:#fff;border:1px solid #E6DACB;margin-top:6px;cursor:pointer;font-size:14px}
+.drop img{width:54px;height:38px;object-fit:cover;border-radius:6px;background:#EFE5D6}
+.drop input{display:none}
+.cons{display:flex;gap:9px;align-items:flex-start;font-size:12.5px;color:var(--ink2);margin-top:12px;line-height:1.35}
+.cons input{width:18px;height:18px;margin-top:1px;accent-color:var(--wine);flex:0 0 18px}
+.err{display:none;color:#B3261E;font-size:14px;margin-top:8px;text-align:center}
+.ok{font-size:56px;line-height:1;width:92px;height:92px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;margin:0 auto 18px}
+.lnk{display:block;text-align:center;margin-top:12px;font-size:13.5px;color:inherit;opacity:.8}
+
+/* главная кнопка */
+#link{position:absolute;left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom) + 16px);z-index:30;display:flex;flex-direction:column;align-items:center;gap:7px;transition:opacity .25s,transform .25s}
+#link .cap{font:600 12px var(--sans);color:rgba(255,255,255,.92);text-shadow:0 1px 6px rgba(0,0,0,.6)}
+#link button{position:relative;overflow:hidden;width:100%;display:flex;align-items:center;justify-content:center;gap:12px;
+  background:linear-gradient(135deg,#8E2A3B 0%,#6E1E2B 60%,#551521 100%);color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:18px;
+  font:700 17px var(--sans);padding:16px 18px;cursor:pointer;box-shadow:0 14px 34px -10px rgba(110,30,43,.95);animation:ring 2.4s ease-out infinite}
+#link button .ar{width:30px;height:30px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;font-size:17px;flex:0 0 30px}
+#link button::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.28),rgba(255,255,255,0));transform:skewX(-20deg);animation:shine 3.2s ease-in-out infinite}
+@keyframes shine{0%,55%{left:-60%}85%,100%{left:130%}}
+@keyframes ring{0%{box-shadow:0 14px 34px -10px rgba(110,30,43,.95),0 0 0 0 rgba(217,164,65,.55)}70%{box-shadow:0 14px 34px -10px rgba(110,30,43,.95),0 0 0 12px rgba(217,164,65,0)}100%{box-shadow:0 14px 34px -10px rgba(110,30,43,.95),0 0 0 0 rgba(217,164,65,0)}}
+#app.lite #link .cap{color:var(--ink2);text-shadow:none}
+#link .cap,#link button,#link button .ar{transition:all .35s ease}
+#link.calm .cap{opacity:0;height:0;margin:-7px 0 0;overflow:hidden}
+#link.calm button{background:rgba(20,12,12,.34);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-color:rgba(255,255,255,.4);font-size:15px;font-weight:600;padding:12px 16px;box-shadow:none;animation:none}
+#link.calm button::after{display:none}
+#link.calm button .ar{width:24px;height:24px;flex-basis:24px;font-size:14px;background:rgba(255,255,255,.2);color:#fff}
+#app.lite #link.calm button{background:rgba(27,20,20,.08);color:var(--ink);border-color:rgba(27,20,20,.25)}
+#app.lite #link.calm button .ar{background:rgba(27,20,20,.1);color:var(--ink)}
+#link.hide{opacity:0;transform:translateY(10px)}#link.hide button{pointer-events:none}
+@media (prefers-reduced-motion:reduce){#link button,#link button::after{animation:none}.st.on .anim{animation:none}}
+
+/* подсказка */
+#hint{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top) + 64px);bottom:calc(env(safe-area-inset-bottom) + 108px);z-index:40;
+  display:flex;background:rgba(10,6,6,.55);opacity:0;pointer-events:none;transition:opacity .35s}
+#hint.on{opacity:1;pointer-events:auto}
+#hint span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font:600 14px var(--sans);color:#fff;text-align:center;line-height:1.3}
+#hint span:nth-child(1){flex:0 0 30%;border-right:1.5px dashed rgba(255,255,255,.45)}
+#hint span:nth-child(2){flex:1;border-right:1.5px dashed rgba(255,255,255,.45)}
+#hint span:nth-child(3){flex:0 0 30%}
+#hint i{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.16);border:2px solid #fff;display:grid;place-items:center;font-style:normal;font-size:20px}
+#hint .pp{display:flex;gap:6px}#hint .pp u{width:5px;height:16px;border-radius:2px;background:#fff}
+#hint b{position:absolute;left:0;right:0;top:14px;text-align:center;font:600 12px var(--sans);color:rgba(255,255,255,.75)}
+
+/* меню разделов */
+#menu{position:absolute;inset:0;z-index:50;background:rgba(10,6,6,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:none;align-items:flex-end}
+#menu.on{display:flex}
+#menu .sh{width:100%;background:var(--cream);color:var(--ink);border-radius:24px 24px 0 0;padding:18px 18px calc(env(safe-area-inset-bottom) + 18px);max-height:86%;overflow-y:auto}
+#menu h3{font-family:var(--serif);font-weight:500;font-size:24px;margin-bottom:10px}
+#menu .mi{display:flex;align-items:center;justify-content:space-between;width:100%;border:0;background:#F2EDE6;border-radius:14px;padding:14px 16px;font:600 16px var(--sans);color:var(--ink);margin-top:8px;cursor:pointer;text-align:left}
+#menu .mi span{color:var(--muted);font-weight:500;font-size:13px}
+#menu .x{float:right;border:0;background:none;font-size:26px;line-height:1;color:var(--ink);cursor:pointer}
+
+@media (max-height:700px){
+  .big{font-size:36px}.mid{font-size:26px}.txt{font-size:16px}.hl{font-size:16px}
+  .stk .n{font-size:28px}.stk{padding:10px 13px}.stack{gap:8px}
+  .ul li{font-size:13.5px}.res{font-size:14px;padding:10px 13px}.upx{font-size:13px;padding:8px 12px}
+  .bn{font-size:36px}.price .now{font-size:38px}.cc .ul li{font-size:13px}
+  .st{padding-top:calc(env(safe-area-inset-top) + 70px);padding-bottom:calc(env(safe-area-inset-bottom) + 100px)}
+  .toc li{font-size:13.5px;padding:4px 8px}
+  .blk .mid{font-size:23px;margin-top:4px!important}.blk .bn{font-size:30px}.blk .ul{gap:4px}.blk .ul li{font-size:13px;line-height:1.25}.blk .stk{padding:9px 12px}.blk .res{margin-top:7px;font-size:13.5px;padding:8px 12px}.blk .upx{margin-top:7px;font-size:12.5px;padding:7px 11px}.blk .tgs{margin-top:6px}
+}
+@media (max-height:740px){.toc{grid-template-columns:1fr 1fr;gap:4px}.toc .sep{grid-column:1/-1}.toc li{font-size:12.5px;padding:5px 7px;gap:6px}.toc li b{flex-basis:18px;font-size:11px}}
+@media (max-height:620px){.mid{font-size:22px}.ul{gap:3px}.tgs{margin-top:5px}.tg{font-size:11px;padding:3px 8px}.res{margin-top:6px;font-size:13px}.upx{margin-top:6px;font-size:12px}
+  .blk .ul li:nth-child(4){display:none}.toc li{font-size:11.5px;padding:3px 6px}.toc{gap:3px}.bn{font-size:30px}.chips .chip:nth-child(4){display:none}.ul li.opt{display:none}.blk .mid{font-size:21px}.blk .ul li{font-size:12.5px}.blk .res{font-size:12.5px;padding:7px 11px}.blk .upx{font-size:11.5px;padding:6px 10px}.blk .ul{gap:2px}.price .now{font-size:32px}.stk .n{font-size:24px}
+  .st{padding-bottom:calc(env(safe-area-inset-bottom) + 96px)}#link button{padding:13px 16px;font-size:16px}}
+
+
+/* ── эфир: без нижней кнопки, поэтому экран выше ── */
+.st{padding-bottom:calc(env(safe-area-inset-bottom) + 26px)}
+#hint{bottom:0}
+.pr{background:var(--ink);color:#F6EFE2;border-radius:16px;padding:12px 14px 12px;box-shadow:0 14px 34px -14px rgba(0,0,0,.55)}
+.pr .hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+.pr .k{font-family:var(--mono);font-weight:700;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.pr p{font-size:14.5px;line-height:1.42}
+.pr p i{font-style:normal;color:var(--gold)}
+.cp{border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);color:#fff;border-radius:999px;font:600 12px var(--sans);padding:5px 11px;cursor:pointer}
+.cp.ok{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.fr{display:grid;gap:8px}
+.fr > div{display:grid;grid-template-columns:92px 1fr;gap:10px;align-items:baseline;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:10px 12px}
+.fr b{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.fr span{font-size:15px;line-height:1.3}
+.col2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.col2 .stk{padding:12px 12px}
+.col2 .ul li{font-size:14px}
+.stk.dk{background:var(--ink);color:#F6EFE2}.stk.dk .k{color:var(--gold)}.stk.dk .ul li::before{background:var(--gold)}
+.stk.gd{background:var(--gold)}.stk.gd .k{color:var(--wine)}
+.q{font-family:var(--serif);font-size:19px;line-height:1.25;color:var(--ink)}
+.stk .a{font-size:13.5px;line-height:1.3;color:var(--ink2);margin-top:6px}
+.nl{list-style:none;display:grid;gap:7px;counter-reset:n}
+.nl li{counter-increment:n;display:grid;grid-template-columns:30px 1fr;gap:8px;align-items:baseline;font-size:16px;line-height:1.3}
+.nl li::before{content:counter(n);font-family:var(--serif);font-size:24px;color:var(--gold);line-height:1}
+.st.paper .nl li::before,.st.cream2 .nl li::before{color:var(--wine)}
+.toc li span{opacity:.65;font-size:13px}
+.toc{grid-template-columns:1fr!important;gap:7px!important}
+.toc li{font-size:16.5px!important;padding:11px 13px!important;gap:10px!important}
+.toc li b{flex-basis:24px!important;font-size:12px!important}
+.pr p{font-size:15.5px}.upx{font-size:14.5px}.nl{gap:12px}.nl li{font-size:18px}.nl li::before{font-size:28px}
+@media (max-height:700px){
+  .pr p{font-size:14px;line-height:1.36}.pr{padding:10px 12px}.upx{font-size:13.5px}.q{font-size:17px}
+  .nl{gap:9px}.nl li{font-size:15.5px}.nl li::before{font-size:22px}
+  .fr span{font-size:13.5px}.fr > div{padding:8px 10px}.col2 .ul li{font-size:13px}
+  .toc li{font-size:14.5px!important;padding:8px 11px!important}
+}
+@media (max-height:620px){
+  .pr p{font-size:13px}.upx{font-size:12.5px}.fr{gap:6px}.nl{gap:6px}.nl li{font-size:14px}.col2 .ul li{font-size:12.5px}.stk .a{font-size:12.5px}
+  .toc{gap:5px!important}.toc li{font-size:13.5px!important;padding:6px 10px!important}
+}
+
+</style>
+</head>
+<body>
+<div id="bgblur"></div>
+<div id="app">
+
+  <div id="top">
+    <div id="bars"></div>
+    <div id="who"><img src="images/malena-avatar-v1.jpg" alt=""><span class="nm">Малена Покладова</span><span class="ago">· эфир New SMM</span>
+      <button type="button" id="menuBtn">Разделы</button></div>
+  </div>
+
+  <!-- обложка -->
+  <section class="st" data-name="cover">
+    <div class="ph"><img src="images/malena-b6.jpg" alt="Малена Покладова" style="object-position:50% 22%"></div>
+    <div class="push"></div>
+    <div class="lab anim">Эфир для учениц и выпускниц</div>
+    <div class="big anim d1" style="margin-top:10px">ИИ в работе <em>SMM-специалиста</em></div>
+    <div class="anim d2" style="margin-top:14px"><span class="hl">Что отдать нейросети</span><br><span class="hl">и что оставить себе</span></div>
+    <div class="chips anim d3" style="margin-top:14px"><span class="chip">40 минут</span><span class="chip">ChatGPT и Claude</span><span class="chip">7 готовых запросов</span></div>
+  </section>
+
+  <!-- план -->
+  <section class="st ink" data-name="plan">
+    <div class="lab anim">План эфира</div>
+    <div class="mid anim d1" style="margin-top:10px">Сорок минут, <em>пять частей</em></div>
+    <div class="push"></div>
+    <ul class="toc anim d2">
+      <li data-go="split"><b>01</b>Что отдать ИИ и что оставить себе</li>
+      <li data-go="assistant"><b>02</b>Ассистент, который знает вашего клиента</li>
+      <li data-go="formula"><b>03</b>Формула запроса из пяти строк</li>
+      <li data-go="map"><b>04</b>7 запросов на весь цикл работы</li>
+      <li data-go="mistakes"><b>05</b>Где ИИ вредит и как себя проверять</li>
+    </ul>
+    <p class="mini anim d3" style="margin-top:14px">В конце задание и ответы на вопросы. Ссылка на эту презентацию останется у вас: каждый запрос можно скопировать одной кнопкой.</p>
+    <div class="push"></div>
+  </section>
+
+  <!-- часть 1 -->
+  <section class="st paper" data-name="split">
+    <div class="lab anim" style="color:var(--wine)">Часть 1</div>
+    <div class="mid anim d1" style="margin-top:10px">ИИ делает черновик. <em>Решаете вы</em></div>
+    <div class="push"></div>
+    <div class="col2 anim d2">
+      <div class="stk"><div class="k">Отдаём ИИ</div><ul class="ul"><li>Варианты идей и хуков</li><li>Черновики сценариев и текстов</li><li>Разбор цифр и конкурентов</li><li>Перевод и письма на английском</li></ul></div>
+      <div class="stk dk"><div class="k">Оставляем себе</div><ul class="ul"><li>Стратегию и приоритеты</li><li>Голос клиента</li><li>Факты, цены и цифры</li><li>Решение «публикуем»</li></ul></div>
+    </div>
+    <div class="res anim d3"><div class="k">Правило</div>Всё, что написала нейросеть, до публикации читает человек</div>
+    <div class="push"></div>
+  </section>
+
+  <section class="st ink" data-name="context">
+    <div class="lab anim">Часть 1</div>
+    <div class="mid anim d1" style="margin-top:10px">Почему ИИ пишет <em>как у всех</em></div>
+    <div class="push"></div>
+    <div class="stack">
+      <div class="stk anim d2"><div class="k">Запрос без контекста</div><div class="q">«Напиши пост про маникюр»</div><div class="a">Ответ подойдёт любому салону в мире. Поэтому не подойдёт вашему клиенту.</div></div>
+      <div class="stk gd anim d3"><div class="k">Тот же запрос с контекстом · пример</div><div class="q">«Студия в Кишинёве, чек $35. Клиентки от 25 до 40 лет боятся, что покрытие не продержится. Напиши пост для них»</div><div class="a" style="color:var(--ink)">Ответ про конкретных людей и их страх.</div></div>
+    </div>
+    <p class="mini anim d4" style="margin-top:12px">Нейросеть знает всё про маникюр и ничего про вашего клиента. Контекст даёте вы.</p>
+    <div class="push"></div>
+  </section>
+
+  <!-- часть 2 -->
+  <section class="st cream2" data-name="assistant">
+    <div class="lab anim" style="color:var(--wine)">Часть 2</div>
+    <div class="mid anim d1" style="margin-top:10px">Ассистент, который <em>знает клиента</em></div>
+    <p class="mini anim d1" style="margin-top:6px;color:var(--ink2)">Один раз собираете карточку клиента и кладёте её в проект в ChatGPT или Claude. Дальше каждый запрос опирается на неё.</p>
+    <div class="push"></div>
+    <div class="stk anim d2"><div class="k">Карточка клиента: шесть пунктов</div><ul class="ul">
+      <li class="mg">Кто клиент, что продаёт и по каким ценам</li>
+      <li>Кто покупает и чего боится</li>
+      <li>Слова самих клиентов: отзывы и вопросы из директа</li>
+      <li>Тон: три лучших поста клиента как образец</li>
+      <li>Что нельзя: обещания, слова, темы</li>
+      <li>Цель на месяц в цифрах: заявки, записи, продажи</li></ul></div>
+    <div class="res anim d3"><div class="k">Что это даёт</div>Нейросеть отвечает про вашего клиента с первого запроса. Объяснять заново каждый раз не нужно</div>
+    <div class="push"></div>
+  </section>
+
+  <!-- часть 3 -->
+  <section class="st wine" data-name="formula">
+    <div class="lab anim">Часть 3</div>
+    <div class="mid anim d1" style="margin-top:10px">Формула запроса: <em>пять строк</em></div>
+    <div class="push"></div>
+    <div class="fr anim d2">
+      <div><b>Роль</b><span>«Ты SMM-специалист студии красоты»</span></div>
+      <div><b>Контекст</b><span>Карточка клиента или её часть</span></div>
+      <div><b>Задача</b><span>Одно действие: написать, сравнить, выбрать</span></div>
+      <div><b>Формат</b><span>Сколько вариантов, какой длины, в каком виде</span></div>
+      <div><b>Пример</b><span>Образец, на который нужно равняться</span></div>
+    </div>
+    <p class="mini anim d3" style="margin-top:12px">Чем точнее две последние строки, тем меньше правок потом. Если ответ не тот, уточняйте в этом же диалоге: «короче», «проще», «без пафоса».</p>
+    <div class="push"></div>
+  </section>
+
+  <!-- часть 4 -->
+  <section class="st ink" data-name="map">
+    <div class="lab anim">Часть 4</div>
+    <div class="mid anim d1" style="margin-top:10px">ИИ на <em>каждом этапе</em> работы</div>
+    <p class="mini anim d1" style="margin-top:6px">Нажмите на этап, чтобы открыть запрос.</p>
+    <div class="push"></div>
+    <ul class="toc anim d2">
+      <li data-go="p1"><b>01</b>Стратегия: разбор конкурентов</li><li data-go="p2"><b>02</b>Идеи: банк на месяц</li><li data-go="p3"><b>03</b>Сценарии: хуки и структура</li><li data-go="p4"><b>04</b>Съёмка: шот-лист</li><li data-go="p5"><b>05</b>Тексты и сторис на неделю</li>
+      <li data-go="media"><b>✦</b>Картинки и видео</li>
+      <li data-go="p6"><b>06</b>Аналитика: разбор цифр</li><li data-go="p7"><b>07</b>Клиенты: первое сообщение</li>
+    </ul>
+    <div class="push"></div>
+  </section>
+
+  <section class="st paper blk" data-name="p1">
+    <div class="bh anim"><span class="bn">01</span><span class="lab" style="color:var(--wine)">Запрос 1 из 7</span></div>
+    <div class="mid anim d1" style="margin-top:8px">Стратегия: разбор конкурентов</div>
+    <div class="pr anim d2" style="margin-top:22px"><div class="hd"><span class="k">Запрос</span><button type="button" class="cp" data-copy="Ты стратег SMM. Ниже три аккаунта конкурентов моего клиента: [шапка профиля, темы последних 15 постов, закрепы]. Найди: что повторяется у всех, о чём не говорит никто, три темы, на которых мой клиент может отличаться. Ответ таблицей.">Скопировать</button></div><p>Ты стратег SMM. Ниже три аккаунта конкурентов моего клиента: <i>[шапка профиля, темы последних 15 постов, закрепы]</i>. Найди: что повторяется у всех, о чём не говорит никто, три темы, на которых мой клиент может отличаться. Ответ таблицей.</p></div>
+    <div class="upx anim d3"><b>Проверьте сами</b>Данные об аккаунтах дайте сами: текстом или скриншотами. Без них нейросеть начнёт додумывать.</div>
+    <div class="push"></div>
+  </section>
+  <section class="st cream2 blk" data-name="p2">
+    <div class="bh anim"><span class="bn">02</span><span class="lab" style="color:var(--wine)">Запрос 2 из 7</span></div>
+    <div class="mid anim d1" style="margin-top:8px">Идеи: банк на месяц</div>
+    <div class="pr anim d2" style="margin-top:22px"><div class="hd"><span class="k">Запрос</span><button type="button" class="cp" data-copy="По карточке клиента составь 30 идей для Reels на месяц. Раздели на четыре формата: продающие, экспертные, вирусные, трендовые. Для каждой идеи: тема одной строкой, для кого она, что зритель делает после просмотра. Без общих тем вроде «5 советов».">Скопировать</button></div><p>По карточке клиента составь 30 идей для Reels на месяц. Раздели на четыре формата: продающие, экспертные, вирусные, трендовые. Для каждой идеи: тема одной строкой, для кого она, что зритель делает после просмотра. Без общих тем вроде «5 советов».</p></div>
+    <div class="upx anim d3"><b>Проверьте сами</b>Оставьте 10 идей, которые вам самой хочется снять. Остальные удаляйте без сожаления.</div>
+    <div class="push"></div>
+  </section>
+  <section class="st paper blk" data-name="p3">
+    <div class="bh anim"><span class="bn">03</span><span class="lab" style="color:var(--wine)">Запрос 3 из 7</span></div>
+    <div class="mid anim d1" style="margin-top:8px">Сценарии: хуки и структура</div>
+    <div class="pr anim d2" style="margin-top:22px"><div class="hd"><span class="k">Запрос</span><button type="button" class="cp" data-copy="Вот идея ролика: [идея]. Напиши 10 вариантов первой фразы по формулам: шок-цифра, прямой вызов, любопытство, список с числом, признание. Затем сценарий на 30 секунд под лучший вариант: хук, польза, призыв. Короткими фразами, как говорят люди.">Скопировать</button></div><p>Вот идея ролика: <i>[идея]</i>. Напиши 10 вариантов первой фразы по формулам: шок-цифра, прямой вызов, любопытство, список с числом, признание. Затем сценарий на 30 секунд под лучший вариант: хук, польза, призыв. Короткими фразами, как говорят люди.</p></div>
+    <div class="upx anim d3"><b>Проверьте сами</b>Прочитайте вслух. Всё, что звучит как реклама по телевизору, перепишите своими словами.</div>
+    <div class="push"></div>
+  </section>
+  <section class="st cream2 blk" data-name="p4">
+    <div class="bh anim"><span class="bn">04</span><span class="lab" style="color:var(--wine)">Запрос 4 из 7</span></div>
+    <div class="mid anim d1" style="margin-top:8px">Съёмка: шот-лист</div>
+    <div class="pr anim d2" style="margin-top:22px"><div class="hd"><span class="k">Запрос</span><button type="button" class="cp" data-copy="Вот три сценария: [сценарии]. Собери шот-лист на один съёмочный день: какие кадры снять и в каком порядке, чтобы не переставлять свет и не менять локацию. Отдельно список футажей: деталь, общий план, движение, по 3-5 секунд.">Скопировать</button></div><p>Вот три сценария: <i>[сценарии]</i>. Собери шот-лист на один съёмочный день: какие кадры снять и в каком порядке, чтобы не переставлять свет и не менять локацию. Отдельно список футажей: деталь, общий план, движение, по 3-5 секунд.</p></div>
+    <div class="upx anim d3"><b>Проверьте сами</b>Сверьте с реальной локацией клиента. Нейросеть не знает, где у него окно и сколько там места.</div>
+    <div class="push"></div>
+  </section>
+  <section class="st paper blk" data-name="p5">
+    <div class="bh anim"><span class="bn">05</span><span class="lab" style="color:var(--wine)">Запрос 5 из 7</span></div>
+    <div class="mid anim d1" style="margin-top:8px">Тексты и сторис на неделю</div>
+    <div class="pr anim d2" style="margin-top:22px"><div class="hd"><span class="k">Запрос</span><button type="button" class="cp" data-copy="По карточке клиента напиши план сторис на неделю: 4-6 сторис в день, сюжет дня одной строкой. В понедельник и четверг прогрев к записи. Добавь подписи к трём роликам недели: до 400 знаков, первая строка цепляет, в конце одно действие.">Скопировать</button></div><p>По карточке клиента напиши план сторис на неделю: 4-6 сторис в день, сюжет дня одной строкой. В понедельник и четверг прогрев к записи. Добавь подписи к трём роликам недели: до 400 знаков, первая строка цепляет, в конце одно действие.</p></div>
+    <div class="upx anim d3"><b>Проверьте сами</b>Уберите слова, которых клиент никогда не скажет. Проверьте цены, адреса и часы работы.</div>
+    <div class="push"></div>
+  </section>
+
+  <section class="st ink" data-name="media">
+    <div class="lab anim">Часть 4 · картинки и видео</div>
+    <div class="mid anim d1" style="margin-top:10px">Где нейросеть <em>украшает</em> ролик и где портит</div>
+    <div class="push"></div>
+    <div class="col2 anim d2">
+      <div class="stk"><div class="k">Помогает</div><ul class="ul"><li>Обложки и фоны</li><li>Вставки на одну-две секунды</li><li>Иллюстрация к мысли, которую нечем снять</li><li>Раскадровка до съёмки</li></ul></div>
+      <div class="stk gd"><div class="k">Портит</div><ul class="ul"><li>Замена живого клиента и его продукта</li><li>Лица и руки крупным планом</li><li>Текст внутри картинки</li><li>Одинаковые глянцевые сцены</li></ul></div>
+    </div>
+    <div class="res anim d3" style="background:#fff;color:var(--ink)"><div class="k" style="color:var(--wine)">Ориентир</div>Зритель покупает у живого человека. Нейросеть иллюстрирует, клиент в кадре настоящий</div>
+    <div class="push"></div>
+  </section>
+
+  <section class="st cream2 blk" data-name="p6">
+    <div class="bh anim"><span class="bn">06</span><span class="lab" style="color:var(--wine)">Запрос 6 из 7</span></div>
+    <div class="mid anim d1" style="margin-top:8px">Аналитика: разбор цифр</div>
+    <div class="pr anim d2" style="margin-top:22px"><div class="hd"><span class="k">Запрос</span><button type="button" class="cp" data-copy="Вот статистика аккаунта за месяц: [таблица или скриншоты]. Покажи три ролика с лучшим удержанием и что у них общего, три худших и почему, какие темы привели заявки. Дай три гипотезы на следующую неделю. Если данных не хватает, скажи об этом и ничего не додумывай.">Скопировать</button></div><p>Вот статистика аккаунта за месяц: <i>[таблица или скриншоты]</i>. Покажи три ролика с лучшим удержанием и что у них общего, три худших и почему, какие темы привели заявки. Дай три гипотезы на следующую неделю. Если данных не хватает, скажи об этом и ничего не додумывай.</p></div>
+    <div class="upx anim d3"><b>Проверьте сами</b>Ключевые цифры пересчитайте сами. В подсчётах нейросеть ошибается чаще, чем в текстах.</div>
+    <div class="push"></div>
+  </section>
+  <section class="st paper blk" data-name="p7">
+    <div class="bh anim"><span class="bn">07</span><span class="lab" style="color:var(--wine)">Запрос 7 из 7</span></div>
+    <div class="mid anim d1" style="margin-top:8px">Клиенты: первое сообщение</div>
+    <div class="pr anim d2" style="margin-top:22px"><div class="hd"><span class="k">Запрос</span><button type="button" class="cp" data-copy="Я SMM-специалист, пишу владельцу [ниша] в [город]. Вот что я вижу в его аккаунте: [наблюдения]. Напиши первое сообщение на английском: одно наблюдение про его аккаунт, одна идея, один вопрос. До 60 слов, без комплиментов и без слова «услуги».">Скопировать</button></div><p>Я SMM-специалист, пишу владельцу <i>[ниша]</i> в <i>[город]</i>. Вот что я вижу в его аккаунте: <i>[наблюдения]</i>. Напиши первое сообщение на английском: одно наблюдение про его аккаунт, одна идея, один вопрос. До 60 слов, без комплиментов и без слова «услуги».</p></div>
+    <div class="upx anim d3"><b>Проверьте сами</b>Наблюдение должно быть вашим. Сообщение без личной детали читается как рассылка.</div>
+    <div class="push"></div>
+  </section>
+
+  <!-- часть 5 -->
+  <section class="st wine" data-name="mistakes">
+    <div class="lab anim">Часть 5</div>
+    <div class="mid anim d1" style="margin-top:10px">Пять способов <em>испортить работу</em> нейросетью</div>
+    <div class="push"></div>
+    <ol class="nl anim d2">
+      <li>Публиковать, не прочитав</li>
+      <li>Верить фактам и цифрам на слово</li>
+      <li>Писать одним тоном для всех клиентов</li>
+      <li>Загружать паспорта, платёжные данные и личные переписки клиентов</li>
+      <li>Просить «сделай стратегию», не дав данных</li>
+    </ol>
+    <div class="push"></div>
+  </section>
+
+  <section class="st paper" data-name="check">
+    <div class="lab anim" style="color:var(--wine)">Часть 5</div>
+    <div class="mid anim d1" style="margin-top:10px">Четыре вопроса <em>перед публикацией</em></div>
+    <div class="push"></div>
+    <div class="stack">
+      <div class="stk anim d2"><div class="q">Это правда?</div><div class="a">Цены, сроки, результаты, имена.</div></div>
+      <div class="stk anim d2"><div class="q">Так говорит клиент?</div><div class="a">Его слова, его интонация.</div></div>
+      <div class="stk anim d3"><div class="q">Поймёт человек с улицы?</div><div class="a">Без терминов и без канцелярита.</div></div>
+      <div class="stk dk anim d4"><div class="q" style="color:#fff">Есть одно действие в конце?</div><div class="a" style="color:#E9DFCF">Записаться, написать, сохранить.</div></div>
+    </div>
+    <div class="push"></div>
+  </section>
+
+  <!-- задание -->
+  <section class="st ink" data-name="task">
+    <div class="lab anim">Задание</div>
+    <div class="mid anim d1" style="margin-top:10px">Соберите <em>своего ассистента</em></div>
+    <div class="push"></div>
+    <ol class="nl anim d2">
+      <li>Карточка клиента по шести пунктам</li>
+      <li>Проект в ChatGPT или Claude с этой карточкой</li>
+      <li>Запрос 2: тридцать идей, оставьте десять</li>
+      <li>Запрос 3: три сценария под лучшие идеи</li>
+    </ol>
+    <div class="res anim d3" style="background:var(--gold);color:var(--ink)"><div class="k" style="color:var(--wine)">Что дальше</div>Пришлите карточку и сценарии в чат потока: разберём и усилим</div>
+    <div class="push"></div>
+  </section>
+
+  <!-- вопросы -->
+  <section class="st" data-name="qa">
+    <div class="ph dim"><img src="images/malena-b3.jpg" alt="" style="object-position:50% 25%"></div>
+    <div class="push"></div>
+    <div class="lab anim">Ответы на вопросы</div>
+    <div class="big anim d1" style="margin-top:10px">Ваши <em>вопросы</em></div>
+    <div class="anim d2" style="margin-top:14px"><span class="hl">Пишите в чат эфира</span></div>
+    <div class="push"></div>
+  </section>
+
+  <div id="hint"><span><i>←</i>Нажмите<br>слева: назад</span><span><i>↔</i>Листайте<br>в своём темпе</span><span><i>→</i>Нажмите<br>справа: дальше</span><b>Коснитесь, чтобы начать</b></div>
+  <div id="menu"><div class="sh"><button type="button" class="x" id="menuX" aria-label="Закрыть">×</button><h3>Разделы</h3>
+    <button type="button" class="mi" data-go="split">Что отдать ИИ, что оставить себе</button>
+    <button type="button" class="mi" data-go="assistant">Ассистент под клиента</button>
+    <button type="button" class="mi" data-go="formula">Формула запроса</button>
+    <button type="button" class="mi" data-go="map">Запросы по этапам<span>7 штук</span></button>
+    <button type="button" class="mi" data-go="mistakes">Ошибки и проверка</button>
+    <button type="button" class="mi" data-go="task">Задание</button>
+  </div></div>
+</div>
+
+<script>
+(function(){
+  var app=document.getElementById('app'), st=[].slice.call(document.querySelectorAll('.st')),
+      bars=document.getElementById('bars'), hint=document.getElementById('hint'), menu=document.getElementById('menu');
+  function byName(n){ return st.findIndex(function(s){ return s.getAttribute('data-name')===n; }); }
+  st.forEach(function(){ var b=document.createElement('i'); b.appendChild(document.createElement('b')); bars.appendChild(b); });
+  var fills=[].slice.call(bars.querySelectorAll('b')), i=0;
+  function show(n){
+    n=Math.max(0,Math.min(st.length-1,n)); i=n;
+    st.forEach(function(s,k){ s.classList.toggle('on',k===i); });
+    fills.forEach(function(f,k){ f.style.width=k<=i?'100%':'0%'; });
+    app.classList.toggle('lite', st[i].classList.contains('paper')||st[i].classList.contains('cream2'));
+    hint.classList.remove('on');
+    var hs=null; try{ hs=sessionStorage.getItem('efhint'); }catch(e){}
+    if(i===0 && !hs){ hint.classList.add('on'); try{sessionStorage.setItem('efhint','1');}catch(e){} setTimeout(function(){ hint.classList.remove('on'); },4000); }
+    try{ history.replaceState(null,'','#'+st[i].getAttribute('data-name')); }catch(e){}
+  }
+  hint.addEventListener('pointerdown',function(e){ e.stopPropagation(); hint.classList.remove('on'); });
+  hint.addEventListener('pointerup',function(e){ e.stopPropagation(); });
+  var downAt=0, x0=0, y0=0;
+  function interactive(el){ return el.closest('button,a,.toc li,#menu'); }
+  app.addEventListener('pointerdown',function(e){ if(interactive(e.target)) return; downAt=Date.now(); x0=e.clientX; y0=e.clientY; });
+  app.addEventListener('pointerup',function(e){
+    if(!downAt) return; var dx=e.clientX-x0, dy=e.clientY-y0; downAt=0;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ show(dx<0?i+1:i-1); return; }
+    var r=app.getBoundingClientRect(); show(e.clientX-r.left < r.width*0.3 ? i-1 : i+1);
+  });
+  app.addEventListener('pointercancel',function(){ downAt=0; });
+  addEventListener('keydown',function(e){
+    if(menu.classList.contains('on')){ if(e.key==='Escape') menu.classList.remove('on'); return; }
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){ show(i+1); e.preventDefault(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ show(i-1); e.preventDefault(); }
+  });
+  document.getElementById('menuBtn').addEventListener('click',function(e){ e.stopPropagation(); menu.classList.add('on'); });
+  document.getElementById('menuX').addEventListener('click',function(){ menu.classList.remove('on'); });
+  menu.addEventListener('click',function(e){ if(e.target===menu) menu.classList.remove('on'); var b=e.target.closest('[data-go]'); if(!b) return; menu.classList.remove('on'); show(byName(b.getAttribute('data-go'))); });
+  [].forEach.call(document.querySelectorAll('.toc li[data-go]'),function(li){ li.addEventListener('click',function(){ show(byName(li.getAttribute('data-go'))); }); });
+
+  /* копирование запроса */
+  function copy(text, done){
+    function old(){ var t=document.createElement('textarea'); t.value=text; t.style.position='fixed'; t.style.opacity='0'; document.body.appendChild(t); t.select();
+      var ok=false; try{ ok=document.execCommand('copy'); }catch(e){} document.body.removeChild(t); done(ok); }
+    if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function(){ done(true); },old); else old();
+  }
+  [].forEach.call(document.querySelectorAll('.cp'),function(b){
+    b.addEventListener('click',function(e){ e.stopPropagation();
+      copy(b.getAttribute('data-copy'),function(ok){ b.textContent=ok?'Скопировано':'Выделите текст вручную'; b.classList.toggle('ok',ok);
+        setTimeout(function(){ b.textContent='Скопировать'; b.classList.remove('ok'); },2200); }); });
+  });
+  show(Math.max(0,byName((location.hash||'').slice(1))));
+})();
+</script>
+</body>
+</html>
