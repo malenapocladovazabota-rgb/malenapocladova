@@ -88,7 +88,7 @@
         {"@type": "Question", "name": "Сколько стоит обучение New SMM?", "acceptedAnswer": {"@type": "Answer", "text": "Зависит от формата участия, поэтому цену называем на бесплатном разборе, когда понимаем вашу ситуацию. Есть рассрочка."}},
         {"@type": "Question", "name": "Подойдёт ли обучение с нуля, без аккаунта и опыта?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Для новичков есть свой вход: путь от нуля до первого клиента с куратором на каждом задании."}},
         {"@type": "Question", "name": "Когда старт и сколько времени занимает?", "acceptedAnswer": {"@type": "Answer", "text": "Поток стартует в ноябре 2026. Эфиры утром по Калифорнии и вечером по Европе, все остаются в записи."}},
-        {"@type": "Question", "name": "Как записаться на обучение SMM для американского рынка?", "acceptedAnswer": {"@type": "Answer", "text": "Через бесплатный разбор на 20 минут в Zoom на сайте malenapocladova.com: четыре коротких вопроса, потом выбор времени."}}
+        {"@type": "Question", "name": "Как записаться на обучение SMM для американского рынка?", "acceptedAnswer": {"@type": "Answer", "text": "Через бесплатный разбор на 30 минут в Zoom на сайте malenapocladova.com: четыре коротких вопроса, потом выбор времени."}}
       ]
     }
   ]
@@ -844,7 +844,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     <div class="cta rv d3">
       <a class="btn btn-wine" href="#razbor" data-go><span>Записаться на разбор <svg class="dn" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
     </div>
-    <div class="note rv d3">Бесплатно · 20 минут в Zoom · ни к чему не обязывает</div>
+    <div class="note rv d3">Бесплатно · 30 минут в Zoom · ни к чему не обязывает</div>
   </div>
 </header>
 
@@ -852,9 +852,9 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 <section id="razbor">
   <div class="wrap">
     <div class="form-wrap glass rv" id="fw">
-      <div class="eyebrow"><i></i>Разбор · бесплатно · 20 минут</div>
+      <div class="eyebrow"><i></i>Разбор · бесплатно · 30 минут</div>
       <h2>Запишитесь <em>на разбор</em></h2>
-      <p class="lede">Четыре коротких вопроса, потом выбор времени. Двадцать минут в Zoom, бесплатно.</p>
+      <p class="lede">Четыре коротких вопроса, потом выбор времени. Тридцать минут в Zoom, бесплатно.</p>
       <div class="picked" id="picked" hidden><span></span><button type="button" id="unpick" aria-label="Убрать выбор">×</button></div>
 
       <!-- Квиз. Отвечают одним касанием, шаг переключается сам. Ветка про чек
@@ -1040,7 +1040,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   <div class="wrap">
     <div class="in glass dark rv">
       <h2 style="color:#F6EFE2">Сначала разбор, <em style="color:var(--gold)">потом обучение</em></h2>
-      <p>Двадцать минут в Zoom: разберём вашу текущую ситуацию, расскажем, как проходит обучение, и ответим на все вопросы. На обучение мы берём не всех, поэтому сначала знакомимся и вместе решаем, будет ли оно вам полезно.</p>
+      <p>Тридцать минут в Zoom: разберём вашу текущую ситуацию, расскажем, как проходит обучение, и ответим на все вопросы. На обучение мы берём не всех, поэтому сначала знакомимся и вместе решаем, будет ли оно вам полезно.</p>
       <a class="btn btn-wine" href="#razbor"><span>Записаться на разбор</span></a>
     </div>
   </div>
@@ -1081,7 +1081,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 
 <div class="sticky" id="sticky">
   <div class="in glass">
-    <div class="t">Разбор бесплатный<b>20 минут · онлайн</b></div>
+    <div class="t">Разбор бесплатный<b>30 минут · онлайн</b></div>
     <a class="btn btn-wine" href="#razbor" data-go><span>Записаться</span></a>
   </div>
 </div>
@@ -1287,9 +1287,9 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   var ZAPIS=document.documentElement.getAttribute('data-mode')==='zapis';
   if(ZAPIS){
     var fwx=document.getElementById('fw');
-    fwx.querySelector('.eyebrow').innerHTML='<i></i>Разбор · бесплатно · 20 минут';
+    fwx.querySelector('.eyebrow').innerHTML='<i></i>Разбор · бесплатно · 30 минут';
     fwx.querySelector('h2').innerHTML='Осталось <em>выбрать время</em>';
-    fwx.querySelector('.lede').textContent='Контакты для подтверждения и ссылки на Zoom, потом удобное время. Двадцать минут, бесплатно.';
+    fwx.querySelector('.lede').textContent='Контакты для подтверждения и ссылки на Zoom, потом удобное время. Тридцать минут, бесплатно.';
     var fs=qsteps[qsteps.length-1];
     fs.querySelector('.qnum').textContent='Шаг 1 из 2 · контакты';
     fs.querySelector('h3').textContent='Куда прислать подтверждение?';
