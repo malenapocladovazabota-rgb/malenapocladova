@@ -92,3 +92,4 @@
 # Срок и код лежат в club_config, ключи trial_days и trial_code.
 # Метка uchenicy садится человеку в карточку, по ней их и считаем.
 /oplata-uchenicy /oplata-new?plan=month&trial=uch2026&s=uchenicy&utm_source=uchenicy  302
+/biznes.html  /biznes  301
