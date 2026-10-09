@@ -93,3 +93,4 @@
 # Метка uchenicy садится человеку в карточку, по ней их и считаем.
 /oplata-uchenicy /oplata-new?plan=month&trial=uch2026&s=uchenicy&utm_source=uchenicy  302
 /biznes.html  /biznes  301
+/biznes-razbor.html  /biznes-razbor  301
