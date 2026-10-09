@@ -596,6 +596,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
   [].forEach.call(document.querySelectorAll('[data-price]'),function(e){ e.textContent=fmt(price(e.getAttribute('data-price'))); });
   [].forEach.call(document.querySelectorAll('[data-final]'),function(e){ var t=e.getAttribute('data-final'); e.textContent='финальная цена '+fmt(fin[t])+' · есть рассрочка'; });
   $('#steps').innerHTML=STEPS.map(function(s,k){
+    if(k<si) return ''; // прошедшие ступени цены не показываем
     return '<div class="sp'+(k===si?' cur':'')+(k<si?' past':'')+'"><div class="d">'+s.label+(k===si?'<span class="now">сейчас</span>':'')+'</div><div class="p">С нуля <b>'+fmt(s.zero)+'</b><br>Повышение <b>'+fmt(s.upskill)+'</b></div></div>';
   }).join('');
 

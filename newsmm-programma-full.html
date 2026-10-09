@@ -550,6 +550,7 @@ lis('#tkRes',['Упакованный аккаунт','30 готовых вид�
 
 /* Цены */
 $('#steps').innerHTML=STEPS.map(function(s,i){
+  if(i<si) return ''; // прошедшие ступени цены не показываем
   return '<div class="st'+(i===si?' cur':'')+(i<si?' past':'')+'"><div class="d">'+s.label+'</div><div class="p">С нуля '+fmt(s.zero)+'<br>Повышение '+fmt(s.upskill)+(s.final?'<small>финальная цена</small>':'')+'</div>'+(i===si?'<div class="flag">Действует сейчас</div>':'')+'</div>';
 }).join('');
 
