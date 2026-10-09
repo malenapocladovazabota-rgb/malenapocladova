@@ -757,7 +757,10 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
        $('#okText').textContent=kind==='deposit'?'Место в тарифе «'+tn+'» за вами по цене '+fmt(d.price)+'. Договор придёт на почту, мы напишем в WhatsApp.'
          :kind==='installment'?'Рассрочка на '+d.months+' мес., около '+fmt(d.monthly)+' в месяц, «'+tn+'». Проверим данные и пришлём договор с графиком платежей.'
          :'«'+tn+'», '+fmt(d.price)+'. Пришлём договор и ссылку на оплату.';
-       if(kind==='deposit'&&d.deposit_url) $('#okPay').innerHTML='<a class="go gold" href="'+d.deposit_url+'">Оплатить депозит $100</a>';
+       var pre=(kind==='deposit'||kind==='full')?'prefilled_email='+encodeURIComponent(email):'';
+       if(kind==='deposit'&&d.deposit_url) $('#okPay').innerHTML='<a class="go gold" href="'+d.deposit_url+(d.deposit_url.indexOf('?')<0?'?':'&')+pre+'">Оплатить депозит $100</a>';
+       // Оплата целиком «С нуля» картой через Stripe. Ссылка на $1 300, поэтому показываем её только пока цена $1 300 (до 19 октября).
+       if(kind==='full'&&body.tariff==='zero'&&d.price===1300){ $('#okText').textContent='«С нуля», $1 300. Оплатить можно картой прямо сейчас, договор пришлём на почту.'; $('#okPay').innerHTML='<a class="go gold" href="https://buy.stripe.com/4gM6oz3Tn9XEcML5fd1wY0I?'+pre+'">Оплатить $1 300 картой</a>'; }
        submitted=true; show(iOk);
      });
   });
