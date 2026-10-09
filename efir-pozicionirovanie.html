@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Эфир · Как преподносить свои услуги</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F2ECE0;--paper2:#E9E1D1;--card:#FBF6EC;--espresso:#191110;--espresso2:#241813;--ink:#241812;--ink2:#5C4A40;--muted:#998473;
+  --rose:#C1504A;--rose-d:#9E3A38;--gold:#B99458;--gold-l:#D8B87E;--line:rgba(36,24,18,.14);--line-d:rgba(255,255,255,.14)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0d0908;overflow:hidden;font-family:Inter,system-ui,sans-serif;color:var(--ink)}
+#stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center}
+.slide{position:absolute;width:1280px;height:720px;background:var(--paper);border-radius:18px;padding:56px 72px 64px;display:none;flex-direction:column;overflow:hidden;transform-origin:center center}
+.slide.on{display:flex}
+.slide.dark{background:radial-gradient(120% 90% at 85% 0%,#3a2318 0%,var(--espresso2) 40%,var(--espresso) 100%);color:#F4EBDD}
+.slide::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.kick{display:flex;align-items:center;gap:14px;font:700 13px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.kick .ln{flex:0 0 40px;height:1px;background:currentColor;opacity:.5}
+.dark .kick{color:var(--gold-l)}
+.disp{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:56px;line-height:1.02;letter-spacing:-.02em;margin-top:18px}
+.disp .r{color:var(--rose)}.dark .disp .g{color:var(--gold-l)}
+.lead{font-size:21px;line-height:1.45;color:var(--ink2);margin-top:14px;max-width:900px}
+.dark .lead{color:rgba(244,235,221,.78)}
+.body{flex:1;display:flex;flex-direction:column;justify-content:center;margin-top:20px}
+.foot{position:absolute;left:72px;right:72px;bottom:24px;display:flex;justify-content:space-between;font:500 12px 'JetBrains Mono',monospace;color:var(--muted);letter-spacing:.06em}
+.dark .foot{color:rgba(244,235,221,.45)}
+/* компоненты */
+.fmt{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.fmt.four{grid-template-columns:repeat(4,1fr)}
+.f{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 22px 24px}
+.f .k{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--rose)}
+.f h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:26px;line-height:1.1;margin-top:8px}
+.f p{font-size:16.5px;line-height:1.45;color:var(--ink2);margin-top:10px}
+.f ul{list-style:none;margin-top:12px;display:grid;gap:7px}
+.f li{font-size:16px;line-height:1.35;padding-left:16px;position:relative;color:var(--ink2)}
+.f li::before{content:'';position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:50%;background:var(--rose)}
+.f2{background:rgba(255,255,255,.06);border:1px solid var(--line-d);border-radius:18px;padding:22px 22px 24px;color:#F4EBDD}
+.f2 .k{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-l)}
+.f2 h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:26px;line-height:1.1;margin-top:8px}
+.f2 p{font-size:16.5px;line-height:1.45;color:rgba(244,235,221,.78);margin-top:10px}
+.tbl{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.tbl th,.tbl td{text-align:left;padding:14px 18px;font-size:16.5px;line-height:1.35;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl th{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--paper2)}
+.tbl td:first-child{font-weight:700;color:var(--ink);width:200px}
+.tbl th:nth-child(2),.tbl td:nth-child(2){color:var(--ink)}
+.formula{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:44px;line-height:1.25}
+.formula b{display:inline-block;background:var(--gold);color:var(--espresso);border-radius:10px;padding:0 14px;font-weight:700}
+.ex{display:grid;gap:12px;margin-top:30px}
+.ex div{background:rgba(255,255,255,.06);border:1px solid var(--line-d);border-radius:14px;padding:14px 18px;font-size:19px;line-height:1.4}
+.ex div span{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-l);display:block;margin-bottom:4px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.cmp .c{border-radius:18px;padding:22px 24px}
+.cmp .bad{background:var(--paper2);border:1px dashed rgba(36,24,18,.25)}
+.cmp .good{background:var(--card);border:2px solid var(--rose)}
+.cmp .c .k{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+.cmp .bad .k{color:var(--muted)}.cmp .good .k{color:var(--rose)}
+.cmp .c p{font-size:19px;line-height:1.4;margin-top:10px}
+.cmp .bad p{color:var(--ink2)}
+.cmp .row{display:contents}
+.hooks{display:grid;gap:12px}
+.hooks .h{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 20px}
+.hooks .h b{font-family:'Bricolage Grotesque',sans-serif;font-size:32px;color:var(--rose);line-height:1}
+.hooks .h h4{font-size:19px;font-weight:700}
+.hooks .h p{font-size:16px;color:var(--ink2);margin-top:4px;line-height:1.4}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;align-items:stretch}
+.fstep{padding:0 22px;border-left:1px solid var(--line)}
+.fstep:first-child{border-left:0;padding-left:0}
+.fstep .num{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:22px;color:var(--rose)}
+.fstep h4{font-family:'Bricolage Grotesque',sans-serif;font-size:26px;font-weight:700;margin-top:6px;line-height:1.1}
+.fstep p{font-size:16px;line-height:1.45;color:var(--ink2);margin-top:10px}
+.qz{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:84px;line-height:.98;letter-spacing:-.03em}
+.qz .g{color:var(--gold-l)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{border:1px solid var(--line-d);border-radius:999px;padding:9px 16px;font-size:16px;color:#F4EBDD;background:rgba(255,255,255,.05)}
+.tbadge{display:inline-flex;flex-direction:column;border:1px solid var(--line-d);border-radius:16px;padding:14px 22px;background:rgba(255,255,255,.05)}
+.tbadge b{font-family:'Bricolage Grotesque',sans-serif;font-size:40px;font-weight:800;line-height:1}
+.tbadge span{font-size:15px;color:rgba(244,235,221,.7);margin-top:6px}
+.sid{margin-top:22px;font-size:18px;color:var(--ink2);display:flex;gap:10px;align-items:baseline}
+.sid::before{content:'';flex:0 0 9px;height:9px;border-radius:50%;background:var(--rose);transform:translateY(-2px)}
+.dark .sid{color:rgba(244,235,221,.8)}.dark .sid::before{background:var(--gold-l)}
+.case{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.case .f .n{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:40px;color:var(--rose);line-height:1;margin-top:10px}
+.prof{display:grid;grid-template-columns:330px 1fr;gap:34px;align-items:center}
+.phone{background:var(--card);border:1px solid var(--line);border-radius:30px;padding:22px 20px;box-shadow:0 30px 60px -30px rgba(36,24,18,.45)}
+.phone .top{display:flex;gap:14px;align-items:center}
+.phone .av{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--gold-l),var(--rose));flex:0 0 64px}
+.phone .nm{font-weight:700;font-size:17px}.phone .nm small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+.phone .bio{margin-top:14px;font-size:14.5px;line-height:1.45}
+.phone .btn{margin-top:12px;background:var(--rose);color:#fff;border-radius:10px;padding:9px;text-align:center;font-weight:700;font-size:14px}
+.phone .hl{display:flex;gap:10px;margin-top:14px}
+.phone .hl i{flex:1;font-style:normal;text-align:center;font-size:11.5px;color:var(--ink2)}
+.phone .hl i::before{content:'';display:block;width:42px;height:42px;margin:0 auto 5px;border-radius:50%;border:2px solid var(--gold);background:var(--paper2)}
+.notes{display:none}
+/* режим заметок */
+#nt{position:fixed;left:0;right:0;bottom:0;max-height:34vh;overflow:auto;background:#1b1210;color:#F4EBDD;padding:16px 24px 20px;font-size:17px;line-height:1.5;border-top:2px solid var(--gold);display:none;z-index:5}
+#nt h4{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-l);margin-bottom:6px}
+body.notes-on #nt{display:block}
+#bar{position:fixed;right:14px;bottom:12px;display:flex;gap:8px;z-index:6}
+#bar button{border:1px solid rgba(255,255,255,.25);background:rgba(20,12,10,.7);color:#F4EBDD;border-radius:10px;padding:8px 12px;font:600 13px Inter,sans-serif;cursor:pointer}
+body.clean #bar{opacity:0}body.clean #bar:hover{opacity:1}
+/* схемы */
+.tree{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;align-items:stretch}
+.tq{grid-column:1/-1;display:flex;justify-content:center}
+.tq div{background:var(--espresso);color:#F4EBDD;border-radius:14px;padding:14px 22px;font-weight:700;font-size:19px}
+.tb{display:flex;flex-direction:column;gap:10px}
+.tb .q{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;font-size:16px;line-height:1.35;position:relative}
+.tb .q::after{content:'↓';position:absolute;left:50%;bottom:-17px;transform:translateX(-50%);color:var(--muted);font-size:14px}
+.tb .a{margin-top:6px;background:var(--rose);color:#fff;border-radius:14px;padding:14px 16px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;text-align:center}
+.tb .a small{display:block;font-family:Inter,sans-serif;font-weight:500;font-size:13.5px;opacity:.9;margin-top:4px}
+.ladder{display:grid;gap:10px}
+.ladder .st2{display:grid;grid-template-columns:130px 1fr;gap:16px;align-items:center;border-radius:14px;padding:12px 18px;border:1px solid var(--line-d);background:rgba(255,255,255,.04)}
+.ladder .st2 b{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,235,221,.55)}
+.ladder .st2 span{font-size:20px;line-height:1.35;color:rgba(244,235,221,.75)}
+.ladder .st2:nth-child(2){margin-left:40px}.ladder .st2:nth-child(3){margin-left:80px}
+.ladder .st2:nth-child(4){margin-left:120px;border-color:var(--gold-l);background:rgba(216,184,126,.12)}
+.ladder .st2:nth-child(4) span{color:#F4EBDD;font-weight:600}.ladder .st2:nth-child(4) b{color:var(--gold-l)}
+.venn{display:grid;grid-template-columns:420px 1fr;gap:40px;align-items:center}
+.venn svg{width:100%;height:auto}
+.tpl{display:grid;grid-template-columns:150px repeat(3,1fr);border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--card)}
+.tpl > div{padding:12px 14px;font-size:15px;line-height:1.38;border-bottom:1px solid var(--line);border-left:1px solid var(--line)}
+.tpl > div:nth-child(4n+1){border-left:0;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--rose);display:flex;align-items:center}
+.tpl > .h{background:var(--paper2);font:700 12px 'JetBrains Mono',monospace!important;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)!important}
+.tpl > div:nth-last-child(-n+4){border-bottom:0}
+.eq{display:flex;align-items:stretch;gap:10px}
+.eq .p{flex:1;background:rgba(255,255,255,.06);border:1px solid var(--line-d);border-radius:16px;padding:16px 16px 18px}
+.eq .p .k{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-l)}
+.eq .p p{font-size:17px;line-height:1.4;margin-top:8px;color:#F4EBDD}
+.eq .op{align-self:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:30px;color:var(--gold-l)}
+.eqres{margin-top:18px;border-radius:16px;padding:16px 20px;background:var(--gold);color:var(--espresso);font-size:19px;line-height:1.4;font-weight:600}
+.eqres b{font:700 12px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:4px}
+.chat{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.steps4{display:grid;gap:10px}
+.steps4 div{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;font-size:16.5px;line-height:1.38;color:var(--ink2)}
+.steps4 div b{width:34px;height:34px;border-radius:50%;background:var(--rose);color:#fff;display:grid;place-items:center;font-size:15px}
+.steps4 div strong{color:var(--ink);display:block}
+.bubbles{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px;display:grid;gap:8px}
+.bubbles .bb{background:#E7DCCB;border-radius:16px 16px 16px 4px;padding:10px 14px;font-size:15.5px;line-height:1.4;max-width:94%}
+.bubbles .bb i{font-style:normal;background:rgba(193,80,74,.16);color:var(--rose-d);border-radius:5px;padding:0 4px}
+.bubbles .cap{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.dark .bubbles{background:rgba(255,255,255,.05);border-color:var(--line-d)}
+.dark .bubbles .bb{background:rgba(255,255,255,.1);color:#F4EBDD}
+.dark .bubbles .bb i{background:rgba(216,184,126,.2);color:var(--gold-l)}
+.dark .steps4 div{color:rgba(244,235,221,.75)}.dark .steps4 div strong{color:#F4EBDD}.dark .steps4 div b{background:var(--gold);color:var(--espresso)}
+.pflow{display:flex;align-items:stretch;gap:8px}
+.pflow .s{flex:1;border-radius:16px;padding:14px 14px 16px;background:rgba(255,255,255,.06);border:1px solid var(--line-d)}
+.pflow .s .k{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-l)}
+.pflow .s h4{font-family:'Bricolage Grotesque',sans-serif;font-size:21px;margin-top:6px;line-height:1.1}
+.pflow .s p{font-size:14.5px;line-height:1.4;color:rgba(244,235,221,.75);margin-top:8px}
+.pflow .ar{align-self:center;color:var(--gold-l);font-size:22px}
+.fork{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fork div{border-radius:14px;padding:12px 16px;font-size:16px;line-height:1.4}
+.fork .no{border:1px dashed rgba(244,235,221,.3);color:rgba(244,235,221,.6)}
+.fork .yes{background:rgba(216,184,126,.14);border:1px solid var(--gold-l);color:#F4EBDD}
+.fork b{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:4px}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.week div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 10px 14px;min-height:170px}
+.week div b{display:block;font:700 12px 'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.week div h5{font-family:'Bricolage Grotesque',sans-serif;font-size:18px;margin-top:8px;line-height:1.1;color:var(--rose)}
+.week div p{font-size:13.5px;line-height:1.38;color:var(--ink2);margin-top:6px}
+.week div.off{background:transparent;border-style:dashed}
+.week div.off h5{color:var(--muted)}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- обложка -->
+<section class="slide dark">
+  <div class="kick"><span class="idx">01 / 16</span><span class="ln"></span><span>Эфир · Встречи и эфиры</span></div>
+  <div class="body" style="justify-content:flex-end">
+    <div class="qz">Как преподносить<br>свои услуги <span class="g">и себя</span></div>
+    <div class="lead" style="font-size:24px;margin-top:22px">Схемы позиционирования для SMM-специалиста, блогера и UGC-креатора</div>
+  </div>
+  <div class="foot"><span>Эфир для учениц</span><span class="n">01</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4>Поздороваться. Сказать, что основы все уже знают, поэтому сегодня только схемы и шаблоны, которые можно забрать и заполнить под себя. Попросить написать в чат, кто вы сейчас: веду клиентов, веду блог, снимаю UGC или пока выбираю.</div>
+
+<!-- план -->
+<section class="slide">
+  <div class="kick"><span class="idx">02 / 16</span><span class="ln"></span><span>План эфира</span></div>
+  <h2 class="disp">Сегодня <span class="r">только схемы</span></h2>
+  <div class="body">
+    <div class="flow">
+      <div class="fstep"><div class="num">01</div><h4>Роль</h4><p>Таблица трёх ролей и дерево выбора</p></div>
+      <div class="fstep"><div class="num">02</div><h4>Фраза</h4><p>Формула, лестница позиционирования, выбор ниши</p></div>
+      <div class="fstep"><div class="num">03</div><h4>Витрина</h4><p>Шапка, актуальные, недельный план контента</p></div>
+      <div class="fstep"><div class="num">04</div><h4>Продажа</h4><p>Услуга, пакеты, первое сообщение, разговор о цене</p></div>
+    </div>
+    <div class="sid">Каждую схему можно сразу заполнить под себя. В конце задание на основе этих схем.</div>
+  </div>
+  <div class="foot"><span>Как преподносить свои услуги</span><span class="n">02</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4>Коротко пройти план. Предложить держать открытыми заметки и заполнять схемы по ходу эфира.</div>
+
+<!-- три роли -->
+<section class="slide">
+  <div class="kick"><span class="idx">03 / 16</span><span class="ln"></span><span>Схема 1 · три роли</span></div>
+  <h2 class="disp">Кто вы <span class="r">для клиента</span></h2>
+  <div class="body">
+    <table class="tbl">
+      <tr><th></th><th>SMM-специалист</th><th>Блогер</th><th>UGC-креатор</th></tr>
+      <tr><td>Что продаёте</td><td>Результат для бизнеса: заявки, записи, продажи</td><td>Внимание и доверие своей аудитории</td><td>Видео, которое бренд использует в рекламе и у себя</td></tr>
+      <tr><td>Кто платит</td><td>Владелец бизнеса или эксперт</td><td>Бренды за рекламу, аудитория за ваши продукты</td><td>Бренды и магазины</td></tr>
+      <tr><td>Своя аудитория</td><td>Не обязательна, нужны кейсы</td><td>Главный актив</td><td>Не обязательна, нужно портфолио</td></tr>
+      <tr><td>Как платят</td><td>Помесячно за ведение</td><td>За интеграцию или продажи своих продуктов</td><td>За видео или пакет видео</td></tr>
+      <tr><td>Что показывать</td><td>Кейсы в цифрах и процесс</td><td>Жизнь, мнение, экспертизу</td><td>Ролики разных форматов</td></tr>
+    </table>
+  </div>
+  <div class="foot"><span>Как преподносить свои услуги</span><span class="n">03</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4>Главная мысль: от роли зависит, кому вы себя преподносите и что показываете. Специалист продаёт результат чужому бизнесу, блогер продаёт свою аудиторию, UGC продаёт видео как продукт. Роли можно совмещать: специалист с блогом о своей работе получает клиентов из своего же контента.</div>
+
+<!-- дерево выбора -->
+<section class="slide">
+  <div class="kick"><span class="idx">04 / 16</span><span class="ln"></span><span>Схема 2 · дерево выбора</span></div>
+  <h2 class="disp">Какая роль <span class="r">ваша</span>: три вопроса</h2>
+  <div class="body">
+    <div class="tree">
+      <div class="tq"><div>Что вам интереснее делать каждую неделю?</div></div>
+      <div class="tb"><div class="q">Разбираться в чужом бизнесе и считать цифры</div><div class="q">Готовы вести проект месяцами</div><div class="a">SMM-специалист<small>ведение, реклама, отчёты</small></div></div>
+      <div class="tb"><div class="q">Быть в кадре и делиться своей жизнью</div><div class="q">Готовы растить аудиторию долго</div><div class="a">Блогер<small>сообщество и свои продукты</small></div></div>
+      <div class="tb"><div class="q">Снимать и монтировать, придумывать подачу</div><div class="q">Нравится работать проектами</div><div class="a">UGC-креатор<small>видео для брендов</small></div></div>
+    </div>
+  </div>
+  <div class="foot"><span>Как преподносить свои услуги</span><span class="n">04</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4>Пройти по веткам. Если подходят две ветки, выбрать главную роль для шапки профиля, а вторую сделать дополнительной услугой. Спросить в чат: какая ветка ваша.</div>
+
+<!-- формула -->
+<section class="slide dark">
+  <div class="kick"><span class="idx">05 / 16</span><span class="ln"></span><span>Схема 3 · формула</span></div>
+  <h2 class="disp">Формула <span class="g">одной фразы</span></h2>
+  <div class="body">
+    <div class="formula">Я помогаю <b>кому</b> получить <b>результат</b> через <b>как</b></div>
+    <div class="ex">
+      <div><span>SMM-специалист</span>Помогаю салонам красоты заполнять запись через Reels и рекламу в Instagram</div>
+      <div><span>UGC-креатор</span>Снимаю видео для бьюти-брендов, которые можно сразу запускать в рекламу</div>
+      <div><span>Блогер</span>Показываю жизнь мамы в другой стране и как зарабатывать удалённо</div>
+    </div>
+  </div>
+  <div class="foot"><span>Как преподносить свои услуги</span><span class="n">05</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4>«Кому» это конкретный тип клиента, «результат» то, что клиент получит в деньгах или времени, «как» ваш инструмент. Попросить прямо сейчас написать в чат черновик своей фразы. Следующий слайд покажет, как её усилить.</div>
+
+<!-- лестница -->
+<section class="slide dark">
+  <div class="kick"><span class="idx">06 / 16</span><span class="ln"></span><span>Схема 4 · лестница позиционирования</span></div>
+  <h2 class="disp">Как <span class="g">усилить фразу</span> за четыре шага</h2>
+  <div class="body">
+    <div class="ladder">
+      <div class="st2"><b>Шаг 1 · роль</b><span>SMM-специалист</span></div>
+      <div class="st2"><b>Шаг 2 · ниша</b><span>SMM-специалист для салонов красоты</span></div>
+      <div class="st2"><b>Шаг 3 · результат</b><span>Помогаю салонам красоты заполнять запись</span></div>
+      <div class="st2"><b>Шаг 4 · способ</b><span>Помогаю салонам красоты заполнять запись через Reels и рекламу в Instagram</span></div>
+    </div>
+    <div class="sid">Проверьте свою фразу: на каком шаге она сейчас и что добавить, чтобы подняться выше.</div>
+  </div>
+  <div class="foot"><span>Как преподносить свои услуги</span><span class="n">06</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4>Взять 2-3 фразы из чата и вслух поднять их по лестнице. Для UGC: «Снимаю видео» → «Снимаю видео для бьюти-брендов» → «...которые продают» → «...распаковки и отзывы для рекламы». Для блогера шаг «результат» это то, что получит подписчик.</div>
+
+<!-- ниша -->
+<section class="slide">
+  <div class="kick"><span class="idx">07 / 16</span><span class="ln"></span><span>Схема 5 · ниша</span></div>
+  <h2 class="disp">Ниша на <span class="r">пересечении трёх кругов</span></h2>
+  <div class="body">
+    <div class="venn">
+      <svg viewBox="0 0 420 380" role="img" aria-label="Три круга: опыт, интерес, деньги в нише">
+        <circle cx="150" cy="140" r="115" fill="#C1504A" fill-opacity=".16" stroke="#C1504A" stroke-width="2"/>
+        <circle cx="270" cy="140" r="115" fill="#B99458" fill-opacity=".2" stroke="#B99458" stroke-width="2"/>
+        <circle cx="210" cy="240" r="115" fill="#5C4A40" fill-opacity=".12" stroke="#5C4A40" stroke-width="2"/>
+        <text x="100" y="105" text-anchor="middle" font-family="Bricolage Grotesque, Inter, sans-serif" font-weight="700" font-size="22" fill="#241812">Опыт</text>
+        <text x="320" y="105" text-anchor="middle" font-family="Bricolage Grotesque, Inter, sans-serif" font-weight="700" font-size="22" fill="#241812">Интерес</text>
+        <text x="210" y="320" text-anchor="middle" font-family="Bricolage Grotesque, Inter, sans-serif" font-weight="700" font-size="22" fill="#241812">Деньги в нише</text>
+        <text x="210" y="182" text-anchor="middle" font-family="Bricolage Grotesque, Inter, sans-serif" font-weight="800" font-size="20" fill="#9E3A38">ваша</text>
+        <text x="210" y="204" text-anchor="middle" font-family="Bricolage Grotesque, Inter, sans-serif" font-weight="800" font-size="20" fill="#9E3A38">ниша</text>
+      </svg>
+      <div class="hooks">
+        <div class="h"><b>1</b><div><h4>Опыт</h4><p>Где вы работали или что хорошо знаете изнутри: салон, ресторан, медицина, продажи.</p></div></div>
+        <div class="h"><b>2</b><div><h4>Интерес</h4><p>О чём готовы снимать и говорить каждую неделю без выгорания.</p></div></div>
+        <div class="h"><b>3</b><div><h4>Деньги в нише</h4><p>Средний чек позволяет бизнесу вкладывать в маркетинг. Для UGC: у брендов есть рекламные бюджеты.</p></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Как преподносить свои услуги</span><span class="n">07</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4>Выпишите по 3 варианта в каждый круг и найдите то, что повторяется. Ниша не навсегда, её можно поменять через полгода. Пример: бывшая администратор салона идёт в бьюти, потому что знает, как там записываются клиенты.</div>
+
+<!-- шапка -->
+<section class="slide">
+  <div class="kick"><span class="idx">08 / 16</span><span class="ln"></span><span>Схема 6 · шапка профиля</span></div>
+  <h2 class="disp">Шапка: <span class="r">четыре строки</span> под вашу роль</h2>
+  <div class="body">
+    <div class="tpl">
+      <div class="h">Строка</div><div class="h">SMM-специалист</div><div class="h">Блогер</div><div class="h">UGC-креатор</div>
+      <div>Имя профиля</div><div>Имя · SMM для салонов</div><div>Имя · тема блога</div><div>Имя · UGC для бьюти</div>
+      <div>1 · кто и для кого</div><div>Reels и реклама для салонов красоты</div><div>Мама в другой стране, удалённая работа</div><div>Видео для брендов косметики и ухода</div>
+      <div>2 · доказательство</div><div>Ссылка на кейсы в актуальных</div><div>Чем полезен блог подписчику</div><div>Портфолио в актуальных</div>
+      <div>3 · предложение</div><div>Бесплатный разбор профиля</div><div>Гайд или эфир для новых подписчиков</div><div>Пакеты видео для рекламы</div>
+      <div>4 · следующий шаг</div><div>Напишите «РАЗБОР» в директ</div><div>Забрать гайд по ссылке</div><div>Почта или директ для брендов</div>
+    </div>
+  </div>
+  <div class="foot"><span>Примеры условные · Как преподносить свои услуги</span><span class="n">08</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4>Это шаблон, его можно копировать и заполнять. В имени профиля роль и ниша, так вас находят через поиск. Строка с доказательством: если кейсов нет, ставьте ссылку на портфолио или разборы. Попросить сфотографировать слайд.</div>
+
+<!-- актуальные -->
+<section class="slide dark">
+  <div class="kick"><span class="idx">09 / 16</span><span class="ln"></span><span>Схема 7 · витрина</span></div>
+  <h2 class="disp">Актуальные и закреп: <span class="g">что куда</span></h2>
+  <div class="body">
+    <div class="fmt">
+      <div class="f2"><div class="k">SMM-специалист</div><h3>Кейсы · Услуги · Отзывы · Обо мне</h3><p>Закреп: лучший кейс «было и стало», видео о себе, разбор чужого профиля.</p></div>
+      <div class="f2"><div class="k">Блогер</div><h3>Обо мне · Рубрики · Полезное · Сотрудничество</h3><p>Закреп: знакомство, самый популярный ролик, ролик о главной теме блога.</p></div>
+      <div class="f2"><div class="k">UGC-креатор</div><h3>Портфолио · Форматы · Бренды · Как работаю</h3><p>Закреп: три лучших ролика разных форматов: распаковка, отзыв, до и после.</p></div>
+    </div>
+    <div class="sid">Новый человек должен за минуту понять, кто вы, что делаете и как с вами связаться.</div>
+  </div>
+  <div class="foot"><span>Как преподносить свои услуги</span><span class="n">09</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4>Проверка: дайте свой профиль человеку, который вас не знает, и спросите, чем вы занимаетесь. Если ответ неточный, витрина ещё не работает. В «Сотрудничество» у блогера: темы, форматы, контакт для брендов.</div>
+
+<!-- недельный план -->
+<section class="slide">
+  <div class="kick"><span class="idx">10 / 16</span><span class="ln"></span><span>Схема 8 · контент о себе</span></div>
+  <h2 class="disp">Неделя контента, <span class="r">который продаёт ваши услуги</span></h2>
+  <div class="body">
+    <div class="week">
+      <div><b>Пн</b><h5>Процесс</h5><p>Как вы работаете: съёмка, монтаж, контент-план</p></div>
+      <div><b>Вт</b><h5>Польза</h5><p>Разбор ошибки в профиле бизнеса и как исправить</p></div>
+      <div><b>Ср</b><h5>Результат</h5><p>Было и стало, скрин, отзыв клиента</p></div>
+      <div><b>Чт</b><h5>Личность</h5><p>Почему вы в профессии, ваши ценности</p></div>
+      <div><b>Пт</b><h5>Предложение</h5><p>Услуга или пакет и следующий шаг</p></div>
+      <div class="off"><b>Сб</b><h5>Сторис</h5><p>Рабочий день, ответы на вопросы</p></div>
+      <div class="off"><b>Вс</b><h5>Сторис</h5><p>Опрос аудитории, подготовка недели</p></div>
+    </div>
+    <div class="sid">Для UGC больше процесса и результатов, для блогера больше личности и пользы.</div>
+  </div>
+  <div class="foot"><span>Как преподносить свои услуги</span><span class="n">10</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4>Дни можно менять местами. Главное, чтобы за неделю были все пять рубрик. Предложение раз в неделю нормально, без него люди не знают, что у вас можно купить.</div>
+
+<!-- описание услуги -->
+<section class="slide dark">
+  <div class="kick"><span class="idx">11 / 16</span><span class="ln"></span><span>Продажа · описание услуги</span></div>
+  <h2 class="disp">Формула <span class="g">описания услуги</span></h2>
+  <div class="body">
+    <div class="eq">
+      <div class="p"><div class="k">Объём</div><p>12 Reels и сторис каждый день</p></div><div class="op">+</div>
+      <div class="p"><div class="k">Формат</div><p>Съёмка у вас раз в месяц, монтаж и публикация на мне</p></div><div class="op">+</div>
+      <div class="p"><div class="k">Результат</div><p>Отчёт, сколько заявок пришло из Instagram</p></div><div class="op">+</div>
+      <div class="p"><div class="k">Срок</div><p>Месяц, дальше продлеваем по итогам</p></div>
+    </div>
+    <div class="eqres"><b>Для UGC по той же формуле</b>5 видео под рекламу вашего крема: распаковка, отзыв, до и после. Сценарии мои, готово за 7 дней, две правки включены.</div>
+  </div>
+  <div class="foot"><span>Как преподносить свои услуги</span><span class="n">11</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4>Сравнить с тем, как обычно пишут: «веду Instagram, делаю посты». Клиенту непонятно, что он получит и за что платит. По формуле видно объём, кто что делает, результат и срок. Попросить переписать одну свою услугу прямо сейчас.</div>
+
+<!-- пакеты -->
+<section class="slide">
+  <div class="kick"><span class="idx">12 / 16</span><span class="ln"></span><span>Продажа · пакеты</span></div>
+  <h2 class="disp">Схема <span class="r">трёх пакетов</span></h2>
+  <div class="body">
+    <table class="tbl">
+      <tr><th></th><th>Старт</th><th>Основной</th><th>Полный</th></tr>
+      <tr><td>SMM-специалист</td><td>Разбор, стратегия, упаковка профиля</td><td>Контент на месяц и отчёт</td><td>Контент, реклама и отчёт по заявкам</td></tr>
+      <tr><td>UGC-креатор</td><td>1 видео</td><td>Пакет 3-5 видео разных форматов</td><td>Пакет видео, варианты хуков и права на рекламу</td></tr>
+      <tr><td>Блогер</td><td>Сторис с упоминанием</td><td>Reels-интеграция</td><td>Серия: Reels, сторис и ссылка в шапке</td></tr>
+      <tr><td>Зачем</td><td>Попробовать работать вместе</td><td>Основной продукт, его берут чаще всего</td><td>Для тех, кому нужно всё сразу</td></tr>
+    </table>
+    <div class="sid">Основной пакет ставьте в центр и называйте первым. Цена зависит от ниши, страны и вашего опыта.</div>
+  </div>
+  <div class="foot"><span>Как преподносить свои услуги</span><span class="n">12</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4>Когда есть три варианта, клиент выбирает пакет у вас. Не вешайте цены в шапку профиля: цену называйте после разговора о задаче (схема на слайде 14).</div>
+
+<!-- первое сообщение -->
+<section class="slide">
+  <div class="kick"><span class="idx">13 / 16</span><span class="ln"></span><span>Продажа · первое сообщение</span></div>
+  <h2 class="disp">Схема <span class="r">первого сообщения</span></h2>
+  <div class="body">
+    <div class="chat">
+      <div class="steps4">
+        <div><b>1</b><span><strong>Конкретика о них</strong>Что вы заметили в их профиле или продукте</span></div>
+        <div><b>2</b><span><strong>Точка роста</strong>Одна вещь, которая даст им больше клиентов или продаж</span></div>
+        <div><b>3</b><span><strong>Ваше предложение</strong>Коротко, с вашей ролью и результатом</span></div>
+        <div><b>4</b><span><strong>Лёгкий шаг</strong>Вопрос, на который легко ответить «да»</span></div>
+      </div>
+      <div class="bubbles">
+        <div class="cap">Салону · SMM</div>
+        <div class="bb"><i>Увидела ваши работы по окрашиванию</i>, результат очень красивый.</div>
+        <div class="bb"><i>В профиле нет кнопки записи</i>, люди уходят, не записавшись.</div>
+        <div class="bb">Я веду соцсети салонов: <i>Reels и запись через Instagram</i>.</div>
+        <div class="bb"><i>Пришлю короткий разбор вашего профиля?</i></div>
+        <div class="cap" style="margin-top:8px">Бренду · UGC</div>
+        <div class="bb"><i>Пользуюсь вашей сывороткой</i>. Сняла для вас тестовое видео, <i>прислать?</i></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Примеры условные · Как преподносить свои услуги</span><span class="n">13</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4>Главная ошибка первого сообщения: прайс и список услуг сразу. Сначала покажите, что вы смотрели именно их профиль, затем одна точка роста и лёгкий вопрос. Для UGC самый сильный ход: готовое тестовое видео с их продуктом.</div>
+
+<!-- разговор о цене -->
+<section class="slide dark">
+  <div class="kick"><span class="idx">14 / 16</span><span class="ln"></span><span>Продажа · разговор о цене</span></div>
+  <h2 class="disp">Схема <span class="g">разговора о цене</span></h2>
+  <div class="body">
+    <div class="pflow">
+      <div class="s"><div class="k">Шаг 1</div><h4>Вопросы</h4><p>Какой бизнес, откуда клиенты сейчас, что пробовали, какая цель</p></div><div class="ar">→</div>
+      <div class="s"><div class="k">Шаг 2</div><h4>Пакет</h4><p>Какой пакет подходит под их задачу и почему</p></div><div class="ar">→</div>
+      <div class="s"><div class="k">Шаг 3</div><h4>Цена</h4><p>Назвать цену и что входит. Пауза</p></div><div class="ar">→</div>
+      <div class="s"><div class="k">Шаг 4</div><h4>Условия</h4><p>Договор, предоплата, дата старта</p></div>
+    </div>
+    <div class="fork">
+      <div class="no"><b>Если «дорого»: не делать</b>Снижать цену за тот же объём работы</div>
+      <div class="yes"><b>Если «дорого»: делать</b>Предложить пакет поменьше: меньше видео или убрать рекламу, цена за работу сохраняется</div>
+    </div>
+  </div>
+  <div class="foot"><span>Как преподносить свои услуги</span><span class="n">14</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4>Цена всегда звучит после вопросов: так клиент слышит её как решение своей задачи. После цены молчите и дайте подумать. Спросить в чат: какая фраза в разговоре о цене даётся вам сложнее всего.</div>
+
+<!-- задание -->
+<section class="slide">
+  <div class="kick"><span class="idx">15 / 16</span><span class="ln"></span><span>Задание после эфира</span></div>
+  <h2 class="disp">Заполните схемы <span class="r">под себя</span></h2>
+  <div class="body">
+    <div class="hooks">
+      <div class="h"><b>1</b><div><h4>Фраза по лестнице</h4><p>Доведите свою фразу до четвёртого шага: роль, ниша, результат, способ.</p></div></div>
+      <div class="h"><b>2</b><div><h4>Шапка из четырёх строк</h4><p>Имя профиля с ролью и четыре строки по шаблону.</p></div></div>
+      <div class="h"><b>3</b><div><h4>Одна услуга по формуле</h4><p>Объём, формат, результат, срок.</p></div></div>
+      <div class="h"><b>4</b><div><h4>Пришлите в чат «Встречи и эфиры»</h4><p>Разберём и поможем усилить формулировки.</p></div></div>
+    </div>
+  </div>
+  <div class="foot"><span>Как преподносить свои услуги</span><span class="n">15</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4>Назвать срок, к которому прислать (голосом). Присылайте даже черновик: разбор нужен, чтобы усилить.</div>
+
+<!-- вопросы -->
+<section class="slide dark">
+  <div class="kick"><span class="idx">16 / 16</span><span class="ln"></span><span>Вопросы</span></div>
+  <div class="body" style="justify-content:flex-end">
+    <div class="qz">Ваши <span class="g">вопросы</span></div>
+    <div class="lead" style="font-size:24px;margin-top:20px">Пишите в чат: разберём фразы и шапки тех, кто прислал</div>
+    <div class="chips" style="margin-top:26px"><span class="chip">SMM-специалист</span><span class="chip">Блогер</span><span class="chip">UGC-креатор</span></div>
+  </div>
+  <div class="foot"><span>Спасибо, что были на эфире</span><span class="n">16</span></div>
+</section>
+<div class="notes"><h4>Что сказать</h4>Разобрать 3-5 фраз из чата вживую по лестнице. Напомнить про задание.</div>
+
+</div>
+<div id="nt"></div>
+<div id="bar"><button id="bPrev">←</button><button id="bNext">→</button><button id="bNotes">Заметки (N)</button><button id="bFull">Во весь экран (F)</button></div>
+<script>
+(function(){
+  var sl=[].slice.call(document.querySelectorAll('.slide')), nt=document.getElementById('nt'), i=0;
+  function fit(){ var w=innerWidth, h=innerHeight-(document.body.classList.contains('notes-on')?nt.offsetHeight:0); var k=Math.min(w/1280,h/720)*0.98;
+    sl.forEach(function(s){ s.style.transform='scale('+k+')'; }); document.getElementById('stage').style.bottom=(document.body.classList.contains('notes-on')?nt.offsetHeight:0)+'px'; }
+  function show(n){ i=Math.max(0,Math.min(sl.length-1,n)); sl.forEach(function(s,k){ s.classList.toggle('on',k===i); });
+    var no=sl[i].nextElementSibling; nt.innerHTML=(no&&no.classList.contains('notes'))?no.innerHTML:''; try{ history.replaceState(null,'','#'+(i+1)); }catch(e){} fit(); }
+  addEventListener('keydown',function(e){ if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ show(i+1); e.preventDefault(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') show(i-1);
+    else if(e.key==='n'||e.key==='N'||e.key==='т'||e.key==='Т'){ document.body.classList.toggle('notes-on'); fit(); }
+    else if(e.key==='f'||e.key==='F'||e.key==='а'||e.key==='А'){ full(); } });
+  function full(){ try{ if(!document.fullscreenElement) document.documentElement.requestFullscreen(); else document.exitFullscreen(); }catch(e){} }
+  document.getElementById('bPrev').onclick=function(){ show(i-1); };
+  document.getElementById('bNext').onclick=function(){ show(i+1); };
+  document.getElementById('bNotes').onclick=function(){ document.body.classList.toggle('notes-on'); fit(); };
+  document.getElementById('bFull').onclick=full;
+  document.getElementById('stage').addEventListener('click',function(e){ show(e.clientX<innerWidth*0.3?i-1:i+1); });
+  addEventListener('resize',fit);
+  document.addEventListener('fullscreenchange',function(){ document.body.classList.toggle('clean',!!document.fullscreenElement); fit(); });
+  show((+location.hash.slice(1)||1)-1);
+})();
+</script>
+</body>
+</html>
