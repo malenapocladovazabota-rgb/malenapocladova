@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#1B1414">
-<title>Разбор вашего бизнеса · New SMM</title>
-<meta property="og:title" content="Разбор вашего бизнеса · агентство Малены и Льва Покладовых">
-<meta property="og:description" content="Обучение, под ключ или агентство: подбираем путь под ваш бизнес.">
+<title>Обучение для бизнеса · PGL Marketing</title>
+<meta property="og:title" content="Система, которая приводит и возвращает клиентов">
+<meta property="og:description" content="Обучение для бизнеса по методу агентства PGL Marketing. Старт в ноябре.">
 <meta property="og:image" content="https://malenapocladova.com/images/og-biznes.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -35,9 +35,10 @@
 @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/vsl/jetbrains-mono-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+2212,U+00D7}
 
 /* ─────────────────────────────────────────────────────────────
-   Презентация для разбора с бизнесом. Ведёт Малена или Александра по Zoom,
-   листает сама (без автолистания). Основа: newsmm-programma-biznes.html,
-   добавлены вопросы клиенту, кейс, агентство, сравнение и рекомендация.
+   Презентация обучения для бизнеса. Проводит менеджер (Александра) по Zoom,
+   листает сама, без автолистания. Продаёт обучение New SMM: метод агентства
+   (6 шагов пути клиента), кейс студии в Сан-Диего (цифры из daily_metrics доски,
+   сняты 2026-10-09), формат, программа, тарифы, оплата. Основа: newsmm-programma-biznes.html.
    Подсказки ведущей: клавиша N или «Разделы → Подсказки ведущей» открывают
    отдельное окно ?notes. В Zoom показывать только окно презентации.
    Блоки программы в обычном листании пропускаются, открываются из оглавления.
@@ -238,6 +239,17 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
 #menu .x{float:right;border:0;background:none;font-size:26px;line-height:1;color:var(--ink);cursor:pointer}
 
 .qs li{font-size:16.5px;line-height:1.3}.qs{gap:9px}
+#who .logo{width:34px;height:34px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;font:700 11px var(--mono);letter-spacing:.04em;border:2px solid #fff;flex:0 0 34px}
+#app.lite #who .logo{border-color:var(--wine)}
+.st.cover{background:radial-gradient(120% 70% at 85% 5%,#8E2A3B 0%,#4A121C 45%,#1B1414 100%)}
+.agenda .stk{display:flex;gap:12px;align-items:center;font-size:16px;line-height:1.3;padding:11px 14px}
+.agenda .stk b{font-family:var(--serif);font-weight:500;font-size:28px;color:var(--wine);flex:0 0 22px;line-height:1}
+.st.ink .stack > .stk{font-size:16px;line-height:1.3}
+.six{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.six div{background:rgba(255,255,255,.95);color:var(--ink);border-radius:16px;padding:11px 12px;font-weight:700;font-size:16px;line-height:1.15}
+.six div b{display:block;font-family:var(--serif);font-weight:500;font-size:26px;color:var(--wine);line-height:1;margin-bottom:4px}
+.six div span{display:block;font-weight:500;font-size:12.5px;color:var(--ink2);margin-top:3px}
+.chart svg{width:100%;height:auto;display:block}
 .cs .stk .n{font-size:30px}.cs .stk{padding:11px 13px}
 .cmp .row{display:flex;justify-content:space-between;gap:10px;font-size:13.5px;line-height:1.3;padding:3px 0;border-top:1px solid rgba(255,255,255,.14)}
 .cmp .row:first-of-type{border-top:0}.cmp .row span{opacity:.75}.cmp .row b{text-align:right;font-weight:600}.cmp .row i{font-style:normal}
@@ -248,7 +260,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
 .pick button.on{background:var(--gold);border-color:var(--gold);color:var(--ink)}
 .pick.chosen button:not(.on){opacity:.4}
 .res .go{font-size:15px;padding:12px}
-@media (max-height:760px){.cs .stk .n{font-size:25px}.cs .stack{gap:8px}.cs .stk{padding:8px 12px}.cs .stk .t{font-size:13px}.qs li{font-size:15px}.pick button{padding:10px 14px;font-size:21px}}
+@media (max-height:760px){.agenda .stk{padding:8px 12px;font-size:15px}.agenda .stk b{font-size:23px}.six div{padding:8px 10px;font-size:15px}.six div b{font-size:21px}.st.ink .stack > .stk{font-size:14.5px;padding:9px 12px}.stack{gap:7px}.cs .stk .n{font-size:25px}.cs .stack{gap:8px}.cs .stk{padding:8px 12px}.cs .stk .t{font-size:13px}.qs li{font-size:15px}.pick button{padding:10px 14px;font-size:21px}}
 @media (max-height:700px){
   .big{font-size:36px}.mid{font-size:26px}.txt{font-size:16px}.hl{font-size:16px}
   .stk .n{font-size:28px}.stk{padding:10px 13px}.stack{gap:8px}
@@ -259,8 +271,8 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
   .blk .mid{font-size:23px;margin-top:4px!important}.blk .bn{font-size:30px}.blk .ul{gap:4px}.blk .ul li{font-size:13px;line-height:1.25}.blk .stk{padding:9px 12px}.blk .res{margin-top:7px;font-size:13.5px;padding:8px 12px}.blk .upx{margin-top:7px;font-size:12.5px;padding:7px 11px}.blk .tgs{margin-top:6px}
 }
 @media (max-height:740px){.toc{grid-template-columns:1fr 1fr;gap:4px}.toc .sep{grid-column:1/-1}.toc li{font-size:12.5px;padding:5px 7px;gap:6px}.toc li b{flex-basis:18px;font-size:11px}}
-@media (max-height:700px){.cs > p:last-child{display:none}.st[data-name=about] .stk{padding:9px 12px}.st[data-name=about] .stk .t{font-size:13.5px!important}.st[data-name=about] .two{margin-top:10px!important}.st[data-name=about] > .stk.d3{display:none}.st[data-name=about] .two{margin-bottom:10px}}
-@media (max-height:620px){.st[data-name=t_turnkey] > p.mini{display:none}.cs .stk .n{font-size:21px}.cs .stk .t{font-size:12px}.cs .mid{font-size:22px}.qs li{font-size:13.5px}.qs{gap:5px}.cmp .row{font-size:12px;padding:2px 0}.cmp .cc{padding:8px 11px}.pick button{padding:8px 12px;font-size:19px}
+@media (max-height:700px){.cs > p:last-child{display:none}.st[data-name=case] > p.txt{display:none}.st[data-name=about] .stk{padding:9px 12px}.st[data-name=about] .stk .t{font-size:13.5px!important}.st[data-name=about] .two{margin-top:10px!important}.st[data-name=about] > .stk.d3{display:none}.st[data-name=about] .two{margin-bottom:10px}}
+@media (max-height:620px){.st[data-name=t_turnkey] > p.mini{display:none}.st.paper .stk .ul li{font-size:13px}.st.cream2 .stk .ul li{font-size:13px}.six span{display:none!important}.agenda .stk{padding:6px 11px;font-size:13.5px}.st.ink .stack > .stk{font-size:13px;padding:7px 11px}.cs .stk .n{font-size:21px}.cs .stk .t{font-size:12px}.cs .mid{font-size:22px}.qs li{font-size:13.5px}.qs{gap:5px}.cmp .row{font-size:12px;padding:2px 0}.cmp .cc{padding:8px 11px}.pick button{padding:8px 12px;font-size:19px}
   .mid{font-size:22px}.ul{gap:3px}.tgs{margin-top:5px}.tg{font-size:11px;padding:3px 8px}.res{margin-top:6px;font-size:13px}.upx{margin-top:6px;font-size:12px}
   .blk .ul li:nth-child(4){display:none}.toc li{font-size:11.5px;padding:3px 6px}.toc{gap:3px}.bn{font-size:30px}.chips .chip:nth-child(4){display:none}.ul li.opt{display:none}.blk .mid{font-size:21px}.blk .ul li{font-size:12.5px}.blk .res{font-size:12.5px;padding:7px 11px}.blk .upx{font-size:11.5px;padding:6px 10px}.blk .ul{gap:2px}.price .now{font-size:32px}.stk .n{font-size:24px}
   .st{padding-bottom:calc(env(safe-area-inset-bottom) + 96px)}#link button{padding:13px 16px;font-size:16px}}
@@ -272,128 +284,234 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
 
   <div id="top">
     <div id="bars"></div>
-    <div id="who"><img src="images/malena-avatar-v1.jpg" alt=""><span class="nm">Малена и Лев Покладовы</span><span class="ago">· разбор для бизнеса</span><span id="pz">❚❚</span>
+    <div id="who"><span class="logo">PGL</span><span class="nm">PGL Marketing</span><span class="ago">· обучение для бизнеса</span><span id="pz">❚❚</span>
       <button type="button" id="menuBtn">Разделы</button></div>
   </div>
 
-  <!-- 1 · обложка и план разбора -->
-  <section class="st" data-name="hook" data-note="Поздоровайтесь и представьтесь. Скажите, сколько займёт встреча, и объясните план: сначала вопросы о бизнесе, потом покажу, как мы работаем, в конце честно скажу, какой путь подходит. Спросите: «Так удобно?»" data-title="Обложка и план">
-    <div class="ph"><img src="images/malena-hero-v4-m.jpg" alt="Малена Покладова" style="object-position:50% 12%"></div>
+  <!-- 1 · обложка -->
+  <section class="st cover" data-name="hook" data-note="Поздоровайтесь, представьтесь: менеджер обучения PGL Marketing. Скажите, сколько займёт встреча. Главная мысль обложки: это не курс «как вести Instagram», а метод, по которому агентство ведёт бизнесы в США." data-title="Обложка">
     <div class="push"></div>
-    <div class="lab anim">Агентство Малены и Льва Покладовых</div>
-    <div class="big anim d1" style="margin-top:10px;font-size:50px">Разбор <em>вашего бизнеса</em></div>
-    <div class="stk anim d2" style="margin-top:14px"><div class="k">План встречи</div><ul class="ul">
-      <li>Ваш бизнес сейчас</li>
-      <li>Где теряются клиенты</li>
-      <li>Как мы работаем и что получается у клиентов</li>
-      <li>Какой путь подходит именно вам</li></ul></div>
+    <div class="lab anim" style="color:var(--gold)">PGL Marketing · обучение для бизнеса</div>
+    <div class="big anim d1" style="margin-top:12px;font-size:46px">Система, которая приводит <em>и возвращает клиентов</em></div>
+    <p class="txt anim d2" style="margin-top:16px;opacity:.9">Метод, по которому агентство ведёт бизнесы в США. Ему можно научиться и внедрить у себя.</p>
+    <div class="chips anim d3" style="margin-top:16px"><span class="chip">Старт в ноябре</span><span class="chip">2 месяца</span><span class="chip">Онлайн</span><span class="chip">На вашем бизнесе</span></div>
+    <div class="push"></div>
   </section>
 
-  <!-- 2 · вопросы клиенту -->
-  <section class="st paper" data-name="you" data-note="Главный слайд. Говорит клиент, вы слушаете и записываете ответы в карточку лида в GHL. Уточняйте цифры: сколько новых клиентов в месяц, средний чек, бюджет на рекламу. Спросите, что уже пробовали и почему не сработало: это понадобится, когда будете рекомендовать путь." data-title="Расскажите о бизнесе">
-    <div class="lab anim" style="color:var(--wine)">Начнём с вас</div>
-    <div class="mid anim d1" style="margin-top:10px">Расскажите <em>о своём бизнесе</em></div>
+  <!-- 2 · план встречи -->
+  <section class="st paper" data-name="plan" data-note="Проговорите план за 20 секунд и спросите: «Так удобно?» Сразу скажите, что в конце подскажете тариф под их бизнес." data-title="План встречи">
+    <div class="lab anim" style="color:var(--wine)">План встречи</div>
+    <div class="mid anim d1" style="margin-top:10px">Что разберём <em>за встречу</em></div>
+    <div class="push"></div>
+    <div class="stack agenda">
+      <div class="stk anim d2"><b>1</b>Ваш бизнес сейчас: откуда клиенты и где они теряются</div>
+      <div class="stk anim d2"><b>2</b>Метод агентства: шесть шагов пути клиента</div>
+      <div class="stk anim d3"><b>3</b>Кейс: как метод работает у студии в Сан-Диего</div>
+      <div class="stk anim d3"><b>4</b>Обучение: программа, формат, результат</div>
+      <div class="stk anim d4"><b>5</b>Тарифы, цены и старт</div>
+    </div>
+    <div class="push"></div>
+  </section>
+
+  <!-- 3 · вопросы о бизнесе -->
+  <section class="st paper" data-name="you" data-note="Главный слайд. Говорит клиент, вы слушаете и записываете ответы в карточку лида в GHL. Уточняйте цифры: новые клиенты в месяц, средний чек, бюджет на рекламу. Особенно спросите про скорость ответа на заявку и повторные визиты: к этому вернётесь на слайдах метода." data-title="Вопросы о бизнесе">
+    <div class="lab anim" style="color:var(--wine)">Начнём с вашего бизнеса</div>
+    <div class="mid anim d1" style="margin-top:10px">Расскажите, <em>как всё устроено сейчас</em></div>
     <div class="push"></div>
     <div class="stk anim d2"><ul class="ul qs">
       <li>Чем занимается бизнес и кто ваш клиент?</li>
       <li>Откуда сейчас приходят клиенты?</li>
       <li>Сколько новых клиентов в месяц и какой средний чек?</li>
-      <li>Кто ведёт соцсети и что уже пробовали?</li>
-      <li>Какой результат хотите через 3 месяца?</li></ul></div>
-    <div class="res anim d3"><div class="k">Зачем спрашиваем</div>Путь подбираем под ваши цифры и ваше время, а не под тариф</div>
+      <li>Как быстро отвечаете на заявку и как записываете?</li>
+      <li>Возвращаются ли клиенты повторно?</li>
+      <li>Кто ведёт соцсети и рекламу?</li></ul></div>
     <div class="push"></div>
   </section>
 
-  <!-- 3 · путь клиента -->
-  <section class="st ink" data-name="leak" data-note="Попросите ссылку на Instagram клиента и откройте профиль вместе (можно переключить демонстрацию экрана). Пройдите по пяти шагам и назовите 1–2 места, где у него рвётся. Не критикуйте: говорите, что он получит, если это починить." data-title="Где теряются клиенты">
-    <div class="lab anim">Путь клиента</div>
-    <div class="mid anim d1" style="margin-top:10px">Где обычно <em>теряются клиенты</em></div>
+  <!-- 4 · где бизнес теряет клиентов -->
+  <section class="st ink" data-name="loss" data-note="Вернитесь к ответам клиента: на каком из четырёх шагов теряется у него. Пусть назовёт сам. Не критикуйте, просто отметьте: «вот здесь уходят деньги»." data-title="Где бизнес теряет клиентов">
+    <div class="lab anim">Типичная картина</div>
+    <div class="mid anim d1" style="margin-top:10px">Где бизнес <em>теряет клиентов</em></div>
     <div class="push"></div>
     <div class="stack">
-      <div class="anim d2"><span class="hl">1 · Видео: человек впервые увидел вас</span></div>
-      <div class="anim d2"><span class="hl">2 · Профиль: решает, доверять ли</span></div>
-      <div class="anim d3"><span class="hl">3 · Заявка: написал или записался</span></div>
-      <div class="anim d3"><span class="hl">4 · Ответ: вы ответили быстро</span></div>
-      <div class="anim d4"><span class="hl g">5 · Возврат: пришёл снова и привёл друга</span></div>
+      <div class="stk anim d2"><div class="k">Реклама</div>Деньги тратятся, но непонятно, какая реклама привела клиентов</div>
+      <div class="stk anim d2"><div class="k">Заявка</div>Ответили через несколько часов, человек уже записался в другое место</div>
+      <div class="stk anim d3"><div class="k">Запись</div>Записался и не пришёл: никто не напомнил</div>
+      <div class="stk anim d4"><div class="k">После визита</div>Пришёл один раз и не вернулся: никто не позвал снова</div>
     </div>
-    <p class="mini anim d4" style="margin-top:14px">Посмотрим вместе ваш профиль: на каком шаге рвётся у вас?</p>
     <div class="push"></div>
   </section>
 
-  <!-- 4 · кто мы -->
-  <section class="st" data-name="about" data-note="Коротко, 20–30 секунд. Главная мысль: это не теория, а система, по которой работает наше агентство." data-title="Кто мы">
-    <div class="ph"><img src="images/malena-b2.jpg" alt="" style="object-position:50% 18%"></div>
+  <!-- 5 · метод -->
+  <section class="st wine" data-name="method" data-note="Это суть обучения. Шаги связаны: реклама без быстрого ответа и напоминаний сливает бюджет, а без удержания каждого клиента приходится покупать заново. Дальше три слайда подробнее, по два шага." data-title="Метод: шесть шагов">
+    <div class="lab anim">Метод агентства</div>
+    <div class="mid anim d1" style="margin-top:10px">Путь клиента <em>без дыр</em>: шесть шагов</div>
     <div class="push"></div>
-    <div class="anim"><span class="hl">Малена и Лев Покладовы. Ведём агентство</span><br><span class="hl">Клиенты в США, Европе и Азии</span></div>
-    <div class="two anim d2" style="margin-top:16px">
-      <div class="stk tilt-l"><div class="n">7 лет</div><div class="t">работаем только с соцсетями</div></div>
-      <div class="stk tilt-r"><div class="n">12 000</div><div class="t">видео для себя и клиентов</div></div>
+    <div class="six anim d2">
+      <div><b>1</b>Привлечение<span>контент и реклама</span></div>
+      <div><b>2</b>Аналитика<span>у каждой записи источник</span></div>
+      <div><b>3</b>Запись<span>CRM и онлайн-запись</span></div>
+      <div><b>4</b>Сообщения<span>подтверждения и напоминания</span></div>
+      <div><b>5</b>Удержание<span>повторные визиты</span></div>
+      <div><b>6</b>Отзывы<span>оценка и отзывы после визита</span></div>
     </div>
-    <div class="stk anim d3" style="margin-top:10px"><div class="k">Ниши клиентов</div><div class="t" style="font-size:16px;font-weight:600;color:var(--ink)">Бьюти и wellness, юристы, рестораны, образование, тату-студия</div></div>
+    <p class="mini anim d3" style="margin-top:12px">Шаги связаны в петлю: реклама даёт запись, запись даёт повторный визит, и каждый шаг считается в цифрах.</p>
+    <div class="push"></div>
   </section>
 
-  <!-- 5 · кейс студии красоты (pgl.marketing/pricing) -->
-  <section class="st paper cs" data-name="case" data-note="Расскажите историю: студия красоты и wellness в Сан-Диего, подписчиков было ноль. С мая по сентябрь 700 записей на $145K по прайсу при рекламе $14 297, около $20 за запись. 120 клиентов уже вернулись повторно. Главный мастер расписана на 2,5 месяца вперёд, команда на 3 недели. Свяжите с бизнесом клиента: что из этого применимо к нему." data-title="Кейс студии красоты">
-    <div class="lab anim" style="color:var(--wine)">Кейс · студия красоты и wellness, Сан-Диего</div>
-    <div class="mid anim d1" style="margin-top:10px">Май–сентябрь 2026: <em>700 записей</em></div>
+  <!-- 6 · шаги 1–2 -->
+  <section class="st paper" data-name="step12" data-note="Шаг 1: контент голосом владельца, реклама на людей рядом, догоняющая реклама. Шаг 2: у каждой записи известен источник, отчёт каждую неделю. Спросите: «Вы сейчас знаете, какая реклама приводит клиентов?»" data-title="Шаги 1–2: привлечение и аналитика">
+    <div class="lab anim" style="color:var(--wine)">Шаги 1 и 2</div>
+    <div class="mid anim d1" style="margin-top:10px">Привлечение <em>и аналитика</em></div>
+    <div class="push"></div>
+    <div class="stk anim d2"><div class="k">1 · Привлечение</div><ul class="ul">
+      <li>Реклама на людей рядом с бизнесом, плюс догоняющая реклама</li>
+      <li>Видео голосом владельца как эксперта: обучение, а не рекламная брошюра</li>
+      <li>Органический контент усиливает рекламу</li></ul></div>
+    <div class="stk anim d3" style="margin-top:10px"><div class="k">2 · Аналитика</div><ul class="ul">
+      <li>Реклама, клик, запись и выручка связаны вместе</li>
+      <li>Видно, какая реклама привела какого клиента</li>
+      <li>Отчёт каждую неделю: расход, записи по источникам, окупаемость</li></ul></div>
+    <div class="push"></div>
+  </section>
+
+  <!-- 7 · шаги 3–4 -->
+  <section class="st cream2" data-name="step34" data-note="Шаг 3: одна CRM, клиент записывается сам. Шаг 4: подтверждение и напоминания, чтобы человек пришёл. У студии из кейса напоминания идут за 2 дня, за день, за 3 часа и за час до визита." data-title="Шаги 3–4: запись и сообщения">
+    <div class="lab anim" style="color:var(--wine)">Шаги 3 и 4</div>
+    <div class="mid anim d1" style="margin-top:10px">Запись <em>и сообщения</em></div>
+    <div class="push"></div>
+    <div class="stk anim d2"><div class="k">3 · Запись</div><ul class="ul">
+      <li>Одна CRM: календари, услуги, страницы записи</li>
+      <li>Клиент записывается сам, в любое время</li>
+      <li>Карточка клиента: число визитов, оценки, история</li></ul></div>
+    <div class="stk anim d3" style="margin-top:10px"><div class="k">4 · Сообщения</div><ul class="ul">
+      <li>Подтверждение сразу после записи</li>
+      <li>Напоминания перед визитом, чтобы человек пришёл</li>
+      <li>Приветствие новым подписчикам в директе</li></ul></div>
+    <div class="push"></div>
+  </section>
+
+  <!-- 8 · шаги 5–6 -->
+  <section class="st paper" data-name="step56" data-note="Шаг 5: подарки за визиты вместо скидок, возврат тех, кто давно не приходил. Шаг 6: оценка после визита, довольных ведём к отзывам. Спросите, есть ли у них что-то из этого сейчас." data-title="Шаги 5–6: удержание и отзывы">
+    <div class="lab anim" style="color:var(--wine)">Шаги 5 и 6</div>
+    <div class="mid anim d1" style="margin-top:10px">Удержание <em>и отзывы</em></div>
+    <div class="push"></div>
+    <div class="stk anim d2"><div class="k">5 · Удержание</div><ul class="ul">
+      <li>Программа лояльности: подарки за визиты, без скидок</li>
+      <li>Сообщение, когда до подарка остался один визит</li>
+      <li>Возврат клиентов, которые давно не приходили</li></ul></div>
+    <div class="stk anim d3" style="margin-top:10px"><div class="k">6 · Отзывы</div><ul class="ul">
+      <li>После визита оценка от 1 до 10</li>
+      <li>Довольных клиентов ведём к публичным отзывам</li>
+      <li>Оценки и история визитов копятся в карточке клиента</li></ul></div>
+    <div class="push"></div>
+  </section>
+
+  <!-- 9 · правила метода -->
+  <section class="st ink" data-name="rules" data-note="Подчеркните: метод не про скидки и акции. Клиент платит полную цену, бизнес растёт на ценности, решения принимаются по цифрам каждую неделю." data-title="Три правила метода">
+    <div class="lab anim">Три правила метода</div>
+    <div class="mid anim d1" style="margin-top:10px">На чём <em>держится результат</em></div>
+    <div class="push"></div>
+    <div class="stack">
+      <div class="anim d2"><span class="hl">Рост на ценности, а не на скидках</span><p class="mini" style="margin:6px 2px 0">Клиентов не приучают ждать распродажу, поэтому результат держится</p></div>
+      <div class="anim d3"><span class="hl">Подарки за визиты вместо оптовых пакетов</span><p class="mini" style="margin:6px 2px 0">Средний чек и чаевые остаются целыми</p></div>
+      <div class="anim d4"><span class="hl g">Решения по цифрам каждую неделю</span><p class="mini" style="margin:6px 2px 0">Сильную рекламу масштабируем, слабую отключаем</p></div>
+    </div>
+    <div class="push"></div>
+  </section>
+
+  <!-- 10 · кейс: кто -->
+  <section class="st" data-name="case" data-note="Студия лица и тела в Сан-Диего, клиент агентства. Сильный продукт владелицы, но не было системы: предсказуемой записи, возврата клиентов, понимания, куда уходит каждый доллар. Агентство выстроило все шесть шагов." data-title="Кейс: студия в Сан-Диего">
+    <div class="ph"><img src="images/case-wellness-studio.jpg" alt="" style="object-position:50% 0%"></div>
+    <div class="push"></div>
+    <div class="lab anim">Кейс агентства · Сан-Диего</div>
+    <div class="big anim d1" style="margin-top:10px;font-size:40px">Студия лица <em>и тела</em></div>
+    <div class="anim d2" style="margin-top:12px"><span class="hl">Сильный авторский метод владелицы</span><br><span class="hl">Но не было системы записи и возврата клиентов</span></div>
+    <p class="txt anim d3" style="margin-top:12px;font-size:16px;opacity:.9">Агентство выстроило все шесть шагов метода.</p>
+  </section>
+
+  <!-- 11 · кейс: записи по неделям -->
+  <section class="st paper" data-name="case_chart" data-note="С июля по сентябрь записей в месяц стало вдвое больше: 143 и 298. Рекламный бюджет увеличили в 2,2 раза, а цена записи осталась около $20 (июль $19,5, сентябрь $20,8). Это и есть смысл метода: когда все шаги работают, бюджет можно увеличивать без роста цены клиента." data-title="Кейс: записи по неделям">
+    <div class="lab anim" style="color:var(--wine)">Кейс · записи по неделям</div>
+    <div class="mid anim d1" style="margin-top:10px">Записей в месяц: <em>143 → 298</em></div>
+    <div class="push"></div>
+    <div class="stk anim d2 chart"><svg viewBox="0 0 320 150" role="img" aria-label="Записи по неделям, с 29 июня по 4 октября"><rect x="0.0" y="92.5" width="19.1" height="35.5" rx="3" fill="#C9A9AE"/><text x="9.6" y="88.5" text-anchor="middle" font-size="10" font-weight="700" fill="#1B1414">28</text><rect x="23.1" y="97.6" width="19.1" height="30.4" rx="3" fill="#C9A9AE"/><rect x="46.3" y="88.7" width="19.1" height="39.3" rx="3" fill="#C9A9AE"/><rect x="69.4" y="73.5" width="19.1" height="54.5" rx="3" fill="#C9A9AE"/><rect x="92.6" y="95.1" width="19.1" height="32.9" rx="3" fill="#C9A9AE"/><rect x="115.7" y="87.5" width="19.1" height="40.5" rx="3" fill="#C9A9AE"/><rect x="138.9" y="74.8" width="19.1" height="53.2" rx="3" fill="#C9A9AE"/><rect x="162.0" y="69.7" width="19.1" height="58.3" rx="3" fill="#C9A9AE"/><rect x="185.1" y="100.1" width="19.1" height="27.9" rx="3" fill="#C9A9AE"/><text x="194.7" y="96.1" text-anchor="middle" font-size="10" font-weight="700" fill="#1B1414">22</text><rect x="208.3" y="60.9" width="19.1" height="67.1" rx="3" fill="#6E1E2B"/><rect x="231.4" y="49.5" width="19.1" height="78.5" rx="3" fill="#6E1E2B"/><rect x="254.6" y="19.1" width="19.1" height="108.9" rx="3" fill="#6E1E2B"/><text x="264.1" y="15.1" text-anchor="middle" font-size="10" font-weight="700" fill="#1B1414">86</text><rect x="277.7" y="30.5" width="19.1" height="97.5" rx="3" fill="#6E1E2B"/><rect x="300.9" y="52.0" width="19.1" height="76.0" rx="3" fill="#6E1E2B"/><text x="310.4" y="48.0" text-anchor="middle" font-size="10" font-weight="700" fill="#1B1414">60</text><text x="32.7" y="144" text-anchor="middle" font-size="10" fill="#8A7C78">июль</text><text x="148.4" y="144" text-anchor="middle" font-size="10" fill="#8A7C78">август</text><text x="264.1" y="144" text-anchor="middle" font-size="10" fill="#8A7C78">сентябрь</text></svg><div class="t" style="margin-top:4px">Записи по неделям, с 29 июня по 4 октября. Тёмные столбики: бюджет увеличили</div></div>
+    <div class="two anim d3" style="margin-top:10px">
+      <div class="stk"><div class="n">×2,2</div><div class="t">рекламный бюджет с июля по сентябрь</div></div>
+      <div class="stk"><div class="n">≈ $20</div><div class="t">цена записи не выросла</div></div>
+    </div>
+    <div class="push"></div>
+  </section>
+
+  <!-- 12 · кейс: сентябрь -->
+  <section class="st paper cs" data-name="case_sept" data-note="Сентябрь: 298 записей, из них 106 повторных, то есть удержание работает. $61 400 это стоимость записей по прайсу услуг, оплаты приходят по мере визитов. Если спросят про старые цифры с сайта (700 записей и $145K за май–сентябрь), они тоже верные, просто за другой период." data-title="Кейс: сентябрь в цифрах">
+    <div class="lab anim" style="color:var(--wine)">Кейс · сентябрь 2026</div>
+    <div class="mid anim d1" style="margin-top:10px">Один месяц <em>в цифрах</em></div>
     <div class="push"></div>
     <div class="stack">
       <div class="two anim d2">
-        <div class="stk"><div class="n">$145K</div><div class="t">записей по прайсу</div></div>
-        <div class="stk"><div class="n">≈ $20</div><div class="t">реклама за одну запись</div></div>
+        <div class="stk"><div class="n">298</div><div class="t">записей за месяц</div></div>
+        <div class="stk"><div class="n">$20,8</div><div class="t">реклама за одну запись</div></div>
       </div>
       <div class="two anim d3">
-        <div class="stk"><div class="n">×10</div><div class="t">записей на каждый доллар рекламы</div></div>
-        <div class="stk"><div class="n">120</div><div class="t">клиентов уже пришли повторно</div></div>
+        <div class="stk"><div class="n">192</div><div class="t">новых клиента</div></div>
+        <div class="stk"><div class="n">106</div><div class="t">повторных записей</div></div>
       </div>
-      <div class="stk anim d4"><div class="n">50K+</div><div class="t">подписчиков с нуля в Instagram, Facebook и TikTok</div></div>
+      <div class="stk anim d4"><div class="two" style="align-items:center"><div><div class="n">$61 400</div><div class="t">записей по прайсу</div></div><div class="t" style="margin:0">при рекламе $6 200, это ×10 к расходу</div></div></div>
     </div>
     <div class="push"></div>
-    <p class="anim d4" style="font-size:12px;line-height:1.35;color:var(--ink2);text-align:center">Реклама $14 297 за 5 месяцев, цифры из рекламного кабинета клиента. Теперь мастер расписана на 2,5 месяца вперёд.</p>
+    <p class="anim d4" style="font-size:12px;line-height:1.35;color:var(--ink2);text-align:center">Данные CRM и рекламного кабинета клиента, сняты 9 октября 2026.</p>
   </section>
 
-  <!-- 6 · другие ниши -->
-  <section class="st ink" data-name="niches" data-note="Если ниша клиента похожа на один из кейсов, остановитесь на нём. Если нет, скажите: система одна и та же, контент, реклама, запись и подсчёт клиентов." data-title="Другие ниши">
-    <div class="lab anim">Другие ниши</div>
-    <div class="mid anim d1" style="margin-top:10px">Та же система <em>работает не только в бьюти</em></div>
+  <!-- 13 · мостик к обучению -->
+  <section class="st wine" data-name="bridge" data-note="Мостик к продукту: «Этот же метод мы даём в обучении. Вы проходите шаги на своём бизнесе, куратор проверяет». Эфиры ведут основатели агентства." data-title="Этому методу можно научиться">
+    <div class="lab anim">Обучение New SMM для бизнеса</div>
+    <div class="mid anim d1" style="margin-top:10px">Тот же метод, <em>по шагам, на вашем бизнесе</em></div>
     <div class="push"></div>
     <div class="stack">
-      <div class="stk anim d2"><div class="k">Онлайн-школа · США</div><div class="two"><div><div class="n">в 10 раз</div><div class="t">окупилась реклама</div></div><div><div class="n">200+</div><div class="t">клиентов на премиум</div></div></div></div>
-      <div class="stk anim d3"><div class="k">Иммиграционный адвокат · США</div><div class="n">1,7M</div><div class="t">органических просмотров за месяц</div></div>
+      <div class="anim d2"><span class="hl">Уроки агентства по каждому шагу</span></div>
+      <div class="anim d2"><span class="hl">Задания делаете на своём аккаунте</span></div>
+      <div class="anim d3"><span class="hl">Куратор проверяет каждое задание</span></div>
+      <div class="anim d4"><span class="hl g">Эфиры с основателями агентства, Маленой и Львом Покладовыми</span></div>
     </div>
-    <div class="push"></div>
-  </section>
-
-  <!-- 7 · как устроена система -->
-  <section class="st wine" data-name="system" data-note="Результат даёт связка, а не одна часть. Вернитесь к ответам клиента: какая из четырёх частей у него сейчас слабее всего." data-title="Система из четырёх частей">
-    <div class="lab anim">Как мы работаем</div>
-    <div class="mid anim d1" style="margin-top:10px">Система из <em>четырёх частей</em></div>
-    <div class="push"></div>
-    <div class="stack">
-      <div class="anim d2"><span class="hl">1 · Стратегия и упаковка</span><p class="mini" style="margin:6px 2px 0">Чем вы отличаетесь и что продвигать первым</p></div>
-      <div class="anim d2"><span class="hl">2 · Контент</span><p class="mini" style="margin:6px 2px 0">Запас видео за одну съёмку, а не по ролику в день</p></div>
-      <div class="anim d3"><span class="hl">3 · Реклама</span><p class="mini" style="margin:6px 2px 0">Считаем, сколько стоит заявка и запись</p></div>
-      <div class="anim d4"><span class="hl g">4 · Запись и возврат клиентов</span><p class="mini" style="margin:6px 2px 0">Онлайн-запись, напоминания, повторные визиты</p></div>
-    </div>
+    <p class="mini anim d4" style="margin-top:14px">Для владельцев бизнеса и экспертов. Опыт в соцсетях не нужен.</p>
     <div class="push"></div>
   </section>
 
-  <!-- 8 · три пути -->
-  <section class="st ink" data-name="paths" data-note="Цены здесь не называйте. Скажите: «Покажу каждый путь, а в конце скажу, что рекомендую именно вам»." data-title="Три пути">
-    <div class="lab anim">Три пути</div>
-    <div class="mid anim d1" style="margin-top:10px">Как можно <em>с нами работать</em></div>
+  <!-- 14 · формат -->
+  <section class="st ink" data-name="format" data-note="Старт в ноябре, 2 месяца, онлайн. Доступ к урокам 12 месяцев. Если спросят про время в неделю, честно: зависит от тарифа и темпа, уроки можно смотреть в удобное время." data-title="Как проходит обучение">
+    <div class="lab anim">Как проходит обучение</div>
+    <div class="mid anim d1" style="margin-top:10px">Два месяца, <em>старт в ноябре</em></div>
     <div class="push"></div>
-    <div class="stack">
-      <div class="stk anim d2"><div class="k">Путь 1 · обучение</div><div class="n" style="font-size:24px">Учитесь и делаете сами</div><div class="t">Есть время и хочется разбираться самим. 2 месяца, старт в ноябре.</div></div>
-      <div class="stk anim d3"><div class="k">Путь 2 · под ключ</div><div class="n" style="font-size:24px">Делаем за вас 2 месяца</div><div class="t">Нужен результат быстро, дальше ведёте сами или с нами.</div></div>
-      <div class="stk anim d4" style="background:var(--gold)"><div class="k" style="color:var(--wine)">Путь 3 · агентство</div><div class="n" style="font-size:24px;color:var(--ink)">Ведём постоянно</div><div class="t" style="color:var(--ink)">Нужен постоянный поток клиентов без вашего времени.</div></div>
-    </div>
+    <div class="chips anim d2"><span class="chip">Онлайн</span><span class="chip">12 блоков</span><span class="chip">Доступ 12 месяцев</span><span class="chip">Сертификат</span></div>
+    <div class="stk anim d3" style="margin-top:12px"><ul class="ul">
+      <li>Уроки на платформе, смотрите в удобное время</li>
+      <li>Чат потока в Telegram</li>
+      <li>Куратор проверяет задания и даёт обратную связь</li>
+      <li>Эфиры с разборами</li>
+      <li>Шаблоны, по которым работает агентство</li></ul></div>
+    <div class="push"></div>
+  </section>
+
+  <!-- 15 · результат -->
+  <section class="st paper" data-name="result" data-note="Покажите разницу тарифов через результат. «С нуля»: основа, контент и первая реклама. «Повышение»: плюс полная реклама, воронка, страница записи и аналитика." data-title="Что будет через 2 месяца">
+    <div class="lab anim" style="color:var(--wine)">Результат</div>
+    <div class="mid anim d1" style="margin-top:10px">Что будет <em>через 2 месяца</em></div>
+    <div class="push"></div>
+    <div class="stk anim d2"><div class="k">Тариф «С нуля»</div><ul class="ul">
+      <li>Понятно, что в соцсетях работает на продажи</li>
+      <li>Стратегия и 10 готовых Reels про ваш бизнес</li>
+      <li>Упакованный профиль и первая реклама</li></ul></div>
+    <div class="stk anim d3" style="margin-top:10px"><div class="k">Тариф «Повышение» дополнительно</div><ul class="ul">
+      <li>Полная настройка рекламы и воронки</li>
+      <li>Страница записи и автоответ</li>
+      <li>Аналитика окупаемости и готовый оффер</li></ul></div>
     <div class="push"></div>
   </section>
 
   <!-- тариф С нуля -->
-  <section class="st paper" data-name="t_zero" data-note="Для владельца, который сам ведёт соцсети и начинает почти с нуля. Опыт не нужен. Подробная программа идёт сразу после тарифа «Повышение»." data-title="Тариф «С нуля»">
-    <div class="lab anim" style="color:var(--wine)">Путь 1 · обучение · тариф</div>
+  <section class="st paper" data-name="t_zero" data-note="Для владельца, который сам ведёт соцсети и начинает с основы. Опыт не нужен. Цена на слайде текущая, она растёт ближе к старту." data-title="Тариф «С нуля»">
+    <div class="lab anim" style="color:var(--wine)">Тариф 1 из 2</div>
     <div class="mid anim d1" style="margin-top:8px">С нуля</div>
     <p class="mini anim d1" style="margin-top:6px;color:var(--ink2)">Для владельцев бизнеса и экспертов, которые ведут соцсети сами. Опыт не нужен.</p>
     <div class="push"></div>
@@ -411,7 +529,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
 
   <!-- тариф Повышение -->
   <section class="st wine" data-name="t_upskill" data-note="Для бизнеса, который уже продаёт через соцсети и хочет стабильный поток. Мест 8. Личная стратегия от Малены и два созвона с Маленой и Львом." data-title="Тариф «Повышение»">
-    <div class="lab anim">Путь 1 · обучение · тариф · 8 мест</div>
+    <div class="lab anim">Тариф 2 из 2 · 8 мест</div>
     <div class="mid anim d1" style="margin-top:8px">Повышение <em>квалификации</em></div>
     <p class="mini anim d1" style="margin-top:6px">Для бизнеса, который уже продаёт через соцсети и хочет стабильный поток клиентов.</p>
     <div class="push"></div>
@@ -427,7 +545,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
   </section>
 
   <!-- 5 · программа целиком -->
-  <section class="st" data-name="program" data-note="Нажмите на блок, чтобы показать его. Стрелка вправо отсюда ведёт к «Под ключ», блоки в обычном листании пропускаются. Если клиенту программа не нужна подробно, не открывайте блоки." data-title="Программа: 12 блоков">
+  <section class="st" data-name="program" data-note="Нажмите на блок, чтобы показать его. Стрелка вправо отсюда ведёт к выбору тарифа, блоки в обычном листании пропускаются. Если клиенту программа не нужна подробно, не открывайте блоки." data-title="Программа: 12 блоков">
     <div class="ph dim"><img src="images/malena-b3.jpg" alt="" style="object-position:50% 25%"></div>
     <div class="lab anim">Программа</div>
     <div class="mid anim d1" style="margin-top:8px">12 блоков. Всё делаете <em>на своём бизнесе</em></div>
@@ -437,7 +555,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="push"></div>
   </section>
 
-  <section class="st paper blk" data-name="block1" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к «Под ключ», влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 1 программы">
+  <section class="st paper blk" data-name="block1" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к выбору тарифа, влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 1 программы">
     <div class="bh anim"><span class="bn">01</span><span class="lab" style="color:var(--wine)">Блок 1 из 12 · часть 1</span></div>
     <div class="mid anim d1" style="margin-top:8px">Старт: как агентство ведёт бизнес в соцсетях</div>
     <div class="tgs anim d1"><span class="tg on">Оба тарифа: задания и обратная связь</span></div>
@@ -447,7 +565,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="upx anim d3"><b>+ В «Повышении»</b>Увидите, каких блоков не хватает вашему бизнесу и как именно они тормозят рост</div>
     <div class="push"></div>
   </section>
-  <section class="st cream2 blk" data-name="block2" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к «Под ключ», влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 2 программы">
+  <section class="st cream2 blk" data-name="block2" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к выбору тарифа, влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 2 программы">
     <div class="bh anim"><span class="bn">02</span><span class="lab" style="color:var(--wine)">Блок 2 из 12 · часть 1</span></div>
     <div class="mid anim d1" style="margin-top:8px">Стратегия и позиционирование</div>
     <div class="tgs anim d1"><span class="tg on">Оба тарифа: задания и обратная связь</span></div>
@@ -457,7 +575,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="upx anim d3"><b>+ В «Повышении»</b>Воронка, стоимость клиента и средний чек, стратегия на 6 месяцев и личная стратегия от Малены</div>
     <div class="push"></div>
   </section>
-  <section class="st paper blk" data-name="block3" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к «Под ключ», влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 3 программы">
+  <section class="st paper blk" data-name="block3" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к выбору тарифа, влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 3 программы">
     <div class="bh anim"><span class="bn">03</span><span class="lab" style="color:var(--wine)">Блок 3 из 12 · часть 1</span></div>
     <div class="mid anim d1" style="margin-top:8px">Идеи и сценарии</div>
     <div class="tgs anim d1"><span class="tg on">Оба тарифа: задания и обратная связь</span></div>
@@ -467,7 +585,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="upx anim d3"><b>+ В «Повышении»</b>Серии под воронку продаж и сценарии для рекламы</div>
     <div class="push"></div>
   </section>
-  <section class="st cream2 blk" data-name="block4" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к «Под ключ», влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 4 программы">
+  <section class="st cream2 blk" data-name="block4" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к выбору тарифа, влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 4 программы">
     <div class="bh anim"><span class="bn">04</span><span class="lab" style="color:var(--wine)">Блок 4 из 12 · часть 1</span></div>
     <div class="mid anim d1" style="margin-top:8px">Съёмка</div>
     <div class="tgs anim d1"><span class="tg on">Оба тарифа: задания и обратная связь</span></div>
@@ -477,7 +595,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="upx anim d3"><b>+ В «Повышении»</b>Интервью, отзывы клиентов, съёмка команды и процесса работы</div>
     <div class="push"></div>
   </section>
-  <section class="st paper blk" data-name="block5" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к «Под ключ», влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 5 программы">
+  <section class="st paper blk" data-name="block5" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к выбору тарифа, влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 5 программы">
     <div class="bh anim"><span class="bn">05</span><span class="lab" style="color:var(--wine)">Блок 5 из 12 · часть 1</span></div>
     <div class="mid anim d1" style="margin-top:8px">Монтаж и видео</div>
     <div class="tgs anim d1"><span class="tg on">Оба тарифа: задания и обратная связь</span></div>
@@ -487,7 +605,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="upx anim d3"><b>+ В «Повышении»</b>Продвинутый монтаж и рекламные креативы из готовых роликов</div>
     <div class="push"></div>
   </section>
-  <section class="st cream2 blk" data-name="block6" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к «Под ключ», влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 6 программы">
+  <section class="st cream2 blk" data-name="block6" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к выбору тарифа, влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 6 программы">
     <div class="bh anim"><span class="bn">06</span><span class="lab" style="color:var(--wine)">Блок 6 из 12 · часть 1</span></div>
     <div class="mid anim d1" style="margin-top:8px">Упаковка профиля</div>
     <div class="tgs anim d1"><span class="tg on">Оба тарифа: задания и обратная связь</span></div>
@@ -497,7 +615,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="upx anim d3"><b>+ В «Повышении»</b>Профиль как воронка продаж и версия для англоязычной аудитории</div>
     <div class="push"></div>
   </section>
-  <section class="st paper blk" data-name="block7" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к «Под ключ», влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 7 программы">
+  <section class="st paper blk" data-name="block7" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к выбору тарифа, влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 7 программы">
     <div class="bh anim"><span class="bn">07</span><span class="lab" style="color:var(--wine)">Блок 7 из 12 · часть 1</span></div>
     <div class="mid anim d1" style="margin-top:8px">Публикация и системность</div>
     <div class="tgs anim d1"><span class="tg on">Оба тарифа: задания и обратная связь</span></div>
@@ -507,7 +625,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="upx anim d3"><b>+ В «Повышении»</b>Делегирование помощнику и контент-план под запуск продукта или акции</div>
     <div class="push"></div>
   </section>
-  <section class="st cream2 blk" data-name="block8" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к «Под ключ», влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 8 программы">
+  <section class="st cream2 blk" data-name="block8" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к выбору тарифа, влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 8 программы">
     <div class="bh anim"><span class="bn">08</span><span class="lab" style="color:var(--wine)">Блок 8 из 12 · часть 2</span></div>
     <div class="mid anim d1" style="margin-top:8px">Реклама и продвижение</div>
     <div class="tgs anim d1"><span class="tg on">«С нуля»: первый запуск</span><span class="tg on">«Повышение»: полная настройка</span></div>
@@ -517,7 +635,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="upx anim d3"><b>+ В «Повышении»</b>Полная настройка кампаний, масштабирование и воронки продаж: от рекламы до оплаты</div>
     <div class="push"></div>
   </section>
-  <section class="st paper blk" data-name="block9" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к «Под ключ», влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 9 программы">
+  <section class="st paper blk" data-name="block9" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к выбору тарифа, влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 9 программы">
     <div class="bh anim"><span class="bn">09</span><span class="lab" style="color:var(--wine)">Блок 9 из 12 · часть 2</span></div>
     <div class="mid anim d1" style="margin-top:8px">Аналитика</div>
     <div class="tgs anim d1"><span class="tg">«С нуля»: обзор</span><span class="tg on">«Повышение»: с заданиями</span></div>
@@ -527,7 +645,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="upx anim d3"><b>Как проходится</b>В «С нуля» смотрите уроки. В «Повышении» делаете на своём бизнесе, куратор проверяет.</div>
     <div class="push"></div>
   </section>
-  <section class="st cream2 blk" data-name="block10" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к «Под ключ», влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 10 программы">
+  <section class="st cream2 blk" data-name="block10" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к выбору тарифа, влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 10 программы">
     <div class="bh anim"><span class="bn">10</span><span class="lab" style="color:var(--wine)">Блок 10 из 12 · часть 2</span></div>
     <div class="mid anim d1" style="margin-top:8px">Сайт, запись и автоматизация</div>
     <div class="tgs anim d1"><span class="tg">«С нуля»: обзор</span><span class="tg on">«Повышение»: с заданиями</span></div>
@@ -537,7 +655,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="upx anim d3"><b>Как проходится</b>В «С нуля» смотрите уроки. В «Повышении» делаете на своём бизнесе, куратор проверяет.</div>
     <div class="push"></div>
   </section>
-  <section class="st paper blk" data-name="block11" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к «Под ключ», влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 11 программы">
+  <section class="st paper blk" data-name="block11" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к выбору тарифа, влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 11 программы">
     <div class="bh anim"><span class="bn">11</span><span class="lab" style="color:var(--wine)">Блок 11 из 12 · часть 2</span></div>
     <div class="mid anim d1" style="margin-top:8px">Продажи и деньги</div>
     <div class="tgs anim d1"><span class="tg">«С нуля»: обзор</span><span class="tg on">«Повышение»: с заданиями</span></div>
@@ -547,7 +665,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="upx anim d3"><b>Как проходится</b>В «С нуля» смотрите уроки. В «Повышении» делаете на своём бизнесе, куратор проверяет.</div>
     <div class="push"></div>
   </section>
-  <section class="st cream2 blk" data-name="block12" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к «Под ключ», влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 12 программы">
+  <section class="st cream2 blk" data-name="block12" data-note="Блок программы. Стрелка вправо с последнего блока ведёт к выбору тарифа, влево с первого возвращает к оглавлению. Быстрый переход: «Разделы»." data-title="Блок 12 программы">
     <div class="bh anim"><span class="bn">12</span><span class="lab" style="color:var(--wine)">Блок 12 из 12 · часть 2</span></div>
     <div class="mid anim d1" style="margin-top:8px">Итоги и следующий шаг</div>
     <div class="tgs anim d1"><span class="tg on">Оба тарифа: задания и обратная связь</span></div>
@@ -558,10 +676,23 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="push"></div>
   </section>
 
+  <!-- выбор тарифа -->
+  <section class="st ink" data-name="pick" data-note="Скажите, какой тариф рекомендуете и почему, опираясь на ответы клиента в начале. Нажмите его, появится следующий шаг. Потом спросите: «Готовы начать?» и дайте ответить, не заполняйте паузу." data-title="Какой тариф выбрать">
+    <div class="lab anim">Какой тариф выбрать</div>
+    <div class="mid anim d1" style="margin-top:8px">Рекомендуем <em>вашему бизнесу</em></div>
+    <div class="push"></div>
+    <div class="pick anim d2" id="pick">
+      <button type="button" data-p="zero">С нуля<span>соцсети ведёте сами и начинаете с основы</span></button>
+      <button type="button" data-p="upskill">Повышение<span>уже продаёте через соцсети, нужна реклама и воронка</span></button>
+      <button type="button" data-p="turnkey">Под ключ<span>учиться некогда, нужна готовая система</span></button>
+    </div>
+    <div class="res anim d3" id="pickOut" hidden><div class="k">Следующий шаг</div><span id="pickTxt"></span><button type="button" class="go gold" id="pickGo" style="margin-top:10px">Посмотреть цены и оплату</button></div>
+    <div class="push"></div>
+  </section>
+
   <!-- Под ключ -->
-  <section class="st" data-name="t_turnkey" data-note="Подходит, когда нет времени учиться. Подчеркните: через 2 месяца остаётся система, которую можно вести самим или передать нам (путь 3). Рекламный бюджет отдельно. Рассрочка до 4 месяцев без процентов." data-title="Путь 2 · под ключ">
-    <div class="ph dim"><img src="images/malena-b5.jpg" alt="" style="object-position:50% 20%"></div>
-    <div class="lab anim" style="color:var(--gold)">Путь 2 · под ключ</div>
+  <section class="st wine" data-name="t_turnkey" data-note="Показывайте, только если клиент говорит, что учиться некогда. Через 2 месяца у него остаётся готовая система. Рекламный бюджет отдельно. Рассрочка до 4 месяцев без процентов." data-title="Под ключ, если учиться некогда">
+    <div class="lab anim" style="color:var(--gold)">Если учиться некогда · под ключ</div>
     <div class="mid anim d1" style="margin-top:8px">Не хотите разбираться сами? <em>Сделаем за вас</em></div>
     <p class="mini anim d1" style="margin-top:6px">Если времени на обучение нет. Два месяца ваш бизнес в соцсетях ведёт наша команда.</p>
     <div class="push"></div>
@@ -573,51 +704,6 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
       </div>
     </div>
     <div class="price anim d4"><span class="now">$5&nbsp;000</span><span class="old">рассрочка до 4 месяцев</span></div>
-    <div class="push"></div>
-  </section>
-
-  <!-- путь 3 · агентство (pgl.marketing/pricing) -->
-  <section class="st paper" data-name="t_agency" data-note="Реклама от $1 000 в месяц, клиент платит её напрямую площадке. Для бизнеса с несколькими точками или большой командой есть индивидуальный пакет, для подходящих бизнесов модель с оплатой от выручки: условия обсуждает Лев. Приветственное предложение для новых клиентов уточните у Льва до того, как обещать." data-title="Путь 3 · агентство">
-    <div class="lab anim" style="color:var(--wine)">Путь 3 · агентство</div>
-    <div class="mid anim d1" style="margin-top:8px">Ведём ваши соцсети <em>постоянно</em></div>
-    <p class="mini anim d1" style="margin-top:6px;color:var(--ink2)">Когда нужен постоянный поток клиентов, а ваше время дороже.</p>
-    <div class="push"></div>
-    <div class="stk anim d2"><ul class="ul">
-      <li>Стратегия, сценарии, съёмка и монтаж</li>
-      <li>Реклама и новые креативы каждый месяц</li>
-      <li>Онлайн-запись, CRM, напоминания клиентам</li>
-      <li>Возврат клиентов и запросы отзывов</li>
-      <li>Отчёт и созвон по стратегии раз в месяц</li></ul></div>
-    <div class="res anim d3"><div class="k">Когда запуск</div>Реклама обычно выходит в первый месяц работы</div>
-    <div class="price anim d4" style="color:var(--ink)"><span class="now">$3&nbsp;500</span><span class="old">в месяц + реклама от $1 000, её платите напрямую площадке</span></div>
-    <div class="push"></div>
-  </section>
-
-  <!-- сравнение -->
-  <section class="st wine" data-name="compare" data-note="Спросите: «Сколько часов в неделю вы готовы уделять соцсетям сами?» От ответа зависит путь. Дайте клиенту подумать вслух." data-title="Сравнение трёх путей">
-    <div class="lab anim">Сравним</div>
-    <div class="mid anim d1" style="margin-top:8px">Что выбрать <em>именно вам</em></div>
-    <div class="push"></div>
-    <div class="cols3 cmp">
-      <div class="cc anim d2"><div class="k">Обучение</div><div class="row"><span>Ваше время</span><b>Делаете сами</b></div><div class="row"><span>Срок</span><b>2 месяца</b></div><div class="row"><span>Цена</span><b>от <i data-price="zero"></i></b></div></div>
-      <div class="cc anim d3"><div class="k">Под ключ</div><div class="row"><span>Ваше время</span><b>Съёмка и публикация</b></div><div class="row"><span>Срок</span><b>2 месяца</b></div><div class="row"><span>Цена</span><b>$5 000</b></div></div>
-      <div class="cc g anim d4"><div class="k">Агентство</div><div class="row"><span>Ваше время</span><b>Съёмка и созвон раз в месяц</b></div><div class="row"><span>Срок</span><b>Постоянно</b></div><div class="row"><span>Цена</span><b>$3 500 в месяц</b></div></div>
-    </div>
-    <p class="mini anim d4" style="margin-top:10px">Рекламный бюджет во всех путях отдельно. Все цены в долларах США.</p>
-    <div class="push"></div>
-  </section>
-
-  <!-- рекомендация ведущей -->
-  <section class="st ink" data-name="pick" data-note="Скажите свою рекомендацию и почему, опираясь на ответы клиента в начале. Нажмите нужный путь, появится следующий шаг. Потом спросите: «Готовы начать?» и дайте ответить, не заполняйте паузу." data-title="Рекомендация">
-    <div class="lab anim">Наша рекомендация</div>
-    <div class="mid anim d1" style="margin-top:8px">Вашему бизнесу <em>подходит</em></div>
-    <div class="push"></div>
-    <div class="pick anim d2" id="pick">
-      <button type="button" data-p="learn">Обучение<span>учитесь и делаете сами</span></button>
-      <button type="button" data-p="turnkey">Под ключ<span>делаем за вас 2 месяца</span></button>
-      <button type="button" data-p="agency">Агентство<span>ведём постоянно</span></button>
-    </div>
-    <div class="res anim d3" id="pickOut" hidden><div class="k">Следующий шаг</div><span id="pickTxt"></span><button type="button" class="go gold" id="pickGo" style="margin-top:10px">Выбрать способ оплаты</button></div>
     <div class="push"></div>
   </section>
 
@@ -633,7 +719,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
   </section>
 
   <!-- оплата -->
-  <section class="st paper scroll" id="sPay" data-name="pay" data-note="Помогите выбрать способ: бронь, рассрочка или целиком. Заявку можно заполнить вместе прямо на звонке, или отправьте клиенту ссылку malenapocladova.com/biznes-razbor#pay." data-title="Оплата">
+  <section class="st paper scroll" id="sPay" data-name="pay" data-note="Помогите выбрать способ: бронь, рассрочка или целиком. Заявку можно заполнить вместе прямо на звонке." data-title="Оплата">
     <div class="lab anim" style="color:var(--wine)">Оплата</div>
     <div class="mid anim d1" style="margin-top:8px">Три способа <em>занять место</em></div>
     <div class="card anim d2" style="margin-top:14px">
@@ -658,7 +744,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
   </section>
 
   <!-- заявка -->
-  <section class="st ink scroll" id="sForm" data-name="form" data-note="Имя и фамилия как в документе. Для рассрочки в Молдове нужны фото буллетина. После отправки на экране появится ссылка на оплату." data-title="Заявка">
+  <section class="st ink scroll" id="sForm" data-name="form" data-note="Имя и фамилия как в документе. Направление: «Продвигаю свой бизнес». Для рассрочки в Молдове нужны фото буллетина. После отправки на экране появится ссылка на оплату." data-title="Заявка">
     <div class="lab">Заявка</div>
     <div class="mid" style="margin-top:8px" id="fTitle">Оформить участие</div>
     <p class="mini" style="margin-top:6px">Пришлём договор и ссылку на оплату. Данные нужны только для договора.</p>
@@ -684,7 +770,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
   </section>
 
   <!-- готово -->
-  <section class="st wine" id="sOk" data-name="done" data-note="Поздравьте, скажите, что договор придёт на почту, а команда напишет в WhatsApp. Отметьте итог разбора в GHL." data-title="Готово">
+  <section class="st wine" id="sOk" data-name="done" data-note="Поздравьте, скажите, что договор придёт на почту, а команда напишет в WhatsApp. Отметьте итог встречи в GHL." data-title="Готово">
     <div class="push"></div>
     <div class="ok anim">✓</div>
     <div class="mid anim d1" style="text-align:center">Заявка принята</div>
@@ -696,13 +782,13 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
   <div id="link"><div class="cap">Бронь $100 · рассрочка · оплата целиком</div><button type="button" id="linkbtn">Выбрать тариф и оплату<span class="ar">→</span></button></div>
   <div id="hint"><span><i>←</i>Нажмите<br>слева: назад</span><span><i>↔</i>Листайте<br>в своём темпе</span><span><i>→</i>Нажмите<br>справа: дальше</span><b>Листайте стрелками · N: подсказки ведущей</b></div>
   <div id="menu"><div class="sh"><button type="button" class="x" id="menuX" aria-label="Закрыть">×</button><h3>Разделы</h3>
-    <button type="button" class="mi" data-go="you">О вашем бизнесе<span>вопросы</span></button>
-    <button type="button" class="mi" data-go="case">Кейс и другие ниши</button>
-    <button type="button" class="mi" data-go="paths">Три пути</button>
-    <button type="button" class="mi" data-go="t_zero">Обучение<span>тарифы и программа</span></button>
-    <button type="button" class="mi" data-go="t_turnkey">Под ключ<span>$5 000</span></button>
-    <button type="button" class="mi" data-go="t_agency">Агентство<span>$3 500 в месяц</span></button>
-    <button type="button" class="mi" data-go="compare">Сравнение и рекомендация</button>
+    <button type="button" class="mi" data-go="you">Вопросы о бизнесе</button>
+    <button type="button" class="mi" data-go="method">Метод: шесть шагов</button>
+    <button type="button" class="mi" data-go="case">Кейс студии</button>
+    <button type="button" class="mi" data-go="bridge">Обучение и формат</button>
+    <button type="button" class="mi" data-go="t_zero">Тарифы и программа</button>
+    <button type="button" class="mi" data-go="pick">Выбор тарифа</button>
+    <button type="button" class="mi" data-go="t_turnkey">Под ключ<span>если учиться некогда</span></button>
     <button type="button" class="mi" data-go="prices">Цены и оплата</button>
     <button type="button" class="mi" id="notesBtn">Подсказки ведущей<span>отдельное окно</span></button>
   </div></div>
@@ -823,12 +909,12 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
   $('#notesBtn').addEventListener('click',function(){ menu.classList.remove('on'); openNotes(); });
 
   /* рекомендация: ведущая нажимает путь, на экране следующий шаг */
-  var PICK={ learn:'Бронь места за $100 фиксирует сегодняшнюю цену обучения. Остаток можно в рассрочку.',
-    turnkey:'Договор и старт работы. Рассрочка до 4 месяцев без процентов.',
-    agency:'Созвон по стратегии с Львом и договор. Реклама обычно выходит в первый месяц.' };
+  var PICK={ zero:'Тариф «С нуля». Бронь места за $100 фиксирует сегодняшнюю цену, остаток можно в рассрочку.',
+    upskill:'Тариф «Повышение», мест 8. Бронь места за $100 фиксирует сегодняшнюю цену, остаток можно в рассрочку.',
+    turnkey:'Под ключ, $5 000. Договор и старт работы, рассрочка до 4 месяцев без процентов.' };
   $('#pick').addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return; var p=b.getAttribute('data-p');
     [].forEach.call(this.children,function(x){ x.classList.toggle('on',x===b); }); this.classList.add('chosen');
-    $('#pickTxt').textContent=PICK[p]; $('#pickGo').hidden=(p==='agency'); $('#pickOut').hidden=false; track('pick',i+1,p); });
+    $('#pickTxt').textContent=PICK[p]; $('#pickOut').hidden=false; track('pick',i+1,p); });
   $('#pickGo').addEventListener('click',function(){ show(iPay); });
   menu.addEventListener('click',function(e){ if(e.target===menu) menu.classList.remove('on'); var b=e.target.closest('[data-go]'); if(!b) return; menu.classList.remove('on'); show(byName(b.getAttribute('data-go'))); });
   /* оглавление: часть 2 начинается с блока 8 */
