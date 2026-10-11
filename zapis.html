@@ -370,6 +370,7 @@ html[data-mode=zapis] .qbar,html[data-mode=zapis] .qstep[data-q=form] .qback{dis
 .form-wrap.done .cal{display:none}
 
 .fine{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.45}
+.smsok{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:12.5px;line-height:1.45;color:var(--muted);text-align:left;cursor:pointer}.smsok input{width:18px;height:18px;flex:0 0 18px;margin-top:1px;accent-color:var(--wine,#6E1E2B)}.smsok small{display:block;margin-top:4px;font-size:11px;opacity:.85}.smsok a{color:inherit;text-decoration:underline}
 .ok{display:none;text-align:center;padding:14px 0 6px}
 .ok .mark{width:64px;height:64px;border-radius:50%;background:var(--wine);margin:0 auto 16px;display:grid;place-items:center;color:#F6EFE2;font-size:28px;transform:scale(0);animation:pop .5s var(--ease) forwards}
 @keyframes pop{to{transform:scale(1)}}
@@ -932,6 +933,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
           <div class="f full"><input type="email" id="email" name="email" placeholder=" " autocomplete="email" inputmode="email" required><label for="email">Почта</label></div>
           <div class="f full"><input type="text" id="ig" name="ig" placeholder=" " autocomplete="off" autocapitalize="off" spellcheck="false"><label for="ig">Ваш Instagram, например @malenapocladova</label></div>
         </div>
+        <label class="smsok" for="smsok"><input type="checkbox" id="smsok" name="sms_ok"><span>Согласна(ен) получать SMS от Personal Growth Lab (школа Малены Покладовой): подтверждение и напоминания о разборе, материалы обучения. Частота разная, оператор может взимать плату. STOP для отписки, HELP для помощи. Необязательно для записи.<small lang="en">I agree to receive SMS from Personal Growth Lab. Msg frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Consent is not a condition of purchase. <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></small></span></label>
         <button class="btn btn-wine" type="submit" id="send"><span>Выбрать время разбора</span></button>
         <div class="err" id="err">Проверьте почту, без неё письмо не дойдёт.</div>
         <p class="fine">Нажимая кнопку, вы соглашаетесь на обработку данных и на письма и сообщения от школы в WhatsApp: подтверждение, напоминания, материалы и новости обучения. Отписаться можно в любой момент. <a href="/privacy" style="text-decoration:underline">Политика</a>.</p>
@@ -1504,7 +1506,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     var lane=isBiz() ? 'biz' : (hasClients() ? 'pro' : (quiz.projects ? 'start' : (track||'')));
     /* Инстаграм необязательный: берём ник из @ника или из ссылки на профиль. */
     var igRaw=(form.ig&&form.ig.value||'').trim(), igm=igRaw.match(/instagram\.com\/([A-Za-z0-9._]{1,30})/i), ig=(igm?igm[1]:igRaw.replace(/^@+/,'')).replace(/[^A-Za-z0-9._]/g,'').slice(0,30);
-    var body={ name:name, email:email, phone:phone, country:country.c, ig:ig, src:(ZAPIS?'zapis':'kurs'), track:lane, quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
+    var body={ sms_ok:!!(document.getElementById('smsok')||{}).checked, name:name, email:email, phone:phone, country:country.c, ig:ig, src:(ZAPIS?'zapis':'kurs'), track:lane, quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
     fetch(FN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK}, body:JSON.stringify(body) })
       .then(function(r){ return r.json(); })
       .catch(function(){ return {ok:false}; })

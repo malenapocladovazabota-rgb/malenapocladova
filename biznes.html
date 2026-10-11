@@ -172,6 +172,8 @@ b{font-weight:700}
 .go:disabled{opacity:.55}
 .err{display:none;color:#B3261E;font-size:14px;margin-top:8px;text-align:center}
 .fine{font-size:11px;line-height:1.35;color:#8A7C78;margin-top:10px;text-align:center}
+#sForm{overflow-y:auto;-webkit-overflow-scrolling:touch}
+.smsok{display:flex;gap:8px;align-items:flex-start;margin-top:10px;font-size:11px;line-height:1.35;color:#6B5F5C;text-align:left;cursor:pointer}.smsok input{width:16px;height:16px;flex:0 0 16px;margin-top:1px;accent-color:#6E1E2B}.smsok small{display:block;margin-top:3px;font-size:10px;opacity:.85}.smsok a{color:inherit}
 .fine a{color:inherit}
 
 /* выбор времени · как в Calendly: месяц сеткой, потом список времени,
@@ -419,6 +421,7 @@ b{font-weight:700}
       <div class="telrow"><select class="fld" id="cc" aria-label="Код страны"></select><input class="fld" id="phone" type="tel" inputmode="tel" placeholder="Телефон, WhatsApp" autocomplete="tel-national" required></div>
       <input class="fld" id="email" type="email" inputmode="email" placeholder="Почта" autocomplete="email" required>
       <input class="fld" id="ig" placeholder="Instagram, если есть" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <label class="smsok" for="smsok"><input type="checkbox" id="smsok" name="sms_ok"><span>Согласна(ен) на SMS от Personal Growth Lab: напоминания о разборе и материалы. Необязательно.<small lang="en">I agree to receive SMS from Personal Growth Lab. Msg frequency varies, msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Not a condition of purchase. <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></small></span></label>
       <button class="go" type="submit" id="send">Выбрать время разбора</button>
       <div class="err" id="err"></div>
       <p class="fine">Нажимая кнопку, вы соглашаетесь на обработку данных и на письма и сообщения от нас в WhatsApp: подтверждение, напоминания, материалы. Отписаться можно в любой момент. <a href="/privacy">Политика</a>.</p>
@@ -624,7 +627,7 @@ b{font-weight:700}
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return bad('Проверьте почту, без неё письмо не дойдёт.',form.email);
     err.style.display='none'; send.disabled=true; send.textContent='Отправляем…';
     var igRaw=form.ig.value.trim(), igm=igRaw.match(/instagram\.com\/([A-Za-z0-9._]{1,30})/i), ig=(igm?igm[1]:igRaw.replace(/^@+/,'')).replace(/[^A-Za-z0-9._]/g,'').slice(0,30);
-    var body={ name:name, email:email, phone:phone, ig:ig, src:'biznes', track:'biz', quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
+    var body={ sms_ok:!!(document.getElementById('smsok')||{}).checked, name:name, email:email, phone:phone, ig:ig, src:'biznes', track:'biz', quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
     fetch(FN,{ method:'POST', headers:H, body:JSON.stringify(body) }).then(function(r){ return r.json(); }).catch(function(){ return {}; })
       .then(function(res){
         track(res && res.ok ? 'lead_ok' : 'lead_fail', iForm+1);
