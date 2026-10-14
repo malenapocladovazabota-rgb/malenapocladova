@@ -247,6 +247,26 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
 @media (max-height:620px){.mid{font-size:22px}.ul{gap:3px}.tgs{margin-top:5px}.tg{font-size:11px;padding:3px 8px}.res{margin-top:6px;font-size:13px}.upx{margin-top:6px;font-size:12px}
   .blk .ul li:nth-child(4){display:none}.toc li{font-size:11.5px;padding:3px 6px}.toc{gap:3px}.bn{font-size:30px}.chips .chip:nth-child(4){display:none}.ul li.opt{display:none}.blk .mid{font-size:21px}.blk .ul li{font-size:12.5px}.blk .res{font-size:12.5px;padding:7px 11px}.blk .upx{font-size:11.5px;padding:6px 10px}.blk .ul{gap:2px}.price .now{font-size:32px}.stk .n{font-size:24px}
   .st{padding-bottom:calc(env(safe-area-inset-bottom) + 96px)}#link button{padding:13px 16px;font-size:16px}}
+
+/* кейсы учениц */
+.face{display:flex;align-items:center;gap:12px}
+.face img{width:58px;height:58px;border-radius:50%;object-fit:cover;object-position:50% 25%;flex:0 0 58px;border:3px solid var(--gold)}
+.face .n{font-size:28px}
+.face .nm{font-weight:700;font-size:14.5px}
+.face .t{margin-top:2px}
+/* все тарифы на одном экране */
+.tars{display:grid;gap:8px}
+.tr{display:flex;align-items:center;gap:12px;border-radius:16px;padding:11px 14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
+.tr .l{flex:1;min-width:0}
+.tr .k{font-family:var(--mono);font-weight:700;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.tr .nm{font-family:var(--serif);font-size:21px;line-height:1.1;margin-top:3px}
+.tr .t{font-size:13px;line-height:1.3;opacity:.82;margin-top:3px}
+.tr .p{font-family:var(--serif);font-size:30px;line-height:1;white-space:nowrap}
+.tr.gold{background:var(--gold);color:var(--ink);border-color:var(--gold)}.tr.gold .k{color:var(--wine)}
+.nxt{font-size:13.5px;line-height:1.35;border:1px dashed rgba(216,184,126,.6);border-radius:12px;padding:8px 12px;color:#F6EFE2}.nxt b{color:var(--gold)}
+.tr.hot{background:#fff;color:var(--ink);border-color:#fff}.tr.hot .k{color:var(--wine)}.tr.hot .p{color:var(--wine)}
+@media (max-height:700px){.face img{width:46px;height:46px;flex-basis:46px}.face .n{font-size:23px}.tr{padding:9px 12px}.tr .nm{font-size:18px}.tr .t{font-size:12px}.tr .p{font-size:25px}}
+@media (max-height:620px){.tr .t{display:none}.face .t{font-size:12.5px}}
 </style>
 </head>
 <body>
@@ -308,6 +328,33 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     </div>
     <p class="mini anim d4" style="margin-top:14px;opacity:.85">Как проходит: уроки на платформе, чат потока в Telegram, куратор проверяет задания, эфиры с Маленой и Львом.</p>
     <div class="push"></div>
+  </section>
+
+  <!-- 3в · кейсы учениц -->
+  <section class="st paper" data-t="11" data-name="cases">
+    <div class="lab anim" style="color:var(--wine)">Ученицы прошлых потоков</div>
+    <div class="mid anim d1" style="margin-top:10px">Прошли обучение и <em>зарабатывают на соцсетях</em></div>
+    <div class="push"></div>
+    <div class="stack">
+      <div class="stk face anim d2"><img src="images/portrait-alina.jpg" alt=""><div><div class="nm">Алина, пришла в декрете</div><div class="n">5 клиентов</div><div class="t">своя SMM-студия, команда из трёх человек</div></div></div>
+      <div class="stk face anim d3"><img src="images/portrait-elizaveta.jpg" alt=""><div><div class="nm">Елизавета, с нуля</div><div class="n">0 → 74,2K</div><div class="t">самое большое СМИ об экологии в Молдове</div></div></div>
+      <div class="stk face anim d4"><img src="images/club/otzyvy/face-loredana.jpg" alt=""><div><div class="nm">Лоредана</div><div class="n">4 клиента</div><div class="t">и крупный проект из Турции, собирает свою команду</div></div></div>
+    </div>
+    <div class="push"></div>
+    <p class="anim d4" style="font-size:11px;color:#8A7C78;text-align:center">С разрешения учениц, цифры с их аккаунтов</p>
+  </section>
+
+  <section class="st paper" data-t="11" data-name="cases2">
+    <div class="lab anim" style="color:var(--wine)">Ученицы прошлых потоков</div>
+    <div class="mid anim d1" style="margin-top:10px">Результат на <em>бизнесах клиентов</em></div>
+    <div class="push"></div>
+    <div class="stack">
+      <div class="stk face anim d2"><img src="images/club/otzyvy/face-toma.jpg" alt=""><div><div class="nm">Тома, ведёт клиентов</div><div class="n">1,4M</div><div class="t">просмотров у ролика её клиентки; постоянный проект плюс разовые съёмки</div></div></div>
+      <div class="stk face anim d3"><img src="images/club/otzyvy/face-anastasiya.jpg" alt=""><div><div class="nm">Анастасия, ведёт клиентов</div><div class="n">+1 200</div><div class="t">подписчиков за неделю у клиента</div></div></div>
+    </div>
+    <div class="res anim d4"><div class="k">Что это значит для вас</div>Ученицы применяют систему на чужих бизнесах, за деньги. Вы применяете её на своём.</div>
+    <div class="push"></div>
+    <p class="anim d4" style="font-size:11px;color:#8A7C78;text-align:center">С разрешения учениц, цифры с их аккаунтов</p>
   </section>
 
   <!-- 4 · два пути -->
@@ -455,6 +502,21 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="push"></div>
   </section>
 
+  <!-- все тарифы и цены на одном экране -->
+  <section class="st ink" data-t="14" data-name="prices">
+    <div class="lab anim">Тарифы и цены</div>
+    <div class="mid anim d1" style="margin-top:8px">Выберите, <em>сколько делаете сами</em></div>
+    <div class="push"></div>
+    <div class="tars">
+      <div class="tr gold anim d2"><div class="l"><div class="k">Путь 2 · под ключ</div><div class="nm">Делаем за вас</div><div class="t">Команда ведёт ваш бизнес 2 месяца: стратегия, 30 видео, реклама</div></div><div class="p">$5&nbsp;000</div></div>
+      <div class="tr anim d3"><div class="l"><div class="k">Путь 1 · 8 мест</div><div class="nm">Повышение квалификации</div><div class="t">Все 12 блоков, реклама и воронка, личная стратегия от Малены</div></div><div class="p" data-price="upskill"></div></div>
+      <div class="tr hot anim d4"><div class="l"><div class="k">Путь 1 · опыт не нужен</div><div class="nm">С нуля</div><div class="t">Система агентства на вашем бизнесе: 10 Reels, профиль, первая реклама</div></div><div class="p" data-price="zero"></div></div>
+    </div>
+    <div class="steps anim d4" id="steps" style="margin-top:10px"></div>
+    <p class="mini anim d4" style="margin-top:8px">Депозит $100 фиксирует сегодняшнюю цену до старта. Есть рассрочка. Цены в долларах США.</p>
+    <div class="push"></div>
+  </section>
+
   <!-- тариф С нуля -->
   <section class="st paper" data-t="12" data-name="t_zero">
     <div class="lab anim" style="color:var(--wine)">Путь 1 · тариф</div>
@@ -508,16 +570,6 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
     <div class="push"></div>
   </section>
 
-  <!-- цены -->
-  <section class="st ink" data-t="10" data-name="prices">
-    <div class="lab anim">Цены</div>
-    <div class="mid anim d1" style="margin-top:8px">Цена растёт <em>ближе к старту</em></div>
-    <p class="mini anim d1" style="margin-top:6px">Депозит $100 фиксирует сегодняшнюю цену до самого старта.</p>
-    <div class="push"></div>
-    <div class="steps anim d2" id="steps"></div>
-    <p class="mini anim d3" style="margin-top:10px">«Под ключ»: $5 000, цена не меняется. Все цены в долларах США.</p>
-    <div class="push"></div>
-  </section>
 
   <!-- оплата -->
   <section class="st paper scroll" id="sPay" data-name="pay">
@@ -585,8 +637,8 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
   <div id="menu"><div class="sh"><button type="button" class="x" id="menuX" aria-label="Закрыть">×</button><h3>Разделы</h3>
     <button type="button" class="mi" data-go="why">Зачем это бизнесу<span>1 мин</span></button>
     <button type="button" class="mi" data-go="program">Программа: 12 блоков<span>3 мин</span></button>
-    <button type="button" class="mi" data-go="t_zero">Тарифы<span>«С нуля», «Повышение», «Под ключ»</span></button>
-    <button type="button" class="mi" data-go="prices">Цены</button>
+    <button type="button" class="mi" data-go="cases">Кейсы учениц</button>
+    <button type="button" class="mi" data-go="prices">Тарифы и цены<span>все три на одном экране</span></button>
     <button type="button" class="mi" data-go="pay">Оплата и рассрочка</button>
   </div></div>
 </div>
@@ -613,10 +665,7 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--wine)}
   var si=stepIdx(), fin=STEPS[STEPS.length-1];
   [].forEach.call(document.querySelectorAll('[data-price]'),function(e){ e.textContent=fmt(price(e.getAttribute('data-price'))); });
   [].forEach.call(document.querySelectorAll('[data-final]'),function(e){ var t=e.getAttribute('data-final'); e.textContent='финальная цена '+fmt(fin[t])+' · есть рассрочка'; });
-  $('#steps').innerHTML=STEPS.map(function(s,k){
-    if(k<si) return ''; // прошедшие ступени цены не показываем
-    return '<div class="sp'+(k===si?' cur':'')+(k<si?' past':'')+'"><div class="d">'+s.label+(k===si?'<span class="now">сейчас</span>':'')+'</div><div class="p">С нуля <b>'+fmt(s.zero)+'</b><br>Повышение <b>'+fmt(s.upskill)+'</b></div></div>';
-  }).join('');
+  (function(){ var nx=STEPS[si+1]; $('#steps').innerHTML = (nx && !STEPS[si].final) ? '<div class="nxt"><b>'+(nx.final?'После старта':nx.label.replace(/ до старта$/,'').replace(/^с /,'С '))+'</b> обучение дороже: '+fmt(nx.zero)+' и '+fmt(nx.upskill)+'</div>' : ''; })();
 
   /* ─── аналитика: та же таблица, что у /stories, page=programma ─── */
   var EV_URL='https://kjyfbfqcgretrbupyhiq.supabase.co/rest/v1/newsmm_funnel_events', SBK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqeWZiZnFjZ3JldHJidXB5aGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNzU4NDYsImV4cCI6MjA5NjY1MTg0Nn0.amLiv4BuwDuEI0z2V3WiPKeWzvENSEwPlDeaGRq0CFM';
