@@ -985,6 +985,10 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   .vh-b h1{font-size:clamp(58px,18vw,84px)}
   .vh-b .vh-l .vh-pts{display:none}
   .vh-b .vh-s{margin-top:12px}
+  .vh-d .vbox{aspect-ratio:16/9;overflow:hidden;background:#100c0c;border-radius:10px;box-shadow:none}
+  .vh-d .vbox .vposter{display:block!important;position:absolute;inset:0;height:100%}
+  .vh-d .vbox video{display:block!important;position:absolute;inset:0;height:100%;aspect-ratio:auto}
+  .vh-d .vbox.started .vposter{display:none!important}
   .vh-d .vbox .vgate{position:absolute}
   .vh-d .vbox.locked{aspect-ratio:auto;min-height:540px}
   .vh-d .vbox .vgate .card{padding:16px 14px 12px}
