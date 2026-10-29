@@ -995,6 +995,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   .vthumb{grid-template-columns:110px 1fr}.vthumb img{width:110px}
 }
 </style>
+<script>window.__ck=function(n){var m=document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)'));return m?decodeURIComponent(m[1]):'';};</script>
 </head>
 <body>
 
@@ -1665,7 +1666,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     var slot=calSlot;
     calgo.disabled=true; calgo.querySelector('span').textContent='Записываем…'; calerr.style.display='none';
     fetch(BOOKFN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK},
-      body:JSON.stringify({ action:'book', region:calRegion, tz:zone(), start:slot, name:who.name, email:who.email, phone:who.phone, cid:who.cid, country:who.country }) })
+      body:JSON.stringify({ action:'book', fbp:(window.__ck?__ck('_fbp'):''), fbc:(window.__ck?__ck('_fbc'):''), url:location.href, region:calRegion, tz:zone(), start:slot, name:who.name, email:who.email, phone:who.phone, cid:who.cid, country:who.country }) })
       .then(function(r){ return r.json().then(function(j){ return { ok:r.ok, j:j }; }); })
       .catch(function(){ return { ok:false, j:{} }; })
       .then(function(res){
@@ -1674,7 +1675,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
           document.getElementById('okwhen').textContent=
             WD[dt.getDay()].toUpperCase().slice(0,1)+WD[dt.getDay()].slice(1)+', '+dt.getDate()+' '+MON[dt.getMonth()]+', '+hhmm(slot)+'.';
           fw.classList.add('done');
-          if(window.fbq) fbq('track','Schedule',{content_name:'new-smm-razbor'});
+          if(window.fbq){ if(res.j.first===false) fbq('trackCustom','Reschedule',{content_name:'new-smm-razbor'}); else if(!res.j.test) fbq('track','Schedule',{content_name:'new-smm-razbor'},res.j.event_id?{eventID:res.j.event_id}:{}); }
           fw.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
           return;
         }
