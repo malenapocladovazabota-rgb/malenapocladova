@@ -819,6 +819,41 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 .pop .done h3{margin-bottom:8px}
 .pop .done .btn{margin-top:14px}
 @media(min-width:760px){.pop{align-items:center;padding:20px}.pop .card{border-radius:16px;padding:34px 32px 30px}}
+
+/* ── Видео перед записью (29 октября): сначала контакты, потом видео ── */
+#video{padding:56px 0 24px;scroll-margin-top:70px}
+#video h2{margin-bottom:6px}
+.vbox{position:relative;margin-top:26px;border-radius:22px;overflow:hidden;background:#1B1414;aspect-ratio:16/9;box-shadow:0 30px 60px -36px rgba(27,20,20,.6)}
+.vbox video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#1B1414;display:block}
+.vbox .vposter{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(3px) brightness(.55);transform:scale(1.04)}
+.vgate{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:18px}
+.vgate .card{width:100%;max-width:470px;background:var(--cream);border-radius:20px;padding:24px 22px 18px;box-shadow:0 30px 60px -20px rgba(0,0,0,.55)}
+.vgate h3{font-family:var(--serif);font-weight:500;font-size:24px;line-height:1.15;letter-spacing:-.3px}
+.vgate h3 em{font-style:italic;color:var(--wine)}
+.vgate p.s{font-size:14px;color:var(--ink2);margin-top:6px}
+.vgate .fields{margin-top:14px;gap:10px;grid-template-columns:1fr}
+.vgate .f input{background:#fff;border-color:rgba(110,30,43,.16)}
+.vgate .btn{width:100%;margin-top:12px}
+.vgate .fine{font-size:11.5px;margin-top:10px}
+.vbox.open .vgate,.vbox.open .vposter{display:none}
+.vbox.open video{display:block}
+.vplay{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:transparent;border:0;cursor:pointer}
+.vplay i{width:86px;height:86px;border-radius:50%;background:var(--wine);display:grid;place-items:center;box-shadow:0 18px 40px -10px rgba(0,0,0,.6)}
+.vplay i::before{content:'';margin-left:6px;border-left:24px solid #F6EFE2;border-top:15px solid transparent;border-bottom:15px solid transparent}
+.vbox.open.idle .vplay{display:flex}
+.vnext{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:22px}
+.vnext .t{font-size:15px;color:var(--ink2);max-width:520px}
+@media (max-width:759px){
+  #video{padding:40px 0 16px}
+  .vbox{aspect-ratio:auto;min-height:0;border-radius:18px;background:transparent;box-shadow:none;overflow:visible}
+  .vbox .vposter{display:none}
+  .vbox video{position:relative;border-radius:16px;aspect-ratio:16/9;height:auto}
+  .vbox:not(.open) video{display:none}
+  .vgate{position:relative;inset:auto;padding:0}
+  .vgate .card{max-width:none;box-shadow:0 18px 40px -30px rgba(27,20,20,.45);border:1px solid rgba(110,30,43,.12)}
+  .vbox.open.idle .vplay{position:absolute;inset:0}
+  .vnext .btn{width:100%}
+}
 </style>
 </head>
 <body>
@@ -843,11 +878,45 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     <h1 class="rv d1"><em>New</em> SMM</h1>
     <p class="sub rv d2"><b>Клиенты, которые платят в долларах и остаются на годы.</b> Учим с нуля привлекать клиентов и доводить их до результата с помощью искусственного интеллекта, по методике, на которой работает наше агентство в США.</p>
     <div class="cta rv d3">
-      <a class="btn btn-wine" href="#razbor" data-go><span>Записаться на разбор <svg class="dn" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      <a class="btn btn-wine" href="#video" data-vgo><span>Смотреть видео · 10 минут <svg class="dn" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
     </div>
-    <div class="note rv d3">Бесплатно · 30 минут в Zoom · ни к чему не обязывает</div>
+    <div class="note rv d3">Малена объясняет, за что бизнес платит SMM-специалисту и как устроено обучение. После видео можно записаться на бесплатный разбор.</div>
   </div>
 </header>
+
+<!-- ═══ ВИДЕО: сначала контакты, потом просмотр (29 октября) ═══ -->
+<section id="video">
+  <div class="wrap">
+    <div class="eyebrow"><i></i>Видео · 10 минут</div>
+    <h2>Посмотрите <em>сначала видео</em></h2>
+    <p class="lede">Почему одному SMM-специалисту платят $300, а другому $3 000+, приём, который можно применить сегодня, и как устроено обучение New SMM.</p>
+    <div class="vbox" id="vbox">
+      <img class="vposter" src="video/vsl7/poster.jpg" alt="" loading="lazy">
+      <video id="vslv" playsinline controls preload="none" poster="video/vsl7/poster.jpg"></video>
+      <button class="vplay" type="button" id="vplay" aria-label="Смотреть видео"><i></i></button>
+      <div class="vgate" id="vgate">
+        <div class="card">
+          <h3>Видео откроется <em>сразу после</em></h3>
+          <p class="s">Оставьте контакты: после видео пришлём ссылку на бесплатный разбор, а если появятся вопросы, вам позвонит команда Малены.</p>
+          <form id="vform" novalidate>
+            <div class="fields">
+              <div class="f"><input type="text" id="vname" name="name" placeholder=" " autocomplete="given-name" required><label for="vname">Как вас зовут</label></div>
+              <div class="f"><input type="tel" id="vphone" name="phone" placeholder=" " autocomplete="tel" inputmode="tel" required><label for="vphone">Телефон с кодом страны</label></div>
+              <div class="f"><input type="email" id="vemail" name="email" placeholder=" " autocomplete="email" inputmode="email" required><label for="vemail">Почта</label></div>
+            </div>
+            <button class="btn btn-wine" type="submit" id="vsend"><span>Смотреть видео</span></button>
+            <div class="err" id="verr"></div>
+            <p class="fine">Нажимая кнопку, вы соглашаетесь на обработку данных и на звонки, письма и сообщения от школы в WhatsApp. Отписаться можно в любой момент. <a href="/privacy" style="text-decoration:underline">Политика</a>.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="vnext">
+      <a class="btn btn-wine" href="#razbor" data-go><span>Записаться на разбор</span></a>
+      <div class="t">Кнопка из видео: четыре коротких вопроса и выбор времени. Бесплатно, 30 минут в Zoom.</div>
+    </div>
+  </div>
+</section>
 
 <!-- ═══ ФОРМА ═══ -->
 <section id="razbor">
@@ -1572,6 +1641,65 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
         /* Почту подставляем в форму разбора: если человек пойдёт дальше, ему меньше печатать */
         try{ form.email.value=e; if(n) form.name.value=n; }catch(x){}
       });
+  });
+})();
+</script>
+<script>
+/* Видео на главной (29 октября). Сначала контакты: имя, телефон, почта уходят
+   в newsmm-lead с src=vsl (контакт и сделка в GoHighLevel, карточка в служебный чат,
+   письмо со ссылкой на разбор). Потом открывается видео. Вернувшимся форму
+   не показываем: контакты уже у нас (localStorage). */
+(function(){
+  var FN='https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/newsmm-lead';
+  var SBK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqeWZiZnFjZ3JldHJidXB5aGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNzU4NDYsImV4cCI6MjA5NjY1MTg0Nn0.amLiv4BuwDuEI0z2V3WiPKeWzvENSEwPlDeaGRq0CFM';
+  var SRC='video/vsl7/index.m3u8', MP4='';
+  var box=document.getElementById('vbox'), v=document.getElementById('vslv'), form=document.getElementById('vform'),
+      err=document.getElementById('verr'), btn=document.getElementById('vsend'), play=document.getElementById('vplay'),
+      ph=document.getElementById('vphone');
+  if(!box||!v||!form) return;
+  function zone(){ try{ return Intl.DateTimeFormat().resolvedOptions().timeZone||''; }catch(e){ return ''; } }
+  function ev(n,p){ try{ if(window.PGL&&PGL.event) PGL.event(n,p||{}); }catch(e){} try{ if(window.fbq) fbq('trackCustom',n,p||{}); }catch(e){} }
+  /* Код страны подставляем по часовому поясу: человек часто пишет номер без него */
+  var z=zone(), dial=/^America\//.test(z)?'+1 ':(z==='Europe/Chisinau'?'+373 ':'');
+  ph.addEventListener('focus',function(){ if(!ph.value&&dial) ph.value=dial; });
+  var utm={}; try{ var q=new URLSearchParams(location.search); ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'].forEach(function(k){ var x=q.get(k); if(x) utm[k.replace('utm_','')]=x.slice(0,100); }); }catch(e){}
+  var loaded=false;
+  function load(){
+    if(loaded) return; loaded=true;
+    if(v.canPlayType('application/vnd.apple.mpegurl')){ v.src=SRC; return; }
+    var s=document.createElement('script'); s.src='https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js';
+    s.onload=function(){ if(window.Hls&&Hls.isSupported()){ var h=new Hls({capLevelToPlayerSize:true}); h.loadSource(SRC); h.attachMedia(v); } else if(MP4){ v.src=MP4; } };
+    document.head.appendChild(s);
+  }
+  function open(autoplay){
+    box.classList.add('open'); load();
+    if(autoplay){ var p=v.play(); if(p&&p.catch) p.catch(function(){ box.classList.add('idle'); }); } else box.classList.add('idle');
+  }
+  play.addEventListener('click',function(){ box.classList.remove('idle'); v.play(); });
+  v.addEventListener('play',function(){ box.classList.remove('idle'); });
+  /* Отметки просмотра для аналитики: старт, четверть, половина, три четверти, конец */
+  var marks={}; v.addEventListener('timeupdate',function(){ if(!v.duration) return; var p=v.currentTime/v.duration;
+    [[0.02,'vsl_start'],[0.25,'vsl_25'],[0.5,'vsl_50'],[0.75,'vsl_75'],[0.97,'vsl_end']].forEach(function(m){ if(p>=m[0]&&!marks[m[1]]){ marks[m[1]]=1; ev(m[1]); } }); });
+  var saved=null; try{ saved=JSON.parse(localStorage.getItem('newsmm_vsl')||'null'); }catch(e){}
+  function prefill(d){ try{ var f=document.getElementById('lead'); if(!f) return; if(d.name&&!f.name.value) f.name.value=d.name; if(d.email&&!f.email.value) f.email.value=d.email; }catch(e){} }
+  if(saved&&saved.email){ prefill(saved); open(false); }
+  [].forEach.call(document.querySelectorAll('[data-vgo]'),function(a){ a.addEventListener('click',function(){ setTimeout(function(){ if(!box.classList.contains('open')){ try{ document.getElementById('vname').focus({preventScroll:true}); }catch(e){} } },500); }); });
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=form.name.value.trim(), email=form.email.value.trim().toLowerCase(), raw=ph.value.trim(), digits=raw.replace(/\D/g,'');
+    if(name.length<2){ err.textContent='Напишите, как к вам обращаться.'; err.style.display='block'; form.name.focus(); return; }
+    if(digits.length<8){ err.textContent='Оставьте телефон с кодом страны, например +1 619 555 0123.'; err.style.display='block'; ph.focus(); return; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ err.textContent='Проверьте почту.'; err.style.display='block'; form.email.focus(); return; }
+    err.style.display='none'; btn.disabled=true; btn.querySelector('span').textContent='Открываем видео…';
+    var phone=raw.charAt(0)==='+' ? '+'+digits : (dial==='+1 '&&digits.length===10 ? '+1'+digits : (dial==='+373 '&&digits.length===8 ? '+373'+digits : '+'+digits));
+    var body={ name:name, email:email, phone:phone, src:'vsl', track:'', quiz:{}, utm:utm, page:location.pathname, tz:z };
+    try{ localStorage.setItem('newsmm_vsl',JSON.stringify({name:name,email:email,phone:phone,t:Date.now()})); }catch(x){}
+    prefill(body);
+    /* Видео открываем сразу, не дожидаясь сервера: заявка уходит параллельно */
+    fetch(FN,{ method:'POST', keepalive:true, headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK}, body:JSON.stringify(body) })
+      .then(function(r){ return r.json(); }).catch(function(){ return {}; })
+      .then(function(d){ if(d&&d.ok&&window.fbq) fbq('trackCustom','VslLead',{content_name:'new-smm-vsl'}); });
+    open(true);
   });
 })();
 </script>

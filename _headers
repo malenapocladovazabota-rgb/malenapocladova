@@ -31,3 +31,11 @@
 # с новой главной за один и тот же запрос.
 /smm-s-nulya*
   X-Robots-Tag: noindex, nofollow
+
+# Видео на главной (29.10.2026): HLS-сегменты, папка с версией в имени, кэш на год
+/video/*
+  Cache-Control: public, max-age=31536000, immutable
+/video/*.m3u8
+  Content-Type: application/vnd.apple.mpegurl
+/video/*.ts
+  Content-Type: video/mp2t
