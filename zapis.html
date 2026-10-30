@@ -594,6 +594,26 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 .zv .cap b{color:var(--ink)}
 .form-wrap.done .zv{display:none}
 .form-wrap.booking .zv.pre{display:none}
+
+/* ── VSL в шапке ── */
+.hero.vhero{min-height:0;display:block;padding:26px 0 40px;background:radial-gradient(120% 80% at 70% 0%,#3a1820 0%,var(--ink) 60%)}
+.hero.vhero .wrap{padding-bottom:0;display:grid;gap:26px;align-items:center}
+.hero.vhero .vh1{font-size:clamp(30px,8.4vw,60px);line-height:1.06;letter-spacing:-.6px;text-transform:none;font-weight:500;margin-top:14px;max-width:760px}
+.hero.vhero .vh1 em{font-style:italic;color:#E8C27A;letter-spacing:-.4px}
+.hero.vhero .sub{margin-top:14px}
+.vhero .vcard{border-radius:18px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(234,215,176,.14)}
+.vhero .vcard .vtz{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;visibility:visible!important;transform:scale(1.03)}
+.vhero .vcard.open .vtz{display:none}
+.vhero .vcard .vplay{align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:0!important;background:radial-gradient(60% 60% at 50% 50%,rgba(20,10,12,.35),rgba(20,10,12,.55))}
+.vhero .vcard .vplay i{width:86px;height:86px;animation:vpulse 2.2s ease-out infinite}
+.vhero .vcard .vplay i:after{margin-left:7px;border-left-width:28px;border-top-width:17px;border-bottom-width:17px}
+.vhero .vcard .vplay b{position:static;font:600 15px/1.2 var(--sans,inherit);letter-spacing:.02em;text-transform:none;background:rgba(0,0,0,.42);padding:9px 14px;border-radius:999px;color:#fff}
+.vhero .vcard .vplay s{position:absolute;left:12px;top:12px;text-decoration:none;font:600 11px/1 ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#fff;background:rgba(122,34,50,.9);padding:7px 9px;border-radius:8px}
+.vhero .vcard .vplay s u{display:inline-block;width:7px;height:7px;border-radius:50%;background:#ff5a5a;margin-right:6px;vertical-align:1px}
+@keyframes vpulse{0%{box-shadow:0 0 0 0 rgba(232,194,122,.55)}70%{box-shadow:0 0 0 22px rgba(232,194,122,0)}100%{box-shadow:0 0 0 0 rgba(232,194,122,0)}}
+@media(prefers-reduced-motion:reduce){.vhero .vcard .vplay i{animation:none}}
+.hero.vhero .cta{margin-top:0}
+@media(min-width:900px){.hero.vhero{padding:48px 0 64px}.hero.vhero .wrap{grid-template-columns:.85fr 1.15fr;gap:48px}.hero.vhero .vh1{font-size:clamp(34px,3.6vw,52px)}}
 </style>
 <style>
 /* ──────────────────────────────────────────────────────────────
@@ -853,16 +873,24 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 </nav>
 
 <!-- ═══ ПЕРВЫЙ ЭКРАН ═══ -->
-<header class="hero" id="top">
-  <div class="bgph" aria-hidden="true"><picture><source media="(max-width:759px)" srcset="images/malena-hero-v4-m.jpg"><img src="images/malena-hero-v4.jpg" alt="" width="1600" height="2400" fetchpriority="high"></picture></div>
+<header class="hero vhero" id="top">
   <div class="wrap">
-    <div class="eyebrow rv"><i></i>Обучение Малены Покладовой · набор на ноябрьский поток открыт</div>
-    <h1 class="rv d1"><em>New</em> SMM</h1>
-    <p class="sub rv d2"><b>Клиенты, которые платят в долларах и остаются на годы.</b> Учим с нуля привлекать клиентов и доводить их до результата с помощью искусственного интеллекта, по методике, на которой работает наше агентство в США.</p>
-    <div class="cta rv d3">
-      <a class="btn btn-wine" href="#razbor" data-go><span>Записаться на разбор <svg class="dn" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+    <div class="vtxt">
+      <div class="eyebrow rv"><i></i>Бесплатный урок Малены Покладовой · 10 минут</div>
+      <h1 class="vh1 rv d1">За одного клиента одному SMM-щику платят $300, а&nbsp;другому <em>$3&nbsp;000</em></h1>
+      <p class="sub rv d2"><b>Посмотрите урок прямо сейчас, до записи на разбор.</b> 10 минут о том, в чём разница и как выйти на такие чеки, даже если начинаете с нуля.</p>
     </div>
-    <div class="note rv d3">Бесплатно · 30 минут в Zoom · ни к чему не обязывает</div>
+    <div class="vcol rv d2">
+      <div class="vcard" id="heroV">
+        <video playsinline preload="none" data-src="video/vsl8/index.m3u8" poster="video/vsl8/teaser.jpg"></video>
+        <video class="vtz" src="video/vsl8/teaser.mp4" poster="video/vsl8/teaser.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+        <button type="button" class="vplay" aria-label="Смотреть урок со звуком"><s><u></u>УРОК · 10 МИН</s><i></i><b>Нажмите, чтобы посмотреть</b></button>
+      </div>
+      <div class="cta" style="margin-top:18px">
+        <a class="btn btn-wine" href="#razbor" data-go><span>После урока: записаться на разбор <svg class="dn" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      </div>
+      <div class="note">Разбор бесплатный · 30 минут в Zoom · ни к чему не обязывает</div>
+    </div>
   </div>
 </header>
 
@@ -1157,9 +1185,9 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 
   VSL=(function(){ var f=''; try{ f=new URLSearchParams(location.search).get('vsl')||''; }catch(e){} return f==='off'?'off':'pre'; })();
   var zvPre=document.getElementById('zvPre'), zvPost=document.getElementById('zvPost'), zvEl=null;
-  if(VSL==='pre'){ zvPre.hidden=false; zvEl=vslInit(zvPre.querySelector('.vcard'),ztrack); }
+  if(VSL!=='off'){ zvEl=vslInit(document.getElementById('heroV'),function(e,l){ ztrack(e,'hero:'+l); }); }
   if(VSL==='post'){ zvEl=vslInit(zvPost.querySelector('.vcard'),ztrack); }
-  ztrack('ab','vsl:'+VSL); ztrack('view',VSL);
+  ztrack('ab','vsl:hero'); ztrack('view',VSL);
 
   /* Появление блоков */
   var io = new IntersectionObserver(function(es){
