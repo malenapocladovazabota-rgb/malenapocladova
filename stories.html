@@ -226,6 +226,22 @@ b{font-weight:700}
   .st{padding-bottom:calc(env(safe-area-inset-bottom) + 108px)}
 }
 @media (prefers-reduced-motion:reduce){.st.on .anim{animation:none}}
+
+.vcard{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#120a0b;box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
+.vcard video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#120a0b;display:block}
+.vcard .vpo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vcard .vplay{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:flex-end;padding:0 12px 12px 0!important;border:0;background:linear-gradient(0deg,rgba(0,0,0,.35),rgba(0,0,0,0) 60%);cursor:pointer;padding:0}
+.vcard .vplay i{width:58px;height:58px;border-radius:50%;background:rgba(122,34,50,.92);box-shadow:0 0 0 8px rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center}
+.vcard .vplay i:after{content:"";margin-left:5px;border-left:20px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent}
+.vcard .vplay b{position:absolute;left:12px;bottom:10px;font:600 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#fff;background:rgba(0,0,0,.45);padding:6px 8px;border-radius:8px}
+.vcard.open .vplay,.vcard.open .vpo{display:none}
+.vcard:not(.open) video{visibility:hidden}
+
+#sVsl .vwrap{width:100%}
+#sVsl .vbtns{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+#sVsl .vbtns .go{width:100%}
+#sVsl .skip{background:none;border:0;color:rgba(255,255,255,.75);font:500 15px/1.2 inherit;padding:8px;text-decoration:underline;cursor:pointer}
+#sVsl[data-v=pre] .post,#sVsl[data-v=post] .pre{display:none}
 </style>
 <script>window.__ck=function(n){var m=document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)'));return m?decodeURIComponent(m[1]):'';};</script>
 </head>
@@ -438,6 +454,23 @@ b{font-weight:700}
     <div class="push"></div>
   </section>
 
+
+  <!-- VSL: место зависит от варианта A/B (переставляет скрипт ниже) -->
+  <section class="st ink" id="sVsl">
+    <div class="push"></div>
+    <div class="lab anim pre">Урок Малены · 10 минут</div>
+    <div class="lab anim post">Заявка принята · шаг 2 из 3</div>
+    <div class="mid anim d1 pre" style="margin-top:10px">За одного клиента одному SMM-щику платят $300, а&nbsp;другому <em>$3&nbsp;000</em>. В&nbsp;чём разница?</div>
+    <div class="mid anim d1 post" style="margin-top:10px">Перед разбором посмотрите <em>короткий урок</em></div>
+    <div class="vwrap poll anim d2" style="margin-top:16px;padding:0;background:none;box-shadow:none"><div class="vcard"><video playsinline preload="none" data-src="video/vsl8/index.m3u8" poster="video/vsl8/poster.jpg"></video><img class="vpo" src="video/vsl8/poster.jpg" alt="Урок Малены Покладовой о New SMM"><button type="button" class="vplay" aria-label="Смотреть урок"><i></i><b>10 МИН · СО ЗВУКОМ</b></button></div></div>
+    <p class="txt anim d3 post" style="margin-top:12px;font-size:15px;opacity:.85">10 минут о том, как устроен New SMM. На разборе сразу перейдём к вашей ситуации.</p>
+    <div class="vbtns anim d3">
+      <button type="button" class="skip pre" data-vgo="next">Пропустить и листать дальше →</button>
+      <button type="button" class="go post" data-vgo="cal">Выбрать время разбора</button>
+    </div>
+    <div class="push"></div>
+  </section>
+
   <!-- 15 · готово -->
   <section class="st" id="sOk">
     <div class="ph dim"><img src="images/malena-b5.jpg" alt="" style="object-position:50% 20%"></div>
@@ -453,6 +486,20 @@ b{font-weight:700}
   <div id="hint"><span><i>←</i>Нажмите<br>слева: назад</span><span><i class="pp"><u></u><u></u></i>Держите палец,<br>чтобы дочитать</span><span><i>→</i>Нажмите<br>справа: дальше</span><b>Коснитесь, чтобы начать</b></div>
 </div>
 
+<script>
+
+var VSL=(function(){
+    var f=''; try{ f=new URLSearchParams(location.search).get('vsl')||''; }catch(e){}
+    if(/^(pre|post|off)$/.test(f)) return f;
+    try{ var s=localStorage.getItem('newsmm_vsl_ab'); if(s==='pre'||s==='post') return s; }catch(e){}
+    var r=Math.random()<.5?'pre':'post'; try{ localStorage.setItem('newsmm_vsl_ab',r); }catch(e){} return r;
+  })();
+
+(function(){ var v=document.getElementById('sVsl'); if(!v) return; v.setAttribute('data-v',VSL);
+  if(VSL==='off'){ v.remove(); return; }
+  if(VSL==='pre'){ var h=document.querySelector('section.st'); h.parentNode.insertBefore(v,h.nextSibling); }
+  else { var c=document.getElementById('sCal'); c.parentNode.insertBefore(v,c); } })();
+</script>
 <script>
 (function(){
   var app=document.getElementById('app'), st=[].slice.call(document.querySelectorAll('.st')),
@@ -486,9 +533,11 @@ b{font-weight:700}
     }catch(e){}
   }
   var NAMES=['hook','problem','about','clients','offer','program','students','review','razbor','q_job','q_projects','q_check','q_block','form','calendar','booked'];
+  var iVsl=st.indexOf(document.getElementById('sVsl')); if(iVsl>=0) NAMES.splice(iVsl,0,'vsl');
   addEventListener('pagehide',function(){ track('exit',i+1,NAMES[i]); });
   var QUIZ0=st.findIndex(function(s){ return s.classList.contains('quiz'); });
   var iForm=st.indexOf(document.getElementById('sForm')), iCal=st.indexOf(document.getElementById('sCal')), iOk=st.indexOf(document.getElementById('sOk'));
+  var iAfter=(VSL==='post'&&iVsl>=0)?iVsl:iCal;
   var nBars=iOk; /* полоски только до «готово» */
   for(var k=0;k<nBars;k++){ var b=document.createElement('i'); b.appendChild(document.createElement('b')); bars.appendChild(b); }
   var fills=[].slice.call(bars.querySelectorAll('b'));
@@ -497,7 +546,7 @@ b{font-weight:700}
   function show(n){
     n=Math.max(0,Math.min(st.length-1,n));
     /* после отправки формы назад к квизу не пускаем, после записи только «готово» */
-    if(booked) n=iOk; else if(submitted && n<iCal) n=iCal;
+    if(booked) n=iOk; else if(submitted && n<iAfter) n=iAfter;
     if(!submitted && n>iForm) n=iForm;
     i=n; st.forEach(function(s,k){ s.classList.toggle('on',k===i); });
     fills.forEach(function(f,k){ f.style.width=k<i?'100%':'0%'; });
@@ -509,6 +558,7 @@ b{font-weight:700}
     if(i===0 && !sessionStorage.getItem('sthint')){ hint.classList.add('on'); paused=true; try{sessionStorage.setItem('sthint','1');}catch(e){} setTimeout(hideHint,4000); }
     if(!seen[i]){ seen[i]=1; track('story_view',i+1,NAMES[i]); if(window.fbq) fbq('trackCustom','StoriesView',{ n:i+1 }); }
     if(st[i].classList.contains('quiz')) qrender(st[i]);
+    if(vEl && st[i].id!=='sVsl' && !vEl.paused) vEl.pause();
   }
   function hideHint(){ if(!hint.classList.contains('on')) return; hint.classList.remove('on'); paused=false; }
   hint.addEventListener('pointerdown',function(e){ e.stopPropagation(); hideHint(); });
@@ -613,7 +663,7 @@ b{font-weight:700}
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return bad('Проверьте почту, без неё письмо не дойдёт.',form.email);
     err.style.display='none'; send.disabled=true; send.textContent='Отправляем…';
     var igRaw=form.ig.value.trim(), igm=igRaw.match(/instagram\.com\/([A-Za-z0-9._]{1,30})/i), ig=(igm?igm[1]:igRaw.replace(/^@+/,'')).replace(/[^A-Za-z0-9._]/g,'').slice(0,30);
-    var body={ sms_ok:!!(document.getElementById('smsok')||{}).checked, name:name, email:email, phone:phone, ig:ig, src:'stories', track:isBiz()?'biz':(hasClients()?'pro':(quiz.projects?'start':'')), quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
+    var body={ sms_ok:!!(document.getElementById('smsok')||{}).checked, name:name, email:email, phone:phone, ig:ig, src:'stories', ab:'vsl-'+VSL, track:isBiz()?'biz':(hasClients()?'pro':(quiz.projects?'start':'')), quiz:quiz, utm:Object.assign({},utm,{vsl:VSL,sid:SID}), page:location.pathname, tz:zone() };
     fetch(FN,{ method:'POST', headers:H, body:JSON.stringify(body) }).then(function(r){ return r.json(); }).catch(function(){ return {}; })
       .then(function(res){
         track(res && res.ok ? 'lead_ok' : 'lead_fail', iForm+1);
@@ -622,7 +672,7 @@ b{font-weight:700}
         region=(res&&(res.route||res.region)==='eu')?'eu':'us';
         var u=new URL((res&&res.booking_url)||document.getElementById('book').href); u.searchParams.set('first_name',name); u.searchParams.set('email',email); u.searchParams.set('phone',phone);
         document.getElementById('book').href=u.toString();
-        submitted=true; show(iCal); calLoad();
+        submitted=true; show(iAfter); calLoad();
       });
   });
 
@@ -700,6 +750,40 @@ b{font-weight:700}
   });
 
   window.__show=show;
+  /* ── VSL: A/B «до формы» / «после контактов» ── */
+  function vslInit(box, trk){
+    var v=box.querySelector('video'), btn=box.querySelector('.vplay'), loaded=false, marks={};
+    function load(){
+      if(loaded) return; loaded=true;
+      var src=v.getAttribute('data-src');
+      if(v.canPlayType('application/vnd.apple.mpegurl')){ v.src=src; return Promise.resolve(); }
+      return new Promise(function(ok){
+        var s=document.createElement('script'); s.src='https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js';
+        s.onload=function(){ try{ var h=new Hls({capLevelToPlayerSize:true}); h.loadSource(src); h.attachMedia(v); }catch(e){ v.src=src; } ok(); };
+        s.onerror=function(){ v.src=src; ok(); }; document.head.appendChild(s);
+      });
+    }
+    btn.addEventListener('click',function(e){
+      e.stopPropagation(); box.classList.add('open');
+      Promise.resolve(load()).then(function(){ v.controls=true; var p=v.play(); if(p&&p.catch) p.catch(function(){}); });
+      if(!marks.play){ marks.play=1; trk('vsl_play','start'); if(window.fbq) fbq('trackCustom','VslPlay',{ab:VSL}); }
+    });
+    v.addEventListener('timeupdate',function(){
+      if(!v.duration) return; var p=v.currentTime/v.duration;
+      [[.25,'25'],[.5,'50'],[.75,'75'],[.95,'95']].forEach(function(m){ if(p>=m[0] && !marks[m[1]]){ marks[m[1]]=1; trk('vsl_progress',m[1]); if(m[1]==='50' && window.fbq) fbq('trackCustom','Vsl50',{ab:VSL}); } });
+    });
+    return v;
+  }
+
+  var vEl=null;
+  if(iVsl>=0){
+    vEl=vslInit(document.querySelector('#sVsl .vcard'),function(ev,l){ track(ev,iVsl+1,l); });
+    [].forEach.call(document.querySelectorAll('#sVsl [data-vgo]'),function(b){ b.addEventListener('click',function(e){
+      e.stopPropagation(); var g=b.getAttribute('data-vgo'); track('vsl_cta',iVsl+1,g+(vEl&&!vEl.paused?' playing':''));
+      if(g==='quiz') show(QUIZ0); else if(g==='next') show(iVsl+1); else show(iCal); }); });
+  }
+  track('ab',0,'vsl:'+VSL);
+
   var start=+(location.hash.slice(1))||1; show(start-1); raf=requestAnimationFrame(tick);
   /* заранее грузим картинки всех сторис */
   addEventListener('load',function(){ [].forEach.call(document.querySelectorAll('.st img'),function(im){ var p=new Image(); p.src=im.src; }); });

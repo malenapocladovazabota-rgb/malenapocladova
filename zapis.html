@@ -579,6 +579,21 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   *{animation:none!important;transition:none!important}
   .rv{opacity:1;transform:none}
 }
+
+.vcard{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#120a0b;box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
+.vcard video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#120a0b;display:block}
+.vcard .vpo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vcard .vplay{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:flex-end;padding:0 12px 12px 0!important;border:0;background:linear-gradient(0deg,rgba(0,0,0,.35),rgba(0,0,0,0) 60%);cursor:pointer;padding:0}
+.vcard .vplay i{width:58px;height:58px;border-radius:50%;background:rgba(122,34,50,.92);box-shadow:0 0 0 8px rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center}
+.vcard .vplay i:after{content:"";margin-left:5px;border-left:20px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent}
+.vcard .vplay b{position:absolute;left:12px;bottom:10px;font:600 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#fff;background:rgba(0,0,0,.45);padding:6px 8px;border-radius:8px}
+.vcard.open .vplay,.vcard.open .vpo{display:none}
+.vcard:not(.open) video{visibility:hidden}
+
+.zv{margin:18px 0 6px}.zv .cap{font-size:14px;color:var(--ink2);margin:10px 2px 0}
+.zv .cap b{color:var(--ink)}
+.form-wrap.done .zv{display:none}
+.form-wrap.booking .zv.pre{display:none}
 </style>
 <style>
 /* ──────────────────────────────────────────────────────────────
@@ -863,6 +878,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
       <!-- Квиз. Отвечают одним касанием, шаг переключается сам. Ветка про чек
            меняется для тех, у кого проектов пока нет: у них спрашиваем цель,
            а не текущую цену. Ярлыков «новичок» и «профи» человек не видит. -->
+      <div class="zv pre" id="zvPre" hidden><div class="vcard"><video playsinline preload="none" data-src="video/vsl8/index.m3u8" poster="video/vsl8/poster.jpg"></video><img class="vpo" src="video/vsl8/poster.jpg" alt="Урок Малены Покладовой о New SMM"><button type="button" class="vplay" aria-label="Смотреть урок"><i></i><b>10 МИН · СО ЗВУКОМ</b></button></div><p class="cap"><b>Урок на 10 минут:</b> почему за одного и того же клиента одному SMM-щику платят $300 в месяц, а другому $3 000. Записаться можно ниже.</p></div>
       <div class="qz" id="qz">
         <div class="qbar"><i id="qfill"></i></div>
 
@@ -946,6 +962,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
       <div class="cal" id="cal" hidden>
         <div class="eyebrow"><i></i>Осталось выбрать время</div>
         <h3 id="calh">Когда вам удобно?</h3>
+        <div class="zv post" id="zvPost" hidden><div class="vcard"><video playsinline preload="none" data-src="video/vsl8/index.m3u8" poster="video/vsl8/poster.jpg"></video><img class="vpo" src="video/vsl8/poster.jpg" alt="Урок Малены Покладовой о New SMM"><button type="button" class="vplay" aria-label="Смотреть урок"><i></i><b>10 МИН · СО ЗВУКОМ</b></button></div><p class="cap"><b>Пока выбираете время,</b> посмотрите урок на 10 минут. На разборе сразу перейдём к вашей ситуации.</p></div>
         <div class="calhead"><b id="calmon"></b><div class="nav"><button type="button" id="calprev" aria-label="Предыдущий месяц">‹</button><button type="button" id="calnext" aria-label="Следующий месяц">›</button></div></div>
         <div class="calwd"><span>пн</span><span>вт</span><span>ср</span><span>чт</span><span>пт</span><span>сб</span><span>вс</span></div>
         <div class="caldays" id="caldays"></div>
@@ -1093,6 +1110,56 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 <script>
 (function(){
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var VSL=(function(){
+    var f=''; try{ f=new URLSearchParams(location.search).get('vsl')||''; }catch(e){}
+    if(/^(pre|post|off)$/.test(f)) return f;
+    try{ var s=localStorage.getItem('newsmm_vsl_ab'); if(s==='pre'||s==='post') return s; }catch(e){}
+    var r=Math.random()<.5?'pre':'post'; try{ localStorage.setItem('newsmm_vsl_ab',r); }catch(e){} return r;
+  })();
+
+  /* события воронки /zapis в ту же таблицу, что и сторис; личных данных нет */
+  var ZEV='https://kjyfbfqcgretrbupyhiq.supabase.co/rest/v1/newsmm_funnel_events',
+      ZK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqeWZiZnFjZ3JldHJidXB5aGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNzU4NDYsImV4cCI6MjA5NjY1MTg0Nn0.amLiv4BuwDuEI0z2V3WiPKeWzvENSEwPlDeaGRq0CFM',
+      ZSID=(function(){ try{ var s=sessionStorage.getItem('zp_sid'); if(!s){ s=Date.now().toString(36)+Math.random().toString(36).slice(2,10); sessionStorage.setItem('zp_sid',s); } return s; }catch(e){ return 'z'+Date.now().toString(36); } })();
+  function ztrack(ev,label){
+    var sp; try{ sp=new URLSearchParams(location.search); }catch(e){ sp={get:function(){return ''}}; }
+    try{ fetch(ZEV,{ method:'POST', keepalive:true, headers:{'content-type':'application/json','apikey':ZK,'authorization':'Bearer '+ZK,'prefer':'return=minimal'},
+      body:JSON.stringify({ sid:ZSID, page:location.pathname.replace(/^\/|\.html$/g,'')||'kurs', event:ev, step:null, label:label?String(label).slice(0,80):null,
+        utm_source:(sp.get('utm_source')||'').slice(0,60)||null, utm_campaign:(sp.get('utm_campaign')||'').slice(0,120)||null, utm_content:(sp.get('utm_content')||'').slice(0,120)||null,
+        device:(innerWidth<700?'mobile':'desktop') }) }).catch(function(){}); }catch(e){}
+  }
+
+  /* ── VSL: A/B «до формы» / «после контактов» ── */
+  function vslInit(box, trk){
+    var v=box.querySelector('video'), btn=box.querySelector('.vplay'), loaded=false, marks={};
+    function load(){
+      if(loaded) return; loaded=true;
+      var src=v.getAttribute('data-src');
+      if(v.canPlayType('application/vnd.apple.mpegurl')){ v.src=src; return Promise.resolve(); }
+      return new Promise(function(ok){
+        var s=document.createElement('script'); s.src='https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js';
+        s.onload=function(){ try{ var h=new Hls({capLevelToPlayerSize:true}); h.loadSource(src); h.attachMedia(v); }catch(e){ v.src=src; } ok(); };
+        s.onerror=function(){ v.src=src; ok(); }; document.head.appendChild(s);
+      });
+    }
+    btn.addEventListener('click',function(e){
+      e.stopPropagation(); box.classList.add('open');
+      Promise.resolve(load()).then(function(){ v.controls=true; var p=v.play(); if(p&&p.catch) p.catch(function(){}); });
+      if(!marks.play){ marks.play=1; trk('vsl_play','start'); if(window.fbq) fbq('trackCustom','VslPlay',{ab:VSL}); }
+    });
+    v.addEventListener('timeupdate',function(){
+      if(!v.duration) return; var p=v.currentTime/v.duration;
+      [[.25,'25'],[.5,'50'],[.75,'75'],[.95,'95']].forEach(function(m){ if(p>=m[0] && !marks[m[1]]){ marks[m[1]]=1; trk('vsl_progress',m[1]); if(m[1]==='50' && window.fbq) fbq('trackCustom','Vsl50',{ab:VSL}); } });
+    });
+    return v;
+  }
+
+  VSL=(function(){ var f=''; try{ f=new URLSearchParams(location.search).get('vsl')||''; }catch(e){} return f==='off'?'off':'pre'; })();
+  var zvPre=document.getElementById('zvPre'), zvPost=document.getElementById('zvPost'), zvEl=null;
+  if(VSL==='pre'){ zvPre.hidden=false; zvEl=vslInit(zvPre.querySelector('.vcard'),ztrack); }
+  if(VSL==='post'){ zvEl=vslInit(zvPost.querySelector('.vcard'),ztrack); }
+  ztrack('ab','vsl:'+VSL); ztrack('view',VSL);
 
   /* Появление блоков */
   var io = new IntersectionObserver(function(es){
@@ -1471,6 +1538,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
           document.getElementById('okwhen').textContent=
             WD[dt.getDay()].toUpperCase().slice(0,1)+WD[dt.getDay()].slice(1)+', '+dt.getDate()+' '+MON[dt.getMonth()]+', '+hhmm(slot)+'.';
           fw.classList.add('done');
+          ztrack('booked',VSL); if(zvEl && !zvEl.paused) zvEl.pause();
           if(window.fbq){ if(res.j.first===false) fbq('trackCustom','Reschedule',{content_name:'new-smm-razbor'}); else if(!res.j.test) fbq('track','Schedule',{content_name:'new-smm-razbor'},res.j.event_id?{eventID:res.j.event_id}:{}); }
           fw.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
           return;
@@ -1507,7 +1575,8 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     var lane=isBiz() ? 'biz' : (hasClients() ? 'pro' : (quiz.projects ? 'start' : (track||'')));
     /* Инстаграм необязательный: берём ник из @ника или из ссылки на профиль. */
     var igRaw=(form.ig&&form.ig.value||'').trim(), igm=igRaw.match(/instagram\.com\/([A-Za-z0-9._]{1,30})/i), ig=(igm?igm[1]:igRaw.replace(/^@+/,'')).replace(/[^A-Za-z0-9._]/g,'').slice(0,30);
-    var body={ sms_ok:!!(document.getElementById('smsok')||{}).checked, name:name, email:email, phone:phone, country:country.c, ig:ig, src:(ZAPIS?'zapis':'kurs'), track:lane, quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
+    quiz.vsl=VSL; quiz.sid=ZSID;
+    var body={ sms_ok:!!(document.getElementById('smsok')||{}).checked, name:name, email:email, phone:phone, country:country.c, ig:ig, src:(ZAPIS?'zapis':'kurs'), ab:'vsl-'+VSL, track:lane, quiz:quiz, utm:Object.assign({},utm,{vsl:VSL,sid:ZSID}), page:location.pathname, tz:zone() };
     fetch(FN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK}, body:JSON.stringify(body) })
       .then(function(r){ return r.json(); })
       .catch(function(){ return {ok:false}; })
@@ -1526,6 +1595,8 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
            лежит рядом в region и нужен только для статистики. */
         calRegion=(d&&(d.route||d.region)==='eu') ? 'eu' : 'us';
         fw.classList.add('booking');
+        ztrack(d&&d.ok?'lead_ok':'lead_fail',VSL);
+        if(VSL==='post') zvPost.hidden=false;
         cal.hidden=false;
         fw.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
         calLoad();
