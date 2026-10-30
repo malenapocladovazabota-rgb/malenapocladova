@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0f0b0b">
+<title>New SMM · Малена Покладова</title>
+<meta property="og:title" content="New SMM · обучение Малены Покладовой">
+<meta property="og:description" content="Клиенты, которые платят в долларах и остаются на годы. Бесплатный разбор в Zoom.">
+<meta property="og:image" content="https://malenapocladova.com/images/malena-hero-v4-m.jpg">
+<link rel="preload" as="image" href="images/malena-hero-v4-m.jpg">
+
+<!-- Meta Pixel · школа -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1521940319314090');
+fbq('track','PageView');
+fbq('track','ViewContent',{content_name:'new-smm-stories',content_category:'course',content_type:'product'});
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1521940319314090&ev=PageView&noscript=1"></noscript>
+
+<style>
+/* ─────────────────────────────────────────────────────────────
+   New SMM · лендинг в формате сторис (тест против /).
+   Листается как Instagram: сторис идут сами, тап справа вперёд, слева назад,
+   удержание ставит на паузу. Вопросы квиза выглядят как стикеры-опросы.
+   Заявка уходит в ту же newsmm-lead с src=stories, запись в тот же newsmm-book.
+   ───────────────────────────────────────────────────────────── */
+@font-face{font-family:'Inter';font-weight:400;font-display:swap;src:url(fonts/vsl/inter-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Inter';font-weight:400;font-display:swap;src:url(fonts/vsl/inter-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+00D7}
+@font-face{font-family:'Inter';font-weight:600;font-display:swap;src:url(fonts/vsl/inter-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Inter';font-weight:600;font-display:swap;src:url(fonts/vsl/inter-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+00D7}
+@font-face{font-family:'Inter';font-weight:700;font-display:swap;src:url(fonts/vsl/inter-cyrillic-700-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Inter';font-weight:700;font-display:swap;src:url(fonts/vsl/inter-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+00D7}
+@font-face{font-family:'Playfair Display';font-weight:500;font-display:swap;src:url(fonts/vsl/playfair-display-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Playfair Display';font-weight:500;font-display:swap;src:url(fonts/vsl/playfair-display-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+00D7}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:500;font-display:swap;src:url(fonts/vsl/playfair-display-cyrillic-500-italic.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:500;font-display:swap;src:url(fonts/vsl/playfair-display-latin-500-italic.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+00D7}
+@font-face{font-family:'JetBrains Mono';font-weight:700;font-display:swap;src:url(fonts/vsl/jetbrains-mono-cyrillic-700-normal.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'JetBrains Mono';font-weight:700;font-display:swap;src:url(fonts/vsl/jetbrains-mono-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2190-21FF,U+00D7}
+
+:root{--wine:#6E1E2B;--wine2:#8E2A3B;--ink:#1B1414;--gold:#D9A441;--paper:#F5EFE3;--cream:#FBF7EE;
+  --serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0f0b0b;overflow:hidden;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+body{font-family:var(--sans);color:#fff;overscroll-behavior:none}
+em{font-style:italic;color:var(--gold)}
+b{font-weight:700}
+
+/* на компьютере телефонная рамка по центру поверх размытого фото */
+#bgblur{position:fixed;inset:-40px;background:url(images/malena-hero-v4-m.jpg) center/cover;filter:blur(40px) brightness(.35);display:none}
+#app{position:fixed;inset:0;margin:0 auto;max-width:560px;overflow:hidden;background:var(--ink);user-select:none;-webkit-user-select:none}
+@media (min-width:700px){
+  #bgblur{display:block}
+  #app{top:3vh;bottom:3vh;width:calc(94vh * 9 / 16);max-width:none;border-radius:18px;box-shadow:0 40px 120px -20px rgba(0,0,0,.8)}
+}
+
+/* шапка как в Instagram */
+#top{position:absolute;left:0;right:0;top:0;z-index:30;padding:calc(env(safe-area-inset-top) + 8px) 10px 0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,0));padding-bottom:26px}
+#bars{display:flex;gap:3px}
+#bars i{flex:1;height:2.5px;border-radius:2px;background:rgba(255,255,255,.35);overflow:hidden;position:relative}
+#bars i b{position:absolute;left:0;top:0;bottom:0;width:0;background:#fff;border-radius:2px}
+#who{display:flex;align-items:center;gap:9px;margin-top:10px}
+#who img{width:34px;height:34px;border-radius:50%;object-fit:cover;object-position:50% 15%;border:2px solid #fff}
+#who .nm{font-weight:600;font-size:14px}
+#who .ago{font-size:13px;color:rgba(255,255,255,.7);margin-left:2px}
+#pz{margin-left:auto;font-size:12px;font-family:var(--mono);letter-spacing:.06em;opacity:0;transition:opacity .2s}
+#app.paused #pz{opacity:.8}
+
+/* сторис */
+.st{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden;
+  padding:calc(env(safe-area-inset-top) + 76px) 22px calc(env(safe-area-inset-bottom) + 118px)}
+.st.on{display:flex}
+.st .ph{position:absolute;inset:0;z-index:0}
+.st .ph img{width:100%;height:100%;object-fit:cover}
+.st .ph::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.25) 55%,rgba(10,6,6,.92) 100%)}
+.st .ph.dim::after{background:linear-gradient(180deg,rgba(0,0,0,.2) 0%,rgba(10,6,6,.55) 35%,rgba(10,6,6,.93) 70%)}
+.st > *:not(.ph){position:relative;z-index:1}
+.st.wine{background:radial-gradient(120% 80% at 80% 10%,#8E2A3B 0%,#5A1722 45%,#2A0B11 100%)}
+.st.ink{background:radial-gradient(120% 80% at 20% 0%,#3A2323 0%,#1B1414 55%,#0f0b0b 100%)}
+.st.paper{background:radial-gradient(120% 80% at 80% 0%,#FBF7EE 0%,#F1E7D6 60%,#E6D7BF 100%);color:var(--ink)}
+.st.paper em{color:var(--wine)}
+.st.on .anim{animation:rise .55s cubic-bezier(.2,.7,.2,1) both}
+.st.on .anim.d1{animation-delay:.12s}.st.on .anim.d2{animation-delay:.28s}.st.on .anim.d3{animation-delay:.44s}.st.on .anim.d4{animation-delay:.6s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.push{flex:1}
+
+/* типографика сторис */
+.big{font-family:var(--serif);font-weight:500;font-size:44px;line-height:1.04;letter-spacing:-.015em}
+.mid{font-family:var(--serif);font-weight:500;font-size:34px;line-height:1.1}
+.txt{font-size:19px;line-height:1.42}
+.lab{font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+/* текст с подложкой, как текстовый стикер в Instagram */
+.hl{display:inline;background:#fff;color:var(--ink);padding:3px 9px;line-height:1.6;border-radius:8px;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;font-weight:600;font-size:20px}
+.hl.w{background:var(--wine);color:#fff}
+.hl.g{background:var(--gold);color:var(--ink)}
+
+/* стикеры-карточки */
+.stk{background:rgba(255,255,255,.95);color:var(--ink);border-radius:18px;padding:14px 16px;box-shadow:0 12px 30px -12px rgba(0,0,0,.5)}
+.stk .n{font-family:var(--serif);font-size:38px;line-height:1;color:var(--wine)}
+.stk .t{font-size:15px;line-height:1.3;margin-top:4px;color:#4A3F3F}
+.stk .k{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8A7C78;margin-bottom:6px}
+.stk.tilt-l{transform:rotate(-2deg)}.stk.tilt-r{transform:rotate(2deg)}
+.stack{display:flex;flex-direction:column;gap:12px}
+.two{display:flex;gap:10px}.two > *{flex:1}
+
+/* ученицы */
+.face{display:flex;align-items:center;gap:12px}
+.face img{width:62px;height:62px;border-radius:50%;object-fit:cover;object-position:50% 25%;flex:0 0 62px;border:3px solid var(--gold)}
+.face .n{font-family:var(--serif);font-size:28px;line-height:1;color:var(--wine)}
+.face .nm{font-weight:700;font-size:15px}
+.face .t{font-size:14px;line-height:1.25;color:#4A3F3F;margin-top:2px}
+
+/* отзыв */
+.shot{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;margin-top:14px}
+.shot img{max-width:100%;max-height:100%;border-radius:16px;box-shadow:0 20px 50px -16px rgba(0,0,0,.7);transform:rotate(-1.5deg)}
+
+/* главная кнопка записи: на всех контентных сторис, всегда на одном месте */
+#link{position:absolute;left:16px;right:16px;bottom:calc(env(safe-area-inset-bottom) + 16px);z-index:30;display:flex;flex-direction:column;align-items:center;gap:7px;transition:opacity .25s,transform .25s}
+#link .cap{font:600 12px var(--sans);letter-spacing:.02em;color:rgba(255,255,255,.92);text-shadow:0 1px 6px rgba(0,0,0,.6)}
+#link button{position:relative;overflow:hidden;width:100%;display:flex;align-items:center;justify-content:center;gap:12px;
+  background:linear-gradient(135deg,#8E2A3B 0%,#6E1E2B 60%,#551521 100%);color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:18px;
+  font:700 18px var(--sans);padding:17px 18px;cursor:pointer;box-shadow:0 14px 34px -10px rgba(110,30,43,.95),0 0 0 0 rgba(217,164,65,.55);animation:ring 2.4s ease-out infinite}
+#link button .ar{width:30px;height:30px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;font-size:17px;flex:0 0 30px}
+#link button::after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.28),rgba(255,255,255,0));transform:skewX(-20deg);animation:shine 3.2s ease-in-out infinite}
+#link button:active{transform:scale(.98)}
+@keyframes shine{0%,55%{left:-60%}85%,100%{left:130%}}
+@keyframes ring{0%{box-shadow:0 14px 34px -10px rgba(110,30,43,.95),0 0 0 0 rgba(217,164,65,.55)}70%{box-shadow:0 14px 34px -10px rgba(110,30,43,.95),0 0 0 12px rgba(217,164,65,0)}100%{box-shadow:0 14px 34px -10px rgba(110,30,43,.95),0 0 0 0 rgba(217,164,65,0)}}
+#app.lite #link .cap{color:#4A3F3F;text-shadow:none}
+@media (prefers-reduced-motion:reduce){#link button,#link button::after{animation:none}}
+#link.hide{opacity:0;transform:translateY(10px)}#link.hide button{pointer-events:none}
+/* тихий режим на контентных сторис 2–7: кнопка на месте, но не спорит со слайдом.
+   Яркая только на первой сторис и на сторис с предложением разбора. */
+#link .cap,#link button,#link button .ar{transition:all .35s ease}
+#link.calm .cap{opacity:0;height:0;margin:-7px 0 0;overflow:hidden}
+#link.calm button{background:rgba(20,12,12,.34);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-color:rgba(255,255,255,.4);
+  font-size:16px;font-weight:600;padding:12px 16px;box-shadow:none;animation:none}
+#link.calm button::after{display:none}
+#link.calm button .ar{width:24px;height:24px;flex-basis:24px;font-size:14px;background:rgba(255,255,255,.2);color:#fff}
+#app.lite #link.calm button{background:rgba(27,20,20,.08);color:var(--ink);border-color:rgba(27,20,20,.25)}
+#app.lite #link.calm button .ar{background:rgba(27,20,20,.1);color:var(--ink)}
+
+/* опрос-стикер для квиза */
+.poll{background:#fff;color:var(--ink);border-radius:22px;padding:18px 16px 16px;box-shadow:0 18px 44px -14px rgba(0,0,0,.6)}
+.poll .q{font-weight:700;font-size:21px;line-height:1.25;text-align:center;margin-bottom:14px}
+.poll .qn{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8A7C78;text-align:center;margin-bottom:8px}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts button{font:600 16px var(--sans);color:var(--ink);background:#F2EDE6;border:0;border-radius:14px;padding:14px 14px;text-align:left;cursor:pointer;position:relative;overflow:hidden}
+.opts button.on{background:var(--wine);color:#fff}
+.opts button:active{transform:scale(.98)}
+.back{margin-top:12px;background:none;border:0;color:rgba(255,255,255,.75);font:500 14px var(--sans);text-decoration:underline;cursor:pointer;align-self:center}
+
+/* форма */
+.fld{display:block;width:100%;font:500 17px var(--sans);color:var(--ink);background:#F2EDE6;border:2px solid transparent;border-radius:14px;padding:14px 14px;outline:0;margin-top:8px;-webkit-appearance:none;appearance:none}
+.fld:focus{border-color:var(--wine);background:#fff}
+.telrow{display:flex;gap:8px}.telrow select{flex:0 0 108px;padding-right:6px}.telrow input{flex:1;min-width:0}
+.go{display:flex;align-items:center;justify-content:center;width:100%;margin-top:14px;background:var(--wine);color:#fff;border:0;border-radius:14px;font:700 17px var(--sans);padding:16px;cursor:pointer}
+.go:disabled{opacity:.55}
+.err{display:none;color:#B3261E;font-size:14px;margin-top:8px;text-align:center}
+.fine{font-size:11px;line-height:1.35;color:#8A7C78;margin-top:10px;text-align:center}
+#sForm{overflow-y:auto;-webkit-overflow-scrolling:touch}
+.smsok{display:flex;gap:8px;align-items:flex-start;margin-top:10px;font-size:11px;line-height:1.35;color:#6B5F5C;text-align:left;cursor:pointer}.smsok input{width:16px;height:16px;flex:0 0 16px;margin-top:1px;accent-color:#6E1E2B}.smsok small{display:block;margin-top:3px;font-size:10px;opacity:.85}.smsok a{color:inherit}
+.fine a{color:inherit}
+
+/* выбор времени · как в Calendly: месяц сеткой, потом список времени,
+   выбранное время раскрывается в кнопку «Подтвердить» */
+.cal{padding:16px 14px 14px}
+.calhd{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid #EEE6DC;margin-bottom:10px}
+.calhd img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.calhd .who2{font-size:13px;color:#8A7C78;font-weight:600}
+.calhd .ttl{font-weight:700;font-size:18px;line-height:1.2}
+.calhd .meta{font-size:13px;color:#4A3F3F;margin-top:2px;display:flex;align-items:center;gap:5px}
+.mnav{display:flex;align-items:center;justify-content:space-between;margin:4px 2px 8px}
+.mnav b{font-size:16px}
+.mnav button{width:34px;height:34px;border-radius:50%;border:0;background:#F6EEF0;color:var(--wine);font:700 18px var(--sans);cursor:pointer}
+.mnav button:disabled{opacity:.3;cursor:default}
+.wdr,.grid{display:grid;grid-template-columns:repeat(7,1fr);text-align:center}
+.wdr span{font-size:11px;font-weight:600;color:#8A7C78;text-transform:uppercase;padding:4px 0}
+.grid button{aspect-ratio:1;max-width:44px;width:100%;margin:2px auto;border-radius:50%;border:0;background:none;color:#B9AEA8;font:500 15px var(--sans);cursor:default}
+.grid button.has{background:#F6EEF0;color:var(--wine);font-weight:700;cursor:pointer}
+.grid button.on{background:var(--wine);color:#fff}
+.grid button.today{position:relative}
+.grid button.today::after{content:'';position:absolute;left:50%;bottom:5px;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:currentColor}
+.dback{display:flex;align-items:center;gap:8px;border:0;background:none;font:700 16px var(--sans);color:var(--ink);cursor:pointer;padding:4px 2px 10px}
+.dback i{width:30px;height:30px;border-radius:50%;background:#F6EEF0;color:var(--wine);display:grid;place-items:center;font-style:normal}
+.tlist{display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto;padding-right:2px}
+.trow{display:flex;gap:8px}
+.trow .t{flex:1;border:1.5px solid var(--wine);background:#fff;color:var(--wine);border-radius:10px;padding:13px 0;font:700 16px var(--sans);cursor:pointer;transition:flex .2s}
+.trow.on .t{background:#6B5F5C;border-color:#6B5F5C;color:#fff}
+.trow .c{display:none;flex:1;border:0;background:var(--wine);color:#fff;border-radius:10px;font:700 16px var(--sans);cursor:pointer}
+.trow.on .c{display:block}
+.tz{font-size:12px;color:#8A7C78;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:5px}
+.note{font-size:13px;color:#8A7C78;margin-top:10px;text-align:center}
+
+.ok{font-size:64px;line-height:1;width:96px;height:96px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;margin:0 auto 18px}
+
+/* подсказка на первой сторис: три зоны касания между шапкой и кнопкой.
+   Кнопку записи не перекрывает, закрывается сама или любым касанием. */
+#hint{position:absolute;left:0;right:0;top:calc(env(safe-area-inset-top) + 64px);bottom:calc(env(safe-area-inset-bottom) + 112px);z-index:40;
+  display:flex;background:rgba(10,6,6,.55);opacity:0;pointer-events:none;transition:opacity .35s}
+#hint.on{opacity:1;pointer-events:auto}
+#hint span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font:600 14px var(--sans);color:#fff;text-align:center;line-height:1.3}
+#hint span:nth-child(1){flex:0 0 30%;border-right:1.5px dashed rgba(255,255,255,.45)}
+#hint span:nth-child(2){flex:1;border-right:1.5px dashed rgba(255,255,255,.45)}
+#hint span:nth-child(3){flex:0 0 30%}
+#hint i{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.16);border:2px solid #fff;display:grid;place-items:center;font-style:normal;font-size:20px}
+#hint .pp{display:flex;gap:6px}#hint .pp u{width:5px;height:16px;border-radius:2px;background:#fff}
+#hint b{position:absolute;left:0;right:0;top:14px;text-align:center;font:600 12px var(--sans);color:rgba(255,255,255,.75)}
+
+@media (max-height:680px){
+  .prg .stack{gap:7px}.cl .stack{gap:7px}.cl .stk .n{font-size:26px}.prg .hl{font-size:15px}.prg .txt{display:none}.prg .mid{font-size:25px}
+  .big{font-size:36px}.mid{font-size:28px}.txt{font-size:17px}.hl{font-size:17px}
+  .stk .n{font-size:30px}.stk{padding:11px 14px}.stack{gap:9px}
+  .face img{width:50px;height:50px;flex-basis:50px}.face .n{font-size:23px}
+  .poll .q{font-size:18px}.opts button{padding:11px 12px;font-size:15px}
+  .st{padding-bottom:calc(env(safe-area-inset-bottom) + 108px)}
+}
+@media (prefers-reduced-motion:reduce){.st.on .anim{animation:none}}
+
+.vcard{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#120a0b;box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
+.vcard video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#120a0b;display:block}
+.vcard .vpo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vcard .vplay{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:flex-end;padding:0 12px 12px 0!important;border:0;background:linear-gradient(0deg,rgba(0,0,0,.35),rgba(0,0,0,0) 60%);cursor:pointer;padding:0}
+.vcard .vplay i{width:58px;height:58px;border-radius:50%;background:rgba(122,34,50,.92);box-shadow:0 0 0 8px rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center}
+.vcard .vplay i:after{content:"";margin-left:5px;border-left:20px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent}
+.vcard .vplay b{position:absolute;left:12px;bottom:10px;font:600 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#fff;background:rgba(0,0,0,.45);padding:6px 8px;border-radius:8px}
+.vcard.open .vplay,.vcard.open .vpo{display:none}
+.vcard:not(.open) video{visibility:hidden}
+
+#sVsl .vwrap{width:100%}
+#sVsl .vbtns{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+#sVsl .vbtns .go{width:100%}
+#sVsl .skip{background:none;border:0;color:rgba(255,255,255,.75);font:500 15px/1.2 inherit;padding:8px;text-decoration:underline;cursor:pointer}
+#sVsl[data-v=pre] .post,#sVsl[data-v=post] .pre{display:none}
+</style>
+<script>window.__ck=function(n){var m=document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)'));return m?decodeURIComponent(m[1]):'';};</script>
+</head>
+<body>
+<div id="bgblur"></div>
+<div id="app">
+
+  <div id="top">
+    <div id="bars"></div>
+    <div id="who"><img src="images/malena-avatar-v1.jpg" alt=""><span class="nm">Малена Покладова</span><span class="ago">· New SMM</span><span id="pz">❚❚ пауза</span></div>
+  </div>
+
+  <!-- 1 · хук -->
+  <section class="st" data-t="7">
+    <div class="ph"><img src="images/malena-hero-v4-m.jpg" alt="Малена Покладова" style="object-position:50% 10%"></div>
+    <div class="push"></div>
+    <div class="lab anim">Обучение Малены Покладовой</div>
+    <div class="big anim d1" style="margin-top:10px;font-size:62px"><em>New</em> SMM</div>
+    <div class="anim d2" style="margin-top:14px"><span class="hl">Клиенты, которые платят в долларах и остаются на годы</span></div>
+  </section>
+
+  <!-- 2 · проблема -->
+  <section class="st ink" data-t="8">
+    <div class="lab anim">Как изменилась профессия</div>
+    <div class="mid anim d1" style="margin-top:12px">Бизнес больше не платит <em>за красивую ленту</em></div>
+    <div class="push"></div>
+    <p class="txt anim d2">У владельца бизнеса в голове три цифры:</p>
+    <div class="stack" style="margin-top:12px">
+      <div class="anim d2"><span class="hl">1 · Сколько клиентов пришло</span></div>
+      <div class="anim d3"><span class="hl">2 · Сколько стоил каждый</span></div>
+      <div class="anim d4"><span class="hl g">3 · Сколько он на них заработал</span></div>
+    </div>
+    <div class="push"></div>
+    <p class="txt anim d4">Кто умеет показать эти цифры, тот стоит дороже и работает с клиентом годами.</p>
+  </section>
+
+  <!-- 3 · кто я -->
+  <section class="st" data-t="8">
+    <div class="ph"><img src="images/malena-b2.jpg" alt="" style="object-position:50% 18%"></div>
+    <div class="push"></div>
+    <div class="anim"><span class="hl">Я Малена. С мужем ведём агентство</span><br><span class="hl">Клиенты в США, Европе и Азии</span></div>
+    <div class="two anim d2" style="margin-top:16px">
+      <div class="stk tilt-l"><div class="n">7 лет</div><div class="t">зарабатываю только на соцсетях</div></div>
+      <div class="stk tilt-r"><div class="n">12 000</div><div class="t">видео для себя и клиентов</div></div>
+    </div>
+    <div class="stk anim d3" style="margin-top:10px"><div class="n">250+</div><div class="t">женщин закончили моё обучение</div></div>
+  </section>
+
+  <!-- 4 · клиенты агентства -->
+  <section class="st paper cl" data-t="9">
+    <div class="lab anim" style="color:var(--wine)">Клиенты нашего агентства</div>
+    <div class="mid anim d1" style="margin-top:10px">Их цифры мы <em>разбираем на обучении</em></div>
+    <div class="push"></div>
+    <div class="stack">
+      <div class="stk anim d2"><div class="k">Студия красоты · США</div><div class="two"><div><div class="n">$145K</div><div class="t">записей по прайсу за $14K рекламы</div></div><div><div class="n">700</div><div class="t">записей за 5 месяцев</div></div></div></div>
+      <div class="stk anim d3"><div class="k">Онлайн-школа · США</div><div class="two"><div><div class="n">в 10 раз</div><div class="t">окупилась реклама</div></div><div><div class="n">200+</div><div class="t">клиентов на премиум</div></div></div></div>
+      <div class="stk anim d4"><div class="k">Иммиграционный адвокат · США</div><div class="n">1,7M</div><div class="t">органических просмотров за месяц</div></div>
+    </div>
+    <div class="push"></div>
+  </section>
+
+  <!-- 5 · что внутри -->
+  <section class="st wine" data-t="9">
+    <div class="lab anim">Что такое New SMM</div>
+    <div class="mid anim d1" style="margin-top:10px">Три вещи, которые <em>вместе есть только здесь</em></div>
+    <div class="push"></div>
+    <div class="stack">
+      <div class="anim d2"><span class="hl">Ведёте клиента до продления договора</span><p class="txt" style="margin:8px 2px 0;font-size:16px;opacity:.85">Считаете заявки и показываете ему отчёт, в котором видны его деньги.</p></div>
+      <div class="anim d3"><span class="hl">Настраиваете AI под каждого клиента</span><p class="txt" style="margin:8px 2px 0;font-size:16px;opacity:.85">Он берёт на себя идеи, сценарии, тексты и разбор цифр.</p></div>
+      <div class="anim d4"><span class="hl g">Работаете как агентство в США</span><p class="txt" style="margin:8px 2px 0;font-size:16px;opacity:.85">И выходите на заказчиков, которые платят в долларах.</p></div>
+    </div>
+    <div class="push"></div>
+  </section>
+
+  <!-- 6 · программа: фишки -->
+  <section class="st ink prg" data-t="10">
+    <div class="lab anim">12 блоков · 2 месяца · старт в ноябре</div>
+    <div class="mid anim d1" style="margin-top:10px">В каждом блоке фишка, которой <em>мы пользуемся сами</em></div>
+    <div class="push"></div>
+    <div class="stack">
+      <div class="anim d2"><span class="hl">Как снять 20 видео за час</span></div>
+      <div class="anim d2"><span class="hl">Как снять человека, который никогда не снимался</span></div>
+      <div class="anim d3"><span class="hl">Как найти, чем бизнес отличается от всех, и упаковать это</span></div>
+      <div class="anim d3"><span class="hl">Сценарии, которые цепляют с первых секунд</span></div>
+      <div class="anim d4"><span class="hl g">Реклама и воронки, которые приводят клиентов</span></div>
+    </div>
+    <p class="txt anim d4" style="margin-top:14px;font-size:15px;opacity:.85">Учитесь сами в тарифе «С нуля» или «Повышение квалификации». Или доверяете проект нашей команде под ключ.</p>
+    <div class="push"></div>
+  </section>
+
+  <!-- 7 · ученицы -->
+  <section class="st paper" data-t="9">
+    <div class="lab anim" style="color:var(--wine)">Ученицы прошлых потоков</div>
+    <div class="mid anim d1" style="margin-top:10px">Начинали <em>как вы</em></div>
+    <div class="push"></div>
+    <div class="stack">
+      <div class="stk face anim d2"><img src="images/portrait-alina.jpg" alt=""><div><div class="nm">Алина, пришла в декрете</div><div class="n">5 клиентов</div><div class="t">своя SMM-студия, команда из трёх человек</div></div></div>
+      <div class="stk face anim d3"><img src="images/portrait-elizaveta.jpg" alt=""><div><div class="nm">Елизавета, с нуля</div><div class="n">0 → 74,2K</div><div class="t">самое большое СМИ об экологии в Молдове</div></div></div>
+      <div class="stk face anim d4"><img src="images/club/otzyvy/face-loredana.jpg" alt=""><div><div class="nm">Лоредана</div><div class="n">4 клиента</div><div class="t">и крупный проект из Турции</div></div></div>
+    </div>
+    <div class="push"></div>
+    <p style="font-size:11px;color:#8A7C78;text-align:center" class="anim d4">С разрешения учениц, цифры с их аккаунтов</p>
+  </section>
+
+  <!-- 7 · отзыв -->
+  <section class="st ink" data-t="8">
+    <div class="anim"><span class="hl">Тома, выпускница</span></div>
+    <div class="shot anim d1"><img src="images/club/otzyvy/shot-02.jpg" alt="Отзыв Томы"></div>
+  </section>
+
+  <!-- 8 · оффер разбора -->
+  <section class="st" data-t="9">
+    <div class="ph dim"><img src="images/malena-b6.jpg" alt="" style="object-position:50% 30%"></div>
+    <div class="push"></div>
+    <div class="lab anim">Поток стартует в ноябре</div>
+    <div class="big anim d1" style="margin-top:10px">Сначала <em>бесплатный разбор</em> в Zoom</div>
+    <div class="stack anim d2" style="margin-top:16px">
+      <div><span class="hl">Посмотрим вашу ситуацию</span></div>
+      <div><span class="hl">Скажем, с чего начать именно вам</span></div>
+      <div><span class="hl">Подберём формат: с нуля, повышение квалификации или под ключ</span></div>
+    </div>
+    <p class="txt anim d3" style="margin-top:14px;font-size:16px;opacity:.85">На обучение берём не всех, поэтому сначала знакомимся. Расскажите немного о себе и выберите удобное время.</p>
+  </section>
+
+  <!-- 9–12 · квиз -->
+  <section class="st wine quiz" data-q="job">
+    <div class="push"></div>
+    <div class="poll anim"><div class="qn">Вопрос 1 из 4</div><div class="q">Чем вы занимаетесь сейчас?</div>
+      <div class="opts">
+        <button type="button" data-v="Веду соцсети клиентам">Веду соцсети клиентам</button>
+        <button type="button" data-v="Веду свой блог">Веду свой блог</button>
+        <button type="button" data-v="Предприниматель, SMM для своего бизнеса">Предприниматель: SMM для своего бизнеса</button>
+        <button type="button" data-v="Другая сфера, хочу в SMM">Другая сфера, хочу в SMM</button>
+      </div></div>
+    <div class="push"></div>
+  </section>
+
+  <section class="st wine quiz" data-q="projects">
+    <div class="push"></div>
+    <div class="poll anim"><div class="qn">Вопрос 2 из 4</div><div class="q">Сколько проектов ведёте прямо сейчас?</div>
+      <div class="opts">
+        <button type="button" data-v="0">Пока ни одного</button>
+        <button type="button" data-v="1">Один</button>
+        <button type="button" data-v="2-3">Два или три</button>
+        <button type="button" data-v="4+">Четыре и больше</button>
+      </div></div>
+    <button class="back" type="button">Назад</button>
+    <div class="push"></div>
+  </section>
+
+  <section class="st wine quiz" data-q="check">
+    <div class="push"></div>
+    <div class="poll anim"><div class="qn" data-biz="Вопрос 2 из 3">Вопрос 3 из 4</div>
+      <div class="q" data-biz="Сколько сейчас приносит ваш бизнес в месяц?" data-has="Какой у вас чек за проект в месяц?" data-none="Сколько хотите зарабатывать в месяц через полгода?"></div>
+      <div class="opts" data-has-opts="До $300|От $300 до $800|От $800 до $2000|От $2000 до $5000|Больше $5000"
+           data-none-opts="До $500|От $500 до $2000|От $2000 до $5000|От $5000 до $10 000|Больше $10 000"
+           data-biz-opts="До $3000|От $3000 до $10 000|От $10 000 до $30 000|Больше $30 000|Бизнес только запускаю"></div></div>
+    <button class="back" type="button">Назад</button>
+    <div class="push"></div>
+  </section>
+
+  <section class="st wine quiz" data-q="block">
+    <div class="push"></div>
+    <div class="poll anim"><div class="qn" data-biz="Вопрос 3 из 3">Вопрос 4 из 4</div><div class="q">Что мешает больше всего прямо сейчас?</div>
+      <div class="opts" data-has-opts="Клиентов мало, не знаю где искать|Не получается поднять чек|Клиенты уходят через месяц или два|Не умею показывать результат в деньгах|Тону в рутине, не хватает времени"
+           data-none-opts="Не знаю, с чего начать|Не понимаю, где брать клиентов|Не хватает уверенности в навыках|Нет времени на обучение|Не понимаю, сколько на этом зарабатывают"
+           data-biz-opts="Не понимаю, что снимать и публиковать|Соцсети не приводят клиентов|Нет времени вести соцсети самой|Платила SMM-специалисту, результата не было|Хочу понимать SMM, чтобы ставить задачи команде"></div></div>
+    <button class="back" type="button">Назад</button>
+    <div class="push"></div>
+  </section>
+
+  <!-- 13 · контакты -->
+  <section class="st wine" id="sForm" data-q="form">
+    <div class="push"></div>
+    <form class="poll" id="lead" novalidate>
+      <div class="qn">Почти готово</div>
+      <div class="q" style="margin-bottom:6px">Куда прислать подтверждение?</div>
+      <input class="fld" id="name" name="name" placeholder="Как вас зовут" autocomplete="given-name" required>
+      <div class="telrow"><select class="fld" id="cc" aria-label="Код страны"></select><input class="fld" id="phone" type="tel" inputmode="tel" placeholder="Телефон, WhatsApp" autocomplete="tel-national" required></div>
+      <input class="fld" id="email" type="email" inputmode="email" placeholder="Почта" autocomplete="email" required>
+      <input class="fld" id="ig" placeholder="Instagram, если есть" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <label class="smsok" for="smsok"><input type="checkbox" id="smsok" name="sms_ok"><span>Согласна(ен) на SMS от Personal Growth Lab: напоминания о разборе и материалы. Необязательно.<small lang="en">I agree to receive SMS from Personal Growth Lab. Msg frequency varies, msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Not a condition of purchase. <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></small></span></label>
+      <button class="go" type="submit" id="send">Выбрать время разбора</button>
+      <div class="err" id="err"></div>
+      <p class="fine">Нажимая кнопку, вы соглашаетесь на обработку данных и на письма и сообщения от школы в WhatsApp: подтверждение, напоминания, материалы. Отписаться можно в любой момент. <a href="/privacy">Политика</a>.</p>
+    </form>
+    <button class="back" type="button">Назад</button>
+    <div class="push"></div>
+  </section>
+
+  <!-- 14 · время -->
+  <section class="st wine" id="sCal">
+    <div class="push"></div>
+    <div class="poll cal">
+      <div class="calhd"><img src="images/malena-avatar-v1.jpg" alt=""><div><div class="who2">Малена Покладова</div><div class="ttl">Разбор New SMM</div><div class="meta"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg>Zoom · бесплатно</div></div></div>
+      <div id="vMonth">
+        <div class="mnav"><button type="button" id="mprev" aria-label="Предыдущий месяц">‹</button><b id="mlab"></b><button type="button" id="mnext" aria-label="Следующий месяц">›</button></div>
+        <div class="wdr"><span>пн</span><span>вт</span><span>ср</span><span>чт</span><span>пт</span><span>сб</span><span>вс</span></div>
+        <div class="grid" id="grid"></div>
+      </div>
+      <div id="vTimes" hidden>
+        <button type="button" class="dback" id="dback"><i>←</i><span id="dlab"></span></button>
+        <div class="tlist" id="tlist"></div>
+      </div>
+      <div class="note" id="calnote">Смотрим свободные окна…</div>
+      <div class="err" id="calerr"></div>
+      <p class="tz" id="calzone"></p>
+      <p class="fine"><a id="book" href="https://api.leadconnectorhq.com/widget/booking/k3vObJo44lcPodJUj57L" target="_blank" rel="noopener">Открыть календарь отдельной страницей</a></p>
+    </div>
+    <div class="push"></div>
+  </section>
+
+
+  <!-- VSL: место зависит от варианта A/B (переставляет скрипт ниже) -->
+  <section class="st ink" id="sVsl">
+    <div class="push"></div>
+    <div class="lab anim pre">Урок Малены · 10 минут</div>
+    <div class="lab anim post">Заявка принята · шаг 2 из 3</div>
+    <div class="mid anim d1 pre" style="margin-top:10px">За одного клиента одному SMM-щику платят $300, а&nbsp;другому <em>$3&nbsp;000</em>. В&nbsp;чём разница?</div>
+    <div class="mid anim d1 post" style="margin-top:10px">Перед разбором посмотрите <em>короткий урок</em></div>
+    <div class="vwrap poll anim d2" style="margin-top:16px;padding:0;background:none;box-shadow:none"><div class="vcard"><video playsinline preload="none" data-src="video/vsl8/index.m3u8" poster="video/vsl8/poster.jpg"></video><img class="vpo" src="video/vsl8/poster.jpg" alt="Урок Малены Покладовой о New SMM"><button type="button" class="vplay" aria-label="Смотреть урок"><i></i><b>10 МИН · СО ЗВУКОМ</b></button></div></div>
+    <p class="txt anim d3 post" style="margin-top:12px;font-size:15px;opacity:.85">10 минут о том, как устроен New SMM. На разборе сразу перейдём к вашей ситуации.</p>
+    <div class="vbtns anim d3">
+      <button type="button" class="skip pre" data-vgo="next">Пропустить и листать дальше →</button>
+      <button type="button" class="go post" data-vgo="cal">Выбрать время разбора</button>
+    </div>
+    <div class="push"></div>
+  </section>
+
+  <!-- 15 · готово -->
+  <section class="st" id="sOk">
+    <div class="ph dim"><img src="images/malena-b5.jpg" alt="" style="object-position:50% 20%"></div>
+    <div class="push"></div>
+    <div class="ok anim">✓</div>
+    <div class="big anim d1" style="text-align:center">Вы <em>записаны</em></div>
+    <div class="anim d2" style="text-align:center;margin-top:14px"><span class="hl" id="okwhen"></span></div>
+    <p class="txt anim d3" style="text-align:center;margin-top:14px">Подтверждение и ссылка на Zoom придут на почту и в WhatsApp. До встречи на разборе!</p>
+    <div style="height:30px"></div>
+  </section>
+
+  <div id="link"><div class="cap">Бесплатно, в Zoom</div><button type="button" id="linkbtn">Записаться на разбор<span class="ar">→</span></button></div>
+  <div id="hint"><span><i>←</i>Нажмите<br>слева: назад</span><span><i class="pp"><u></u><u></u></i>Держите палец,<br>чтобы дочитать</span><span><i>→</i>Нажмите<br>справа: дальше</span><b>Коснитесь, чтобы начать</b></div>
+</div>
+
+<script>
+
+var VSL=(function(){
+    var f=''; try{ f=new URLSearchParams(location.search).get('vsl')||''; }catch(e){}
+    if(/^(pre|post|off)$/.test(f)) return f;
+    try{ var s=localStorage.getItem('newsmm_vsl_ab'); if(s==='pre'||s==='post') return s; }catch(e){}
+    var r=Math.random()<.5?'pre':'post'; try{ localStorage.setItem('newsmm_vsl_ab',r); }catch(e){} return r;
+  })();
+
+(function(){ var v=document.getElementById('sVsl'); if(!v) return; v.setAttribute('data-v',VSL);
+  if(VSL==='off'){ v.remove(); return; }
+  if(VSL==='pre'){ var h=document.querySelector('section.st'); h.parentNode.insertBefore(v,h.nextSibling); }
+  else { var c=document.getElementById('sCal'); c.parentNode.insertBefore(v,c); } })();
+</script>
+<script>
+(function(){
+  var app=document.getElementById('app'), st=[].slice.call(document.querySelectorAll('.st')),
+      bars=document.getElementById('bars'), link=document.getElementById('link'), hint=document.getElementById('hint');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Аналитика воронки. Каждое событие уходит в три места:
+     1) Amplitude, если в AMP_KEY вписан ключ проекта (Settings → Projects → API Key);
+     2) своя таблица newsmm_funnel_events в Supabase: работает всегда, даже без Amplitude;
+     3) пиксель Меты только для крупных шагов.
+     Личные данные (имя, почта, телефон) в события не пишем никогда. */
+  var PAGE='stories-preview', AMP_KEY='',
+      EV_URL='https://kjyfbfqcgretrbupyhiq.supabase.co/rest/v1/newsmm_funnel_events',
+      EV_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqeWZiZnFjZ3JldHJidXB5aGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNzU4NDYsImV4cCI6MjA5NjY1MTg0Nn0.amLiv4BuwDuEI0z2V3WiPKeWzvENSEwPlDeaGRq0CFM';
+  var SID=(function(){ try{ var s=sessionStorage.getItem('st_sid'); if(!s){ s=Date.now().toString(36)+Math.random().toString(36).slice(2,10); sessionStorage.setItem('st_sid',s); } return s; }catch(e){ return 'x'+Date.now().toString(36); } })();
+  var ampQ=[], ampReady=false;
+  if(AMP_KEY){
+    var sc=document.createElement('script'); sc.src='https://cdn.amplitude.com/script/'+AMP_KEY+'.js'; sc.async=true;
+    sc.onload=function(){ try{ window.amplitude.init(AMP_KEY,{ autocapture:{ attribution:true, pageViews:true, sessions:true } }); ampReady=true; ampQ.forEach(function(a){ window.amplitude.track(a[0],a[1]); }); ampQ=[]; }catch(e){} };
+    document.head.appendChild(sc);
+  }
+  var seen={};
+  function track(ev,step,label){
+    var u=(typeof utm==='object'&&utm)||{}, props={ page:PAGE, step:step||null, label:label||null, utm_source:u.source||null, utm_campaign:u.campaign||null, utm_content:u.content||null };
+    if(AMP_KEY){ if(ampReady) try{ window.amplitude.track(ev,props); }catch(e){} else ampQ.push([ev,props]); }
+    try{
+      fetch(EV_URL,{ method:'POST', keepalive:true, headers:{'content-type':'application/json','apikey':EV_KEY,'authorization':'Bearer '+EV_KEY,'prefer':'return=minimal'},
+        body:JSON.stringify({ sid:SID, page:PAGE, event:ev, step:step||null, label:label?String(label).slice(0,80):null,
+          utm_source:(u.source||'').slice(0,60)||null, utm_campaign:(u.campaign||'').slice(0,120)||null, utm_content:(u.content||'').slice(0,120)||null,
+          device:(innerWidth<700?'mobile':'desktop') }) }).catch(function(){});
+    }catch(e){}
+  }
+  var NAMES=['hook','problem','about','clients','offer','program','students','review','razbor','q_job','q_projects','q_check','q_block','form','calendar','booked'];
+  var iVsl=st.indexOf(document.getElementById('sVsl')); if(iVsl>=0) NAMES.splice(iVsl,0,'vsl');
+  addEventListener('pagehide',function(){ track('exit',i+1,NAMES[i]); });
+  var QUIZ0=st.findIndex(function(s){ return s.classList.contains('quiz'); });
+  var iForm=st.indexOf(document.getElementById('sForm')), iCal=st.indexOf(document.getElementById('sCal')), iOk=st.indexOf(document.getElementById('sOk'));
+  var iAfter=(VSL==='post'&&iVsl>=0)?iVsl:iCal;
+  var nBars=iOk; /* полоски только до «готово» */
+  for(var k=0;k<nBars;k++){ var b=document.createElement('i'); b.appendChild(document.createElement('b')); bars.appendChild(b); }
+  var fills=[].slice.call(bars.querySelectorAll('b'));
+
+  var i=0, t0=0, elapsed=0, dur=0, paused=false, raf=0, booked=false, submitted=false;
+  function show(n){
+    n=Math.max(0,Math.min(st.length-1,n));
+    /* после отправки формы назад к квизу не пускаем, после записи только «готово» */
+    if(booked) n=iOk; else if(submitted && n<iAfter) n=iAfter;
+    if(!submitted && n>iForm) n=iForm;
+    i=n; st.forEach(function(s,k){ s.classList.toggle('on',k===i); });
+    fills.forEach(function(f,k){ f.style.width=k<i?'100%':'0%'; });
+    dur=(+st[i].getAttribute('data-t')||0)*1000; elapsed=0; t0=performance.now();
+    link.classList.toggle('hide', i>=QUIZ0);
+    link.classList.toggle('calm', i>0 && i<QUIZ0-1);
+    app.classList.toggle('lite', st[i].classList.contains('paper'));
+    hideHint();
+    if(i===0 && !sessionStorage.getItem('sthint')){ hint.classList.add('on'); paused=true; try{sessionStorage.setItem('sthint','1');}catch(e){} setTimeout(hideHint,4000); }
+    if(!seen[i]){ seen[i]=1; track('story_view',i+1,NAMES[i]); if(window.fbq) fbq('trackCustom','StoriesView',{ n:i+1 }); }
+    if(st[i].classList.contains('quiz')) qrender(st[i]);
+    if(vEl && st[i].id!=='sVsl' && !vEl.paused) vEl.pause();
+  }
+  function hideHint(){ if(!hint.classList.contains('on')) return; hint.classList.remove('on'); paused=false; }
+  hint.addEventListener('pointerdown',function(e){ e.stopPropagation(); hideHint(); });
+  hint.addEventListener('pointerup',function(e){ e.stopPropagation(); });
+  function tick(now){
+    if(dur && !paused && !document.hidden){
+      elapsed+=now-t0; var p=Math.min(1,elapsed/dur);
+      if(fills[i]) fills[i].style.width=(p*100)+'%';
+      if(p>=1){ show(i+1); }
+    } else if(!dur && fills[i] && i<nBars){ fills[i].style.width='100%'; }
+    t0=now; raf=requestAnimationFrame(tick);
+  }
+
+  /* касания: слева назад, справа вперёд, удержание пауза */
+  var downAt=0, holdT=0, held=false, x0=0, y0=0;
+  function interactive(el){ return el.closest('button,input,select,a,label,form,.poll'); }
+  app.addEventListener('pointerdown',function(e){
+    if(interactive(e.target)) return;
+    downAt=Date.now(); held=false; x0=e.clientX; y0=e.clientY;
+    holdT=setTimeout(function(){ held=true; paused=true; app.classList.add('paused'); },220);
+  });
+  function release(e){
+    if(!downAt) return; clearTimeout(holdT);
+    var dx=e.clientX-x0, dy=e.clientY-y0; downAt=0;
+    if(held){ paused=false; app.classList.remove('paused'); return; }
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ show(dx<0?i+1:i-1); return; }
+    var r=app.getBoundingClientRect();
+    show(e.clientX-r.left < r.width*0.3 ? i-1 : i+1);
+  }
+  app.addEventListener('pointerup',release);
+  app.addEventListener('pointercancel',function(){ clearTimeout(holdT); downAt=0; if(held){ paused=false; app.classList.remove('paused'); } });
+  app.addEventListener('contextmenu',function(e){ e.preventDefault(); });
+  addEventListener('keydown',function(e){
+    if(/INPUT|SELECT/.test((document.activeElement||{}).tagName||'')) return;
+    if(e.key==='ArrowRight') show(i+1); else if(e.key==='ArrowLeft') show(i-1);
+    else if(e.key===' '){ paused=!paused; app.classList.toggle('paused',paused); e.preventDefault(); }
+  });
+  document.getElementById('linkbtn').addEventListener('click',function(){
+    track('link_click',i+1,NAMES[i]);
+    if(window.fbq) fbq('trackCustom','StoriesLink',{ from:i+1 });
+    show(QUIZ0);
+  });
+  [].forEach.call(document.querySelectorAll('.back'),function(b){ b.addEventListener('click',function(){ var bk=i-1; if(isBiz() && st[bk] && st[bk].getAttribute('data-q')==='projects') bk--; show(bk); }); });
+
+  /* метки источника, как на основном сайте */
+  function q(n){ try{ return new URLSearchParams(location.search).get(n)||''; }catch(e){ return ''; } }
+  var utm={ source:q('utm_source'), medium:q('utm_medium'), campaign:q('utm_campaign'), content:q('utm_content') };
+  try{ if(utm.source) localStorage.setItem('newsmm_src', JSON.stringify(utm)); else { var s=JSON.parse(localStorage.getItem('newsmm_src')||'null'); if(s) utm=s; } }catch(e){}
+
+  /* квиз: ветка про деньги зависит от того, есть ли проекты */
+  var quiz={};
+  function hasClients(){ return !!quiz.projects && quiz.projects!=='0'; }
+  var BIZ='Предприниматель, SMM для своего бизнеса';
+  function isBiz(){ return quiz.job===BIZ; }
+  function qkey(){ return isBiz()?'biz':(hasClients()?'has':'none'); }
+  function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function qrender(s){
+    var key=qkey(), qq=s.querySelector('.q'), opts=s.querySelector('.opts'), name=s.getAttribute('data-q'), qn=s.querySelector('.qn');
+    if(qn && qn.getAttribute('data-biz')){ if(!qn.getAttribute('data-std')) qn.setAttribute('data-std',qn.textContent); qn.textContent=isBiz()?qn.getAttribute('data-biz'):qn.getAttribute('data-std'); }
+    if(qq && qq.getAttribute('data-'+key)) qq.textContent=qq.getAttribute('data-'+key);
+    else if(qq && qq.getAttribute('data-has')) qq.textContent=qq.getAttribute('data-'+(hasClients()?'has':'none'));
+    var raw=opts && opts.getAttribute('data-'+key+'-opts');
+    if(raw) opts.innerHTML=raw.split('|').map(function(v){ return '<button type="button" data-v="'+esc(v)+'">'+esc(v)+'</button>'; }).join('');
+    if(opts) [].forEach.call(opts.querySelectorAll('button'),function(b){ b.classList.toggle('on',quiz[name]===b.getAttribute('data-v')); });
+  }
+  app.addEventListener('click',function(e){
+    var b=e.target.closest('.opts button'); if(!b) return;
+    var s=b.closest('.st'), name=s.getAttribute('data-q');
+    if(name==='projects' && quiz.projects!==b.getAttribute('data-v')){ delete quiz.check; delete quiz.block; }
+    if(name==='job' && (quiz.job===BIZ)!==(b.getAttribute('data-v')===BIZ)){ delete quiz.projects; delete quiz.check; delete quiz.block; }
+    quiz[name]=b.getAttribute('data-v');
+    [].forEach.call(b.parentNode.querySelectorAll('button'),function(x){ x.classList.remove('on'); }); b.classList.add('on');
+    track('quiz_answer',i+1,name+': '+quiz[name]);
+    if(window.fbq) fbq('trackCustom','NewSmmQuiz',{ step:name, page:'stories' });
+    var nx=i+1; if(isBiz() && st[nx] && st[nx].getAttribute('data-q')==='projects') nx++;
+    setTimeout(function(){ show(nx); }, reduce?0:280);
+  });
+
+  /* телефон: код страны списком, страна подставляется по Cloudflare */
+  var CC='US,1,США|CA,1,Канада|MD,373,Молдова|RO,40,Румыния|UA,380,Украина|RU,7,Россия|KZ,7,Казахстан|BY,375,Беларусь|GE,995,Грузия|AM,374,Армения|AZ,994,Азербайджан|UZ,998,Узбекистан|IL,972,Израиль|TR,90,Турция|DE,49,Германия|GB,44,Великобритания|IT,39,Италия|ES,34,Испания|FR,33,Франция|PL,48,Польша|CZ,420,Чехия|NL,31,Нидерланды|BE,32,Бельгия|AT,43,Австрия|CH,41,Швейцария|PT,351,Португалия|IE,353,Ирландия|GR,30,Греция|BG,359,Болгария|CY,357,Кипр|LT,370,Литва|LV,371,Латвия|EE,372,Эстония|SE,46,Швеция|NO,47,Норвегия|DK,45,Дания|FI,358,Финляндия|AE,971,ОАЭ|MX,52,Мексика|AU,61,Австралия'.split('|').map(function(x){ var p=x.split(','); return {c:p[0],d:p[1],n:p[2]}; });
+  function flag(c){ return String.fromCodePoint.apply(null,c.split('').map(function(ch){ return 127397+ch.charCodeAt(0); })); }
+  var ccSel=document.getElementById('cc');
+  ccSel.innerHTML=CC.map(function(x){ return '<option value="'+x.c+'">'+flag(x.c)+' +'+x.d+'</option>'; }).join('');
+  ccSel.value='US';
+  fetch('/cdn-cgi/trace').then(function(r){ return r.text(); }).then(function(t){ var m=/(?:^|\n)loc=([A-Z]{2})/.exec(t); if(m && CC.some(function(x){ return x.c===m[1]; })) ccSel.value=m[1]; }).catch(function(){});
+  function dial(){ var c=ccSel.value; for(var k=0;k<CC.length;k++) if(CC[k].c===c) return CC[k].d; return '1'; }
+
+  /* отправка заявки: та же функция, что у основного сайта, src=stories */
+  var FN='https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/newsmm-lead',
+      BOOKFN='https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/newsmm-book',
+      SBK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqeWZiZnFjZ3JldHJidXB5aGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNzU4NDYsImV4cCI6MjA5NjY1MTg0Nn0.amLiv4BuwDuEI0z2V3WiPKeWzvENSEwPlDeaGRq0CFM',
+      H={'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK};
+  function zone(){ try{ return Intl.DateTimeFormat().resolvedOptions().timeZone||''; }catch(e){ return ''; } }
+  var form=document.getElementById('lead'), err=document.getElementById('err'), send=document.getElementById('send'), who={}, region='us';
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var name=form.name.value.trim(), email=form.email.value.trim().toLowerCase(), raw=form.phone.value.replace(/\D/g,''),
+        d=dial(), phone=raw ? '+'+d+(raw.indexOf(d)===0 && raw.length>10 ? raw.slice(d.length) : raw) : '';
+    function bad(m,el){ err.textContent=m; err.style.display='block'; el.focus(); }
+    if(name.length<2) return bad('Напишите, как к вам обращаться.',form.name);
+    if(raw.length<6) return bad('Оставьте телефон: подтверждение придёт в WhatsApp.',form.phone);
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return bad('Проверьте почту, без неё письмо не дойдёт.',form.email);
+    err.style.display='none'; send.disabled=true; send.textContent='Отправляем…';
+    var igRaw=form.ig.value.trim(), igm=igRaw.match(/instagram\.com\/([A-Za-z0-9._]{1,30})/i), ig=(igm?igm[1]:igRaw.replace(/^@+/,'')).replace(/[^A-Za-z0-9._]/g,'').slice(0,30);
+    var body={ sms_ok:!!(document.getElementById('smsok')||{}).checked, name:name, email:email, phone:phone, ig:ig, src:'stories-preview', ab:'vsl-'+VSL, track:isBiz()?'biz':(hasClients()?'pro':(quiz.projects?'start':'')), quiz:quiz, utm:Object.assign({},utm,{vsl:VSL,sid:SID}), page:location.pathname, tz:zone() };
+    fetch(FN,{ method:'POST', headers:H, body:JSON.stringify(body) }).then(function(r){ return r.json(); }).catch(function(){ return {}; })
+      .then(function(res){
+        track(res && res.ok ? 'lead_ok' : 'lead_fail', iForm+1);
+        if(res && res.ok && window.fbq) fbq('track','Lead',{content_name:'new-smm-razbor',page:'stories'});
+        who={ name:name, email:email, phone:phone, cid:(res&&res.cid)||'' };
+        region=(res&&(res.route||res.region)==='eu')?'eu':'us';
+        var u=new URL((res&&res.booking_url)||document.getElementById('book').href); u.searchParams.set('first_name',name); u.searchParams.set('email',email); u.searchParams.set('phone',phone);
+        document.getElementById('book').href=u.toString();
+        submitted=true; show(iAfter); calLoad();
+      });
+  });
+
+  /* выбор времени как в Calendly: месяц, день, список времени, «Подтвердить» */
+  var MON=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'],
+      MONN=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+      WDF=['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
+  var grid=document.getElementById('grid'), tlist=document.getElementById('tlist'), calnote=document.getElementById('calnote'),
+      calerr=document.getElementById('calerr'), vMonth=document.getElementById('vMonth'), vTimes=document.getElementById('vTimes'),
+      mlab=document.getElementById('mlab'), mprev=document.getElementById('mprev'), mnext=document.getElementById('mnext'),
+      calDays=[], byDate={}, dI=-1, slot='', calY=0, calM=0;
+  function dparse(s){ var p=String(s).split('-'); return new Date(+p[0],+p[1]-1,+p[2]); }
+  function ymd(d){ return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }
+  function hhmm(iso){ var d=new Date(iso); return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2); }
+  function cap(s){ return s.slice(0,1).toUpperCase()+s.slice(1); }
+  function calLoad(){
+    calnote.style.display='block'; calnote.textContent='Смотрим свободные окна…'; grid.innerHTML=''; vTimes.hidden=true; vMonth.hidden=false;
+    fetch(BOOKFN,{ method:'POST', headers:H, body:JSON.stringify({ action:'slots', region:region, tz:zone() }) })
+      .then(function(r){ return r.json(); }).catch(function(){ return {}; })
+      .then(function(d){
+        calDays=(d&&d.days)||[]; byDate={}; calDays.forEach(function(x,k){ byDate[x.date]=k; }); dI=-1; slot='';
+        if(!calDays.length){ calnote.textContent='Не получилось показать время здесь. Откройте календарь отдельной страницей.'; track('slots_empty',iCal+1); return; }
+        calnote.style.display='none';
+        var f=dparse(calDays[0].date); calY=f.getFullYear(); calM=f.getMonth();
+        document.getElementById('calzone').innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>'+(zone()||'Время по настройкам устройства');
+        paintMonth(); track('slots_shown',iCal+1,String(calDays.length)+' дней');
+      });
+  }
+  function paintMonth(){
+    mlab.textContent=MONN[calM]+' '+calY;
+    var first=new Date(calY,calM,1), last=new Date(calY,calM+1,0), today=ymd(new Date()), html='';
+    var minD=dparse(calDays[0].date), maxD=dparse(calDays[calDays.length-1].date);
+    mprev.disabled=(calY*12+calM)<=(minD.getFullYear()*12+minD.getMonth());
+    mnext.disabled=(calY*12+calM)>=(maxD.getFullYear()*12+maxD.getMonth());
+    for(var k=0;k<(first.getDay()+6)%7;k++) html+='<span></span>';
+    for(var day=1;day<=last.getDate();day++){
+      var key=ymd(new Date(calY,calM,day)), i=byDate[key], cls=[];
+      if(i!==undefined) cls.push('has'); if(i===dI) cls.push('on'); if(key===today) cls.push('today');
+      html+='<button type="button"'+(i!==undefined?' data-i="'+i+'"':' disabled')+(cls.length?' class="'+cls.join(' ')+'"':'')+'>'+day+'</button>';
+    }
+    grid.innerHTML=html;
+  }
+  function paintTimes(){
+    var d=calDays[dI], dt=dparse(d.date);
+    document.getElementById('dlab').textContent=cap(WDF[dt.getDay()])+', '+dt.getDate()+' '+MON[dt.getMonth()];
+    tlist.innerHTML=d.slots.map(function(s){ return '<div class="trow'+(s===slot?' on':'')+'"><button type="button" class="t" data-s="'+s+'">'+hhmm(s)+'</button><button type="button" class="c" data-go="'+s+'">Подтвердить</button></div>'; }).join('');
+  }
+  mprev.addEventListener('click',function(){ if(--calM<0){ calM=11; calY--; } paintMonth(); });
+  mnext.addEventListener('click',function(){ if(++calM>11){ calM=0; calY++; } paintMonth(); });
+  grid.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-i]'); if(!b) return;
+    dI=+b.getAttribute('data-i'); slot=''; vMonth.hidden=true; vTimes.hidden=false; calerr.style.display='none'; paintTimes();
+    track('day_pick',iCal+1,calDays[dI].date);
+  });
+  document.getElementById('dback').addEventListener('click',function(){ vTimes.hidden=true; vMonth.hidden=false; paintMonth(); });
+  tlist.addEventListener('click',function(e){
+    var t=e.target.closest('.t'), c=e.target.closest('.c');
+    if(t){ slot=t.getAttribute('data-s'); paintTimes(); track('time_pick',iCal+1,hhmm(slot)); return; }
+    if(!c) return;
+    var s=c.getAttribute('data-go'); c.disabled=true; c.textContent='Записываем…';
+    fetch(BOOKFN,{ method:'POST', headers:H, body:JSON.stringify({ action:'book', fbp:(window.__ck?__ck('_fbp'):''), fbc:(window.__ck?__ck('_fbc'):''), url:location.href, region:region, tz:zone(), start:s, name:who.name, email:who.email, phone:who.phone, cid:who.cid }) })
+      .then(function(r){ return r.json().then(function(j){ return {ok:r.ok,j:j}; }); }).catch(function(){ return {ok:false,j:{}}; })
+      .then(function(res){
+        if(res.ok && res.j && res.j.ok){
+          var dt=new Date(s);
+          document.getElementById('okwhen').textContent=cap(WDF[dt.getDay()])+', '+dt.getDate()+' '+MON[dt.getMonth()]+', '+hhmm(s);
+          if(window.fbq){ if(res.j.first===false) fbq('trackCustom','Reschedule',{content_name:'new-smm-razbor',page:'stories'}); else if(!res.j.test) fbq('track','Schedule',{content_name:'new-smm-razbor',page:'stories'},res.j.event_id?{eventID:res.j.event_id}:{}); }
+          track('booked',iOk+1);
+          booked=true; show(iOk); return;
+        }
+        track('book_fail',iCal+1,(res.j&&res.j.error)||'error');
+        calerr.textContent=(res.j&&res.j.error==='slot_taken')?'Это время только что заняли. Выберите другое.':'Не получилось записать. Попробуйте другое время.';
+        calerr.style.display='block'; calLoad();
+      });
+  });
+
+  window.__show=show;
+  /* ── VSL: A/B «до формы» / «после контактов» ── */
+  function vslInit(box, trk){
+    var v=box.querySelector('video'), btn=box.querySelector('.vplay'), loaded=false, marks={};
+    function load(){
+      if(loaded) return; loaded=true;
+      var src=v.getAttribute('data-src');
+      if(v.canPlayType('application/vnd.apple.mpegurl')){ v.src=src; return Promise.resolve(); }
+      return new Promise(function(ok){
+        var s=document.createElement('script'); s.src='https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js';
+        s.onload=function(){ try{ var h=new Hls({capLevelToPlayerSize:true}); h.loadSource(src); h.attachMedia(v); }catch(e){ v.src=src; } ok(); };
+        s.onerror=function(){ v.src=src; ok(); }; document.head.appendChild(s);
+      });
+    }
+    btn.addEventListener('click',function(e){
+      e.stopPropagation(); box.classList.add('open');
+      Promise.resolve(load()).then(function(){ v.controls=true; var p=v.play(); if(p&&p.catch) p.catch(function(){}); });
+      if(!marks.play){ marks.play=1; trk('vsl_play','start'); if(window.fbq) fbq('trackCustom','VslPlay',{ab:VSL}); }
+    });
+    v.addEventListener('timeupdate',function(){
+      if(!v.duration) return; var p=v.currentTime/v.duration;
+      [[.25,'25'],[.5,'50'],[.75,'75'],[.95,'95']].forEach(function(m){ if(p>=m[0] && !marks[m[1]]){ marks[m[1]]=1; trk('vsl_progress',m[1]); if(m[1]==='50' && window.fbq) fbq('trackCustom','Vsl50',{ab:VSL}); } });
+    });
+    return v;
+  }
+
+  var vEl=null;
+  if(iVsl>=0){
+    vEl=vslInit(document.querySelector('#sVsl .vcard'),function(ev,l){ track(ev,iVsl+1,l); });
+    [].forEach.call(document.querySelectorAll('#sVsl [data-vgo]'),function(b){ b.addEventListener('click',function(e){
+      e.stopPropagation(); var g=b.getAttribute('data-vgo'); track('vsl_cta',iVsl+1,g+(vEl&&!vEl.paused?' playing':''));
+      if(g==='quiz') show(QUIZ0); else if(g==='next') show(iVsl+1); else show(iCal); }); });
+  }
+  track('ab',0,'vsl:'+VSL);
+
+  var start=+(location.hash.slice(1))||1; show(start-1); raf=requestAnimationFrame(tick);
+  /* заранее грузим картинки всех сторис */
+  addEventListener('load',function(){ [].forEach.call(document.querySelectorAll('.st img'),function(im){ var p=new Image(); p.src=im.src; }); });
+})();
+</script>
+<script>window.PGL_SITE='ws_fd846eaeda93f043';</script>
+<script src="/pgl-track.js?v=1" defer></script>
+</body>
+</html>
