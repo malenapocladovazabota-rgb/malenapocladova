@@ -470,10 +470,10 @@ b{font-weight:700}
   <!-- VSL: место зависит от варианта A/B (переставляет скрипт ниже) -->
   <section class="st ink" id="sVsl">
     <div class="push"></div>
-    <div class="lab anim pre">Бесплатный урок Малены · 10 минут</div>
+    <div class="lab anim pre">За 10 минут вы узнаете</div>
     <div class="lab anim post">Заявка принята ✓ · осталось выбрать время</div>
     <div class="mid anim d1 pre" style="margin-top:10px">За что бизнес платит SMM-щику <em>$3&nbsp;000 в&nbsp;месяц</em></div>
-    <p class="vsub anim d1 pre">Не за красивую ленту. <b>За клиентов, которых видно в деньгах.</b> Малена показывает, как это устроено.</p>
+    <p class="vsub anim d1 pre">Не за красивую ленту, а <b>за клиентов, которых видно в деньгах.</b> Расскажу, как работает система New SMM и с чего начать, даже если вы с нуля.</p>
     <div class="mid anim d1 post" style="margin-top:10px">Пока выбираете время, <em>посмотрите урок</em></div>
     <div class="vwrap poll anim d2" style="margin-top:16px;padding:0;background:none;box-shadow:none"><div class="vcard"><video playsinline preload="none" data-src="video/vsl8/index.m3u8" poster="video/vsl8/teaser.jpg"></video><video class="vtz" src="video/vsl8/teaser.mp4" poster="video/vsl8/teaser.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video><button type="button" class="vplay" aria-label="Смотреть урок со звуком"><s><u></u>УРОК · 10 МИН</s><i></i><b>Нажмите, чтобы посмотреть</b></button></div></div>
     <p class="vsub anim d3 post">10 минут о том, как устроен New SMM. Посмотрите до звонка, и <b>на разборе сразу перейдём к вашей ситуации.</b></p>
@@ -510,7 +510,7 @@ var VSL=(function(){
 
 (function(){ var v=document.getElementById('sVsl'); if(!v) return; v.setAttribute('data-v',VSL);
   if(VSL==='off'){ v.remove(); return; }
-  if(VSL==='pre'){ var h=document.querySelector('section.st'); h.parentNode.insertBefore(v,h.nextSibling); }
+  if(VSL==='pre'){ var h=document.querySelector('section.st'); h.parentNode.insertBefore(v,h); }
   else { var c=document.getElementById('sCal'); c.parentNode.insertBefore(v,c); } })();
 </script>
 <script>
@@ -568,7 +568,7 @@ var VSL=(function(){
     link.classList.toggle('calm', i>0 && i<QUIZ0-1);
     app.classList.toggle('lite', st[i].classList.contains('paper'));
     hideHint();
-    if(i===0 && !sessionStorage.getItem('sthint')){ hint.classList.add('on'); paused=true; try{sessionStorage.setItem('sthint','1');}catch(e){} setTimeout(hideHint,4000); }
+    if(i===0 && st[0].id!=='sVsl' && !sessionStorage.getItem('sthint')){ hint.classList.add('on'); paused=true; try{sessionStorage.setItem('sthint','1');}catch(e){} setTimeout(hideHint,4000); }
     if(!seen[i]){ seen[i]=1; track('story_view',i+1,NAMES[i]); if(window.fbq) fbq('trackCustom','StoriesView',{ n:i+1 }); }
     if(st[i].classList.contains('quiz')) qrender(st[i]);
     if(vEl && st[i].id!=='sVsl' && !vEl.paused) vEl.pause();
