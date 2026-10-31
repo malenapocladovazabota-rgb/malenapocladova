@@ -242,6 +242,18 @@ b{font-weight:700}
 #sVsl .vbtns .go{width:100%}
 #sVsl .skip{background:none;border:0;color:rgba(255,255,255,.75);font:500 15px/1.2 inherit;padding:8px;text-decoration:underline;cursor:pointer}
 #sVsl[data-v=pre] .post,#sVsl[data-v=post] .pre{display:none}
+
+#sVsl .vcard{border-radius:18px;box-shadow:0 30px 60px -28px rgba(0,0,0,.85),0 0 0 1px rgba(234,215,176,.16)}
+#sVsl .vcard .vtz{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;visibility:visible!important;transform:scale(1.03)}
+#sVsl .vcard.open .vtz{display:none}
+#sVsl .vcard .vplay{align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:0!important;background:radial-gradient(60% 60% at 50% 50%,rgba(20,10,12,.3),rgba(20,10,12,.55))}
+#sVsl .vcard .vplay>i{width:66px;height:66px;animation:svp 2.2s ease-out infinite}
+#sVsl .vcard .vplay>b{position:static;font:600 14px/1.2 Inter,system-ui,-apple-system,sans-serif;letter-spacing:.01em;background:rgba(0,0,0,.42);padding:8px 12px;border-radius:999px}
+#sVsl .vcard .vplay s{position:absolute;left:10px;top:10px;text-decoration:none;font:700 10px/1 ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#fff;background:rgba(122,34,50,.92);padding:6px 8px;border-radius:7px}
+#sVsl .vcard .vplay s u{display:inline-block;width:6px;height:6px;border-radius:50%;background:#ff5a5a;margin-right:5px;vertical-align:1px}
+@keyframes svp{0%{box-shadow:0 0 0 0 rgba(232,194,122,.55)}70%{box-shadow:0 0 0 18px rgba(232,194,122,0)}100%{box-shadow:0 0 0 0 rgba(232,194,122,0)}}
+#sVsl .vsub{margin-top:12px;font-size:15.5px;line-height:1.4;opacity:.9}
+#sVsl .vsub b{color:#E8C27A;font-weight:600}
 </style>
 <script>window.__ck=function(n){var m=document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)'));return m?decodeURIComponent(m[1]):'';};</script>
 </head>
@@ -458,14 +470,15 @@ b{font-weight:700}
   <!-- VSL: место зависит от варианта A/B (переставляет скрипт ниже) -->
   <section class="st ink" id="sVsl">
     <div class="push"></div>
-    <div class="lab anim pre">Урок Малены · 10 минут</div>
-    <div class="lab anim post">Заявка принята · шаг 2 из 3</div>
-    <div class="mid anim d1 pre" style="margin-top:10px">За одного клиента одному SMM-щику платят $300, а&nbsp;другому <em>$3&nbsp;000</em>. В&nbsp;чём разница?</div>
-    <div class="mid anim d1 post" style="margin-top:10px">Перед разбором посмотрите <em>короткий урок</em></div>
-    <div class="vwrap poll anim d2" style="margin-top:16px;padding:0;background:none;box-shadow:none"><div class="vcard"><video playsinline preload="none" data-src="video/vsl8/index.m3u8" poster="video/vsl8/poster.jpg"></video><img class="vpo" src="video/vsl8/poster.jpg" alt="Урок Малены Покладовой о New SMM"><button type="button" class="vplay" aria-label="Смотреть урок"><i></i><b>10 МИН · СО ЗВУКОМ</b></button></div></div>
-    <p class="txt anim d3 post" style="margin-top:12px;font-size:15px;opacity:.85">10 минут о том, как устроен New SMM. На разборе сразу перейдём к вашей ситуации.</p>
+    <div class="lab anim pre">Бесплатный урок Малены · 10 минут</div>
+    <div class="lab anim post">Заявка принята ✓ · осталось выбрать время</div>
+    <div class="mid anim d1 pre" style="margin-top:10px">За что бизнес платит SMM-щику <em>$3&nbsp;000 в&nbsp;месяц</em></div>
+    <p class="vsub anim d1 pre">Не за красивую ленту. <b>За клиентов, которых видно в деньгах.</b> Малена показывает, как это устроено.</p>
+    <div class="mid anim d1 post" style="margin-top:10px">Пока выбираете время, <em>посмотрите урок</em></div>
+    <div class="vwrap poll anim d2" style="margin-top:16px;padding:0;background:none;box-shadow:none"><div class="vcard"><video playsinline preload="none" data-src="video/vsl8/index.m3u8" poster="video/vsl8/teaser.jpg"></video><video class="vtz" src="video/vsl8/teaser.mp4" poster="video/vsl8/teaser.jpg" muted loop playsinline preload="metadata" aria-hidden="true"></video><button type="button" class="vplay" aria-label="Смотреть урок со звуком"><s><u></u>УРОК · 10 МИН</s><i></i><b>Нажмите, чтобы посмотреть</b></button></div></div>
+    <p class="vsub anim d3 post">10 минут о том, как устроен New SMM. Посмотрите до звонка, и <b>на разборе сразу перейдём к вашей ситуации.</b></p>
     <div class="vbtns anim d3">
-      <button type="button" class="skip pre" data-vgo="next">Пропустить и листать дальше →</button>
+      <button type="button" class="skip pre" data-vgo="next">Посмотрю позже, листать дальше →</button>
       <button type="button" class="go post" data-vgo="cal">Выбрать время разбора</button>
     </div>
     <div class="push"></div>
@@ -559,6 +572,7 @@ var VSL=(function(){
     if(!seen[i]){ seen[i]=1; track('story_view',i+1,NAMES[i]); if(window.fbq) fbq('trackCustom','StoriesView',{ n:i+1 }); }
     if(st[i].classList.contains('quiz')) qrender(st[i]);
     if(vEl && st[i].id!=='sVsl' && !vEl.paused) vEl.pause();
+    var tz=document.querySelector('#sVsl .vtz'); if(tz){ if(st[i].id==='sVsl'){ var pp=tz.play(); if(pp&&pp.catch) pp.catch(function(){}); } else tz.pause(); }
   }
   function hideHint(){ if(!hint.classList.contains('on')) return; hint.classList.remove('on'); paused=false; }
   hint.addEventListener('pointerdown',function(e){ e.stopPropagation(); hideHint(); });
