@@ -893,8 +893,8 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
       if(!/^[ab]$/.test(v)){ v=Math.random()<.5?'a':'b'; try{ localStorage.setItem('newsmm_h_ab',v); }catch(e){} }
       window.__hab=v;
       if(v==='b'){
-        document.getElementById('habH').innerHTML='Почему за одного клиента одному SMM-щику платят $300, а&nbsp;другому <em>$3&nbsp;000</em>';
-        document.getElementById('habS').innerHTML='Разница не в таланте и не в красивой ленте. <b>Расскажу, как работает система New SMM</b> и с чего начать, даже если вы с нуля.';
+        document.getElementById('habH').innerHTML='Как вести соцсети так, чтобы клиент видел в&nbsp;них <em>деньги, а&nbsp;не&nbsp;охваты</em>';
+        document.getElementById('habS').innerHTML='Именно за это бизнес платит и <b>остаётся на годы.</b> Расскажу, как работает система New SMM и с чего начать, даже если вы с нуля.';
       }
       var sid; try{ sid=sessionStorage.getItem('hab_sid'); if(!sid){ sid=Date.now().toString(36)+Math.random().toString(36).slice(2,10); sessionStorage.setItem('hab_sid',sid); } }catch(e){ sid='h'+Date.now().toString(36); }
       window.__hsid=sid;
