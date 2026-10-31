@@ -610,6 +610,9 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 @media(min-width:900px){.hero.vhero{padding:48px 0 64px}.hero.vhero .wrap{grid-template-columns:.85fr 1.15fr;gap:48px}.hero.vhero .vh1{font-size:clamp(34px,3.6vw,52px)}}
 
 .vhero .vcard .vplay i::before{display:none!important}
+
+.vhero .wm{font-family:var(--serif);font-weight:500;font-size:clamp(30px,7vw,44px);line-height:1;letter-spacing:-1px;color:#F6EFE2;margin-bottom:18px}
+.vhero .wm em{font-style:italic;color:#E8C27A}
 </style>
 <style>
 /* ──────────────────────────────────────────────────────────────
@@ -907,11 +910,35 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 <header class="hero vhero" id="top">
   <div class="wrap">
     <div class="vtxt">
+      <div class="wm rv">New <em>SMM</em></div>
       <div class="eyebrow rv"><i></i>За 10 минут вы узнаете</div>
-      <h1 class="vh1 rv d1">За что бизнес платит SMM-щику <em>$3&nbsp;000 в&nbsp;месяц</em></h1>
-      <p class="sub rv d2">Не за красивую ленту, а <b>за клиентов, которых видно в деньгах.</b> Расскажу, как работает система New SMM и с чего начать, даже если вы с нуля.</p>
+      <h1 class="vh1 rv d1" id="habH">За что бизнес платит SMM-щику <em>$3&nbsp;000 в&nbsp;месяц</em></h1>
+      <p class="sub rv d2" id="habS">Не за красивую ленту, а <b>за клиентов, которых видно в деньгах.</b> Расскажу, как работает система New SMM и с чего начать, даже если вы с нуля.</p>
       <p class="note rv d2" style="margin-top:14px">Малена Покладова · агентство PGL Marketing, Калифорния</p>
     </div>
+    <script>
+    /* A/B заголовка: выбираем до показа, чтобы текст не прыгал */
+    (function(){
+      var f=''; try{ f=new URLSearchParams(location.search).get('h')||''; }catch(e){}
+      var v=/^[ab]$/.test(f)?f:''; if(!v){ try{ v=localStorage.getItem('newsmm_h_ab')||''; }catch(e){} }
+      if(!/^[ab]$/.test(v)){ v=Math.random()<.5?'a':'b'; try{ localStorage.setItem('newsmm_h_ab',v); }catch(e){} }
+      window.__hab=v;
+      if(v==='b'){
+        document.getElementById('habH').innerHTML='Почему за одного клиента одному SMM-щику платят $300, а&nbsp;другому <em>$3&nbsp;000</em>';
+        document.getElementById('habS').innerHTML='Разница не в таланте и не в красивой ленте. <b>Расскажу, как работает система New SMM</b> и с чего начать, даже если вы с нуля.';
+      }
+      var sid; try{ sid=sessionStorage.getItem('hab_sid'); if(!sid){ sid=Date.now().toString(36)+Math.random().toString(36).slice(2,10); sessionStorage.setItem('hab_sid',sid); } }catch(e){ sid='h'+Date.now().toString(36); }
+      window.__hsid=sid;
+      var page=(location.pathname.replace(/^\/|\.html$/g,'')||'kurs').replace(/^index$/,'kurs');
+      window.__htrack=function(ev,label){ try{ var q=new URLSearchParams(location.search);
+        fetch('https://kjyfbfqcgretrbupyhiq.supabase.co/rest/v1/newsmm_funnel_events',{method:'POST',keepalive:true,
+          headers:{'content-type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqeWZiZnFjZ3JldHJidXB5aGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNzU4NDYsImV4cCI6MjA5NjY1MTg0Nn0.amLiv4BuwDuEI0z2V3WiPKeWzvENSEwPlDeaGRq0CFM','authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqeWZiZnFjZ3JldHJidXB5aGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNzU4NDYsImV4cCI6MjA5NjY1MTg0Nn0.amLiv4BuwDuEI0z2V3WiPKeWzvENSEwPlDeaGRq0CFM','prefer':'return=minimal'},
+          body:JSON.stringify({sid:sid,page:page,event:ev,step:null,label:('h-'+v+(label?' '+label:'')).slice(0,80),
+            utm_source:(q.get('utm_source')||'').slice(0,60)||null,utm_campaign:(q.get('utm_campaign')||'').slice(0,120)||null,utm_content:(q.get('utm_content')||'').slice(0,120)||null,
+            device:(innerWidth<700?'mobile':'desktop')})}).catch(function(){}); }catch(e){} };
+      window.__htrack('h_view');
+    })();
+    </script>
     <div class="vcol rv d2">
       <div class="vcard" id="heroV">
         <video playsinline preload="none" data-src="video/vsl8/index.m3u8" poster="video/vsl8/teaser.jpg"></video>
@@ -1547,6 +1574,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
           document.getElementById('okwhen').textContent=
             WD[dt.getDay()].toUpperCase().slice(0,1)+WD[dt.getDay()].slice(1)+', '+dt.getDate()+' '+MON[dt.getMonth()]+', '+hhmm(slot)+'.';
           fw.classList.add('done');
+          if(window.__htrack) __htrack('booked');
           if(window.fbq){ if(res.j.first===false) fbq('trackCustom','Reschedule',{content_name:'new-smm-razbor'}); else if(!res.j.test) fbq('track','Schedule',{content_name:'new-smm-razbor'},res.j.event_id?{eventID:res.j.event_id}:{}); }
           fw.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
           return;
@@ -1583,7 +1611,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     var lane=isBiz() ? 'biz' : (hasClients() ? 'pro' : (quiz.projects ? 'start' : (track||'')));
     /* Инстаграм необязательный: берём ник из @ника или из ссылки на профиль. */
     var igRaw=(form.ig&&form.ig.value||'').trim(), igm=igRaw.match(/instagram\.com\/([A-Za-z0-9._]{1,30})/i), ig=(igm?igm[1]:igRaw.replace(/^@+/,'')).replace(/[^A-Za-z0-9._]/g,'').slice(0,30);
-    var body={ sms_ok:!!(document.getElementById('smsok')||{}).checked, name:name, email:email, phone:phone, country:country.c, ig:ig, src:(ZAPIS?'zapis':'kurs'), track:lane, quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
+    var body={ sms_ok:!!(document.getElementById('smsok')||{}).checked, name:name, email:email, phone:phone, country:country.c, ig:ig, src:(ZAPIS?'zapis':'kurs'), track:lane, quiz:quiz, utm:Object.assign({},utm,{h:window.__hab,sid:window.__hsid}), page:location.pathname, tz:zone() };
     fetch(FN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK}, body:JSON.stringify(body) })
       .then(function(r){ return r.json(); })
       .catch(function(){ return {ok:false}; })
@@ -1596,6 +1624,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
         /* Пиксель учим только на заявках, которые сервер действительно принял.
            Иначе кампании оптимизируются на лидов, которых у нас нет. */
         if(d && d.ok && window.fbq) fbq('track','Lead',{content_name:'new-smm-razbor'});
+        if(window.__htrack) __htrack(d&&d.ok?'lead_ok':'lead_fail');
         /* Письмо человек получит сам. На странице остаётся один шаг: время. */
         who={ name:name, email:email, phone:phone, cid:(d&&d.cid)||'', country:country.c };
         /* Кого именно подставил сервер, он и говорит в route. Регион человека
@@ -1725,9 +1754,9 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
       s.onerror=function(){ v.src=src; ok(); }; document.head.appendChild(s); }); }
   btn.addEventListener('click',function(e){ e.preventDefault(); box.classList.add('open');
     load().then(function(){ v.controls=true; var p=v.play(); if(p&&p.catch) p.catch(function(){}); });
-    if(!marks.play){ marks.play=1; ev('VslPlay',{place:'main-hero'}); } });
+    if(!marks.play){ marks.play=1; ev('VslPlay',{place:'main-hero'}); if(window.__htrack) __htrack('vsl_play'); } });
   v.addEventListener('timeupdate',function(){ if(!v.duration) return; var p=v.currentTime/v.duration;
-    [[.25,'vsl_25'],[.5,'vsl_50'],[.75,'vsl_75'],[.95,'vsl_end']].forEach(function(m){ if(p>=m[0]&&!marks[m[1]]){ marks[m[1]]=1; ev(m[1],{place:'main-hero'}); } }); });
+    [[.25,'vsl_25'],[.5,'vsl_50'],[.75,'vsl_75'],[.95,'vsl_end']].forEach(function(m){ if(p>=m[0]&&!marks[m[1]]){ marks[m[1]]=1; ev(m[1],{place:'main-hero'}); if(window.__htrack) __htrack('vsl_progress',m[1]); } }); });
 })();
 </script>
 <script>window.PGL_SITE='ws_fd846eaeda93f043';</script>
