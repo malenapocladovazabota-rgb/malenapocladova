@@ -25,6 +25,7 @@ fbq('init','1521940319314090');
 /* Пиксель (10.11): одна заявка = одно событие Lead с eventID, тесты и повторы не считаем.
    QualifiedLead: только предприниматели, блогеры и те, кто уже ведёт клиентов. */
 window.__pxIds=function(){ var o={}; try{ document.cookie.split('; ').forEach(function(c){ var p=c.split('='); if(p[0]==='_fbp') o.fbp=p[1]; if(p[0]==='_fbc') o.fbc=p[1]; }); if(!o.fbc){ var fc=new URLSearchParams(location.search).get('fbclid'); if(fc) o.fbc='fb.1.'+Date.now()+'.'+fc; } }catch(e){} return o; };
+window.__pxOnce=function(k){ try{ if(localStorage.getItem('px_'+k)) return false; localStorage.setItem('px_'+k,'1'); }catch(e){} return true; };
 window.__pxLead=function(r,q,name){ try{
   if(!window.fbq||!r||!r.ok||r.test||r.quiet||r.magnet) return;
   var id=String(r.cid||r.lead_num||Date.now()), k='pxl_'+id;
@@ -773,7 +774,7 @@ var VSL=(function(){
         if(res.ok && res.j && res.j.ok){
           var dt=new Date(s);
           document.getElementById('okwhen').textContent=cap(WDF[dt.getDay()])+', '+dt.getDate()+' '+MON[dt.getMonth()]+', '+hhmm(s);
-          if(window.fbq){ if(res.j.first===false) fbq('trackCustom','Reschedule',{content_name:'new-smm-razbor',page:'stories'}); else if(!res.j.test) fbq('track','Schedule',{content_name:'new-smm-razbor',page:'stories'},res.j.event_id?{eventID:res.j.event_id}:{}); }
+          if(window.fbq){ if(res.j.first===false) fbq('trackCustom','Reschedule',{content_name:'new-smm-razbor',page:'stories'}); else if(!res.j.test && window.__pxOnce && __pxOnce('sch_'+(res.j.event_id||(who&&who.email)||Date.now()))) fbq('track','Schedule',{content_name:'new-smm-razbor',page:'stories'},res.j.event_id?{eventID:res.j.event_id}:{}); }
           track('booked',iOk+1);
           booked=true; show(iOk); return;
         }
