@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#F5EFE3">
 <meta name="format-detection" content="telephone=no">
 
-<title>Запись на разбор · New SMM · как доводить клиентов до результата по методике американского рынка</title>
+<title>Выбрать время разбора · New SMM · как доводить клиентов до результата по методике американского рынка</title>
 <meta name="description" content="New SMM. Обучение Малены Покладовой: методика, по которой мы приводим клиентов бизнесу в США. Путь ведения клиента от начала и до конца, искусственный интеллект, который вы настраиваете под себя. Запишитесь на разбор.">
 <meta name="author" content="Малена Покладова">
 <meta property="og:type" content="website">
@@ -98,7 +98,6 @@
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="preload" as="image" href="images/malena-hero-v4-m.jpg" media="(max-width:759px)">
 <link rel="preload" as="image" href="images/malena-hero-v4.jpg" media="(min-width:760px)">
-<meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -115,7 +114,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1521940319314090');
 /* Пиксель (10.11): одна заявка = одно событие Lead с eventID, тесты и повторы не считаем.
-   QualifiedLead: только предприниматели, блогеры и те, кто уже ведёт клиентов. */
+   QualifiedLead (10.11): предприниматель с работающим бизнесом, блогер от 1 000 подписчиков, SMM-щик с проектами. */
 window.__pxIds=function(){ var o={}; try{ document.cookie.split('; ').forEach(function(c){ var p=c.split('='); if(p[0]==='_fbp') o.fbp=p[1]; if(p[0]==='_fbc') o.fbc=p[1]; }); if(!o.fbc){ var fc=new URLSearchParams(location.search).get('fbclid'); if(fc) o.fbc='fb.1.'+Date.now()+'.'+fc; } }catch(e){} return o; };
 window.__pxOnce=function(k){ try{ if(localStorage.getItem('px_'+k)) return false; localStorage.setItem('px_'+k,'1'); }catch(e){} return true; };
 window.__pxLead=function(r,q,name){ try{
@@ -124,7 +123,9 @@ window.__pxLead=function(r,q,name){ try{
   try{ if(localStorage.getItem(k)) return; localStorage.setItem(k,'1'); }catch(e){}
   fbq('track','Lead',{content_name:name},{eventID:'lead-'+id});
   var j=(q&&q.job)||'';
-  if(/Предприниматель|свой блог|соцсети клиентам/.test(j)) fbq('trackCustom','QualifiedLead',{content_name:name,job:j},{eventID:'qlead-'+id});
+  var ch=(q&&q.check)||'', pr=(q&&q.projects)||'';
+  var qual=(/Предприниматель/.test(j) && ch && !/только запускаю/.test(ch)) || (/свой блог/.test(j) && ch && !/^До 1 000/.test(ch)) || (/соцсети клиентам/.test(j) && pr && pr!=='0');
+  if(qual) fbq('trackCustom','QualifiedLead',{content_name:name,job:j},{eventID:'qlead-'+id});
 }catch(e){} };
 
 fbq('track','PageView');
@@ -603,11 +604,6 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 .vcard.open .vplay,.vcard.open .vpo{display:none}
 .vcard:not(.open) video{visibility:hidden}
 
-.zv{margin:18px 0 6px}.zv .cap{font-size:14px;color:var(--ink2);margin:10px 2px 0}
-.zv .cap b{color:var(--ink)}
-.form-wrap.done .zv{display:none}
-.form-wrap.booking .zv.pre{display:none}
-
 /* ── VSL в шапке ── */
 .hero.vhero{min-height:0;display:block;padding:26px 0 40px;background:radial-gradient(120% 80% at 70% 0%,#3a1820 0%,var(--ink) 60%)}
 .hero.vhero .wrap{padding-bottom:0;display:grid;gap:26px;align-items:center}
@@ -627,6 +623,8 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 @media(prefers-reduced-motion:reduce){.vhero .vcard .vplay i{animation:none}}
 .hero.vhero .cta{margin-top:0}
 @media(min-width:900px){.hero.vhero{padding:48px 0 64px}.hero.vhero .wrap{grid-template-columns:.85fr 1.15fr;gap:48px}.hero.vhero .vh1{font-size:clamp(34px,3.6vw,52px)}}
+
+.vhero .vcard .vplay i::before{display:none!important}
 
 .vhero .wm{font-family:var(--serif);font-weight:500;font-size:clamp(30px,7vw,44px);line-height:1;letter-spacing:-1px;color:#F6EFE2;margin-bottom:18px}
 .vhero .wm em{font-style:italic;color:#E8C27A}
@@ -871,8 +869,170 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 .pop .done h3{margin-bottom:8px}
 .pop .done .btn{margin-top:14px}
 @media(min-width:760px){.pop{align-items:center;padding:20px}.pop .card{border-radius:16px;padding:34px 32px 30px}}
+
+/* ── Видео перед записью (29 октября): сначала контакты, потом видео ── */
+#video{padding:56px 0 24px;scroll-margin-top:70px}
+#video h2{margin-bottom:6px}
+.vbox{position:relative;margin-top:26px;border-radius:22px;overflow:hidden;background:#1B1414;aspect-ratio:16/9;box-shadow:0 30px 60px -36px rgba(27,20,20,.6)}
+.vbox video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#1B1414;display:block}
+.vbox .vposter{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(3px) brightness(.55);transform:scale(1.04)}
+.vgate{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:18px}
+.vgate .card{width:100%;max-width:470px;background:var(--cream);border-radius:20px;padding:24px 22px 18px;box-shadow:0 30px 60px -20px rgba(0,0,0,.55)}
+.vgate h3{font-family:var(--serif);font-weight:500;font-size:24px;line-height:1.15;letter-spacing:-.3px}
+.vgate h3 em{font-style:italic;color:var(--wine)}
+.vgate p.s{font-size:14px;color:var(--ink2);margin-top:6px}
+.vgate .fields{margin-top:14px;gap:10px;grid-template-columns:1fr}
+.vgate .f input{background:#fff;border-color:rgba(110,30,43,.16)}
+.vgate .btn{width:100%;margin-top:12px}
+.vgate .fine{font-size:11.5px;margin-top:10px}
+.vbox.open .vgate,.vbox.open .vposter{display:none}
+.vbox.open video{display:block}
+.vplay{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:transparent;border:0;cursor:pointer}
+.vplay i{width:86px;height:86px;border-radius:50%;background:var(--wine);display:grid;place-items:center;box-shadow:0 18px 40px -10px rgba(0,0,0,.6)}
+.vplay i::before{content:'';margin-left:6px;border-left:24px solid #F6EFE2;border-top:15px solid transparent;border-bottom:15px solid transparent}
+.vbox.open.idle .vplay{display:flex}
+.vnext{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:22px}
+.vnext .t{font-size:15px;color:var(--ink2);max-width:520px}
+@media (max-width:759px){
+  #video{padding:40px 0 16px}
+  .vbox{aspect-ratio:auto;min-height:0;border-radius:18px;background:transparent;box-shadow:none;overflow:visible}
+  .vbox .vposter{display:none}
+  .vbox video{position:relative;border-radius:16px;aspect-ratio:16/9;height:auto}
+  .vbox:not(.open) video{display:none}
+  .vgate{position:relative;inset:auto;padding:0}
+  .vgate .card{max-width:none;box-shadow:0 18px 40px -30px rgba(27,20,20,.45);border:1px solid rgba(110,30,43,.12)}
+  .vbox.open.idle .vplay{position:absolute;inset:0}
+  .vnext .btn{width:100%}
+}
 </style>
 <script>window.__ck=function(n){var m=document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)'));return m?decodeURIComponent(m[1]):'';};</script>
+<style>.hero.vhero{height:auto!important;min-height:0!important;overflow:visible}</style>
+<style id="rf">/* Освежение 10.11.2026: те же цвета и шрифты, меньше пестроты, легче читать.
+   Подписи крупнее и спокойнее, без зачёркиваний, бордо только как акцент,
+   единые скругления, фото под тёмными блоками приглушены. */
+:root{--rf-gold:#E3BE73;--rf-cream:#F6EFE2}
+body{-webkit-font-smoothing:antialiased}
+p{line-height:1.62}
+
+/* Подписи моноширинным шрифтом: крупнее, меньше разрядка */
+.eyebrow{font-size:12px!important;letter-spacing:1.6px!important;margin-bottom:14px}
+.hero .note,.e-cta>span,.case small,.wc .k,.qnum,.e-author p.mono{font-size:12px!important;letter-spacing:.6px!important}
+.hero .note{color:#D9CCB4!important;line-height:1.6}
+
+/* Первый экран: убираем повтор логотипа, воздух вокруг заголовка */
+.hero.vhero .wm{display:none}
+.hero.vhero .vh1{margin-top:4px;line-height:1.1;text-wrap:balance}
+.hero.vhero .vh1 em{color:var(--rf-gold)}
+.hero.vhero .sub{font-size:16.5px;line-height:1.6;color:#E9E0CF}
+
+/* Цифры доверия: подписи обычным текстом */
+.e-proof{padding:32px 0!important}
+.e-proof .row{gap:22px!important}
+.e-proof span{font-family:var(--sans,inherit)!important;text-transform:none!important;letter-spacing:0!important;font-size:14.5px!important;color:var(--ink2)!important}
+
+/* «Три вещи»: вместо трёх сплошных бордовых плит — тёмные карточки с золотой линией */
+.e-dark .bgph img{opacity:.22!important}
+.e-dark .bgph::after{background:linear-gradient(180deg,rgba(27,20,20,.7),rgba(27,20,20,.9))!important}
+.e-card{background:rgba(246,239,226,.05)!important;border:1px solid rgba(234,215,176,.18);border-left:3px solid var(--rf-gold);border-radius:6px!important;box-shadow:none!important;padding:24px 22px!important}
+.e-card .was{text-decoration:none!important;color:#BFAE94!important;font-size:12px!important;letter-spacing:.6px!important}
+.e-card h3{font-size:21px!important;line-height:1.3!important;margin-top:10px!important}
+.e-card h3 em{color:var(--rf-gold)!important}
+.e-dark p,.e-dark .lede{color:#E2D8C6!important}
+
+/* Блок «Кто ведёт»: светлее и спокойнее */
+.e-author p{font-size:16px!important;line-height:1.65!important;color:#F1E7D6!important}
+.e-author p.mono{font-family:var(--sans,inherit)!important;color:#E3D0B8!important;line-height:1.6!important}
+.e-author h2 em{color:var(--rf-gold)!important}
+
+/* Ученицы и вопросы: ровные карточки */
+.case{border-radius:6px!important}
+.case p{font-size:15px!important;line-height:1.55}
+.case .num span{font-size:13.5px!important}
+.faq details{border-radius:6px!important}
+.faq summary{font-size:17.5px!important;line-height:1.35}
+
+/* Квиз и форма: единые скругления, крупнее варианты */
+.form-wrap{border-radius:8px!important}
+.qopts button{border-radius:8px!important;font-size:16px!important}
+.btn{border-radius:4px}
+
+/* Меньше служебного текста (комментарий Льва 10.11): всё, что повторяет заголовок
+   или видно из интерфейса, убираем. */
+.eyebrow{display:none!important}
+.hero .note,.e-cta>span,.e-author p.mono{display:none!important}
+.hero.vhero .vh1{margin-top:0}
+</style>
+<style id="nb">
+/* Блоки под первым экраном, вариант «Контраст» (10.11.2026). Префикс nb- */
+.nb-pad{padding:60px 0}
+.nb h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,6.4vw,46px);line-height:1.12;letter-spacing:-.4px;text-wrap:balance}
+.nb h2 em{font-style:italic}
+.nb-btn{display:block;text-align:center;font:700 13px var(--mono);letter-spacing:1.4px;text-transform:uppercase;padding:17px 20px;text-decoration:none;border-radius:4px;max-width:420px}
+.nb-btn.w{background:var(--wine);color:#fff}
+.nb-btn.c{background:#F6EFE2;color:var(--wine)}
+.nb-proof{background:var(--ink);color:#F6EFE2;padding:34px 0}
+.nb-proof .wrap{display:grid;gap:18px}
+.nb-proof .it{display:grid;grid-template-columns:104px 1fr;align-items:baseline;gap:12px;padding-bottom:16px;border-bottom:1px solid rgba(246,239,226,.14)}
+.nb-proof .it:last-child{border-bottom:0;padding-bottom:0}
+.nb-proof b{font:500 42px/1 var(--serif);color:#E3BE73}
+.nb-proof span{font-size:15.5px;color:#E2D8C6;line-height:1.45}
+.nb-three{background:var(--cream,#FBF7EE)}
+.nb-three h2 em{color:var(--wine)}
+.nb-tiles{display:grid;gap:12px;margin:28px 0 24px}
+.nb-tile{background:#fff;padding:22px 20px;border:1px solid rgba(27,20,20,.12);border-radius:6px;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.nb-ic{width:44px;height:44px;border-radius:50%;background:rgba(110,30,43,.08);display:grid;place-items:center;color:var(--wine)}
+.nb-ic svg{width:22px;height:22px}
+.nb-tag{display:inline-block;font:700 11px var(--mono);letter-spacing:1px;text-transform:uppercase;color:#fff;background:var(--wine);padding:5px 8px;border-radius:3px}
+.nb-tile h3{font:600 20px/1.3 var(--serif);margin-top:10px}
+.nb-tile p{font-size:15px;color:var(--ink2);margin-top:6px;line-height:1.55}
+.nb-author{background:var(--ink);color:#fff}
+.nb-author .ph{position:relative;max-width:620px;margin:0 auto;aspect-ratio:3/4;overflow:hidden}
+.nb-author .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.nb-author .ph::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,20,0) 45%,rgba(27,20,20,.94) 100%)}
+.nb-author .nm{position:absolute;left:22px;right:22px;bottom:22px;z-index:1}
+.nb-author .nm h2{color:#fff}
+.nb-author .nm h2 em{color:#E3BE73}
+.nb-author .nm p{font-size:14.5px;color:#E2D8C6;margin-top:6px}
+.nb-author .tx{padding-top:28px;padding-bottom:60px}
+.nb-author .tx p{font-size:16.5px;color:#E9E0CF;line-height:1.65;max-width:560px}
+.nb-author .tx p+p{margin-top:12px}
+.nb-author .nb-btn{margin-top:26px}
+.nb-cases{background:var(--paper,#F5EFE3)}
+.nb-cases h2 em{color:var(--wine)}
+.nb-stack{display:grid;gap:12px;margin-top:28px}
+.nb-st{display:grid;grid-template-columns:104px 1fr;background:#fff;border:1px solid rgba(27,20,20,.12);border-radius:6px;overflow:hidden}
+.nb-st img{width:104px;height:100%;min-height:128px;object-fit:cover}
+.nb-st .c{padding:16px}
+.nb-st b{display:block;font:500 26px/1 var(--serif);color:var(--wine)}
+.nb-st small{display:block;font-size:13.5px;color:var(--ink2);margin-top:6px;line-height:1.4}
+.nb-st p{font-size:14.5px;margin-top:10px;font-weight:600;color:var(--ink)}
+.nb-note{font-size:13px;color:var(--muted);margin-top:16px}
+.nb-faq{background:var(--cream,#FBF7EE)}
+.nb-faq details{background:#fff;border:1px solid rgba(27,20,20,.12);border-radius:6px;margin-top:10px;overflow:hidden}
+.nb-faq details:first-of-type{margin-top:24px}
+.nb-faq summary{list-style:none;cursor:pointer;padding:17px 58px 17px 18px;font:600 16.5px/1.4 var(--sans);position:relative}
+.nb-faq summary::-webkit-details-marker{display:none}
+.nb-faq summary::after{content:'+';position:absolute;right:0;top:0;bottom:0;width:46px;display:grid;place-items:center;background:var(--wine);color:#fff;font:400 22px var(--sans)}
+.nb-faq details[open] summary::after{content:'–'}
+.nb-faq details p{padding:0 18px 18px;font-size:15.5px;color:var(--ink2);line-height:1.6}
+.nb-final{position:relative;color:#fff;overflow:hidden;background:var(--ink)}
+.nb-final .bg{position:absolute;inset:0;opacity:.35}
+.nb-final .bg img{width:100%;height:100%;object-fit:cover}
+.nb-final .wrap{position:relative}
+.nb-final h2{color:#fff}
+.nb-final h2 em{color:#E3BE73}
+.nb-final p{color:#E2D8C6;font-size:16px;margin-top:14px;max-width:520px;line-height:1.6}
+.nb-final .nb-btn{margin-top:26px}
+@media(min-width:900px){
+ .nb-proof .wrap{grid-template-columns:repeat(3,1fr);gap:30px}
+ .nb-proof .it{border-bottom:0;padding-bottom:0;grid-template-columns:1fr}
+ .nb-tiles{grid-template-columns:repeat(3,1fr)}
+ .nb-tile{grid-template-columns:1fr}
+ .nb-author .in{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;max-width:1100px;margin:0 auto}
+ .nb-stack{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+<style>html[data-mode=zapis] header.hero,html[data-mode=zapis] .nb,html[data-mode=zapis] #sticky{display:none!important}html[data-mode=zapis] #razbor{padding-top:24px}</style>
 </head>
 <body>
 
@@ -928,12 +1088,13 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
         <button type="button" class="vplay" aria-label="Смотреть урок со звуком"><s><u></u>УРОК · 10 МИН</s><i></i><b>Нажмите, чтобы посмотреть</b></button>
       </div>
       <div class="cta" style="margin-top:18px">
-        <a class="btn btn-wine" href="#razbor" data-go><span>После урока: записаться на разбор <svg class="dn" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <a class="btn btn-wine" href="#razbor" data-go><span>Записаться на разбор <svg class="dn" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
       </div>
       <div class="note">Разбор бесплатный · 30 минут в Zoom · ни к чему не обязывает</div>
     </div>
   </div>
 </header>
+
 
 <!-- ═══ ФОРМА ═══ -->
 <section id="razbor">
@@ -947,7 +1108,6 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
       <!-- Квиз. Отвечают одним касанием, шаг переключается сам. Ветка про чек
            меняется для тех, у кого проектов пока нет: у них спрашиваем цель,
            а не текущую цену. Ярлыков «новичок» и «профи» человек не видит. -->
-      <div class="zv pre" id="zvPre" hidden><div class="vcard"><video playsinline preload="none" data-src="video/vsl8/index.m3u8" poster="video/vsl8/poster.jpg"></video><img class="vpo" src="video/vsl8/poster.jpg" alt="Урок Малены Покладовой о New SMM"><button type="button" class="vplay" aria-label="Смотреть урок"><i></i><b>10 МИН · СО ЗВУКОМ</b></button></div><p class="cap"><b>Урок на 10 минут:</b> почему за одного и того же клиента одному SMM-щику платят $300 в месяц, а другому $3 000. Записаться можно ниже.</p></div>
       <div class="qz" id="qz">
         <div class="qbar"><i id="qfill"></i></div>
 
@@ -976,14 +1136,15 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 
         <div class="qstep" data-q="check">
           <div class="qnum" data-biz="Вопрос 2 из 3">Вопрос 3 из 4</div>
-          <h3 data-biz="Сколько сейчас приносит ваш бизнес в месяц?" data-has="Какой у вас чек за проект в месяц?" data-none="Сколько хотите зарабатывать в месяц через полгода?">Какой у вас чек за проект в месяц?</h3>
+          <h3 data-blog="Сколько подписчиков в вашем основном аккаунте?" data-biz="Сколько сейчас приносит ваш бизнес в месяц?" data-has="Какой у вас чек за проект в месяц?" data-none="Сколько хотите зарабатывать в месяц через полгода?">Какой у вас чек за проект в месяц?</h3>
           <!-- Вилка тянется до пяти и десяти тысяч сознательно. У нас есть люди
                в Америке, для которых три тысячи в месяц это нижняя граница нормы,
                и упереться в потолок вопроса им было бы странно. -->
           <div class="qopts"
                data-has-opts="До $300|$300 – $800|$800 – $2000|$2000 – $5000|Больше $5000"
                data-none-opts="До $500|$500 – $2000|$2000 – $5000|$5000 – $10 000|Больше $10 000"
-               data-biz-opts="До $3000|От $3000 до $10 000|От $10 000 до $30 000|Больше $30 000|Бизнес только запускаю"></div>
+               data-biz-opts="До $3000|От $3000 до $10 000|От $10 000 до $30 000|Больше $30 000|Бизнес только запускаю"
+               data-blog-opts="До 1 000 подписчиков|1 000 – 10 000 подписчиков|10 000 – 50 000 подписчиков|50 000 – 200 000 подписчиков|Больше 200 000 подписчиков"></div>
           <button class="qback" type="button">Назад</button>
         </div>
 
@@ -993,6 +1154,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
           <div class="qopts"
                data-has-opts="Клиентов мало, не знаю где искать|Не получается поднять чек|Клиенты уходят через месяц или два|Не умею показывать результат в деньгах|Тону в рутине, не хватает времени"
                data-none-opts="Не знаю, с чего начать|Не понимаю, где брать клиентов|Не хватает уверенности в навыках|Нет времени на обучение|Не понимаю, сколько на этом реально зарабатывают"
+               data-blog-opts="Охваты падают, рост остановился|Не понимаю, как продавать через блог|Нет системы: снимаю, когда есть настроение|Хочу запустить свой продукт или курс|Не хватает времени на контент"
                data-biz-opts="Не понимаю, что снимать и публиковать|Соцсети не приводят клиентов|Нет времени вести соцсети самой|Платила SMM-специалисту, результата не было|Хочу понимать SMM, чтобы ставить задачи команде"></div>
           <button class="qback" type="button">Назад</button>
         </div>
@@ -1031,7 +1193,6 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
       <div class="cal" id="cal" hidden>
         <div class="eyebrow"><i></i>Осталось выбрать время</div>
         <h3 id="calh">Когда вам удобно?</h3>
-        <div class="zv post" id="zvPost" hidden><div class="vcard"><video playsinline preload="none" data-src="video/vsl8/index.m3u8" poster="video/vsl8/poster.jpg"></video><img class="vpo" src="video/vsl8/poster.jpg" alt="Урок Малены Покладовой о New SMM"><button type="button" class="vplay" aria-label="Смотреть урок"><i></i><b>10 МИН · СО ЗВУКОМ</b></button></div><p class="cap"><b>Пока выбираете время,</b> посмотрите урок на 10 минут. На разборе сразу перейдём к вашей ситуации.</p></div>
         <div class="calhead"><b id="calmon"></b><div class="nav"><button type="button" id="calprev" aria-label="Предыдущий месяц">‹</button><button type="button" id="calnext" aria-label="Следующий месяц">›</button></div></div>
         <div class="calwd"><span>пн</span><span>вт</span><span>ср</span><span>чт</span><span>пт</span><span>сб</span><span>вс</span></div>
         <div class="caldays" id="caldays"></div>
@@ -1055,91 +1216,73 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 </section>
 
 <!-- ═══ ДОКАЗАТЕЛЬСТВА ОДНОЙ СТРОКОЙ ═══ -->
-<section class="e-proof" aria-label="Коротко о школе">
+<section class="nb nb-proof" aria-label="Коротко о школе">
   <div class="wrap">
-    <div class="row">
-      <div class="rv d1"><b>×10</b><span>окупаемость рекламы у клиента агентства</span></div>
-      <div class="rv d2"><b>200+</b><span>женщин закончили обучение</span></div>
-      <div class="rv d3"><b>7 лет</b><span>Малена зарабатывает только на соцсетях</span></div>
+    <div class="it"><b>×10</b><span>окупаемость рекламы у клиента агентства</span></div>
+    <div class="it"><b>200+</b><span>учениц закончили обучение</span></div>
+    <div class="it"><b>7 лет</b><span>Малена работает только в соцсетях</span></div>
+  </div>
+</section>
+
+<section class="nb nb-three nb-pad" id="chto">
+  <div class="wrap">
+    <h2>Три вещи, которые есть <em>только здесь</em></h2>
+    <div class="nb-tiles">
+      <div class="nb-tile"><div class="nb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></div><div><span class="nb-tag">Искусственный интеллект</span><h3>Нейросеть, собранная под вас</h3><p>Знает вашего клиента и забирает рутину: идеи, сценарии, тексты.</p></div></div>
+      <div class="nb-tile"><div class="nb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 18h6a3 3 0 0 0 0-6h-2a3 3 0 0 1 0-6h6"/></svg></div><div><span class="nb-tag">Путь клиента</span><h3>От первого разговора до продления договора</h3><p>На живом проекте агентства, а не на охватах в отчёте.</p></div></div>
+      <div class="nb-tile"><div class="nb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3z"/></svg></div><div><span class="nb-tag">Рынок США</span><h3>Методика американского рынка</h3><p>И выход на заказчиков, которые платят в долларах.</p></div></div>
+    </div>
+    <a class="nb-btn w" href="#razbor" data-go>Записаться на разбор</a>
+  </div>
+</section>
+
+<section class="nb nb-author" id="avtor">
+  <div class="in">
+    <div class="ph"><img src="images/malena-b2.jpg" alt="Малена Покладова" loading="lazy" width="1200" height="1800">
+      <div class="nm"><h2>Малена <em>Покладова</em></h2><p>Агентство PGL Marketing, Калифорния</p></div></div>
+    <div class="wrap tx">
+      <p>Ведёт американский бизнес прямо сейчас: адвокату 1,7 миллиона просмотров за месяц, студии красоты полную запись за 30 дней и рекламу, которая окупается в восемь раз.</p>
+      <p>Учит той же системе, по которой работает агентство. По ней же переехала в Америку и ни дня не работала в найме.</p>
+      <a class="nb-btn c" href="#razbor" data-go>Записаться на разбор</a>
     </div>
   </div>
 </section>
 
-<!-- ═══ ЧТО ВНУТРИ ═══ -->
-<section class="e-dark" id="chto">
-  <div class="bgph" aria-hidden="true"><img src="images/malena-b4-blur.jpg" alt="" loading="lazy"></div>
+<section class="nb nb-cases nb-pad" id="ucenicy">
   <div class="wrap">
-    <div class="eyebrow rv"><i></i>Что вы получите</div>
-    <h2 class="rv d1">Три вещи, которые <em>вместе есть только здесь</em></h2>
-    <div class="e-cards">
-      <div class="e-card rv d1"><div class="was">Вместо «пользуюсь нейросетью»</div><h3>Искусственный интеллект, <em>собранный под вас</em>: знает вашего клиента и забирает всю механику</h3></div>
-      <div class="e-card rv d2"><div class="was">Вместо охватов в отчёте</div><h3>Путь ведения клиента от первого разговора <em>до продления договора</em>, на живом проекте агентства</h3></div>
-      <div class="e-card rv d3"><div class="was">Вместо локальных цен</div><h3>Методика <em>американского рынка</em> и выход на заказчиков, которые платят в долларах</h3></div>
+    <h2>Ученицы и <em>их цифры</em></h2>
+    <div class="nb-stack">
+      <div class="nb-st"><img src="images/club/otzyvy/face-toma.jpg" alt="Тома" loading="lazy"><div class="c"><b>1,4M</b><small>просмотров у ролика её клиентки</small><p>Тома · постоянный проект и съёмки</p></div></div>
+      <div class="nb-st"><img src="images/club/otzyvy/face-loredana.jpg" alt="Лоредана" loading="lazy"><div class="c"><b>4 клиента</b><small>и крупный проект из Турции</small><p>Лоредана · собирает команду</p></div></div>
+      <div class="nb-st"><img src="images/club/otzyvy/face-anastasiya.jpg" alt="Анастасия" loading="lazy"><div class="c"><b>+1 200</b><small>подписчиков за неделю у клиента</small><p>Анастасия · ведёт клиентов</p></div></div>
     </div>
-    <p class="lede rv d3" style="margin-top:26px">На разборе покажем клиента, у которого реклама окупается в десять раз, и расскажем, как встроились в его работу так, что работаем с ним на постоянной основе за высокий чек.</p>
-    <div class="e-cta rv"><a class="btn btn-wine" href="#razbor" data-go><span>Записаться на разбор</span></a><span>Подходит и с нуля, и тем, кто уже в сфере</span></div>
+    <p class="nb-note">С разрешения учениц, цифры с их аккаунтов.</p>
   </div>
 </section>
 
-<!-- ═══ АВТОР ═══ -->
-<section class="e-author" id="avtor">
+<section class="nb nb-faq nb-pad" id="faq">
   <div class="wrap">
-    <div class="grid">
-      <div class="one rv"><div class="p"><img src="images/malena-b2.jpg" alt="Малена Покладова" loading="lazy" width="1200" height="1800"></div></div>
-      <div>
-        <div class="eyebrow rv"><i></i>Кто ведёт</div>
-        <h2 class="rv d1">Малена <em>Покладова</em></h2>
-        <p class="mono rv d2">Калифорния · агентство PGL Marketing · семь лет в продвижении · четыре года обучает</p>
-        <p class="rv d2">Ведёт американский бизнес прямо сейчас: студии, клиники, рестораны, эксперты. Приводит им миллионные просмотры и стабильный поток клиентов: адвокату 1,7 миллиона просмотров за месяц, студии красоты полную запись за 30 дней и рекламу, которая окупается в восемь раз. Всё это по системе, которую она собрала сама и которой учит.</p>
-        <p class="rv d3">По этой же методике переехала в Америку и ни одного дня не работала здесь в найме: только свои клиенты и своё агентство.</p>
-        <a class="btn btn-line rv d3" href="#razbor" data-go><span>Записаться на разбор</span></a>
-      </div>
-    </div>
+    <h2>Частые вопросы</h2>
+    <details><summary>Сколько стоит?</summary><p>Зависит от формата участия, поэтому цену называем на разборе, когда понимаем вашу ситуацию. Есть рассрочка.</p></details>
+    <details><summary>Я совсем с нуля. Подойдёт?</summary><p>Да. Для новичков есть свой путь от нуля до первого клиента с куратором на каждом задании.</p></details>
+    <details><summary>Когда старт и сколько времени нужно?</summary><p>Поток стартует в ноябре. Эфиры утром по Калифорнии и вечером по Европе, все остаются в записи.</p></details>
   </div>
 </section>
 
-<!-- ═══ УЧЕНИЦЫ ═══ -->
-<section class="e-cases" id="ucenicy">
+<section class="nb nb-final nb-pad">
+  <div class="bg"><img src="images/malena-b4-blur.jpg" alt="" loading="lazy"></div>
   <div class="wrap">
-    <div class="eyebrow rv"><i></i>Ученицы</div>
-    <h2 class="rv d1">Реальные ученицы, <em>реальные цифры</em></h2>
-    <div class="cases" style="margin-top:26px">
-      <div class="case rv d1"><img src="images/club/otzyvy/face-toma.jpg" alt="Тома" loading="lazy"><div><b>Тома</b><small>ведёт клиентов</small><div class="num">1,4M просмотров<span>набрал ролик её клиентки</span></div></div><p>Работает стабильно: постоянный проект плюс разовые съёмки.</p></div>
-      <div class="case rv d2"><img src="images/club/otzyvy/face-loredana.jpg" alt="Лоредана" loading="lazy"><div><b>Лоредана</b><small>собирает команду</small><div class="num">4 клиента<span>и крупный проект из Турции</span></div></div><p>Проектов стало больше, чем рук, поэтому набирает свою команду.</p></div>
-      <div class="case rv d3"><img src="images/club/otzyvy/face-anastasiya.jpg" alt="Анастасия" loading="lazy"><div><b>Анастасия</b><small>ведёт клиентов</small><div class="num">+1 200<span>подписчиков за неделю у клиента</span></div></div><p>Результат на чужом аккаунте, за который платят: то, чему учим.</p></div>
-    </div>
-    <p class="note">Истории опубликованы с разрешения учениц, цифры сняты с их аккаунтов.</p>
-  </div>
-</section>
-
-<!-- ═══ ВОПРОСЫ ═══ -->
-<section class="faq" id="faq">
-  <div class="wrap">
-    <div class="eyebrow rv"><i></i>Вопросы</div>
-    <h2 class="rv d1">Что спрашивают <em>перед разбором</em></h2>
-    <div style="margin-top:26px">
-      <details class="glass rv d1"><summary>Сколько стоит?</summary><p>Зависит от формата участия, поэтому цену называем на разборе, когда понимаем вашу ситуацию. Есть рассрочка.</p></details>
-      <details class="glass rv d2"><summary>Я совсем с нуля, без аккаунта и опыта. Подойдёт?</summary><p>Да. Для новичков есть свой вход: путь от нуля до первого клиента с куратором на каждом задании. На разборе поймём, с чего вам начинать.</p></details>
-      <details class="glass rv d1"><summary>Когда старт и сколько времени занимает?</summary><p>Поток стартует в ноябре. Эфиры утром по Калифорнии и вечером по Европе, все остаются в записи, так что подстроить под работу и семью получается.</p></details>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ ФИНАЛ ═══ -->
-<section class="final">
-  <div class="wrap">
-    <div class="in glass dark rv">
-      <h2 style="color:#F6EFE2">Сначала разбор, <em style="color:var(--gold)">потом обучение</em></h2>
-      <p>Тридцать минут в Zoom: разберём вашу текущую ситуацию, расскажем, как проходит обучение, и ответим на все вопросы. На обучение мы берём не всех, поэтому сначала знакомимся и вместе решаем, будет ли оно вам полезно.</p>
-      <a class="btn btn-wine" href="#razbor"><span>Записаться на разбор</span></a>
-    </div>
+    <h2>Сначала разбор, <em>потом обучение</em></h2>
+    <p>30 минут в Zoom. Разберём вашу ситуацию и вместе решим, подходит ли вам обучение. Берём не всех.</p>
+    <a class="nb-btn w" href="#razbor" data-go>Записаться на разбор</a>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <span>© 2026 Personal Growth Lab LLC · Школа Малены Покладовой</span>
-    <span><a href="https://instagram.com/malenapocladova" target="_blank" rel="noopener">@malenapocladova</a> · <a href="/klub">Клуб «ПроДвижение»</a> · <a href="/privacy">Политика</a></span>
+    <span><a href="https://instagram.com/malenapocladova" target="_blank" rel="noopener">@malenapocladova</a> · <a href="/klub">Клуб «ПроДвижение»</a> · <a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms</a></span>
+    <span class="contact" style="flex-basis:100%">Personal Growth Lab LLC · 3585 Aero Ct, San Diego, CA 92123 · <a href="mailto:lev@pgl.marketing">lev@pgl.marketing</a> · <a href="tel:+16193460678">+1 (619) 346-0678</a></span>
   </div>
 </footer>
 
@@ -1179,56 +1322,6 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 <script>
 (function(){
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  var VSL=(function(){
-    var f=''; try{ f=new URLSearchParams(location.search).get('vsl')||''; }catch(e){}
-    if(/^(pre|post|off)$/.test(f)) return f;
-    try{ var s=localStorage.getItem('newsmm_vsl_ab'); if(s==='pre'||s==='post') return s; }catch(e){}
-    var r=Math.random()<.5?'pre':'post'; try{ localStorage.setItem('newsmm_vsl_ab',r); }catch(e){} return r;
-  })();
-
-  /* события воронки /zapis в ту же таблицу, что и сторис; личных данных нет */
-  var ZEV='https://kjyfbfqcgretrbupyhiq.supabase.co/rest/v1/newsmm_funnel_events',
-      ZK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqeWZiZnFjZ3JldHJidXB5aGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNzU4NDYsImV4cCI6MjA5NjY1MTg0Nn0.amLiv4BuwDuEI0z2V3WiPKeWzvENSEwPlDeaGRq0CFM',
-      ZSID=(function(){ try{ var s=sessionStorage.getItem('zp_sid'); if(!s){ s=Date.now().toString(36)+Math.random().toString(36).slice(2,10); sessionStorage.setItem('zp_sid',s); } return s; }catch(e){ return 'z'+Date.now().toString(36); } })();
-  function ztrack(ev,label){
-    var sp; try{ sp=new URLSearchParams(location.search); }catch(e){ sp={get:function(){return ''}}; }
-    try{ fetch(ZEV,{ method:'POST', keepalive:true, headers:{'content-type':'application/json','apikey':ZK,'authorization':'Bearer '+ZK,'prefer':'return=minimal'},
-      body:JSON.stringify({ sid:ZSID, page:location.pathname.replace(/^\/|\.html$/g,'')||'kurs', event:ev, step:null, label:label?String(label).slice(0,80):null,
-        utm_source:(sp.get('utm_source')||'').slice(0,60)||null, utm_campaign:(sp.get('utm_campaign')||'').slice(0,120)||null, utm_content:(sp.get('utm_content')||'').slice(0,120)||null,
-        device:(innerWidth<700?'mobile':'desktop') }) }).catch(function(){}); }catch(e){}
-  }
-
-  /* ── VSL: A/B «до формы» / «после контактов» ── */
-  function vslInit(box, trk){
-    var v=box.querySelector('video'), btn=box.querySelector('.vplay'), loaded=false, marks={};
-    function load(){
-      if(loaded) return; loaded=true;
-      var src=v.getAttribute('data-src');
-      if(v.canPlayType('application/vnd.apple.mpegurl')){ v.src=src; return Promise.resolve(); }
-      return new Promise(function(ok){
-        var s=document.createElement('script'); s.src='https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js';
-        s.onload=function(){ try{ var h=new Hls({capLevelToPlayerSize:true}); h.loadSource(src); h.attachMedia(v); }catch(e){ v.src=src; } ok(); };
-        s.onerror=function(){ v.src=src; ok(); }; document.head.appendChild(s);
-      });
-    }
-    btn.addEventListener('click',function(e){
-      e.stopPropagation(); box.classList.add('open');
-      Promise.resolve(load()).then(function(){ v.controls=true; var p=v.play(); if(p&&p.catch) p.catch(function(){}); });
-      if(!marks.play){ marks.play=1; trk('vsl_play','start'); if(window.fbq) fbq('trackCustom','VslPlay',{ab:VSL}); }
-    });
-    v.addEventListener('timeupdate',function(){
-      if(!v.duration) return; var p=v.currentTime/v.duration;
-      [[.25,'25'],[.5,'50'],[.75,'75'],[.95,'95']].forEach(function(m){ if(p>=m[0] && !marks[m[1]]){ marks[m[1]]=1; trk('vsl_progress',m[1]); if(m[1]==='50' && window.fbq) fbq('trackCustom','Vsl50',{ab:VSL}); } });
-    });
-    return v;
-  }
-
-  VSL=(function(){ var f=''; try{ f=new URLSearchParams(location.search).get('vsl')||''; }catch(e){} return f==='off'?'off':'pre'; })();
-  var zvPre=document.getElementById('zvPre'), zvPost=document.getElementById('zvPost'), zvEl=null;
-  if(VSL!=='off'){ zvEl=vslInit(document.getElementById('heroV'),function(e,l){ ztrack(e,'hero:'+l); if(window.__htrack) __htrack(e,l); }); }
-  if(VSL==='post'){ zvEl=vslInit(zvPost.querySelector('.vcard'),ztrack); }
-  ztrack('ab','vsl:hero'); ztrack('view',VSL);
 
   /* Появление блоков */
   var io = new IntersectionObserver(function(es){
@@ -1360,12 +1453,17 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
      им не задаём, про деньги и помехи у них своя ветка. */
   var BIZ='Предприниматель, SMM для своего бизнеса';
   function isBiz(){ return quiz.job===BIZ; }
-  function qkey(){ return isBiz()?'biz':(hasClients()?'has':'none'); }
+  /* Блогеры (10 ноября): вместо проектов и чека спрашиваем размер аудитории. */
+  var BLOG='Веду свой блог';
+  function isBlog(){ return quiz.job===BLOG; }
+  function skipProj(){ return isBiz()||isBlog(); }
+  function grp(v){ return v===BIZ?'biz':(v===BLOG?'blog':'std'); }
+  function qkey(){ return isBiz()?'biz':(isBlog()?'blog':(hasClients()?'has':'none')); }
   function qtext(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
   function qrender(step){
     var key=qkey(), h3=step.querySelector('h3'), opts=step.querySelector('.qopts'), qn=step.querySelector('.qnum');
-    if(qn && qn.getAttribute('data-biz')){ if(!qn.getAttribute('data-std')) qn.setAttribute('data-std',qn.textContent); qn.textContent=isBiz()?qn.getAttribute('data-biz'):qn.getAttribute('data-std'); }
+    if(qn && qn.getAttribute('data-biz')){ if(!qn.getAttribute('data-std')) qn.setAttribute('data-std',qn.textContent); qn.textContent=skipProj()?qn.getAttribute('data-biz'):qn.getAttribute('data-std'); }
     if(h3 && h3.getAttribute('data-'+key)) h3.textContent=h3.getAttribute('data-'+key);
     else if(h3 && h3.getAttribute('data-has')) h3.textContent=h3.getAttribute('data-'+(hasClients()?'has':'none'));
     if(!opts) return;
@@ -1405,19 +1503,19 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   qz.addEventListener('click',function(e){
     var b=e.target.closest ? e.target.closest('button') : null;
     if(!b) return;
-    if(b.classList.contains('qback')){ var bk=qi-1; if(isBiz() && qsteps[bk] && qsteps[bk].getAttribute('data-q')==='projects') bk--; qgo(bk,true); return; }
+    if(b.classList.contains('qback')){ var bk=qi-1; if(skipProj() && qsteps[bk] && qsteps[bk].getAttribute('data-q')==='projects') bk--; qgo(bk,true); return; }
     if(!b.parentNode || !b.parentNode.classList.contains('qopts')) return;
     var step=b.parentNode.parentNode, q=step.getAttribute('data-q');
     /* Ответы про деньги и про помеху зависят от того, есть ли проекты. Если человек
        вернулся назад и поменял ответ, старые значения остались бы из другой шкалы,
        и продажам ушла бы цифра, означающая совсем другое. Поэтому сбрасываем. */
     if(q==='projects' && quiz.projects!==b.getAttribute('data-v')){ delete quiz.check; delete quiz.block; }
-    if(q==='job' && (quiz.job===BIZ)!==(b.getAttribute('data-v')===BIZ)){ delete quiz.projects; delete quiz.check; delete quiz.block; }
+    if(q==='job' && grp(quiz.job)!==grp(b.getAttribute('data-v'))){ delete quiz.projects; delete quiz.check; delete quiz.block; }
     quiz[q]=b.getAttribute('data-v');
     [].forEach.call(b.parentNode.querySelectorAll('button'),function(x){ x.classList.remove('on'); });
     b.classList.add('on');
     if(window.fbq) fbq('trackCustom','NewSmmQuiz',{ step:q });
-    var nx=qi+1; if(isBiz() && qsteps[nx] && qsteps[nx].getAttribute('data-q')==='projects') nx++;
+    var nx=qi+1; if(skipProj() && qsteps[nx] && qsteps[nx].getAttribute('data-q')==='projects') nx++;
     setTimeout(function(){ qgo(nx); }, reduce?0:260);
   });
   qfill.style.width=Math.round(100/(qsteps.length+1))+'%';
@@ -1607,7 +1705,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
           document.getElementById('okwhen').textContent=
             WD[dt.getDay()].toUpperCase().slice(0,1)+WD[dt.getDay()].slice(1)+', '+dt.getDate()+' '+MON[dt.getMonth()]+', '+hhmm(slot)+'.';
           fw.classList.add('done');
-          ztrack('booked',VSL); if(window.__htrack) __htrack('booked'); if(zvEl && !zvEl.paused) zvEl.pause();
+          if(window.__htrack) __htrack('booked');
           if(window.fbq){ if(res.j.first===false) fbq('trackCustom','Reschedule',{content_name:'new-smm-razbor'}); else if(!res.j.test && window.__pxOnce && __pxOnce('sch_'+(res.j.event_id||(who&&who.email)||Date.now()))) fbq('track','Schedule',{content_name:'new-smm-razbor'},res.j.event_id?{eventID:res.j.event_id}:{}); }
           fw.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
           return;
@@ -1644,8 +1742,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     var lane=isBiz() ? 'biz' : (hasClients() ? 'pro' : (quiz.projects ? 'start' : (track||'')));
     /* Инстаграм необязательный: берём ник из @ника или из ссылки на профиль. */
     var igRaw=(form.ig&&form.ig.value||'').trim(), igm=igRaw.match(/instagram\.com\/([A-Za-z0-9._]{1,30})/i), ig=(igm?igm[1]:igRaw.replace(/^@+/,'')).replace(/[^A-Za-z0-9._]/g,'').slice(0,30);
-    quiz.vsl=VSL; quiz.sid=ZSID;
-    var body={ sms_ok:!!(document.getElementById('smsok')||{}).checked, name:name, email:email, phone:phone, country:country.c, ig:ig, src:(ZAPIS?'zapis':'kurs'), ab:'vsl-'+VSL, track:lane, quiz:quiz, utm:Object.assign({},utm,{vsl:VSL,sid:ZSID,h:window.__hab,hsid:window.__hsid},window.__pxIds?__pxIds():{}), page:location.pathname, tz:zone() };
+    var body={ sms_ok:!!(document.getElementById('smsok')||{}).checked, name:name, email:email, phone:phone, country:country.c, ig:ig, src:(ZAPIS?'zapis':'kurs'), track:lane, quiz:quiz, utm:Object.assign({},utm,{h:window.__hab,sid:window.__hsid},window.__pxIds?__pxIds():{}), page:location.pathname, tz:zone() };
     fetch(FN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK}, body:JSON.stringify(body) })
       .then(function(r){ return r.json(); })
       .catch(function(){ return {ok:false}; })
@@ -1658,14 +1755,13 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
         /* Пиксель учим только на заявках, которые сервер действительно принял.
            Иначе кампании оптимизируются на лидов, которых у нас нет. */
         if(d && d.ok && window.__pxLead) __pxLead(d, quiz, 'new-smm-razbor');
+        if(window.__htrack) __htrack(d&&d.ok?'lead_ok':'lead_fail');
         /* Письмо человек получит сам. На странице остаётся один шаг: время. */
         who={ name:name, email:email, phone:phone, cid:(d&&d.cid)||'', country:country.c };
         /* Кого именно подставил сервер, он и говорит в route. Регион человека
            лежит рядом в region и нужен только для статистики. */
         calRegion=(d&&(d.route||d.region)==='eu') ? 'eu' : 'us';
         fw.classList.add('booking');
-        ztrack(d&&d.ok?'lead_ok':'lead_fail',VSL); if(window.__htrack) __htrack(d&&d.ok?'lead_ok':'lead_fail');
-        if(VSL==='post') zvPost.hidden=false;
         cal.hidden=false;
         fw.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
         calLoad();
@@ -1715,6 +1811,83 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
         try{ form.email.value=e; if(n) form.name.value=n; }catch(x){}
       });
   });
+})();
+</script>
+<script>
+/* Видео на главной (29 октября). Сначала контакты: имя, телефон, почта уходят
+   в newsmm-lead с src=vsl (контакт и сделка в GoHighLevel, карточка в служебный чат,
+   письмо со ссылкой на разбор). Потом открывается видео. Вернувшимся форму
+   не показываем: контакты уже у нас (localStorage). */
+(function(){
+  var FN='https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/newsmm-lead';
+  var SBK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqeWZiZnFjZ3JldHJidXB5aGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNzU4NDYsImV4cCI6MjA5NjY1MTg0Nn0.amLiv4BuwDuEI0z2V3WiPKeWzvENSEwPlDeaGRq0CFM';
+  var SRC='video/vsl7/index.m3u8', MP4='';
+  var box=document.getElementById('vbox'), v=document.getElementById('vslv'), form=document.getElementById('vform'),
+      err=document.getElementById('verr'), btn=document.getElementById('vsend'), play=document.getElementById('vplay'),
+      ph=document.getElementById('vphone');
+  if(!box||!v||!form) return;
+  function zone(){ try{ return Intl.DateTimeFormat().resolvedOptions().timeZone||''; }catch(e){ return ''; } }
+  function ev(n,p){ try{ if(window.PGL&&PGL.event) PGL.event(n,p||{}); }catch(e){} try{ if(window.fbq) fbq('trackCustom',n,p||{}); }catch(e){} }
+  /* Код страны подставляем по часовому поясу: человек часто пишет номер без него */
+  var z=zone(), dial=/^America\//.test(z)?'+1 ':(z==='Europe/Chisinau'?'+373 ':'');
+  ph.addEventListener('focus',function(){ if(!ph.value&&dial) ph.value=dial; });
+  var utm={}; try{ var q=new URLSearchParams(location.search); ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'].forEach(function(k){ var x=q.get(k); if(x) utm[k.replace('utm_','')]=x.slice(0,100); }); }catch(e){}
+  var loaded=false;
+  function load(){
+    if(loaded) return; loaded=true;
+    if(v.canPlayType('application/vnd.apple.mpegurl')){ v.src=SRC; return; }
+    var s=document.createElement('script'); s.src='https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js';
+    s.onload=function(){ if(window.Hls&&Hls.isSupported()){ var h=new Hls({capLevelToPlayerSize:true}); h.loadSource(SRC); h.attachMedia(v); } else if(MP4){ v.src=MP4; } };
+    document.head.appendChild(s);
+  }
+  function open(autoplay){
+    box.classList.add('open'); load();
+    if(autoplay){ var p=v.play(); if(p&&p.catch) p.catch(function(){ box.classList.add('idle'); }); } else box.classList.add('idle');
+  }
+  play.addEventListener('click',function(){ box.classList.remove('idle'); v.play(); });
+  v.addEventListener('play',function(){ box.classList.remove('idle'); });
+  /* Отметки просмотра для аналитики: старт, четверть, половина, три четверти, конец */
+  var marks={}; v.addEventListener('timeupdate',function(){ if(!v.duration) return; var p=v.currentTime/v.duration;
+    [[0.02,'vsl_start'],[0.25,'vsl_25'],[0.5,'vsl_50'],[0.75,'vsl_75'],[0.97,'vsl_end']].forEach(function(m){ if(p>=m[0]&&!marks[m[1]]){ marks[m[1]]=1; ev(m[1]); } }); });
+  var saved=null; try{ saved=JSON.parse(localStorage.getItem('newsmm_vsl')||'null'); }catch(e){}
+  function prefill(d){ try{ var f=document.getElementById('lead'); if(!f) return; if(d.name&&!f.name.value) f.name.value=d.name; if(d.email&&!f.email.value) f.email.value=d.email; }catch(e){} }
+  if(saved&&saved.email){ prefill(saved); open(false); }
+  [].forEach.call(document.querySelectorAll('[data-vgo]'),function(a){ a.addEventListener('click',function(){ setTimeout(function(){ if(!box.classList.contains('open')){ try{ document.getElementById('vname').focus({preventScroll:true}); }catch(e){} } },500); }); });
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=form.name.value.trim(), email=form.email.value.trim().toLowerCase(), raw=ph.value.trim(), digits=raw.replace(/\D/g,'');
+    if(name.length<2){ err.textContent='Напишите, как к вам обращаться.'; err.style.display='block'; form.name.focus(); return; }
+    if(digits.length<8){ err.textContent='Оставьте телефон с кодом страны, например +1 619 555 0123.'; err.style.display='block'; ph.focus(); return; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ err.textContent='Проверьте почту.'; err.style.display='block'; form.email.focus(); return; }
+    err.style.display='none'; btn.disabled=true; btn.querySelector('span').textContent='Открываем видео…';
+    var phone=raw.charAt(0)==='+' ? '+'+digits : (dial==='+1 '&&digits.length===10 ? '+1'+digits : (dial==='+373 '&&digits.length===8 ? '+373'+digits : '+'+digits));
+    var body={ name:name, email:email, phone:phone, src:'vsl', track:'', quiz:{}, utm:utm, page:location.pathname, tz:z };
+    try{ localStorage.setItem('newsmm_vsl',JSON.stringify({name:name,email:email,phone:phone,t:Date.now()})); }catch(x){}
+    prefill(body);
+    /* Видео открываем сразу, не дожидаясь сервера: заявка уходит параллельно */
+    fetch(FN,{ method:'POST', keepalive:true, headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK}, body:JSON.stringify(body) })
+      .then(function(r){ return r.json(); }).catch(function(){ return {}; })
+      .then(function(d){ if(d&&d.ok&&window.fbq) fbq('trackCustom','VslLead',{content_name:'new-smm-vsl'}); });
+    open(true);
+  });
+})();
+</script>
+<script>
+/* Урок в шапке: HLS (Safari сам, остальным hls.js), отметки просмотра в доску (PGL) и пиксель */
+(function(){
+  var box=document.getElementById('heroV'); if(!box) return;
+  var v=box.querySelector('video'), btn=box.querySelector('.vplay'), loaded=false, marks={};
+  function ev(n,p){ try{ if(window.PGL&&PGL.event) PGL.event(n,p||{}); }catch(e){} try{ if(window.fbq) fbq('trackCustom',n,p||{}); }catch(e){} }
+  function load(){ if(loaded) return Promise.resolve(); loaded=true; var src=v.getAttribute('data-src');
+    if(v.canPlayType('application/vnd.apple.mpegurl')){ v.src=src; return Promise.resolve(); }
+    return new Promise(function(ok){ var s=document.createElement('script'); s.src='https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js';
+      s.onload=function(){ try{ var h=new Hls({capLevelToPlayerSize:true}); h.loadSource(src); h.attachMedia(v); }catch(e){ v.src=src; } ok(); };
+      s.onerror=function(){ v.src=src; ok(); }; document.head.appendChild(s); }); }
+  btn.addEventListener('click',function(e){ e.preventDefault(); box.classList.add('open');
+    load().then(function(){ v.controls=true; var p=v.play(); if(p&&p.catch) p.catch(function(){}); });
+    if(!marks.play){ marks.play=1; ev('VslPlay',{place:'main-hero'}); if(window.__htrack) __htrack('vsl_play'); } });
+  v.addEventListener('timeupdate',function(){ if(!v.duration) return; var p=v.currentTime/v.duration;
+    [[.25,'vsl_25'],[.5,'vsl_50'],[.75,'vsl_75'],[.95,'vsl_end']].forEach(function(m){ if(p>=m[0]&&!marks[m[1]]){ marks[m[1]]=1; ev(m[1],{place:'main-hero'}); if(window.__htrack) __htrack('vsl_progress',m[1]); } }); });
 })();
 </script>
 <script>window.PGL_SITE='ws_fd846eaeda93f043';</script>
