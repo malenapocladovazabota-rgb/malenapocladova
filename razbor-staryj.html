@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Разбор вашей ситуации · 30 минут · Школа Малены Покладовой</title>
+<meta name="description" content="Бесплатный 30-минутный разбор: посмотрим, что у вас сейчас с соцсетями, и скажем, что делать в ближайший месяц. План остаётся у вас.">
+<meta property="og:title" content="Разбор вашей ситуации · 30 минут">
+<meta property="og:description" content="Бесплатно и ни к чему не обязывает. План остаётся у вас.">
+<meta property="og:image" content="https://malenapocladova.com/images/og-image.png">
+<meta name="theme-color" content="#EDE4D3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#161110; --ink2:#453B36;
+  --beige:#EAE0CB; --card:#F9F4E8; --paper:#FFFDF8;
+  --wine:#6E1E2B; --wine-soft:#E5CFC9;
+  --line:rgba(22,17,16,.16); --line-soft:rgba(22,17,16,.08);
+  --muted:#8C8172;
+  --serif:'Playfair Display',serif; --sans:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--beige);color:var(--ink);font-family:var(--sans);line-height:1.6;
+  -webkit-font-smoothing:antialiased}
+::selection{background:var(--wine);color:var(--beige)}
+a{color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+
+.nav{border-bottom:1px solid var(--line-soft);padding:18px 0}
+.nav-in{display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:var(--serif);font-size:20px;font-weight:600;letter-spacing:-.4px;text-decoration:none}
+.brand em{font-style:italic;color:var(--wine)}
+.nav-note{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--muted)}
+
+.hero{padding:48px 0 30px;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--wine);margin-bottom:20px}
+.eyebrow::before,.eyebrow::after{content:'';width:30px;height:1px;background:var(--wine)}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(32px,5.2vw,54px);
+  line-height:1.03;letter-spacing:-1.5px;margin-bottom:16px}
+h1 em{font-style:italic;color:var(--wine)}
+.hero .sub{font-size:16.5px;line-height:1.6;color:var(--ink2);max-width:520px;margin:0 auto}
+.hero .sub b{color:var(--ink);font-weight:600}
+
+/* агенда */
+.agenda{border-top:1px solid var(--line);margin:34px 0 30px}
+.arow{display:flex;gap:18px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line-soft)}
+.arow b{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--wine);width:62px;flex:none}
+.arow span{font-size:15px;color:var(--ink2);line-height:1.45}
+
+/* карточка шага */
+.panel{background:var(--card);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.phead{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:16px 22px;border-bottom:1px solid var(--line-soft);background:rgba(22,17,16,.02)}
+.phead h2{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:-.4px}
+.steps{display:flex;gap:6px;align-items:center;font-family:var(--mono);font-size:9.5px;
+  font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);flex:none}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--line)}
+.dot.on{background:var(--wine)}
+
+.pbody{padding:22px}
+.row{margin-bottom:11px}
+input[type=text],input[type=tel],input[type=email]{width:100%;background:var(--paper);color:var(--ink);
+  border:1px solid var(--line);border-radius:2px;padding:14px 15px;font-size:16px;
+  font-family:var(--sans);outline:none;transition:border-color .2s}
+input::placeholder{color:var(--muted)}
+input:focus{border-color:var(--ink)}
+input.bad{border-color:var(--wine);background:#FDF3F1}
+.phone{display:flex;gap:8px}
+.cc{position:relative;flex:none;width:132px}
+.ccbtn{width:100%;height:100%;display:flex;align-items:center;gap:7px;
+  background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:2px;
+  padding:0 24px 0 12px;font-size:16px;font-family:var(--sans);cursor:pointer;text-align:left;
+  min-height:48px;position:relative}
+.ccbtn:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
+.ccbtn.open{border-color:var(--ink)}
+.ccbtn .fl{font-size:17px;line-height:1}
+.ccbtn::after{content:'';position:absolute;right:10px;top:50%;width:6px;height:6px;
+  border-right:1.5px solid var(--muted);border-bottom:1.5px solid var(--muted);
+  transform:translateY(-70%) rotate(45deg)}
+.ccpop{display:none;position:absolute;z-index:20;left:0;top:calc(100% + 5px);width:258px;
+  background:var(--paper);border:1px solid var(--line);border-radius:3px;
+  box-shadow:0 18px 40px -14px rgba(22,17,16,.45);overflow:hidden}
+.ccpop.on{display:block}
+.ccpop input{width:100%;border:0;border-bottom:1px solid var(--line-soft);border-radius:0;
+  padding:12px 13px;font-size:15px;background:transparent;outline:none}
+.cclist{max-height:236px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.ccitem{display:flex;align-items:center;gap:10px;padding:9px 13px;cursor:pointer;font-size:14.5px}
+.ccitem .fl{font-size:16px;line-height:1}
+.ccitem .nm{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ccitem .dl{color:var(--muted);font-family:var(--mono);font-size:12px;flex:none}
+.ccitem:hover,.ccitem.hl{background:rgba(110,30,43,.08)}
+.ccitem.sel .dl{color:var(--wine)}
+.ccnone{padding:14px 13px;font-size:13.5px;color:var(--muted)}
+
+.phone input{flex:1;min-width:0}
+
+.check{display:flex;gap:10px;align-items:flex-start;margin:15px 0 16px;cursor:pointer}
+.check input{margin-top:2px;width:17px;height:17px;flex:none;accent-color:var(--wine)}
+.check span{font-size:12px;color:var(--ink2);line-height:1.45}
+.check a{color:var(--wine)}
+.check .legal{display:block;font-style:normal;margin-top:5px;
+  font-size:10.5px;line-height:1.4;color:var(--muted)}
+.check .legal a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+.check .legal a:hover{color:var(--wine)}
+
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;width:100%;
+  font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;
+  padding:18px 26px;border-radius:2px;cursor:pointer;border:none;text-decoration:none;
+  background:var(--wine);color:#F3EADF;box-shadow:0 12px 26px -12px rgba(110,30,43,.6);
+  transition:background .22s,transform .15s}
+.btn:hover{background:var(--ink)}
+.btn:active{transform:scale(.99)}
+.btn:disabled{opacity:.5;cursor:default}
+.err{color:var(--wine);font-size:12.5px;font-weight:500;margin-top:11px;display:none}
+.err.on{display:block}
+.tiny{font-size:11.5px;color:var(--muted);text-align:center;margin-top:12px;line-height:1.45}
+
+/* шаг 2 — календарь */
+#step2{display:none}
+#step2.on{display:block;animation:rise .35s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.calwrap{background:var(--paper);border-top:1px solid var(--line-soft)}
+.calwrap iframe{width:100%;min-height:900px;border:0;display:block}
+.hello{padding:16px 22px 0;font-size:14.5px;color:var(--ink2)}
+.hello b{color:var(--ink)}
+
+/* доверие */
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 0}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:16px 18px}
+.tcard b{display:block;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:1.6px;
+  text-transform:uppercase;color:var(--wine);margin-bottom:7px}
+.tcard span{font-size:13.5px;color:var(--ink2);line-height:1.45}
+
+footer{text-align:center;margin-top:38px;padding-bottom:46px;
+  font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1.8px;
+  text-transform:uppercase;color:var(--muted)}
+footer a{color:var(--muted);text-decoration:none}
+footer a:hover{color:var(--wine)}
+
+@media(max-width:620px){
+  .wrap{padding:0 16px}
+  .hero{padding:32px 0 22px}
+  .pbody{padding:18px}
+  .phead{padding:14px 18px}
+  .trust{grid-template-columns:1fr}
+  .nav-note{display:none}
+  .cc{width:106px}
+  .arow b{width:54px}
+}
+@media(prefers-reduced-motion:reduce){ #step2.on{animation:none} }
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap nav-in">
+  <a class="brand" href="/">SMM <em>с нуля</em></a>
+  <div class="nav-note">Школа Малены Покладовой</div>
+</div></nav>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow">Бесплатно · 30 минут · один на один</div>
+    <h1>Разбор вашей <em>ситуации</em></h1>
+    <p class="sub">Полчаса один на один. Уйдёте с планом на месяц — <b>даже если учиться не пойдёте</b>.</p>
+  </section>
+
+  <div class="agenda">
+    <div class="arow"><b>5 мин</b><span>Кто вы и чего хотите</span></div>
+    <div class="arow"><b>10 мин</b><span>Что мешает расти сейчас</span></div>
+    <div class="arow"><b>10 мин</b><span>Какой формат обучения подойдёт, цены и рассрочка</span></div>
+    <div class="arow"><b>5 мин</b><span>План первых шагов</span></div>
+  </div>
+
+  <div class="panel">
+    <div class="phead">
+      <h2 id="ptitle">Как с вами связаться</h2>
+      <div class="steps"><span id="s1">Шаг 1 из 2</span><i class="dot on" id="d1"></i><i class="dot" id="d2"></i></div>
+    </div>
+
+    <div class="pbody" id="step1">
+      <div class="row"><input type="text" id="nm" autocomplete="given-name" placeholder="Ваше имя"></div>
+      <div class="row phone">
+        <div class="cc" id="ccWrap">
+          <button type="button" class="ccbtn" id="ccBtn" aria-haspopup="listbox" aria-expanded="false">
+            <span class="fl" id="ccFlag"></span><span id="ccCode"></span>
+          </button>
+          <div class="ccpop" id="ccPop">
+            <input type="text" id="ccSearch" placeholder="Страна или код" autocomplete="off"
+                   spellcheck="false" aria-label="Поиск страны">
+            <div class="cclist" id="ccList" role="listbox"></div>
+          </div>
+        </div>
+        <input type="tel" id="ph" autocomplete="tel" placeholder="60 000 000" inputmode="numeric">
+      </div>
+      <div class="row"><input type="email" id="mail" autocomplete="email" placeholder="Email — пришлём ссылку на встречу"></div>
+      <label class="check">
+        <input type="checkbox" id="ok">
+        <span>Даю согласие на обработку данных и на сообщения от Школы Малены Покладовой
+          <em class="legal">Напоминания о встрече и информация об обучении приходят по SMS, WhatsApp и email. Частота сообщений может меняться, оператор может взимать плату за SMS и передачу данных. Отписаться — слово STOP в ответ, помощь — HELP. <a href="/privacy" target="_blank">Политика конфиденциальности</a> · <a href="/terms" target="_blank">Оферта</a></em>
+        </span>
+      </label>
+      <button class="btn" id="go">Выбрать время</button>
+      <div class="err" id="err"></div>
+      <div class="tiny">Не найдёте удобное время — напишем в WhatsApp и подберём</div>
+    </div>
+
+    <div id="step2">
+      <div class="hello" id="hello"></div>
+      <div class="calwrap">
+        <iframe id="cal" title="Выбор времени разбора" scrolling="no"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="trust">
+    <div class="tcard"><b>Бесплатно</b><span>Ни к чему не обязывает</span></div>
+    <div class="tcard"><b>Честно</b><span>Скажем, если обучение вам не нужно</span></div>
+    <div class="tcard"><b>Онлайн</b><span>Ссылку пришлём заранее</span></div>
+  </div>
+
+  <footer>
+    <a href="/privacy">Конфиденциальность</a> · <a href="/terms">Оферта</a> · <a href="/refund">Возврат</a>
+  </footer>
+
+</div>
+
+<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
+<script>
+/* ══════════════════════════════════════════════════════════════ */
+var GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/55lHQOuDwUKKCwgmTmLW/webhook-trigger/1771c74b-c8ec-4b4f-9dc1-6fe978f7d622';
+var TO_GHL = { razbor_lead:1, razbor_quiz:1, razbor_calendar_open:1 };
+var PIXEL_ID = '1521940319314090';
+var CAL_BASE = 'https://api.leadconnectorhq.com/widget/booking/vG1zsgJdMciejwQSi9PJ';
+/* ══════════════════════════════════════════════════════════════ */
+
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', PIXEL_ID); fbq('track','PageView');
+
+var COUNTRIES=[
+['MD','🇲🇩','373','Молдова','Moldova'],['UA','🇺🇦','380','Украина','Ukraine'],
+['RO','🇷🇴','40','Румыния','Romania'],['US','🇺🇸','1','США','USA United States'],
+['CA','🇨🇦','1','Канада','Canada'],['DE','🇩🇪','49','Германия','Germany Deutschland'],
+['IT','🇮🇹','39','Италия','Italy Italia'],['PL','🇵🇱','48','Польша','Poland Polska'],
+['ES','🇪🇸','34','Испания','Spain'],['PT','🇵🇹','351','Португалия','Portugal'],
+['FR','🇫🇷','33','Франция','France'],['GB','🇬🇧','44','Великобритания','UK Britain England'],
+['IE','🇮🇪','353','Ирландия','Ireland'],['NL','🇳🇱','31','Нидерланды','Netherlands Holland'],
+['BE','🇧🇪','32','Бельгия','Belgium'],['AT','🇦🇹','43','Австрия','Austria'],
+['CH','🇨🇭','41','Швейцария','Switzerland'],['CZ','🇨🇿','420','Чехия','Czechia Czech'],
+['SE','🇸🇪','46','Швеция','Sweden'],['GR','🇬🇷','30','Греция','Greece'],
+['CY','🇨🇾','357','Кипр','Cyprus'],['BG','🇧🇬','359','Болгария','Bulgaria'],
+['LT','🇱🇹','370','Литва','Lithuania'],['LV','🇱🇻','371','Латвия','Latvia'],
+['EE','🇪🇪','372','Эстония','Estonia'],['IL','🇮🇱','972','Израиль','Israel'],
+['GE','🇬🇪','995','Грузия','Georgia'],['TR','🇹🇷','90','Турция','Turkey'],
+['AE','🇦🇪','971','ОАЭ','UAE Emirates Dubai'],['KZ','🇰🇿','7','Казахстан','Kazakhstan'],
+['RU','🇷🇺','7','Россия','Russia']];
+var TZ={'Europe/Chisinau':'MD','Europe/Tiraspol':'MD','Europe/Kyiv':'UA','Europe/Kiev':'UA',
+'Europe/Uzhgorod':'UA','Europe/Zaporozhye':'UA','Europe/Bucharest':'RO','Europe/Berlin':'DE',
+'Europe/Rome':'IT','Europe/Warsaw':'PL','Europe/Madrid':'ES','Europe/Lisbon':'PT','Europe/Paris':'FR',
+'Europe/London':'GB','Europe/Dublin':'IE','Europe/Amsterdam':'NL','Europe/Brussels':'BE',
+'Europe/Vienna':'AT','Europe/Zurich':'CH','Europe/Prague':'CZ','Europe/Stockholm':'SE',
+'Europe/Athens':'GR','Asia/Nicosia':'CY','Europe/Nicosia':'CY','Europe/Sofia':'BG','Europe/Vilnius':'LT',
+'Europe/Riga':'LV','Europe/Tallinn':'EE','Asia/Jerusalem':'IL','Asia/Tbilisi':'GE','Europe/Istanbul':'TR',
+'Asia/Dubai':'AE','Asia/Almaty':'KZ','Europe/Moscow':'RU','America/Toronto':'CA','America/Vancouver':'CA'};
+
+var ccBtn=document.getElementById('ccBtn'), ccPop=document.getElementById('ccPop'),
+    ccList=document.getElementById('ccList'), ccSearch=document.getElementById('ccSearch'),
+    ccFlag=document.getElementById('ccFlag'), ccCode=document.getElementById('ccCode');
+var CUR=null, hl=-1, shown=[];
+
+function pick(c){
+  CUR=c; ccFlag.textContent=c[1]; ccCode.textContent='+'+c[2]; closeCC();
+}
+function norm(s){ return (s||'').toLowerCase().replace('ё','е'); }
+
+function render(q){
+  q=norm(q).trim();
+  var digitsOnly=q.replace(/\D/g,'');
+  shown=COUNTRIES.filter(function(c){
+    if(!q) return true;
+    if(digitsOnly && c[2].indexOf(digitsOnly)===0) return true;
+    return norm(c[3]).indexOf(q)===0 || norm(c[4]).split(' ').some(function(w){return w.indexOf(q)===0})
+        || norm(c[0])===q;
+  });
+  hl = shown.length ? 0 : -1;
+  if(!shown.length){ ccList.innerHTML='<div class="ccnone">Ничего не нашлось</div>'; return; }
+  ccList.innerHTML = shown.map(function(c,i){
+    return '<div class="ccitem'+(CUR&&CUR[0]===c[0]?' sel':'')+(i===hl?' hl':'')+
+      '" role="option" data-i="'+i+'"><span class="fl">'+c[1]+'</span>'+
+      '<span class="nm">'+c[3]+'</span><span class="dl">+'+c[2]+'</span></div>';
+  }).join('');
+  [].forEach.call(ccList.querySelectorAll('.ccitem'), function(el){
+    el.addEventListener('mousedown', function(e){ e.preventDefault(); pick(shown[+el.dataset.i]); });
+  });
+}
+function openCC(){
+  ccPop.classList.add('on'); ccBtn.classList.add('open');
+  ccBtn.setAttribute('aria-expanded','true');
+  ccSearch.value=''; render(''); ccSearch.focus();
+}
+function closeCC(){
+  ccPop.classList.remove('on'); ccBtn.classList.remove('open');
+  ccBtn.setAttribute('aria-expanded','false');
+}
+ccBtn.addEventListener('click', function(){ ccPop.classList.contains('on') ? closeCC() : openCC(); });
+ccSearch.addEventListener('input', function(){ render(this.value); });
+ccSearch.addEventListener('keydown', function(e){
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'){
+    e.preventDefault();
+    if(!shown.length) return;
+    hl=(hl+(e.key==='ArrowDown'?1:-1)+shown.length)%shown.length;
+    render.hlOnly=true;
+    var items=ccList.querySelectorAll('.ccitem');
+    [].forEach.call(items,function(el,i){ el.classList.toggle('hl', i===hl); });
+    if(items[hl]) items[hl].scrollIntoView({block:'nearest'});
+  } else if(e.key==='Enter'){
+    e.preventDefault(); if(shown[hl]) pick(shown[hl]);
+  } else if(e.key==='Escape'){ closeCC(); ccBtn.focus(); }
+});
+document.addEventListener('click', function(e){
+  if(!document.getElementById('ccWrap').contains(e.target)) closeCC();
+});
+
+(function(){var iso='US';try{var tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';
+if(TZ[tz])iso=TZ[tz];else if(tz.indexOf('America/')===0)iso='US';}catch(e){}
+var f=COUNTRIES.filter(function(c){return c[0]===iso;})[0]||COUNTRIES[3]; pick(f);})();
+
+  var TZNAME = (function(){try{return Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(e){return '';}})();
+var Q=new URLSearchParams(location.search);
+function utm(k){return Q.get(k)||''}
+
+/* ?c= — идентификатор контакта из персональной ссылки в WhatsApp.
+   Если он есть, человек у нас уже в базе: форму не показываем. */
+var CID = (Q.get('c') || '').trim();
+
+var lead=null; try{lead=JSON.parse(localStorage.getItem('mp_video_lead')||'null')}catch(e){}
+
+function send(ev,extra){
+  var b=Object.assign({event:ev,page:'razbor',name:lead?lead.name:'',phone:lead?lead.phone:'',
+    country:lead?lead.country:'',timezone:TZNAME,contact_id:CID,utm_source:utm('utm_source'),utm_medium:utm('utm_medium'),
+    utm_campaign:utm('utm_campaign'),utm_content:utm('utm_content'),utm_term:utm('utm_term'),
+    fbclid:utm('fbclid'),url:location.href,ts:new Date().toISOString()},extra||{});
+  if(GHL_WEBHOOK.indexOf('http')===0 && TO_GHL[ev]){
+    /* fetch с keepalive надёжнее beacon: beacon молча теряется под нагрузкой */
+    try{ fetch(GHL_WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(b),keepalive:true}).catch(function(){
+        try{ navigator.sendBeacon(GHL_WEBHOOK,
+          new Blob([JSON.stringify(b)],{type:'application/json'})); }catch(e){}
+      }); }catch(e){}
+  }
+}
+
+/* шаг 2 — календарь */
+function openCalendar(){
+  var pr = [];
+  if (lead && lead.name)  pr.push('first_name=' + encodeURIComponent(lead.name));
+  if (lead && lead.phone) pr.push('phone=' + encodeURIComponent(lead.phone));
+  if (lead && lead.email) pr.push('email=' + encodeURIComponent(lead.email));
+  var url = CAL_BASE + (pr.length ? '?' + pr.join('&') : '?');
+  if (location.search) url += '&' + location.search.slice(1);
+
+  var f = document.getElementById('cal');
+  f.src = url;
+  f.id = 'vG1zsgJdMciejwQSi9PJ_' + Date.now();   /* чтобы GHL подогнал высоту */
+  document.getElementById('step1').style.display = 'none';
+  document.getElementById('step2').classList.add('on');
+  document.getElementById('ptitle').textContent = 'Выберите удобное время';
+  document.getElementById('s1').textContent = 'Шаг 2 из 2';
+  document.getElementById('d1').classList.remove('on');
+  document.getElementById('d2').classList.add('on');
+  document.getElementById('hello').innerHTML = lead && lead.name
+    ? '<b>' + lead.name.replace(/[<>&]/g,'') + '</b>, ниже свободное время по вашему поясу.'
+    : 'Ниже свободное время по вашему часовому поясу.';
+
+  send('razbor_calendar_open');
+  document.querySelector('.panel').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+/* пришёл по персональной ссылке из WhatsApp или уже оставлял контакт —
+   форму не показываем, сразу видео и календарь */
+if (CID || (lead && lead.phone && lead.name)) openCalendar();
+
+
+function digits(s){return (s||'').replace(/\D/g,'')}
+document.getElementById('go').onclick=function(){
+  var nm=document.getElementById('nm'),ph=document.getElementById('ph'),
+      ml=document.getElementById('mail'),
+      ok=document.getElementById('ok'),errEl=document.getElementById('err'),bad=false;
+  [nm,ph,ml].forEach(function(e){e.classList.remove('bad')}); errEl.classList.remove('on');
+  var local=digits(ph.value),code=CUR[2],iso=CUR[0];
+  if(local.indexOf(code)===0&&local.length>code.length+5)local=local.slice(code.length);
+  if(nm.value.trim().length<2){nm.classList.add('bad');bad=true}
+  if(local.length<6){ph.classList.add('bad');bad=true}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(ml.value.trim())){ml.classList.add('bad');bad=true}
+  if(bad){errEl.textContent='Проверьте имя, номер и email.';errEl.classList.add('on');return}
+  if(!ok.checked){errEl.textContent='Отметьте согласие, чтобы продолжить.';errEl.classList.add('on');return}
+
+  lead={name:nm.value.trim(),phone:'+'+code+local,country:iso,email:ml.value.trim()};
+  try{localStorage.setItem('mp_video_lead',JSON.stringify(lead))}catch(e){}
+
+  this.disabled=true; this.textContent='Открываем…';
+
+  /* контакт фиксируем ДО календаря: если человек не выберет слот, он у нас уже есть */
+  send('razbor_lead',{consent:true,email:lead.email});
+  try{fbq('track','Lead',{content_name:'razbor_form'})}catch(e){}
+
+  setTimeout(openCalendar, 250);
+};
+</script>
+<script>window.PGL_SITE='ws_fd846eaeda93f043';</script>
+<script src="/pgl-track.js?v=1" defer></script>
+</body>
+</html>
