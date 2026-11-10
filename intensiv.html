@@ -55,18 +55,22 @@ h2 em,h1 em{font-style:italic}
 .logo em{font-style:italic;color:var(--goldL)}
 .top .btn{padding:11px 14px;font-size:11.5px}
 
-/* Первый экран */
-.hero{position:relative;background:var(--ink);color:#F6EFE2;overflow:hidden}
-.hero .ph{position:absolute;inset:0}
-.hero .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 25%;opacity:.55}
-.hero .ph::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,20,.35) 0%,rgba(27,20,20,.55) 40%,rgba(27,20,20,.97) 78%)}
-.hero .wrap{position:relative;padding-top:120px;padding-bottom:44px}
+/* Первый экран: фото отдельным кадром, текст на тёмном фоне без наложения */
+.hero{background:var(--ink);color:#F6EFE2}
+.hph{aspect-ratio:4/3;overflow:hidden;max-height:62vh}
+.hph img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.htx{padding-top:26px;padding-bottom:40px}
 .when{display:inline-flex;flex-wrap:wrap;gap:8px}
 .when span{font:700 12px var(--mono);letter-spacing:.8px;text-transform:uppercase;padding:7px 10px;border:1px solid rgba(246,239,226,.35);border-radius:3px}
 .when span.hot{background:var(--goldL);color:var(--ink);border-color:var(--goldL)}
-.hero h1{font-size:clamp(42px,11vw,82px);line-height:1.02;margin-top:18px}
+.hero h1{font-size:clamp(40px,10.5vw,76px);line-height:1.04;margin-top:16px}
 .hero h1 em{color:var(--goldL)}
-.hero .sub{font-size:18px;line-height:1.55;color:#E9E0CF;margin-top:16px;max-width:560px}
+.hero .sub{font-size:17.5px;line-height:1.55;color:#E9E0CF;margin-top:14px;max-width:520px}
+@media(min-width:900px){
+  .hwrap{display:grid;grid-template-columns:1.05fr .95fr;max-width:1180px;margin:0 auto;align-items:center}
+  .hph{order:2;aspect-ratio:4/5;max-height:none;height:calc(100vh - 58px);min-height:560px}
+  .htx{order:1;padding:60px 48px 60px max(20px,env(safe-area-inset-left))}
+}
 
 /* Билет */
 .ticket{text-decoration:none;position:relative;margin-top:28px;max-width:520px;background:#F6EFE2;color:var(--ink);border-radius:8px;display:grid;grid-template-columns:1fr 112px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
@@ -130,7 +134,7 @@ h2 em,h1 em{font-style:italic}
 .tix{background:var(--ink);color:#F6EFE2}
 .tix h2 em{color:var(--goldL)}
 .tix .lede{color:#D9CCB4}
-.tcards{display:grid;gap:14px;margin-top:28px}
+.tcards{display:grid;gap:14px;margin-top:28px;max-width:520px}
 .tc{border-radius:8px;overflow:hidden;background:#F6EFE2;color:var(--ink);position:relative}
 .tc .hd{padding:20px 20px 16px;border-bottom:2px dashed rgba(27,20,20,.2);display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .tc .hd small{display:block;font:700 11.5px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--wine)}
@@ -219,13 +223,11 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 .bar .btn{padding:14px 18px;font-size:12px;white-space:nowrap}
 
 @media(min-width:900px){
-  .hero .wrap{padding-top:150px;padding-bottom:70px}
   .facts .wrap{grid-template-columns:repeat(3,1fr);gap:30px}
   .facts .it{grid-template-columns:1fr;border-bottom:0;padding-bottom:0}
   .tiles{grid-template-columns:1fr 1fr}
   .days{grid-template-columns:repeat(3,1fr)}
   .fgrid{grid-template-columns:repeat(4,1fr)}
-  .tcards{grid-template-columns:1fr 1fr;align-items:start}
   .au .in{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;max-width:1080px;margin:0 auto}
   .stack{grid-template-columns:1fr 1fr}
   .bar{display:none}
@@ -242,16 +244,17 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 </header>
 
 <section class="hero" id="top">
-  <div class="ph"><img src="images/malena-hero-v4-m.jpg" alt="" fetchpriority="high"></div>
-  <div class="wrap">
-    <div class="when"><span class="hot">20–22 ноября</span><span>3 вечера в Zoom</span></div>
-    <h1 id="hH">Новый SMM: <em>3&nbsp;вечера с&nbsp;ИИ</em></h1>
-    <p class="sub" id="hS">Как сегодня один человек с телефоном и ИИ приводит клиентов себе или другим.</p>
-    <a class="ticket" href="#bilety" data-buy="ticket" aria-label="Купить билет за 15 долларов">
-      <div class="l"><small>Билет · место в эфире</small><b>Три вечера с Маленой Покладовой</b><span>19:00 Кишинёв · 9:00 Лос-Анджелес</span></div>
-      <div class="r"><s>$50</s><b>$15</b><i>Купить</i></div>
-    </a>
-    <div class="after"><span>До старта <b class="cd" data-cd>—</b></span><span>Записи эфиров остаются до следующего дня</span></div>
+  <div class="hwrap">
+    <div class="hph"><img src="images/malena-hero-v4-m.jpg" alt="Малена Покладова" fetchpriority="high"></div>
+    <div class="wrap htx">
+      <div class="when"><span class="hot">20–22 ноября</span><span>Zoom · 3 вечера</span></div>
+      <h1 id="hH">Новый SMM: <em>3&nbsp;вечера с&nbsp;ИИ</em></h1>
+      <p class="sub" id="hS">Как один человек с телефоном и ИИ приводит клиентов себе или другим.</p>
+      <a class="ticket" href="#bilety" data-buy="ticket" aria-label="Купить билет за 15 долларов">
+        <div class="l"><small>Билет на интенсив</small><b>Малена Покладова</b><span>19:00 Кишинёв · 9:00 Лос-Анджелес</span></div>
+        <div class="r"><b>$15</b><i>Купить</i></div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -308,7 +311,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
           <li>Кейс студии в Сан-Диего: реклама окупилась в 10 раз</li>
         </ul>
         <div class="take"><b>Заберёте:</b> расчёт, сколько стоит и приносит один ваш клиент</div>
-        <p class="secret">В конце розыгрыш среди тех, кто был все три вечера.</p></div>
+        </div>
       </article>
     </div>
   </div>
@@ -320,7 +323,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     <div class="fgrid">
       <div class="fbox"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="1.5"/><path d="M16 10l5-3v10l-5-3z"/></svg></div><b>Живой эфир в Zoom</b><span>Около 90 минут, вопросы в чате</span></div>
       <div class="fbox"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><b>19:00 по Кишинёву</b><span>9:00 по Лос-Анджелесу, 12:00 по Нью-Йорку</span></div>
-      <div class="fbox"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/></svg></div><b>Записи</b><span>До следующего дня, у VIP 24 часа после финала</span></div>
+      <div class="fbox"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/></svg></div><b>Записи</b><span>Доступны до следующего дня</span></div>
       <div class="fbox"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></div><b>Канал в Telegram</b><span>Материалы и ссылки на эфиры</span></div>
     </div>
   </div>
@@ -328,31 +331,19 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 
 <section class="tix pad" id="bilety">
   <div class="wrap">
-    <h2>Выберите <em>свой билет</em></h2>
+    <h2>Билет на <em>три вечера</em></h2>
     <p class="lede">После оплаты придёт письмо с именным билетом и ссылками на эфиры.</p>
-    <div class="tcards">
+    <div class="tcards one">
       <div class="tc">
         <div class="hd"><div><small>Билет</small><b>Три вечера</b></div><div class="pr"><b>$15</b></div></div>
         <div class="bd"><ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Три живых эфира с Маленой 20–22 ноября</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Записи до следующего дня</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Канал участников в Telegram</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Участие в розыгрыше</span></li>
-        </ul>
+          </ul>
         <button class="btn btn-w" type="button" data-buy="ticket">Купить билет · $15</button></div>
       </div>
-      <div class="tc vip">
-        <div class="hd"><div><small>VIP</small><b>Три вечера и материалы</b></div><div class="pr"><b>$50</b></div></div>
-        <div class="bd"><ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Всё из обычного билета</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Записи всех эфиров на 24 часа после финала</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Пакет шаблонов второго вечера: сценарии Reels, банк хуков, контент-план с промптом</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Документ «Разбор цифр» третьего вечера: что влияет на каждую цифру и что делать</span></li>
-        </ul>
-        <button class="btn btn-g" type="button" data-buy="vip">Купить VIP · $50</button>
-        <p class="note">$35 из VIP засчитываются в оплату обучения, если решите учиться дальше.</p></div>
       </div>
-    </div>
     <p class="safe">Оплата картой через защищённую страницу. Вопросы: Telegram @Malena_Pocladova_Zabota</p>
   </div>
 </section>
@@ -386,19 +377,11 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   </div>
 </section>
 
-<section class="gift pad">
-  <div class="wrap">
-    <h2>Розыгрыш <em>в прямом эфире</em></h2>
-    <p>В конце третьего вечера разыгрываем приз среди тех, кто был на всех трёх эфирах и опубликовал свой ролик по итогам второго вечера.</p>
-    <div class="conds"><span>Все 3 вечера</span><span>Опубликованный ролик</span><span>Розыгрыш 22 ноября</span></div>
-  </div>
-</section>
-
 <section class="faq pad">
   <div class="wrap">
     <h2>Частые вопросы</h2>
     <details><summary>Мне подойдёт, если я совсем с нуля?</summary><p>Да. Все примеры разбираем по шагам, а ИИ помогает с тем, что раньше требовало опыта: сценарии, тексты, план.</p></details>
-    <details><summary>Не смогу быть в эфире в это время</summary><p>Записи доступны до следующего дня. С VIP-билетом все записи открыты ещё 24 часа после финала.</p></details>
+    <details><summary>Не смогу быть в эфире в это время</summary><p>Записи каждого эфира доступны до следующего дня.</p></details>
     <details><summary>Что нужно для участия?</summary><p>Телефон или компьютер и Zoom. Для практики пригодится ваш аккаунт в Instagram, но можно и без него.</p></details>
     <details><summary>Как я получу ссылки?</summary><p>Сразу после оплаты придёт письмо с билетом, ссылкой на канал в Telegram и на эфиры. Перед каждым вечером пришлём напоминание.</p></details>
     <details><summary>Будет ли продажа на интенсиве?</summary><p>В третий вечер расскажем об обучении New SMM для тех, кто захочет продолжить. Покупать ничего не нужно, интенсив полезен сам по себе.</p></details>
@@ -412,7 +395,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     <p>Начинаем в пятницу в 19:00 по Кишинёву, 9:00 по Лос-Анджелесу.</p>
     <a class="ticket" href="#bilety" data-buy="ticket" aria-label="Купить билет за 15 долларов">
       <div class="l"><small>Билет · место в эфире</small><b>Новый SMM: 3 вечера с ИИ</b><span>До старта <span class="cd" data-cd>—</span></span></div>
-      <div class="r"><s>$50</s><b>$15</b><i>Купить</i></div>
+      <div class="r"><b>$15</b><i>Купить</i></div>
     </a>
   </div>
 </section>
@@ -421,7 +404,6 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   <div class="wrap">
     <span>© 2026 Personal Growth Lab LLC · Школа Малены Покладовой</span>
     <span><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms</a> · <a href="https://instagram.com/malenapocladova" target="_blank" rel="noopener">@malenapocladova</a></span>
-    <span>Personal Growth Lab LLC · 3585 Aero Ct, San Diego, CA 92123 · lev@pgl.marketing</span>
   </div>
 </footer>
 
@@ -430,8 +412,8 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 <script>
 (function(){
   /* Ссылки оплаты GHL. Пока пусто, кнопки ведут к блоку билетов. */
-  var PAY={ ticket:'', vip:'' };
-  var PRICE={ ticket:15, vip:50 };
+  var PAY={ ticket:'' };
+  var PRICE={ ticket:15 };
   var START=Date.UTC(2026,10,20,17,0,0); /* 20.11.2026 19:00 Кишинёв = 17:00 UTC */
 
   function q(n){ try{ return new URLSearchParams(location.search).get(n)||''; }catch(e){ return ''; } }
