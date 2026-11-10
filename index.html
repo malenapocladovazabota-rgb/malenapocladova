@@ -905,6 +905,61 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 </style>
 <script>window.__ck=function(n){var m=document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)'));return m?decodeURIComponent(m[1]):'';};</script>
 <style>/* чат-виджет GHL в правом нижнем углу: кнопку панели сдвигаем левее */@media (max-width:760px){#sticky .in{margin-right:68px}}footer .contact{flex-basis:100%}.hero.vhero{height:auto!important;min-height:0!important;overflow:visible}</style>
+<style id="rf">/* Освежение 10.11.2026: те же цвета и шрифты, меньше пестроты, легче читать.
+   Подписи крупнее и спокойнее, без зачёркиваний, бордо только как акцент,
+   единые скругления, фото под тёмными блоками приглушены. */
+:root{--rf-gold:#E3BE73;--rf-cream:#F6EFE2}
+body{-webkit-font-smoothing:antialiased}
+p{line-height:1.62}
+
+/* Подписи моноширинным шрифтом: крупнее, меньше разрядка */
+.eyebrow{font-size:12px!important;letter-spacing:1.6px!important;margin-bottom:14px}
+.hero .note,.e-cta>span,.case small,.wc .k,.qnum,.e-author p.mono{font-size:12px!important;letter-spacing:.6px!important}
+.hero .note{color:#D9CCB4!important;line-height:1.6}
+
+/* Первый экран: убираем повтор логотипа, воздух вокруг заголовка */
+.hero.vhero .wm{display:none}
+.hero.vhero .vh1{margin-top:4px;line-height:1.1;text-wrap:balance}
+.hero.vhero .vh1 em{color:var(--rf-gold)}
+.hero.vhero .sub{font-size:16.5px;line-height:1.6;color:#E9E0CF}
+
+/* Цифры доверия: подписи обычным текстом */
+.e-proof{padding:32px 0!important}
+.e-proof .row{gap:22px!important}
+.e-proof span{font-family:var(--sans,inherit)!important;text-transform:none!important;letter-spacing:0!important;font-size:14.5px!important;color:var(--ink2)!important}
+
+/* «Три вещи»: вместо трёх сплошных бордовых плит — тёмные карточки с золотой линией */
+.e-dark .bgph img{opacity:.22!important}
+.e-dark .bgph::after{background:linear-gradient(180deg,rgba(27,20,20,.7),rgba(27,20,20,.9))!important}
+.e-card{background:rgba(246,239,226,.05)!important;border:1px solid rgba(234,215,176,.18);border-left:3px solid var(--rf-gold);border-radius:6px!important;box-shadow:none!important;padding:24px 22px!important}
+.e-card .was{text-decoration:none!important;color:#BFAE94!important;font-size:12px!important;letter-spacing:.6px!important}
+.e-card h3{font-size:21px!important;line-height:1.3!important;margin-top:10px!important}
+.e-card h3 em{color:var(--rf-gold)!important}
+.e-dark p,.e-dark .lede{color:#E2D8C6!important}
+
+/* Блок «Кто ведёт»: светлее и спокойнее */
+.e-author p{font-size:16px!important;line-height:1.65!important;color:#F1E7D6!important}
+.e-author p.mono{font-family:var(--sans,inherit)!important;color:#E3D0B8!important;line-height:1.6!important}
+.e-author h2 em{color:var(--rf-gold)!important}
+
+/* Ученицы и вопросы: ровные карточки */
+.case{border-radius:6px!important}
+.case p{font-size:15px!important;line-height:1.55}
+.case .num span{font-size:13.5px!important}
+.faq details{border-radius:6px!important}
+.faq summary{font-size:17.5px!important;line-height:1.35}
+
+/* Квиз и форма: единые скругления, крупнее варианты */
+.form-wrap{border-radius:8px!important}
+.qopts button{border-radius:8px!important;font-size:16px!important}
+.btn{border-radius:4px}
+
+/* Меньше служебного текста (комментарий Льва 10.11): всё, что повторяет заголовок
+   или видно из интерфейса, убираем. */
+.eyebrow{display:none!important}
+.hero .note,.e-cta>span,.e-author p.mono{display:none!important}
+.hero.vhero .vh1{margin-top:0}
+</style>
 </head>
 <body>
 
@@ -960,7 +1015,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
         <button type="button" class="vplay" aria-label="Смотреть урок со звуком"><s><u></u>УРОК · 10 МИН</s><i></i><b>Нажмите, чтобы посмотреть</b></button>
       </div>
       <div class="cta" style="margin-top:18px">
-        <a class="btn btn-wine" href="/razbor#razbor"><span>После урока: записаться на разбор <svg class="dn" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <a class="btn btn-wine" href="/razbor#razbor"><span>Записаться на разбор <svg class="dn" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
       </div>
       <div class="note">Разбор бесплатный · 30 минут в Zoom · ни к чему не обязывает</div>
     </div>
