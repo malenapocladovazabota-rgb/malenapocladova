@@ -22,6 +22,18 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1521940319314090');
+/* Пиксель (10.11): одна заявка = одно событие Lead с eventID, тесты и повторы не считаем.
+   QualifiedLead: только предприниматели, блогеры и те, кто уже ведёт клиентов. */
+window.__pxIds=function(){ var o={}; try{ document.cookie.split('; ').forEach(function(c){ var p=c.split('='); if(p[0]==='_fbp') o.fbp=p[1]; if(p[0]==='_fbc') o.fbc=p[1]; }); if(!o.fbc){ var fc=new URLSearchParams(location.search).get('fbclid'); if(fc) o.fbc='fb.1.'+Date.now()+'.'+fc; } }catch(e){} return o; };
+window.__pxLead=function(r,q,name){ try{
+  if(!window.fbq||!r||!r.ok||r.test||r.quiet||r.magnet) return;
+  var id=String(r.cid||r.lead_num||Date.now()), k='pxl_'+id;
+  try{ if(localStorage.getItem(k)) return; localStorage.setItem(k,'1'); }catch(e){}
+  fbq('track','Lead',{content_name:name},{eventID:'lead-'+id});
+  var j=(q&&q.job)||'';
+  if(/Предприниматель|свой блог|соцсети клиентам/.test(j)) fbq('trackCustom','QualifiedLead',{content_name:name,job:j},{eventID:'qlead-'+id});
+}catch(e){} };
+
 fbq('track','PageView');
 fbq('track','ViewContent',{content_name:'new-smm-stories',content_category:'course',content_type:'product'});
 </script>
@@ -685,11 +697,11 @@ var VSL=(function(){
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return bad('Проверьте почту, без неё письмо не дойдёт.',form.email);
     err.style.display='none'; send.disabled=true; send.textContent='Отправляем…';
     var igRaw=form.ig.value.trim(), igm=igRaw.match(/instagram\.com\/([A-Za-z0-9._]{1,30})/i), ig=(igm?igm[1]:igRaw.replace(/^@+/,'')).replace(/[^A-Za-z0-9._]/g,'').slice(0,30);
-    var body={ sms_ok:!!(document.getElementById('smsok')||{}).checked, name:name, email:email, phone:phone, ig:ig, src:'stories', ab:'vsl-'+VSL, track:isBiz()?'biz':(hasClients()?'pro':(quiz.projects?'start':'')), quiz:quiz, utm:Object.assign({},utm,{vsl:VSL,sid:SID}), page:location.pathname, tz:zone() };
+    var body={ sms_ok:!!(document.getElementById('smsok')||{}).checked, name:name, email:email, phone:phone, ig:ig, src:'stories', ab:'vsl-'+VSL, track:isBiz()?'biz':(hasClients()?'pro':(quiz.projects?'start':'')), quiz:quiz, utm:Object.assign({},utm,{vsl:VSL,sid:SID},window.__pxIds?__pxIds():{}), page:location.pathname, tz:zone() };
     fetch(FN,{ method:'POST', headers:H, body:JSON.stringify(body) }).then(function(r){ return r.json(); }).catch(function(){ return {}; })
       .then(function(res){
         track(res && res.ok ? 'lead_ok' : 'lead_fail', iForm+1);
-        if(res && res.ok && window.fbq) fbq('track','Lead',{content_name:'new-smm-razbor',page:'stories'});
+        if(res && res.ok && window.__pxLead) __pxLead(res, quiz, 'new-smm-razbor');
         who={ name:name, email:email, phone:phone, cid:(res&&res.cid)||'' };
         region=(res&&(res.route||res.region)==='eu')?'eu':'us';
         var u=new URL((res&&res.booking_url)||document.getElementById('book').href); u.searchParams.set('first_name',name); u.searchParams.set('email',email); u.searchParams.set('phone',phone);

@@ -114,6 +114,18 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1521940319314090');
+/* Пиксель (10.11): одна заявка = одно событие Lead с eventID, тесты и повторы не считаем.
+   QualifiedLead: только предприниматели, блогеры и те, кто уже ведёт клиентов. */
+window.__pxIds=function(){ var o={}; try{ document.cookie.split('; ').forEach(function(c){ var p=c.split('='); if(p[0]==='_fbp') o.fbp=p[1]; if(p[0]==='_fbc') o.fbc=p[1]; }); if(!o.fbc){ var fc=new URLSearchParams(location.search).get('fbclid'); if(fc) o.fbc='fb.1.'+Date.now()+'.'+fc; } }catch(e){} return o; };
+window.__pxLead=function(r,q,name){ try{
+  if(!window.fbq||!r||!r.ok||r.test||r.quiet||r.magnet) return;
+  var id=String(r.cid||r.lead_num||Date.now()), k='pxl_'+id;
+  try{ if(localStorage.getItem(k)) return; localStorage.setItem(k,'1'); }catch(e){}
+  fbq('track','Lead',{content_name:name},{eventID:'lead-'+id});
+  var j=(q&&q.job)||'';
+  if(/Предприниматель|свой блог|соцсети клиентам/.test(j)) fbq('trackCustom','QualifiedLead',{content_name:name,job:j},{eventID:'qlead-'+id});
+}catch(e){} };
+
 fbq('track','PageView');
 fbq('track','ViewContent',{content_name:'new-smm',content_category:'course',content_type:'product'});
 </script>
@@ -1632,7 +1644,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     /* Инстаграм необязательный: берём ник из @ника или из ссылки на профиль. */
     var igRaw=(form.ig&&form.ig.value||'').trim(), igm=igRaw.match(/instagram\.com\/([A-Za-z0-9._]{1,30})/i), ig=(igm?igm[1]:igRaw.replace(/^@+/,'')).replace(/[^A-Za-z0-9._]/g,'').slice(0,30);
     quiz.vsl=VSL; quiz.sid=ZSID;
-    var body={ sms_ok:!!(document.getElementById('smsok')||{}).checked, name:name, email:email, phone:phone, country:country.c, ig:ig, src:(ZAPIS?'zapis':'kurs'), ab:'vsl-'+VSL, track:lane, quiz:quiz, utm:Object.assign({},utm,{vsl:VSL,sid:ZSID,h:window.__hab,hsid:window.__hsid}), page:location.pathname, tz:zone() };
+    var body={ sms_ok:!!(document.getElementById('smsok')||{}).checked, name:name, email:email, phone:phone, country:country.c, ig:ig, src:(ZAPIS?'zapis':'kurs'), ab:'vsl-'+VSL, track:lane, quiz:quiz, utm:Object.assign({},utm,{vsl:VSL,sid:ZSID,h:window.__hab,hsid:window.__hsid},window.__pxIds?__pxIds():{}), page:location.pathname, tz:zone() };
     fetch(FN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK}, body:JSON.stringify(body) })
       .then(function(r){ return r.json(); })
       .catch(function(){ return {ok:false}; })
@@ -1644,7 +1656,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
         document.getElementById('book').href=u.toString();
         /* Пиксель учим только на заявках, которые сервер действительно принял.
            Иначе кампании оптимизируются на лидов, которых у нас нет. */
-        if(d && d.ok && window.fbq) fbq('track','Lead',{content_name:'new-smm-razbor'});
+        if(d && d.ok && window.__pxLead) __pxLead(d, quiz, 'new-smm-razbor');
         /* Письмо человек получит сам. На странице остаётся один шаг: время. */
         who={ name:name, email:email, phone:phone, cid:(d&&d.cid)||'', country:country.c };
         /* Кого именно подставил сервер, он и говорит в route. Регион человека
