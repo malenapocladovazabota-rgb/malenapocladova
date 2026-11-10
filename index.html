@@ -960,6 +960,76 @@ p{line-height:1.62}
 .hero .note,.e-cta>span,.e-author p.mono{display:none!important}
 .hero.vhero .vh1{margin-top:0}
 </style>
+<style id="nb">
+/* Блоки под первым экраном, вариант «Контраст» (10.11.2026). Префикс nb- */
+.nb-pad{padding:60px 0}
+.nb h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,6.4vw,46px);line-height:1.12;letter-spacing:-.4px;text-wrap:balance}
+.nb h2 em{font-style:italic}
+.nb-btn{display:block;text-align:center;font:700 13px var(--mono);letter-spacing:1.4px;text-transform:uppercase;padding:17px 20px;text-decoration:none;border-radius:4px;max-width:420px}
+.nb-btn.w{background:var(--wine);color:#fff}
+.nb-btn.c{background:#F6EFE2;color:var(--wine)}
+.nb-proof{background:var(--ink);color:#F6EFE2;padding:34px 0}
+.nb-proof .wrap{display:grid;gap:18px}
+.nb-proof .it{display:grid;grid-template-columns:104px 1fr;align-items:baseline;gap:12px;padding-bottom:16px;border-bottom:1px solid rgba(246,239,226,.14)}
+.nb-proof .it:last-child{border-bottom:0;padding-bottom:0}
+.nb-proof b{font:500 42px/1 var(--serif);color:#E3BE73}
+.nb-proof span{font-size:15.5px;color:#E2D8C6;line-height:1.45}
+.nb-three{background:var(--cream,#FBF7EE)}
+.nb-three h2 em{color:var(--wine)}
+.nb-tiles{display:grid;gap:12px;margin:28px 0 24px}
+.nb-tile{background:#fff;padding:22px 20px;border:1px solid rgba(27,20,20,.12);border-radius:6px;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.nb-ic{width:44px;height:44px;border-radius:50%;background:rgba(110,30,43,.08);display:grid;place-items:center;color:var(--wine)}
+.nb-ic svg{width:22px;height:22px}
+.nb-tag{display:inline-block;font:700 11px var(--mono);letter-spacing:1px;text-transform:uppercase;color:#fff;background:var(--wine);padding:5px 8px;border-radius:3px}
+.nb-tile h3{font:600 20px/1.3 var(--serif);margin-top:10px}
+.nb-tile p{font-size:15px;color:var(--ink2);margin-top:6px;line-height:1.55}
+.nb-author{background:var(--ink);color:#fff}
+.nb-author .ph{position:relative;max-width:620px;margin:0 auto;aspect-ratio:3/4;overflow:hidden}
+.nb-author .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.nb-author .ph::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,20,0) 45%,rgba(27,20,20,.94) 100%)}
+.nb-author .nm{position:absolute;left:22px;right:22px;bottom:22px;z-index:1}
+.nb-author .nm h2{color:#fff}
+.nb-author .nm h2 em{color:#E3BE73}
+.nb-author .nm p{font-size:14.5px;color:#E2D8C6;margin-top:6px}
+.nb-author .tx{padding-top:28px;padding-bottom:60px}
+.nb-author .tx p{font-size:16.5px;color:#E9E0CF;line-height:1.65;max-width:560px}
+.nb-author .tx p+p{margin-top:12px}
+.nb-author .nb-btn{margin-top:26px}
+.nb-cases{background:var(--paper,#F5EFE3)}
+.nb-cases h2 em{color:var(--wine)}
+.nb-stack{display:grid;gap:12px;margin-top:28px}
+.nb-st{display:grid;grid-template-columns:104px 1fr;background:#fff;border:1px solid rgba(27,20,20,.12);border-radius:6px;overflow:hidden}
+.nb-st img{width:104px;height:100%;min-height:128px;object-fit:cover}
+.nb-st .c{padding:16px}
+.nb-st b{display:block;font:500 26px/1 var(--serif);color:var(--wine)}
+.nb-st small{display:block;font-size:13.5px;color:var(--ink2);margin-top:6px;line-height:1.4}
+.nb-st p{font-size:14.5px;margin-top:10px;font-weight:600;color:var(--ink)}
+.nb-note{font-size:13px;color:var(--muted);margin-top:16px}
+.nb-faq{background:var(--cream,#FBF7EE)}
+.nb-faq details{background:#fff;border:1px solid rgba(27,20,20,.12);border-radius:6px;margin-top:10px;overflow:hidden}
+.nb-faq details:first-of-type{margin-top:24px}
+.nb-faq summary{list-style:none;cursor:pointer;padding:17px 58px 17px 18px;font:600 16.5px/1.4 var(--sans);position:relative}
+.nb-faq summary::-webkit-details-marker{display:none}
+.nb-faq summary::after{content:'+';position:absolute;right:0;top:0;bottom:0;width:46px;display:grid;place-items:center;background:var(--wine);color:#fff;font:400 22px var(--sans)}
+.nb-faq details[open] summary::after{content:'–'}
+.nb-faq details p{padding:0 18px 18px;font-size:15.5px;color:var(--ink2);line-height:1.6}
+.nb-final{position:relative;color:#fff;overflow:hidden;background:var(--ink)}
+.nb-final .bg{position:absolute;inset:0;opacity:.35}
+.nb-final .bg img{width:100%;height:100%;object-fit:cover}
+.nb-final .wrap{position:relative}
+.nb-final h2{color:#fff}
+.nb-final h2 em{color:#E3BE73}
+.nb-final p{color:#E2D8C6;font-size:16px;margin-top:14px;max-width:520px;line-height:1.6}
+.nb-final .nb-btn{margin-top:26px}
+@media(min-width:900px){
+ .nb-proof .wrap{grid-template-columns:repeat(3,1fr);gap:30px}
+ .nb-proof .it{border-bottom:0;padding-bottom:0;grid-template-columns:1fr}
+ .nb-tiles{grid-template-columns:repeat(3,1fr)}
+ .nb-tile{grid-template-columns:1fr}
+ .nb-author .in{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;max-width:1100px;margin:0 auto}
+ .nb-stack{grid-template-columns:repeat(3,1fr)}
+}
+</style>
 </head>
 <body>
 
@@ -1036,84 +1106,65 @@ p{line-height:1.62}
 </section>
 
 <!-- ═══ ДОКАЗАТЕЛЬСТВА ОДНОЙ СТРОКОЙ ═══ -->
-<section class="e-proof" aria-label="Коротко о школе">
+<section class="nb nb-proof" aria-label="Коротко о школе">
   <div class="wrap">
-    <div class="row">
-      <div class="rv d1"><b>×10</b><span>окупаемость рекламы у клиента агентства</span></div>
-      <div class="rv d2"><b>200+</b><span>женщин закончили обучение</span></div>
-      <div class="rv d3"><b>7 лет</b><span>Малена зарабатывает только на соцсетях</span></div>
+    <div class="it"><b>×10</b><span>окупаемость рекламы у клиента агентства</span></div>
+    <div class="it"><b>200+</b><span>учениц закончили обучение</span></div>
+    <div class="it"><b>7 лет</b><span>Малена работает только в соцсетях</span></div>
+  </div>
+</section>
+
+<section class="nb nb-three nb-pad" id="chto">
+  <div class="wrap">
+    <h2>Три вещи, которые есть <em>только здесь</em></h2>
+    <div class="nb-tiles">
+      <div class="nb-tile"><div class="nb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></div><div><span class="nb-tag">Искусственный интеллект</span><h3>Нейросеть, собранная под вас</h3><p>Знает вашего клиента и забирает рутину: идеи, сценарии, тексты.</p></div></div>
+      <div class="nb-tile"><div class="nb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 18h6a3 3 0 0 0 0-6h-2a3 3 0 0 1 0-6h6"/></svg></div><div><span class="nb-tag">Путь клиента</span><h3>От первого разговора до продления договора</h3><p>На живом проекте агентства, а не на охватах в отчёте.</p></div></div>
+      <div class="nb-tile"><div class="nb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3z"/></svg></div><div><span class="nb-tag">Рынок США</span><h3>Методика американского рынка</h3><p>И выход на заказчиков, которые платят в долларах.</p></div></div>
+    </div>
+    <a class="nb-btn w" href="/razbor#razbor">Записаться на разбор</a>
+  </div>
+</section>
+
+<section class="nb nb-author" id="avtor">
+  <div class="in">
+    <div class="ph"><img src="images/malena-b2.jpg" alt="Малена Покладова" loading="lazy" width="1200" height="1800">
+      <div class="nm"><h2>Малена <em>Покладова</em></h2><p>Агентство PGL Marketing, Калифорния</p></div></div>
+    <div class="wrap tx">
+      <p>Ведёт американский бизнес прямо сейчас: адвокату 1,7 миллиона просмотров за месяц, студии красоты полную запись за 30 дней и рекламу, которая окупается в восемь раз.</p>
+      <p>Учит той же системе, по которой работает агентство. По ней же переехала в Америку и ни дня не работала в найме.</p>
+      <a class="nb-btn c" href="/razbor#razbor">Записаться на разбор</a>
     </div>
   </div>
 </section>
 
-<!-- ═══ ЧТО ВНУТРИ ═══ -->
-<section class="e-dark" id="chto">
-  <div class="bgph" aria-hidden="true"><img src="images/malena-b4-blur.jpg" alt="" loading="lazy"></div>
+<section class="nb nb-cases nb-pad" id="ucenicy">
   <div class="wrap">
-    <div class="eyebrow rv"><i></i>Что вы получите</div>
-    <h2 class="rv d1">Три вещи, которые <em>вместе есть только здесь</em></h2>
-    <div class="e-cards">
-      <div class="e-card rv d1"><div class="was">Вместо «пользуюсь нейросетью»</div><h3>Искусственный интеллект, <em>собранный под вас</em>: знает вашего клиента и забирает всю механику</h3></div>
-      <div class="e-card rv d2"><div class="was">Вместо охватов в отчёте</div><h3>Путь ведения клиента от первого разговора <em>до продления договора</em>, на живом проекте агентства</h3></div>
-      <div class="e-card rv d3"><div class="was">Вместо локальных цен</div><h3>Методика <em>американского рынка</em> и выход на заказчиков, которые платят в долларах</h3></div>
+    <h2>Ученицы и <em>их цифры</em></h2>
+    <div class="nb-stack">
+      <div class="nb-st"><img src="images/club/otzyvy/face-toma.jpg" alt="Тома" loading="lazy"><div class="c"><b>1,4M</b><small>просмотров у ролика её клиентки</small><p>Тома · постоянный проект и съёмки</p></div></div>
+      <div class="nb-st"><img src="images/club/otzyvy/face-loredana.jpg" alt="Лоредана" loading="lazy"><div class="c"><b>4 клиента</b><small>и крупный проект из Турции</small><p>Лоредана · собирает команду</p></div></div>
+      <div class="nb-st"><img src="images/club/otzyvy/face-anastasiya.jpg" alt="Анастасия" loading="lazy"><div class="c"><b>+1 200</b><small>подписчиков за неделю у клиента</small><p>Анастасия · ведёт клиентов</p></div></div>
     </div>
-    <p class="lede rv d3" style="margin-top:26px">На разборе покажем клиента, у которого реклама окупается в десять раз, и расскажем, как встроились в его работу так, что работаем с ним на постоянной основе за высокий чек.</p>
-    <div class="e-cta rv"><a class="btn btn-wine" href="/razbor#razbor"><span>Записаться на разбор</span></a><span>Подходит и с нуля, и тем, кто уже в сфере</span></div>
+    <p class="nb-note">С разрешения учениц, цифры с их аккаунтов.</p>
   </div>
 </section>
 
-<!-- ═══ АВТОР ═══ -->
-<section class="e-author" id="avtor">
+<section class="nb nb-faq nb-pad" id="faq">
   <div class="wrap">
-    <div class="grid">
-      <div class="one rv"><div class="p"><img src="images/malena-b2.jpg" alt="Малена Покладова" loading="lazy" width="1200" height="1800"></div></div>
-      <div>
-        <div class="eyebrow rv"><i></i>Кто ведёт</div>
-        <h2 class="rv d1">Малена <em>Покладова</em></h2>
-        <p class="mono rv d2">Калифорния · агентство PGL Marketing · семь лет в продвижении · четыре года обучает</p>
-        <p class="rv d2">Ведёт американский бизнес прямо сейчас: студии, клиники, рестораны, эксперты. Приводит им миллионные просмотры и стабильный поток клиентов: адвокату 1,7 миллиона просмотров за месяц, студии красоты полную запись за 30 дней и рекламу, которая окупается в восемь раз. Всё это по системе, которую она собрала сама и которой учит.</p>
-        <p class="rv d3">По этой же методике переехала в Америку и ни одного дня не работала здесь в найме: только свои клиенты и своё агентство.</p>
-        <a class="btn btn-line rv d3" href="/razbor#razbor"><span>Записаться на разбор</span></a>
-      </div>
-    </div>
+    <h2>Частые вопросы</h2>
+    <details><summary>Сколько стоит?</summary><p>Зависит от формата участия, поэтому цену называем на разборе, когда понимаем вашу ситуацию. Есть рассрочка.</p></details>
+    <details><summary>Я совсем с нуля. Подойдёт?</summary><p>Да. Для новичков есть свой путь от нуля до первого клиента с куратором на каждом задании.</p></details>
+    <details><summary>Когда старт и сколько времени нужно?</summary><p>Поток стартует в ноябре. Эфиры утром по Калифорнии и вечером по Европе, все остаются в записи.</p></details>
   </div>
 </section>
 
-<!-- ═══ УЧЕНИЦЫ ═══ -->
-<section class="e-cases" id="ucenicy">
+<section class="nb nb-final nb-pad">
+  <div class="bg"><img src="images/malena-b4-blur.jpg" alt="" loading="lazy"></div>
   <div class="wrap">
-    <div class="eyebrow rv"><i></i>Ученицы</div>
-    <h2 class="rv d1">Реальные ученицы, <em>реальные цифры</em></h2>
-    <div class="cases" style="margin-top:26px">
-      <div class="case rv d1"><img src="images/club/otzyvy/face-toma.jpg" alt="Тома" loading="lazy"><div><b>Тома</b><small>ведёт клиентов</small><div class="num">1,4M просмотров<span>набрал ролик её клиентки</span></div></div><p>Работает стабильно: постоянный проект плюс разовые съёмки.</p></div>
-      <div class="case rv d2"><img src="images/club/otzyvy/face-loredana.jpg" alt="Лоредана" loading="lazy"><div><b>Лоредана</b><small>собирает команду</small><div class="num">4 клиента<span>и крупный проект из Турции</span></div></div><p>Проектов стало больше, чем рук, поэтому набирает свою команду.</p></div>
-      <div class="case rv d3"><img src="images/club/otzyvy/face-anastasiya.jpg" alt="Анастасия" loading="lazy"><div><b>Анастасия</b><small>ведёт клиентов</small><div class="num">+1 200<span>подписчиков за неделю у клиента</span></div></div><p>Результат на чужом аккаунте, за который платят: то, чему учим.</p></div>
-    </div>
-    <p class="note">Истории опубликованы с разрешения учениц, цифры сняты с их аккаунтов.</p>
-  </div>
-</section>
-
-<!-- ═══ ВОПРОСЫ ═══ -->
-<section class="faq" id="faq">
-  <div class="wrap">
-    <div class="eyebrow rv"><i></i>Вопросы</div>
-    <h2 class="rv d1">Что спрашивают <em>перед разбором</em></h2>
-    <div style="margin-top:26px">
-      <details class="glass rv d1"><summary>Сколько стоит?</summary><p>Зависит от формата участия, поэтому цену называем на разборе, когда понимаем вашу ситуацию. Есть рассрочка.</p></details>
-      <details class="glass rv d2"><summary>Я совсем с нуля, без аккаунта и опыта. Подойдёт?</summary><p>Да. Для новичков есть свой вход: путь от нуля до первого клиента с куратором на каждом задании. На разборе поймём, с чего вам начинать.</p></details>
-      <details class="glass rv d1"><summary>Когда старт и сколько времени занимает?</summary><p>Поток стартует в ноябре. Эфиры утром по Калифорнии и вечером по Европе, все остаются в записи, так что подстроить под работу и семью получается.</p></details>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ ФИНАЛ ═══ -->
-<section class="final">
-  <div class="wrap">
-    <div class="in glass dark rv">
-      <h2 style="color:#F6EFE2">Сначала разбор, <em style="color:var(--gold)">потом обучение</em></h2>
-      <p>Тридцать минут в Zoom: разберём вашу текущую ситуацию, расскажем, как проходит обучение, и ответим на все вопросы. На обучение мы берём не всех, поэтому сначала знакомимся и вместе решаем, будет ли оно вам полезно.</p>
-      <a class="btn btn-wine" href="/razbor#razbor"><span>Записаться на разбор</span></a>
-    </div>
+    <h2>Сначала разбор, <em>потом обучение</em></h2>
+    <p>30 минут в Zoom. Разберём вашу ситуацию и вместе решим, подходит ли вам обучение. Берём не всех.</p>
+    <a class="nb-btn w" href="/razbor#razbor">Записаться на разбор</a>
   </div>
 </section>
 
