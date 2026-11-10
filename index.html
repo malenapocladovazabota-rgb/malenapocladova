@@ -113,6 +113,19 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1521940319314090');
+/* Пиксель (10.11): одна заявка = одно событие Lead с eventID, тесты и повторы не считаем.
+   QualifiedLead: только предприниматели, блогеры и те, кто уже ведёт клиентов. */
+window.__pxIds=function(){ var o={}; try{ document.cookie.split('; ').forEach(function(c){ var p=c.split('='); if(p[0]==='_fbp') o.fbp=p[1]; if(p[0]==='_fbc') o.fbc=p[1]; }); if(!o.fbc){ var fc=new URLSearchParams(location.search).get('fbclid'); if(fc) o.fbc='fb.1.'+Date.now()+'.'+fc; } }catch(e){} return o; };
+window.__pxOnce=function(k){ try{ if(localStorage.getItem('px_'+k)) return false; localStorage.setItem('px_'+k,'1'); }catch(e){} return true; };
+window.__pxLead=function(r,q,name){ try{
+  if(!window.fbq||!r||!r.ok||r.test||r.quiet||r.magnet) return;
+  var id=String(r.cid||r.lead_num||Date.now()), k='pxl_'+id;
+  try{ if(localStorage.getItem(k)) return; localStorage.setItem(k,'1'); }catch(e){}
+  fbq('track','Lead',{content_name:name},{eventID:'lead-'+id});
+  var j=(q&&q.job)||'';
+  if(/Предприниматель|свой блог|соцсети клиентам/.test(j)) fbq('trackCustom','QualifiedLead',{content_name:name,job:j},{eventID:'qlead-'+id});
+}catch(e){} };
+
 fbq('track','PageView');
 fbq('track','ViewContent',{content_name:'new-smm',content_category:'course',content_type:'product'});
 </script>
@@ -578,6 +591,41 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   *{animation:none!important;transition:none!important}
   .rv{opacity:1;transform:none}
 }
+
+.vcard{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#120a0b;box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
+.vcard video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#120a0b;display:block}
+.vcard .vpo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vcard .vplay{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:flex-end;padding:0 12px 12px 0!important;border:0;background:linear-gradient(0deg,rgba(0,0,0,.35),rgba(0,0,0,0) 60%);cursor:pointer;padding:0}
+.vcard .vplay i{width:58px;height:58px;border-radius:50%;background:rgba(122,34,50,.92);box-shadow:0 0 0 8px rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center}
+.vcard .vplay i:after{content:"";margin-left:5px;border-left:20px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent}
+.vcard .vplay b{position:absolute;left:12px;bottom:10px;font:600 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.08em;color:#fff;background:rgba(0,0,0,.45);padding:6px 8px;border-radius:8px}
+.vcard.open .vplay,.vcard.open .vpo{display:none}
+.vcard:not(.open) video{visibility:hidden}
+
+/* ── VSL в шапке ── */
+.hero.vhero{min-height:0;display:block;padding:26px 0 40px;background:radial-gradient(120% 80% at 70% 0%,#3a1820 0%,var(--ink) 60%)}
+.hero.vhero .wrap{padding-bottom:0;display:grid;gap:26px;align-items:center}
+.hero.vhero .vh1{font-size:clamp(30px,8.4vw,60px);line-height:1.06;letter-spacing:-.6px;text-transform:none;font-weight:500;margin-top:14px;max-width:760px}
+.hero.vhero .vh1 em{font-style:italic;color:#E8C27A;letter-spacing:-.4px}
+.hero.vhero .sub{margin-top:14px}
+.vhero .vcard{border-radius:18px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(234,215,176,.14)}
+.vhero .vcard .vtz{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;visibility:visible!important;transform:scale(1.03)}
+.vhero .vcard.open .vtz{display:none}
+.vhero .vcard .vplay{align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:0!important;background:radial-gradient(60% 60% at 50% 50%,rgba(20,10,12,.35),rgba(20,10,12,.55))}
+.vhero .vcard .vplay i{width:86px;height:86px;animation:vpulse 2.2s ease-out infinite}
+.vhero .vcard .vplay i:after{margin-left:7px;border-left-width:28px;border-top-width:17px;border-bottom-width:17px}
+.vhero .vcard .vplay b{position:static;font:600 15px/1.2 var(--sans,inherit);letter-spacing:.02em;text-transform:none;background:rgba(0,0,0,.42);padding:9px 14px;border-radius:999px;color:#fff}
+.vhero .vcard .vplay s{position:absolute;left:12px;top:12px;text-decoration:none;font:600 11px/1 ui-monospace,Menlo,monospace;letter-spacing:.1em;color:#fff;background:rgba(122,34,50,.9);padding:7px 9px;border-radius:8px}
+.vhero .vcard .vplay s u{display:inline-block;width:7px;height:7px;border-radius:50%;background:#ff5a5a;margin-right:6px;vertical-align:1px}
+@keyframes vpulse{0%{box-shadow:0 0 0 0 rgba(232,194,122,.55)}70%{box-shadow:0 0 0 22px rgba(232,194,122,0)}100%{box-shadow:0 0 0 0 rgba(232,194,122,0)}}
+@media(prefers-reduced-motion:reduce){.vhero .vcard .vplay i{animation:none}}
+.hero.vhero .cta{margin-top:0}
+@media(min-width:900px){.hero.vhero{padding:48px 0 64px}.hero.vhero .wrap{grid-template-columns:.85fr 1.15fr;gap:48px}.hero.vhero .vh1{font-size:clamp(34px,3.6vw,52px)}}
+
+.vhero .vcard .vplay i::before{display:none!important}
+
+.vhero .wm{font-family:var(--serif);font-weight:500;font-size:clamp(30px,7vw,44px);line-height:1;letter-spacing:-1px;color:#F6EFE2;margin-bottom:18px}
+.vhero .wm em{font-style:italic;color:#E8C27A}
 </style>
 <style>
 /* ──────────────────────────────────────────────────────────────
@@ -836,7 +884,6 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 .vgate .btn{width:100%;margin-top:12px}
 .vgate .fine{font-size:11.5px;margin-top:10px}
 .vbox.open .vgate,.vbox.open .vposter{display:none}
-.vbox:not(.open) video{visibility:hidden}
 .vbox.open video{display:block}
 .vplay{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:transparent;border:0;cursor:pointer}
 .vplay i{width:86px;height:86px;border-radius:50%;background:var(--wine);display:grid;place-items:center;box-shadow:0 18px 40px -10px rgba(0,0,0,.6)}
@@ -856,6 +903,8 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   .vnext .btn{width:100%}
 }
 </style>
+<script>window.__ck=function(n){var m=document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)'));return m?decodeURIComponent(m[1]):'';};</script>
+<style>/* чат-виджет GHL в правом нижнем углу: кнопку панели сдвигаем левее */@media (max-width:760px){#sticky .in{margin-right:68px}}</style>
 </head>
 <body>
 
@@ -867,171 +916,66 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     <div class="links">
       <a href="#chto">Что внутри</a><a href="#avtor">Малена</a><a href="#ucenicy">Ученицы</a><a href="#faq">Вопросы</a>
     </div>
-    <a class="btn btn-wine" href="#razbor" data-go><span>Записаться на разбор</span></a>
+    <a class="btn btn-wine" href="/razbor#razbor"><span>Записаться на разбор</span></a>
   </div>
 </nav>
 
 <!-- ═══ ПЕРВЫЙ ЭКРАН ═══ -->
-<header class="hero" id="top">
-  <div class="bgph" aria-hidden="true"><picture><source media="(max-width:759px)" srcset="images/malena-hero-v4-m.jpg"><img src="images/malena-hero-v4.jpg" alt="" width="1600" height="2400" fetchpriority="high"></picture></div>
+<header class="hero vhero" id="top">
   <div class="wrap">
-    <div class="eyebrow rv"><i></i>Обучение Малены Покладовой · набор на ноябрьский поток открыт</div>
-    <h1 class="rv d1"><em>New</em> SMM</h1>
-    <p class="sub rv d2"><b>Клиенты, которые платят в долларах и остаются на годы.</b> Учим с нуля привлекать клиентов и доводить их до результата с помощью искусственного интеллекта, по методике, на которой работает наше агентство в США.</p>
-    <div class="cta rv d3">
-      <a class="btn btn-wine" href="#video" data-vgo><span>Смотреть видео · 10 минут <svg class="dn" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+    <div class="vtxt">
+      <div class="wm rv">New <em>SMM</em></div>
+      <div class="eyebrow rv"><i></i>За 10 минут вы узнаете</div>
+      <h1 class="vh1 rv d1" id="habH">За что бизнес платит SMM-щику <em>$3&nbsp;000 в&nbsp;месяц</em></h1>
+      <p class="sub rv d2" id="habS">Не за красивую ленту, а <b>за клиентов, которых видно в деньгах.</b> Расскажу, как работает система New SMM и с чего начать, даже если вы с нуля.</p>
+      <p class="note rv d2" style="margin-top:14px">Малена Покладова · агентство PGL Marketing, Калифорния</p>
     </div>
-    <div class="note rv d3">Малена объясняет, за что бизнес платит SMM-специалисту и как устроено обучение. После видео можно записаться на бесплатный разбор.</div>
+    <script>
+    /* A/B заголовка: выбираем до показа, чтобы текст не прыгал */
+    (function(){
+      var f=''; try{ f=new URLSearchParams(location.search).get('h')||''; }catch(e){}
+      var v=/^[ab]$/.test(f)?f:''; if(!v){ try{ v=localStorage.getItem('newsmm_h_ab')||''; }catch(e){} }
+      if(!/^[ab]$/.test(v)){ v=Math.random()<.5?'a':'b'; try{ localStorage.setItem('newsmm_h_ab',v); }catch(e){} }
+      window.__hab=v;
+      if(v==='b'){
+        document.getElementById('habH').innerHTML='Как вести соцсети так, чтобы клиент видел в&nbsp;них <em>деньги, а&nbsp;не&nbsp;охваты</em>';
+        document.getElementById('habS').innerHTML='Именно за это бизнес платит и <b>остаётся на годы.</b> Расскажу, как работает система New SMM и с чего начать, даже если вы с нуля.';
+      }
+      var sid; try{ sid=sessionStorage.getItem('hab_sid'); if(!sid){ sid=Date.now().toString(36)+Math.random().toString(36).slice(2,10); sessionStorage.setItem('hab_sid',sid); } }catch(e){ sid='h'+Date.now().toString(36); }
+      window.__hsid=sid;
+      var page=(location.pathname.replace(/^\/|\.html$/g,'')||'kurs').replace(/^index$/,'kurs');
+      window.__htrack=function(ev,label){ try{ var q=new URLSearchParams(location.search);
+        fetch('https://kjyfbfqcgretrbupyhiq.supabase.co/rest/v1/newsmm_funnel_events',{method:'POST',keepalive:true,
+          headers:{'content-type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqeWZiZnFjZ3JldHJidXB5aGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNzU4NDYsImV4cCI6MjA5NjY1MTg0Nn0.amLiv4BuwDuEI0z2V3WiPKeWzvENSEwPlDeaGRq0CFM','authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtqeWZiZnFjZ3JldHJidXB5aGlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwNzU4NDYsImV4cCI6MjA5NjY1MTg0Nn0.amLiv4BuwDuEI0z2V3WiPKeWzvENSEwPlDeaGRq0CFM','prefer':'return=minimal'},
+          body:JSON.stringify({sid:sid,page:page,event:ev,step:null,label:('h-'+v+(label?' '+label:'')).slice(0,80),
+            utm_source:(q.get('utm_source')||'').slice(0,60)||null,utm_campaign:(q.get('utm_campaign')||'').slice(0,120)||null,utm_content:(q.get('utm_content')||'').slice(0,120)||null,
+            device:(innerWidth<700?'mobile':'desktop')})}).catch(function(){}); }catch(e){} };
+      window.__htrack('h_view');
+    })();
+    </script>
+    <div class="vcol rv d2">
+      <div class="vcard" id="heroV">
+        <video playsinline preload="none" data-src="video/vsl8/index.m3u8" poster="video/vsl8/teaser.jpg"></video>
+        <video class="vtz" src="video/vsl8/teaser.mp4" poster="video/vsl8/teaser.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+        <button type="button" class="vplay" aria-label="Смотреть урок со звуком"><s><u></u>УРОК · 10 МИН</s><i></i><b>Нажмите, чтобы посмотреть</b></button>
+      </div>
+      <div class="cta" style="margin-top:18px">
+        <a class="btn btn-wine" href="/razbor#razbor"><span>После урока: записаться на разбор <svg class="dn" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      </div>
+      <div class="note">Разбор бесплатный · 30 минут в Zoom · ни к чему не обязывает</div>
+    </div>
   </div>
 </header>
 
-<!-- ═══ ВИДЕО: сначала контакты, потом просмотр (29 октября) ═══ -->
-<section id="video">
-  <div class="wrap">
-    <div class="eyebrow"><i></i>Видео · 10 минут</div>
-    <h2>Посмотрите <em>сначала видео</em></h2>
-    <p class="lede">Почему одному SMM-специалисту платят $300, а другому $3 000+, приём, который можно применить сегодня, и как устроено обучение New SMM.</p>
-    <div class="vbox" id="vbox">
-      <img class="vposter" src="video/vsl7/poster.jpg" alt="" loading="lazy">
-      <video id="vslv" playsinline controls preload="none" poster="video/vsl7/poster.jpg"></video>
-      <button class="vplay" type="button" id="vplay" aria-label="Смотреть видео"><i></i></button>
-      <div class="vgate" id="vgate">
-        <div class="card">
-          <h3>Видео откроется <em>сразу после</em></h3>
-          <p class="s">Оставьте контакты: после видео пришлём ссылку на бесплатный разбор, а если появятся вопросы, вам позвонит команда Малены.</p>
-          <form id="vform" novalidate>
-            <div class="fields">
-              <div class="f"><input type="text" id="vname" name="name" placeholder=" " autocomplete="given-name" required><label for="vname">Как вас зовут</label></div>
-              <div class="f"><input type="tel" id="vphone" name="phone" placeholder=" " autocomplete="tel" inputmode="tel" required><label for="vphone">Телефон с кодом страны</label></div>
-              <div class="f"><input type="email" id="vemail" name="email" placeholder=" " autocomplete="email" inputmode="email" required><label for="vemail">Почта</label></div>
-            </div>
-            <button class="btn btn-wine" type="submit" id="vsend"><span>Смотреть видео</span></button>
-            <div class="err" id="verr"></div>
-            <p class="fine">Нажимая кнопку, вы соглашаетесь на обработку данных и на звонки, письма и сообщения от школы в WhatsApp. Отписаться можно в любой момент. <a href="/privacy" style="text-decoration:underline">Политика</a>.</p>
-          </form>
-        </div>
-      </div>
-    </div>
-    <div class="vnext">
-      <a class="btn btn-wine" href="#razbor" data-go><span>Записаться на разбор</span></a>
-      <div class="t">Кнопка из видео: четыре коротких вопроса и выбор времени. Бесплатно, 30 минут в Zoom.</div>
-    </div>
-  </div>
-</section>
 
 <!-- ═══ ФОРМА ═══ -->
 <section id="razbor">
   <div class="wrap">
-    <div class="form-wrap glass rv" id="fw">
-      <div class="eyebrow"><i></i>Разбор · бесплатно · 30 минут</div>
+    <div class="form-wrap glass rv" id="fw" style="text-align:center">
+      <div class="eyebrow" style="justify-content:center"><i></i>Разбор · бесплатно · 30 минут</div>
       <h2>Запишитесь <em>на разбор</em></h2>
-      <p class="lede">Четыре коротких вопроса, потом выбор времени. Тридцать минут в Zoom, бесплатно.</p>
-      <div class="picked" id="picked" hidden><span></span><button type="button" id="unpick" aria-label="Убрать выбор">×</button></div>
-
-      <!-- Квиз. Отвечают одним касанием, шаг переключается сам. Ветка про чек
-           меняется для тех, у кого проектов пока нет: у них спрашиваем цель,
-           а не текущую цену. Ярлыков «новичок» и «профи» человек не видит. -->
-      <div class="qz" id="qz">
-        <div class="qbar"><i id="qfill"></i></div>
-
-        <div class="qstep on" data-q="job">
-          <div class="qnum">Вопрос 1 из 4</div>
-          <h3>Чем вы занимаетесь сейчас?</h3>
-          <div class="qopts">
-            <button type="button" data-v="Веду соцсети клиентам">Веду соцсети клиентам</button>
-            <button type="button" data-v="Веду свой блог">Веду свой блог</button>
-            <button type="button" data-v="Предприниматель, SMM для своего бизнеса">Предприниматель: хочу разобраться в SMM для своего бизнеса</button>
-            <button type="button" data-v="Другая сфера, хочу в SMM">Работаю в другой сфере, хочу в SMM</button>
-          </div>
-        </div>
-
-        <div class="qstep" data-q="projects">
-          <div class="qnum">Вопрос 2 из 4</div>
-          <h3>Сколько проектов ведёте прямо сейчас?</h3>
-          <div class="qopts">
-            <button type="button" data-v="0">Пока ни одного</button>
-            <button type="button" data-v="1">Один</button>
-            <button type="button" data-v="2-3">Два или три</button>
-            <button type="button" data-v="4+">Четыре и больше</button>
-          </div>
-          <button class="qback" type="button">Назад</button>
-        </div>
-
-        <div class="qstep" data-q="check">
-          <div class="qnum" data-biz="Вопрос 2 из 3">Вопрос 3 из 4</div>
-          <h3 data-biz="Сколько сейчас приносит ваш бизнес в месяц?" data-has="Какой у вас чек за проект в месяц?" data-none="Сколько хотите зарабатывать в месяц через полгода?">Какой у вас чек за проект в месяц?</h3>
-          <!-- Вилка тянется до пяти и десяти тысяч сознательно. У нас есть люди
-               в Америке, для которых три тысячи в месяц это нижняя граница нормы,
-               и упереться в потолок вопроса им было бы странно. -->
-          <div class="qopts"
-               data-has-opts="До $300|$300 – $800|$800 – $2000|$2000 – $5000|Больше $5000"
-               data-none-opts="До $500|$500 – $2000|$2000 – $5000|$5000 – $10 000|Больше $10 000"
-               data-biz-opts="До $3000|От $3000 до $10 000|От $10 000 до $30 000|Больше $30 000|Бизнес только запускаю"></div>
-          <button class="qback" type="button">Назад</button>
-        </div>
-
-        <div class="qstep" data-q="block">
-          <div class="qnum" data-biz="Вопрос 3 из 3">Вопрос 4 из 4</div>
-          <h3>Что мешает больше всего прямо сейчас?</h3>
-          <div class="qopts"
-               data-has-opts="Клиентов мало, не знаю где искать|Не получается поднять чек|Клиенты уходят через месяц или два|Не умею показывать результат в деньгах|Тону в рутине, не хватает времени"
-               data-none-opts="Не знаю, с чего начать|Не понимаю, где брать клиентов|Не хватает уверенности в навыках|Нет времени на обучение|Не понимаю, сколько на этом реально зарабатывают"
-               data-biz-opts="Не понимаю, что снимать и публиковать|Соцсети не приводят клиентов|Нет времени вести соцсети самой|Платила SMM-специалисту, результата не было|Хочу понимать SMM, чтобы ставить задачи команде"></div>
-          <button class="qback" type="button">Назад</button>
-        </div>
-
-        <div class="qstep" data-q="form">
-          <div class="qnum">Контакты, дальше время</div>
-          <h3>Осталось выбрать время. Куда прислать подтверждение?</h3>
-          <div class="qsum" id="qsum"></div>
-      <form id="lead" novalidate>
-        <div class="fields">
-          <div class="f"><input type="text" id="name" name="name" placeholder=" " autocomplete="given-name" required><label for="name">Как вас зовут</label></div>
-          <div class="f tel" id="telf">
-            <button class="cc" type="button" id="ccbtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Код страны">
-              <span class="flag" id="ccflag">🇲🇩</span><span class="dial" id="ccdial">+373</span>
-              <svg class="chev" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-            </button>
-            <input type="tel" id="phone" name="phone" placeholder=" " autocomplete="tel" inputmode="tel" required>
-            <label for="phone">Телефон</label>
-            <div class="cclist" id="cclist" role="listbox">
-              <input class="srch" type="text" id="ccsrch" placeholder="Страна или код" autocomplete="off" spellcheck="false">
-              <ul id="ccul"></ul>
-            </div>
-          </div>
-          <div class="f full"><input type="email" id="email" name="email" placeholder=" " autocomplete="email" inputmode="email" required><label for="email">Почта</label></div>
-          <div class="f full"><input type="text" id="ig" name="ig" placeholder=" " autocomplete="off" autocapitalize="off" spellcheck="false"><label for="ig">Ваш Instagram, например @malenapocladova</label></div>
-        </div>
-        <label class="smsok" for="smsok"><input type="checkbox" id="smsok" name="sms_ok"><span>Согласна(ен) получать SMS от Personal Growth Lab (школа Малены Покладовой): подтверждение и напоминания о разборе, материалы обучения. Частота разная, оператор может взимать плату. STOP для отписки, HELP для помощи. Необязательно для записи.<small lang="en">I agree to receive SMS from Personal Growth Lab. Msg frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help. Consent is not a condition of purchase. <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></small></span></label>
-        <button class="btn btn-wine" type="submit" id="send"><span>Выбрать время разбора</span></button>
-        <div class="err" id="err">Проверьте почту, без неё письмо не дойдёт.</div>
-        <p class="fine">Нажимая кнопку, вы соглашаетесь на обработку данных и на письма и сообщения от школы в WhatsApp: подтверждение, напоминания, материалы и новости обучения. Отписаться можно в любой момент. <a href="/privacy" style="text-decoration:underline">Политика</a>.</p>
-      </form>
-          <button class="qback" type="button">Назад</button>
-        </div>
-      </div>
-
-      <div class="cal" id="cal" hidden>
-        <div class="eyebrow"><i></i>Осталось выбрать время</div>
-        <h3 id="calh">Когда вам удобно?</h3>
-        <div class="calhead"><b id="calmon"></b><div class="nav"><button type="button" id="calprev" aria-label="Предыдущий месяц">‹</button><button type="button" id="calnext" aria-label="Следующий месяц">›</button></div></div>
-        <div class="calwd"><span>пн</span><span>вт</span><span>ср</span><span>чт</span><span>пт</span><span>сб</span><span>вс</span></div>
-        <div class="caldays" id="caldays"></div>
-        <div class="caldate" id="caldate"></div>
-        <div class="caltimes" id="caltimes"></div>
-        <div class="calnote" id="calnote">Смотрим свободные окна…</div>
-        <p class="calzone" id="calzone"></p>
-        <button class="btn btn-wine" type="button" id="calgo" disabled><span>Выберите время</span></button>
-        <div class="err" id="calerr"></div>
-        <a class="calalt" id="book" href="#" rel="noopener" hidden>Открыть календарь отдельной страницей</a>
-      </div>
-
-      <div class="ok" id="ok">
-        <div class="mark">✓</div>
-        <h3>Вы записаны</h3>
-        <p id="okwhen"></p>
-        <p>Ссылка на Zoom придёт на почту вместе с подтверждением. Если планы поменяются, перенести или отменить встречу можно из того же письма.</p>
-      </div>
+      <p class="lede" style="margin-inline:auto">Четыре коротких вопроса, потом выбор времени. Тридцать минут в Zoom, бесплатно.</p>
+      <a class="btn btn-wine" href="/razbor#razbor" style="margin-top:22px"><span>Записаться на разбор</span></a>
     </div>
   </div>
 </section>
@@ -1059,7 +1003,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
       <div class="e-card rv d3"><div class="was">Вместо локальных цен</div><h3>Методика <em>американского рынка</em> и выход на заказчиков, которые платят в долларах</h3></div>
     </div>
     <p class="lede rv d3" style="margin-top:26px">На разборе покажем клиента, у которого реклама окупается в десять раз, и расскажем, как встроились в его работу так, что работаем с ним на постоянной основе за высокий чек.</p>
-    <div class="e-cta rv"><a class="btn btn-wine" href="#razbor" data-go><span>Записаться на разбор</span></a><span>Подходит и с нуля, и тем, кто уже в сфере</span></div>
+    <div class="e-cta rv"><a class="btn btn-wine" href="/razbor#razbor"><span>Записаться на разбор</span></a><span>Подходит и с нуля, и тем, кто уже в сфере</span></div>
   </div>
 </section>
 
@@ -1071,10 +1015,10 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
       <div>
         <div class="eyebrow rv"><i></i>Кто ведёт</div>
         <h2 class="rv d1">Малена <em>Покладова</em></h2>
-        <p class="mono rv d2">Сан-Диего · агентство PGL Marketing · семь лет в продвижении · четыре года обучает</p>
+        <p class="mono rv d2">Калифорния · агентство PGL Marketing · семь лет в продвижении · четыре года обучает</p>
         <p class="rv d2">Ведёт американский бизнес прямо сейчас: студии, клиники, рестораны, эксперты. Приводит им миллионные просмотры и стабильный поток клиентов: адвокату 1,7 миллиона просмотров за месяц, студии красоты полную запись за 30 дней и рекламу, которая окупается в восемь раз. Всё это по системе, которую она собрала сама и которой учит.</p>
         <p class="rv d3">По этой же методике переехала в Америку и ни одного дня не работала здесь в найме: только свои клиенты и своё агентство.</p>
-        <a class="btn btn-line rv d3" href="#razbor" data-go><span>Записаться на разбор</span></a>
+        <a class="btn btn-line rv d3" href="/razbor#razbor"><span>Записаться на разбор</span></a>
       </div>
     </div>
   </div>
@@ -1113,7 +1057,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     <div class="in glass dark rv">
       <h2 style="color:#F6EFE2">Сначала разбор, <em style="color:var(--gold)">потом обучение</em></h2>
       <p>Тридцать минут в Zoom: разберём вашу текущую ситуацию, расскажем, как проходит обучение, и ответим на все вопросы. На обучение мы берём не всех, поэтому сначала знакомимся и вместе решаем, будет ли оно вам полезно.</p>
-      <a class="btn btn-wine" href="#razbor"><span>Записаться на разбор</span></a>
+      <a class="btn btn-wine" href="/razbor#razbor"><span>Записаться на разбор</span></a>
     </div>
   </div>
 </section>
@@ -1127,36 +1071,14 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 
 <!-- Липкая панель на телефоне: появляется после первого экрана и прячется,
      когда форма уже на виду, чтобы не перекрывать поля ввода. -->
-<!-- Подарок за почту. Один файл, одно поле, одна кнопка. -->
-<div class="pop" id="pop" role="dialog" aria-modal="true" aria-labelledby="poph" hidden>
-  <div class="card">
-    <button class="x" type="button" id="popx" aria-label="Закрыть">×</button>
-    <div class="lead">
-      <div class="eyebrow"><i></i>Подарок</div>
-      <h3 id="poph">100 заголовков, которыми мы <em>приводим клиентов</em> в США</h3>
-      <p>Формулы для постов и Reels из работы агентства. Возьмите три на ближайшие публикации, разницу увидите по охватам на этой неделе.</p>
-    </div>
-    <form id="popf" novalidate>
-      <input type="text" id="popn" placeholder="Как вас зовут" autocomplete="given-name">
-      <input type="email" id="pope" placeholder="Почта, куда прислать файл" autocomplete="email" inputmode="email" required>
-      <button class="btn btn-wine" type="submit" id="popb"><span>Забрать файл</span></button>
-      <div class="err" id="poperr">Проверьте почту, без неё файл не дойдёт.</div>
-      <p class="fine">Оставляя почту, вы соглашаетесь получать файл и письма школы: материалы и новости обучения. Отписаться можно в один клик. <a href="/privacy" style="text-decoration:underline">Политика</a>.</p>
-    </form>
-    <div class="done">
-      <h3>Файл уже <em>в почте</em></h3>
-      <p>Если письма нет пару минут, загляните в «Промоакции» или «Спам».</p>
-      <a class="btn btn-wine" href="#razbor" data-go id="popgo"><span>А ещё можно на разбор</span></a>
-    </div>
-  </div>
-</div>
-
 <div class="sticky" id="sticky">
   <div class="in glass">
     <div class="t">Разбор бесплатный<b>30 минут · онлайн</b></div>
-    <a class="btn btn-wine" href="#razbor" data-go><span>Записаться</span></a>
+    <a class="btn btn-wine" href="/razbor#razbor"><span>Записаться</span></a>
   </div>
 </div>
+<script>/* Кнопки записи ведут на /razbor и несут метки источника */
+document.querySelectorAll('a[href="/razbor#razbor"]').forEach(function(a){ if(location.search) a.href='/razbor'+location.search+'#razbor'; });</script>
 
 <script>
 (function(){
@@ -1246,6 +1168,8 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 
   /* Выбор входа: «Это про меня» помечает карточку, подставляет строку над формой
      и уходит вместе с заявкой. Продажам сразу видно, кем человек себя считает. */
+  /* На главной формы нет (A2P): квиз и запись живут на /razbor */
+  if(!document.getElementById('lead')) return;
   var track='', picked=document.getElementById('picked'), pickedText=picked.querySelector('span');
   var TRACK_NAME={ start:'Вы выбрали: с нуля, хочу профессию и первых клиентов', pro:'Вы выбрали: уже в сфере, хочу выше чек и клиентов на годы' };
   document.querySelectorAll('[data-track]').forEach(function(b){
@@ -1530,7 +1454,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     var slot=calSlot;
     calgo.disabled=true; calgo.querySelector('span').textContent='Записываем…'; calerr.style.display='none';
     fetch(BOOKFN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK},
-      body:JSON.stringify({ action:'book', region:calRegion, tz:zone(), start:slot, name:who.name, email:who.email, phone:who.phone, cid:who.cid, country:who.country }) })
+      body:JSON.stringify({ action:'book', fbp:(window.__ck?__ck('_fbp'):''), fbc:(window.__ck?__ck('_fbc'):''), url:location.href, region:calRegion, tz:zone(), start:slot, name:who.name, email:who.email, phone:who.phone, cid:who.cid, country:who.country }) })
       .then(function(r){ return r.json().then(function(j){ return { ok:r.ok, j:j }; }); })
       .catch(function(){ return { ok:false, j:{} }; })
       .then(function(res){
@@ -1539,7 +1463,8 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
           document.getElementById('okwhen').textContent=
             WD[dt.getDay()].toUpperCase().slice(0,1)+WD[dt.getDay()].slice(1)+', '+dt.getDate()+' '+MON[dt.getMonth()]+', '+hhmm(slot)+'.';
           fw.classList.add('done');
-          if(window.fbq) fbq('track','Schedule',{content_name:'new-smm-razbor'});
+          if(window.__htrack) __htrack('booked');
+          if(window.fbq){ if(res.j.first===false) fbq('trackCustom','Reschedule',{content_name:'new-smm-razbor'}); else if(!res.j.test && window.__pxOnce && __pxOnce('sch_'+(res.j.event_id||(who&&who.email)||Date.now()))) fbq('track','Schedule',{content_name:'new-smm-razbor'},res.j.event_id?{eventID:res.j.event_id}:{}); }
           fw.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});
           return;
         }
@@ -1575,7 +1500,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
     var lane=isBiz() ? 'biz' : (hasClients() ? 'pro' : (quiz.projects ? 'start' : (track||'')));
     /* Инстаграм необязательный: берём ник из @ника или из ссылки на профиль. */
     var igRaw=(form.ig&&form.ig.value||'').trim(), igm=igRaw.match(/instagram\.com\/([A-Za-z0-9._]{1,30})/i), ig=(igm?igm[1]:igRaw.replace(/^@+/,'')).replace(/[^A-Za-z0-9._]/g,'').slice(0,30);
-    var body={ sms_ok:!!(document.getElementById('smsok')||{}).checked, name:name, email:email, phone:phone, country:country.c, ig:ig, src:(ZAPIS?'zapis':'kurs'), track:lane, quiz:quiz, utm:utm, page:location.pathname, tz:zone() };
+    var body={ sms_ok:!!(document.getElementById('smsok')||{}).checked, name:name, email:email, phone:phone, country:country.c, ig:ig, src:(ZAPIS?'zapis':'kurs'), track:lane, quiz:quiz, utm:Object.assign({},utm,{h:window.__hab,sid:window.__hsid},window.__pxIds?__pxIds():{}), page:location.pathname, tz:zone() };
     fetch(FN,{ method:'POST', headers:{'content-type':'application/json','authorization':'Bearer '+SBK,'apikey':SBK}, body:JSON.stringify(body) })
       .then(function(r){ return r.json(); })
       .catch(function(){ return {ok:false}; })
@@ -1587,7 +1512,8 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
         document.getElementById('book').href=u.toString();
         /* Пиксель учим только на заявках, которые сервер действительно принял.
            Иначе кампании оптимизируются на лидов, которых у нас нет. */
-        if(d && d.ok && window.fbq) fbq('track','Lead',{content_name:'new-smm-razbor'});
+        if(d && d.ok && window.__pxLead) __pxLead(d, quiz, 'new-smm-razbor');
+        if(window.__htrack) __htrack(d&&d.ok?'lead_ok':'lead_fail');
         /* Письмо человек получит сам. На странице остаётся один шаг: время. */
         who={ name:name, email:email, phone:phone, cid:(d&&d.cid)||'', country:country.c };
         /* Кого именно подставил сервер, он и говорит в route. Регион человека
@@ -1704,7 +1630,27 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   });
 })();
 </script>
+<script>
+/* Урок в шапке: HLS (Safari сам, остальным hls.js), отметки просмотра в доску (PGL) и пиксель */
+(function(){
+  var box=document.getElementById('heroV'); if(!box) return;
+  var v=box.querySelector('video'), btn=box.querySelector('.vplay'), loaded=false, marks={};
+  function ev(n,p){ try{ if(window.PGL&&PGL.event) PGL.event(n,p||{}); }catch(e){} try{ if(window.fbq) fbq('trackCustom',n,p||{}); }catch(e){} }
+  function load(){ if(loaded) return Promise.resolve(); loaded=true; var src=v.getAttribute('data-src');
+    if(v.canPlayType('application/vnd.apple.mpegurl')){ v.src=src; return Promise.resolve(); }
+    return new Promise(function(ok){ var s=document.createElement('script'); s.src='https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js';
+      s.onload=function(){ try{ var h=new Hls({capLevelToPlayerSize:true}); h.loadSource(src); h.attachMedia(v); }catch(e){ v.src=src; } ok(); };
+      s.onerror=function(){ v.src=src; ok(); }; document.head.appendChild(s); }); }
+  btn.addEventListener('click',function(e){ e.preventDefault(); box.classList.add('open');
+    load().then(function(){ v.controls=true; var p=v.play(); if(p&&p.catch) p.catch(function(){}); });
+    if(!marks.play){ marks.play=1; ev('VslPlay',{place:'main-hero'}); if(window.__htrack) __htrack('vsl_play'); } });
+  v.addEventListener('timeupdate',function(){ if(!v.duration) return; var p=v.currentTime/v.duration;
+    [[.25,'vsl_25'],[.5,'vsl_50'],[.75,'vsl_75'],[.95,'vsl_end']].forEach(function(m){ if(p>=m[0]&&!marks[m[1]]){ marks[m[1]]=1; ev(m[1],{place:'main-hero'}); if(window.__htrack) __htrack('vsl_progress',m[1]); } }); });
+})();
+</script>
 <script>window.PGL_SITE='ws_fd846eaeda93f043';</script>
 <script src="/pgl-track.js?v=1" defer></script>
+<!-- GHL chat widget (A2P opt-in) -->
+<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6af28fa9e1790c5475878442"></script>
 </body>
 </html>
