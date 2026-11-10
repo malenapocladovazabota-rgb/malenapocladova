@@ -114,7 +114,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1521940319314090');
 /* Пиксель (10.11): одна заявка = одно событие Lead с eventID, тесты и повторы не считаем.
-   QualifiedLead: только предприниматели, блогеры и те, кто уже ведёт клиентов. */
+   QualifiedLead (10.11): предприниматель с работающим бизнесом, блогер от 1 000 подписчиков, SMM-щик с проектами. */
 window.__pxIds=function(){ var o={}; try{ document.cookie.split('; ').forEach(function(c){ var p=c.split('='); if(p[0]==='_fbp') o.fbp=p[1]; if(p[0]==='_fbc') o.fbc=p[1]; }); if(!o.fbc){ var fc=new URLSearchParams(location.search).get('fbclid'); if(fc) o.fbc='fb.1.'+Date.now()+'.'+fc; } }catch(e){} return o; };
 window.__pxOnce=function(k){ try{ if(localStorage.getItem('px_'+k)) return false; localStorage.setItem('px_'+k,'1'); }catch(e){} return true; };
 window.__pxLead=function(r,q,name){ try{
@@ -123,7 +123,9 @@ window.__pxLead=function(r,q,name){ try{
   try{ if(localStorage.getItem(k)) return; localStorage.setItem(k,'1'); }catch(e){}
   fbq('track','Lead',{content_name:name},{eventID:'lead-'+id});
   var j=(q&&q.job)||'';
-  if(/Предприниматель|свой блог|соцсети клиентам/.test(j)) fbq('trackCustom','QualifiedLead',{content_name:name,job:j},{eventID:'qlead-'+id});
+  var ch=(q&&q.check)||'', pr=(q&&q.projects)||'';
+  var qual=(/Предприниматель/.test(j) && ch && !/только запускаю/.test(ch)) || (/свой блог/.test(j) && ch && !/^До 1 000/.test(ch)) || (/соцсети клиентам/.test(j) && pr && pr!=='0');
+  if(qual) fbq('trackCustom','QualifiedLead',{content_name:name,job:j},{eventID:'qlead-'+id});
 }catch(e){} };
 
 fbq('track','PageView');
@@ -1007,14 +1009,15 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
 
         <div class="qstep" data-q="check">
           <div class="qnum" data-biz="Вопрос 2 из 3">Вопрос 3 из 4</div>
-          <h3 data-biz="Сколько сейчас приносит ваш бизнес в месяц?" data-has="Какой у вас чек за проект в месяц?" data-none="Сколько хотите зарабатывать в месяц через полгода?">Какой у вас чек за проект в месяц?</h3>
+          <h3 data-blog="Сколько подписчиков в вашем основном аккаунте?" data-biz="Сколько сейчас приносит ваш бизнес в месяц?" data-has="Какой у вас чек за проект в месяц?" data-none="Сколько хотите зарабатывать в месяц через полгода?">Какой у вас чек за проект в месяц?</h3>
           <!-- Вилка тянется до пяти и десяти тысяч сознательно. У нас есть люди
                в Америке, для которых три тысячи в месяц это нижняя граница нормы,
                и упереться в потолок вопроса им было бы странно. -->
           <div class="qopts"
                data-has-opts="До $300|$300 – $800|$800 – $2000|$2000 – $5000|Больше $5000"
                data-none-opts="До $500|$500 – $2000|$2000 – $5000|$5000 – $10 000|Больше $10 000"
-               data-biz-opts="До $3000|От $3000 до $10 000|От $10 000 до $30 000|Больше $30 000|Бизнес только запускаю"></div>
+               data-biz-opts="До $3000|От $3000 до $10 000|От $10 000 до $30 000|Больше $30 000|Бизнес только запускаю"
+               data-blog-opts="До 1 000 подписчиков|1 000 – 10 000 подписчиков|10 000 – 50 000 подписчиков|50 000 – 200 000 подписчиков|Больше 200 000 подписчиков"></div>
           <button class="qback" type="button">Назад</button>
         </div>
 
@@ -1024,6 +1027,7 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
           <div class="qopts"
                data-has-opts="Клиентов мало, не знаю где искать|Не получается поднять чек|Клиенты уходят через месяц или два|Не умею показывать результат в деньгах|Тону в рутине, не хватает времени"
                data-none-opts="Не знаю, с чего начать|Не понимаю, где брать клиентов|Не хватает уверенности в навыках|Нет времени на обучение|Не понимаю, сколько на этом реально зарабатывают"
+               data-blog-opts="Охваты падают, рост остановился|Не понимаю, как продавать через блог|Нет системы: снимаю, когда есть настроение|Хочу запустить свой продукт или курс|Не хватает времени на контент"
                data-biz-opts="Не понимаю, что снимать и публиковать|Соцсети не приводят клиентов|Нет времени вести соцсети самой|Платила SMM-специалисту, результата не было|Хочу понимать SMM, чтобы ставить задачи команде"></div>
           <button class="qback" type="button">Назад</button>
         </div>
@@ -1341,12 +1345,17 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
      им не задаём, про деньги и помехи у них своя ветка. */
   var BIZ='Предприниматель, SMM для своего бизнеса';
   function isBiz(){ return quiz.job===BIZ; }
-  function qkey(){ return isBiz()?'biz':(hasClients()?'has':'none'); }
+  /* Блогеры (10 ноября): вместо проектов и чека спрашиваем размер аудитории. */
+  var BLOG='Веду свой блог';
+  function isBlog(){ return quiz.job===BLOG; }
+  function skipProj(){ return isBiz()||isBlog(); }
+  function grp(v){ return v===BIZ?'biz':(v===BLOG?'blog':'std'); }
+  function qkey(){ return isBiz()?'biz':(isBlog()?'blog':(hasClients()?'has':'none')); }
   function qtext(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
   function qrender(step){
     var key=qkey(), h3=step.querySelector('h3'), opts=step.querySelector('.qopts'), qn=step.querySelector('.qnum');
-    if(qn && qn.getAttribute('data-biz')){ if(!qn.getAttribute('data-std')) qn.setAttribute('data-std',qn.textContent); qn.textContent=isBiz()?qn.getAttribute('data-biz'):qn.getAttribute('data-std'); }
+    if(qn && qn.getAttribute('data-biz')){ if(!qn.getAttribute('data-std')) qn.setAttribute('data-std',qn.textContent); qn.textContent=skipProj()?qn.getAttribute('data-biz'):qn.getAttribute('data-std'); }
     if(h3 && h3.getAttribute('data-'+key)) h3.textContent=h3.getAttribute('data-'+key);
     else if(h3 && h3.getAttribute('data-has')) h3.textContent=h3.getAttribute('data-'+(hasClients()?'has':'none'));
     if(!opts) return;
@@ -1386,19 +1395,19 @@ footer{background:var(--paper);border-top:1px solid rgba(110,30,43,.12)}
   qz.addEventListener('click',function(e){
     var b=e.target.closest ? e.target.closest('button') : null;
     if(!b) return;
-    if(b.classList.contains('qback')){ var bk=qi-1; if(isBiz() && qsteps[bk] && qsteps[bk].getAttribute('data-q')==='projects') bk--; qgo(bk,true); return; }
+    if(b.classList.contains('qback')){ var bk=qi-1; if(skipProj() && qsteps[bk] && qsteps[bk].getAttribute('data-q')==='projects') bk--; qgo(bk,true); return; }
     if(!b.parentNode || !b.parentNode.classList.contains('qopts')) return;
     var step=b.parentNode.parentNode, q=step.getAttribute('data-q');
     /* Ответы про деньги и про помеху зависят от того, есть ли проекты. Если человек
        вернулся назад и поменял ответ, старые значения остались бы из другой шкалы,
        и продажам ушла бы цифра, означающая совсем другое. Поэтому сбрасываем. */
     if(q==='projects' && quiz.projects!==b.getAttribute('data-v')){ delete quiz.check; delete quiz.block; }
-    if(q==='job' && (quiz.job===BIZ)!==(b.getAttribute('data-v')===BIZ)){ delete quiz.projects; delete quiz.check; delete quiz.block; }
+    if(q==='job' && grp(quiz.job)!==grp(b.getAttribute('data-v'))){ delete quiz.projects; delete quiz.check; delete quiz.block; }
     quiz[q]=b.getAttribute('data-v');
     [].forEach.call(b.parentNode.querySelectorAll('button'),function(x){ x.classList.remove('on'); });
     b.classList.add('on');
     if(window.fbq) fbq('trackCustom','NewSmmQuiz',{ step:q });
-    var nx=qi+1; if(isBiz() && qsteps[nx] && qsteps[nx].getAttribute('data-q')==='projects') nx++;
+    var nx=qi+1; if(skipProj() && qsteps[nx] && qsteps[nx].getAttribute('data-q')==='projects') nx++;
     setTimeout(function(){ qgo(nx); }, reduce?0:260);
   });
   qfill.style.width=Math.round(100/(qsteps.length+1))+'%';
