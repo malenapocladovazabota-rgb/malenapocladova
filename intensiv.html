@@ -53,13 +53,17 @@ h2 em,h1 em{font-style:italic}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:12px}
 .logo{font:500 19px var(--serif);text-decoration:none;white-space:nowrap}
 .logo em{font-style:italic;color:var(--goldL)}
-.top .btn{padding:11px 14px;font-size:11.5px}
+.top .btn{padding:13px 14px;font-size:12px;min-height:44px}
 
 /* Первый экран: фото отдельным кадром, текст на тёмном фоне без наложения */
 .hero{background:var(--ink);color:#F6EFE2}
 .hph{aspect-ratio:4/3;overflow:hidden;max-height:62vh}
-.hph img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
-.htx{padding-top:26px;padding-bottom:40px}
+.hph{position:relative}.hph img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.hph::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(180deg,rgba(27,20,20,0),var(--ink))}
+.hpts{list-style:none;display:grid;gap:12px;margin-top:22px;max-width:520px}
+.hpts li{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:15.5px;line-height:1.45;color:#E9E0CF}
+.hpts svg{width:22px;height:22px;color:var(--goldL);margin-top:1px}
+.htx{padding-top:10px;padding-bottom:40px}
 .when{display:inline-flex;flex-wrap:wrap;gap:8px}
 .when span{font:700 12px var(--mono);letter-spacing:.8px;text-transform:uppercase;padding:7px 10px;border:1px solid rgba(246,239,226,.35);border-radius:3px}
 .when span.hot{background:var(--goldL);color:var(--ink);border-color:var(--goldL)}
@@ -69,6 +73,7 @@ h2 em,h1 em{font-style:italic}
 @media(min-width:900px){
   .hwrap{display:grid;grid-template-columns:1.05fr .95fr;max-width:1180px;margin:0 auto;align-items:center}
   .hph{order:2;aspect-ratio:4/5;max-height:none;height:calc(100vh - 58px);min-height:560px}
+  .hph::after{display:none}
   .htx{order:1;padding:60px 48px 60px max(20px,env(safe-area-inset-left))}
 }
 
@@ -156,6 +161,12 @@ h2 em,h1 em{font-style:italic}
 .tc.vip .note{font-size:13.5px;color:#E6D3C2;margin-top:12px}
 .tix .safe{font-size:14px;color:#BFAE94;margin-top:16px}
 
+.mac{background:var(--wine);color:#F6EFE2}
+.macbox{max-width:620px}
+.tag.g{background:var(--goldL);color:var(--ink)}
+.mac h2{margin-top:14px}.mac h2 em{color:var(--goldL)}
+.mac p{font-size:16.5px;color:#F1E3E5;margin-top:12px;line-height:1.6}
+.mac .hpts li{color:#F6EFE2}
 /* Малена */
 .au{background:var(--ink);color:#fff}
 .au .ph{position:relative;aspect-ratio:3/4;overflow:hidden;max-width:620px;margin:0 auto}
@@ -256,6 +267,11 @@ footer a{text-decoration:underline;text-underline-offset:3px}
         <div class="l"><small>Билет · 3 вечера</small><b>Место в эфире</b><span>19:00 Кишинёв · 9:00 Лос-Анджелес</span></div>
         <div class="r"><b>$15</b><i>Купить</i></div>
       </a>
+      <ul class="hpts">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="1.5"/><path d="M16 10l5-3v10l-5-3z"/></svg><span>Три живых эфира в Zoom, записи до следующего дня</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg><span>После каждого вечера домашка, которую можно сделать сразу</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M3 9h18M12 9v11M12 9c-1.5-4-6-4-5-1.5C7.5 9 12 9 12 9zm0 0c1.5-4 6-4 5-1.5C16.5 9 12 9 12 9z"/></svg><span>В одном из эфиров разыграем розовый MacBook</span></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -331,10 +347,25 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   </div>
 </section>
 
+<section class="mac pad" id="macbook">
+  <div class="wrap">
+    <div class="macbox">
+      <span class="tag g">Розыгрыш в прямом эфире</span>
+      <h2>Розовый <em>MacBook</em> одной из участниц</h2>
+      <p>Разыграем в одном из трёх эфиров среди тех, кто в этот момент на лайве. В какой вечер, заранее не скажем.</p>
+      <ul class="hpts dark">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Участвует каждый, у кого есть билет</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Нужно быть в эфире в момент розыгрыша</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Победительницу выбираем случайно, на экране у всех</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section class="tix pad" id="bilety">
   <div class="wrap">
     <h2>Билет на <em>три вечера</em></h2>
-    <p class="lede">После оплаты придёт письмо с именным билетом и ссылками на эфиры.</p>
+    <p class="lede">Сразу после оплаты: вход в канал участников, ссылки на эфиры и ваш именной билет для сторис.</p>
     <div class="tcards one">
       <div class="tc">
         <div class="hd"><div><small>Билет</small><b>Три вечера</b></div><div class="pr"><b>$15</b></div></div>
@@ -342,6 +373,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Три живых эфира с Маленой 20–22 ноября</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Записи до следующего дня</span></li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Канал участников в Telegram</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Участие в розыгрыше розового MacBook</span></li>
           </ul>
         <button class="btn btn-w" type="button" data-buy="ticket">Купить билет · $15</button></div>
       </div>
@@ -386,6 +418,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     <details><summary>Не смогу быть в эфире в это время</summary><p>Записи каждого эфира доступны до следующего дня.</p></details>
     <details><summary>Что нужно для участия?</summary><p>Телефон или компьютер и Zoom. Для практики пригодится ваш аккаунт в Instagram, но можно и без него.</p></details>
     <details><summary>Как я получу ссылки?</summary><p>Сразу после оплаты придёт письмо с билетом, ссылкой на канал в Telegram и на эфиры. Перед каждым вечером пришлём напоминание.</p></details>
+    <details><summary>Как проходит розыгрыш MacBook?</summary><p>В одном из трёх эфиров случайно выбираем одну участницу из тех, кто в этот момент на лайве. Поэтому лучше быть на всех трёх вечерах.</p></details>
     <details><summary>Будет ли продажа на интенсиве?</summary><p>В третий вечер расскажем об обучении New SMM для тех, кто захочет продолжить. Покупать ничего не нужно, интенсив полезен сам по себе.</p></details>
   </div>
 </section>
@@ -471,7 +504,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     new IntersectionObserver(function(es){ es.forEach(function(e){ atTix=e.isIntersecting; }); bar.classList.toggle('on',past&&!atTix); },{threshold:0}).observe(tix);
   }
   var seen={}; if('IntersectionObserver' in window){ var so=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ var id=e.target.id; if(id&&!seen[id]){ seen[id]=1; track('section',id); } } }); },{threshold:.4});
-    ['dlya-kogo','programma','bilety','malena'].forEach(function(id){ var el=document.getElementById(id); if(el) so.observe(el); }); }
+    ['dlya-kogo','programma','macbook','bilety','malena'].forEach(function(id){ var el=document.getElementById(id); if(el) so.observe(el); }); }
 })();
 </script>
 </body>

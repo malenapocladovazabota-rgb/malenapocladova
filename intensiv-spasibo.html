@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Вы в списке · Клиенты из соцсетей с ИИ</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Три вечера в Zoom: как сегодня один человек с телефоном и ИИ приводит клиентов себе или другим. 20–22 ноября, билет $15.">
+<meta property="og:title" content="Клиенты из соцсетей с ИИ · 3 вечера с Маленой Покладовой">
+<meta property="og:description" content="20–22 ноября в Zoom. Билет $15.">
+<meta property="og:image" content="https://malenapocladova.com/images/malena-hero-v4-m.jpg">
+<link rel="icon" href="images/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel · школа -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1521940319314090');
+fbq('track','PageView');
+/* Покупка билета: один раз на браузер, чтобы обновление страницы не удваивало событие */
+(function(){var k='int_nov_purchase',id;try{id=localStorage.getItem(k);}catch(e){}
+ if(!id){id='tk-'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);try{localStorage.setItem(k,id);}catch(e){}
+  fbq('track','Purchase',{content_name:'intensiv-nov-2026-ticket',value:15,currency:'USD'},{eventID:id});}
+ window.__tk=id;})();
+</script>
+
+<style>
+/* Лендинг интенсива «Клиенты из соцсетей с ИИ», 20–22.11.2026.
+   Стиль сайта New SMM, вариант «Контраст»: бордо, золото, тёмные и светлые блоки,
+   выделенные факты, иконки. Покупка = билет. */
+:root{--wine:#6E1E2B;--wine2:#8A2A3A;--ink:#1B1414;--ink2:#453B36;--muted:#6F6558;--paper:#F5EFE3;--cream:#FBF7EE;--gold:#D9A441;--goldL:#E3BE73;--line:rgba(27,20,20,.12);
+--serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--cream);color:var(--ink);font:16.5px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
+.pad{padding:64px 0}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.4px;text-wrap:balance}
+h2{font-size:clamp(31px,6.4vw,48px);line-height:1.1}
+h2 em,h1 em{font-style:italic}
+.lede{font-size:17px;color:var(--ink2);margin-top:14px;max-width:600px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 13.5px var(--mono);letter-spacing:1.3px;text-transform:uppercase;padding:18px 24px;border-radius:4px;text-decoration:none;cursor:pointer;border:0;transition:transform .15s ease,box-shadow .2s ease}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible{outline:2px solid var(--goldL);outline-offset:3px}
+.btn-w{background:var(--wine);color:#fff;box-shadow:0 14px 30px -14px rgba(110,30,43,.8)}
+.btn-g{background:var(--goldL);color:var(--ink)}
+.btn-c{background:#F6EFE2;color:var(--wine)}
+.ic{width:46px;height:46px;border-radius:50%;background:rgba(110,30,43,.08);display:grid;place-items:center;color:var(--wine);flex:none}
+.ic svg{width:22px;height:22px}
+.tag{display:inline-block;font:700 11px var(--mono);letter-spacing:1px;text-transform:uppercase;color:#fff;background:var(--wine);padding:5px 8px;border-radius:3px}
+
+/* Шапка */
+.top{position:sticky;top:0;z-index:30;background:rgba(27,20,20,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#F6EFE2;padding-top:env(safe-area-inset-top)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:12px}
+.logo{font:500 19px var(--serif);text-decoration:none;white-space:nowrap}
+.logo em{font-style:italic;color:var(--goldL)}
+.top .btn{padding:13px 14px;font-size:12px;min-height:44px}
+
+/* Первый экран: фото отдельным кадром, текст на тёмном фоне без наложения */
+.hero{background:var(--ink);color:#F6EFE2}
+.hph{aspect-ratio:4/3;overflow:hidden;max-height:62vh}
+.hph{position:relative}.hph img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.hph::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(180deg,rgba(27,20,20,0),var(--ink))}
+.hpts{list-style:none;display:grid;gap:12px;margin-top:22px;max-width:520px}
+.hpts li{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:15.5px;line-height:1.45;color:#E9E0CF}
+.hpts svg{width:22px;height:22px;color:var(--goldL);margin-top:1px}
+.htx{padding-top:10px;padding-bottom:40px}
+.when{display:inline-flex;flex-wrap:wrap;gap:8px}
+.when span{font:700 12px var(--mono);letter-spacing:.8px;text-transform:uppercase;padding:7px 10px;border:1px solid rgba(246,239,226,.35);border-radius:3px}
+.when span.hot{background:var(--goldL);color:var(--ink);border-color:var(--goldL)}
+.hero h1{font-size:clamp(40px,10.5vw,76px);line-height:1.04;margin-top:16px}
+.hero h1 em{color:var(--goldL)}
+.hero .sub{font-size:17.5px;line-height:1.55;color:#E9E0CF;margin-top:14px;max-width:520px}
+@media(min-width:900px){
+  .hwrap{display:grid;grid-template-columns:1.05fr .95fr;max-width:1180px;margin:0 auto;align-items:center}
+  .hph{order:2;aspect-ratio:4/5;max-height:none;height:calc(100vh - 58px);min-height:560px}
+  .hph::after{display:none}
+  .htx{order:1;padding:60px 48px 60px max(20px,env(safe-area-inset-left))}
+}
+
+/* Билет */
+.ticket{text-decoration:none;position:relative;margin-top:28px;max-width:520px;background:#F6EFE2;color:var(--ink);border-radius:8px;display:grid;grid-template-columns:1fr 112px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.ticket::before,.ticket::after{content:'';position:absolute;right:101px;width:22px;height:22px;border-radius:50%;background:var(--ink)}
+.ticket::before{top:-11px}.ticket::after{bottom:-11px}
+.ticket .l{padding:18px 18px 18px 20px;border-right:2px dashed rgba(27,20,20,.25)}
+.ticket .l small{display:block;font:700 11px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--wine)}
+.ticket .l b{display:block;font:500 22px/1.15 var(--serif);margin-top:6px}
+.ticket .l span{display:block;font-size:14px;color:var(--ink2);margin-top:6px}
+.ticket .r{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:10px;background:var(--wine);color:#fff;text-decoration:none;cursor:pointer}
+.ticket .r s{font:500 14px var(--serif);opacity:.6}
+.ticket .r b{font:500 38px/1 var(--serif)}
+.ticket .r i{font:700 10.5px var(--mono);letter-spacing:1px;text-transform:uppercase;font-style:normal;margin-top:6px}
+.hero .after{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:14px;color:#D9CCB4}
+.hero .after b{color:#fff;font-weight:600}
+.cd{font-variant-numeric:tabular-nums}
+
+/* Полоса фактов */
+.facts{background:var(--ink);color:#F6EFE2;border-top:1px solid rgba(246,239,226,.1)}
+.facts .wrap{display:grid;gap:16px;padding-top:28px;padding-bottom:34px}
+.facts .it{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:baseline;padding-bottom:14px;border-bottom:1px solid rgba(246,239,226,.12)}
+.facts .it:last-child{border-bottom:0;padding-bottom:0}
+.facts b{font:500 40px/1 var(--serif);color:var(--goldL)}
+.facts span{font-size:15.5px;color:#E2D8C6;line-height:1.45}
+
+/* Для кого */
+.who h2 em{color:var(--wine)}
+.tiles{display:grid;gap:12px;margin-top:28px}
+.tile{background:#fff;border:1px solid var(--line);border-radius:6px;padding:20px;display:grid;grid-template-columns:46px 1fr;gap:14px;align-items:start}
+.tile h3{font:600 19px/1.3 var(--serif);margin-top:10px}
+.tile p{font-size:15px;color:var(--ink2);margin-top:6px;line-height:1.55}
+.tile.me{border-color:var(--wine);box-shadow:0 0 0 2px rgba(110,30,43,.2)}
+
+/* Программа */
+.prog{background:var(--paper)}
+.prog h2 em{color:var(--wine)}
+.days{display:grid;gap:14px;margin-top:30px}
+.day{background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.day .hd{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--ink);color:#F6EFE2}
+.day .num{font:500 40px/1 var(--serif);color:var(--goldL);min-width:44px}
+.day .hd small{display:block;font:700 11.5px var(--mono);letter-spacing:.8px;text-transform:uppercase;color:#CDBFA6}
+.day .hd b{display:block;font:500 21px/1.25 var(--serif);margin-top:4px}
+.day .bd{padding:18px 18px 20px}
+.day ul{list-style:none;display:grid;gap:9px}
+.day li{position:relative;padding-left:22px;font-size:15.5px;color:var(--ink2);line-height:1.5}
+.day li::before{content:'';position:absolute;left:3px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.day .take{margin-top:16px;padding:12px 14px;background:rgba(110,30,43,.06);border-left:3px solid var(--wine);font-size:15px}
+.day .take b{color:var(--wine)}
+.day .secret{margin-top:10px;font-size:14px;color:var(--muted);font-style:italic}
+.day .hw{margin-top:10px;font-size:14.5px;color:var(--ink2)}
+.day .hw b{color:var(--ink)}
+
+/* Формат */
+.fmt{background:var(--cream)}
+.fmt h2 em{color:var(--wine)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:26px}
+.fbox{background:#fff;border:1px solid var(--line);border-radius:6px;padding:16px}
+.fbox .ic{width:40px;height:40px}
+.fbox b{display:block;font:600 16px/1.3 var(--sans);margin-top:12px}
+.fbox span{display:block;font-size:14px;color:var(--ink2);margin-top:4px;line-height:1.45}
+
+/* Билеты */
+.tix{background:var(--ink);color:#F6EFE2}
+.tix h2 em{color:var(--goldL)}
+.tix .lede{color:#D9CCB4}
+.tcards{display:grid;gap:14px;margin-top:28px;max-width:520px}
+.tc{border-radius:8px;overflow:hidden;background:#F6EFE2;color:var(--ink);position:relative}
+.tc .hd{padding:20px 20px 16px;border-bottom:2px dashed rgba(27,20,20,.2);display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.tc .hd small{display:block;font:700 11.5px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--wine)}
+.tc .hd b{display:block;font:500 26px/1.15 var(--serif);margin-top:6px}
+.tc .pr{text-align:right}
+.tc .pr b{font:500 44px/1 var(--serif);color:var(--wine)}
+.tc .bd{padding:16px 20px 20px}
+.tc ul{list-style:none;display:grid;gap:9px}
+.tc li{display:grid;grid-template-columns:20px 1fr;gap:8px;font-size:15px;line-height:1.45}
+.tc li svg{width:18px;height:18px;margin-top:2px;color:var(--wine)}
+.tc .btn{width:100%;margin-top:18px}
+.tc.vip{background:linear-gradient(160deg,#3a1820,#6E1E2B);color:#F6EFE2}
+.tc.vip .hd{border-color:rgba(246,239,226,.25)}
+.tc.vip .hd small{color:var(--goldL)}
+.tc.vip .pr b{color:var(--goldL)}
+.tc.vip li svg{color:var(--goldL)}
+.tc.vip .note{font-size:13.5px;color:#E6D3C2;margin-top:12px}
+.tix .safe{font-size:14px;color:#BFAE94;margin-top:16px}
+
+.mac{background:var(--wine);color:#F6EFE2}
+.macbox{max-width:620px}
+.tag.g{background:var(--goldL);color:var(--ink)}
+.mac h2{margin-top:14px}.mac h2 em{color:var(--goldL)}
+.mac p{font-size:16.5px;color:#F1E3E5;margin-top:12px;line-height:1.6}
+.mac .hpts li{color:#F6EFE2}
+/* Малена */
+.au{background:var(--ink);color:#fff}
+.au .ph{position:relative;aspect-ratio:3/4;overflow:hidden;max-width:620px;margin:0 auto}
+.au .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.au .ph::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,20,0) 45%,rgba(27,20,20,.94) 100%)}
+.au .nm{position:absolute;left:22px;right:22px;bottom:22px;z-index:1}
+.au .nm h2{color:#fff}.au .nm h2 em{color:var(--goldL)}
+.au .nm p{font-size:14.5px;color:#E2D8C6;margin-top:6px}
+.au .tx{padding-top:28px;padding-bottom:64px}
+.au .tx p{font-size:16.5px;color:#E9E0CF;line-height:1.65;max-width:560px}
+.au .tx p+p{margin-top:12px}
+.au .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:22px;max-width:560px}
+.au .nums div{border:1px solid rgba(246,239,226,.18);border-radius:6px;padding:12px 10px}
+.au .nums b{display:block;font:500 24px/1 var(--serif);color:var(--goldL)}
+.au .nums span{display:block;font-size:12.5px;color:#D9CCB4;margin-top:6px;line-height:1.35}
+
+/* Ученицы */
+.st{background:var(--paper)}
+.st h2 em{color:var(--wine)}
+.stack{display:grid;gap:12px;margin-top:28px}
+.sc{display:grid;grid-template-columns:110px 1fr;background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.sc img{width:110px;height:100%;min-height:132px;object-fit:cover;object-position:50% 20%}
+.sc .c{padding:16px}
+.sc b{display:block;font:500 26px/1 var(--serif);color:var(--wine)}
+.sc small{display:block;font-size:13.5px;color:var(--ink2);margin-top:6px;line-height:1.4}
+.sc p{font-size:14.5px;margin-top:10px;font-weight:600}
+.st .fine{font-size:13px;color:var(--muted);margin-top:16px}
+
+/* Розыгрыш */
+.gift{background:var(--wine);color:#F6EFE2}
+.gift .wrap{display:grid;gap:14px}
+.gift h2 em{color:var(--goldL)}
+.gift p{font-size:16.5px;color:#F1E3E5;max-width:560px}
+.gift .conds{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.gift .conds span{font:700 12px var(--mono);letter-spacing:.6px;text-transform:uppercase;border:1px solid rgba(246,239,226,.4);border-radius:3px;padding:7px 10px}
+
+/* Вопросы */
+.faq{background:var(--cream)}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:6px;margin-top:10px;overflow:hidden}
+.faq details:first-of-type{margin-top:26px}
+.faq summary{list-style:none;cursor:pointer;padding:17px 60px 17px 18px;font:600 16.5px/1.4 var(--sans);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';position:absolute;right:0;top:0;bottom:0;width:48px;display:grid;place-items:center;background:var(--wine);color:#fff;font:400 22px var(--sans)}
+.faq details[open] summary::after{content:'–'}
+.faq summary:focus-visible{outline:2px solid var(--wine);outline-offset:-2px}
+.faq details p{padding:0 18px 18px;font-size:15.5px;color:var(--ink2);line-height:1.6}
+
+/* Финал */
+.fin{position:relative;background:var(--ink);color:#fff;overflow:hidden}
+.fin .bg{position:absolute;inset:0;opacity:.3}
+.fin .bg img{width:100%;height:100%;object-fit:cover}
+.fin .wrap{position:relative}
+.fin h2 em{color:var(--goldL)}
+.fin p{color:#E2D8C6;margin-top:14px;max-width:520px}
+.fin .ticket{margin-top:24px}
+
+footer{background:var(--paper);padding:30px 0 110px;font-size:13px;color:var(--muted)}
+footer .wrap{display:grid;gap:6px}
+footer a{text-decoration:underline;text-underline-offset:3px}
+
+/* Липкая панель */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px max(12px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));background:rgba(27,20,20,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transform:translateY(110%);transition:transform .3s ease}
+.bar.on{transform:none}
+.bar .in{max-width:620px;margin:0 auto;display:flex;align-items:center;gap:12px;justify-content:space-between;color:#F6EFE2}
+.bar .t{font-size:13px;line-height:1.3}
+.bar .t b{display:block;font:500 17px var(--serif)}
+.bar .btn{padding:14px 18px;font-size:12px;white-space:nowrap}
+
+@media(min-width:900px){
+  .facts .wrap{grid-template-columns:repeat(3,1fr);gap:30px}
+  .facts .it{grid-template-columns:1fr;border-bottom:0;padding-bottom:0}
+  .tiles{grid-template-columns:1fr 1fr}
+  .days{grid-template-columns:repeat(3,1fr)}
+  .fgrid{grid-template-columns:repeat(4,1fr)}
+  .au .in{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;max-width:1080px;margin:0 auto}
+  .stack{grid-template-columns:1fr 1fr}
+  .bar{display:none}
+}
+
+/* Страница после оплаты */
+.ok{background:var(--ink);color:#F6EFE2;padding:34px 0 40px}
+.ok .mk{width:54px;height:54px;border-radius:50%;background:var(--goldL);color:var(--ink);display:grid;place-items:center;font:600 28px var(--sans)}
+.ok h1{font-size:clamp(36px,9.5vw,60px);line-height:1.05;margin-top:18px}
+.ok h1 em{color:var(--goldL)}
+.ok p{font-size:17px;color:#E9E0CF;margin-top:12px;max-width:520px}
+.steps{background:var(--cream);padding:34px 0 60px}
+.step{background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px;margin-top:14px;max-width:620px}
+.step .n{font:700 12px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--wine)}
+.step h2{font-size:26px;margin-top:8px}
+.step p{font-size:15.5px;color:var(--ink2);margin-top:8px;line-height:1.55}
+.step .btn{width:100%;margin-top:16px}
+.step input{width:100%;font:500 17px var(--sans);padding:15px 16px;border:1px solid rgba(27,20,20,.25);border-radius:6px;margin-top:14px;background:var(--cream);color:var(--ink)}
+.step input:focus{outline:2px solid var(--wine);outline-offset:1px}
+#tkimg{width:100%;max-width:300px;margin:16px auto 0;border-radius:10px;box-shadow:0 20px 40px -20px rgba(0,0,0,.5)}
+.vip{background:linear-gradient(160deg,#3a1820,#6E1E2B);color:#F6EFE2;border:0}
+.vip .n{color:var(--goldL)}.vip p{color:#F1E3E5}
+.vip ul{list-style:none;display:grid;gap:9px;margin-top:14px}
+.vip li{position:relative;padding-left:22px;font-size:15.5px;line-height:1.45}
+.vip li::before{content:'';position:absolute;left:3px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--goldL)}
+.vip small{display:block;font-size:13.5px;color:#E6D3C2;margin-top:12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="logo" href="/intensiv">Малена <em>Покладова</em></a></div></header>
+
+<section class="ok"><div class="wrap">
+  <div class="mk">✓</div>
+  <h1>Вы в списке. <em>До встречи 20 ноября</em></h1>
+  <p>Оплата прошла. Осталось три коротких шага, первый обязательный.</p>
+</div></section>
+
+<section class="steps"><div class="wrap">
+  <div class="step" id="sTg">
+    <div class="n">Шаг 1 · обязательно</div>
+    <h2>Войдите в канал участников</h2>
+    <p>В канале ссылки на эфиры, материалы и напоминания. Начинаем 20 ноября в 19:00 по Кишинёву, 9:00 по Лос-Анджелесу.</p>
+    <a class="btn btn-w" id="tgBtn" href="#" target="_blank" rel="noopener">Открыть канал в Telegram</a>
+    <p id="tgNo" hidden>Ссылка на канал придёт на почту, которую вы указали при оплате, в течение нескольких минут.</p>
+  </div>
+
+  <div class="step">
+    <div class="n">Шаг 2 · ваш билет</div>
+    <h2>Именной билет для сторис</h2>
+    <p>Напишите имя, сохраните билет и выложите в сторис с отметкой @malenapocladova. Малена репостит билеты участниц.</p>
+    <input id="tkName" type="text" placeholder="Ваше имя" autocomplete="given-name" maxlength="24">
+    <button class="btn btn-w" type="button" id="tkGo">Сделать билет</button>
+    <img id="tkimg" alt="Ваш билет" hidden>
+    <button class="btn btn-c" type="button" id="tkShare" hidden style="border:1px solid var(--wine)">Сохранить или поделиться</button>
+    <p id="tkHint" hidden>Если кнопка не сработала, нажмите на билет и держите палец, затем «Сохранить в Фото».</p>
+  </div>
+
+  <div class="step vip" id="sVip" hidden>
+    <div class="n">Шаг 3 · по желанию</div>
+    <h2>Обновить билет до VIP</h2>
+    <ul>
+      <li>Записи всех трёх эфиров ещё 24 часа после финала</li>
+      <li>Пакет второго вечера: сценарии Reels, банк хуков, пример сторителлинга, контент-план с промптом</li>
+      <li>Документ третьего вечера «Разбор цифр»: что влияет на каждую цифру и что делать</li>
+    </ul>
+    <a class="btn btn-g" id="vipBtn" href="#">Обновить до VIP · +$35</a>
+    <small>$35 засчитываются в оплату обучения, если решите учиться дальше.</small>
+  </div>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Personal Growth Lab LLC · Школа Малены Покладовой</span><span><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms</a> · Вопросы: Telegram @Malena_Pocladova_Zabota</span></div></footer>
+
+<script>
+(function(){
+  /* Ссылки вставляются сюда: канал участников и доплата VIP. Пока пусто, блоки ведут себя безопасно. */
+  var LINKS={ tg:'', vip:'' };
+  var tg=document.getElementById('tgBtn');
+  if(LINKS.tg) tg.href=LINKS.tg; else { tg.hidden=true; document.getElementById('tgNo').hidden=false; }
+  if(LINKS.vip){ document.getElementById('sVip').hidden=false; var v=document.getElementById('vipBtn'); v.href=LINKS.vip;
+    v.addEventListener('click',function(){ if(window.fbq) fbq('track','InitiateCheckout',{content_name:'intensiv-nov-2026-vip',value:35,currency:'USD'}); }); }
+
+  /* Билет для сторис: рисуем картинку 1080×1920 прямо в браузере */
+  var img=document.getElementById('tkimg'), share=document.getElementById('tkShare'), hint=document.getElementById('tkHint'), blob=null;
+  function draw(name){
+    var c=document.createElement('canvas'); c.width=1080; c.height=1920; var x=c.getContext('2d');
+    var g=x.createLinearGradient(0,0,1080,1920); g.addColorStop(0,'#3a1820'); g.addColorStop(.55,'#1B1414'); g.addColorStop(1,'#1B1414'); x.fillStyle=g; x.fillRect(0,0,1080,1920);
+    x.strokeStyle='rgba(227,190,115,.55)'; x.lineWidth=3; x.strokeRect(54,54,972,1812);
+    x.textAlign='center';
+    x.fillStyle='#E3BE73'; x.font='700 34px "JetBrains Mono",monospace'; x.fillText('БИЛЕТ УЧАСТНИЦЫ',540,300);
+    x.fillStyle='#F6EFE2'; x.font='500 150px "Playfair Display",Georgia,serif'; x.fillText('Я иду',540,560);
+    x.fillStyle='#E3BE73'; x.font='italic 500 92px "Playfair Display",Georgia,serif'; x.fillText('Клиенты',540,760); x.fillText('из соцсетей с ИИ',540,880);
+    x.fillStyle='#E9E0CF'; x.font='500 44px Inter,system-ui,sans-serif'; x.fillText('3 вечера с Маленой Покладовой',540,1010);
+    /* сам билет */
+    x.fillStyle='#F6EFE2'; x.fillRect(120,1130,840,380);
+    x.fillStyle='#1B1414'; x.beginPath(); x.arc(120,1320,34,0,7); x.fill(); x.beginPath(); x.arc(960,1320,34,0,7); x.fill();
+    x.fillStyle='#6E1E2B'; x.font='700 30px "JetBrains Mono",monospace'; x.fillText('20–22 НОЯБРЯ · ZOOM',540,1215);
+    x.fillStyle='#1B1414'; var fs=96; x.font='500 '+fs+'px "Playfair Display",Georgia,serif';
+    while(x.measureText(name).width>720 && fs>48){ fs-=6; x.font='500 '+fs+'px "Playfair Display",Georgia,serif'; }
+    x.fillText(name,540,1345);
+    x.fillStyle='#6F6558'; x.font='500 32px Inter,system-ui,sans-serif'; x.fillText('19:00 Кишинёв · 9:00 Лос-Анджелес',540,1440);
+    x.fillStyle='#E3BE73'; x.font='500 46px Inter,system-ui,sans-serif'; x.fillText('@malenapocladova',540,1680);
+    x.fillStyle='rgba(246,239,226,.6)'; x.font='500 30px Inter,system-ui,sans-serif'; x.fillText('malenapocladova.com/intensiv',540,1750);
+    return c;
+  }
+  document.getElementById('tkGo').addEventListener('click',function(){
+    var name=(document.getElementById('tkName').value||'').trim(); if(!name){ document.getElementById('tkName').focus(); return; }
+    var go=function(){ var c=draw(name); img.src=c.toDataURL('image/png'); img.hidden=false; share.hidden=false; hint.hidden=false;
+      c.toBlob(function(b){ blob=b; },'image/png'); img.scrollIntoView({behavior:'smooth',block:'center'}); };
+    (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(go,go);
+  });
+  share.addEventListener('click',function(){
+    if(!blob) return;
+    var file=new File([blob],'bilet-malena.png',{type:'image/png'});
+    if(navigator.canShare && navigator.canShare({files:[file]})){ navigator.share({files:[file]}).catch(function(){}); return; }
+    var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='bilet-malena.png'; document.body.appendChild(a); a.click(); a.remove();
+  });
+})();
+</script>
+</body></html>
