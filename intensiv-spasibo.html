@@ -18,11 +18,16 @@
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1521940319314090');
 fbq('track','PageView');
-/* Покупка билета: один раз на браузер, чтобы обновление страницы не удваивало событие */
-(function(){var k='int_nov_purchase',id;try{id=localStorage.getItem(k);}catch(e){}
- if(!id){id='tk-'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);try{localStorage.setItem(k,id);}catch(e){}
+/* Покупка: событие уходит один раз на браузер и только тем, кто пришёл с оплаты (нажимал «Купить» в этом браузере или вернулся со страницы оплаты) */
+(function(){var L=function(k){try{return localStorage.getItem(k);}catch(e){return null;}},S=function(k,v){try{localStorage.setItem(k,v);}catch(e){}};
+ var paid=!!L('int_buy_click')||/fastpaydirect|leadconnector|gohighlevel/i.test(document.referrer||'');
+ var vip=/[?&]vip=1/.test(location.search);
+ var id=L('int_nov_purchase');
+ if(!id&&paid){id='tk-'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);S('int_nov_purchase',id);
   fbq('track','Purchase',{content_name:'intensiv-nov-2026-ticket',value:15,currency:'USD'},{eventID:id});}
- window.__tk=id;})();
+ if(vip&&!L('int_nov_vip')&&(L('int_vip_click')||/fastpaydirect|leadconnector|gohighlevel/i.test(document.referrer||''))){var v='vip-'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);S('int_nov_vip',v);
+  fbq('track','Purchase',{content_name:'intensiv-nov-2026-vip',value:35,currency:'USD'},{eventID:v});}
+ window.__tk=id;window.__vip=vip||!!L('int_nov_vip');})();
 </script>
 
 <style>
@@ -321,11 +326,13 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 <script>
 (function(){
   /* Ссылки вставляются сюда: канал участников и доплата VIP. Пока пусто, блоки ведут себя безопасно. */
-  var LINKS={ tg:'', vip:'' };
+  var LINKS={ tg:'', vip:'https://link.fastpaydirect.com/payment-link/6af43342906a8b62055d5872' };
   var tg=document.getElementById('tgBtn');
   if(LINKS.tg) tg.href=LINKS.tg; else { tg.hidden=true; document.getElementById('tgNo').hidden=false; }
-  if(LINKS.vip){ document.getElementById('sVip').hidden=false; var v=document.getElementById('vipBtn'); v.href=LINKS.vip;
-    v.addEventListener('click',function(){ if(window.fbq) fbq('track','InitiateCheckout',{content_name:'intensiv-nov-2026-vip',value:35,currency:'USD'}); }); }
+  if(LINKS.vip){ var sv=document.getElementById('sVip'); sv.hidden=false; var v=document.getElementById('vipBtn');
+    if(window.__vip){ sv.querySelector('h2').textContent='VIP подключён'; v.hidden=true; var sm=sv.querySelector('small'); if(sm) sm.textContent='Материалы VIP придут в канал участников после каждого вечера.'; }
+    v.href=LINKS.vip;
+    v.addEventListener('click',function(){ try{ localStorage.setItem('int_vip_click','1'); }catch(e){} if(window.fbq) fbq('track','InitiateCheckout',{content_name:'intensiv-nov-2026-vip',value:35,currency:'USD'}); }); }
 
   /* Билет для сторис: рисуем картинку 1080×1920 прямо в браузере */
   var img=document.getElementById('tkimg'), share=document.getElementById('tkShare'), hint=document.getElementById('tkHint'), blob=null;
