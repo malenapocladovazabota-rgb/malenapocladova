@@ -96,6 +96,10 @@ details[open] summary::after{content:"\2013"} details p{margin-top:8px;color:var
 .stu b{font-family:var(--serif);font-weight:500;font-size:30px;color:var(--acc);line-height:1}
 .stu span{font-size:15px;color:var(--mut)} .stu small{font-size:13px;color:var(--fg);margin-top:6px}
 
+s[data-old]{font-family:var(--sans);font-weight:400;font-size:.55em;opacity:.6;text-decoration-thickness:1.5px;vertical-align:middle;margin-right:.15em}
+.tix .pr s{display:block;font-size:22px;text-align:right;margin:0 0 6px}
+.up{font-size:14px;color:var(--acc);margin-top:12px} .up:empty{display:none} .tix .up{text-align:center}
+
 /* Компьютер */
 @media (min-width:900px){
   body{font-size:18px}
@@ -133,7 +137,8 @@ details[open] summary::after{content:"\2013"} details p{margin-top:8px;color:var
     <div class="lab">20–22 ноября · Zoom · 19:00 Кишинёв</div>
     <h1 id="hH">Клиенты из&nbsp;соцсетей <em>с&nbsp;ИИ</em></h1>
     <p class="sub" id="hS">Три вечера с Маленой Покладовой.</p>
-    <a class="btn" href="#bilety" data-buy="ticket"><span>Билет на три вечера</span><b>$15</b></a>
+    <a class="btn" href="#bilety" data-buy="ticket"><span>Билет на три вечера</span><b><s data-old>$50</s> <span data-price>$15</span></b></a>
+    <p class="up" data-up></p>
     <a class="gift" href="#macbook"><i></i>В эфире разыграем розовый MacBook</a>
   </div>
 </div></section>
@@ -174,9 +179,9 @@ details[open] summary::after{content:"\2013"} details p{margin-top:8px;color:var
 </div></section>
 
 <div class="w"><section class="tix" id="bilety">
-  <div class="row"><div><div class="lab">Билет · до старта <span data-cd>—</span></div><h2 style="margin-top:8px">Три вечера</h2></div><div class="pr">$15</div></div>
+  <div class="row"><div><div class="lab">Билет · до старта <span data-cd>—</span></div><h2 style="margin-top:8px">Три вечера</h2></div><div class="pr"><s data-old>$50</s><span data-price>$15</span></div></div>
   <ul><li>Три живых эфира в Zoom</li><li>Записи до следующего дня</li><li>Домашка после каждого вечера</li><li>Участие в розыгрыше MacBook</li></ul>
-  <button class="btn" type="button" data-buy="ticket"><span>Купить билет</span><b>$15</b></button>
+  <div><button class="btn" type="button" data-buy="ticket"><span>Купить билет</span><b data-price>$15</b></button><p class="up" data-up></p></div>
   <small>19:00 Кишинёв · 9:00 Лос-Анджелес · 12:00 Нью-Йорк · Вопросы: Telegram @Malena_Pocladova_Zabota</small>
 </section></div>
 
@@ -190,13 +195,27 @@ details[open] summary::after{content:"\2013"} details p{margin-top:8px;color:var
 
 <footer class="w foot">© 2026 Personal Growth Lab LLC · Школа Малены Покладовой<br><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms</a> · <a href="https://instagram.com/malenapocladova" target="_blank" rel="noopener">@malenapocladova</a></footer>
 
-<div class="bar" id="bar"><div class="in"><div class="t">20–22 ноября · Zoom<b>Билет $15</b></div><button class="btn" type="button" data-buy="ticket">Купить билет</button></div></div>
+<div class="bar" id="bar"><div class="in"><div class="t"><span data-up-short>20–22 ноября · Zoom</span><b>Билет <s data-old>$50</s> <span data-price>$15</span></b></div><button class="btn" type="button" data-buy="ticket">Купить билет</button></div></div>
 
 <script>
 (function(){
-  /* Ссылки оплаты GHL. Пока пусто, кнопки ведут к блоку билетов. */
-  var PAY={ ticket:'https://link.fastpaydirect.com/payment-link/6af4330f21a48a3872d2513a' };
-  var PRICE={ ticket:15 };
+    /* Цена растёт по датам: границы в полночь по Лос-Анджелесу */
+  var L='https://link.fastpaydirect.com/payment-link/';
+  var STAGES=[{until:Date.UTC(2026,10,16,8,0,0),price:15,url:L+'6af4330f21a48a3872d2513a'},{until:Date.UTC(2026,10,20,8,0,0),price:25,url:L+'6af43741906a8b62055d5877'},{until:Infinity,price:50,url:L+'6af4376621a48a3872d2514b'}];
+  var SI=0; while(SI<STAGES.length-1 && Date.now()>=STAGES[SI].until) SI++;
+  var ST=STAGES[SI], NX=STAGES[SI+1]||null;
+  var PAY={ ticket:ST.url };
+  var PRICE={ ticket:ST.price };
+  [].forEach.call(document.querySelectorAll('[data-price]'),function(el){ el.textContent='$'+ST.price; });
+  [].forEach.call(document.querySelectorAll('[data-old]'),function(el){ if(ST.price>=50) el.hidden=true; });
+  function upTick(){ var txt='',sh='20–22 ноября · Zoom';
+    if(NX){ var d=ST.until-Date.now(); if(d<=0){ location.reload(); return; }
+      var dd=Math.floor(d/864e5), hh=Math.floor(d%864e5/36e5), mm=Math.floor(d%36e5/6e4);
+      var left=(dd?dd+' дн ':'')+hh+' ч '+(mm<10?'0':'')+mm+' мин';
+      txt='До повышения до $'+NX.price+': '+left; sh='До $'+NX.price+': '+left; }
+    [].forEach.call(document.querySelectorAll('[data-up]'),function(el){ el.textContent=txt; });
+    [].forEach.call(document.querySelectorAll('[data-up-short]'),function(el){ el.textContent=sh; }); }
+  upTick(); setInterval(upTick,30000);
   var START=Date.UTC(2026,10,20,17,0,0); /* 20.11.2026 19:00 Кишинёв = 17:00 UTC */
 
   function q(n){ try{ return new URLSearchParams(location.search).get(n)||''; }catch(e){ return ''; } }
@@ -232,7 +251,7 @@ details[open] summary::after{content:"\2013"} details p{margin-top:8px;color:var
 
   /* Покупка: InitiateCheckout в пиксель, метки в ссылку оплаты */
   function buy(kind){
-    track('buy_click',kind); try{ localStorage.setItem('int_buy_click',String(Date.now())); }catch(e){}
+    track('buy_click',kind); try{ localStorage.setItem('int_buy_click',String(Date.now())); localStorage.setItem('int_buy_price',String(PRICE[kind])); }catch(e){}
     if(window.fbq) fbq('track','InitiateCheckout',{content_name:'intensiv-nov-2026-'+kind,value:PRICE[kind],currency:'USD'},{eventID:'ic-'+sid+'-'+kind});
     var url=PAY[kind];
     if(!url){ document.getElementById('bilety').scrollIntoView({behavior:'smooth'}); return; }

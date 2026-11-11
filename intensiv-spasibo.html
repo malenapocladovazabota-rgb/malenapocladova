@@ -24,7 +24,8 @@ fbq('track','PageView');
  var vip=/[?&]vip=1/.test(location.search);
  var id=L('int_nov_purchase');
  if(!id&&paid){id='tk-'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);S('int_nov_purchase',id);
-  fbq('track','Purchase',{content_name:'intensiv-nov-2026-ticket',value:15,currency:'USD'},{eventID:id});}
+  var pv=parseInt(L('int_buy_price')||'15',10); if([15,25,50].indexOf(pv)<0) pv=15;
+  fbq('track','Purchase',{content_name:'intensiv-nov-2026-ticket',value:pv,currency:'USD'},{eventID:id});}
  if(vip&&!L('int_nov_vip')&&(L('int_vip_click')||/fastpaydirect|leadconnector|gohighlevel/i.test(document.referrer||''))){var v='vip-'+Date.now().toString(36)+Math.random().toString(36).slice(2,8);S('int_nov_vip',v);
   fbq('track','Purchase',{content_name:'intensiv-nov-2026-vip',value:35,currency:'USD'},{eventID:v});}
  window.__tk=id;window.__vip=vip||!!L('int_nov_vip');})();
