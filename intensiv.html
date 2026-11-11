@@ -21,428 +21,156 @@ fbq('track','ViewContent',{content_name:'intensiv-nov-2026',value:15,currency:'U
 </script>
 
 <style>
-/* Лендинг интенсива «Клиенты из соцсетей с ИИ», 20–22.11.2026.
-   Стиль сайта New SMM, вариант «Контраст»: бордо, золото, тёмные и светлые блоки,
-   выделенные факты, иконки. Покупка = билет. */
-:root{--wine:#6E1E2B;--wine2:#8A2A3A;--ink:#1B1414;--ink2:#453B36;--muted:#6F6558;--paper:#F5EFE3;--cream:#FBF7EE;--gold:#D9A441;--goldL:#E3BE73;--line:rgba(27,20,20,.12);
---serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{background:var(--cream);color:var(--ink);font:16.5px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
-img{display:block;max-width:100%}
-a{color:inherit}
-.wrap{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
-.pad{padding:64px 0}
-h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.4px;text-wrap:balance}
-h2{font-size:clamp(31px,6.4vw,48px);line-height:1.1}
-h2 em,h1 em{font-style:italic}
-.lede{font-size:17px;color:var(--ink2);margin-top:14px;max-width:600px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 13.5px var(--mono);letter-spacing:1.3px;text-transform:uppercase;padding:18px 24px;border-radius:4px;text-decoration:none;cursor:pointer;border:0;transition:transform .15s ease,box-shadow .2s ease}
-.btn:active{transform:translateY(1px)}
-.btn:focus-visible{outline:2px solid var(--goldL);outline-offset:3px}
-.btn-w{background:var(--wine);color:#fff;box-shadow:0 14px 30px -14px rgba(110,30,43,.8)}
-.btn-g{background:var(--goldL);color:var(--ink)}
-.btn-c{background:#F6EFE2;color:var(--wine)}
-.ic{width:46px;height:46px;border-radius:50%;background:rgba(110,30,43,.08);display:grid;place-items:center;color:var(--wine);flex:none}
-.ic svg{width:22px;height:22px}
-.tag{display:inline-block;font:700 11px var(--mono);letter-spacing:1px;text-transform:uppercase;color:#fff;background:var(--wine);padding:5px 8px;border-radius:3px}
+:root{--bg:#191214;--bg2:#241a1d;--fg:#f5ecdc;--mut:#b9a999;--acc:#dfbb6a;--acc-fg:#1b1416;--line:#3a2b2f;--panel:#6a1b2a;--panel-fg:#f7ecd9;
+  --serif:'Playfair Display',Georgia,'Times New Roman',serif;--sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color-scheme:dark}
+*{box-sizing:border-box} html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;line-height:1.45;-webkit-font-smoothing:antialiased}
+p,h1,h2,h3,ul{margin:0} img{max-width:100%} a{color:inherit}
+.w{max-width:1120px;margin:0 auto;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
+.lab{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;line-height:1.08;text-wrap:balance}
+h1{font-size:clamp(40px,11.5vw,58px)} h2{font-size:clamp(30px,8.6vw,42px)}
+em{font-style:italic;color:var(--acc)}
+.btn{display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%;border:0;cursor:pointer;text-decoration:none;font-family:var(--sans);font-weight:600;font-size:17px;padding:19px 22px;border-radius:14px;background:var(--acc);color:var(--acc-fg);transition:filter .15s,transform .15s}
+.btn:hover{filter:brightness(1.08)} .btn:active{transform:translateY(1px)}
+.btn b{font-family:var(--serif);font-weight:500;font-size:22px}
+.btn:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+.sec{padding-top:64px} .sec h2{margin-top:12px}
 
-/* Шапка */
-.top{position:sticky;top:0;z-index:30;background:rgba(27,20,20,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#F6EFE2;padding-top:env(safe-area-inset-top)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:12px}
-.logo{font:500 19px var(--serif);text-decoration:none;white-space:nowrap}
-.logo em{font-style:italic;color:var(--goldL)}
-.top .btn{padding:13px 14px;font-size:12px;min-height:44px}
+.top{display:none}
+.hero .ph img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:50% 10%;-webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
+.hero .tx{margin-top:-34px;position:relative}
+.hero h1{margin:12px 0 14px} .hero .sub{color:var(--mut);font-size:18px;margin-bottom:24px;max-width:26em}
 
-/* Первый экран: фото отдельным кадром, текст на тёмном фоне без наложения */
-.hero{background:var(--ink);color:#F6EFE2}
-.hph{aspect-ratio:4/3;overflow:hidden;max-height:62vh}
-.hph{position:relative}.hph img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
-.hph::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(180deg,rgba(27,20,20,0),var(--ink))}
-.hpts{list-style:none;display:grid;gap:12px;margin-top:22px;max-width:520px}
-.hpts li{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:15.5px;line-height:1.45;color:#E9E0CF}
-.hpts svg{width:22px;height:22px;color:var(--goldL);margin-top:1px}
-.htx{padding-top:10px;padding-bottom:40px}
-.when{display:inline-flex;flex-wrap:wrap;gap:8px}
-.when span{font:700 12px var(--mono);letter-spacing:.8px;text-transform:uppercase;padding:7px 10px;border:1px solid rgba(246,239,226,.35);border-radius:3px}
-.when span.hot{background:var(--goldL);color:var(--ink);border-color:var(--goldL)}
-.hero h1{font-size:clamp(40px,10.5vw,76px);line-height:1.04;margin-top:16px}
-.hero h1 em{color:var(--goldL)}
-.hero .sub{font-size:17.5px;line-height:1.55;color:#E9E0CF;margin-top:14px;max-width:520px}
-@media(min-width:900px){
-  .hwrap{display:grid;grid-template-columns:1.05fr .95fr;max-width:1180px;margin:0 auto;align-items:center}
-  .hph{order:2;aspect-ratio:4/5;max-height:none;height:calc(100vh - 58px);min-height:560px}
-  .hph::after{display:none}
-  .htx{order:1;padding:60px 48px 60px max(20px,env(safe-area-inset-left))}
-}
+.acts{margin-top:26px;display:grid}
+.act{display:grid;grid-template-columns:62px 1fr;gap:6px 14px;padding:26px 0;border-top:1px solid var(--line)}
+.act:last-child{border-bottom:1px solid var(--line)}
+.act .n{grid-row:1/4;font-family:var(--serif);font-style:italic;font-size:54px;line-height:.9;color:var(--acc)}
+.act .day{font-size:13px;color:var(--mut);letter-spacing:.04em} .act h3{font-size:25px}
+.act .get{font-size:16px;color:var(--mut)} .act .get b{color:var(--fg);font-weight:600}
 
-/* Билет */
-.ticket{text-decoration:none;position:relative;margin-top:28px;max-width:520px;background:#F6EFE2;color:var(--ink);border-radius:8px;display:grid;grid-template-columns:1fr 112px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
-.ticket::before,.ticket::after{content:'';position:absolute;right:101px;width:22px;height:22px;border-radius:50%;background:var(--ink)}
-.ticket::before{top:-11px}.ticket::after{bottom:-11px}
-.ticket .l{padding:18px 18px 18px 20px;border-right:2px dashed rgba(27,20,20,.25)}
-.ticket .l small{display:block;font:700 11px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--wine)}
-.ticket .l b{display:block;font:500 22px/1.15 var(--serif);margin-top:6px}
-.ticket .l span{display:block;font-size:14px;color:var(--ink2);margin-top:6px}
-.ticket .r{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:10px;background:var(--wine);color:#fff;text-decoration:none;cursor:pointer}
-.ticket .r s{font:500 14px var(--serif);opacity:.6}
-.ticket .r b{font:500 38px/1 var(--serif)}
-.ticket .r i{font:700 10.5px var(--mono);letter-spacing:1px;text-transform:uppercase;font-style:normal;margin-top:6px}
-.hero .after{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:14px;color:#D9CCB4}
-.hero .after b{color:#fff;font-weight:600}
-.cd{font-variant-numeric:tabular-nums}
+.mac{background:var(--panel);color:var(--panel-fg);border-radius:22px;padding:38px 26px;margin-top:64px;text-align:center}
+.mac h2{margin:14px 0 12px;font-size:clamp(34px,10vw,52px)} .mac p{opacity:.85}
 
-/* Полоса фактов */
-.facts{background:var(--ink);color:#F6EFE2;border-top:1px solid rgba(246,239,226,.1)}
-.facts .wrap{display:grid;gap:16px;padding-top:28px;padding-bottom:34px}
-.facts .it{display:grid;grid-template-columns:104px 1fr;gap:12px;align-items:baseline;padding-bottom:14px;border-bottom:1px solid rgba(246,239,226,.12)}
-.facts .it:last-child{border-bottom:0;padding-bottom:0}
-.facts b{font:500 40px/1 var(--serif);color:var(--goldL)}
-.facts span{font-size:15.5px;color:#E2D8C6;line-height:1.45}
+.you{margin-top:24px;display:grid}
+.tile{padding:22px 0;border-top:1px solid var(--line)} .tile:last-child{border-bottom:1px solid var(--line)}
+.tile q{display:block;font-family:var(--serif);font-size:24px;line-height:1.15;quotes:"«" "»";margin:8px 0}
+.tile p{color:var(--mut);font-size:16px}
+.tile.me q{color:var(--acc)}
 
-/* Для кого */
-.who h2 em{color:var(--wine)}
-.tiles{display:grid;gap:12px;margin-top:28px}
-.tile{background:#fff;border:1px solid var(--line);border-radius:6px;padding:20px;display:grid;grid-template-columns:46px 1fr;gap:14px;align-items:start}
-.tile h3{font:600 19px/1.3 var(--serif);margin-top:10px}
-.tile p{font-size:15px;color:var(--ink2);margin-top:6px;line-height:1.55}
-.tile.me{border-color:var(--wine);box-shadow:0 0 0 2px rgba(110,30,43,.2)}
+.who{display:grid;grid-template-columns:112px 1fr;gap:18px;align-items:center;margin-top:24px}
+.who img{width:112px;height:146px;object-fit:cover;object-position:50% 22%;border-radius:12px}
+.who p{min-width:0;color:var(--mut)} .who p b{color:var(--fg);font-weight:600}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);margin-top:26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.nums div{padding:18px 8px;text-align:center} .nums div+div{border-left:1px solid var(--line)}
+.nums b{display:block;font-family:var(--serif);font-weight:500;font-size:30px;color:var(--acc)}
+.nums span{display:block;font-size:13px;line-height:1.25;color:var(--mut);margin-top:4px}
 
-/* Программа */
-.prog{background:var(--paper)}
-.prog h2 em{color:var(--wine)}
-.days{display:grid;gap:14px;margin-top:30px}
-.day{background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden}
-.day .hd{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--ink);color:#F6EFE2}
-.day .num{font:500 40px/1 var(--serif);color:var(--goldL);min-width:44px}
-.day .hd small{display:block;font:700 11.5px var(--mono);letter-spacing:.8px;text-transform:uppercase;color:#CDBFA6}
-.day .hd b{display:block;font:500 21px/1.25 var(--serif);margin-top:4px}
-.day .bd{padding:18px 18px 20px}
-.day ul{list-style:none;display:grid;gap:9px}
-.day li{position:relative;padding-left:22px;font-size:15.5px;color:var(--ink2);line-height:1.5}
-.day li::before{content:'';position:absolute;left:3px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
-.day .take{margin-top:16px;padding:12px 14px;background:rgba(110,30,43,.06);border-left:3px solid var(--wine);font-size:15px}
-.day .take b{color:var(--wine)}
-.day .secret{margin-top:10px;font-size:14px;color:var(--muted);font-style:italic}
-.day .hw{margin-top:10px;font-size:14.5px;color:var(--ink2)}
-.day .hw b{color:var(--ink)}
+.tix{margin-top:64px;background:var(--bg2);border:1px solid var(--acc);border-radius:22px;padding:30px 24px 26px;scroll-margin-top:20px}
+.tix .row{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding-bottom:22px;border-bottom:1px dashed var(--acc)}
+.tix .pr{font-family:var(--serif);font-size:58px;line-height:.85;color:var(--acc)}
+.tix ul{list-style:none;padding:0;margin:22px 0 26px;display:grid;gap:12px}
+.tix li{display:flex;gap:12px;align-items:baseline} .tix li::before{content:"";flex:0 0 7px;height:7px;border-radius:50%;background:var(--acc);transform:translateY(-3px)}
+.tix small{display:block;text-align:center;margin-top:16px;color:var(--mut);font-size:13px}
 
-/* Формат */
-.fmt{background:var(--cream)}
-.fmt h2 em{color:var(--wine)}
-.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:26px}
-.fbox{background:#fff;border:1px solid var(--line);border-radius:6px;padding:16px}
-.fbox .ic{width:40px;height:40px}
-.fbox b{display:block;font:600 16px/1.3 var(--sans);margin-top:12px}
-.fbox span{display:block;font-size:14px;color:var(--ink2);margin-top:4px;line-height:1.45}
+.faq{max-width:720px}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{font-weight:600;font-size:18px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:14px}
+summary::-webkit-details-marker{display:none} summary::after{content:"+";color:var(--acc);font-family:var(--serif);font-size:24px;line-height:1}
+details[open] summary::after{content:"\2013"} details p{margin-top:8px;color:var(--mut)}
+.foot{padding:44px 0 130px;text-align:center;font-size:13px;color:var(--mut)} .foot a{color:var(--mut)}
 
-/* Билеты */
-.tix{background:var(--ink);color:#F6EFE2}
-.tix h2 em{color:var(--goldL)}
-.tix .lede{color:#D9CCB4}
-.tcards{display:grid;gap:14px;margin-top:28px;max-width:520px}
-.tc{border-radius:8px;overflow:hidden;background:#F6EFE2;color:var(--ink);position:relative}
-.tc .hd{padding:20px 20px 16px;border-bottom:2px dashed rgba(27,20,20,.2);display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-.tc .hd small{display:block;font:700 11.5px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--wine)}
-.tc .hd b{display:block;font:500 26px/1.15 var(--serif);margin-top:6px}
-.tc .pr{text-align:right}
-.tc .pr b{font:500 44px/1 var(--serif);color:var(--wine)}
-.tc .bd{padding:16px 20px 20px}
-.tc ul{list-style:none;display:grid;gap:9px}
-.tc li{display:grid;grid-template-columns:20px 1fr;gap:8px;font-size:15px;line-height:1.45}
-.tc li svg{width:18px;height:18px;margin-top:2px;color:var(--wine)}
-.tc .btn{width:100%;margin-top:18px}
-.tc.vip{background:linear-gradient(160deg,#3a1820,#6E1E2B);color:#F6EFE2}
-.tc.vip .hd{border-color:rgba(246,239,226,.25)}
-.tc.vip .hd small{color:var(--goldL)}
-.tc.vip .pr b{color:var(--goldL)}
-.tc.vip li svg{color:var(--goldL)}
-.tc.vip .note{font-size:13.5px;color:#E6D3C2;margin-top:12px}
-.tix .safe{font-size:14px;color:#BFAE94;margin-top:16px}
-
-.mac{background:var(--wine);color:#F6EFE2}
-.macbox{max-width:620px}
-.tag.g{background:var(--goldL);color:var(--ink)}
-.mac h2{margin-top:14px}.mac h2 em{color:var(--goldL)}
-.mac p{font-size:16.5px;color:#F1E3E5;margin-top:12px;line-height:1.6}
-.mac .hpts li{color:#F6EFE2}
-/* Малена */
-.au{background:var(--ink);color:#fff}
-.au .ph{position:relative;aspect-ratio:3/4;overflow:hidden;max-width:620px;margin:0 auto}
-.au .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
-.au .ph::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(27,20,20,0) 45%,rgba(27,20,20,.94) 100%)}
-.au .nm{position:absolute;left:22px;right:22px;bottom:22px;z-index:1}
-.au .nm h2{color:#fff}.au .nm h2 em{color:var(--goldL)}
-.au .nm p{font-size:14.5px;color:#E2D8C6;margin-top:6px}
-.au .tx{padding-top:28px;padding-bottom:64px}
-.au .tx p{font-size:16.5px;color:#E9E0CF;line-height:1.65;max-width:560px}
-.au .tx p+p{margin-top:12px}
-.au .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:22px;max-width:560px}
-.au .nums div{border:1px solid rgba(246,239,226,.18);border-radius:6px;padding:12px 10px}
-.au .nums b{display:block;font:500 24px/1 var(--serif);color:var(--goldL)}
-.au .nums span{display:block;font-size:12.5px;color:#D9CCB4;margin-top:6px;line-height:1.35}
-
-/* Ученицы */
-.st{background:var(--paper)}
-.st h2 em{color:var(--wine)}
-.stack{display:grid;gap:12px;margin-top:28px}
-.sc{display:grid;grid-template-columns:110px 1fr;background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden}
-.sc img{width:110px;height:100%;min-height:132px;object-fit:cover;object-position:50% 20%}
-.sc .c{padding:16px}
-.sc b{display:block;font:500 26px/1 var(--serif);color:var(--wine)}
-.sc small{display:block;font-size:13.5px;color:var(--ink2);margin-top:6px;line-height:1.4}
-.sc p{font-size:14.5px;margin-top:10px;font-weight:600}
-.st .fine{font-size:13px;color:var(--muted);margin-top:16px}
-
-/* Розыгрыш */
-.gift{background:var(--wine);color:#F6EFE2}
-.gift .wrap{display:grid;gap:14px}
-.gift h2 em{color:var(--goldL)}
-.gift p{font-size:16.5px;color:#F1E3E5;max-width:560px}
-.gift .conds{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.gift .conds span{font:700 12px var(--mono);letter-spacing:.6px;text-transform:uppercase;border:1px solid rgba(246,239,226,.4);border-radius:3px;padding:7px 10px}
-
-/* Вопросы */
-.faq{background:var(--cream)}
-.faq details{background:#fff;border:1px solid var(--line);border-radius:6px;margin-top:10px;overflow:hidden}
-.faq details:first-of-type{margin-top:26px}
-.faq summary{list-style:none;cursor:pointer;padding:17px 60px 17px 18px;font:600 16.5px/1.4 var(--sans);position:relative}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:'+';position:absolute;right:0;top:0;bottom:0;width:48px;display:grid;place-items:center;background:var(--wine);color:#fff;font:400 22px var(--sans)}
-.faq details[open] summary::after{content:'–'}
-.faq summary:focus-visible{outline:2px solid var(--wine);outline-offset:-2px}
-.faq details p{padding:0 18px 18px;font-size:15.5px;color:var(--ink2);line-height:1.6}
-
-/* Финал */
-.fin{position:relative;background:var(--ink);color:#fff;overflow:hidden}
-.fin .bg{position:absolute;inset:0;opacity:.3}
-.fin .bg img{width:100%;height:100%;object-fit:cover}
-.fin .wrap{position:relative}
-.fin h2 em{color:var(--goldL)}
-.fin p{color:#E2D8C6;margin-top:14px;max-width:520px}
-.fin .ticket{margin-top:24px}
-
-footer{background:var(--paper);padding:30px 0 110px;font-size:13px;color:var(--muted)}
-footer .wrap{display:grid;gap:6px}
-footer a{text-decoration:underline;text-underline-offset:3px}
-
-/* Липкая панель */
-.bar{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px max(12px,env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));background:rgba(27,20,20,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transform:translateY(110%);transition:transform .3s ease}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:5;background:rgba(25,18,20,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .25s;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
 .bar.on{transform:none}
-.bar .in{max-width:620px;margin:0 auto;display:flex;align-items:center;gap:12px;justify-content:space-between;color:#F6EFE2}
-.bar .t{font-size:13px;line-height:1.3}
-.bar .t b{display:block;font:500 17px var(--serif)}
-.bar .btn{padding:14px 18px;font-size:12px;white-space:nowrap}
+.bar .in{max-width:1076px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.bar .t{font-size:13px;color:var(--mut)} .bar .t b{display:block;color:var(--fg);font-size:16px}
+.bar .btn{width:auto;padding:14px 22px;white-space:nowrap}
 
-@media(min-width:900px){
-  .facts .wrap{grid-template-columns:repeat(3,1fr);gap:30px}
-  .facts .it{grid-template-columns:1fr;border-bottom:0;padding-bottom:0}
-  .tiles{grid-template-columns:1fr 1fr}
-  .days{grid-template-columns:repeat(3,1fr)}
-  .fgrid{grid-template-columns:repeat(4,1fr)}
-  .au .in{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;max-width:1080px;margin:0 auto}
-  .stack{grid-template-columns:1fr 1fr}
-  .bar{display:none}
+/* Компьютер */
+@media (min-width:900px){
+  body{font-size:18px}
+  h1{font-size:72px} h2{font-size:48px}
+  .sec{padding-top:110px}
+  .top{display:flex;justify-content:space-between;align-items:center;padding-top:26px;padding-bottom:26px;font-family:var(--serif);font-size:22px}
+  .top .btn{width:auto;padding:12px 20px;font-size:15px}
+  .hero .w.g{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding-left:22px!important;padding-right:22px!important} .hero .tx.w{padding:0}
+  .hero .ph{order:2} .hero .ph img{aspect-ratio:1/1;border-radius:22px;-webkit-mask-image:none;mask-image:none}
+  .hero .tx{margin-top:0} .hero h1{margin:18px 0 20px} .hero .sub{font-size:21px;margin-bottom:34px} .hero .btn{max-width:420px}
+  .acts{grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+  .act,.act:last-child{display:flex;flex-direction:column;gap:12px;padding:30px 28px 28px;border:1px solid var(--line);border-radius:20px;background:var(--bg2);min-height:330px}
+  .act .n{font-size:68px} .act h3{font-size:28px} .act .get{margin-top:auto;padding-top:18px;border-top:1px dashed var(--line)}
+  .mac{margin-top:110px;padding:70px 40px} .mac h2{font-size:68px} .mac p{font-size:20px}
+  .you{grid-template-columns:1fr 1fr;gap:0 56px;margin-top:40px} .tile{padding:30px 0} .tile:nth-last-child(2){border-bottom:1px solid var(--line)} .tile q{font-size:30px}
+  .mal{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center}
+  .mal .who{display:contents} .mal .who img{width:100%;height:auto;aspect-ratio:4/5;border-radius:22px;grid-row:1/4}
+  .mal .who p{font-size:21px;margin-top:22px} .nums b{font-size:44px} .nums span{font-size:15px} .nums div{padding:26px 10px}
+  .tix{margin:110px auto 0;max-width:920px;padding:44px 48px;display:grid;grid-template-columns:1fr 1fr;gap:10px 56px;align-items:center}
+  .tix .row{grid-column:1/-1} .tix .pr{font-size:84px} .tix ul{margin:26px 0}
+  .tix small{grid-column:1/-1}
+  .foot{padding-bottom:120px}
 }
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bar,.btn{transition:none}}
 </style>
 </head>
 <body>
 
-<header class="top">
-  <div class="wrap">
-    <a class="logo" href="#top">Малена <em>Покладова</em></a>
-    <a class="btn btn-g" href="#bilety" data-scroll>Купить билет</a>
-  </div>
-</header>
+<header class="w top"><span>Малена <em>Покладова</em></span><a class="btn" href="#bilety" data-buy="ticket"><span>Купить билет</span></a></header>
 
-<section class="hero" id="top">
-  <div class="hwrap">
-    <div class="hph"><img src="images/malena-hero-v4-m.jpg" alt="Малена Покладова" fetchpriority="high"></div>
-    <div class="wrap htx">
-      <div class="when"><span class="hot">20–22 ноября</span><span>Zoom · 3 вечера</span></div>
-      <h1 id="hH">Клиенты из соцсетей <em>с&nbsp;ИИ</em></h1>
-      <p class="sub" id="hS">3 вечера с Маленой Покладовой: как один человек с телефоном и ИИ приводит клиентов себе или другим.</p>
-      <a class="ticket" href="#bilety" data-buy="ticket" aria-label="Купить билет за 15 долларов">
-        <div class="l"><small>Билет · 3 вечера</small><b>Место в эфире</b><span>19:00 Кишинёв · 9:00 Лос-Анджелес</span></div>
-        <div class="r"><b>$15</b><i>Купить</i></div>
-      </a>
-      <ul class="hpts">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="1.5"/><path d="M16 10l5-3v10l-5-3z"/></svg><span>Три живых эфира в Zoom, записи до следующего дня</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg><span>После каждого вечера домашка, которую можно сделать сразу</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M3 9h18M12 9v11M12 9c-1.5-4-6-4-5-1.5C7.5 9 12 9 12 9zm0 0c1.5-4 6-4 5-1.5C16.5 9 12 9 12 9z"/></svg><span>В одном из эфиров разыграем розовый MacBook</span></li>
-      </ul>
-    </div>
+<section class="hero"><div class="w g" style="padding-left:0;padding-right:0">
+  <div class="ph"><img src="images/malena-hero-v4-m.jpg" alt="Малена Покладова" width="1600" height="1680"></div>
+  <div class="tx w">
+    <div class="lab">20–22 ноября · Zoom · 19:00 Кишинёв</div>
+    <h1 id="hH">Клиенты из&nbsp;соцсетей <em>с&nbsp;ИИ</em></h1>
+    <p class="sub" id="hS">Три вечера с Маленой Покладовой.</p>
+    <a class="btn" href="#bilety" data-buy="ticket"><span>Билет на три вечера</span><b>$15</b></a>
   </div>
-</section>
+</div></section>
 
-<section class="facts" aria-label="Коротко">
-  <div class="wrap">
-    <div class="it"><b>200+</b><span>женщин закончили обучение у Малены</span></div>
-    <div class="it"><b>×10</b><span>окупаемость рекламы у клиента агентства в США</span></div>
-    <div class="it"><b>3</b><span>вечера, после каждого домашка, которую можно сделать сразу</span></div>
+<section class="sec" id="programma"><div class="w">
+  <div class="lab">Программа</div><h2>Каждый вечер <em>одна победа</em></h2>
+  <div class="acts">
+    <article class="act"><div class="n">I</div><div class="day">Пятница, 20 ноября</div><h3>Почему вас пролистывают</h3><p class="get">Заберёте: <b>свою уникальность в одной фразе</b></p></article>
+    <article class="act"><div class="n">II</div><div class="day">Суббота, 21 ноября</div><h3>Как проявляться, чтобы вас запомнили</h3><p class="get">Заберёте: <b>свой формат контента и идеи первых роликов</b></p></article>
+    <article class="act"><div class="n">III</div><div class="day">Воскресенье, 22 ноября</div><h3>Три цифры, которые приводят клиентов</h3><p class="get">Заберёте: <b>свои цифры и план роста</b></p></article>
   </div>
-</section>
+</div></section>
 
-<section class="who pad" id="dlya-kogo">
-  <div class="wrap">
-    <h2>Для тех, кто хочет клиентов из соцсетей: <em>себе или другим</em></h2>
-    <div class="tiles">
-      <div class="tile" data-a="prof"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg></div><div><span class="tag">Профессия</span><h3>Хочу работать в SMM из дома</h3><p>Как специалисту выделиться среди сотен других и за что бизнес платит и продлевает.</p></div></div>
-      <div class="tile" data-a="expert"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6 .6-4.5 4 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.5-4 6-.6z"/></svg></div><div><span class="tag">Эксперт</span><h3>У меня экспертиза, но клиенты идут к другим</h3><p>Сформулируете свою уникальность: то, за что вас запомнят и выберут. И покажете её в контенте.</p></div></div>
-      <div class="tile" data-a="biz"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l1.5-5h13L20 9"/><path d="M4 9h16v11H4z"/><path d="M9 20v-6h6v6"/></svg></div><div><span class="tag">Своё дело</span><h3>У меня бизнес, а соцсети не приводят клиентов</h3><p>Маркетинг-отдел в телефоне: позиционирование, контент с ИИ и цифры.</p></div></div>
-      <div class="tile" data-a="blog"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></div><div><span class="tag">Блог</span><h3>Веду блог, а результата нет</h3><p>Контент выходит, а заявок и денег нет. Разберём, чего не хватает, и что делать с этим.</p></div></div>
-    </div>
+<div class="w"><section class="mac" id="macbook"><div class="lab">В прямом эфире</div><h2>Разыграем <em>розовый MacBook</em></h2><p>Среди тех, кто на эфире. Нужен только билет.</p></section></div>
+
+<section class="sec" id="dlya-kogo"><div class="w">
+  <div class="lab">Для кого</div><h2>Узнаёте <em>себя?</em></h2>
+  <div class="you">
+    <div class="tile" data-a="prof"><span class="lab">Профессия</span><q>Хочу работать в SMM из дома</q><p>Поймёте, за что бизнес платит и продлевает.</p></div>
+    <div class="tile" data-a="expert"><span class="lab">Эксперт</span><q>Я сильнее, а клиенты идут к другим</q><p>Сформулируете, почему выбирать вас.</p></div>
+    <div class="tile" data-a="biz"><span class="lab">Своё дело</span><q>Соцсети есть, клиентов из них нет</q><p>Соберёте маркетинг-отдел в телефоне.</p></div>
+    <div class="tile" data-a="blog"><span class="lab">Блог</span><q>Веду блог, а денег он не приносит</q><p>Увидите, чего не хватает контенту.</p></div>
   </div>
-</section>
+</div></section>
 
-<section class="prog pad" id="programma">
-  <div class="wrap">
-    <h2>Три вечера: <em>уникальность, упаковка, цифры</em></h2>
-    <p class="lede">Каждый вечер с домашним заданием, которое можно сделать сразу. Примеры для всех: своё дело, эксперт, специалист для чужого бизнеса, блогер.</p>
-    <div class="days">
-      <article class="day">
-        <div class="hd"><span class="num">1</span><div><small>Пятница · 20 ноября</small><b>Почему вас пролистывают</b></div></div>
-        <div class="bd"><ul>
-          <li>Что человек понимает о вас за первую секунду и почему выбирает других</li>
-          <li>Уникальность без узкой ниши: пересечение того, что вы умеете, как делаете и кто вы</li>
-          <li>Собираем вашу уникальность с ИИ прямо в эфире</li>
-        </ul>
-        <div class="take"><b>Заберёте:</b> формулировку своей уникальности, за которую вас запомнят</div>
-        <p class="hw"><b>Домашка:</b> собрать свою формулировку и проверить её на трёх знакомых</p></div>
-      </article>
-      <article class="day">
-        <div class="hd"><span class="num">2</span><div><small>Суббота · 21 ноября</small><b>Упаковка: как показать уникальность так, чтобы вас выбрали</b></div></div>
-        <div class="bd"><ul>
-          <li>Показываем на себе и на клиентах агентства, как упаковываем: профиль, шапка, первые ролики</li>
-          <li>Разбираем наш рекламный ролик: из чего он собран и почему работает</li>
-          <li>Сценарий ролика под вашу уникальность с ИИ, вместе в эфире</li>
-        </ul>
-        <div class="take"><b>Заберёте:</b> новую шапку профиля и готовый сценарий первого ролика</div>
-        <p class="hw"><b>Домашка:</b> обновить шапку и снять ролик по сценарию</p></div>
-      </article>
-      <article class="day">
-        <div class="hd"><span class="num">3</span><div><small>Воскресенье · 22 ноября</small><b>Три цифры, на которых держится привлечение клиентов</b></div></div>
-        <div class="bd"><ul>
-          <li>Почему одни растут из соцсетей, а другие тратят деньги впустую</li>
-          <li>Как посчитать свои три цифры и что на каждую влияет</li>
-          <li>Кейсы агентства и учениц: что поменяли и что получили</li>
-        </ul>
-        <div class="take"><b>Заберёте:</b> свои три цифры и идеи роста, которые можно внедрять сразу</div>
-        <p class="hw"><b>Домашка:</b> посчитать свои цифры по нашему шаблону</p></div>
-      </article>
-    </div>
-  </div>
-</section>
+<section class="sec" id="malena"><div class="w mal">
+  <div class="who"><img src="images/malena-b2.jpg" alt="Малена Покладова" loading="lazy" width="1200" height="1800">
+    <div><div class="lab">Кто ведёт</div><h2>Малена <em>Покладова</em></h2><p><b>С 2019 года в SMM.</b> Агентство в Калифорнии. Покажет систему, по которой работает сама.</p></div></div>
+  <div class="nums"><div><b>200+</b><span>учениц</span></div><div><b>×10</b><span>окупаемость рекламы клиента</span></div><div><b>1,7M</b><span>просмотров у адвоката за месяц</span></div></div>
+</div></section>
 
-<section class="fmt pad">
-  <div class="wrap">
-    <h2>Как всё <em>проходит</em></h2>
-    <div class="fgrid">
-      <div class="fbox"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="1.5"/><path d="M16 10l5-3v10l-5-3z"/></svg></div><b>Живой эфир в Zoom</b><span>Около 90 минут, вопросы в чате</span></div>
-      <div class="fbox"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><b>19:00 по Кишинёву</b><span>9:00 по Лос-Анджелесу, 12:00 по Нью-Йорку</span></div>
-      <div class="fbox"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/></svg></div><b>Записи</b><span>Доступны до следующего дня</span></div>
-      <div class="fbox"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></div><b>Канал в Telegram</b><span>Материалы и ссылки на эфиры</span></div>
-    </div>
-  </div>
-</section>
+<div class="w"><section class="tix" id="bilety">
+  <div class="row"><div><div class="lab">Билет · до старта <span data-cd>—</span></div><h2 style="margin-top:8px">Три вечера</h2></div><div class="pr">$15</div></div>
+  <ul><li>Три живых эфира в Zoom</li><li>Записи до следующего дня</li><li>Домашка после каждого вечера</li><li>Участие в розыгрыше MacBook</li></ul>
+  <button class="btn" type="button" data-buy="ticket"><span>Купить билет</span><b>$15</b></button>
+  <small>19:00 Кишинёв · 9:00 Лос-Анджелес · 12:00 Нью-Йорк · Вопросы: Telegram @Malena_Pocladova_Zabota</small>
+</section></div>
 
-<section class="mac pad" id="macbook">
-  <div class="wrap">
-    <div class="macbox">
-      <span class="tag g">Розыгрыш в прямом эфире</span>
-      <h2>Розовый <em>MacBook</em> одной из участниц</h2>
-      <p>Разыграем в одном из трёх эфиров среди тех, кто в этот момент на лайве. В какой вечер, заранее не скажем.</p>
-      <ul class="hpts dark">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Участвует каждый, у кого есть билет</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Нужно быть в эфире в момент розыгрыша</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Победительницу выбираем случайно, на экране у всех</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
+<section class="sec"><div class="w"><h2>Коротко</h2><div class="faq" style="margin-top:12px">
+  <details><summary>Я совсем с нуля</summary><p>Подойдёт. Всё по шагам, сложное берёт на себя ИИ.</p></details>
+  <details><summary>Не успею на эфир</summary><p>Запись доступна до следующего дня.</p></details>
+  <details><summary>Что нужно?</summary><p>Телефон или компьютер и Zoom.</p></details>
+  <details><summary>Как я получу ссылки?</summary><p>Сразу после оплаты: письмо с билетом и каналом в Telegram.</p></details>
+  <details><summary>Будут продавать?</summary><p>В третий вечер расскажем про обучение. Покупать не обязательно.</p></details>
+</div></div></section>
 
-<section class="tix pad" id="bilety">
-  <div class="wrap">
-    <h2>Билет на <em>три вечера</em></h2>
-    <p class="lede">Сразу после оплаты: вход в канал участников, ссылки на эфиры и ваш именной билет для сторис.</p>
-    <div class="tcards one">
-      <div class="tc">
-        <div class="hd"><div><small>Билет</small><b>Три вечера</b></div><div class="pr"><b>$15</b></div></div>
-        <div class="bd"><ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Три живых эфира с Маленой 20–22 ноября</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Записи до следующего дня</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Канал участников в Telegram</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Участие в розыгрыше розового MacBook</span></li>
-          </ul>
-        <button class="btn btn-w" type="button" data-buy="ticket">Купить билет · $15</button></div>
-      </div>
-      </div>
-    <p class="safe">Оплата картой через защищённую страницу. Вопросы: Telegram @Malena_Pocladova_Zabota</p>
-  </div>
-</section>
+<footer class="w foot">© 2026 Personal Growth Lab LLC · Школа Малены Покладовой<br><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms</a> · <a href="https://instagram.com/malenapocladova" target="_blank" rel="noopener">@malenapocladova</a></footer>
 
-<section class="au" id="malena">
-  <div class="in">
-    <div class="ph"><img src="images/malena-b2.jpg" alt="Малена Покладова" loading="lazy">
-      <div class="nm"><h2>Малена <em>Покладова</em></h2><p>Агентство PGL Marketing, Калифорния</p></div></div>
-    <div class="wrap tx">
-      <p>С 2019 года в SMM. Вместе с мужем ведёт агентство и продвигает бизнесы в США и Европе: студии, клиники, юристов, экспертов.</p>
-      <p>На интенсиве показывает ту же систему, по которой работает агентство, и разбирает её на ваших примерах.</p>
-      <div class="nums">
-        <div><b>1,7M</b><span>просмотров у адвоката за месяц</span></div>
-        <div><b>×8</b><span>окупаемость рекламы студии</span></div>
-        <div><b>30 дней</b><span>до полной записи студии</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="st pad">
-  <div class="wrap">
-    <h2>Ученицы и <em>их цифры</em></h2>
-    <div class="stack">
-      <div class="sc"><img src="images/portrait-alina.jpg" alt="Алина" loading="lazy"><div class="c"><b>€1 500+</b><small>в месяц, первый клиент за 14 дней</small><p>Алина · пришла в декрете</p></div></div>
-      <div class="sc"><img src="images/portrait-elizaveta.jpg" alt="Елизавета" loading="lazy"><div class="c"><b>74,2K</b><small>подписчиков с нуля, съёмки для Deutsche Welle</small><p>Елизавета · начинала с телефона</p></div></div>
-      <div class="sc"><img src="images/portrait-margarita.jpg" alt="Маргарита" loading="lazy"><div class="c"><b>4,4M</b><small>просмотров у одного Reels</small><p>Маргарита</p></div></div>
-      <div class="sc"><img src="images/portrait-aleksandra.jpg" alt="Александра" loading="lazy"><div class="c"><b>173 500</b><small>подписчиков в TikTok с нуля</small><p>Александра</p></div></div>
-    </div>
-    <p class="fine">С разрешения учениц, цифры с их аккаунтов.</p>
-  </div>
-</section>
-
-<section class="faq pad">
-  <div class="wrap">
-    <h2>Частые вопросы</h2>
-    <details><summary>Мне подойдёт, если я совсем с нуля?</summary><p>Да. Все примеры разбираем по шагам, а ИИ помогает с тем, что раньше требовало опыта: сценарии, тексты, план.</p></details>
-    <details><summary>Не смогу быть в эфире в это время</summary><p>Записи каждого эфира доступны до следующего дня.</p></details>
-    <details><summary>Что нужно для участия?</summary><p>Телефон или компьютер и Zoom. Для практики пригодится ваш аккаунт в Instagram, но можно и без него.</p></details>
-    <details><summary>Как я получу ссылки?</summary><p>Сразу после оплаты придёт письмо с билетом, ссылкой на канал в Telegram и на эфиры. Перед каждым вечером пришлём напоминание.</p></details>
-    <details><summary>Как проходит розыгрыш MacBook?</summary><p>В одном из трёх эфиров случайно выбираем одну участницу из тех, кто в этот момент на лайве. Поэтому лучше быть на всех трёх вечерах.</p></details>
-    <details><summary>Будет ли продажа на интенсиве?</summary><p>В третий вечер расскажем об обучении New SMM для тех, кто захочет продолжить. Покупать ничего не нужно, интенсив полезен сам по себе.</p></details>
-  </div>
-</section>
-
-<section class="fin pad">
-  <div class="bg"><img src="images/malena-b4-blur.jpg" alt="" loading="lazy"></div>
-  <div class="wrap">
-    <h2>Три вечера, <em>20–22 ноября</em></h2>
-    <p>Начинаем в пятницу в 19:00 по Кишинёву, 9:00 по Лос-Анджелесу.</p>
-    <a class="ticket" href="#bilety" data-buy="ticket" aria-label="Купить билет за 15 долларов">
-      <div class="l"><small>Билет · место в эфире</small><b>Клиенты из соцсетей с ИИ</b><span>До старта <span class="cd" data-cd>—</span></span></div>
-      <div class="r"><b>$15</b><i>Купить</i></div>
-    </a>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <span>© 2026 Personal Growth Lab LLC · Школа Малены Покладовой</span>
-    <span><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms</a> · <a href="https://instagram.com/malenapocladova" target="_blank" rel="noopener">@malenapocladova</a></span>
-  </div>
-</footer>
-
-<div class="bar" id="bar"><div class="in"><div class="t">20–22 ноября · Zoom<b>Билет $15</b></div><button class="btn btn-g" type="button" data-buy="ticket">Купить билет</button></div></div>
+<div class="bar" id="bar"><div class="in"><div class="t">20–22 ноября · Zoom<b>Билет $15</b></div><button class="btn" type="button" data-buy="ticket">Купить билет</button></div></div>
 
 <script>
 (function(){
@@ -457,10 +185,10 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 
   /* Свой первый экран для каждой аудитории: ?a=prof|expert|biz|blog */
   var HERO={
-    prof:['SMM: <em>профессия, за&nbsp;которую платят</em>','Три вечера о том, как специалист с ИИ находит клиентов из любой страны и работает из дома.'],
-    expert:['Экспертиза, <em>которая продаёт</em>','Три вечера о том, как сформулировать свою уникальность, упаковать её с ИИ и посчитать, сколько клиентов приносит блог.'],
-    biz:['Маркетинг-отдел <em>в&nbsp;телефоне</em>','Три вечера о том, как бизнесу получать клиентов из соцсетей с ИИ, даже если вы ещё не ведёте контент.'],
-    blog:['Блог, который <em>приносит результат</em>','Три вечера о том, почему контент не приводит заявок, как упаковать себя и как ИИ помогает делать контент.']
+    prof:['SMM: <em>профессия, за&nbsp;которую платят</em>','Три вечера: как специалист с ИИ находит клиентов и работает из дома.'],
+    expert:['Экспертиза, <em>которая продаёт</em>','Три вечера: найти свою уникальность и показать её так, чтобы выбирали вас.'],
+    biz:['Маркетинг-отдел <em>в&nbsp;телефоне</em>','Три вечера: как бизнесу получать клиентов из соцсетей с ИИ.'],
+    blog:['Блог, который <em>приносит результат</em>','Три вечера: почему контент не приводит заявок и что с этим делать.']
   };
   var a=(utm.a||'').toLowerCase();
   if(HERO[a]){ document.getElementById('hH').innerHTML=HERO[a][0]; document.getElementById('hS').textContent=HERO[a][1];
