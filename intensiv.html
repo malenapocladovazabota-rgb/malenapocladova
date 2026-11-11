@@ -86,6 +86,16 @@ details[open] summary::after{content:"\2013"} details p{margin-top:8px;color:var
 .bar .t{font-size:13px;color:var(--mut)} .bar .t b{display:block;color:var(--fg);font-size:16px}
 .bar .btn{width:auto;padding:14px 22px;white-space:nowrap}
 
+.gift{display:flex;align-items:center;gap:10px;margin-top:16px;font-size:15px;color:var(--mut);text-decoration:none}
+.gift i{width:8px;height:8px;border-radius:50%;background:var(--acc);flex:none}
+.mac .story{margin-top:14px;font-size:15px;max-width:32em;margin-inline:auto}
+.stu{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin-top:24px;padding:0 max(22px,env(safe-area-inset-left,0px)) 4px}
+.stu::-webkit-scrollbar{display:none}
+.stu>div{flex:0 0 62%;max-width:260px;scroll-snap-align:center;background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;gap:4px}
+.stu img{width:64px;height:64px;border-radius:50%;object-fit:cover;margin-bottom:8px}
+.stu b{font-family:var(--serif);font-weight:500;font-size:30px;color:var(--acc);line-height:1}
+.stu span{font-size:15px;color:var(--mut)} .stu small{font-size:13px;color:var(--fg);margin-top:6px}
+
 /* Компьютер */
 @media (min-width:900px){
   body{font-size:18px}
@@ -108,6 +118,7 @@ details[open] summary::after{content:"\2013"} details p{margin-top:8px;color:var
   .tix .row{grid-column:1/-1} .tix .pr{font-size:84px} .tix ul{margin:26px 0}
   .tix small{grid-column:1/-1}
   .foot{padding-bottom:120px}
+  .stu{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;max-width:1120px;margin:40px auto 0;padding:0 22px;overflow:visible} .stu>div{max-width:none;padding:24px} .stu b{font-size:38px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.bar,.btn{transition:none}}
 </style>
@@ -123,6 +134,7 @@ details[open] summary::after{content:"\2013"} details p{margin-top:8px;color:var
     <h1 id="hH">Клиенты из&nbsp;соцсетей <em>с&nbsp;ИИ</em></h1>
     <p class="sub" id="hS">Три вечера с Маленой Покладовой.</p>
     <a class="btn" href="#bilety" data-buy="ticket"><span>Билет на три вечера</span><b>$15</b></a>
+    <a class="gift" href="#macbook"><i></i>В эфире разыграем розовый MacBook</a>
   </div>
 </div></section>
 
@@ -135,7 +147,7 @@ details[open] summary::after{content:"\2013"} details p{margin-top:8px;color:var
   </div>
 </div></section>
 
-<div class="w"><section class="mac" id="macbook"><div class="lab">В прямом эфире</div><h2>Разыграем <em>розовый MacBook</em></h2><p>Среди тех, кто на эфире. Нужен только билет.</p></section></div>
+<div class="w"><section class="mac" id="macbook"><div class="lab">В прямом эфире</div><h2>Разыграем <em>розовый MacBook</em></h2><p>Среди тех, кто на эфире. Нужен только билет.</p><p class="story">В прошлый раз MacBook выиграла Юля. Она выбрала вместо него обучение и получила профессию.</p></section></div>
 
 <section class="sec" id="dlya-kogo"><div class="w">
   <div class="lab">Для кого</div><h2>Узнаёте <em>себя?</em></h2>
@@ -151,6 +163,14 @@ details[open] summary::after{content:"\2013"} details p{margin-top:8px;color:var
   <div class="who"><img src="images/malena-b2.jpg" alt="Малена Покладова" loading="lazy" width="1200" height="1800">
     <div><div class="lab">Кто ведёт</div><h2>Малена <em>Покладова</em></h2><p><b>С 2019 года в SMM.</b> Агентство в Калифорнии. Покажет систему, по которой работает сама.</p></div></div>
   <div class="nums"><div><b>200+</b><span>учениц</span></div><div><b>×10</b><span>окупаемость рекламы клиента</span></div><div><b>1,7M</b><span>просмотров у адвоката за месяц</span></div></div>
+</div></section>
+
+<section class="sec" id="uchenicy"><div class="w"><div class="lab">Ученицы Малены</div><h2>Начинали <em>с нуля</em></h2></div>
+<div class="stu">
+  <div><img src="images/portrait-alina.jpg" alt="" loading="lazy"><b>€1 500+</b><span>в месяц, первый клиент за 14 дней</span><small>Алина</small></div>
+  <div><img src="images/portrait-elizaveta.jpg" alt="" loading="lazy"><b>74,2K</b><span>подписчиков с нуля</span><small>Елизавета</small></div>
+  <div><img src="images/portrait-margarita.jpg" alt="" loading="lazy"><b>4,4M</b><span>просмотров у одного Reels</span><small>Маргарита</small></div>
+  <div><img src="images/portrait-aleksandra.jpg" alt="" loading="lazy"><b>173 500</b><span>подписчиков в TikTok</span><small>Александра</small></div>
 </div></section>
 
 <div class="w"><section class="tix" id="bilety">
