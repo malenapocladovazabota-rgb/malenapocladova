@@ -279,28 +279,128 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 .vip li{position:relative;padding-left:22px;font-size:15.5px;line-height:1.45}
 .vip li::before{content:'';position:absolute;left:3px;top:9px;width:8px;height:8px;border-radius:50%;background:var(--goldL)}
 .vip small{display:block;font-size:13.5px;color:#E6D3C2;margin-top:12px}
+
+[hidden]{display:none!important}
+/* Страница «спасибо», версия 2 (13.11): поздравление, путь из трёх шагов, акцент на VIP */
+.ok{padding:30px 0 44px;background:radial-gradient(120% 90% at 85% 0%,#4a1c26 0%,var(--ink) 58%)}
+.okk{display:inline-flex;align-items:center;gap:10px;font:700 12px var(--mono);letter-spacing:1.2px;text-transform:uppercase;color:var(--goldL)}
+.ok .okk .mk{width:26px;height:26px;font-size:15px}
+.ok h1{font-size:clamp(34px,9vw,58px);margin-top:16px}
+.ok h1 #hiName{display:block;font:italic 500 .58em var(--serif);color:#E9E0CF;margin-bottom:6px}
+.ok h1 #hiName:empty{display:none}
+.btn.big{width:100%;max-width:520px;padding:21px 24px;font-size:14.5px;margin-top:22px}
+.ok .when{margin-top:18px}
+.lab{font:700 12px var(--mono);letter-spacing:1.4px;text-transform:uppercase;color:var(--wine)}
+.lab.g{color:var(--goldL)}
+.sh{font-size:clamp(28px,6.6vw,42px);margin-top:8px}
+.sh em{color:var(--wine)}
+.steps{padding:40px 0 44px}
+.path{list-style:none;margin-top:24px;max-width:620px;position:relative}
+.path::before{content:"";position:absolute;left:21px;top:22px;bottom:40px;width:2px;background:repeating-linear-gradient(180deg,rgba(110,30,43,.35) 0 6px,transparent 6px 12px)}
+.path li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;margin-top:16px;position:relative}
+.path li:first-child{margin-top:0}
+.path .num{width:44px;height:44px;border-radius:50%;background:#fff;border:2px solid var(--wine);color:var(--wine);display:grid;place-items:center;font:500 22px var(--serif);z-index:1}
+.path li.now .num{background:var(--wine);color:#fff;box-shadow:0 0 0 6px rgba(110,30,43,.12)}
+.path .bd{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px}
+.path li.now .bd{border-color:var(--wine);box-shadow:0 18px 36px -24px rgba(110,30,43,.55)}
+.path .n{font:700 11.5px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--wine)}
+.path h3{font:500 23px/1.2 var(--serif);margin-top:6px}
+.path p{font-size:15.5px;color:var(--ink2);margin-top:8px;line-height:1.55}
+.path .btn{width:100%;margin-top:14px}
+.path .btn.cal{background:none;border:1px solid var(--wine);padding:14px 18px}
+.fine{font-size:13px!important;color:var(--muted)!important}
+.vipS{background:var(--ink);color:#F6EFE2;padding:44px 0}
+.vipC{max-width:620px;border:1px solid rgba(227,190,115,.55);border-radius:10px;padding:24px 20px;background:linear-gradient(180deg,rgba(227,190,115,.10),rgba(227,190,115,0) 46%)}
+.vipC h2{font-size:clamp(30px,7.4vw,44px);margin-top:8px}
+.vipC h2 em{color:var(--goldL)}
+.vsub{font-size:15.5px;color:#E2D8C6;margin-top:10px;line-height:1.55}
+.cmp{margin-top:18px;border-top:1px solid rgba(246,239,226,.16)}
+.cmp .row{display:grid;grid-template-columns:1fr 78px 96px;gap:8px;align-items:center;padding:11px 0;border-bottom:1px solid rgba(246,239,226,.12);font-size:14.5px;line-height:1.35}
+.cmp .row.hd{padding:9px 0}
+.cmp b{font:700 11px var(--mono);letter-spacing:1px;text-transform:uppercase;text-align:center;color:#CDBFA6}
+.cmp b.v{color:var(--goldL)}
+.cmp i{font-style:normal;text-align:center;color:#CDBFA6;font-size:16px}
+.cmp i.v{color:var(--goldL);font-weight:600}
+.cmp i.t{font-size:11.5px;line-height:1.3}
+.cmp i.no{opacity:.45}
+.vipC small{display:block;font-size:13px;color:#CDBFA6;margin-top:12px;line-height:1.5}
+.vipS.has .cmp,.vipS.has .vsub{display:none}
+.tkS{background:var(--cream);padding:36px 0 50px}
+.tkS .step{margin-top:0}
+.tkS #tkimg{width:100%;max-width:300px;margin:16px auto 0;border-radius:8px}
+.help{font-size:14px;color:var(--muted);margin-top:18px;max-width:620px}
+.help a{color:var(--wine)}
+@media(min-width:760px){.cmp .row{grid-template-columns:1fr 120px 150px;font-size:15.5px}}
 </style>
 </head>
 <body>
 <header class="top"><div class="wrap"><a class="logo" href="/intensiv">Малена <em>Покладова</em></a></div></header>
 
 <section class="ok"><div class="wrap">
-  <div class="mk">✓</div>
-  <h1>Вы в списке. <em>До встречи 27 ноября</em></h1>
-  <p>Оплата прошла. Осталось три коротких шага, первый обязательный.</p>
+  <div class="okk"><span class="mk">✓</span><span>Оплата прошла · билет ваш</span></div>
+  <h1><span id="hiName"></span>Поздравляю с&nbsp;решением! <em>Вы в&nbsp;списке</em></h1>
+  <p>Три вечера с Маленой, 27–29 ноября. Остался один шаг, чтобы получить ссылки на эфиры: откройте нашего бота в Telegram, он проведёт вас в закрытый канал участников.</p>
+  <a class="btn btn-g big" id="tgBtnTop" href="#" target="_blank" rel="noopener">Открыть Telegram-бота <span aria-hidden="true">→</span></a>
+  <div class="when"><span class="hot">27–29 ноября</span><span>19:00 Кишинёв</span><span>9:00 Лос-Анджелес</span><span>Zoom</span></div>
 </div></section>
 
 <section class="steps"><div class="wrap">
-  <div class="step" id="sTg">
-    <div class="n">Шаг 1 · обязательно</div>
-    <h2>Получите вход в канал участников</h2>
-    <p>Нажмите кнопку: откроется наш бот в Telegram. Он пришлёт личную ссылку в закрытый канал и будет напоминать об эфирах. Начинаем 27 ноября в 19:00 по Кишинёву, 9:00 по Лос-Анджелесу.</p>
-    <a class="btn btn-w" id="tgBtn" href="#" target="_blank" rel="noopener">Открыть бота и войти в канал</a>
-    <p id="tgNo" hidden>Ссылка на вход также придёт на почту, которую вы указали при оплате.</p>
-  </div>
+  <div class="lab">Следующие шаги</div>
+  <h2 class="sh">Три шага <em>до первого эфира</em></h2>
 
+  <ol class="path">
+    <li class="now" id="sTg">
+      <div class="num">1</div>
+      <div class="bd">
+        <div class="n">Сейчас · 1 минута</div>
+        <h3>Откройте Telegram-бота</h3>
+        <p>Нажмите кнопку и в боте нажмите «Запустить». Бот узнает вашу оплату сам.</p>
+        <a class="btn btn-w" id="tgBtn" href="#" target="_blank" rel="noopener">Открыть бота</a>
+        <p id="tgNo" class="fine" hidden>Ссылка на бота также придёт на почту, которую вы указали при оплате.</p>
+      </div>
+    </li>
+    <li>
+      <div class="num">2</div>
+      <div class="bd">
+        <div class="n">Сразу после</div>
+        <h3>Войдите в закрытый канал</h3>
+        <p>Бот пришлёт личную ссылку. В канале будут ссылки на эфиры, материалы и домашние задания. Включите уведомления, чтобы ничего не пропустить.</p>
+      </div>
+    </li>
+    <li>
+      <div class="num">3</div>
+      <div class="bd">
+        <div class="n">27 ноября · 19:00 Кишинёв</div>
+        <h3>Приходите на первый эфир</h3>
+        <p>Ссылку на Zoom пришлём в бот, в канал и на почту за час до начала. В один из вечеров разыграем розовый MacBook среди тех, кто в прямом эфире.</p>
+        <a class="btn btn-c cal" id="calBtn" href="#" target="_blank" rel="noopener">Добавить в календарь</a>
+      </div>
+    </li>
+  </ol>
+</div></section>
+
+<section class="vipS" id="sVip" hidden><div class="wrap">
+  <div class="vipC">
+    <div class="lab g">Только для участников</div>
+    <h2>Обновить билет <em>до VIP</em></h2>
+    <p class="vsub">Обычный билет: эфир и запись до следующего дня. С VIP материалы остаются у вас, а записи можно пересмотреть после финала.</p>
+    <div class="cmp">
+      <div class="row hd"><span></span><b>Билет</b><b class="v">VIP</b></div>
+      <div class="row"><span>Три живых эфира и канал</span><i>✓</i><i class="v">✓</i></div>
+      <div class="row"><span>Розыгрыш MacBook в эфире</span><i>✓</i><i class="v">✓</i></div>
+      <div class="row"><span>Записи эфиров</span><i class="t">до следующего дня</i><i class="v t">все три, ещё 24 часа после финала</i></div>
+      <div class="row"><span>Сценарии Reels, банк хуков, контент-план с промптом</span><i class="no">—</i><i class="v">✓</i></div>
+      <div class="row"><span>Документ «Разбор цифр» после третьего вечера</span><i class="no">—</i><i class="v">✓</i></div>
+      <div class="row"><span>Зачёт в оплату обучения</span><i class="no">—</i><i class="v t">все $50</i></div>
+    </div>
+    <a class="btn btn-g big" id="vipBtn" href="#">Обновить до VIP · +$35</a>
+    <small>Все $50 (билет и VIP) засчитываются в оплату обучения, если решите учиться дальше.</small>
+  </div>
+</div></section>
+
+<section class="tkS"><div class="wrap">
   <div class="step">
-    <div class="n">Шаг 2 · ваш билет</div>
+    <div class="n">По желанию</div>
     <h2>Именной билет для сторис</h2>
     <p>Напишите имя, сохраните билет и выложите в сторис с отметкой @malenapocladova. Малена репостит билеты участниц.</p>
     <input id="tkName" type="text" placeholder="Ваше имя" autocomplete="given-name" maxlength="24">
@@ -309,21 +409,10 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     <button class="btn btn-c" type="button" id="tkShare" hidden style="border:1px solid var(--wine)">Сохранить или поделиться</button>
     <p id="tkHint" hidden>Если кнопка не сработала, нажмите на билет и держите палец, затем «Сохранить в Фото».</p>
   </div>
-
-  <div class="step vip" id="sVip" hidden>
-    <div class="n">Шаг 3 · по желанию</div>
-    <h2>Обновить билет до VIP</h2>
-    <ul>
-      <li>Записи всех трёх эфиров ещё 24 часа после финала</li>
-      <li>Пакет второго вечера: сценарии Reels, банк хуков, пример сторителлинга, контент-план с промптом</li>
-      <li>Документ третьего вечера «Разбор цифр»: что влияет на каждую цифру и что делать</li>
-    </ul>
-    <a class="btn btn-g" id="vipBtn" href="#">Обновить до VIP · +$35</a>
-    <small>Все $50 (билет и VIP) засчитываются в оплату обучения, если решите учиться дальше.</small>
-  </div>
+  <p class="help">Что-то не получается? Напишите в Telegram <a href="https://t.me/Malena_Pocladova_Zabota" target="_blank" rel="noopener">@Malena_Pocladova_Zabota</a>, поможем.</p>
 </div></section>
 
-<footer><div class="wrap"><span>© 2026 Personal Growth Lab LLC · Школа Малены Покладовой</span><span><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms</a> · Вопросы: Telegram @Malena_Pocladova_Zabota</span></div></footer>
+<footer><div class="wrap"><span>© 2026 Personal Growth Lab LLC · Школа Малены Покладовой</span><span><a href="/privacy-intensiv">Privacy Policy</a> · <a href="/terms-intensiv">Terms</a> · Вопросы: Telegram @Malena_Pocladova_Zabota</span></div></footer>
 
 <script>
 (function(){
@@ -333,10 +422,14 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   /* Вход через бота платформы: по хвосту-токену бот сам узнаёт почту с оплаты */
   var LINKS={ tg:'https://t.me/pgl_platform_bot?start='+(window.__vip?'intv':'int')+(CK?'_'+CK:''), vip:'https://link.fastpaydirect.com/payment-link/6af43342906a8b62055d5872' };
   if(BUYER&&BUYER.em){ try{ var vp=new URLSearchParams(); vp.set('firstName',BUYER.fn||''); vp.set('lastName',BUYER.ln||''); vp.set('email',BUYER.em); LINKS.vip+='?'+vp.toString(); }catch(e){} }
+  try{ var hi=localStorage.getItem('int_name'); if(hi) document.getElementById('hiName').textContent=hi.slice(0,24)+','; }catch(e){}
+  var tgTop=document.getElementById('tgBtnTop'); tgTop.href=LINKS.tg; tgTop.addEventListener('click',function(){ try{ if(window.PGL) PGL.step('intensiv-spasibo/bot','Открыл бота'); }catch(e){} });
+  /* Календарь Google: три вечера подряд, 17:00–18:30 UTC */
+  document.getElementById('calBtn').href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Интенсив «Клиенты из соцсетей с ИИ» · Малена Покладова')+'&dates=20261127T170000Z/20261127T183000Z&recur='+encodeURIComponent('RRULE:FREQ=DAILY;COUNT=3')+'&details='+encodeURIComponent('Ссылка на Zoom придёт в Telegram-бот, в канал участников и на почту за час до начала.');
   var tg=document.getElementById('tgBtn');
   if(LINKS.tg){ tg.href=LINKS.tg; document.getElementById('tgNo').hidden=false; tg.addEventListener('click',function(){ try{ if(window.PGL) PGL.step('intensiv-spasibo/bot','Открыл бота'); }catch(e){} }); } else { tg.style.display='none'; document.getElementById('tgNo').hidden=false; }
   if(LINKS.vip){ var sv=document.getElementById('sVip'); sv.hidden=false; var v=document.getElementById('vipBtn');
-    if(window.__vip){ sv.querySelector('h2').textContent='VIP подключён'; v.hidden=true; var sm=sv.querySelector('small'); if(sm) sm.textContent='Материалы VIP придут в канал участников после каждого вечера.'; }
+    if(window.__vip){ sv.classList.add('has'); sv.querySelector('h2').textContent='VIP подключён'; v.hidden=true; var sm=sv.querySelector('small'); if(sm) sm.textContent='Материалы VIP придут в канал участников после каждого вечера.'; }
     v.href=LINKS.vip;
     v.addEventListener('click',function(){ try{ localStorage.setItem('int_vip_click','1'); }catch(e){} if(window.fbq) fbq('track','InitiateCheckout',{content_name:'intensiv-nov-2026-vip',value:35,currency:'USD'}); }); }
 
