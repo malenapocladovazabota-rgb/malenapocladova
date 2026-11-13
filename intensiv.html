@@ -207,7 +207,7 @@ s[data-old]{font-family:var(--sans);font-weight:400;font-size:.55em;opacity:.6;t
   var PAY={ ticket:ST.url };
   var PRICE={ ticket:ST.price };
   [].forEach.call(document.querySelectorAll('[data-price]'),function(el){ el.textContent='$'+ST.price; });
-  [].forEach.call(document.querySelectorAll('[data-old]'),function(el){ el.hidden=true; });
+  /* Зачёркнутая $50 показывается рядом с ценой (решение Льва 13.11) */
   function upTick(){ var txt='',sh='27–29 ноября · Zoom';
     if(NX){ var d=ST.until-Date.now(); if(d<=0){ location.reload(); return; }
       var dd=Math.floor(d/864e5), hh=Math.floor(d%864e5/36e5), mm=Math.floor(d%36e5/6e4);
