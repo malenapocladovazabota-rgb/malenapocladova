@@ -126,7 +126,7 @@ footer .wrap{display:grid;gap:6px}footer a{text-underline-offset:3px}
   <div class="tk" id="tk">
     <div class="a"><div class="k" id="tkK">Билет участницы</div><div class="nm" id="tkNm">Ваш билет</div><div class="ev">Клиенты из соцсетей с ИИ</div></div>
     <div class="cut"></div>
-    <div class="b"><div><span>Даты</span><b id="tkD">27–29.11</b></div><div><span>Ваше время</span><b id="tkT">19:00</b></div><div><span>Где</span><b>Zoom</b></div></div>
+    <div class="b"><div><span>Даты</span><b id="tkD">27–29.11</b></div><div><span>Ваше время</span><b id="tkT">19:30</b></div><div><span>Где</span><b>Zoom</b></div></div>
   </div>
 
   <div class="act">
@@ -141,7 +141,7 @@ footer .wrap{display:grid;gap:6px}footer a{text-underline-offset:3px}
 <section class="sec"><div class="wrap">
   <div class="k">Что дальше</div>
   <h2>Три шага <em>до эфира</em></h2>
-  <div class="line"><div><i>1</i><b>Бот</b><span>сейчас</span></div><div><i>2</i><b>Канал</b><span>ссылка от бота</span></div><div><i>3</i><b>Эфир</b><span id="lnT">27.11 · 19:00</span></div></div>
+  <div class="line"><div><i>1</i><b>Бот</b><span>сейчас</span></div><div><i>2</i><b>Канал</b><span>ссылка от бота</span></div><div><i>3</i><b>Эфир</b><span id="lnT">27.11 · 19:30</span></div></div>
   <a class="cal" id="calBtn" href="#" target="_blank" rel="noopener">Добавить три вечера в календарь</a>
 </div></section>
 
@@ -177,7 +177,7 @@ footer .wrap{display:grid;gap:6px}footer a{text-underline-offset:3px}
 
 <script>
 (function(){
-  var START=Date.UTC(2026,10,27,17,0,0); /* 27.11.2026 19:00 Кишинёв */
+  var START=Date.UTC(2026,10,27,17,30,0); /* 27.11.2026 19:30 Кишинёв */
   function L(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
   function $(id){ return document.getElementById(id); }
   function pgl(k,l){ try{ if(window.PGL) PGL.step(k,l); }catch(e){} }
@@ -194,7 +194,7 @@ footer .wrap{display:grid;gap:6px}footer a{text-underline-offset:3px}
   $('tkK').textContent=(VIP?'VIP · Золотой билет':'Билет участницы')+(num?' · № '+num:'');
 
   /* Время эфира по часам посетителя */
-  var localT='19:00', localD='27–29.11', zone='';
+  var localT='19:30', localD='27–29.11', zone='';
   try{
     var d=new Date(START);
     localT=d.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});
@@ -205,7 +205,7 @@ footer .wrap{display:grid;gap:6px}footer a{text-underline-offset:3px}
   $('tkT').textContent=localT; $('tkD').textContent=localD;
   $('lnT').textContent=localD.split('–')[0].replace(/\.\d+$/,'')+'.11 · '+localT;
   try{ $('lnT').textContent=new Date(START).toLocaleDateString('ru-RU',{day:'numeric',month:'numeric'})+' · '+localT; }catch(e){}
-  $('tz').innerHTML='Первый эфир в <b>'+localT+'</b> по вашему времени'+(zone?' ('+zone.replace(/[<>&]/g,'')+')':'')+(localT==='19:00'&&localD==='27–29.11'?'.':'. Это 19:00 по Кишинёву.');
+  $('tz').innerHTML='Первый эфир в <b>'+localT+'</b> по вашему времени'+(zone?' ('+zone.replace(/[<>&]/g,'')+')':'')+(localT==='19:30'&&localD==='27–29.11'?'.':'. Это 19:30 по Кишинёву.');
 
   /* Таймер */
   var cd=$('cd'), q=function(a){ return cd.querySelector('[data-'+a+']'); }, p2=function(n){ return (n<10?'0':'')+n; };
@@ -217,7 +217,7 @@ footer .wrap{display:grid;gap:6px}footer a{text-underline-offset:3px}
   var tg=$('tgBtn'); tg.href='https://t.me/pgl_platform_bot?start='+(VIP?'intv':'int')+(CK?'_'+CK:'');
   tg.addEventListener('click',function(){ pgl('intensiv-spasibo/bot','Открыл бота'); });
 
-  $('calBtn').href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Интенсив «Клиенты из соцсетей с ИИ» · Малена Покладова')+'&dates=20261127T170000Z/20261127T183000Z&recur='+encodeURIComponent('RRULE:FREQ=DAILY;COUNT=3')+'&details='+encodeURIComponent('Ссылка на Zoom придёт в Telegram-бот, в канал участников и на почту за час до начала.');
+  $('calBtn').href='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent('Интенсив «Клиенты из соцсетей с ИИ» · Малена Покладова')+'&dates=20261127T173000Z/20261127T190000Z&recur='+encodeURIComponent('RRULE:FREQ=DAILY;COUNT=3')+'&details='+encodeURIComponent('Ссылка на Zoom придёт в Telegram-бот, в канал участников и на почту за час до начала.');
 
   /* VIP */
   var flip=$('flip'), vb=$('vipBtn');
