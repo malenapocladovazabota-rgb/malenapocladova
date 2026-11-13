@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Оплата билета · Клиенты из соцсетей с ИИ · 27–29 ноября</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Три вечера в Zoom: как сегодня один человек с телефоном и ИИ приводит клиентов себе или другим. 27–29 ноября, билет $15.">
+<meta property="og:title" content="Клиенты из соцсетей с ИИ · 3 вечера с Маленой Покладовой">
+<meta property="og:description" content="27–29 ноября в Zoom. Билет $15.">
+<meta property="og:image" content="https://malenapocladova.com/images/malena-hero-v4-m.jpg">
+<link rel="icon" href="images/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<meta name="robots" content="noindex">
+<script>
+
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1521940319314090');
+fbq('track','PageView');
+</script>
+<style>
+
+/* Лендинг интенсива «Клиенты из соцсетей с ИИ», 27–29.11.2026.
+   Стиль сайта New SMM, вариант «Контраст»: бордо, золото, тёмные и светлые блоки,
+   выделенные факты, иконки. Покупка = билет. */
+:root{--wine:#6E1E2B;--wine2:#8A2A3A;--ink:#1B1414;--ink2:#453B36;--muted:#6F6558;--paper:#F5EFE3;--cream:#FBF7EE;--gold:#D9A441;--goldL:#E3BE73;--line:rgba(27,20,20,.12);
+--serif:'Playfair Display',Georgia,serif;--sans:'Inter',system-ui,-apple-system,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--cream);color:var(--ink);font:16.5px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
+.pad{padding:64px 0}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.4px;text-wrap:balance}
+h2{font-size:clamp(31px,6.4vw,48px);line-height:1.1}
+h2 em,h1 em{font-style:italic}
+.lede{font-size:17px;color:var(--ink2);margin-top:14px;max-width:600px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:700 13.5px var(--mono);letter-spacing:1.3px;text-transform:uppercase;padding:18px 24px;border-radius:4px;text-decoration:none;cursor:pointer;border:0;transition:transform .15s ease,box-shadow .2s ease}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible{outline:2px solid var(--goldL);outline-offset:3px}
+.btn-w{background:var(--wine);color:#fff;box-shadow:0 14px 30px -14px rgba(110,30,43,.8)}
+.btn-g{background:var(--goldL);color:var(--ink)}
+.btn-c{background:#F6EFE2;color:var(--wine)}
+.ic{width:46px;height:46px;border-radius:50%;background:rgba(110,30,43,.08);display:grid;place-items:center;color:var(--wine);flex:none}
+.ic svg{width:22px;height:22px}
+.tag{display:inline-block;font:700 11px var(--mono);letter-spacing:1px;text-transform:uppercase;color:#fff;background:var(--wine);padding:5px 8px;border-radius:3px}
+
+/* Шапка */
+.top{position:sticky;top:0;z-index:30;background:rgba(27,20,20,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#F6EFE2;padding-top:env(safe-area-inset-top)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:12px}
+.logo{font:500 19px var(--serif);text-decoration:none;white-space:nowrap}
+.logo em{font-style:italic;color:var(--goldL)}
+.top .btn{padding:13px 14px;font-size:12px;min-height:44px}
+
+/* Оплата: шаг 1 данные, шаг 2 карта */
+.pay{padding:28px 0 64px}
+.pay .wrap{max-width:560px}
+.sum{background:var(--ink);color:#F6EFE2;border-radius:10px;padding:20px 22px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.sum .k{font:700 11px var(--mono);letter-spacing:1.4px;text-transform:uppercase;color:var(--goldL)}
+.sum h1{font-size:24px;line-height:1.15;margin-top:6px}
+.sum .p{font:500 34px var(--serif);color:var(--goldL);white-space:nowrap}
+.dots{display:flex;gap:8px;margin:22px 0 14px;font:700 11px var(--mono);letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)}
+.dots b{color:var(--wine)}
+.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px}
+.card h2{font-size:26px}
+.card p{color:var(--ink2);font-size:15px;margin-top:8px}
+label{display:block;font:600 13px var(--sans);color:var(--ink2);margin:16px 0 6px}
+input[type=text],input[type=email]{width:100%;font:16px var(--sans);padding:15px 14px;border:1px solid rgba(27,20,20,.25);border-radius:6px;background:#fff;color:var(--ink)}
+input:focus{outline:2px solid var(--goldL);outline-offset:1px;border-color:var(--wine)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.err{color:#A32020;font-size:14px;margin-top:10px;min-height:20px}
+.card .btn{width:100%;margin-top:14px}
+.fine{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.5}
+.fine a{color:var(--wine)}
+.frame{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.frame iframe{display:block;width:100%;height:920px;border:0}
+.who{font-size:14px;color:var(--ink2);margin:0 0 12px}
+.who button{background:none;border:0;color:var(--wine);text-decoration:underline;font:inherit;cursor:pointer;padding:0}
+.alt{font-size:14px;color:var(--muted);margin-top:14px;text-align:center}
+.alt a{color:var(--wine)}
+.safe{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:16px}
+@media(max-width:480px){.two{grid-template-columns:1fr}.sum h1{font-size:21px}.frame iframe{height:1040px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="logo" href="/intensiv">Малена <em>Покладова</em></a></div></header>
+<section class="pay"><div class="wrap">
+  <div class="sum"><div><div class="k">27–29 ноября · Zoom · 19:00 Кишинёв</div><h1>Билет на три вечера</h1></div><div class="p">$15</div></div>
+
+  <div id="s1">
+    <div class="dots"><b>Шаг 1 из 2 · ваши данные</b></div>
+    <form class="card" id="f" novalidate>
+      <h2>Куда прислать билет?</h2>
+      <p>На эту почту придёт билет и ссылки на эфиры.</p>
+      <div class="two">
+        <div><label for="fn">Имя</label><input id="fn" name="given-name" type="text" autocomplete="given-name" maxlength="40" required></div>
+        <div><label for="ln">Фамилия</label><input id="ln" name="family-name" type="text" autocomplete="family-name" maxlength="40" required></div>
+      </div>
+      <label for="em">Почта</label><input id="em" name="email" type="email" autocomplete="email" inputmode="email" maxlength="160" required>
+      <div class="err" id="err" role="alert"></div>
+      <button class="btn btn-w" type="submit" id="go">Перейти к оплате · $15</button>
+      <p class="fine">Нажимая кнопку, вы соглашаетесь получать письма об интенсиве и принимаете <a href="/privacy-intensiv" target="_blank" rel="noopener">Privacy Policy</a> и <a href="/terms-intensiv" target="_blank" rel="noopener">Terms</a>. Отписаться можно в любом письме.</p>
+    </form>
+  </div>
+
+  <div id="s2" hidden>
+    <div class="dots"><b>Шаг 2 из 2 · оплата</b></div>
+    <p class="who">Билет на <b id="whoEm"></b> · <button type="button" id="back">изменить</button></p>
+    <div class="frame"><iframe id="pf" title="Оплата билета" allow="payment *" loading="eager"></iframe></div>
+    <p class="alt">Оплата не открылась? <a id="alt" href="#" rel="noopener">Открыть на отдельной странице</a></p>
+    <div class="safe"><span>🔒 Оплата картой через защищённую форму</span><span>Билет придёт на почту сразу</span></div>
+  </div>
+</div></section>
+
+<script>
+(function(){
+  var PAYLINK='https://link.fastpaydirect.com/payment-link/6af4330f21a48a3872d2513a', PRICE=15;
+  var API='https://kjyfbfqcgretrbupyhiq.supabase.co/functions/v1/int-checkout';
+  function L(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+  function S(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+  function q(n){ try{ return new URLSearchParams(location.search).get(n)||''; }catch(e){ return ''; } }
+  var utm={ source:q('utm_source'), medium:q('utm_medium'), campaign:q('utm_campaign'), content:q('utm_content'), a:q('utm_term')||q('a') };
+  if(!utm.source){ try{ var s=JSON.parse(L('int_src')||'null'); if(s) utm=s; }catch(e){} }
+  var fn=document.getElementById('fn'), ln=document.getElementById('ln'), em=document.getElementById('em'), err=document.getElementById('err'), go=document.getElementById('go');
+  try{ var d=JSON.parse(L('int_buyer')||'null'); if(d){ fn.value=d.fn||''; ln.value=d.ln||''; em.value=d.em||''; } }catch(e){}
+  function pgl(f,a,b){ try{ if(window.PGL&&PGL[f]) PGL[f](a,b); }catch(e){} }
+  var told='';
+  function tell(){ var e=em.value.trim().toLowerCase(); if(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)&&e!==told){ told=e; pgl('contact',{name:(fn.value+' '+ln.value).trim(),email:e}); } }
+  em.addEventListener('blur',tell);
+
+  function showPay(){
+    var p=new URLSearchParams(); p.set('firstName',fn.value.trim()); p.set('lastName',ln.value.trim()); p.set('email',em.value.trim().toLowerCase());
+    ['source','medium','campaign','content'].forEach(function(k){ if(utm[k]) p.set('utm_'+k,utm[k]); }); if(utm.a) p.set('utm_term',utm.a);
+    var url=PAYLINK+'?'+p.toString();
+    document.getElementById('pf').src=url; document.getElementById('alt').href=url;
+    document.getElementById('whoEm').textContent=em.value.trim().toLowerCase();
+    document.getElementById('s1').hidden=true; document.getElementById('s2').hidden=false;
+    S('int_buy_click',String(Date.now())); S('int_buy_price',String(PRICE));
+    pgl('step','intensiv-oplata/karta','Открыл форму карты');
+    if(window.fbq) fbq('track','AddPaymentInfo',{content_name:'intensiv-nov-2026-ticket',value:PRICE,currency:'USD'});
+    window.scrollTo(0,0);
+  }
+  document.getElementById('back').addEventListener('click',function(){ document.getElementById('s2').hidden=true; document.getElementById('s1').hidden=false; go.disabled=false; go.textContent='Перейти к оплате · $15'; });
+
+  document.getElementById('f').addEventListener('submit',function(ev){
+    ev.preventDefault(); err.textContent='';
+    var a=fn.value.trim(), b=ln.value.trim(), e=em.value.trim().toLowerCase();
+    if(!a){ err.textContent='Напишите имя.'; fn.focus(); return; }
+    if(!b){ err.textContent='Напишите фамилию: она нужна для оплаты.'; ln.focus(); return; }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)){ err.textContent='Проверьте почту: на неё придёт билет.'; em.focus(); return; }
+    go.disabled=true; go.textContent='Открываю оплату…';
+    S('int_buyer',JSON.stringify({fn:a,ln:b,em:e})); S('int_name',a);
+    tell();
+    var done=false, next=function(){ if(done) return; done=true; showPay(); };
+    /* Оплату не задерживаем: если сервер не ответил за 4 секунды, идём дальше без него */
+    var t=setTimeout(next,4000);
+    try{ fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({name:a+' '+b,email:e,utm:utm})})
+      .then(function(r){ return r.json(); }).then(function(j){ if(j&&j.token) S('int_ck',j.token); }).catch(function(){})
+      .then(function(){ clearTimeout(t); next(); }); }catch(x){ clearTimeout(t); next(); }
+  });
+})();
+</script>
+<script>window.PGL_SITE='ws_fd846eaeda93f043';</script>
+<script src="/pgl-track.js?v=1" defer></script>
+</body></html>
