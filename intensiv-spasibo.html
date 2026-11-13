@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ru">
 <head>
+<script>/* Страница открылась внутри рамки оплаты: показываем её на весь экран */try{ if(window.top!==window.self) window.top.location.replace(window.location.href); }catch(e){}</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Вы в списке · Клиенты из соцсетей с ИИ</title>
@@ -292,10 +293,10 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 <section class="steps"><div class="wrap">
   <div class="step" id="sTg">
     <div class="n">Шаг 1 · обязательно</div>
-    <h2>Войдите в канал участников</h2>
-    <p>В канале ссылки на эфиры, материалы и напоминания. Начинаем 27 ноября в 19:00 по Кишинёву, 9:00 по Лос-Анджелесу.</p>
-    <a class="btn btn-w" id="tgBtn" href="#" target="_blank" rel="noopener">Открыть канал в Telegram</a>
-    <p id="tgNo" hidden>Канал откроем в ближайшие дни: ссылка придёт на почту, которую вы указали при оплате.</p>
+    <h2>Получите вход в канал участников</h2>
+    <p>Нажмите кнопку: откроется наш бот в Telegram. Он пришлёт личную ссылку в закрытый канал и будет напоминать об эфирах. Начинаем 27 ноября в 19:00 по Кишинёву, 9:00 по Лос-Анджелесу.</p>
+    <a class="btn btn-w" id="tgBtn" href="#" target="_blank" rel="noopener">Открыть бота и войти в канал</a>
+    <p id="tgNo" hidden>Ссылка на вход также придёт на почту, которую вы указали при оплате.</p>
   </div>
 
   <div class="step">
@@ -327,9 +328,13 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 <script>
 (function(){
   /* Ссылки вставляются сюда: канал участников и доплата VIP. Пока пусто, блоки ведут себя безопасно. */
-  var LINKS={ tg:'', vip:'https://link.fastpaydirect.com/payment-link/6af43342906a8b62055d5872' };
+  var CK=''; try{ CK=(localStorage.getItem('int_ck')||'').replace(/[^a-f0-9]/g,''); }catch(e){}
+  var BUYER=null; try{ BUYER=JSON.parse(localStorage.getItem('int_buyer')||'null'); }catch(e){}
+  /* Вход через бота платформы: по хвосту-токену бот сам узнаёт почту с оплаты */
+  var LINKS={ tg:'https://t.me/pgl_platform_bot?start='+(window.__vip?'intv':'int')+(CK?'_'+CK:''), vip:'https://link.fastpaydirect.com/payment-link/6af43342906a8b62055d5872' };
+  if(BUYER&&BUYER.em){ try{ var vp=new URLSearchParams(); vp.set('firstName',BUYER.fn||''); vp.set('lastName',BUYER.ln||''); vp.set('email',BUYER.em); LINKS.vip+='?'+vp.toString(); }catch(e){} }
   var tg=document.getElementById('tgBtn');
-  if(LINKS.tg) tg.href=LINKS.tg; else { tg.hidden=true; document.getElementById('tgNo').hidden=false; }
+  if(LINKS.tg){ tg.href=LINKS.tg; document.getElementById('tgNo').hidden=false; tg.addEventListener('click',function(){ try{ if(window.PGL) PGL.step('intensiv-spasibo/bot','Открыл бота'); }catch(e){} }); } else { tg.style.display='none'; document.getElementById('tgNo').hidden=false; }
   if(LINKS.vip){ var sv=document.getElementById('sVip'); sv.hidden=false; var v=document.getElementById('vipBtn');
     if(window.__vip){ sv.querySelector('h2').textContent='VIP подключён'; v.hidden=true; var sm=sv.querySelector('small'); if(sm) sm.textContent='Материалы VIP придут в канал участников после каждого вечера.'; }
     v.href=LINKS.vip;
@@ -358,6 +363,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
     x.fillStyle='rgba(246,239,226,.6)'; x.font='500 30px Inter,system-ui,sans-serif'; x.fillText('malenapocladova.com/intensiv',540,1750);
     return c;
   }
+  try{ var nm=localStorage.getItem('int_name'); if(nm) document.getElementById('tkName').value=nm.slice(0,24); }catch(e){}
   document.getElementById('tkGo').addEventListener('click',function(){
     var name=(document.getElementById('tkName').value||'').trim(); if(!name){ document.getElementById('tkName').focus(); return; }
     var go=function(){ var c=draw(name); img.src=c.toDataURL('image/png'); img.hidden=false; share.hidden=false; hint.hidden=false;
@@ -372,4 +378,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   });
 })();
 </script>
+<script>window.PGL_SITE='ws_fd846eaeda93f043';</script>
+<script src="/pgl-track.js?v=1" defer></script>
+<script>addEventListener('load',function(){ try{ if(window.PGL&&window.__tk) PGL.step('intensiv-spasibo/oplatil','Оплатил билет'); if(window.PGL&&window.__vip) PGL.step('intensiv-spasibo/vip','Оплатил VIP'); }catch(e){} });</script>
 </body></html>

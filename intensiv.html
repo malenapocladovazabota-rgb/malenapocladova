@@ -256,7 +256,9 @@ s[data-old]{font-family:var(--sans);font-weight:400;font-size:.55em;opacity:.6;t
     var url=PAY[kind];
     if(!url){ document.getElementById('bilety').scrollIntoView({behavior:'smooth'}); return; }
     var p=new URLSearchParams(); ['source','medium','campaign','content'].forEach(function(k){ if(utm[k]) p.set('utm_'+k,utm[k]); }); if(a) p.set('utm_term',a);
-    location.href=url+(p.toString()?(url.indexOf('?')<0?'?':'&')+p.toString():'');
+    try{ if(window.PGL) PGL.step('intensiv/kupit','Нажал «Купить билет»'); }catch(e){}
+    /* Оплата на нашем домене: сначала имя и почта, затем форма карты */
+    location.href='/intensiv-oplata'+(p.toString()?'?'+p.toString():'');
   }
   [].forEach.call(document.querySelectorAll('[data-buy]'),function(el){ el.addEventListener('click',function(e){
     var k=el.getAttribute('data-buy');
@@ -274,5 +276,7 @@ s[data-old]{font-family:var(--sans);font-weight:400;font-size:.55em;opacity:.6;t
     ['dlya-kogo','programma','macbook','bilety','malena'].forEach(function(id){ var el=document.getElementById(id); if(el) so.observe(el); }); }
 })();
 </script>
+<script>window.PGL_SITE='ws_fd846eaeda93f043';</script>
+<script src="/pgl-track.js?v=1" defer></script>
 </body>
 </html>
