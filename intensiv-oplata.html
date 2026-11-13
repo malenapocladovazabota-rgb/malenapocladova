@@ -72,6 +72,10 @@ label{display:block;font:600 13px var(--sans);color:var(--ink2);margin:16px 0 6p
 input[type=text],input[type=email]{width:100%;font:16px var(--sans);padding:15px 14px;border:1px solid rgba(27,20,20,.25);border-radius:6px;background:#fff;color:var(--ink)}
 input:focus{outline:2px solid var(--goldL);outline-offset:1px;border-color:var(--wine)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opt{font-weight:400;color:var(--muted)}
+.chk{display:flex;gap:10px;align-items:flex-start;font:400 12.5px/1.5 var(--sans);color:var(--muted);margin-top:12px;cursor:pointer}
+.chk input{flex:none;width:20px;height:20px;margin-top:1px;accent-color:var(--wine)}
+input[type=tel]{width:100%;font:16px var(--sans);padding:15px 14px;border:1px solid rgba(27,20,20,.25);border-radius:6px;background:#fff;color:var(--ink)}
 .err{color:#A32020;font-size:14px;margin-top:10px;min-height:20px}
 .card .btn{width:100%;margin-top:14px}
 .fine{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.5}
@@ -101,9 +105,11 @@ input:focus{outline:2px solid var(--goldL);outline-offset:1px;border-color:var(-
         <div><label for="ln">Фамилия</label><input id="ln" name="family-name" type="text" autocomplete="family-name" maxlength="40" required></div>
       </div>
       <label for="em">Почта</label><input id="em" name="email" type="email" autocomplete="email" inputmode="email" maxlength="160" required>
+      <label for="ph">Телефон <span class="opt">по желанию</span></label><input id="ph" name="tel" type="tel" autocomplete="tel" inputmode="tel" maxlength="22" placeholder="+1 619 555 0123">
+      <label class="chk"><input type="checkbox" id="sms"><span id="smsT">Хочу получать SMS от Personal Growth Lab (Малена Покладова): напоминания об эфирах и предложения по обучению. До 8 сообщений в месяц, может взиматься плата оператора. Ответьте STOP, чтобы отписаться, HELP для помощи. Согласие не является условием покупки.</span></label>
       <div class="err" id="err" role="alert"></div>
       <button class="btn btn-w" type="submit" id="go">Перейти к оплате · $15</button>
-      <p class="fine">Нажимая кнопку, вы соглашаетесь получать письма об интенсиве и принимаете <a href="/privacy-intensiv" target="_blank" rel="noopener">Privacy Policy</a> и <a href="/terms-intensiv" target="_blank" rel="noopener">Terms</a>. Отписаться можно в любом письме.</p>
+      <p class="fine">Нажимая кнопку, вы соглашаетесь получать письма и сообщения в Telegram об интенсиве и принимаете <a href="/privacy-intensiv" target="_blank" rel="noopener">Privacy Policy</a> и <a href="/terms-intensiv" target="_blank" rel="noopener">Terms</a>. Отписаться можно в любом письме.</p>
     </form>
   </div>
 
@@ -125,11 +131,13 @@ input:focus{outline:2px solid var(--goldL);outline-offset:1px;border-color:var(-
   function q(n){ try{ return new URLSearchParams(location.search).get(n)||''; }catch(e){ return ''; } }
   var utm={ source:q('utm_source'), medium:q('utm_medium'), campaign:q('utm_campaign'), content:q('utm_content'), a:q('utm_term')||q('a') };
   if(!utm.source){ try{ var s=JSON.parse(L('int_src')||'null'); if(s) utm=s; }catch(e){} }
-  var fn=document.getElementById('fn'), ln=document.getElementById('ln'), em=document.getElementById('em'), err=document.getElementById('err'), go=document.getElementById('go');
-  try{ var d=JSON.parse(L('int_buyer')||'null'); if(d){ fn.value=d.fn||''; ln.value=d.ln||''; em.value=d.em||''; } }catch(e){}
+  var fn=document.getElementById('fn'), ln=document.getElementById('ln'), em=document.getElementById('em'), ph=document.getElementById('ph'), sms=document.getElementById('sms'), err=document.getElementById('err'), go=document.getElementById('go');
+  try{ var d=JSON.parse(L('int_buyer')||'null'); if(d){ fn.value=d.fn||''; ln.value=d.ln||''; em.value=d.em||''; ph.value=d.ph||''; } }catch(e){}
   function pgl(f,a,b){ try{ if(window.PGL&&PGL[f]) PGL[f](a,b); }catch(e){} }
+  /* Телефон: приводим к виду +цифры. Пусто = не указан. null = указан с ошибкой. */
+  function phone(){ var v=ph.value.trim(); if(!v) return ''; v=v.replace(/[^\d+]/g,''); if(v.indexOf('00')===0) v='+'+v.slice(2); return /^\+\d{8,15}$/.test(v)?v:null; }
   var told='';
-  function tell(){ var e=em.value.trim().toLowerCase(); if(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)&&e!==told){ told=e; pgl('contact',{name:(fn.value+' '+ln.value).trim(),email:e}); } }
+  function tell(){ var e=em.value.trim().toLowerCase(); if(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)&&e!==told){ told=e; pgl('contact',{name:(fn.value+' '+ln.value).trim(),email:e,phone:phone()||undefined}); } }
   em.addEventListener('blur',tell);
 
   function showPay(){
@@ -152,13 +160,16 @@ input:focus{outline:2px solid var(--goldL);outline-offset:1px;border-color:var(-
     if(!a){ err.textContent='Напишите имя.'; fn.focus(); return; }
     if(!b){ err.textContent='Напишите фамилию: она нужна для оплаты.'; ln.focus(); return; }
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)){ err.textContent='Проверьте почту: на неё придёт билет.'; em.focus(); return; }
+    var p=phone();
+    if(p===null){ err.textContent='Укажите телефон с кодом страны, например +1 619 555 0123, или оставьте поле пустым.'; ph.focus(); return; }
+    if(sms.checked&&!p){ err.textContent='Чтобы получать SMS, укажите номер телефона.'; ph.focus(); return; }
     go.disabled=true; go.textContent='Открываю оплату…';
-    S('int_buyer',JSON.stringify({fn:a,ln:b,em:e})); S('int_name',a);
+    S('int_buyer',JSON.stringify({fn:a,ln:b,em:e,ph:p||''})); told=''; S('int_name',a);
     tell();
     var done=false, next=function(){ if(done) return; done=true; showPay(); };
     /* Оплату не задерживаем: если сервер не ответил за 4 секунды, идём дальше без него */
     var t=setTimeout(next,4000);
-    try{ fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({name:a+' '+b,email:e,utm:utm})})
+    try{ fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({name:a+' '+b,email:e,phone:p||undefined,sms:!!(p&&sms.checked),sms_text:(p&&sms.checked)?document.getElementById('smsT').textContent:undefined,utm:utm})})
       .then(function(r){ return r.json(); }).then(function(j){ if(j&&j.token) S('int_ck',j.token); }).catch(function(){})
       .then(function(){ clearTimeout(t); next(); }); }catch(x){ clearTimeout(t); next(); }
   });
